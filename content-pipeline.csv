@@ -1,0 +1,23 @@
+slug,category,lang,title,primary_keyword,intent,cta,publish_date,status
+mcp-apps-live-impact-openclaw,news,en,"MCP Apps Is Live: What It Changes for OpenClaw Users",MCP Apps,news,"Download MCP integration checklist",2026-02-11,planned
+mcp-apps-live-impact-openclaw,news,zh,"MCP Apps 上线后，OpenClaw 用户该做什么？",MCP Apps,news,"下载 MCP 接入检查表",2026-02-11,planned
+openai-api-deprecations-2026-migration,news,en,"OpenAI API Deprecations 2026: Migration Checklist",OpenAI deprecations,migration,"Get migration script pack",2026-02-11,planned
+openai-api-deprecations-2026-migration,news,zh,"OpenAI API 2026 下线清单与迁移路线",OpenAI API 下线,migration,"领取迁移脚本",2026-02-11,planned
+openclaw-beginner-guide-2026,guide,en,"OpenClaw Beginner Guide 2026",openclaw tutorial,evergreen,"Download beginner checklist",2026-02-12,planned
+openclaw-beginner-guide-2026,guide,zh,"OpenClaw 新手全流程指南（2026）",OpenClaw 部署教程,evergreen,"下载新手清单",2026-02-12,planned
+mcp-agent-from-scratch,tutorial,en,"How to Build an MCP Agent from Scratch",mcp server tutorial,evergreen,"Get starter template",2026-02-12,planned
+mcp-agent-from-scratch,tutorial,zh,"从 0 搭建 MCP 智能体完整教程",MCP 服务端教程,evergreen,"领取代码模板",2026-02-12,planned
+openclaw-remote-browser-fixes,news,en,"OpenClaw Remote Browser: Pitfalls and Fixes",OpenClaw remote browser,troubleshooting,"Get troubleshooting SOP",2026-02-13,planned
+openclaw-remote-browser-fixes,news,zh,"OpenClaw 远程浏览器常见故障与修复",OpenClaw 远程浏览器,troubleshooting,"获取排障 SOP",2026-02-13,planned
+best-vps-for-openclaw-agent,guide,en,"Best VPS for OpenClaw and Agent Workloads",best VPS for AI agent,commercial,"See recommended stack",2026-02-13,planned
+best-vps-for-openclaw-agent,guide,zh,"OpenClaw/Agent 最适合的 VPS 推荐",OpenClaw VPS,commercial,"查看推荐栈",2026-02-13,planned
+agentic-workflow-vs-automation,comparison,en,"Agentic Workflow vs Traditional Automation",agentic workflow,evergreen,"Use framework decision sheet",2026-02-14,planned
+agentic-workflow-vs-automation,comparison,zh,"Agent 工作流 vs 传统自动化：怎么选",AI Agent 工作流,evergreen,"下载选型表",2026-02-14,planned
+openclaw-token-cost-optimization-sop,guide,en,"OpenClaw Token Cost Optimization SOP",ai agent cost optimization,commercial,"Download cost audit sheet",2026-02-14,planned
+openclaw-token-cost-optimization-sop,guide,zh,"OpenClaw 降本10x：Token 成本优化 SOP",智能体 token 优化,commercial,"下载成本审计表",2026-02-14,planned
+claude-api-access-mainland-strategy,guide,en,"Claude API Access Strategy for Mainland Users",claude api china,commercial,"Get proxy architecture template",2026-02-15,planned
+claude-api-access-mainland-strategy,guide,zh,"国内网络下 Claude API 访问策略",Claude API 国内,commercial,"领取代理架构模板",2026-02-15,planned
+agent-security-hardening-checklist,guide,en,"AI Agent Security Hardening Checklist",ai agent security,evergreen,"Download security baseline",2026-02-16,planned
+agent-security-hardening-checklist,guide,zh,"AI Agent 安全加固清单",AI Agent 安全,evergreen,"下载安全基线",2026-02-16,planned
+openclaw-managed-deployment-service,guide,en,"OpenClaw Managed Deployment Service",OpenClaw deploy service,commercial,"Book a 15-min assessment",2026-02-16,planned
+openclaw-managed-deployment-service,guide,zh,"OpenClaw 托管部署服务说明",OpenClaw 服务,commercial,"预约 15 分钟评估",2026-02-16,planned
