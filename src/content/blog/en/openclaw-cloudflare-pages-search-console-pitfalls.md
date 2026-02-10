@@ -21,11 +21,25 @@ Fix: convert `/` into an indexable language selector page.
 Many tools expect `/sitemap.xml`, while Astro defaults to `sitemap-index.xml`.  
 Fix: keep `sitemap-index.xml` and add a compatibility alias at `/sitemap.xml`.
 
-### 4) Browser automation crash in proxychains
-Root cause: Chrome inherited `LD_PRELOAD`.  
-Fix: launch Chrome with a wrapper that unsets `LD_PRELOAD` and sets `--proxy-server` explicitly.
+### 4) Open Cloud access instability on mainland networks
+Symptom: intermittent failures/timeouts when accessing Open Cloud APIs or console.  
+Fix strategy:
+- Keep proxying at the gateway layer
+- Set browser proxy explicitly via `--proxy-server=http://<proxy-host>:<port>`
+- Exclude loopback (`127.0.0.1` / `localhost`) from proxy paths so local RPC stays local
 
-### 5) Search Console API OAuth 403
+This setup significantly improves Open Cloud reliability in mainland network conditions.
+
+### 5) Browser control optimization (critical)
+Root cause: Chrome inherited `LD_PRELOAD`, causing GPU-process crashes and browser control timeouts.  
+We fixed it with three changes:
+1. Add a Chrome wrapper script that runs `unset LD_PRELOAD`
+2. Inject proxy args in the wrapper (`--proxy-server=...`)
+3. Point OpenClaw `browser.executablePath` to the wrapper and set `browser.noSandbox=true`
+
+After this, browser control became stable enough to continue Search Console automation.
+
+### 6) Search Console API OAuth 403
 Unverified app + missing test user leads to hard denial.  
 Fix: add test users in OAuth consent screen and complete consent flow.
 

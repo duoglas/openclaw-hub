@@ -21,11 +21,25 @@ lang: "zh"
 有些工具默认找 `/sitemap.xml`，而 Astro 默认是 `sitemap-index.xml`。  
 修复：保留 `sitemap-index.xml`，再新增一个 `sitemap.xml` 兼容入口。
 
-### 4）浏览器自动化在 proxychains 环境崩溃
-根因是 Chrome 继承 `LD_PRELOAD`。  
-修复：用 wrapper 启动 Chrome，`unset LD_PRELOAD`，并显式加 `--proxy-server`。
+### 4）国内网络下 Open Cloud 访问不稳定
+症状：部分 API/控制台在国内网络下连接失败或超时。  
+修复思路：
+- 代理保持在网关层（例如 proxychains）
+- 对浏览器进程单独指定代理：`--proxy-server=http://<proxy-host>:<port>`
+- 对本地回环地址（127.0.0.1 / localhost）做直连排除，避免把本地 RPC 也错误送进代理
 
-### 5）Search Console API OAuth 403
+这样配置后，国内网络下访问 Open Cloud 的稳定性会明显提升。
+
+### 5）浏览器控制链路优化（重点）
+根因是 Chrome 继承 `LD_PRELOAD` 导致 GPU 进程崩溃，browser control 经常超时。  
+我们做了三步优化：
+1. 创建 Chrome wrapper 脚本（启动前 `unset LD_PRELOAD`）
+2. 在 wrapper 里显式注入代理参数 `--proxy-server=...`
+3. OpenClaw 配置中指定 `browser.executablePath` 指向 wrapper，并设置 `browser.noSandbox=true`
+
+优化后，浏览器控制恢复稳定，可继续自动化操作 Search Console。
+
+### 6）Search Console API OAuth 403
 应用未验证+测试用户未加入会直接被拒绝。  
 修复：在 OAuth consent screen 添加测试用户，并完成授权同意。
 
