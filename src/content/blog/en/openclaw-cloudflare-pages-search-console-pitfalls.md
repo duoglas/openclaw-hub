@@ -21,14 +21,14 @@ Fix: convert `/` into an indexable language selector page.
 Many tools expect `/sitemap.xml`, while Astro defaults to `sitemap-index.xml`.  
 Fix: keep `sitemap-index.xml` and add a compatibility alias at `/sitemap.xml`.
 
-### 4) Open Cloud access instability on mainland networks
-Symptom: intermittent failures/timeouts when accessing Open Cloud APIs or console.  
+### 4) OpenClaw-to-Claude instability on mainland networks
+Symptom: intermittent failures/timeouts when OpenClaw calls Claude APIs.  
 Fix strategy:
 - Keep proxying at the gateway layer
 - Set browser proxy explicitly via `--proxy-server=http://<proxy-host>:<port>`
 - Exclude loopback (`127.0.0.1` / `localhost`) from proxy paths so local RPC stays local
 
-This setup significantly improves Open Cloud reliability in mainland network conditions.
+This setup significantly improves OpenClaw-to-Claude reliability in mainland network conditions.
 
 ### 5) Browser control optimization (critical)
 Root cause: Chrome inherited `LD_PRELOAD`, causing GPU-process crashes and browser control timeouts.  

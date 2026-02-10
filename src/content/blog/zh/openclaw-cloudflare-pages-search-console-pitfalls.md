@@ -21,14 +21,14 @@ lang: "zh"
 有些工具默认找 `/sitemap.xml`，而 Astro 默认是 `sitemap-index.xml`。  
 修复：保留 `sitemap-index.xml`，再新增一个 `sitemap.xml` 兼容入口。
 
-### 4）国内网络下 Open Cloud 访问不稳定
-症状：部分 API/控制台在国内网络下连接失败或超时。  
+### 4）国内网络下 OpenClaw 访问 Claude 不稳定
+症状：OpenClaw 调用 Claude API 时，在国内网络下可能出现连接失败或超时。  
 修复思路：
 - 代理保持在网关层（例如 proxychains）
 - 对浏览器进程单独指定代理：`--proxy-server=http://<proxy-host>:<port>`
 - 对本地回环地址（127.0.0.1 / localhost）做直连排除，避免把本地 RPC 也错误送进代理
 
-这样配置后，国内网络下访问 Open Cloud 的稳定性会明显提升。
+这样配置后，国内网络下 OpenClaw 调用 Claude 的稳定性会明显提升。
 
 ### 5）浏览器控制链路优化（重点）
 根因是 Chrome 继承 `LD_PRELOAD` 导致 GPU 进程崩溃，browser control 经常超时。  
