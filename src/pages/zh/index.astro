@@ -10,6 +10,18 @@ const posts = (await getCollection('blog'))
   <h1>🦞 OpenClaw 指南</h1>
   <p style="font-size:1.1rem; margin:1rem 0;">AI 智能体自动化中心 —— OpenClaw 教程、对比评测和使用指南，助你玩转 AI Agent 生态。</p>
   
+  <section class="monetization-box" aria-label="推荐工具">
+    <h3>Recommended Tools / 推荐工具</h3>
+    <p style="margin-bottom:0.5rem; color:#b8c2df;">需要一套可直接落地的工具栈？先看推荐页，再把占位链接替换为你的 affiliate 链接。</p>
+    <ul>
+      <li><a href="/zh/recommended-stack/">查看推荐工具栈</a></li>
+      <li><a href="#">VPS —— 替换为你的 affiliate 链接</a></li>
+      <li><a href="#">自动化工具 —— 替换为你的 affiliate 链接</a></li>
+    </ul>
+    <!-- 仅预留广告位，不引入第三方脚本 -->
+    <div class="ad-slot" data-slot="home-inline-1">广告位占位：home-inline-1</div>
+  </section>
+
   <h2>最新文章</h2>
   {posts.slice(0, 20).map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');

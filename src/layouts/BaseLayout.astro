@@ -51,6 +51,10 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
     a { color: var(--accent); }
     h1,h2,h3 { color: #fff; margin: 1.5rem 0 0.8rem; }
     .card { background: var(--card); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+    .monetization-box { background: linear-gradient(135deg, #1b1b33, #16213e); border: 1px solid #2d3d66; border-radius: 12px; padding: 1.2rem; margin-top: 1.5rem; }
+    .monetization-box h3 { margin-top: 0; }
+    .monetization-box ul { margin-left: 1.2rem; }
+    .ad-slot { min-height: 90px; border: 1px dashed #4b5c8f; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #7f8db7; font-size: 0.85rem; background: rgba(74, 88, 130, 0.08); margin-top: 0.8rem; }
     .tag { background: var(--accent); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
     code { background: #2d2d2d; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
     pre { background: #1e1e2e; padding: 1rem; border-radius: 8px; overflow-x: auto; }
@@ -65,6 +69,7 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
       <a href={prefix + '/blog/'}>{isZh ? '文章' : 'Articles'}</a>
       <a href={prefix + '/blog/tag/comparison/'}>{isZh ? '对比' : 'Compare'}</a>
       <a href={prefix + '/blog/tag/guide/'}>{isZh ? '教程' : 'Guides'}</a>
+      <a href={prefix + '/recommended-stack/'}>{isZh ? '推荐' : 'Recommended'}</a>
       <a href="https://github.com/openclaw/openclaw" target="_blank">GitHub</a>
       <div class="lang-switch">
         <a href={enUrl} class={lang === 'en' ? 'active' : ''}>EN</a>

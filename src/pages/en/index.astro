@@ -10,6 +10,18 @@ const posts = (await getCollection('blog'))
   <h1>🦞 OpenClaw Guide</h1>
   <p style="font-size:1.1rem; margin:1rem 0;">Your hub for AI Agent automation — tutorials, comparisons, and guides for OpenClaw and the AI agent ecosystem.</p>
   
+  <section class="monetization-box" aria-label="Recommended Tools">
+    <h3>Recommended Tools / 推荐工具</h3>
+    <p style="margin-bottom:0.5rem; color:#b8c2df;">Need a ready-to-run stack? Start here and replace placeholders with your affiliate links.</p>
+    <ul>
+      <li><a href="/en/recommended-stack/">View Recommended Stack</a></li>
+      <li><a href="#">VPS — Replace with your affiliate link</a></li>
+      <li><a href="#">Automation Tool — Replace with your affiliate link</a></li>
+    </ul>
+    <!-- Reserved ad slot only. No third-party script here. -->
+    <div class="ad-slot" data-slot="home-inline-1">Ad Slot Placeholder: home-inline-1</div>
+  </section>
+
   <h2>Latest Articles</h2>
   {posts.slice(0, 20).map(post => {
     const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');

@@ -26,5 +26,17 @@ const alternateUrl = `/${otherLang}/blog/${baseSlug}/`;
       {tags.map(tag => <a href={`/${lang}/blog/tag/${tag}/`} style="text-decoration:none;"><span class="tag">{tag}</span></a>)}
     </div>
     <slot />
+
+    <section class="monetization-box" aria-label={isZh ? '推荐工具' : 'Recommended Tools'}>
+      <h3>{isZh ? 'Recommended Tools / 推荐工具' : 'Recommended Tools / 推荐工具'}</h3>
+      <p style="color:#b8c2df; margin-bottom:0.6rem;">{isZh ? '以下为可快速上线的工具栈（含联盟链接位，按需替换）：' : 'A lightweight tool stack to deploy faster (affiliate placeholders, replace as needed):'}</p>
+      <ul>
+        <li><a href={`/${lang}/recommended-stack/`}>{isZh ? '查看完整推荐栈' : 'View full recommended stack'}</a></li>
+        <li><a href="#">VPS — {isZh ? '替换为你的 affiliate 链接' : 'Replace with your affiliate link'}</a></li>
+        <li><a href="#">AI API — {isZh ? '替换为你的 affiliate 链接' : 'Replace with your affiliate link'}</a></li>
+      </ul>
+      {/* Reserved ad slot only. No third-party script here. */}
+      <div class="ad-slot" data-slot="in-article-1">Ad Slot Placeholder: in-article-1</div>
+    </section>
   </article>
 </BaseLayout>
