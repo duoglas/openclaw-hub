@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://openhub.plzbite.top/sitemap-index.xml

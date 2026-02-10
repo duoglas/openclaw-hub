@@ -2,25 +2,50 @@
 interface Props {
   title: string;
   description?: string;
+  lang?: 'en' | 'zh';
+  alternateUrl?: string;
+  alternateLang?: string;
 }
-const { title, description = 'OpenClaw Guide - AI Agent Automation Hub' } = Astro.props;
+const {
+  title,
+  description = 'OpenClaw Guide - AI Agent Automation Hub',
+  lang = 'en',
+  alternateUrl,
+  alternateLang,
+} = Astro.props;
+
+const isZh = lang === 'zh';
+const prefix = `/${lang}`;
+const otherLang = isZh ? 'en' : 'zh';
+const currentPath = Astro.url.pathname;
+const enUrl = currentPath.replace(`/${lang}/`, '/en/');
+const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
   <title>{title} | OpenClaw Guide</title>
+  {alternateUrl && alternateLang && (
+    <link rel="alternate" hreflang={alternateLang} href={alternateUrl} />
+  )}
+  <link rel="alternate" hreflang={lang} href={Astro.url.href} />
+  <link rel="alternate" hreflang="x-default" href={Astro.url.href.replace(`/${lang}/`, '/en/')} />
   <style>
     :root { --accent: #e74c3c; --bg: #0f0f0f; --text: #e0e0e0; --card: #1a1a2e; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
     header { background: var(--card); padding: 1rem 2rem; border-bottom: 2px solid var(--accent); }
     header a { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 1.3rem; }
-    header nav { display: flex; gap: 1.5rem; align-items: center; max-width: 900px; margin: 0 auto; }
+    header nav { display: flex; gap: 1.5rem; align-items: center; max-width: 900px; margin: 0 auto; flex-wrap: wrap; }
     header nav a { color: var(--text); font-size: 0.95rem; }
+    header nav .lang-switch { margin-left: auto; display: flex; gap: 0.5rem; align-items: center; }
+    header nav .lang-switch a { padding: 2px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; }
+    header nav .lang-switch a.active { background: var(--accent); color: #fff; }
+    header nav .lang-switch a:not(.active) { color: #999; border: 1px solid #555; }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
     footer { text-align: center; padding: 2rem; color: #666; font-size: 0.85rem; }
     a { color: var(--accent); }
@@ -36,11 +61,15 @@ const { title, description = 'OpenClaw Guide - AI Agent Automation Hub' } = Astr
 <body>
   <header>
     <nav>
-      <a href="/">🦞 OpenClaw Guide</a>
-      <a href="/blog">Articles</a>
-      <a href="/blog/tag/comparison">Compare</a>
-      <a href="/blog/tag/tutorial">Tutorials</a>
+      <a href={prefix + '/'}>{isZh ? '🦞 OpenClaw 指南' : '🦞 OpenClaw Guide'}</a>
+      <a href={prefix + '/blog/'}>{isZh ? '文章' : 'Articles'}</a>
+      <a href={prefix + '/blog/tag/comparison/'}>{isZh ? '对比' : 'Compare'}</a>
+      <a href={prefix + '/blog/tag/guide/'}>{isZh ? '教程' : 'Guides'}</a>
       <a href="https://github.com/openclaw/openclaw" target="_blank">GitHub</a>
+      <div class="lang-switch">
+        <a href={enUrl} class={lang === 'en' ? 'active' : ''}>EN</a>
+        <a href={zhUrl} class={lang === 'zh' ? 'active' : ''}>中文</a>
+      </div>
     </nav>
   </header>
   <main>

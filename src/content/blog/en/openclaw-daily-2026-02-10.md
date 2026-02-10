@@ -4,6 +4,7 @@ description: "Daily practical tips for running OpenClaw agents, channels, and mo
 pubDate: 2026-02-10
 tags: ["openclaw", "daily", "automation"]
 category: "guide"
+lang: "en"
 ---
 
 ## Today's OpenClaw Focus

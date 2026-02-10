@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => p.data.lang === 'zh')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="文章" description="OpenClaw 指南全部文章" lang="zh">
+  <h1>文章</h1>
+  {posts.map(post => {
+    const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+    return (
+      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;">
+        <div class="card" style="cursor:pointer;">
+          <h3 style="margin-top:0;">{post.data.title}</h3>
+          <p style="color:#999; margin:0.3rem 0;">{post.data.description}</p>
+        </div>
+      </a>
+    );
+  })}
+</BaseLayout>

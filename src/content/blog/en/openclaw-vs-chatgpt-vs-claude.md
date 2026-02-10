@@ -4,6 +4,7 @@ description: "Detailed comparison of OpenClaw, ChatGPT, and Claude. Self-hosted 
 pubDate: 2026-02-10
 tags: ["comparison", "openclaw", "chatgpt", "claude"]
 category: "comparison"
+lang: "en"
 ---
 
 ## The AI Assistant Landscape in 2026

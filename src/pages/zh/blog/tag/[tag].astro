@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).filter(p => p.data.lang === 'zh');
+  const tags = new Set<string>();
+  posts.forEach((p) => p.data.tags?.forEach((t) => tags.add(t)));
+  return Array.from(tags).map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const posts = (await getCollection('blog'))
+  .filter((p) => p.data.lang === 'zh' && p.data.tags?.includes(tag || ''))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const tagLabels: Record<string, string> = {
+  'openclaw': 'OpenClaw',
+  'guide': '指南',
+  'ai-agent': 'AI 智能体',
+  'models': '模型',
+  'comparison': '对比',
+  'chatgpt': 'ChatGPT',
+  'claude': 'Claude',
+  'daily': '日报',
+  'automation': '自动化',
+  'tutorial': '教程',
+};
+const displayTag = tagLabels[tag || ''] || tag;
+---
+
+<BaseLayout title={`标签: ${displayTag}`} description={`标签 ${displayTag} 下的文章`} lang="zh">
+  <h1>标签: {displayTag}</h1>
+  {posts.length === 0 ? <p>暂无文章。</p> : posts.map(post => {
+    const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+    return (
+      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;">
+        <div class="card" style="cursor:pointer;">
+          <h3 style="margin-top:0;">{post.data.title}</h3>
+          <p style="color:#999; margin:0.3rem 0;">{post.data.description}</p>
+        </div>
+      </a>
+    );
+  })}
+</BaseLayout>

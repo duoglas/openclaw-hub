@@ -4,6 +4,7 @@ description: "A comprehensive guide to OpenClaw — the open-source personal AI 
 pubDate: 2026-02-10
 tags: ["openclaw", "guide", "ai-agent"]
 category: "guide"
+lang: "en"
 ---
 
 ## What is OpenClaw?

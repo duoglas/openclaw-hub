@@ -4,6 +4,7 @@ description: "Which AI model should you use with OpenClaw? We rank Claude Opus 4
 pubDate: 2026-02-10
 tags: ["guide", "models", "openclaw"]
 category: "guide"
+lang: "en"
 ---
 
 ## Choosing the Right Model for OpenClaw

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => p.data.lang === 'zh')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<BaseLayout title="首页" lang="zh">
+  <h1>🦞 OpenClaw 指南</h1>
+  <p style="font-size:1.1rem; margin:1rem 0;">AI 智能体自动化中心 —— OpenClaw 教程、对比评测和使用指南，助你玩转 AI Agent 生态。</p>
+  
+  <h2>最新文章</h2>
+  {posts.slice(0, 20).map(post => {
+    const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+    return (
+      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit;">
+        <div class="card" style="cursor:pointer;">
+          <h3 style="margin-top:0;">{post.data.title}</h3>
+          <p style="color:#999; margin:0.3rem 0;">{post.data.description}</p>
+          <div style="color:#666; font-size:0.85rem;">
+            {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
+            {' · '}
+            {post.data.tags.map(tag => <span class="tag" style="margin-right:4px;">{tag}</span>)}
+          </div>
+        </div>
+      </a>
+    );
+  })}
+</BaseLayout>
