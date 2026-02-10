@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'OpenClaw Guide - AI Agent Automation Hub' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title} | OpenClaw Guide</title>
+  <style>
+    :root { --accent: #e74c3c; --bg: #0f0f0f; --text: #e0e0e0; --card: #1a1a2e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    header { background: var(--card); padding: 1rem 2rem; border-bottom: 2px solid var(--accent); }
+    header a { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 1.3rem; }
+    header nav { display: flex; gap: 1.5rem; align-items: center; max-width: 900px; margin: 0 auto; }
+    header nav a { color: var(--text); font-size: 0.95rem; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+    footer { text-align: center; padding: 2rem; color: #666; font-size: 0.85rem; }
+    a { color: var(--accent); }
+    h1,h2,h3 { color: #fff; margin: 1.5rem 0 0.8rem; }
+    .card { background: var(--card); border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+    .tag { background: var(--accent); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
+    code { background: #2d2d2d; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    pre { background: #1e1e2e; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+    pre code { background: none; padding: 0; }
+    img { max-width: 100%; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">🦞 OpenClaw Guide</a>
+      <a href="/blog">Articles</a>
+      <a href="/blog/tag/comparison">Compare</a>
+      <a href="/blog/tag/tutorial">Tutorials</a>
+      <a href="https://github.com/openclaw/openclaw" target="_blank">GitHub</a>
+    </nav>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <p>© 2026 OpenClaw Guide · Built with 🦞 and AI</p>
+  </footer>
+</body>
+</html>
