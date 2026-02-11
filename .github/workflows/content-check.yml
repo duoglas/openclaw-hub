@@ -1,0 +1,51 @@
+name: Content Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: cd ~/projects/openclaw-hub && pnpm install
+
+      - name: Build check
+        run: cd ~/projects/openclaw-hub && pnpm build
+
+      - name: Frontmatter check
+        run: |
+          cd ~/projects/openclaw-hub
+          echo "Checking frontmatter..."
+          for f in src/content/blog/**/*.md; do
+            if ! grep -q "^---" "$f" 2>/dev/null; then
+              echo "Missing frontmatter: $f"
+              exit 1
+            fi
+            if ! grep -q "title:" "$f" || ! grep -q "description:" "$f" || ! grep -q "pubDate:" "$f"; then
+              echo "Missing required frontmatter fields: $f"
+              exit 1
+            fi
+          done
+          echo "Frontmatter check passed"
+
+      - name: Lychee Link Check
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress './src/content/blog/**/*.md'
+          fail: true
