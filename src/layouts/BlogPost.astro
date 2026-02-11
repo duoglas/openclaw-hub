@@ -29,15 +29,6 @@ const alternateUrl = `/${otherLang}/blog/${baseSlug}/`;
     </div>
     <slot />
 
-    <section class="monetization-box" aria-label={isZh ? '推荐工具' : 'Recommended Tools'}>
-      <h3>{isZh ? 'Recommended Tools / 推荐工具' : 'Recommended Tools / 推荐工具'}</h3>
-      <p>{isZh ? '以下为可快速上线的工具栈：' : 'A lightweight tool stack to deploy faster:'}</p>
-      <ul>
-        <li><a href={`/${lang}/recommended-stack/`}>{isZh ? '查看完整推荐栈' : 'View full recommended stack'}</a></li>
-      </ul>
-      <div class="ad-slot" data-slot="in-article-1">Ad Slot Placeholder</div>
-    </section>
-
     <ArticleFeedback lang={lang} slug={slug} />
     <Giscus lang={lang} />
   </article>
