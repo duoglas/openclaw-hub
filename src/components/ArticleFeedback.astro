@@ -1,0 +1,99 @@
+---
+interface Props {
+  lang?: 'en' | 'zh';
+  slug?: string;
+}
+const { lang = 'en', slug = '' } = Astro.props;
+const isZh = lang === 'zh';
+
+const issueTitle = encodeURIComponent(`Feedback: ${slug}`);
+const issueLabels = encodeURIComponent('feedback');
+const issueUrl = `https://github.com/duoglas/openclaw-hub/issues/new?title=${issueTitle}&labels=${issueLabels}`;
+---
+
+<section class="article-feedback" aria-label={isZh ? '文章反馈' : 'Article Feedback'}>
+  <h3>{isZh ? '这篇文章有帮助吗？' : 'Was this article helpful?'}</h3>
+
+  <div class="feedback-buttons" id="feedback-btns">
+    <button class="fb-btn" data-vote="up" aria-label={isZh ? '有帮助' : 'Helpful'}>
+      👍 {isZh ? '有帮助' : 'Helpful'}
+    </button>
+    <button class="fb-btn" data-vote="down" aria-label={isZh ? '需改进' : 'Needs work'}>
+      👎 {isZh ? '需改进' : 'Needs work'}
+    </button>
+  </div>
+
+  <p class="feedback-thanks" id="feedback-thanks" style="display:none;">
+    {isZh ? '感谢你的反馈！' : 'Thanks for your feedback!'}
+  </p>
+
+  <div class="feedback-suggest">
+    <a href={issueUrl} target="_blank" rel="noopener noreferrer">
+      💬 {isZh ? '提交详细建议（GitHub Issue）' : 'Submit detailed feedback (GitHub Issue)'}
+    </a>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const btns = document.getElementById('feedback-btns');
+    const thanks = document.getElementById('feedback-thanks');
+    if (!btns || !thanks) return;
+
+    btns.querySelectorAll('.fb-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.style.display = 'none';
+        thanks.style.display = 'block';
+      });
+    });
+  });
+</script>
+
+<style>
+  .article-feedback {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, #1b1b33, #16213e);
+    border: 1px solid #2d3d66;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .article-feedback h3 {
+    margin: 0 0 0.8rem;
+    font-size: 1.1rem;
+  }
+  .feedback-buttons {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .fb-btn {
+    background: rgba(231, 76, 60, 0.15);
+    border: 1px solid #e74c3c;
+    color: #e0e0e0;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .fb-btn:hover {
+    background: rgba(231, 76, 60, 0.35);
+  }
+  .feedback-thanks {
+    color: #4caf50;
+    font-weight: 600;
+  }
+  .feedback-suggest {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+  }
+  .feedback-suggest a {
+    color: #b8c2df;
+    text-decoration: none;
+  }
+  .feedback-suggest a:hover {
+    color: #e74c3c;
+  }
+</style>

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ArticleFeedback from '../components/ArticleFeedback.astro';
+import Giscus from '../components/Giscus.astro';
 import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'blog'>['data'] & {
@@ -38,5 +40,8 @@ const alternateUrl = `/${otherLang}/blog/${baseSlug}/`;
       {/* Reserved ad slot only. No third-party script here. */}
       <div class="ad-slot" data-slot="in-article-1">Ad Slot Placeholder: in-article-1</div>
     </section>
+
+    <ArticleFeedback lang={lang} slug={slug} />
+    <Giscus lang={lang} />
   </article>
 </BaseLayout>
