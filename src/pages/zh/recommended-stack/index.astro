@@ -1,51 +1,122 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="推荐工具栈" lang="zh">
-  <h1>推荐工具栈</h1>
-  <p style="color:#bbb; margin-bottom: 1rem;">面向 OpenClaw 与 AI 自动化落地的实用基础栈，便于你快速上线业务。</p>
+<BaseLayout title="推荐工具栈 — AI 智能体自动化" description="我们实际使用的 OpenClaw 部署和 AI 自动化工具推荐。真实体验，附带注册链接。" lang="zh">
+  <h1>🛠️ 推荐工具栈</h1>
+  <p style="color: var(--text-muted); margin-bottom: 2rem;">我们实际用来跑 OpenClaw、部署 AI 智能体、自动化工作流的工具。只推荐亲测好用的。</p>
 
-  <div class="card">
-    <h2 style="margin-top:0;">联盟披露（Affiliate Disclosure）</h2>
-    <p>
-      下方部分链接为联盟分佣链接。你通过这些链接购买后，我们可能获得佣金，但不会增加你的额外成本。
-      我们只推荐我们认为有价值的工具，请结合你的业务场景与合规要求自行评估。
+  <div class="card" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-color: #e2b714;">
+    <p style="font-size: 0.85rem; color: var(--text-muted);">
+      <strong style="color: #e2b714;">⚡ 联盟披露：</strong>部分链接为推荐/联盟链接。
+      通过这些链接注册，你会获得额外赠金，我们可能获得少量佣金——不增加你的任何成本。
+      我们只推荐自己确实在用的工具。
     </p>
   </div>
 
+  <h2>☁️ VPS / 云服务器</h2>
+  <p style="color: var(--text-muted); margin-bottom: 1rem;">部署 OpenClaw 的地方。$5-10/月的 VPS 就够用了。</p>
+
   <div class="card">
-    <h2 style="margin-top:0;">1）VPS</h2>
+    <h3 style="margin-top: 0;">🟢 Vultr — AI 工作负载性价比之王</h3>
+    <p>全球机房、按小时计费、API 完善。Cloud Compute 方案 $6/月起，有独占 CPU 和 GPU 实例可选。非常适合部署 OpenClaw。</p>
     <ul>
-      <li><a href="#">服务商 A</a> —— 替换为你的 affiliate 链接</li>
-      <li><a href="#">服务商 B</a> —— 替换为你的 affiliate 链接</li>
-      <li><a href="#">服务商 C</a> —— 替换为你的 affiliate 链接</li>
+      <li>✅ 全球 32 个机房节点</li>
+      <li>✅ 按小时计费——用多少付多少</li>
+      <li>✅ GPU 实例可跑本地 AI 推理</li>
+      <li>💰 <strong>新用户送 $100 免费额度</strong></li>
     </ul>
+    <p><a href="https://www.vultr.com/?ref=your-ref-id" target="_blank" rel="noopener">→ 领取 Vultr $100 赠金</a></p>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0;">2）域名 / CDN</h2>
+    <h3 style="margin-top: 0;">🔵 DigitalOcean — 最简单的上手体验</h3>
+    <p>界面干净、文档一流、一键部署。想最快从零跑起 OpenClaw，选这个。$6/月的 Droplet 就能满足个人自动化需求。</p>
     <ul>
-      <li><a href="#">域名注册商 A</a> —— 替换为你的 affiliate 链接</li>
-      <li><a href="#">CDN 平台 B</a> —— 替换为你的 affiliate 链接</li>
-      <li><a href="#">DNS 服务商 C</a> —— 替换为你的 affiliate 链接</li>
+      <li>✅ 业界最好的文档</li>
+      <li>✅ App Platform 一键部署</li>
+      <li>✅ 按需扩展托管数据库</li>
+      <li>💰 <strong>新用户送 $200 免费额度（60天）</strong></li>
     </ul>
+    <p><a href="https://www.digitalocean.com/?refcode=your-ref-code" target="_blank" rel="noopener">→ 领取 DigitalOcean $200 赠金</a></p>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0;">3）AI API</h2>
+    <h3 style="margin-top: 0;">🟠 Hetzner — 欧洲性价比冠军</h3>
+    <p>欧洲部署首选。CX22（2核 4GB 内存）€3.99/月，价格几乎无敌。德国数据中心，GDPR 合规。</p>
     <ul>
-      <li><a href="#">模型提供商 A</a> —— 替换为你的 affiliate 链接</li>
-      <li><a href="#">聚合平台 B</a> —— 替换为你的 affiliate 链接</li>
-      <li><a href="#">推理平台 C</a> —— 替换为你的 affiliate 链接</li>
+      <li>✅ 市面上最便宜的优质 VPS</li>
+      <li>✅ 德国数据保护（GDPR 合规）</li>
+      <li>✅ ARM64 机型更便宜</li>
+      <li>💰 <strong>新用户送 €20 额度</strong></li>
     </ul>
+    <p><a href="https://hetzner.cloud/?ref=your-ref-id" target="_blank" rel="noopener">→ 领取 Hetzner €20 赠金</a></p>
+  </div>
+
+  <h2>🌐 域名 & DNS</h2>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">Cloudflare — 免费 DNS + CDN + Pages 托管</h3>
+    <p>本站就跑在 Cloudflare Pages 上。免费套餐包含 DNS、CDN、SSL、Web Analytics 和 Pages 托管。没理由不用。</p>
+    <ul>
+      <li>✅ 免费套餐覆盖 99% 个人/小项目需求</li>
+      <li>✅ 全球最快的 DNS</li>
+      <li>✅ 内置 DDoS 防护</li>
+    </ul>
+    <p><a href="https://www.cloudflare.com/" target="_blank" rel="noopener">→ cloudflare.com</a></p>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0;">4）自动化工具</h2>
+    <h3 style="margin-top: 0;">Namecheap — 实惠的域名注册商</h3>
+    <p>靠谱的注册商，定价诚实，续费不坑。买自定义域名的好选择。</p>
+    <p><a href="https://www.namecheap.com/?aff=your-aff-id" target="_blank" rel="noopener">→ 在 Namecheap 搜域名</a></p>
+  </div>
+
+  <h2>🤖 AI 模型 API</h2>
+  <p style="color: var(--text-muted); margin-bottom: 1rem;">OpenClaw 支持多家 AI 厂商。按场景推荐如下。</p>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">Anthropic Claude — 智能体任务首选</h3>
+    <p>Claude 在复杂指令执行、工具调用和上下文保持方面表现最佳——正是自主智能体所需的能力。Sonnet 是日常主力，Opus 用于重度推理。</p>
     <ul>
-      <li><a href="#">工作流工具 A</a> —— 替换为你的 affiliate 链接</li>
-      <li><a href="#">监控工具 B</a> —— 替换为你的 affiliate 链接</li>
-      <li><a href="#">分析工具 C</a> —— 替换为你的 affiliate 链接</li>
+      <li>✅ 最强工具调用和指令遵循能力</li>
+      <li>✅ 200K 上下文窗口</li>
+      <li>✅ 完善的安全机制</li>
     </ul>
+    <p><a href="https://console.anthropic.com/" target="_blank" rel="noopener">→ console.anthropic.com</a></p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">OpenAI GPT — 最广泛的生态</h3>
+    <p>GPT-4o 和 o1 是可靠的替代选项，拥有最广泛的 API 生态。在 OpenClaw 多模型配置中作为备选很合适。</p>
+    <p><a href="https://platform.openai.com/" target="_blank" rel="noopener">→ platform.openai.com</a></p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">Google Gemini — 最佳免费额度</h3>
+    <p>Gemini 提供慷慨的免费 API 配额。作为备选模型可以有效降低成本。Flash 系列速度快价格低，适合非关键任务。</p>
+    <p><a href="https://ai.google.dev/" target="_blank" rel="noopener">→ ai.google.dev</a></p>
+  </div>
+
+  <h2>🔧 开发工具</h2>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">Cursor — AI 原生代码编辑器</h3>
+    <p>VS Code 分支，深度集成 AI。如果你要开发 Skills 或定制 OpenClaw，Cursor 能让效率翻倍。Pro 版 $20/月，认真开发的话值得。</p>
+    <p><a href="https://cursor.com/" target="_blank" rel="noopener">→ cursor.com</a></p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">GitHub — 代码 + CI/CD</h3>
+    <p>版本管理、Actions 自动部署、Issues 项目管理。免费套餐足够用。OpenClaw 项目必备。</p>
+    <p><a href="https://github.com/" target="_blank" rel="noopener">→ github.com</a></p>
+  </div>
+
+  <div style="margin-top: 3rem; padding: 1.5rem; border: 1px dashed var(--border); border-radius: 12px; text-align: center;">
+    <p style="color: var(--text-muted); font-size: 0.9rem;">
+      💡 <strong>刚入门？</strong>先看 
+      <a href="/zh/blog/what-is-openclaw/">什么是 OpenClaw？</a>，
+      再看 <a href="/zh/blog/openclaw-deployment-service-pricing-guide/">部署与定价指南</a> 
+      了解费用预估。
+    </p>
   </div>
 </BaseLayout>

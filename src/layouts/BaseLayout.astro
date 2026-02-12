@@ -1,4 +1,6 @@
 ---
+import Analytics from '../components/Analytics.astro';
+
 interface Props {
   title: string;
   description?: string;
@@ -210,5 +212,6 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
   <footer>
     <p>© 2026 OpenClaw Guide · Built with 🦞 and AI</p>
   </footer>
+  <Analytics />
 </body>
 </html>

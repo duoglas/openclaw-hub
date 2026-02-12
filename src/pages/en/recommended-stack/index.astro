@@ -1,51 +1,122 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Recommended Stack" lang="en">
-  <h1>Recommended Stack</h1>
-  <p style="color:#bbb; margin-bottom: 1rem;">A practical starter stack for OpenClaw-related projects and AI automation workflows.</p>
+<BaseLayout title="Recommended Stack for AI Agent Automation" description="Tools and services we actually use for running OpenClaw and AI automation workflows. Honest recommendations with affiliate links." lang="en">
+  <h1>🛠️ Recommended Stack</h1>
+  <p style="color: var(--text-muted); margin-bottom: 2rem;">Tools and services we actually use to run OpenClaw, deploy AI agents, and automate workflows. Only things we've tested ourselves.</p>
 
-  <div class="card">
-    <h2 style="margin-top:0;">Affiliate Disclosure</h2>
-    <p>
-      Some links below are affiliate links. If you purchase through them, we may earn a commission at no extra cost to you.
-      We only recommend tools we believe are useful. Always evaluate suitability and compliance for your own use case.
+  <div class="card" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-color: #e2b714;">
+    <p style="font-size: 0.85rem; color: var(--text-muted);">
+      <strong style="color: #e2b714;">⚡ Affiliate Disclosure:</strong> Some links below are affiliate/referral links. 
+      If you sign up through them, you get bonus credits and we may earn a small commission — at zero extra cost to you. 
+      We only list tools we genuinely use and recommend.
     </p>
   </div>
 
+  <h2>☁️ VPS / Cloud Hosting</h2>
+  <p style="color: var(--text-muted); margin-bottom: 1rem;">Where to deploy OpenClaw. A $5-10/month VPS is all you need to get started.</p>
+
   <div class="card">
-    <h2 style="margin-top:0;">1) VPS</h2>
+    <h3 style="margin-top: 0;">🟢 Vultr — Best Value for AI Workloads</h3>
+    <p>Global data centers, hourly billing, excellent API. Their Cloud Compute plans start at $6/month with dedicated vCPU options for heavier workloads. Great for OpenClaw deployments.</p>
     <ul>
-      <li><a href="#">Provider A</a> — Replace with your affiliate link</li>
-      <li><a href="#">Provider B</a> — Replace with your affiliate link</li>
-      <li><a href="#">Provider C</a> — Replace with your affiliate link</li>
+      <li>✅ 32 locations worldwide</li>
+      <li>✅ Hourly billing — only pay for what you use</li>
+      <li>✅ GPU instances available for local AI inference</li>
+      <li>💰 <strong>New users get $100 free credit</strong></li>
     </ul>
+    <p><a href="https://www.vultr.com/?ref=your-ref-id" target="_blank" rel="noopener">→ Get $100 free credit on Vultr</a></p>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0;">2) Domain / CDN</h2>
+    <h3 style="margin-top: 0;">🔵 DigitalOcean — Simplest Setup</h3>
+    <p>Clean UI, excellent docs, one-click apps. If you want the easiest path from zero to running OpenClaw, this is it. Their $6/month Droplet handles most personal automation needs.</p>
     <ul>
-      <li><a href="#">Domain Registrar A</a> — Replace with your affiliate link</li>
-      <li><a href="#">CDN Platform B</a> — Replace with your affiliate link</li>
-      <li><a href="#">DNS Provider C</a> — Replace with your affiliate link</li>
+      <li>✅ Best-in-class documentation</li>
+      <li>✅ App Platform for one-click deploys</li>
+      <li>✅ Managed databases if needed later</li>
+      <li>💰 <strong>New users get $200 free credit (60 days)</strong></li>
     </ul>
+    <p><a href="https://www.digitalocean.com/?refcode=your-ref-code" target="_blank" rel="noopener">→ Get $200 free credit on DigitalOcean</a></p>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0;">3) AI API</h2>
+    <h3 style="margin-top: 0;">🟠 Hetzner — Best Price/Performance in EU</h3>
+    <p>Unbeatable pricing for European deployments. Their CX22 (2 vCPU, 4GB RAM) at €3.99/month is hard to beat. Perfect if you're in Europe or want low-cost always-on infrastructure.</p>
     <ul>
-      <li><a href="#">Model Provider A</a> — Replace with your affiliate link</li>
-      <li><a href="#">Model Aggregator B</a> — Replace with your affiliate link</li>
-      <li><a href="#">Inference Platform C</a> — Replace with your affiliate link</li>
+      <li>✅ Cheapest quality VPS in the market</li>
+      <li>✅ German data privacy (GDPR compliant)</li>
+      <li>✅ ARM64 options for even cheaper hosting</li>
+      <li>💰 <strong>€20 credit for new accounts</strong></li>
     </ul>
+    <p><a href="https://hetzner.cloud/?ref=your-ref-id" target="_blank" rel="noopener">→ Get €20 free credit on Hetzner</a></p>
+  </div>
+
+  <h2>🌐 Domain & DNS</h2>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">Cloudflare — Free DNS + CDN + Pages</h3>
+    <p>This very site runs on Cloudflare Pages. Free tier includes DNS, CDN, SSL, Web Analytics, and Pages hosting. No reason not to use it.</p>
+    <ul>
+      <li>✅ Free tier covers 99% of personal/small project needs</li>
+      <li>✅ Fastest DNS in the world</li>
+      <li>✅ Built-in DDoS protection</li>
+    </ul>
+    <p><a href="https://www.cloudflare.com/" target="_blank" rel="noopener">→ cloudflare.com</a></p>
   </div>
 
   <div class="card">
-    <h2 style="margin-top:0;">4) Automation Tools</h2>
+    <h3 style="margin-top: 0;">Namecheap — Affordable Domains</h3>
+    <p>Reliable registrar with honest pricing. No surprise renewal markups. Good place to buy your custom domain for your AI agent hub.</p>
+    <p><a href="https://www.namecheap.com/?aff=your-aff-id" target="_blank" rel="noopener">→ Browse domains on Namecheap</a></p>
+  </div>
+
+  <h2>🤖 AI Model APIs</h2>
+  <p style="color: var(--text-muted); margin-bottom: 1rem;">OpenClaw supports multiple AI providers. Here's what we recommend for different use cases.</p>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">Anthropic Claude — Best for Agent Tasks</h3>
+    <p>Claude excels at following complex instructions, using tools, and maintaining context — exactly what you need for autonomous agents. Claude Sonnet is our daily driver; Opus for heavy reasoning tasks.</p>
     <ul>
-      <li><a href="#">Workflow Tool A</a> — Replace with your affiliate link</li>
-      <li><a href="#">Monitoring Tool B</a> — Replace with your affiliate link</li>
-      <li><a href="#">Analytics Tool C</a> — Replace with your affiliate link</li>
+      <li>✅ Best tool-use and instruction following</li>
+      <li>✅ 200K context window</li>
+      <li>✅ Strong safety guardrails</li>
     </ul>
+    <p><a href="https://console.anthropic.com/" target="_blank" rel="noopener">→ console.anthropic.com</a></p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">OpenAI GPT — Widest Ecosystem</h3>
+    <p>GPT-4o and o1 are solid alternatives with the widest API ecosystem. Good as fallback models in OpenClaw's multi-model setup.</p>
+    <p><a href="https://platform.openai.com/" target="_blank" rel="noopener">→ platform.openai.com</a></p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">Google Gemini — Best Free Tier</h3>
+    <p>Gemini offers generous free API quotas. Excellent as a fallback model to reduce costs. The Flash variants are fast and cheap for less critical tasks.</p>
+    <p><a href="https://ai.google.dev/" target="_blank" rel="noopener">→ ai.google.dev</a></p>
+  </div>
+
+  <h2>🔧 Development Tools</h2>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">Cursor — AI-Native Code Editor</h3>
+    <p>VS Code fork with deep AI integration. If you're building skills or customizing OpenClaw, Cursor makes it 2-3x faster. The Pro plan ($20/month) is worth it for serious development.</p>
+    <p><a href="https://cursor.com/" target="_blank" rel="noopener">→ cursor.com</a></p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top: 0;">GitHub — Code + CI/CD</h3>
+    <p>Version control, Actions for CI/CD, and Issues for project management. Free tier is generous. Essential for any OpenClaw project.</p>
+    <p><a href="https://github.com/" target="_blank" rel="noopener">→ github.com</a></p>
+  </div>
+
+  <div style="margin-top: 3rem; padding: 1.5rem; border: 1px dashed var(--border); border-radius: 12px; text-align: center;">
+    <p style="color: var(--text-muted); font-size: 0.9rem;">
+      💡 <strong>Getting started?</strong> Read our 
+      <a href="/en/blog/what-is-openclaw/">What is OpenClaw?</a> guide first, 
+      then check <a href="/en/blog/openclaw-deployment-service-pricing-guide/">Deployment & Pricing Guide</a> 
+      for cost estimates.
+    </p>
   </div>
 </BaseLayout>
