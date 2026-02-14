@@ -23,16 +23,15 @@ jobs:
           version: 9
 
       - name: Install dependencies
-        run: cd ~/projects/openclaw-hub && pnpm install
+        run: pnpm install
 
       - name: Build check
-        run: cd ~/projects/openclaw-hub && pnpm build
+        run: pnpm build
 
       - name: Frontmatter check
         run: |
-          cd ~/projects/openclaw-hub
           echo "Checking frontmatter..."
-          for f in src/content/blog/**/*.md; do
+          while IFS= read -r f; do
             if ! grep -q "^---" "$f" 2>/dev/null; then
               echo "Missing frontmatter: $f"
               exit 1
@@ -41,7 +40,7 @@ jobs:
               echo "Missing required frontmatter fields: $f"
               exit 1
             fi
-          done
+          done < <(find src/content/blog -type f -name '*.md')
           echo "Frontmatter check passed"
 
       - name: Lychee Link Check
