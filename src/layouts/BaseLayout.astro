@@ -10,7 +10,7 @@ interface Props {
 }
 const {
   title,
-  description = 'OpenClaw Guide - AI Agent Automation Hub',
+  description = 'OpenClaw Hub - AI Agent Automation Hub',
   lang = 'en',
   alternateUrl,
   alternateLang,
@@ -30,7 +30,7 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
-  <title>{title} | OpenClaw Guide</title>
+  <title>{title} | OpenClaw Hub</title>
   {alternateUrl && alternateLang && (
     <link rel="alternate" hreflang={alternateLang} href={alternateUrl} />
   )}
@@ -194,7 +194,7 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
 <body>
   <header>
     <nav>
-      <a href={prefix + '/'}>{isZh ? '🦞 OpenClaw 指南' : '🦞 OpenClaw Guide'}</a>
+      <a href={prefix + '/'}>{isZh ? '🦞 OpenClaw Hub' : '🦞 OpenClaw Hub'}</a>
       <a href={prefix + '/blog/'}>{isZh ? '文章' : 'Articles'}</a>
       <a href={prefix + '/blog/tag/comparison/'}>{isZh ? '对比' : 'Compare'}</a>
       <a href={prefix + '/blog/tag/guide/'}>{isZh ? '教程' : 'Guides'}</a>
@@ -210,7 +210,7 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
     <slot />
   </main>
   <footer>
-    <p>© 2026 OpenClaw Guide · Built with 🦞 and AI</p>
+    <p>© 2026 OpenClaw Hub · Built with 🦞 and AI</p>
   </footer>
   <Analytics />
 </body>
