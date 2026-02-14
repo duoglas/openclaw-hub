@@ -7,12 +7,12 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <BaseLayout title="首页" lang="zh">
-  <h1>🦞 OpenClaw 指南</h1>
-  <p style="font-size:1.1rem; margin:1rem 0;">AI 智能体自动化中心 —— OpenClaw 教程、对比评测和使用指南，助你玩转 AI Agent 生态。</p>
+  <h1>🤖 AI 智能体资讯站</h1>
+  <p style="font-size:1.1rem; margin:1rem 0;">聚焦 AI 智能体相关资讯、实操教程与工具指南。当前会有较多 OpenClaw 内容，但不局限于 OpenClaw。</p>
   
   <section class="monetization-box" aria-label="推荐工具">
     <h3>Recommended Tools / 推荐工具</h3>
-    <p style="margin-bottom:0.5rem; color:#b8c2df;">需要一套可直接落地的工具栈？先看推荐页，再把占位链接替换为你的 affiliate 链接。</p>
+    <p style="margin-bottom:0.5rem; color:var(--text-muted);">需要一套可直接落地的工具栈？先看推荐页，再把占位链接替换为你的 affiliate 链接。</p>
     <ul>
       <li><a href="/zh/recommended-stack/">查看推荐工具栈</a></li>
       <li><a href="#">VPS —— 替换为你的 affiliate 链接</a></li>
