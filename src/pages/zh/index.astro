@@ -10,14 +10,6 @@ const posts = (await getCollection('blog'))
   <h1>🤖 AI 智能体资讯站</h1>
   <p style="font-size:1.1rem; margin:1rem 0;">聚焦 AI 智能体相关资讯、实操教程与工具指南。当前会有较多 OpenClaw 内容，但不局限于 OpenClaw。</p>
   
-  <section class="monetization-box" aria-label="推荐工具">
-    <h3>推荐工具</h3>
-    <p style="margin-bottom:0.5rem; color:var(--text-muted);">我们精选了一套经过实战验证的 AI 智能体工具栈，助你快速上手。</p>
-    <ul>
-      <li><a href="/zh/recommended-stack/">查看推荐工具栈</a></li>
-    </ul>
-  </section>
-
   <h2>最新文章</h2>
   {posts.slice(0, 20).map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');

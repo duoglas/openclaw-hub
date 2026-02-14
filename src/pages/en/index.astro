@@ -10,14 +10,6 @@ const posts = (await getCollection('blog'))
   <h1>🤖 AI Agent Hub</h1>
   <p style="font-size:1.1rem; margin:1rem 0;">AI agent news, practical tutorials, and tooling guides. We cover OpenClaw deeply, but also track the broader agent ecosystem.</p>
   
-  <section class="monetization-box" aria-label="Recommended Tools">
-    <h3>Recommended Tools</h3>
-    <p style="margin-bottom:0.5rem; color:var(--text-muted);">A curated, field-tested toolstack for AI agent builders — get started faster.</p>
-    <ul>
-      <li><a href="/en/recommended-stack/">View Recommended Stack</a></li>
-    </ul>
-  </section>
-
   <h2>Latest Articles</h2>
   {posts.slice(0, 20).map(post => {
     const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
