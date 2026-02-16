@@ -18,7 +18,7 @@ Telegram 机器人显示在线但完全不回消息？出现 401 错误、配对
 openclaw status
 
 # Telegram 频道是否激活？
-openclaw channels status
+openclaw channels list
 
 # 实时查看日志（发一条消息给机器人，然后看这里）
 openclaw logs --follow
@@ -30,7 +30,7 @@ openclaw logs --follow
 openclaw gateway start
 ```
 
-如果 gateway 启动了但 `channels status` 里没有 Telegram，说明配置有误。跳到**问题 1**。
+如果 gateway 启动了但 `channels list` 里没有 Telegram，说明配置有误。跳到**问题 1**。
 
 ---
 
@@ -333,10 +333,10 @@ openclaw gateway status
 systemctl --user status openclaw
 
 # 如果还没设置：
-openclaw gateway install-daemon
+openclaw gateway install
 ```
 
-daemon 安装器默认配置 `Restart=on-failure`，可以处理临时崩溃。
+安装器默认配置 `Restart=on-failure`，可以处理临时崩溃。
 
 ### 检查 3：网络超时
 
@@ -422,7 +422,7 @@ nameserver 1.1.1.1
 ```
 机器人不响应？
 ├── openclaw status → 没运行？ → openclaw gateway start
-├── openclaw channels status → 没有 telegram？ → 检查配置格式
+├── openclaw channels list → 没有 telegram？ → 检查配置格式
 ├── openclaw logs --follow → 发消息 → 完全没日志？
 │   ├── 检查 token：curl getMe
 │   ├── 检查 webhook：curl getWebhookInfo → 有就删除

@@ -2,6 +2,7 @@
 title: "VPS 部署 OpenClaw 完全指南（2026）"
 description: "从零开始在 VPS 上部署 OpenClaw 的实战指南。涵盖服务器配置、安装、Telegram 对接、多模型配置和生产环境加固。"
 pubDate: 2026-02-13
+updatedDate: 2026-02-16
 tags: ["guide", "deployment", "vps", "telegram", "production"]
 category: "guide"
 lang: "zh"
@@ -60,11 +61,11 @@ npm install -g openclaw
 # 验证
 openclaw --version
 
-# 初始化工作空间
-openclaw init
+# 交互式引导设置（API Key、渠道、模型）
+openclaw onboard
 ```
 
-这会创建 `~/.openclaw/` 目录，包含工作空间、配置和默认文件。
+这会引导你完成 API Key 配置、渠道设置和模型选择，并创建 `~/.openclaw/` 工作目录。
 
 ## 第三步：创建 Telegram Bot（5 分钟）
 
@@ -81,45 +82,66 @@ openclaw init
 编辑配置文件：
 
 ```bash
-nano ~/.openclaw/config.yaml
+nano ~/.openclaw/openclaw.json
 ```
 
 一份靠谱的起步配置：
 
-```yaml
-gateway:
-  host: 127.0.0.1
-  port: 18789
+```json
+{
+  "gateway": {
+    "mode": "local",
+    "bind": "127.0.0.1",
+    "port": 18789
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-5",
+        "fallbacks": ["google/gemini-3-flash"]
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "你的-telegram-bot-token",
+      "dmPolicy": "allowlist",
+      "allowFrom": ["你的Telegram数字ID"]
+    }
+  }
+}
+```
 
-agent:
-  defaultModel: anthropic/claude-sonnet-4-5
-  fallbackModels:
-    - google/gemini-3-flash
-  heartbeatIntervalMinutes: 30
+> **注意：** `allowFrom` 必须用 **Telegram 数字用户 ID**，不是 @用户名。获取方法：给 `@userinfobot` 发消息，或启动 bot 后查看 `openclaw logs --follow` 中的 `from.id`。
 
-providers:
-  anthropic:
-    apiKey: sk-ant-你的密钥
-  google:
-    apiKey: 你的-google-ai-密钥
+API Key 放在环境文件中（不要写在配置里）：
 
-channels:
-  telegram:
-    botToken: "你的-telegram-bot-token"
-    allowedUsers:
-      - 你的telegram用户名
+```bash
+cat >> ~/.openclaw/.env <<'EOF'
+ANTHROPIC_API_KEY=sk-ant-你的密钥
+GOOGLE_GENERATIVE_AI_API_KEY=你的-google-ai-密钥
+EOF
 ```
 
 ### 多模型省钱配置
 
 聪明的做法是主力模型 + 便宜备选：
 
-```yaml
-agent:
-  defaultModel: anthropic/claude-sonnet-4-5  # 主力
-  fallbackModels:
-    - google/gemini-3-flash    # 快 + 免费额度
-    - google/gemini-3-pro      # 能力不错的免费备选
+```json
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-5",
+        "fallbacks": [
+          "google/gemini-3-flash",
+          "google/gemini-3-pro"
+        ]
+      }
+    }
+  }
+}
 ```
 
 Anthropic 限流了？OpenClaw 自动切到 Gemini——你不会掉线。
@@ -225,9 +247,11 @@ EOF
 ## 常见问题
 
 ### Bot 不回消息
-- 运行 `openclaw gateway status` 检查
-- 确认 Telegram bot token 正确
-- 确认你的用户名在 `allowedUsers` 列表里
+- 运行 `openclaw gateway status` 检查 Gateway 是否在运行
+- 运行 `openclaw channels list` 确认 Telegram 渠道已激活
+- 确认 bot token 正确：`curl "https://api.telegram.org/bot你的TOKEN/getMe"`
+- 检查配对状态：`openclaw pairing list`（默认需要配对批准）
+- 详细排查参考：[Telegram 排查指南](/zh/blog/openclaw-telegram-troubleshooting-guide/)
 
 ### Anthropic 限流
 - 加备选模型（Gemini 有免费额度）

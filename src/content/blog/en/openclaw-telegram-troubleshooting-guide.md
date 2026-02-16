@@ -18,7 +18,7 @@ Run these three commands first. They answer 80% of questions:
 openclaw status
 
 # Is Telegram channel active?
-openclaw channels status
+openclaw channels list
 
 # Watch live events (send a message to your bot, then check here)
 openclaw logs --follow
@@ -30,7 +30,7 @@ If `openclaw status` shows the gateway is not running, start there:
 openclaw gateway start
 ```
 
-If the gateway starts but Telegram isn't listed in `channels status`, your config is wrong. Jump to **Issue 1**.
+If the gateway starts but Telegram isn't listed in `channels list`, your config is wrong. Jump to **Issue 1**.
 
 ---
 
@@ -337,10 +337,10 @@ If OpenClaw runs as a systemd service, ensure auto-restart is configured:
 systemctl --user status openclaw
 
 # If not set up yet:
-openclaw gateway install-daemon
+openclaw gateway install
 ```
 
-The daemon installer configures `Restart=on-failure` by default, which handles transient crashes.
+The installer configures `Restart=on-failure` by default, which handles transient crashes.
 
 ### Check 3: Network timeouts
 
@@ -428,7 +428,7 @@ Forum supergroups use thread IDs for routing. OpenClaw appends `:topic:<threadId
 ```
 Bot not responding?
 ├── openclaw status → not running? → openclaw gateway start
-├── openclaw channels status → telegram not listed? → check config format
+├── openclaw channels list → telegram not listed? → check config format
 ├── openclaw logs --follow → send message → no logs at all?
 │   ├── Check token: curl getMe
 │   ├── Check webhook: curl getWebhookInfo → delete if set

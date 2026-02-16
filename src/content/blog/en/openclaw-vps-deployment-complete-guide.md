@@ -2,6 +2,7 @@
 title: "Deploy OpenClaw on a VPS: Complete Step-by-Step Guide (2026)"
 description: "A practical, battle-tested guide to deploying OpenClaw on a VPS from scratch. Covers server setup, installation, Telegram integration, multi-model configuration, and production hardening."
 pubDate: 2026-02-13
+updatedDate: 2026-02-16
 tags: ["guide", "deployment", "vps", "telegram", "production"]
 category: "guide"
 lang: "en"
@@ -60,11 +61,11 @@ npm install -g openclaw
 # Verify installation
 openclaw --version
 
-# Initialize workspace
-openclaw init
+# Interactive onboarding (API keys, channels, models)
+openclaw onboard
 ```
 
-This creates `~/.openclaw/` with your workspace directory, config, and default files.
+This walks you through API key setup, channel configuration, and model selection, creating `~/.openclaw/` with your workspace and config.
 
 ## Step 3: Create a Telegram Bot (5 minutes)
 
@@ -81,45 +82,66 @@ This creates `~/.openclaw/` with your workspace directory, config, and default f
 Edit the config file:
 
 ```bash
-nano ~/.openclaw/config.yaml
+nano ~/.openclaw/openclaw.json
 ```
 
 Here's a solid starting configuration:
 
-```yaml
-gateway:
-  host: 127.0.0.1
-  port: 18789
+```json
+{
+  "gateway": {
+    "mode": "local",
+    "bind": "127.0.0.1",
+    "port": 18789
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-5",
+        "fallbacks": ["google/gemini-3-flash"]
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "your-telegram-bot-token",
+      "dmPolicy": "allowlist",
+      "allowFrom": ["your-numeric-telegram-id"]
+    }
+  }
+}
+```
 
-agent:
-  defaultModel: anthropic/claude-sonnet-4-5
-  fallbackModels:
-    - google/gemini-3-flash
-  heartbeatIntervalMinutes: 30
+> **Note:** `allowFrom` requires your **numeric Telegram user ID**, not @username. Get it by messaging `@userinfobot`, or check `openclaw logs --follow` for `from.id` after sending your bot a message.
 
-providers:
-  anthropic:
-    apiKey: sk-ant-your-key-here
-  google:
-    apiKey: your-google-ai-key
+Put API keys in a separate env file (don't embed them in config):
 
-channels:
-  telegram:
-    botToken: "your-telegram-bot-token"
-    allowedUsers:
-      - your_telegram_username
+```bash
+cat >> ~/.openclaw/.env <<'EOF'
+ANTHROPIC_API_KEY=sk-ant-your-key-here
+GOOGLE_GENERATIVE_AI_API_KEY=your-google-ai-key
+EOF
 ```
 
 ### Multi-model setup (save money)
 
 The smart move is to use a capable model as primary and cheaper ones as fallbacks:
 
-```yaml
-agent:
-  defaultModel: anthropic/claude-sonnet-4-5  # Main brain
-  fallbackModels:
-    - google/gemini-3-flash    # Fast + free tier
-    - google/gemini-3-pro      # Capable free fallback
+```json
+{
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-5",
+        "fallbacks": [
+          "google/gemini-3-flash",
+          "google/gemini-3-pro"
+        ]
+      }
+    }
+  }
+}
 ```
 
 This way, if your Anthropic quota hits rate limits, OpenClaw automatically falls back to Gemini — and you stay online.
@@ -227,9 +249,11 @@ Compare that to $20/month for ChatGPT Pro — and this gives you a *customizable
 ## Common Issues
 
 ### "Bot not responding"
-- Check `openclaw gateway status`
-- Verify your Telegram bot token is correct
-- Make sure your username is in `allowedUsers`
+- Run `openclaw gateway status` to check if the Gateway is running
+- Run `openclaw channels list` to confirm Telegram is active
+- Verify your bot token: `curl "https://api.telegram.org/botYOUR_TOKEN/getMe"`
+- Check pairing status: `openclaw pairing list` (default requires pairing approval)
+- See our [Telegram troubleshooting guide](/en/blog/openclaw-telegram-troubleshooting-guide/) for detailed steps
 
 ### "Rate limited by Anthropic"
 - Add fallback models (Gemini is free)
