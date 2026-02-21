@@ -31,6 +31,19 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
   <title>{title} | AI Agent Hub</title>
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={`${title} | AI Agent Hub`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:site_name" content="AI Agent Hub" />
+  <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | AI Agent Hub`} />
+  <meta name="twitter:description" content={description} />
+  <!-- Canonical -->
+  <link rel="canonical" href={Astro.url.href} />
   {alternateUrl && alternateLang && (
     <link rel="alternate" hreflang={alternateLang} href={alternateUrl} />
   )}
