@@ -127,6 +127,7 @@ openclaw doctor  # 检查配置问题
 
 ## 延伸阅读
 
+- [CVE-2026-25253 深度解析](/zh/blog/openclaw-cve-2026-25253-one-click-rce-explained) — 一键 RCE 漏洞详解
 - [什么是 OpenClaw？](/zh/blog/what-is-openclaw) — 平台概览
 - [VPS 部署指南](/zh/blog/openclaw-vps-deployment-complete-guide) — 从零搭建
 - [OpenClaw 官方文档](https://docs.openclaw.ai) — 配置参考

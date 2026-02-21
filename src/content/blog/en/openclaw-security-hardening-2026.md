@@ -127,6 +127,7 @@ If you use **Kimi Claw** (Moonshot AI's hosted OpenClaw) or a VPS:
 
 ## Further Reading
 
+- [CVE-2026-25253 Deep Dive](/en/blog/openclaw-cve-2026-25253-one-click-rce-explained) — One-click RCE vulnerability explained
 - [What is OpenClaw?](/en/blog/what-is-openclaw) — Platform overview
 - [VPS Deployment Guide](/en/blog/openclaw-vps-deployment-complete-guide) — Setup from scratch
 - [OpenClaw Official Docs](https://docs.openclaw.ai) — Configuration reference
