@@ -109,7 +109,7 @@ Successful response = working.
 
 ### 1. Configuration Format
 
-Edit `~/.openclaw/config.yaml`:
+Edit `~/.openclaw/openclaw.json`:
 
 ```yaml
 mcpServers:

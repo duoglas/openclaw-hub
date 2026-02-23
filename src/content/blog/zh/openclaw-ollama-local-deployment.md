@@ -126,7 +126,7 @@ ollama run qwen2.5:7b
 ### 1. 编辑 OpenClaw 配置文件
 
 ```bash
-vim ~/.openclaw/config.yaml
+vim ~/.openclaw/openclaw.json
 ```
 
 ### 2. 添加 Ollama 作为 Provider

@@ -1,48 +1,52 @@
 ---
-title: "OpenClaw config.yaml 配置详解与常见报错修复（2026）"
-description: "系统讲解 OpenClaw config.yaml 的核心结构、必填字段、模型路由、插件白名单配置，并逐一排查 schema 校验失败、provider 连接超时、channel 启动报错等高频问题。"
+title: "OpenClaw 配置文件详解与常见报错修复（2026）"
+description: "系统讲解 OpenClaw openclaw.json 配置文件的核心结构、必填字段、模型路由、插件白名单配置，并逐一排查 schema 校验失败、provider 连接超时、channel 启动报错等高频问题。"
 pubDate: 2026-02-19
-tags: ["openclaw", "config", "yaml", "troubleshooting", "guide", "模型配置", "教程"]
+updatedDate: 2026-02-23
+tags: ["openclaw", "config", "配置", "troubleshooting", "guide", "模型配置", "教程"]
 category: "guide"
 lang: "zh"
 ---
 
-OpenClaw 的一切行为都由一份 `config.yaml` 驱动。配错一个字段，gateway 直接起不来；漏掉一个 key，模型调用全部 timeout。这篇文章带你**从结构到排错**，把 config.yaml 彻底搞明白。
+OpenClaw 的一切行为都由一份 `openclaw.json` 驱动。配错一个字段，gateway 直接起不来；漏掉一个 key，模型调用全部 timeout。这篇文章带你**从结构到排错**，把配置文件彻底搞明白。
 
-## config.yaml 在哪？
+## 配置文件在哪？
 
 ```bash
 # 默认位置
-~/.openclaw/config.yaml
+~/.openclaw/openclaw.json
 
-# 查看当前加载的配置
-openclaw gateway config
+# 查看当前配置的某个值
+openclaw config get gateway
+openclaw config get providers
 ```
 
-如果你用 systemd 管理 OpenClaw，配置路径取决于你 service 文件里的 `WorkingDirectory`。
+如果你用 systemd 管理 OpenClaw，配置路径取决于运行用户的 `$HOME` 目录。
+
+> **注意：** OpenClaw 使用 JSON 格式的配置文件，不是 YAML。JSON 不允许注释和尾逗号。
 
 ## 核心结构一览
 
-```yaml
-# 最小可运行配置
-gateway:
-  mode: local          # local | remote
-  port: 18789
-
-providers:
-  - id: anthropic
-    kind: anthropic
-    apiKey: sk-ant-xxx
-
-models:
-  default: anthropic/claude-sonnet-4-5
-  fallbacks:
-    - anthropic/claude-sonnet-4-5
-
-plugins:
-  allow: []            # 插件白名单
-
-channels: []           # 消息渠道（Telegram、Discord 等）
+```json
+{
+  "gateway": {
+    "mode": "local",
+    "port": 18789
+  },
+  "providers": {
+    "anthropic": {
+      "apiKey": "sk-ant-api03-xxx"
+    }
+  },
+  "models": {
+    "default": "anthropic/claude-sonnet-4-5",
+    "fallbacks": ["anthropic/claude-sonnet-4-5"]
+  },
+  "plugins": {
+    "allow": []
+  },
+  "channels": {}
+}
 ```
 
 下面逐块讲解。
@@ -81,27 +85,25 @@ kill -9 <PID>
 
 ## 二、providers — 模型提供商
 
-每个 provider 需要 `id`、`kind` 和认证信息：
+每个 provider 需要对应的认证信息：
 
-```yaml
-providers:
-  - id: anthropic
-    kind: anthropic
-    apiKey: sk-ant-api03-xxx
-
-  - id: openai
-    kind: openai
-    apiKey: sk-xxx
-
-  - id: google
-    kind: google
-    apiKey: AIzaSy-xxx
-
-  - id: minimax
-    kind: openai-compatible
-    apiKey: your-key
-    baseUrl: https://api.minimax.chat/v1
+```json
+{
+  "providers": {
+    "anthropic": {
+      "apiKey": "sk-ant-api03-xxx"
+    },
+    "openai": {
+      "apiKey": "sk-xxx"
+    },
+    "google": {
+      "apiKey": "AIzaSy-xxx"
+    }
+  }
+}
 ```
+
+对于 OpenAI 兼容的自定义 provider，可指定 `baseUrl`。
 
 ### 高频报错
 
@@ -126,7 +128,7 @@ curl -s https://api.anthropic.com/v1/messages \
 # 方式一：环境变量
 export HTTPS_PROXY=http://127.0.0.1:7890
 
-# 方式二：proxychains（参考本站代理配置教程）
+# 方式二：proxychains
 proxychains openclaw gateway start
 ```
 
@@ -136,13 +138,16 @@ proxychains openclaw gateway start
 
 Anthropic 有严格的速率限制（RPM / TPM）。配置 fallback 模型自动降级：
 
-```yaml
-models:
-  default: anthropic/claude-opus-4-6
-  fallbacks:
-    - openai/gpt-5.3-codex
-    - minimax/MiniMax-M2.1
-    - google/gemini-3-pro
+```json
+{
+  "models": {
+    "default": "anthropic/claude-opus-4-6",
+    "fallbacks": [
+      "openai/gpt-5.3-codex",
+      "google/gemini-3-pro"
+    ]
+  }
+}
 ```
 
 当主模型限流时，OpenClaw 自动切换到下一个可用模型。
@@ -151,12 +156,16 @@ models:
 
 ## 三、models — 模型路由
 
-```yaml
-models:
-  default: anthropic/claude-sonnet-4-5    # 默认模型
-  fallbacks:                                # 降级链
-    - openai/gpt-5.3-codex
-    - google/gemini-3-flash
+```json
+{
+  "models": {
+    "default": "anthropic/claude-sonnet-4-5",
+    "fallbacks": [
+      "openai/gpt-5.3-codex",
+      "google/gemini-3-flash"
+    ]
+  }
+}
 ```
 
 **格式：** `provider-id/model-name`
@@ -167,19 +176,23 @@ models:
 Error: model "claude-sonnet-4-5" not found — did you mean "anthropic/claude-sonnet-4-5"?
 ```
 
-必须带 provider 前缀。provider id 是你在 `providers` 里定义的 `id` 字段。
+必须带 provider 前缀。provider id 是你在 `providers` 里定义的键名。
 
 ---
 
 ## 四、plugins — 插件与安全
 
-```yaml
-plugins:
-  allow:
-    - web_search
-    - web_fetch
-    - exec
-    - browser
+```json
+{
+  "plugins": {
+    "allow": [
+      "web_search",
+      "web_fetch",
+      "exec",
+      "browser"
+    ]
+  }
+}
 ```
 
 `plugins.allow` 是**白名单**机制：只有列出的插件才能被 agent 调用。留空 `[]` 表示禁用所有插件。
@@ -189,8 +202,7 @@ plugins:
 如果 agent 说"我没有权限使用 xxx 工具"：
 
 ```bash
-# 查看当前生效配置
-openclaw gateway config | grep -A 20 plugins
+openclaw config get plugins
 ```
 
 确认目标工具在 `allow` 列表里。
@@ -201,12 +213,15 @@ openclaw gateway config | grep -A 20 plugins
 
 ### Telegram
 
-```yaml
-channels:
-  - kind: telegram
-    token: "123456:ABC-xxx"
-    allowedUsers:
-      - "your_telegram_user_id"
+```json
+{
+  "channels": {
+    "telegram": {
+      "token": "123456:ABC-xxx",
+      "allowedUsers": ["your_telegram_user_id"]
+    }
+  }
+}
 ```
 
 **常见问题：**
@@ -232,53 +247,44 @@ Error: 401 Unauthorized
 
 Token 无效。去 [@BotFather](https://t.me/BotFather) 重新 `/token`。
 
-### 企业微信 (WeCom)
-
-```yaml
-channels:
-  - kind: wecom
-    corpId: "ww-xxx"
-    agentId: 1000002
-    secret: "xxx"
-    token: "xxx"
-    encodingAESKey: "xxx"
-```
-
-**常见问题：** 回调 URL 验证失败 — 确认服务器能被企业微信回调（需公网 IP 或内网穿透）。
-
 ### Discord
 
-```yaml
-channels:
-  - kind: discord
-    token: "MTxx.xxx"
-    allowedGuilds:
-      - "guild-id"
-```
+配置方式类似，通过 `openclaw configure` 交互式设置最简单。
 
 ---
 
 ## 六、完整配置校验
 
-OpenClaw 启动时会自动校验 config.yaml。手动校验：
+OpenClaw 启动时会自动校验配置。手动诊断：
 
 ```bash
-openclaw gateway start --dry-run 2>&1 | head -20
+# 自动诊断
+openclaw doctor
+
+# 验证 JSON 格式
+python3 -m json.tool ~/.openclaw/openclaw.json
 ```
 
-常见 schema 错误：
+常见 JSON 错误：
 
-**1. YAML 缩进错误**
+**1. 尾逗号**
 
 ```
-YAMLException: bad indentation of a mapping entry
+SyntaxError: Unexpected token } in JSON at position 423
 ```
 
-YAML 只接受空格缩进，**不能用 Tab**。用编辑器显示不可见字符排查：
+JSON 不允许尾逗号：
 
-```bash
-cat -A ~/.openclaw/config.yaml | grep -n $'\t'
+```json
+{
+  "gateway": {
+    "mode": "local",
+    "port": 18789
+  }
+}
 ```
+
+最后一个属性后面**不能有逗号**。
 
 **2. 字段拼写错误**
 
@@ -286,7 +292,7 @@ cat -A ~/.openclaw/config.yaml | grep -n $'\t'
 Error: unknown field "chanels" in config
 ```
 
-拼错了。`channels` 不是 `chanels`。schema 校验会告诉你哪行出了问题。
+拼错了。`channels` 不是 `chanels`。
 
 **3. 类型错误**
 
@@ -294,12 +300,12 @@ Error: unknown field "chanels" in config
 Error: "port" must be a number, got string
 ```
 
-```yaml
-# ❌ 错误
-port: "18789"
+```json
+// ❌ 错误
+"port": "18789"
 
-# ✅ 正确
-port: 18789
+// ✅ 正确
+"port": 18789
 ```
 
 ---
@@ -309,8 +315,8 @@ port: 18789
 ### 查看完整运行日志
 
 ```bash
-# 前台运行，实时看日志
-openclaw gateway start --foreground
+# 实时查看日志
+openclaw logs --follow
 
 # 如果用 systemd
 journalctl -u openclaw -f --no-pager
@@ -319,7 +325,6 @@ journalctl -u openclaw -f --no-pager
 ### 只测试某个 provider
 
 ```bash
-# 用 curl 直接测 API
 curl -s https://api.anthropic.com/v1/messages \
   -H "x-api-key: YOUR_KEY" \
   -H "anthropic-version: 2023-06-01" \
@@ -327,13 +332,13 @@ curl -s https://api.anthropic.com/v1/messages \
   -d '{"model":"claude-sonnet-4-5-20250514","max_tokens":10,"messages":[{"role":"user","content":"ping"}]}'
 ```
 
-### 重载配置（不重启）
+### 重载配置
 
 ```bash
 openclaw gateway restart
 ```
 
-OpenClaw 支持热重载，改完配置后 restart 即可，不会丢失当前会话。
+改完配置后 restart 即可，不会丢失当前会话。
 
 ---
 
@@ -341,7 +346,7 @@ OpenClaw 支持热重载，改完配置后 restart 即可，不会丢失当前�
 
 开始排错前，先过一遍：
 
-- ✅ YAML 格式正确（空格缩进，无 Tab）
+- ✅ JSON 格式正确（无尾逗号、无注释）
 - ✅ 所有 provider 的 apiKey 有效且未过期
 - ✅ 模型名格式为 `provider-id/model-name`
 - ✅ `plugins.allow` 包含需要的工具

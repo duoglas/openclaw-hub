@@ -84,7 +84,7 @@ If you see WebSocket errors in the browser console (`F12` → Console tab):
 **Fix:** Check your OpenClaw config for the correct `browser.wsEndpoint` or relay URL:
 
 ```bash
-openclaw gateway config.get | grep -A5 browser
+openclaw config get | grep -A5 browser
 ```
 
 Ensure the URL in the extension settings matches your gateway address.

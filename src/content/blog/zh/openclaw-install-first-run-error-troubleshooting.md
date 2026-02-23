@@ -202,10 +202,10 @@ Config validation failed: "gateway.mode" must be one of [local, remote]
 openclaw configure
 ```
 
-或查看有效选项后手动改：
+或手动编辑配置文件：
 
 ```bash
-openclaw config schema
+openclaw config get gateway
 nano ~/.openclaw/openclaw.json
 ```
 
@@ -432,7 +432,7 @@ sudo kill $(sudo lsof -t -i :18789)
 3. **如果是残留锁文件：**
 
 ```bash
-openclaw doctor --repair
+openclaw doctor --fix
 ```
 
 ---
@@ -450,7 +450,7 @@ openclaw doctor --repair
 openclaw config get channels.telegram
 
 # 2. 检查渠道状态
-openclaw channels status --probe
+openclaw channels list
 
 # 3. 看实时日志
 openclaw logs --follow

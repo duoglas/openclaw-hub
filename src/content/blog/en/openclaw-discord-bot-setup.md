@@ -126,7 +126,7 @@ Copy this link, open in browser, select server, click **"Authorize"**.
 ### 1. Edit Config File
 
 ```bash
-vim ~/.openclaw/config.yaml
+vim ~/.openclaw/openclaw.json
 ```
 
 ### 2. Add Discord Channel
@@ -317,7 +317,7 @@ Now messages containing these words trigger replies (no @ needed).
 openclaw gateway logs | tail -50
 
 # Verify config loaded
-openclaw gateway config | grep discord
+openclaw config get | grep discord
 ```
 
 **Possible causes:**
@@ -333,7 +333,7 @@ openclaw gateway config | grep discord
 **Fix:**
 
 1. Return to developer portal → Bot → **Reset Token**
-2. Copy new token and update `config.yaml`
+2. Copy new token and update `openclaw.json`
 3. Restart OpenClaw
 
 ### 4. Bot Not Online
@@ -411,8 +411,8 @@ ssh user@your-server-ip
 # Install OpenClaw
 curl -fsSL https://openclaw.com/install.sh | sh
 
-# Configure config.yaml (see above)
-vim ~/.openclaw/config.yaml
+# Configure openclaw.json (see above)
+vim ~/.openclaw/openclaw.json
 
 # Use systemd daemon
 sudo systemctl enable openclaw
@@ -468,7 +468,7 @@ Before deployment, confirm:
 - ✅ Bot Token obtained and secured
 - ✅ MESSAGE CONTENT INTENT enabled
 - ✅ Bot added to server with correct permissions
-- ✅ OpenClaw config.yaml configured correctly
+- ✅ OpenClaw openclaw.json configured correctly
 - ✅ allowedGuilds includes target server ID
 - ✅ Logs show Discord connection success
 - ✅ Test messages receive replies

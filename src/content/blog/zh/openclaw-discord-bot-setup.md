@@ -128,7 +128,7 @@ https://discord.com/api/oauth2/authorize?client_id=1234567890&permissions=274877
 ### 1. 编辑配置文件
 
 ```bash
-vim ~/.openclaw/config.yaml
+vim ~/.openclaw/openclaw.json
 ```
 
 ### 2. 添加 Discord Channel
@@ -319,7 +319,7 @@ channels:
 openclaw gateway logs | tail -50
 
 # 确认配置加载
-openclaw gateway config | grep discord
+openclaw config get | grep discord
 ```
 
 **可能原因：**
@@ -335,7 +335,7 @@ openclaw gateway config | grep discord
 **修复：**
 
 1. 回到开发者平台 → Bot → **Reset Token**
-2. 复制新 Token 更新 `config.yaml`
+2. 复制新 Token 更新 `openclaw.json`
 3. 重启 OpenClaw
 
 ### 4. Bot 不在线
@@ -413,8 +413,8 @@ ssh user@your-server-ip
 # 安装 OpenClaw
 curl -fsSL https://openclaw.com/install.sh | sh
 
-# 配置 config.yaml（参考上文）
-vim ~/.openclaw/config.yaml
+# 配置 openclaw.json（参考上文）
+vim ~/.openclaw/openclaw.json
 
 # 使用 systemd 守护进程
 sudo systemctl enable openclaw
@@ -470,7 +470,7 @@ channels:
 - ✅ Bot Token 已获取并保密
 - ✅ MESSAGE CONTENT INTENT 已开启
 - ✅ Bot 已添加到服务器且有正确权限
-- ✅ OpenClaw config.yaml 配置正确
+- ✅ OpenClaw openclaw.json 配置正确
 - ✅ allowedGuilds 包含目标服务器 ID
 - ✅ 日志显示 Discord 连接成功
 - ✅ 测试消息能正常回复

@@ -109,7 +109,7 @@ curl -X POST http://localhost:3000 \
 
 ### 1. 配置文件格式
 
-编辑 `~/.openclaw/config.yaml`：
+编辑 `~/.openclaw/openclaw.json`：
 
 ```yaml
 mcpServers:

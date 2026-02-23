@@ -1,45 +1,50 @@
 ---
-title: "OpenClaw config.yaml Explained: Structure, Common Errors & Fixes (2026)"
-description: "A complete walkthrough of OpenClaw's config.yaml — core structure, required fields, model routing, plugin allowlists, and step-by-step fixes for schema validation failures, provider timeouts, and channel startup errors."
+title: "OpenClaw Configuration File Explained: Structure, Common Errors & Fixes (2026)"
+description: "A complete walkthrough of OpenClaw's openclaw.json config — core structure, required fields, model routing, plugin allowlists, and step-by-step fixes for schema validation failures, provider timeouts, and channel startup errors."
 pubDate: 2026-02-19
-tags: ["openclaw", "config", "yaml", "troubleshooting", "guide", "tutorial"]
+updatedDate: 2026-02-23
+tags: ["openclaw", "config", "troubleshooting", "guide", "tutorial"]
 category: "guide"
 lang: "en"
 ---
 
-Everything in OpenClaw runs off a single `config.yaml`. One wrong field and the gateway won't start. One missing key and every model call times out. This guide covers the **structure, gotchas, and fixes** — so you can stop guessing.
+Everything in OpenClaw runs off a single `openclaw.json`. One wrong field and the gateway won't start. One missing key and every model call times out. This guide covers the **structure, gotchas, and fixes** — so you can stop guessing.
 
-## Where is config.yaml?
+## Where is the config file?
 
 ```bash
 # Default location
-~/.openclaw/config.yaml
+~/.openclaw/openclaw.json
 
-# View the currently loaded config
-openclaw gateway config
+# View a specific config value
+openclaw config get gateway
+openclaw config get providers
 ```
+
+> **Note:** OpenClaw uses JSON format for configuration, not YAML. JSON does not allow comments or trailing commas.
 
 ## Minimal Working Config
 
-```yaml
-gateway:
-  mode: local          # local | remote
-  port: 18789
-
-providers:
-  - id: anthropic
-    kind: anthropic
-    apiKey: sk-ant-xxx
-
-models:
-  default: anthropic/claude-sonnet-4-5
-  fallbacks:
-    - anthropic/claude-sonnet-4-5
-
-plugins:
-  allow: []
-
-channels: []
+```json
+{
+  "gateway": {
+    "mode": "local",
+    "port": 18789
+  },
+  "providers": {
+    "anthropic": {
+      "apiKey": "sk-ant-api03-xxx"
+    }
+  },
+  "models": {
+    "default": "anthropic/claude-sonnet-4-5",
+    "fallbacks": ["anthropic/claude-sonnet-4-5"]
+  },
+  "plugins": {
+    "allow": []
+  },
+  "channels": {}
+}
 ```
 
 ---
@@ -69,19 +74,20 @@ kill -9 <PID>
 
 ## 2. Providers — Model API Configuration
 
-```yaml
-providers:
-  - id: anthropic
-    kind: anthropic
-    apiKey: sk-ant-api03-xxx
-
-  - id: openai
-    kind: openai
-    apiKey: sk-xxx
-
-  - id: google
-    kind: google
-    apiKey: AIzaSy-xxx
+```json
+{
+  "providers": {
+    "anthropic": {
+      "apiKey": "sk-ant-api03-xxx"
+    },
+    "openai": {
+      "apiKey": "sk-xxx"
+    },
+    "google": {
+      "apiKey": "AIzaSy-xxx"
+    }
+  }
+}
 ```
 
 ### Frequent Errors
@@ -104,12 +110,16 @@ curl -s https://api.anthropic.com/v1/messages \
 
 **`429 Too Many Requests`** — Configure fallback models:
 
-```yaml
-models:
-  default: anthropic/claude-opus-4-6
-  fallbacks:
-    - openai/gpt-5.3-codex
-    - google/gemini-3-pro
+```json
+{
+  "models": {
+    "default": "anthropic/claude-opus-4-6",
+    "fallbacks": [
+      "openai/gpt-5.3-codex",
+      "google/gemini-3-pro"
+    ]
+  }
+}
 ```
 
 OpenClaw automatically switches to the next available model when rate-limited.
@@ -118,12 +128,16 @@ OpenClaw automatically switches to the next available model when rate-limited.
 
 ## 3. Models — Routing & Fallbacks
 
-```yaml
-models:
-  default: anthropic/claude-sonnet-4-5
-  fallbacks:
-    - openai/gpt-5.3-codex
-    - google/gemini-3-flash
+```json
+{
+  "models": {
+    "default": "anthropic/claude-sonnet-4-5",
+    "fallbacks": [
+      "openai/gpt-5.3-codex",
+      "google/gemini-3-flash"
+    ]
+  }
+}
 ```
 
 Format is always `provider-id/model-name`. The provider ID must match what you defined in `providers`.
@@ -138,13 +152,17 @@ You forgot the provider prefix. Use `anthropic/claude-sonnet-4-5`.
 
 ## 4. Plugins — Allowlist
 
-```yaml
-plugins:
-  allow:
-    - web_search
-    - web_fetch
-    - exec
-    - browser
+```json
+{
+  "plugins": {
+    "allow": [
+      "web_search",
+      "web_fetch",
+      "exec",
+      "browser"
+    ]
+  }
+}
 ```
 
 This is a **whitelist**. Only listed plugins can be used by the agent. Empty `[]` = no plugins available.
@@ -152,7 +170,7 @@ This is a **whitelist**. Only listed plugins can be used by the agent. Empty `[]
 If the agent says "I don't have access to tool X" — check the allowlist:
 
 ```bash
-openclaw gateway config | grep -A 20 plugins
+openclaw config get plugins
 ```
 
 ---
@@ -161,13 +179,7 @@ openclaw gateway config | grep -A 20 plugins
 
 ### Telegram
 
-```yaml
-channels:
-  - kind: telegram
-    token: "123456:ABC-xxx"
-    allowedUsers:
-      - "your_telegram_user_id"
-```
+Configure via `openclaw configure` (interactive) or edit `openclaw.json` directly.
 
 **`409 Conflict: terminated by other getUpdates request`** — Another process is polling with the same token. Kill duplicates:
 
@@ -177,29 +189,20 @@ ps aux | grep openclaw
 
 **`401 Unauthorized`** — Invalid token. Regenerate via [@BotFather](https://t.me/BotFather).
 
-### Discord
-
-```yaml
-channels:
-  - kind: discord
-    token: "MTxx.xxx"
-    allowedGuilds:
-      - "guild-id"
-```
-
 ---
 
-## 6. YAML Validation Errors
+## 6. JSON Validation Errors
 
-**Bad indentation:**
+**Trailing comma:**
 ```
-YAMLException: bad indentation of a mapping entry
+SyntaxError: Unexpected token } in JSON at position 423
 ```
 
-YAML uses spaces only — **no tabs**. Find tabs with:
+JSON does not allow trailing commas. The last property in an object must not end with `,`.
 
+**Validate your JSON:**
 ```bash
-cat -A ~/.openclaw/config.yaml | grep -n $'\t'
+python3 -m json.tool ~/.openclaw/openclaw.json
 ```
 
 **Typos:**
@@ -207,15 +210,15 @@ cat -A ~/.openclaw/config.yaml | grep -n $'\t'
 Error: unknown field "chanels" in config
 ```
 
-It's `channels`. Schema validation tells you exactly which line.
+It's `channels`. Schema validation tells you exactly which field.
 
 **Type errors:**
-```yaml
-# ❌ Wrong
-port: "18789"
+```json
+// ❌ Wrong
+"port": "18789"
 
-# ✅ Right
-port: 18789
+// ✅ Right
+"port": 18789
 ```
 
 ---
@@ -223,8 +226,11 @@ port: 18789
 ## 7. Debugging Tips
 
 ```bash
-# Run in foreground to see live logs
-openclaw gateway start --foreground
+# Watch logs in real time
+openclaw logs --follow
+
+# Run automated diagnostics
+openclaw doctor
 
 # If using systemd
 journalctl -u openclaw -f --no-pager
@@ -239,7 +245,7 @@ openclaw gateway restart
 
 Before filing a bug, verify:
 
-- ✅ Valid YAML (spaces, no tabs)
+- ✅ Valid JSON (no trailing commas, no comments)
 - ✅ All API keys are valid and not expired
 - ✅ Model names use `provider-id/model-name` format
 - ✅ `plugins.allow` includes needed tools

@@ -84,7 +84,7 @@ sudo ufw allow 18789/tcp  # 如果需要
 **解决：** 检查 OpenClaw 配置中的浏览器相关设置：
 
 ```bash
-openclaw gateway config.get | grep -A5 browser
+openclaw config get | grep -A5 browser
 ```
 
 确保扩展设置中的 URL 与 Gateway 地址一致。

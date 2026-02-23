@@ -207,7 +207,7 @@ openclaw configure
 Or check the valid options:
 
 ```bash
-openclaw config schema
+openclaw config get gateway
 ```
 
 Then edit manually:
@@ -440,7 +440,7 @@ sudo kill $(sudo lsof -t -i :18789)
 3. **If it's a stale lock file:**
 
 ```bash
-openclaw doctor --repair
+openclaw doctor --fix
 ```
 
 ---
@@ -458,7 +458,7 @@ openclaw doctor --repair
 openclaw config get channels.telegram
 
 # 2. Check channel status
-openclaw channels status --probe
+openclaw channels list
 
 # 3. Watch logs for errors
 openclaw logs --follow

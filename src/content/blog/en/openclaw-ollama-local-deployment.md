@@ -126,7 +126,7 @@ Hello, introduce yourself
 ### 1. Edit OpenClaw Config
 
 ```bash
-vim ~/.openclaw/config.yaml
+vim ~/.openclaw/openclaw.json
 ```
 
 ### 2. Add Ollama as Provider
