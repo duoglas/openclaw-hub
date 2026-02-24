@@ -1,205 +1,259 @@
 ---
-title: "Fix: OpenClaw Chrome Browser Relay Not Connecting (Complete Troubleshooting Guide)"
-description: "Chrome Browser Relay showing 'No tab connected' or failing to attach? This step-by-step guide covers every common cause — extension install, firewall, WebSocket errors, GPU crashes — with exact commands to diagnose and fix each one."
-pubDate: 2026-02-21
-tags: ["openclaw", "chrome", "browser-relay", "troubleshooting", "browser-automation"]
-category: "tutorial"
+title: "OpenClaw Chrome Browser Relay Not Connecting? Complete Fix Guide (2026)"
+description: "Fix OpenClaw Chrome extension relay issues: tab not attaching, badge not turning on, WebSocket disconnects, browser actions failing. Step-by-step troubleshooting with exact commands."
+pubDate: 2026-02-24
+tags: ["openclaw", "chrome", "browser-relay", "troubleshooting", "guide"]
+category: "guide"
 lang: "en"
 ---
 
-## The Problem
+# OpenClaw Chrome Browser Relay Not Connecting? Complete Fix Guide
 
-You installed OpenClaw and the Chrome Browser Relay extension, but when you click the toolbar icon, nothing happens — or you see errors like:
+OpenClaw's Chrome Browser Relay lets your AI agent see and interact with your browser tabs in real time. When it works, it's magic — your agent can fill forms, extract data, and automate web tasks. When it doesn't, you're staring at "no tab connected" errors.
 
-- **"No tab connected"** in OpenClaw logs
-- Extension badge stays **OFF**
-- Browser actions fail with **"target closed"** or **"WebSocket disconnected"**
-- Chrome crashes immediately after launch
+This guide covers every known Chrome Relay failure and how to fix it.
 
-This guide walks through every known cause and fix, from the simplest to the most obscure.
+## How Browser Relay Works (30-Second Overview)
 
----
+1. The **OpenClaw Chrome extension** runs in your browser
+2. You click the toolbar icon on a tab to **attach** it (badge turns ON)
+3. The extension opens a **WebSocket connection** to your OpenClaw gateway
+4. Your agent can now see snapshots and perform actions on that tab
 
-## Step 1: Verify the Extension Is Installed and Enabled
+If any link in this chain breaks, the relay fails silently.
 
-Open `chrome://extensions/` in your browser and confirm:
-
-1. **OpenClaw Browser Relay** is listed and **enabled** (toggle is blue)
-2. Note the extension version — make sure it matches your OpenClaw version
-
-If the extension isn't installed, get it from the [OpenClaw docs](https://docs.openclaw.ai).
-
----
-
-## Step 2: Attach the Tab
-
-The relay requires you to **manually attach** a tab:
-
-1. Navigate to the page you want to control
-2. Click the **OpenClaw Browser Relay** toolbar icon (puzzle piece → pin it for easy access)
-3. The badge should turn **ON** (usually shows a colored indicator)
-
-**Common mistake:** Clicking the icon on `chrome://` pages or the extensions page — these are restricted and cannot be attached.
-
----
-
-## Step 3: Check Gateway Connectivity
-
-The extension connects to your OpenClaw gateway via WebSocket. Verify the gateway is running:
+## Quick Diagnosis
 
 ```bash
-openclaw status
-# or
-curl -s http://localhost:18789/health
+# Check if gateway is running
+openclaw gateway status
+
+# Check gateway logs for WebSocket errors
+journalctl -u openclaw-gateway --since "10 min ago" | grep -i "relay\|websocket\|browser"
+
+# Verify the gateway port is accessible
+ss -tlnp | grep 3100
 ```
 
-If the gateway isn't running:
+## Problem 1: Extension Badge Won't Turn ON
+
+**Symptom:** You click the OpenClaw Browser Relay toolbar icon, but the badge doesn't activate. Nothing happens.
+
+### Fix: Check Extension Installation
+
+1. Go to `chrome://extensions/`
+2. Find **OpenClaw Browser Relay**
+3. Make sure it's **enabled** (toggle is blue)
+4. Click **Details → Extension options** and verify the gateway URL is correct:
+   - Local: `ws://localhost:3100`
+   - Remote VPS: `wss://your-domain.com:3100`
+
+### Fix: Reload the Extension
+
+```
+chrome://extensions/ → OpenClaw Browser Relay → Click the refresh ↻ icon
+```
+
+Then close and reopen the tab you want to attach.
+
+### Fix: Check for Restricted Pages
+
+Chrome extensions **cannot** attach to:
+- `chrome://` pages (settings, extensions, etc.)
+- `chrome-extension://` pages
+- The Chrome Web Store (`chromewebstore.google.com`)
+- PDF viewer tabs (sometimes)
+
+Navigate to a regular webpage first, then click the relay icon.
+
+## Problem 2: Badge is ON But Agent Says "No Tab Connected"
+
+**Symptom:** The toolbar badge shows active, but your agent still can't see the tab.
+
+### Fix: Check Gateway WebSocket Endpoint
+
+The most common cause is a **gateway URL mismatch**. The extension must connect to the exact address your gateway listens on.
 
 ```bash
-openclaw gateway start
+# Check what address the gateway is listening on
+openclaw gateway status
+
+# Look for the WebSocket port in config
+cat ~/.openclaw/config.yaml | grep -A5 "gateway"
 ```
 
-### Firewall Check
+Make sure the extension's configured URL matches. If your gateway is on a VPS, you need `wss://` (not `ws://`) and the correct port.
 
-If your gateway runs on a remote server (e.g., a [VPS on Vultr](https://www.vultr.com/?ref=7566454) or [DigitalOcean](https://m.do.co/c/0090e7c2aec0)), ensure the WebSocket port is accessible:
+### Fix: Firewall Blocking WebSocket
+
+If you're connecting from your local browser to a remote VPS:
 
 ```bash
-# On the server
-sudo ufw status
-sudo ufw allow 18789/tcp  # if needed
+# On your VPS, check if the port is open
+sudo ufw status | grep 3100
+
+# If not listed, allow it
+sudo ufw allow 3100/tcp
+
+# For iptables users
+sudo iptables -L -n | grep 3100
 ```
 
-For cloud providers like [Tencent Cloud](https://curl.qcloud.com/1PS2iJEg), also check the **security group rules** in the web console — UFW alone isn't enough.
+> **💡 VPS Tip:** Need a reliable VPS for OpenClaw? [Vultr](https://www.vultr.com/?ref=7566454) starts at $6/mo with global locations and fast SSD. [DigitalOcean](https://m.do.co/c/0090e7c2aec0) is another solid choice with $200 free credit for new users.
 
----
+### Fix: SSL/TLS Certificate Issues (Remote Setup)
 
-## Step 4: WebSocket Connection Errors
-
-If you see WebSocket errors in the browser console (`F12` → Console tab):
-
-### Error: "WebSocket connection to 'ws://...' failed"
-
-**Cause:** Gateway URL mismatch or network block.
-
-**Fix:** Check your OpenClaw config for the correct `browser.wsEndpoint` or relay URL:
+For `wss://` connections, you need valid TLS. Self-signed certs will cause silent WebSocket failures.
 
 ```bash
-openclaw config get | grep -A5 browser
+# Check if your cert is valid
+openssl s_client -connect your-domain.com:3100 -servername your-domain.com </dev/null 2>&1 | grep "Verify return code"
+
+# If using Let's Encrypt, renew if expired
+sudo certbot renew
+sudo systemctl restart openclaw-gateway
 ```
 
-Ensure the URL in the extension settings matches your gateway address.
+### Fix: Reverse Proxy Misconfiguration (Nginx/Caddy)
 
-### Error: "Mixed Content" (HTTPS page → WS connection)
+If you're proxying through Nginx, WebSocket upgrade headers must be set:
 
-If your gateway uses `ws://` (not `wss://`) and you're browsing an HTTPS page:
+```nginx
+location /relay {
+    proxy_pass http://127.0.0.1:3100;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_set_header Host $host;
+    proxy_read_timeout 86400;
+}
+```
 
-**Fix:** Either:
-- Use `wss://` with a TLS-terminating reverse proxy (nginx/Caddy)
-- Or access the gateway page via `http://` for testing
+For Caddy (handles WebSocket automatically):
 
----
+```
+your-domain.com {
+    reverse_proxy localhost:3100
+}
+```
 
-## Step 5: Chrome GPU Crashes (Linux / Proxy Environments)
+## Problem 3: Relay Connects Then Disconnects
 
-**Symptom:** Chrome launches but immediately crashes or shows a gray screen, especially when using `proxychains` or similar tools.
+**Symptom:** The relay works for a few seconds or minutes, then drops.
 
-**Root cause:** `proxychains-ng` injects `LD_PRELOAD`, which conflicts with Chrome's GPU sandbox.
+### Fix: Increase Proxy Timeouts
 
-**Fix:** Create a wrapper script that strips the preload:
+Nginx kills idle WebSocket connections after 60 seconds by default:
+
+```nginx
+proxy_read_timeout 86400;  # 24 hours
+proxy_send_timeout 86400;
+```
+
+Reload Nginx:
 
 ```bash
-mkdir -p ~/.openclaw/browser
-cat > ~/.openclaw/browser/chrome-wrapper.sh << 'EOF'
-#!/bin/bash
-unset LD_PRELOAD
-exec /usr/bin/google-chrome-stable \
-  --proxy-server="socks5://127.0.0.1:1080" \
-  --no-sandbox \
-  "$@"
-EOF
-chmod +x ~/.openclaw/browser/chrome-wrapper.sh
+sudo nginx -t && sudo systemctl reload nginx
 ```
 
-Then update your OpenClaw config:
+### Fix: Check Gateway Memory/CPU
 
-```yaml
-browser:
-  executablePath: /home/youruser/.openclaw/browser/chrome-wrapper.sh
-  noSandbox: true
-```
-
-Restart the gateway after changing config:
+If the gateway is running out of resources, WebSocket connections get dropped:
 
 ```bash
+# Check gateway resource usage
+systemctl status openclaw-gateway
+free -h
+top -p $(pgrep -f openclaw)
+```
+
+> **💡 Performance Tip:** For stable relay connections, 2GB+ RAM is recommended. [Tencent Cloud](https://curl.qcloud.com/1PS2iJEg) offers competitive pricing on lightweight VPS instances ideal for OpenClaw. [Vultr](https://www.vultr.com/?ref=7566454) High Frequency plans also work great.
+
+### Fix: Browser Sleeping the Tab
+
+Chrome aggressively suspends background tabs. If you switch away from the attached tab for too long, the extension may lose its connection.
+
+- **Workaround:** Keep the attached tab visible or pinned
+- **Better:** Use the `openclaw` profile browser (isolated, always active) instead of Chrome relay for long-running automations
+
+## Problem 4: Agent Actions Fail on the Tab
+
+**Symptom:** The relay is connected, snapshots work, but clicks/typing don't do anything.
+
+### Fix: Check for iframes and Shadow DOM
+
+Some websites use iframes or Shadow DOM that the relay can't interact with by default. Try:
+
+1. Use `snapshot` with `depth` parameter to see nested frames
+2. Specify the `frame` parameter in your action commands
+3. For complex SPAs, try using `act` with `evaluate` kind for direct JS execution
+
+### Fix: Page Has Overlay/Modal Blocking
+
+If a cookie banner, modal, or overlay is covering the target element:
+
+```
+# In your agent conversation, ask it to:
+1. Take a snapshot first
+2. Dismiss any overlays
+3. Then perform the intended action
+```
+
+### Fix: Content Security Policy (CSP) Blocking
+
+Some websites block extension interactions via CSP. Check the browser console (`F12 → Console`) for CSP violation errors. Unfortunately, there's no workaround for strict CSP — use the isolated OpenClaw browser profile instead.
+
+## Problem 5: "Profile Not Found" or "Browser Not Started" Errors
+
+**Symptom:** Agent says the browser profile doesn't exist or isn't started.
+
+### Fix: Understand the Two Profiles
+
+OpenClaw has two browser profiles:
+
+| Profile | What It Is | When to Use |
+|---------|-----------|-------------|
+| `chrome` | Your existing Chrome via relay extension | When you need your logged-in sessions, cookies, etc. |
+| `openclaw` | Isolated Chromium managed by OpenClaw | For automations, scraping, tasks that don't need your logins |
+
+For the `chrome` profile to work, you need the Chrome extension installed and a tab attached.
+
+For the `openclaw` profile:
+
+```bash
+# Start the isolated browser
 openclaw gateway restart
 ```
 
----
+The managed browser launches automatically with the gateway.
 
-## Step 6: Extension Permission Issues
+## Prevention: Stable Relay Setup Checklist
 
-Chrome may silently block the extension on certain pages. Check:
-
-1. `chrome://extensions/` → OpenClaw Browser Relay → **Details**
-2. Under "Site access", ensure it's set to **"On all sites"** or at least the sites you need
-3. If running in Incognito, enable **"Allow in Incognito"**
-
----
-
-## Step 7: Multiple Browser Profiles
-
-If you use multiple Chrome profiles, the extension is installed **per-profile**. Make sure you're clicking the relay icon in the correct profile window.
-
----
-
-## Step 8: Check OpenClaw Logs
-
-When all else fails, the logs tell the truth:
-
-```bash
-# View recent gateway logs
-journalctl -u openclaw-gateway --since "10 min ago" --no-pager
-
-# Or if running manually
-tail -f ~/.openclaw/logs/gateway.log
-```
-
-Look for:
-- `browser connected` — relay is working
-- `browser disconnected` — relay dropped
-- `target closed` — tab was closed or navigated away
-- `timeout` — gateway couldn't reach the browser in time
-
----
-
-## Quick Diagnostic Checklist
-
-| Check | Command |
-|-------|---------|
-| Gateway running? | `openclaw status` |
-| Extension enabled? | `chrome://extensions/` |
-| Tab attached? | Click toolbar icon, check badge |
-| Port open? | `curl -s http://localhost:18789/health` |
-| Firewall? | `sudo ufw status` |
-| Proxy conflict? | Use wrapper script (Step 5) |
-| Logs? | `journalctl -u openclaw-gateway --since "10 min ago"` |
-
----
+✅ Gateway running and healthy (`openclaw gateway status`)
+✅ Extension installed, enabled, and configured with correct URL
+✅ Firewall allows the gateway port
+✅ If remote: valid TLS cert + proper WebSocket proxy config
+✅ Nginx/Caddy timeout set to 86400+ for WebSocket
+✅ Tab is a regular webpage (not `chrome://` or restricted page)
+✅ Tab is pinned or visible (not sleeping)
 
 ## Still Stuck?
 
-- Check the [OpenClaw docs](https://docs.openclaw.ai) for the latest browser setup instructions
-- Join the [OpenClaw Discord](https://discord.com/invite/clawd) community for help
-- File an issue on [GitHub](https://github.com/openclaw/openclaw)
+1. **Check gateway logs in real-time:**
+   ```bash
+   journalctl -u openclaw-gateway -f
+   ```
+2. **Check Chrome extension console:**
+   Right-click extension icon → "Inspect popup" → Console tab
+3. **Test WebSocket manually:**
+   ```bash
+   # Install wscat if needed
+   npm i -g wscat
+   wscat -c ws://localhost:3100
+   ```
+
+> **🚀 Deploying Fresh?** Check our [complete VPS deployment guide](/blog/en/openclaw-vps-deployment-complete-guide) for a battle-tested setup. We recommend [DigitalOcean](https://m.do.co/c/0090e7c2aec0) ($200 free credit) or [Vultr](https://www.vultr.com/?ref=7566454) for new deployments.
 
 ---
 
-## Recommended Hosting for OpenClaw
-
-Running OpenClaw on a VPS gives you 24/7 uptime and a stable environment for browser automation:
-
-- **[Tencent Cloud](https://curl.qcloud.com/1PS2iJEg)** — great for users in China, competitive pricing
-- **[Vultr](https://www.vultr.com/?ref=7566454)** — global coverage, hourly billing, fast SSD
-- **[DigitalOcean](https://m.do.co/c/0090e7c2aec0)** — simple UI, predictable pricing, solid docs
-
-A 2-core / 4GB RAM instance is plenty for OpenClaw with browser relay enabled.
+*Last updated: February 24, 2026. Found an issue? Open a PR or ping us on Telegram.*
