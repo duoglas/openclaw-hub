@@ -5,9 +5,25 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'zh')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'OpenClaw 指南文章',
+  itemListElement: posts.map((post, index) => {
+    const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `https://kuoo.uk/zh/blog/${slug}/`,
+      name: post.data.title,
+    };
+  }),
+};
 ---
 
 <BaseLayout title="文章" description="OpenClaw 指南全部文章" lang="zh">
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <h1>文章</h1>
   {posts.map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');

@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Add `ItemList` JSON-LD on EN/ZH blog index pages to improve list-page understanding by search engines — commit `(this commit)`
 - [x] Add sitewide RSS autodiscovery `<link rel="alternate" type="application/rss+xml">` for EN/ZH daily feeds to improve feed discovery in browsers/readers/search bots — commit `(this commit)`
 - [x] Improve `weekly:seo` with auto rollup from `reports/seo/daily/*.md` (snapshot count + KPI aggregate when daily fields are filled) — commit `(this commit)`
 - [x] Add Organization `logo` metadata to sitewide `WebSite` + blog `Article` JSON-LD for richer brand entity signals in SERP/social parsers — commit `4f27bf1`
