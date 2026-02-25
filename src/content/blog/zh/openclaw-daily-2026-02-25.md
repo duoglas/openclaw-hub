@@ -1,26 +1,22 @@
 ---
-title: "OpenClaw 日报：实用自动化技巧（2026-02-25）"
-description: "每天一条可落地的 OpenClaw 运行建议：渠道、模型回退、上下文和安全巡检。"
+title: "OpenClaw 今日要点（2026-02-25）"
+description: "围绕 v2026.2.23 的发布重点与立即行动建议。"
 pubDate: 2026-02-25
-tags: ["openclaw", "daily", "automation"]
+tags: ["openclaw", "daily", "key-points"]
 category: "guide"
 lang: "zh"
 ---
 
-## 今日关注点
+## 今日最重要的 3 件事
+- v2026.2.23 增强了 provider/search 能力，同时强化 sessions/cron 维护入口。
+- SSRF 配置键迁移（allowPrivateNetwork → dangerouslyAllowPrivateNetwork）需尽快复核。
+- 浏览器自动化排障统一为“profile 明确化 + relay attach 可视化”。
 
-### 1）先保渠道稳定
-- 每天看一次渠道健康状态。
+## 今天就能执行
+- `openclaw doctor --fix`
+- `openclaw sessions cleanup --dry-run`
+- `openclaw browser status`
 
-### 2）回退链按供应商交错
-- 避免连续同供应商，减少限流连锁。
-
-### 3）控制上下文膨胀
-- 短提示词 + 定期压缩。
-
-### 4）做一轮安全快检
-- 每周至少一次深度审计。
-
----
-
-更多内容见 OpenClaw Hub。
+## 明日跟踪
+- kimi 搜索在现有链路的稳定性与成本
+- cleanup 执行后磁盘与会话命中率变化

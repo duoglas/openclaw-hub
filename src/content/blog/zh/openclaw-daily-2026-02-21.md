@@ -1,26 +1,22 @@
 ---
-title: "OpenClaw 日报：实用自动化技巧（2026-02-21）"
-description: "每天一条可落地的 OpenClaw 运行建议：渠道、模型回退、上下文和安全巡检。"
+title: "OpenClaw 今日要点（2026-02-21）"
+description: "安全警告与插件治理的当日重点。"
 pubDate: 2026-02-21
-tags: ["openclaw", "daily", "automation"]
+tags: ["openclaw", "daily", "key-points"]
 category: "guide"
 lang: "zh"
 ---
 
-## 今日关注点
+## 今日最重要的 3 件事
+- 对审计里的 warn 项做优先级分层：先处理暴露面，再处理供应链项。
+- 插件安装建议固定版本，减少“今天好好的明天坏了”。
+- 只给不可信输入最小工具权限，降低误触风险。
 
-### 1）先保渠道稳定
-- 每天看一次渠道健康状态。
+## 今天就能执行
+- `openclaw security audit`
+- `openclaw security audit --deep`
+- `openclaw status`
 
-### 2）回退链按供应商交错
-- 避免连续同供应商，减少限流连锁。
-
-### 3）控制上下文膨胀
-- 短提示词 + 定期压缩。
-
-### 4）做一轮安全快检
-- 每周至少一次深度审计。
-
----
-
-更多内容见 OpenClaw Hub。
+## 明日跟踪
+- trustedProxies 配置是否符合当前部署
+- 插件版本与完整性元数据是否齐全

@@ -1,26 +1,22 @@
 ---
-title: "OpenClaw 日报：实用自动化技巧（2026-02-24）"
-description: "每天一条可落地的 OpenClaw 运行建议：渠道、模型回退、上下文和安全巡检。"
+title: "OpenClaw 今日要点（2026-02-24）"
+description: "版本更新前后的兼容检查重点。"
 pubDate: 2026-02-24
-tags: ["openclaw", "daily", "automation"]
+tags: ["openclaw", "daily", "key-points"]
 category: "guide"
 lang: "zh"
 ---
 
-## 今日关注点
+## 今日最重要的 3 件事
+- 升级前先做配置对照，尤其是安全相关键名和默认值。
+- 更新后先跑 doctor，再跑一次核心链路回归。
+- 对 breaking 变更留迁移记录，避免后续重复踩坑。
 
-### 1）先保渠道稳定
-- 每天看一次渠道健康状态。
+## 今天就能执行
+- `openclaw doctor --fix`
+- `openclaw status`
+- `openclaw gateway probe`
 
-### 2）回退链按供应商交错
-- 避免连续同供应商，减少限流连锁。
-
-### 3）控制上下文膨胀
-- 短提示词 + 定期压缩。
-
-### 4）做一轮安全快检
-- 每周至少一次深度审计。
-
----
-
-更多内容见 OpenClaw Hub。
+## 明日跟踪
+- 配置迁移后行为是否与预期一致
+- 关键任务是否出现新错误类型

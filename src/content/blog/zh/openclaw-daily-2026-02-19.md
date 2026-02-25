@@ -1,26 +1,22 @@
 ---
-title: "OpenClaw 日报：实用自动化技巧（2026-02-19）"
-description: "每天一条可落地的 OpenClaw 运行建议：渠道、模型回退、上下文和安全巡检。"
+title: "OpenClaw 今日要点（2026-02-19）"
+description: "渠道稳定、回退链和上下文治理的当日执行重点。"
 pubDate: 2026-02-19
-tags: ["openclaw", "daily", "automation"]
+tags: ["openclaw", "daily", "key-points"]
 category: "guide"
 lang: "zh"
 ---
 
-## 今日关注点
+## 今日最重要的 3 件事
+- 先确认渠道可用：重点看 Telegram/Slack 的连通与响应时延。
+- 回退链保持跨供应商：避免同供应商连续降级造成连锁限流。
+- 上下文做轻量治理：长会话定期压缩，减少无效历史占用。
 
-### 1）先保渠道稳定
-- 每天看一次渠道健康状态。
+## 今天就能执行
+- `openclaw status`
+- `openclaw status --deep`
+- `openclaw sessions cleanup --dry-run`
 
-### 2）回退链按供应商交错
-- 避免连续同供应商，减少限流连锁。
-
-### 3）控制上下文膨胀
-- 短提示词 + 定期压缩。
-
-### 4）做一轮安全快检
-- 每周至少一次深度审计。
-
----
-
-更多内容见 OpenClaw Hub。
+## 明日跟踪
+- 高频任务是否出现响应抖动
+- 会话占用是否持续上升
