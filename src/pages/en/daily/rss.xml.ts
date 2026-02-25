@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 
 export async function GET() {
-  const site = 'https://openhub.plzbite.top';
+  const site = 'https://kuoo.uk';
   const posts = (await getCollection('blog'))
     .filter(p => p.data.lang === 'en')
     .filter(p => p.id.replace(/^en\//, '').startsWith('openclaw-daily-'))

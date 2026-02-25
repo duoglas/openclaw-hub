@@ -1,3 +1,7 @@
+# Primary domain migration (openhub.plzbite.top -> kuoo.uk)
+https://openhub.plzbite.top/* https://kuoo.uk/:splat 301!
+http://openhub.plzbite.top/* https://kuoo.uk/:splat 301!
+
 # Legacy URL cleanup (SEO)
 # old root blog routes -> language routes
 /blog /en/blog/ 301
