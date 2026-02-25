@@ -85,3 +85,12 @@ A: Run `openclaw status` to see the current session's model, or check the logs f
 ## Bottom Line
 
 A fallback chain is not cost optimization — it's your **uptime architecture**. A well-configured chain is more reliable than any single top-tier model.
+
+## Related Guides
+
+To apply this in production, pair this guide with:
+
+- [What is OpenClaw?](/en/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw Logs & Debug Guide](/en/blog/openclaw-logs-debug-guide/)
+
