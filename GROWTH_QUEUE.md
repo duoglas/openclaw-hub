@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-02-25
+Last updated: 2026-02-26
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Add strategic “Further Reading” internal-link block to EN VPS deployment pillar (`/en/blog/openclaw-vps-deployment-complete-guide/`) — commit `TBD`
 - [x] Add sitewide “Core Guides” internal-link module on blog posts (EN/ZH), auto-excluding self-link by slug match — commit `b9f3ee1`
 - [x] Add JSON-LD structured data (`Article` + `BreadcrumbList`) to blog post layout for richer SERP eligibility — commit `ce5cf8b`
 - [x] Add weekly SEO report generator (`weekly:seo`) with auto-filled week range + git-tracked content/tech change sections — commit `a0a35c3`
