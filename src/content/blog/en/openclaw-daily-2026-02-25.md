@@ -64,3 +64,9 @@ openclaw browser tabs
 - Stability/cost of kimi search in your current workflow.  
 - Disk/session metrics after cleanup actions.  
 - Relay attach success and recovery latency across tabs/profiles.
+
+## Recommended Reading
+
+- [What is OpenClaw?](/en/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)

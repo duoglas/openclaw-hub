@@ -83,3 +83,9 @@ openclaw gateway restart
 1. OpenClaw 基金会治理结构是否公布
 2. Astrix Scanner 的 GitHub star 增速（衡量企业端关注度）
 3. Anthropic 对 OpenClaw 品牌/商标争议的后续回应
+
+## Recommended Reading
+
+- [What is OpenClaw?](/en/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)

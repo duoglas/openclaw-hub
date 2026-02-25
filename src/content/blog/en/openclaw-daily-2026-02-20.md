@@ -86,3 +86,9 @@ cd ~/openclaw && git pull && npm install
 🔹 注意：1M 上下文 = 更多 token 消耗，注意账单
 
 ━━━━━━…
+
+## Recommended Reading
+
+- [What is OpenClaw?](/en/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)

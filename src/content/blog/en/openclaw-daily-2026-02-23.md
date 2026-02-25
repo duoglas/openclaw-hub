@@ -84,3 +84,9 @@ openclaw cron add \
 1. OpenClaw 基金会的具体治理结构和成员名单
 2. 社区对 Steinberger 离开后的代码维护响应速度
 3. GitHub Agentic Workflows 是否会原生集成 OpenClaw
+
+## Recommended Reading
+
+- [What is OpenClaw?](/en/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)

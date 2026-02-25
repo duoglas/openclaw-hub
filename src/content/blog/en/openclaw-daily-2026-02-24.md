@@ -86,3 +86,9 @@ openclaw gateway status
 1. OpenAI 是否发布 OpenClaw 安全公告或强制更新
 2. 开源社区对创始人离开后的 fork/维护计划
 3. Infostealer 攻击是否出现针对性升级版本
+
+## Recommended Reading
+
+- [What is OpenClaw?](/en/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)

@@ -100,3 +100,9 @@ openclaw gateway restart
 1️⃣ v2026.2.19 stable 是否本周末发布
 2️⃣ Anthropic OAuth 封禁范围是否扩大
 3️⃣ 社区 Kimi K2.5 替代方案的实际效果反馈
+
+## Recommended Reading
+
+- [What is OpenClaw?](/en/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)

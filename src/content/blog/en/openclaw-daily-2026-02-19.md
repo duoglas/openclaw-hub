@@ -92,3 +92,9 @@ ss -tlnp | grep 18789
 → 如果你在 VPS 上跑 OpenClaw：今天就跑 `openclaw update` 升级，确认 `ss -tlnp | grep 18789` 只绑定 127.0.0.1
 → 如果想零运维体验：关注 Kimi Claw 的云端方案，但注意 API key 托管的信任问题
 → 想用…
+
+## Recommended Reading
+
+- [What is OpenClaw?](/en/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
