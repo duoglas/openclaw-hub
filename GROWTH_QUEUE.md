@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Enhance blog JSON-LD with `keywords` and `image` fields for richer SERP eligibility — commit `e2dbd76`
 - [x] Add strategic “Further Reading” internal-link block to EN VPS deployment pillar (`/en/blog/openclaw-vps-deployment-complete-guide/`) — commit `TBD`
 - [x] Add sitewide “Core Guides” internal-link module on blog posts (EN/ZH), auto-excluding self-link by slug match — commit `b9f3ee1`
 - [x] Add JSON-LD structured data (`Article` + `BreadcrumbList`) to blog post layout for richer SERP eligibility — commit `ce5cf8b`

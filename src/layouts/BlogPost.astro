@@ -19,6 +19,7 @@ const dateLocale = isZh ? 'zh-CN' : 'en-US';
 const isDailyPost = (slug || '').startsWith('openclaw-daily-');
 const canonicalUrl = Astro.url.href;
 const siteName = 'AI Agent Hub';
+const defaultImage = `${Astro.url.origin}/images/home-hero-cartoon.png`;
 
 const pillarLinks = isZh
   ? [
@@ -45,6 +46,8 @@ const articleSchema = {
   '@type': 'Article',
   headline: title,
   description,
+  image: [defaultImage],
+  keywords: tags,
   datePublished: pubDate.toISOString(),
   ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
   inLanguage: lang,
