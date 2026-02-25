@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => p.data.lang === 'en')
+  .filter(p => p.id.replace(/^en\//,'').startsWith('openclaw-daily-'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<BaseLayout title="AI & Tech Daily" description="Continuous AI/tech daily brief reading with RSS feed." lang="en">
+  <h1>📰 AI & Tech Daily</h1>
+  <p style="margin:0.6rem 0 1rem; color:var(--text-muted);">Read all daily briefs in one place, in date order.</p>
+  <p style="margin:0 0 1.2rem;">
+    <a href="/en/daily/rss.xml">📡 Subscribe via RSS (EN)</a>
+  </p>
+
+  {posts.map(post => {
+    const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+    return (
+      <a href={`/en/blog/${slug}/`} style="text-decoration:none; color:inherit;">
+        <div class="card" style="cursor:pointer; margin-bottom:10px;">
+          <h3 style="margin:0 0 6px;">{post.data.title}</h3>
+          <p style="margin:0 0 6px; color:#999;">{post.data.description}</p>
+          <div style="font-size:0.85rem; color:#666;">
+            {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+          </div>
+        </div>
+      </a>
+    );
+  })}
+</BaseLayout>

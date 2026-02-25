@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => p.data.lang === 'zh')
+  .filter(p => p.id.replace(/^zh\//,'').startsWith('openclaw-daily-'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<BaseLayout title="AI/科技日报" description="连续阅读 AI/科技日报，支持 RSS 订阅。" lang="zh">
+  <h1>📰 AI / 科技日报</h1>
+  <p style="margin:0.6rem 0 1rem; color:var(--text-muted);">按日期连续阅读科技日报内容。</p>
+  <p style="margin:0 0 1.2rem;">
+    <a href="/zh/daily/rss.xml">📡 订阅 RSS（中文）</a>
+  </p>
+
+  {posts.map(post => {
+    const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+    return (
+      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit;">
+        <div class="card" style="cursor:pointer; margin-bottom:10px;">
+          <h3 style="margin:0 0 6px;">{post.data.title}</h3>
+          <p style="margin:0 0 6px; color:#999;">{post.data.description}</p>
+          <div style="font-size:0.85rem; color:#666;">
+            {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
+          </div>
+        </div>
+      </a>
+    );
+  })}
+</BaseLayout>

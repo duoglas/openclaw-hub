@@ -4,17 +4,51 @@ import BlogPost from '../../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter(p => p.data.lang === 'en');
-  return posts.map((post) => ({
-    params: { slug: post.id.replace(/^en\//, '').replace(/\.md$/, '') },
-    props: post,
-  }));
+  const dailiesAsc = posts
+    .filter(p => p.id.replace(/^en\//, '').startsWith('openclaw-daily-'))
+    .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+  return posts.map((post) => {
+    const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+    const isDaily = post.id.replace(/^en\//, '').startsWith('openclaw-daily-');
+
+    let prevDaily = null;
+    let nextDaily = null;
+
+    if (isDaily) {
+      const idx = dailiesAsc.findIndex(p => p.id === post.id);
+      if (idx > 0) {
+        const prev = dailiesAsc[idx - 1];
+        prevDaily = {
+          title: prev.data.title,
+          href: `/en/blog/${prev.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
+        };
+      }
+      if (idx >= 0 && idx < dailiesAsc.length - 1) {
+        const next = dailiesAsc[idx + 1];
+        nextDaily = {
+          title: next.data.title,
+          href: `/en/blog/${next.id.replace(/^en\//, '').replace(/\.md$/, '')}/`
+        };
+      }
+    }
+
+    return {
+      params: { slug },
+      props: { ...post, prevDaily, nextDaily },
+    };
+  });
 }
-type Props = CollectionEntry<'blog'>;
+
+type Props = CollectionEntry<'blog'> & {
+  prevDaily?: { title: string; href: string } | null;
+  nextDaily?: { title: string; href: string } | null;
+};
 
 const post = Astro.props;
 const { Content } = await post.render();
 const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
 ---
-<BlogPost {...post.data} slug={slug}>
+<BlogPost {...post.data} slug={slug} prevDaily={post.prevDaily} nextDaily={post.nextDaily}>
   <Content />
 </BlogPost>
