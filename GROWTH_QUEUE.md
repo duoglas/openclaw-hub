@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Fix root language gateway page canonical/hreflang URLs to `kuoo.uk` (remove stale `openhub.plzbite.top`) to prevent cross-domain SEO confusion — commit `d2cd2e5`
 - [x] Enhance blog JSON-LD with `keywords` and `image` fields for richer SERP eligibility — commit `e2dbd76`
 - [x] Add strategic “Further Reading” internal-link block to EN VPS deployment pillar (`/en/blog/openclaw-vps-deployment-complete-guide/`) — commit `TBD`
 - [x] Add sitewide “Core Guides” internal-link module on blog posts (EN/ZH), auto-excluding self-link by slug match — commit `b9f3ee1`
