@@ -27,10 +27,17 @@ const currentPath = Astro.url.pathname;
 const enUrl = currentPath.replace(`/${lang}/`, '/en/');
 const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
 const siteUrl = 'https://kuoo.uk';
-const defaultOgImage = `${siteUrl}/images/home-hero-cartoon.png`;
+const siteLogo = `${siteUrl}/images/home-hero-cartoon.png`;
+const defaultOgImage = siteLogo;
 const resolvedOgImage = ogImage
   ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`)
   : defaultOgImage;
+const organizationSchema = {
+  '@type': 'Organization',
+  name: 'AI Agent Hub',
+  url: siteUrl,
+  logo: siteLogo,
+};
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -38,11 +45,7 @@ const websiteSchema = {
   url: `${siteUrl}${prefix}/`,
   inLanguage: lang,
   description,
-  publisher: {
-    '@type': 'Organization',
-    name: 'AI Agent Hub',
-    url: siteUrl,
-  },
+  publisher: organizationSchema,
 };
 ---
 <!doctype html>

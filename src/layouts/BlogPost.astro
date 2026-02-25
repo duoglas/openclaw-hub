@@ -44,6 +44,13 @@ const otherLang = isZh ? 'en' : 'zh';
 const baseSlug = slug || '';
 const alternateUrl = `/${otherLang}/blog/${baseSlug}/`;
 
+const organizationSchema = {
+  '@type': 'Organization',
+  name: siteName,
+  url: Astro.url.origin,
+  logo: `${Astro.url.origin}/images/home-hero-cartoon.png`,
+};
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -55,14 +62,8 @@ const articleSchema = {
   ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
   inLanguage: lang,
   mainEntityOfPage: canonicalUrl,
-  author: {
-    '@type': 'Organization',
-    name: siteName,
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: siteName,
-  },
+  author: organizationSchema,
+  publisher: organizationSchema,
 };
 
 const breadcrumbSchema = {
