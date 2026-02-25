@@ -11,7 +11,6 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] ZH pillar refinement: `/zh/blog/openclaw-model-fallback-strategy/`
 - [ ] Add internal-link blocks to top 10 traffic pages (EN)
 - [ ] Add internal-link blocks to top 10 traffic pages (ZH)
 - [ ] Normalize titles/meta for AI/Tech daily posts (last 14 days)
@@ -24,6 +23,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] ZH pillar refinement: `/zh/blog/openclaw-model-fallback-strategy/` — commit `TBD`
 - [x] Rewrite EN pillar: `/en/blog/openclaw-vs-chatgpt-vs-claude/` — commit `6a7ac8f`
 - [x] Add internal links on EN pillars (`what-is-openclaw`, `openclaw-model-fallback-strategy`) — commit `62b1d4d`
 - [x] ZH pillar rewrite: `/zh/blog/openclaw-vs-chatgpt-vs-claude/` — commit `9828027`
