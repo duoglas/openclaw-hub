@@ -7,6 +7,7 @@ interface Props {
   lang?: 'en' | 'zh';
   alternateUrl?: string;
   alternateLang?: string;
+  ogType?: 'website' | 'article';
 }
 const {
   title,
@@ -14,6 +15,7 @@ const {
   lang = 'en',
   alternateUrl,
   alternateLang,
+  ogType = 'website',
 } = Astro.props;
 
 const isZh = lang === 'zh';
@@ -46,7 +48,7 @@ const websiteSchema = {
   <meta name="generator" content={Astro.generator} />
   <title>{title} | AI Agent Hub</title>
   <!-- Open Graph -->
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:title" content={`${title} | AI Agent Hub`} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={Astro.url.href} />

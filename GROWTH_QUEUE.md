@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Set Open Graph type by page intent (`website` default in BaseLayout, `article` in BlogPost) to improve social/SEO metadata correctness — commit `870c476`
 - [x] Add sitewide `WebSite` JSON-LD in BaseLayout (EN/ZH) to strengthen technical SEO baseline — commit `(this commit)`
 - [x] SEO hygiene: migrate static sitemap/robots domain references from `openhub.plzbite.top` to `kuoo.uk` — commit `(this commit)`
 - [x] Queue hygiene: backfill missing commit hashes for historical Done tasks and clear placeholder hashes — commit `(this commit)`

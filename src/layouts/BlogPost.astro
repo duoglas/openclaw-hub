@@ -87,7 +87,7 @@ const breadcrumbSchema = {
   ],
 };
 ---
-<BaseLayout title={title} description={description} lang={lang} alternateUrl={alternateUrl} alternateLang={otherLang}>
+<BaseLayout title={title} description={description} lang={lang} alternateUrl={alternateUrl} alternateLang={otherLang} ogType="article">
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <article class="card">
