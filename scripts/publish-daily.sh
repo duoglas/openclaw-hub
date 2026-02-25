@@ -1,83 +1,69 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 cd "$(dirname "$0")/.."
 DATE=$(date +%Y-%m-%d)
 SLUG="openclaw-daily-${DATE}"
 EN_FILE="src/content/blog/en/${SLUG}.md"
 ZH_FILE="src/content/blog/zh/${SLUG}.md"
+CRON_ID="fdc137d1-c50d-4686-9b1d-c6c923890cf8" # daily-ai-tech
 
-if [ -f "$EN_FILE" ] && [ -f "$ZH_FILE" ]; then
-  echo "Already published today: $SLUG"
-  exit 0
-fi
+# Pull latest daily summary from cron runs (prefer same-day run, fallback to latest available)
+SUMMARY=$(python3 - <<'PY'
+import json,subprocess,datetime,sys
+cron_id = "fdc137d1-c50d-4686-9b1d-c6c923890cf8"
+out = subprocess.check_output(["openclaw","cron","runs","--id",cron_id,"--limit","20"], text=True)
+start = out.find('{')
+if start < 0:
+    sys.exit(1)
+data = json.loads(out[start:])
+today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d')
+entries = [e for e in data.get('entries', []) if e.get('action')=='finished' and e.get('summary')]
+summary = None
+for e in entries:
+    d = datetime.datetime.fromtimestamp(e.get('runAtMs',0)/1000, datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d')
+    if d == today:
+        summary = e['summary']
+        break
+if summary is None and entries:
+    summary = entries[0]['summary']
+if not summary:
+    summary = "今日 AI / 科技日报暂未生成，稍后将自动更新。"
+print(summary)
+PY
+)
 
-if [ ! -f "$EN_FILE" ]; then
-cat > "$EN_FILE" <<EOF
----
-title: "OpenClaw Daily: Practical Agent Automation Tips (${DATE})"
-description: "Daily practical tips for running OpenClaw agents, channels, and model fallbacks efficiently."
-pubDate: ${DATE}
-tags: ["openclaw", "daily", "automation"]
-category: "guide"
-lang: "en"
----
-
-## Today's OpenClaw Focus
-
-### 1) Keep channel reliability high
-- Verify channel status with `openclaw status --deep`.
-
-### 2) Use model fallbacks by provider
-- Avoid same-provider consecutive fallbacks during rate limits.
-
-### 3) Keep context healthy
-- Prefer short-turn prompts and periodic compaction.
-
-### 4) Security quick check
-- Run `openclaw security audit --deep` weekly.
-
----
-
-More guides at OpenClaw Hub.
-EOF
-fi
-
-if [ ! -f "$ZH_FILE" ]; then
+# Always overwrite today's files with synced summary
 cat > "$ZH_FILE" <<EOF
 ---
-title: "OpenClaw 日报：实用自动化技巧（${DATE}）"
-description: "每天一条可落地的 OpenClaw 运行建议：渠道、模型回退、上下文和安全巡检。"
+title: "AI / 科技日报（${DATE}）"
+description: "与 Telegram 当日推送同步的 AI 与科技要点。"
 pubDate: ${DATE}
-tags: ["openclaw", "daily", "automation"]
-category: "guide"
+tags: ["ai", "tech", "daily", "news"]
+category: "news"
 lang: "zh"
 ---
 
-## 今日关注点
+${SUMMARY}
+EOF
 
-### 1）先保渠道稳定
-- 每天看一次渠道健康状态。
-
-### 2）回退链按供应商交错
-- 避免连续同供应商，减少限流连锁。
-
-### 3）控制上下文膨胀
-- 短提示词 + 定期压缩。
-
-### 4）做一轮安全快检
-- 每周至少一次深度审计。
-
+cat > "$EN_FILE" <<EOF
+---
+title: "AI & Tech Daily Brief (${DATE})"
+description: "Synced with the daily Telegram AI/tech brief."
+pubDate: ${DATE}
+tags: ["ai", "tech", "daily", "news"]
+category: "news"
+lang: "en"
 ---
 
-更多内容见 OpenClaw Hub。
+${SUMMARY}
 EOF
-fi
 
-npx astro build >/dev/null 2>&1
+pnpm build >/dev/null 2>&1
 
-git add "$EN_FILE" "$ZH_FILE"
-git commit -m "content: add daily bilingual posts ${DATE}" || true
+git add "$EN_FILE" "$ZH_FILE" scripts/publish-daily.sh
+git commit -m "content: sync daily site post with Telegram AI/tech brief (${DATE})" || true
 git push origin main
 
-echo "Published ${SLUG} (en+zh)"
+echo "Published ${SLUG} (en+zh, synced from cron summary)"
