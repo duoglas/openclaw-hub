@@ -16,6 +16,19 @@ const { title, description, pubDate, updatedDate, tags, lang = 'en', slug, prevD
 
 const isZh = lang === 'zh';
 const dateLocale = isZh ? 'zh-CN' : 'en-US';
+const isDailyPost = (slug || '').startsWith('openclaw-daily-');
+
+const pillarLinks = isZh
+  ? [
+      { title: 'OpenClaw vs ChatGPT vs Claude：怎么选？', href: '/zh/blog/openclaw-vs-chatgpt-vs-claude/' },
+      { title: '什么是 OpenClaw？一文看懂核心能力', href: '/zh/blog/what-is-openclaw/' },
+      { title: 'OpenClaw 模型回退策略：稳定性实战', href: '/zh/blog/openclaw-model-fallback-strategy/' },
+    ]
+  : [
+      { title: 'OpenClaw vs ChatGPT vs Claude: Which One Should You Choose?', href: '/en/blog/openclaw-vs-chatgpt-vs-claude/' },
+      { title: 'What Is OpenClaw? Core Concepts and Practical Use Cases', href: '/en/blog/what-is-openclaw/' },
+      { title: 'OpenClaw Model Fallback Strategy: Reliability in Production', href: '/en/blog/openclaw-model-fallback-strategy/' },
+    ];
 
 // Build alternate URL
 const otherLang = isZh ? 'en' : 'zh';
@@ -42,6 +55,17 @@ const alternateUrl = `/${otherLang}/blog/${baseSlug}/`;
           {nextDaily && <a href={nextDaily.href}>{isZh ? '下一篇' : 'Next'}：{nextDaily.title} →</a>}
         </div>
       </div>
+    )}
+
+    {isDailyPost && (
+      <section class="related-posts card" style="margin-top:1rem;">
+        <h3 style="margin:0 0 8px;">{isZh ? '延伸阅读（OpenClaw 专题）' : 'Deep Dives on OpenClaw'}</h3>
+        <ul style="margin:0; padding-left:1.2rem;">
+          {pillarLinks.map((item) => (
+            <li style="margin:0.4rem 0;"><a href={item.href}>{item.title}</a></li>
+          ))}
+        </ul>
+      </section>
     )}
 
     {relatedPosts.length > 0 && (

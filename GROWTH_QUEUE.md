@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Add sitewide pillar internal-links module on daily posts (EN/ZH) to strengthen SEO authority flow — commit `f97212f`
 - [x] Create `SEO_WEEKLY_REPORT.md` template for KPI tracking — commit `508463d`
 - [x] Add weekly roundup article template + automation hook — commit `TBD`
 - [x] Fix duplicate content-id warnings surfaced during build — commit `0cc573e`
