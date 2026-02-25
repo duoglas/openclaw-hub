@@ -22,6 +22,20 @@ const otherLang = isZh ? 'en' : 'zh';
 const currentPath = Astro.url.pathname;
 const enUrl = currentPath.replace(`/${lang}/`, '/en/');
 const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
+const siteUrl = 'https://kuoo.uk';
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: isZh ? 'AI 智能体资讯站' : 'AI Agent Hub',
+  url: `${siteUrl}${prefix}/`,
+  inLanguage: lang,
+  description,
+  publisher: {
+    '@type': 'Organization',
+    name: 'AI Agent Hub',
+    url: siteUrl,
+  },
+};
 ---
 <!doctype html>
 <html lang={lang}>
@@ -49,6 +63,7 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
   )}
   <link rel="alternate" hreflang={lang} href={Astro.url.href} />
   <link rel="alternate" hreflang="x-default" href={Astro.url.href.replace(`/${lang}/`, '/en/')} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   <style>
     :root { 
       --accent: #4f46e5; 
