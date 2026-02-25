@@ -1,0 +1,12 @@
+# Legacy URL cleanup (SEO)
+# old root blog routes -> language routes
+/blog /en/blog/ 301
+/blog/ /en/blog/ 301
+
+# old markdown-like article URLs indexed by Google
+/blog/:slug.md /en/blog/:slug/ 301
+/blog/:slug.md/ /en/blog/:slug/ 301
+
+# old root article paths -> English canonical
+/blog/:slug /en/blog/:slug/ 301
+/blog/:slug/ /en/blog/:slug/ 301
