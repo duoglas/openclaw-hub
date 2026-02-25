@@ -46,5 +46,16 @@ jobs:
       - name: Lychee Link Check
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress './src/content/blog/**/*.md'
+          args: >-
+            --verbose --no-progress
+            --base https://kuoo.uk
+            --accept 200,204,206,301,302,307,308,400,401,403,429
+            --exclude '127.0.0.1'
+            --exclude 'm.do.co'
+            --exclude 'vultr.com'
+            --exclude 'reddit.com'
+            --exclude 'raspberrypi.com'
+            --exclude 'github.com/example/'
+            --exclude 'github.com/nicepkg/openclaw'
+            './dist/**/*.html'
           fail: true
