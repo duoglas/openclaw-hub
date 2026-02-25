@@ -11,12 +11,13 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] Create `SEO_WEEKLY_REPORT.md` template for KPI tracking
+- [ ] (empty)
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] Create `SEO_WEEKLY_REPORT.md` template for KPI tracking — commit `60115ab`
 - [x] Add weekly roundup article template + automation hook — commit `TBD`
 - [x] Fix duplicate content-id warnings surfaced during build — commit `0cc573e`
 - [x] Add “related posts” component rules (manual or lightweight static) — commit `43fac36`
