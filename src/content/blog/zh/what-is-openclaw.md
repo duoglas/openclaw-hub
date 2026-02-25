@@ -1,113 +1,136 @@
 ---
-title: "OpenClaw 是什么？开源 AI Agent 平台全面解析"
-description: "全面介绍 OpenClaw —— 一个可以接入 Telegram、Discord、微信等多平台的开源个人 AI 智能体。了解它的工作原理、核心能力和上手方式。"
+title: "OpenClaw 是什么？一文看懂开源 AI Agent 平台（2026）"
+description: "从定义、核心能力、工作原理到上手路径，系统介绍 OpenClaw：一个可自建、可多平台接入、可扩展的开源 AI 助手框架。"
 pubDate: 2026-02-10
 tags: ["openclaw", "guide", "ai-agent"]
 category: "guide"
 lang: "zh"
 ---
 
-## OpenClaw 是什么？
+如果你只想先看一句话：
 
-**OpenClaw**（🦞）是一个开源的 AI 智能体平台，可以将大语言模型变成你的私人助手，横跨聊天软件、智能家居和开发工具。
+> **OpenClaw 是一个可自建的开源 AI Agent 平台，让你的助手同时跑在 Telegram/Discord/企业微信等多个渠道，并能调用工具自动完成任务。**
 
-和 ChatGPT 或 Claude 的网页版不同，OpenClaw 运行在**你自己的设备上** —— 笔记本、树莓派或 VPS 都行 —— 你的数据完全掌控在自己手中。
+它不是“又一个聊天网页”，而是一个可以长期进化的个人/团队自动化底座。
 
-## 核心能力
+## OpenClaw 到底是什么？
 
-### 🔌 多平台消息接入
-连接你日常使用的平台，一个助手搞定所有：
-- **Telegram** — 完整的 Bot 集成
-- **Discord** — 支持服务器和私信
-- **WhatsApp** — 通过桥接
-- **企业微信** — 企业级通讯
-- **Signal、Slack、iMessage** — 还有更多
+**OpenClaw（🦞）** 是一个开源 AI 智能体框架。你可以把它部署在自己的电脑、树莓派或 VPS 上，让模型从“只会聊天”升级为“能执行任务的助手”。
 
-### 🧠 多模型灵活切换
-OpenClaw 支持跨提供商的模型回退链：
-- Anthropic（Claude Opus、Sonnet）
-- OpenAI（GPT-5.3 Codex）
-- Google（Gemini 3 Pro/Flash）
-- MiniMax、智谱 GLM、以及自定义模型
+和 ChatGPT、Claude 这类云端产品相比，OpenClaw 的核心差异在于：
 
-### 🛠️ 技能与插件
-通过技能系统扩展能力：
-- **网络搜索** 和网页抓取
-- **邮件管理**（Gmail、IMAP）
-- **日历管理**
-- **智能家居**（Hue、Sonos、Eight Sleep）
-- **GitHub**、**Notion** 等开发工具
-- 通过 ClawHub 获取更多社区技能
+- 你掌控部署环境和数据流向
+- 你可自由选择和切换模型
+- 你可接入真实工具与业务流程
 
-### 🔒 隐私优先
-- 本地运行 — 数据不出你的设备
-- 基于 Token 的认证，绑定本地回环
-- 内置安全审计工具
-- 不依赖云服务
+## 30 秒看懂它能做什么
 
-## 工作原理
+### 🔌 多渠道统一入口
+一个助手可连接多个消息平台：
 
+- Telegram
+- Discord
+- WhatsApp（桥接）
+- 企业微信
+- Signal / Slack / iMessage（按插件能力）
+
+你不需要在每个平台重复搭一套机器人。
+
+### 🧠 多模型路由与回退
+支持跨厂商模型编排，例如：
+
+- Anthropic（Claude）
+- OpenAI（GPT）
+- Google（Gemini）
+- MiniMax / GLM / 其他兼容提供商
+
+可按“质量优先、成本优先、可用性优先”自定义策略。详细可看：[OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)
+
+### 🛠️ 技能系统（可扩展能力）
+通过技能让助手调用外部能力：
+
+- 搜索与网页抓取
+- 邮件与日历
+- GitHub / Notion / 文档工具
+- 智能家居（如 Hue、Sonos）
+- 你的自定义脚本与内部 API
+
+### 🔒 隐私与控制权
+
+- 本地/自有服务器部署
+- 配置、日志、记忆可控
+- 不被单一平台锁死
+
+## OpenClaw 的工作原理（简版）
+
+```text
+你（Telegram/Discord/企业微信）
+  ↕
+OpenClaw Gateway（本地或自有服务器）
+  ↕
+AI 模型（Claude/GPT/Gemini/...）
+  ↕
+工具与技能（搜索、文件、API、自动化）
 ```
-你（Telegram / Discord / 企业微信等）
-  ↕
-OpenClaw 网关（本地运行）
-  ↕
-AI 模型（Anthropic / OpenAI / Google）
-  ↕
-工具与技能（搜索、邮件、代码等）
-```
 
-1. 你在任意已接入的平台发送消息
-2. OpenClaw 将请求路由到你配置的 AI 模型
-3. 模型调用工具完成任务（搜索、读写文件、调 API）
-4. 结果返回到你的聊天窗口
+典型流程：
 
-## 快速上手
+1. 你在任意接入渠道发消息
+2. OpenClaw 按策略选择模型
+3. 模型按需调用技能执行任务
+4. 结果返回原渠道，并可写入记忆/日志
 
-### 安装
+## 它适合谁？
+
+OpenClaw 最适合这几类人：
+
+- **开发者 / 技术团队**：希望 AI 深度进入工程流程
+- **增长与运营**：需要跨平台内容分发、监控、汇总
+- **重度效率用户**：想把重复事务自动化
+- **重视隐私的人**：不希望核心工作数据完全托管在云端
+
+如果你只需要轻量问答、写作润色，云端产品上手会更快；如果你要长期自动化，OpenClaw 的上限更高。
+
+## 快速上手（最短路径）
 
 ```bash
-# 通过 npm 安装
 npm install -g openclaw
-
-# 运行设置向导
 openclaw onboard
-
-# 启动网关
 openclaw gateway start
 ```
 
-### 接入 Telegram
+然后建议先接入一个最常用渠道（通常是 Telegram），跑通第一条“可执行任务”链路。
 
-1. 通过 [@BotFather](https://t.me/BotFather) 创建一个 Bot
-2. 将 Bot Token 添加到 OpenClaw 配置中
-3. 开始和你的 Bot 对话吧
+## OpenClaw vs ChatGPT/Claude：怎么理解关系？
 
-## 适合谁用？
+不要把它们看成替代关系，更准确是分层关系：
 
-- **开发者** — 想要一个深度融入工作流的 AI 助手
-- **效率控** — 需要跨平台自动化的高阶用户
-- **注重隐私** — 不想把数据交给云服务的人
-- **折腾爱好者** — 享受自定义和扩展的乐趣
+- **OpenClaw**：渠道层 + 流程层 + 工具层
+- **Claude/GPT/Gemini**：模型推理层
 
-## OpenClaw vs ChatGPT vs Claude
+想看完整选型对比，读这篇：
+[OpenClaw vs ChatGPT vs Claude：2026 年怎么选 AI 助手？](/zh/blog/openclaw-vs-chatgpt-vs-claude/)
 
-| 特性 | OpenClaw | ChatGPT | Claude |
-|------|----------|---------|--------|
-| 自建部署 | ✅ | ❌ | ❌ |
-| 多平台接入 | ✅ | ❌ | ❌ |
-| 自定义工具 | ✅ | 有限 | 有限 |
-| 开源 | ✅ | ❌ | ❌ |
-| 模型自由选择 | 任意 | 仅 GPT | 仅 Claude |
-| 免费方案 | 自建即免费 | 有限 | 有限 |
+## 常见问题（FAQ）
 
-## 了解更多
+### Q1：不会编程能用吗？
+能。基础安装和渠道接入可按文档完成；但想做深度自动化时，懂一点脚本会更高效。
 
-- 📖 [官方文档](https://docs.openclaw.ai)
-- 💻 [GitHub](https://github.com/openclaw/openclaw)
-- 💬 [Discord 社区](https://discord.com/invite/clawd)
-- 🦞 [ClawHub 技能市场](https://clawhub.com)
+### Q2：OpenClaw 一定更省钱吗？
+不一定。它的优势是**可优化成本结构**：简单任务走低价模型，复杂任务走高质量模型。
+
+### Q3：适合企业吗？
+适合。尤其是有私有化、审计、可控流程诉求的团队。
+
+## 下一步建议（按顺序）
+
+1. 先读：[OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)
+2. 再读：[Telegram 机器人在线但不回复：10 分钟排查](/zh/blog/openclaw-telegram-bot-online-no-reply-fix/)
+3. 进阶对比：[OpenClaw vs ChatGPT vs Claude](/zh/blog/openclaw-vs-chatgpt-vs-claude/)
 
 ---
 
-*OpenClaw 正在活跃开发中，更新频繁。加入社区，跟上最新的功能和技能动态。*
+更多资料：
+- 官方文档：https://docs.openclaw.ai
+- GitHub：https://github.com/openclaw/openclaw
+- 社区技能：https://clawhub.com
