@@ -27,7 +27,7 @@ Increase Google Search clicks/impressions for openhub.plzbite.top with weekly ex
 - [ ] Add weekly roundup article (higher search intent than daily brief).
 
 ### W4. Measurement cadence
-- [ ] Daily snapshot: clicks/impressions/top pages/top queries.
+- [x] Daily snapshot: clicks/impressions/top pages/top queries. (`pnpm daily:seo` scaffold added)
 - [ ] Weekly trend summary + next actions.
 
 ## Pillar Pages (current candidates)
