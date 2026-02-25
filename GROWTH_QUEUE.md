@@ -18,9 +18,10 @@ Manager: main session
 - [ ] Create `SEO_WEEKLY_REPORT.md` template for KPI tracking
 
 ## Doing
-- [ ] Add internal-link blocks to top 10 traffic pages (ZH)
+- [ ] (empty)
 
 ## Done
+- [x] Add internal-link blocks to top 10 traffic pages (ZH) — commit `5ebf215`
 - [x] Add internal-link blocks to top 10 traffic pages (EN) — commit `TBD`
 - [x] ZH pillar refinement: `/zh/blog/openclaw-model-fallback-strategy/` — commit `TBD`
 - [x] Rewrite EN pillar: `/en/blog/openclaw-vs-chatgpt-vs-claude/` — commit `6a7ac8f`
