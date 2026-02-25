@@ -9,6 +9,8 @@ const posts = (await getCollection('blog'))
 <BaseLayout title="首页" lang="zh">
   <h1>🤖 AI 智能体资讯站</h1>
   <p style="font-size:1.1rem; margin:1rem 0;">聚焦 AI 智能体相关资讯、实操教程与工具指南。当前会有较多 OpenClaw 内容，但不局限于 OpenClaw。</p>
+
+  <img src="/images/home-hero-cartoon.png" alt="OpenClaw Hub 手绘介绍图" style="width:100%; max-width:1100px; border-radius:16px; margin:0.5rem 0 1.25rem; display:block;" />
   
   <h2>最新文章</h2>
   {posts.slice(0, 20).map(post => {

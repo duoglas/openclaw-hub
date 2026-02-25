@@ -9,6 +9,8 @@ const posts = (await getCollection('blog'))
 <BaseLayout title="Home" lang="en">
   <h1>🤖 AI Agent Hub</h1>
   <p style="font-size:1.1rem; margin:1rem 0;">AI agent news, practical tutorials, and tooling guides. We cover OpenClaw deeply, but also track the broader agent ecosystem.</p>
+
+  <img src="/images/home-hero-cartoon.png" alt="OpenClaw Hub hand-drawn infographic" style="width:100%; max-width:1100px; border-radius:16px; margin:0.5rem 0 1.25rem; display:block;" />
   
   <h2>Latest Articles</h2>
   {posts.slice(0, 20).map(post => {
