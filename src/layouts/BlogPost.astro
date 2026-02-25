@@ -12,7 +12,7 @@ type Props = CollectionEntry<'blog'>['data'] & {
   nextDaily?: NavLink | null;
   relatedPosts?: RelatedPost[];
 };
-const { title, description, pubDate, updatedDate, tags, lang = 'en', slug, prevDaily, nextDaily, relatedPosts = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags, lang = 'en', slug, prevDaily, nextDaily, relatedPosts = [] } = Astro.props;
 
 const isZh = lang === 'zh';
 const dateLocale = isZh ? 'zh-CN' : 'en-US';
@@ -20,6 +20,9 @@ const isDailyPost = (slug || '').startsWith('openclaw-daily-');
 const canonicalUrl = Astro.url.href;
 const siteName = 'AI Agent Hub';
 const defaultImage = `${Astro.url.origin}/images/home-hero-cartoon.png`;
+const resolvedImage = heroImage
+  ? (heroImage.startsWith('http') ? heroImage : `${Astro.url.origin}${heroImage.startsWith('/') ? '' : '/'}${heroImage}`)
+  : defaultImage;
 
 const pillarLinks = isZh
   ? [
@@ -46,7 +49,7 @@ const articleSchema = {
   '@type': 'Article',
   headline: title,
   description,
-  image: [defaultImage],
+  image: [resolvedImage],
   keywords: tags,
   datePublished: pubDate.toISOString(),
   ...(updatedDate ? { dateModified: updatedDate.toISOString() } : {}),
@@ -87,7 +90,7 @@ const breadcrumbSchema = {
   ],
 };
 ---
-<BaseLayout title={title} description={description} lang={lang} alternateUrl={alternateUrl} alternateLang={otherLang} ogType="article">
+<BaseLayout title={title} description={description} lang={lang} alternateUrl={alternateUrl} alternateLang={otherLang} ogType="article" ogImage={resolvedImage}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <article class="card">

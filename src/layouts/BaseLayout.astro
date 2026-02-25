@@ -8,6 +8,7 @@ interface Props {
   alternateUrl?: string;
   alternateLang?: string;
   ogType?: 'website' | 'article';
+  ogImage?: string;
 }
 const {
   title,
@@ -16,6 +17,7 @@ const {
   alternateUrl,
   alternateLang,
   ogType = 'website',
+  ogImage,
 } = Astro.props;
 
 const isZh = lang === 'zh';
@@ -25,6 +27,10 @@ const currentPath = Astro.url.pathname;
 const enUrl = currentPath.replace(`/${lang}/`, '/en/');
 const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
 const siteUrl = 'https://kuoo.uk';
+const defaultOgImage = `${siteUrl}/images/home-hero-cartoon.png`;
+const resolvedOgImage = ogImage
+  ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`)
+  : defaultOgImage;
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -54,10 +60,14 @@ const websiteSchema = {
   <meta property="og:url" content={Astro.url.href} />
   <meta property="og:site_name" content="AI Agent Hub" />
   <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
+  <meta property="og:image" content={resolvedOgImage} />
+  <meta property="og:image:alt" content={`${title} | AI Agent Hub`} />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={`${title} | AI Agent Hub`} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={resolvedOgImage} />
+  <meta name="twitter:image:alt" content={`${title} | AI Agent Hub`} />
   <!-- Canonical -->
   <link rel="canonical" href={Astro.url.href} />
   {alternateUrl && alternateLang && (
