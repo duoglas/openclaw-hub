@@ -27,4 +27,4 @@ Manager: main session
 - [x] Rewrite EN pillar: `/en/blog/openclaw-vs-chatgpt-vs-claude/` — commit `6a7ac8f`
 - [x] Add internal links on EN pillars (`what-is-openclaw`, `openclaw-model-fallback-strategy`) — commit `62b1d4d`
 - [x] ZH pillar rewrite: `/zh/blog/openclaw-vs-chatgpt-vs-claude/` — commit `9828027`
-- [x] ZH pillar refinement: `/zh/blog/what-is-openclaw/` — commit `pending`
+- [x] ZH pillar refinement: `/zh/blog/what-is-openclaw/` — commit `bca1994`
