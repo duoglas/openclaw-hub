@@ -1,6 +1,6 @@
 ---
-title: "AI / 科技日报（2026-02-19）"
-description: "聚焦渠道稳定、回退链与上下文治理的当日执行重点。"
+title: "OpenClaw AI / 科技日报（2026-02-19）"
+description: "OpenClaw AI / 科技日报 2026-02-19：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-19
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

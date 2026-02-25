@@ -1,6 +1,6 @@
 ---
-title: "OpenClaw 日报：安全与权限最小化（2026-02-13）"
-description: "减少攻击面：权限最小化、插件审计、外部动作二次确认。"
+title: "OpenClaw AI / 科技日报（2026-02-13）"
+description: "OpenClaw AI / 科技日报 2026-02-13：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-13
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

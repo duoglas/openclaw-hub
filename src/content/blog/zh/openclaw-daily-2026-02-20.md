@@ -1,6 +1,6 @@
 ---
-title: "AI / 科技日报（2026-02-20）"
-description: "围绕网关健康、巡检节奏与会话清理策略的实战要点。"
+title: "OpenClaw AI / 科技日报（2026-02-20）"
+description: "OpenClaw AI / 科技日报 2026-02-20：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

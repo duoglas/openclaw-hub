@@ -1,6 +1,6 @@
 ---
-title: "OpenClaw Daily: Build a Content + Ops Feedback Loop (2026-02-14)"
-description: "Turn repeated support questions into searchable assets and keep docs fresh with scheduled review."
+title: "OpenClaw AI & Tech Daily (2026-02-14)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-14: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-14
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

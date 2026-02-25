@@ -1,6 +1,6 @@
 ---
-title: "OpenClaw Daily: Security by Default, Permissions by Need (2026-02-13)"
-description: "Reduce attack surface with least privilege, regular audits, and human gates for external actions."
+title: "OpenClaw AI & Tech Daily (2026-02-13)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-13: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-13
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

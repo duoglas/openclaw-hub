@@ -1,6 +1,6 @@
 ---
-title: "OpenClaw 日报：实用自动化技巧（2026-02-16）"
-description: "每天一条可落地的 OpenClaw 运行建议：渠道、模型回退、上下文和安全巡检。"
+title: "OpenClaw AI / 科技日报（2026-02-16）"
+description: "OpenClaw AI / 科技日报 2026-02-16：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-16
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

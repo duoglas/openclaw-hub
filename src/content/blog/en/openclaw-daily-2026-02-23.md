@@ -1,6 +1,6 @@
 ---
-title: "AI & Tech Daily Brief (2026-02-23)"
-description: "Long-run ops: storage growth control, publish/delivery decoupling, unified alerts."
+title: "OpenClaw AI & Tech Daily (2026-02-23)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-23: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

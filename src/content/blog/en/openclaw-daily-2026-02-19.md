@@ -1,6 +1,6 @@
 ---
-title: "AI & Tech Daily Brief (2026-02-19)"
-description: "Channel reliability, fallback-chain design, and context hygiene priorities."
+title: "OpenClaw AI & Tech Daily (2026-02-19)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-19: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-19
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

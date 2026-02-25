@@ -1,6 +1,6 @@
 ---
-title: "AI / 科技日报（2026-02-24）"
-description: "安全风险上升背景下的配置加固与 token 轮换实操。"
+title: "OpenClaw AI / 科技日报（2026-02-24）"
+description: "OpenClaw AI / 科技日报 2026-02-24：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

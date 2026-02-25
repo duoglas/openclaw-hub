@@ -1,6 +1,6 @@
 ---
-title: "OpenClaw Daily: Browser Automation Stability Checklist (2026-02-12)"
-description: "Most Browser tool failures come from connection flow and tab targeting. Fix the chain, not just the symptom."
+title: "OpenClaw AI & Tech Daily (2026-02-12)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-12: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-12
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

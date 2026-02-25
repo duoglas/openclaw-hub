@@ -1,6 +1,6 @@
 ---
-title: "OpenClaw 日报：从能用到好用的运营闭环（2026-02-14）"
-description: "把 OpenClaw 当产品运营：问题收集、内容沉淀、周更复盘，持续提升效果。"
+title: "OpenClaw AI / 科技日报（2026-02-14）"
+description: "OpenClaw AI / 科技日报 2026-02-14：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-14
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

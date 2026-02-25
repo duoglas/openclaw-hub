@@ -1,6 +1,6 @@
 ---
-title: "OpenClaw 日报：浏览器自动化稳定性清单（2026-02-12）"
-description: "Chrome Relay、目标页附着、操作顺序三件事，决定 Browser 工具是否好用。"
+title: "OpenClaw AI / 科技日报（2026-02-12）"
+description: "OpenClaw AI / 科技日报 2026-02-12：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-12
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

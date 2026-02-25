@@ -11,7 +11,6 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] Normalize titles/meta for AI/Tech daily posts (last 14 days)
 - [ ] Add weekly roundup article template + automation hook
 - [ ] Add “related posts” component rules (manual or lightweight static)
 - [ ] Fix duplicate content-id warnings surfaced during build
@@ -21,6 +20,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Normalize titles/meta for AI/Tech daily posts (last 14 days) — commit `TBD`
 - [x] Add internal-link blocks to top 10 traffic pages (ZH) — commit `5ebf215`
 - [x] Add internal-link blocks to top 10 traffic pages (EN) — commit `TBD`
 - [x] ZH pillar refinement: `/zh/blog/openclaw-model-fallback-strategy/` — commit `TBD`

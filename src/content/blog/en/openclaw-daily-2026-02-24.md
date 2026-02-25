@@ -1,6 +1,6 @@
 ---
-title: "AI & Tech Daily Brief (2026-02-24)"
-description: "Hardening playbook under rising threats: token rotation and config lockdown."
+title: "OpenClaw AI & Tech Daily (2026-02-24)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-24: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

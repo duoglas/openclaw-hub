@@ -1,6 +1,6 @@
 ---
-title: "AI & Tech Daily Brief (2026-02-22)"
-description: "Browser automation stability and Relay/Profile troubleshooting flow."
+title: "OpenClaw AI & Tech Daily (2026-02-22)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-22: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-22
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

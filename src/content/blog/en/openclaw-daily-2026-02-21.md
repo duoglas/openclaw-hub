@@ -1,6 +1,6 @@
 ---
-title: "AI & Tech Daily Brief (2026-02-21)"
-description: "Security warning triage, plugin governance, and least-privilege operations."
+title: "OpenClaw AI & Tech Daily (2026-02-21)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-21: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

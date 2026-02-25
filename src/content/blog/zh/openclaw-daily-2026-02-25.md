@@ -1,6 +1,6 @@
 ---
-title: "AI / 科技日报（2026-02-25）"
-description: "v2026.2.23 关键更新、SSRF 配置迁移与会话治理建议。"
+title: "OpenClaw AI / 科技日报（2026-02-25）"
+description: "OpenClaw AI / 科技日报 2026-02-25：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

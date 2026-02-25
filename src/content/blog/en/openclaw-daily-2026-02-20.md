@@ -1,6 +1,6 @@
 ---
-title: "AI & Tech Daily Brief (2026-02-20)"
-description: "Gateway health checks, patrol cadence, and session-cleanup strategy in practice."
+title: "OpenClaw AI & Tech Daily (2026-02-20)"
+description: "OpenClaw AI & Tech daily briefing for 2026-02-20: key updates, practical actions, and next-step watchpoints."
 pubDate: 2026-02-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -1,6 +1,6 @@
 ---
-title: "AI / 科技日报（2026-02-21）"
-description: "安全告警分级、插件治理与最小权限实践总结。"
+title: "OpenClaw AI / 科技日报（2026-02-21）"
+description: "OpenClaw AI / 科技日报 2026-02-21：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

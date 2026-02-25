@@ -1,6 +1,6 @@
 ---
-title: "AI / 科技日报（2026-02-23）"
-description: "长期任务资源治理：磁盘增长、解耦发布与告警统一。"
+title: "OpenClaw AI / 科技日报（2026-02-23）"
+description: "OpenClaw AI / 科技日报 2026-02-23：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
