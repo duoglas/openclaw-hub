@@ -80,6 +80,17 @@ pnpm weekly:roundup
 - 自动索引本周 `openclaw-daily-*` 日报链接
 - 若当周文件已存在则跳过，避免覆盖人工修改
 
+### SEO Weekly Report 草稿自动生成
+
+```bash
+pnpm weekly:seo
+```
+
+效果：
+- 在 `reports/seo-weekly/` 生成当周报告草稿
+- 自动填充周区间、生成时间、并汇总 git 追踪到的内容/技术变更
+- 预留 GSC KPI 与 Top Pages/Queries 待人工回填
+
 ## ✅ CI 说明
 
 当前 CI 包含：

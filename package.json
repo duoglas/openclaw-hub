@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "weekly:roundup": "bash scripts/generate-weekly-roundup.sh"
+    "weekly:roundup": "bash scripts/generate-weekly-roundup.sh",
+    "weekly:seo": "bash scripts/generate-seo-weekly-report.sh"
   },
   "keywords": [],
   "author": "",
