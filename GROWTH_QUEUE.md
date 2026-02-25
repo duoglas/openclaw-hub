@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Improve `weekly:seo` with auto rollup from `reports/seo/daily/*.md` (snapshot count + KPI aggregate when daily fields are filled) — commit `(this commit)`
 - [x] Add Organization `logo` metadata to sitewide `WebSite` + blog `Article` JSON-LD for richer brand entity signals in SERP/social parsers — commit `4f27bf1`
 - [x] Add daily SEO snapshot generator (`pnpm daily:seo`) that outputs `reports/seo/daily/YYYY-MM-DD.md` with manual GSC KPI slots + auto content counts — commit `(this commit)`
 - [x] Add default social share metadata (`og:image` + `twitter:image`) in `BaseLayout`, and wire blog `heroImage` fallback in `BlogPost` for richer link previews — commit `(this commit)`

@@ -73,10 +73,83 @@ collect_technical_changes() {
   printf "%b" "$out"
 }
 
+collect_daily_snapshot_summary() {
+  local dir="reports/seo/daily"
+  local files=()
+  local f d
+  local sum_clicks=0
+  local sum_impr=0
+  local cnt_clicks=0
+  local cnt_impr=0
+  local sum_ctr=0
+  local cnt_ctr=0
+  local sum_pos=0
+  local cnt_pos=0
+  local out=""
+
+  if [ ! -d "$dir" ]; then
+    echo "- Daily snapshots: none"
+    echo "- KPI auto-sum: unavailable"
+    return
+  fi
+
+  while IFS= read -r f; do
+    d=$(basename "$f" .md)
+    if [[ "$d" < "$MONDAY" || "$d" > "$SUNDAY" ]]; then
+      continue
+    fi
+    files+=("$f")
+  done < <(find "$dir" -maxdepth 1 -type f -name '*.md' | sort)
+
+  if [ ${#files[@]} -eq 0 ]; then
+    echo "- Daily snapshots: none (${MONDAY} ~ ${SUNDAY})"
+    echo "- KPI auto-sum: unavailable"
+    return
+  fi
+
+  for f in "${files[@]}"; do
+    local clicks impr ctr pos
+    clicks=$(awk -F': *' '/^- Clicks:/{gsub(/[^0-9]/,"",$2); print $2; exit}' "$f")
+    impr=$(awk -F': *' '/^- Impressions:/{gsub(/[^0-9]/,"",$2); print $2; exit}' "$f")
+    ctr=$(awk -F': *' '/^- CTR:/{gsub(/[% ]/,"",$2); print $2; exit}' "$f")
+    pos=$(awk -F': *' '/^- Avg Position:/{gsub(/[^0-9.]/,"",$2); print $2; exit}' "$f")
+
+    if [[ "$clicks" =~ ^[0-9]+$ ]]; then
+      sum_clicks=$((sum_clicks + clicks))
+      cnt_clicks=$((cnt_clicks + 1))
+    fi
+    if [[ "$impr" =~ ^[0-9]+$ ]]; then
+      sum_impr=$((sum_impr + impr))
+      cnt_impr=$((cnt_impr + 1))
+    fi
+    if [[ "$ctr" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
+      sum_ctr=$(awk -v a="$sum_ctr" -v b="$ctr" 'BEGIN{printf "%.4f", a+b}')
+      cnt_ctr=$((cnt_ctr + 1))
+    fi
+    if [[ "$pos" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
+      sum_pos=$(awk -v a="$sum_pos" -v b="$pos" 'BEGIN{printf "%.4f", a+b}')
+      cnt_pos=$((cnt_pos + 1))
+    fi
+  done
+
+  local avg_ctr="N/A"
+  local avg_pos="N/A"
+  if [ "$cnt_ctr" -gt 0 ]; then
+    avg_ctr=$(awk -v s="$sum_ctr" -v c="$cnt_ctr" 'BEGIN{printf "%.2f%%", s/c}')
+  fi
+  if [ "$cnt_pos" -gt 0 ]; then
+    avg_pos=$(awk -v s="$sum_pos" -v c="$cnt_pos" 'BEGIN{printf "%.2f", s/c}')
+  fi
+
+  echo "- Daily snapshots: ${#files[@]} file(s)"
+  echo "- Auto-aggregated KPIs (from filled daily files): Clicks=${sum_clicks}, Impressions=${sum_impr}, Avg CTR=${avg_ctr}, Avg Position=${avg_pos}"
+}
+
 NEW_EN=$(collect_new_posts en)
 NEW_ZH=$(collect_new_posts zh)
 UPDATED=$(collect_changed_posts)
 TECH=$(collect_technical_changes)
+DAILY_SUMMARY=$(collect_daily_snapshot_summary)
 
 cat > "$OUT_FILE" <<EOF
 # SEO Weekly Report
@@ -134,7 +207,11 @@ ${UPDATED}
 ### Technical SEO changes (git-tracked)
 ${TECH}
 
-## 6) Wins / Problems
+## 6) Daily Snapshot Rollup (auto)
+
+${DAILY_SUMMARY}
+
+## 7) Wins / Problems
 
 ### Wins
 - (fill)
@@ -142,13 +219,13 @@ ${TECH}
 ### Problems / Blockers
 - (fill)
 
-## 7) Action Plan (Next Week)
+## 8) Action Plan (Next Week)
 
 - [ ] P0: (task / owner / due)
 - [ ] P1: (task / owner / due)
 - [ ] P2: (task / owner / due)
 
-## 8) Data Sources
+## 9) Data Sources
 
 - Google Search Console (Performance + Pages + Queries)
 - Cloudflare Web Analytics (optional)
