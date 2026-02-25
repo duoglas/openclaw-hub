@@ -45,7 +45,7 @@ Or you see unexpected token errors like:
 SyntaxError: Unexpected token '??='
 ```
 
-### Fix
+### Fix: upgrade Node.js to v22+
 
 OpenClaw requires **Node.js 22 or newer**. Check your version:
 
@@ -95,7 +95,7 @@ If there's a system Node at `/usr/bin/node` conflicting with nvm's version, make
 npm ERR! Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/openclaw'
 ```
 
-### Fix
+### Fix: resolve global npm permission errors
 
 Never use `sudo npm install -g`. Instead, fix npm's global directory:
 
@@ -119,7 +119,7 @@ npm ERR! code ETIMEDOUT
 npm ERR! network request to https://registry.npmjs.org/openclaw failed
 ```
 
-### Fix
+### Fix: resolve npm network/registry timeouts
 
 Check your network, then try switching registries:
 
@@ -165,7 +165,7 @@ SyntaxError: Unexpected token } in JSON at position 423
 
 Your `openclaw.json` has a syntax error — usually a trailing comma or missing quote.
 
-### Fix
+### Fix: repair JSON syntax and schema issues
 
 Validate your config:
 
@@ -196,7 +196,7 @@ JSON doesn't allow trailing commas or comments. Remove them.
 Config validation failed: "gateway.mode" must be one of [local, remote]
 ```
 
-### Fix
+### Fix: set `gateway.mode` explicitly
 
 Run the configuration wizard:
 
@@ -240,7 +240,7 @@ openclaw configure
 Error: 401 Unauthorized — invalid x-api-key
 ```
 
-### Fix
+### Fix: reconfigure provider API keys
 
 Check your API key is set and valid:
 
@@ -316,7 +316,7 @@ sudo systemctl status openclaw-gateway
 # Shows: Active: failed (Result: exit-code)
 ```
 
-### Fix: check the logs first
+### Fix: inspect service logs first
 
 ```bash
 journalctl -u openclaw-gateway -n 50 --no-pager
@@ -406,7 +406,7 @@ sudo systemctl start openclaw-gateway
 Error: listen EADDRINUSE: address already in use :::18789
 ```
 
-### Fix
+### Fix: clear port conflicts
 
 Find what's using the port:
 

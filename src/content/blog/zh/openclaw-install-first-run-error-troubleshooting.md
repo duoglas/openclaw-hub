@@ -45,7 +45,7 @@ npm warn EBADENGINE Unsupported engine {
 SyntaxError: Unexpected token '??='
 ```
 
-### 解决
+### 解决：升级 Node.js 到 v22+
 
 OpenClaw 要求 **Node.js 22 或更高版本**。先看当前版本：
 
@@ -95,7 +95,7 @@ which -a node
 npm ERR! Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/openclaw'
 ```
 
-### 解决
+### 解决：修复全局 npm 权限问题
 
 别用 `sudo npm install -g`。改 npm 的全局目录：
 
@@ -119,7 +119,7 @@ npm ERR! code ETIMEDOUT
 npm ERR! network request to https://registry.npmjs.org/openclaw failed
 ```
 
-### 解决
+### 解决：处理 npm 网络/源超时
 
 ```bash
 # 测试连通性
@@ -163,7 +163,7 @@ SyntaxError: Unexpected token } in JSON at position 423
 
 `openclaw.json` 有语法错误，通常是多了逗号或少了引号。
 
-### 解决
+### 解决：修复 JSON 语法与配置校验
 
 验证 JSON 格式：
 
@@ -194,7 +194,7 @@ JSON 不允许尾逗号和注释，删掉就好。
 Config validation failed: "gateway.mode" must be one of [local, remote]
 ```
 
-### 解决
+### 解决：显式设置 `gateway.mode`
 
 跑配置向导：
 
@@ -233,7 +233,7 @@ openclaw configure
 Error: 401 Unauthorized — invalid x-api-key
 ```
 
-### 解决
+### 解决：重配 API Key 与 Provider
 
 检查 API key：
 
@@ -398,7 +398,7 @@ sudo systemctl start openclaw-gateway
 Error: listen EADDRINUSE: address already in use :::18789
 ```
 
-### 解决
+### 解决：清理端口占用
 
 找出谁占了端口：
 
