@@ -1,8 +1,8 @@
 ---
-title: "每日AI科技日报（2026-02-19）"
-description: "当日推送原文（与 Telegram 同步）"
+title: "AI / 科技日报（2026-02-19）"
+description: "与 Telegram 当日推送同步。"
 pubDate: 2026-02-19
-tags: ["ai", "tech", "daily"]
+tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"
 ---

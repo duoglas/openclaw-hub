@@ -1,8 +1,8 @@
 ---
-title: "Daily AI & Tech Brief (2026-02-22)"
-description: "Synced daily brief text delivered on Telegram."
+title: "AI & Tech Daily Brief (2026-02-22)"
+description: "Synced with Telegram daily brief."
 pubDate: 2026-02-22
-tags: ["ai", "tech", "daily"]
+tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"
 ---
