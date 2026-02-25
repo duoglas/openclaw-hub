@@ -12,7 +12,6 @@ Manager: main session
 
 ## Backlog
 - [ ] Add weekly roundup article template + automation hook
-- [ ] Add “related posts” component rules (manual or lightweight static)
 - [ ] Fix duplicate content-id warnings surfaced during build
 - [ ] Create `SEO_WEEKLY_REPORT.md` template for KPI tracking
 
@@ -20,6 +19,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Add “related posts” component rules (manual or lightweight static) — commit `43fac36`
 - [x] Normalize titles/meta for AI/Tech daily posts (last 14 days) — commit `TBD`
 - [x] Add internal-link blocks to top 10 traffic pages (ZH) — commit `5ebf215`
 - [x] Add internal-link blocks to top 10 traffic pages (EN) — commit `TBD`

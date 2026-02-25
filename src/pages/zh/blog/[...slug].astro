@@ -8,9 +8,11 @@ export async function getStaticPaths() {
     .filter(p => p.id.replace(/^zh\//, '').startsWith('openclaw-daily-'))
     .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 
+  const toSlug = (id: string) => id.replace(/^zh\//, '').replace(/\.md$/, '');
+
   return posts.map((post) => {
-    const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
-    const isDaily = post.id.replace(/^zh\//, '').startsWith('openclaw-daily-');
+    const slug = toSlug(post.id);
+    const isDaily = slug.startsWith('openclaw-daily-');
 
     let prevDaily = null;
     let nextDaily = null;
@@ -21,21 +23,37 @@ export async function getStaticPaths() {
         const prev = dailiesAsc[idx - 1];
         prevDaily = {
           title: prev.data.title,
-          href: `/zh/blog/${prev.id.replace(/^zh\//, '').replace(/\.md$/, '')}/`
+          href: `/zh/blog/${toSlug(prev.id)}/`
         };
       }
       if (idx >= 0 && idx < dailiesAsc.length - 1) {
         const next = dailiesAsc[idx + 1];
         nextDaily = {
           title: next.data.title,
-          href: `/zh/blog/${next.id.replace(/^zh\//, '').replace(/\.md$/, '')}/`
+          href: `/zh/blog/${toSlug(next.id)}/`
         };
       }
     }
 
+    const relatedPosts = posts
+      .filter(candidate => candidate.id !== post.id)
+      .map((candidate) => {
+        const overlap = candidate.data.tags.filter(tag => post.data.tags.includes(tag)).length;
+        return {
+          title: candidate.data.title,
+          href: `/zh/blog/${toSlug(candidate.id)}/`,
+          overlap,
+          pubDate: candidate.data.pubDate.valueOf(),
+        };
+      })
+      .filter(item => item.overlap > 0)
+      .sort((a, b) => (b.overlap - a.overlap) || (b.pubDate - a.pubDate))
+      .slice(0, 3)
+      .map(({ title, href }) => ({ title, href }));
+
     return {
       params: { slug },
-      props: { ...post, prevDaily, nextDaily },
+      props: { ...post, prevDaily, nextDaily, relatedPosts },
     };
   });
 }
@@ -43,6 +61,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'blog'> & {
   prevDaily?: { title: string; href: string } | null;
   nextDaily?: { title: string; href: string } | null;
+  relatedPosts?: { title: string; href: string }[];
 };
 
 const post = Astro.props;

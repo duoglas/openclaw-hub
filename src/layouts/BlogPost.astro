@@ -5,12 +5,14 @@ import Giscus from '../components/Giscus.astro';
 import type { CollectionEntry } from 'astro:content';
 
 type NavLink = { title: string; href: string };
+type RelatedPost = { title: string; href: string };
 type Props = CollectionEntry<'blog'>['data'] & {
   slug?: string;
   prevDaily?: NavLink | null;
   nextDaily?: NavLink | null;
+  relatedPosts?: RelatedPost[];
 };
-const { title, description, pubDate, updatedDate, tags, lang = 'en', slug, prevDaily, nextDaily } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, lang = 'en', slug, prevDaily, nextDaily, relatedPosts = [] } = Astro.props;
 
 const isZh = lang === 'zh';
 const dateLocale = isZh ? 'zh-CN' : 'en-US';
@@ -40,6 +42,17 @@ const alternateUrl = `/${otherLang}/blog/${baseSlug}/`;
           {nextDaily && <a href={nextDaily.href}>{isZh ? '下一篇' : 'Next'}：{nextDaily.title} →</a>}
         </div>
       </div>
+    )}
+
+    {relatedPosts.length > 0 && (
+      <section class="related-posts card" style="margin-top:1rem;">
+        <h3 style="margin:0 0 8px;">{isZh ? '相关文章' : 'Related Posts'}</h3>
+        <ul style="margin:0; padding-left:1.2rem;">
+          {relatedPosts.map((item) => (
+            <li style="margin:0.4rem 0;"><a href={item.href}>{item.title}</a></li>
+          ))}
+        </ul>
+      </section>
     )}
 
     <ArticleFeedback lang={lang} slug={slug} />
