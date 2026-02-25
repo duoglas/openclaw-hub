@@ -13,9 +13,32 @@ const { tag } = Astro.params;
 const posts = (await getCollection('blog'))
   .filter((p) => p.data.lang === 'en' && p.data.tags?.includes(tag || ''))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const siteUrl = Astro.url.origin;
+const listUrl = Astro.url.href;
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `Tag: ${tag}`,
+  url: listUrl,
+  inLanguage: 'en',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: posts.map((post, index) => {
+      const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${siteUrl}/en/blog/${slug}/`,
+        name: post.data.title,
+      };
+    }),
+  },
+};
 ---
 
 <BaseLayout title={`Tag: ${tag}`} description={`Posts tagged ${tag}`} lang="en">
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <h1>Tag: {tag}</h1>
   {posts.length === 0 ? <p>No posts yet.</p> : posts.map(post => {
     const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');

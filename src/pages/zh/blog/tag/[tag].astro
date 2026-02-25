@@ -27,9 +27,32 @@ const tagLabels: Record<string, string> = {
   'tutorial': '教程',
 };
 const displayTag = tagLabels[tag || ''] || tag;
+
+const siteUrl = Astro.url.origin;
+const listUrl = Astro.url.href;
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: `标签: ${displayTag}`,
+  url: listUrl,
+  inLanguage: 'zh',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: posts.map((post, index) => {
+      const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${siteUrl}/zh/blog/${slug}/`,
+        name: post.data.title,
+      };
+    }),
+  },
+};
 ---
 
 <BaseLayout title={`标签: ${displayTag}`} description={`标签 ${displayTag} 下的文章`} lang="zh">
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <h1>标签: {displayTag}</h1>
   {posts.length === 0 ? <p>暂无文章。</p> : posts.map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');

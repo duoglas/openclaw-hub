@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Add `CollectionPage` + `ItemList` JSON-LD on EN/ZH tag archive pages to improve tag-page crawl understanding and long-tail SEO signals — commit `(this commit)`
 - [x] Add `ItemList` JSON-LD on EN/ZH blog index pages to improve list-page understanding by search engines — commit `(this commit)`
 - [x] Add sitewide RSS autodiscovery `<link rel="alternate" type="application/rss+xml">` for EN/ZH daily feeds to improve feed discovery in browsers/readers/search bots — commit `(this commit)`
 - [x] Improve `weekly:seo` with auto rollup from `reports/seo/daily/*.md` (snapshot count + KPI aggregate when daily fields are filled) — commit `(this commit)`
