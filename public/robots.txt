@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://openhub.plzbite.top/sitemap-index.xml
+Sitemap: https://kuoo.uk/sitemap-index.xml

@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] SEO hygiene: migrate static sitemap/robots domain references from `openhub.plzbite.top` to `kuoo.uk` — commit `(this commit)`
 - [x] Queue hygiene: backfill missing commit hashes for historical Done tasks and clear placeholder hashes — commit `(this commit)`
 - [x] Fix root language gateway page canonical/hreflang URLs to `kuoo.uk` (remove stale `openhub.plzbite.top`) to prevent cross-domain SEO confusion — commit `e21cf69`
 - [x] Enhance blog JSON-LD with `keywords` and `image` fields for richer SERP eligibility — commit `e2dbd76`
