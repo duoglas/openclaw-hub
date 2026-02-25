@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Add sitewide “Core Guides” internal-link module on blog posts (EN/ZH), auto-excluding self-link by slug match — commit `b9f3ee1`
 - [x] Add JSON-LD structured data (`Article` + `BreadcrumbList`) to blog post layout for richer SERP eligibility — commit `ce5cf8b`
 - [x] Add weekly SEO report generator (`weekly:seo`) with auto-filled week range + git-tracked content/tech change sections — commit `a0a35c3`
 - [x] Add sitewide pillar internal-links module on daily posts (EN/ZH) to strengthen SEO authority flow — commit `f97212f`

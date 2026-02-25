@@ -32,6 +32,9 @@ const pillarLinks = isZh
       { title: 'OpenClaw Model Fallback Strategy: Reliability in Production', href: '/en/blog/openclaw-model-fallback-strategy/' },
     ];
 
+const normalizedSlug = `/${lang}/blog/${slug || ''}/`;
+const contextualGuideLinks = pillarLinks.filter((item) => item.href !== normalizedSlug);
+
 // Build alternate URL
 const otherLang = isZh ? 'en' : 'zh';
 const baseSlug = slug || '';
@@ -94,6 +97,17 @@ const breadcrumbSchema = {
       {tags.map(tag => <a href={`/${lang}/blog/tag/${tag}/`}><span class="tag">{tag}</span></a>)}
     </div>
     <slot />
+
+    {contextualGuideLinks.length > 0 && (
+      <section class="related-posts card" style="margin-top:1rem;">
+        <h3 style="margin:0 0 8px;">{isZh ? '核心指南（推荐）' : 'Core Guides (Recommended)'}</h3>
+        <ul style="margin:0; padding-left:1.2rem;">
+          {contextualGuideLinks.map((item) => (
+            <li style="margin:0.4rem 0;"><a href={item.href}>{item.title}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     {(prevDaily || nextDaily) && (
       <div class="daily-nav card" style="margin-top:1rem;">
