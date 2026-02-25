@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-02-24)"
-description: "Synced with Telegram daily brief."
+description: "Hardening playbook under rising threats: token rotation and config lockdown."
 pubDate: 2026-02-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

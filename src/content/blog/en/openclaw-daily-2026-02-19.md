@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-02-19)"
-description: "Synced with Telegram daily brief."
+description: "Channel reliability, fallback-chain design, and context hygiene priorities."
 pubDate: 2026-02-19
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

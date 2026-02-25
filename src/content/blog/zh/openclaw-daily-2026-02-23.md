@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-02-23）"
-description: "与 Telegram 当日推送同步。"
+description: "长期任务资源治理：磁盘增长、解耦发布与告警统一。"
 pubDate: 2026-02-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

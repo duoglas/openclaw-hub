@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-02-23)"
-description: "Synced with Telegram daily brief."
+description: "Long-run ops: storage growth control, publish/delivery decoupling, unified alerts."
 pubDate: 2026-02-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

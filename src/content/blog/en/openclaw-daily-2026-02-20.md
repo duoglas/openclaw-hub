@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-02-20)"
-description: "Synced with Telegram daily brief."
+description: "Gateway health checks, patrol cadence, and session-cleanup strategy in practice."
 pubDate: 2026-02-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

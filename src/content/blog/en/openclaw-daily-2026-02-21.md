@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-02-21)"
-description: "Synced with Telegram daily brief."
+description: "Security warning triage, plugin governance, and least-privilege operations."
 pubDate: 2026-02-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

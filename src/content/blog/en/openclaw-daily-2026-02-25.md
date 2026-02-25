@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-02-25)"
-description: "Synced with Telegram daily brief."
+description: "v2026.2.23 highlights, SSRF config migration, and session-governance actions."
 pubDate: 2026-02-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

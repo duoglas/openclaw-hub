@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-02-20）"
-description: "与 Telegram 当日推送同步。"
+description: "围绕网关健康、巡检节奏与会话清理策略的实战要点。"
 pubDate: 2026-02-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

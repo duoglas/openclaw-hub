@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-02-19）"
-description: "与 Telegram 当日推送同步。"
+description: "聚焦渠道稳定、回退链与上下文治理的当日执行重点。"
 pubDate: 2026-02-19
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

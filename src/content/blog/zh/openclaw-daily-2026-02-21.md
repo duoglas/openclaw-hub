@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-02-21）"
-description: "与 Telegram 当日推送同步。"
+description: "安全告警分级、插件治理与最小权限实践总结。"
 pubDate: 2026-02-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

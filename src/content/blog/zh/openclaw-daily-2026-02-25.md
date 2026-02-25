@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-02-25）"
-description: "与 Telegram 当日推送同步。"
+description: "v2026.2.23 关键更新、SSRF 配置迁移与会话治理建议。"
 pubDate: 2026-02-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

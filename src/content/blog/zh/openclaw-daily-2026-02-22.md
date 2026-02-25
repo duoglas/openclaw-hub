@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-02-22）"
-description: "与 Telegram 当日推送同步。"
+description: "浏览器自动化稳定性与 Relay/Profile 排障路径。"
 pubDate: 2026-02-22
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
