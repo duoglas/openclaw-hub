@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Add `BreadcrumbList` JSON-LD on EN/ZH blog index pages to strengthen list-page hierarchy signals and crawler understanding — commit `(this commit)`
 - [x] Add `BreadcrumbList` JSON-LD (+ `numberOfItems` in `ItemList`) on EN/ZH tag archive pages to strengthen tag-page hierarchy signals and SERP understanding — commit `(this commit)`
 - [x] Add `CollectionPage` + `ItemList` JSON-LD on EN/ZH tag archive pages to improve tag-page crawl understanding and long-tail SEO signals — commit `(this commit)`
 - [x] Add `ItemList` JSON-LD on EN/ZH blog index pages to improve list-page understanding by search engines — commit `(this commit)`

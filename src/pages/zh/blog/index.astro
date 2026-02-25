@@ -20,10 +20,30 @@ const itemListSchema = {
     };
   }),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: '首页',
+      item: 'https://kuoo.uk/zh/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: '文章',
+      item: 'https://kuoo.uk/zh/blog/',
+    },
+  ],
+};
 ---
 
 <BaseLayout title="文章" description="OpenClaw 指南全部文章" lang="zh">
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <h1>文章</h1>
   {posts.map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');

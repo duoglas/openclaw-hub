@@ -20,10 +20,30 @@ const itemListSchema = {
     };
   }),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://kuoo.uk/en/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Articles',
+      item: 'https://kuoo.uk/en/blog/',
+    },
+  ],
+};
 ---
 
 <BaseLayout title="Articles" description="All OpenClaw Guide articles" lang="en">
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <h1>Articles</h1>
   {posts.map(post => {
     const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
