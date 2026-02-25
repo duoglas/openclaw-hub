@@ -28,9 +28,9 @@ jobs:
       - name: Build check
         run: pnpm build
 
-      - name: Frontmatter check
+      - name: Frontmatter and content sanity check
         run: |
-          echo "Checking frontmatter..."
+          echo "Checking frontmatter + content sanity..."
           while IFS= read -r f; do
             if ! grep -q "^---" "$f" 2>/dev/null; then
               echo "Missing frontmatter: $f"
@@ -40,8 +40,18 @@ jobs:
               echo "Missing required frontmatter fields: $f"
               exit 1
             fi
+
+            # Block obvious unfinished placeholders
+            if grep -qE "^\-\s*$" "$f"; then
+              echo "Found empty bullet placeholder: $f"
+              exit 1
+            fi
+            if grep -qE "(Key launch / product update:|Most-read troubleshooting topic:|Most practical workflow tip:|关键发布 / 更新：|阅读量最高的排障话题：|最实用的效率技巧：)" "$f"; then
+              echo "Found template placeholder text: $f"
+              exit 1
+            fi
           done < <(find src/content/blog -type f -name '*.md')
-          echo "Frontmatter check passed"
+          echo "Frontmatter + content sanity check passed"
 
       - name: Lychee Link Check
         uses: lycheeverse/lychee-action@v2
