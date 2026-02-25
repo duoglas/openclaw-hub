@@ -232,3 +232,12 @@ EOF
 - 查看 [OpenClaw GitHub Issues](https://github.com/nicepkg/openclaw) 看有没有类似问题
 - 加入 [Discord](https://discord.gg/openclaw) 或 [Telegram](https://t.me/openclaw) 社区提问
 - 运行 `openclaw doctor --verbose` 并附上输出
+
+## 延伸阅读（OpenClaw）
+
+- [OpenClaw 是什么？一文看懂开源 AI Agent 平台（2026）](/zh/blog/what-is-openclaw/)
+- [OpenClaw vs ChatGPT vs Claude：2026 年怎么选 AI 助手？](/zh/blog/openclaw-vs-chatgpt-vs-claude/)
+- [OpenClaw 模型回退策略：稳定性、成本与质量如何平衡](/zh/blog/openclaw-model-fallback-strategy/)
+- [OpenClaw Telegram 故障排查全指南](/zh/blog/openclaw-telegram-troubleshooting-guide/)
+- [OpenClaw 日志排查指南：从报错到根因定位](/zh/blog/openclaw-logs-debug-guide/)
+

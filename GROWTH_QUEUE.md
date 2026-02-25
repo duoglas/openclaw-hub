@@ -11,7 +11,6 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] Add internal-link blocks to top 10 traffic pages (ZH)
 - [ ] Normalize titles/meta for AI/Tech daily posts (last 14 days)
 - [ ] Add weekly roundup article template + automation hook
 - [ ] Add “related posts” component rules (manual or lightweight static)
@@ -19,7 +18,7 @@ Manager: main session
 - [ ] Create `SEO_WEEKLY_REPORT.md` template for KPI tracking
 
 ## Doing
-- [ ] (empty)
+- [ ] Add internal-link blocks to top 10 traffic pages (ZH)
 
 ## Done
 - [x] Add internal-link blocks to top 10 traffic pages (EN) — commit `TBD`
