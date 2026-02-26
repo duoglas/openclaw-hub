@@ -53,3 +53,13 @@
 - Result: pass (table rendered; fallback row shown when no structured query metrics provided).
 - Decision: iterate (collect 7 days of structured query rows, then tune thresholds).
 
+### EXP-005
+- Hypothesis: Enforcing industry/problem/actionability structure for weekly posts will prevent low-value progress logs and increase publish quality consistency.
+- Scope: `scripts/generate-weekly-roundup.sh`, CI workflow, weekly post files
+- Change: Added `scripts/check-weekly-content-quality.sh` + npm script `check:weekly-content`, wired into `content-check.yml`, and rewrote current EN weekly post to meet quality rubric.
+- Start date: 2026-02-26
+- End date: 2026-02-26
+- Success metric: CI fails weekly posts missing required sections or containing banned progress-log wording; build passes after compliant rewrite.
+- Result: pass (local quality check + build passed).
+- Decision: scale
+

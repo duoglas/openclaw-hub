@@ -26,3 +26,17 @@ Per-post score: 0-30 (6 dimensions x 0-5)
 - Differentiation:
 - Total:
 - Rework needed? (Y/N)
+
+## Latest Scored Article
+
+- Title: AI Agent Ops Weekly: Traffic, Reliability, and Monetization Signals (2026-02-23 to 2026-03-01)
+- URL/slug: /en/blog/openclaw-weekly-2026-02-23-to-2026-03-01/
+- Intent Match: 5
+- Actionability: 4
+- Evidence: 3
+- Structure: 5
+- Internal Links: 4
+- Differentiation: 4
+- Total: 25
+- Rework needed? (Y/N): N
+

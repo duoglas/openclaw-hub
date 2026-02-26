@@ -49,22 +49,29 @@ category: "news"
 lang: "en"
 ---
 
-## This Week in OpenClaw
+## Industry Dynamics This Week
 
-- Key launch / product update:
-- Most-read troubleshooting topic:
-- Most practical workflow tip:
+- AI infra / agent ecosystem changes that matter to operators:
+- Distribution/search changes affecting independent sites:
+- Cost/monetization signal shifts (hosting, API pricing, conversion):
 
-## Highlights
+## Problem Insights (What Broke / Why It Matters)
 
-### 1) Tools & Integrations
-- 
+1)
+- What happened:
+- Root cause pattern:
+- Business impact:
 
-### 2) Deployment & Reliability
-- 
+2)
+- What happened:
+- Root cause pattern:
+- Business impact:
 
-### 3) Agent Workflow & Productivity
-- 
+## Actionable Recommendations (Next 7 Days)
+
+1.
+2.
+3.
 
 ## Daily Briefs This Week
 
@@ -90,22 +97,29 @@ category: "news"
 lang: "zh"
 ---
 
-## 本周 OpenClaw 速览
+## 本周行业动态
 
-- 关键发布 / 更新：
-- 阅读量最高的排障话题：
-- 最实用的效率技巧：
+- 对独立站运营有影响的 AI/Agent 生态变化：
+- 对流量获取有影响的平台/搜索变化：
+- 对变现有影响的成本与转化信号变化：
 
-## 重点内容
+## 问题洞察（哪里出问题了，为什么重要）
 
-### 1）工具与集成
-- 
+1）
+- 现象：
+- 根因模式：
+- 业务影响：
 
-### 2）部署与稳定性
-- 
+2）
+- 现象：
+- 根因模式：
+- 业务影响：
 
-### 3）Agent 工作流与效率
-- 
+## 可执行建议（未来 7 天）
+
+1.
+2.
+3.
 
 ## 本周日报索引
 

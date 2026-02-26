@@ -31,6 +31,9 @@ jobs:
       - name: Weekly review cadence check
         run: pnpm check:weekly-review
 
+      - name: Weekly content quality check
+        run: pnpm check:weekly-content
+
       - name: Content taxonomy check
         run: pnpm check:taxonomy
 

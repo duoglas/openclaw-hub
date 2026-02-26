@@ -12,7 +12,8 @@
     "weekly:seo": "bash scripts/generate-seo-weekly-report.sh",
     "check:weekly-review": "bash scripts/check-weekly-review-cadence.sh",
     "check:taxonomy": "bash scripts/check-content-taxonomy.sh",
-    "check:stale-domain": "bash scripts/scan-stale-domain.sh"
+    "check:stale-domain": "bash scripts/scan-stale-domain.sh",
+    "check:weekly-content": "bash scripts/check-weekly-content-quality.sh"
   },
   "keywords": [],
   "author": "",
