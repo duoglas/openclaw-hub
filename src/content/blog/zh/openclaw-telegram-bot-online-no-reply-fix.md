@@ -2,7 +2,7 @@
 title: "OpenClaw Telegram 机器人在线但不回复：10 分钟排查与修复（2026）"
 description: "针对高频问题“机器人在线但不回消息”，给出可直接执行的 OpenClaw + Telegram 排查命令：token、webhook 冲突、pairing、群组权限、网络代理与长期稳定部署。"
 pubDate: 2026-02-25
-tags: ["openclaw", "telegram", "troubleshooting", "bot", "deployment"]
+tags: ["openclaw", "telegram", "troubleshooting", "bot"]
 category: "guide"
 lang: "zh"
 ---

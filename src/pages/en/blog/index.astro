@@ -4,6 +4,10 @@ import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'en')
+  .filter(p => {
+    const slug = p.id.replace(/^en\//, '').replace(/\.md$/, '');
+    return !slug.startsWith('openclaw-daily-') && !slug.startsWith('openclaw-weekly-');
+  })
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const itemListSchema = {
@@ -41,10 +45,10 @@ const breadcrumbSchema = {
 };
 ---
 
-<BaseLayout title="Articles" description="All OpenClaw Guide articles" lang="en">
+<BaseLayout title="Guides" description="OpenClaw guides and troubleshooting articles (excluding dailies)" lang="en">
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <h1>Articles</h1>
+  <h1>Guides</h1>
   {posts.map(post => {
     const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
     return (

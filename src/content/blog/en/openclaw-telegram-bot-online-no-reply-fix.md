@@ -2,7 +2,7 @@
 title: "OpenClaw Telegram Bot Online but Not Replying: 10-Minute Fix Guide (2026)"
 description: "Fix the most common OpenClaw + Telegram issue (bot appears online but never replies) with step-by-step commands: token checks, webhook conflicts, pairing/allowlist, group privacy mode, and deployment stability tips."
 pubDate: 2026-02-25
-tags: ["openclaw", "telegram", "troubleshooting", "bot", "deployment"]
+tags: ["openclaw", "telegram", "troubleshooting", "bot"]
 category: "guide"
 lang: "en"
 ---

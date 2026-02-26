@@ -4,6 +4,10 @@ import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'zh')
+  .filter(p => {
+    const slug = p.id.replace(/^zh\//, '').replace(/\.md$/, '');
+    return !slug.startsWith('openclaw-daily-') && !slug.startsWith('openclaw-weekly-');
+  })
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const itemListSchema = {
@@ -41,10 +45,10 @@ const breadcrumbSchema = {
 };
 ---
 
-<BaseLayout title="文章" description="OpenClaw 指南全部文章" lang="zh">
+<BaseLayout title="教程库" description="OpenClaw 教程与排障文章（不含日报）" lang="zh">
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-  <h1>文章</h1>
+  <h1>教程库</h1>
   {posts.map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
     return (

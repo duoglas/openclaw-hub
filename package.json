@@ -10,7 +10,8 @@
     "daily:seo": "bash scripts/generate-seo-daily-snapshot.sh",
     "weekly:roundup": "bash scripts/generate-weekly-roundup.sh",
     "weekly:seo": "bash scripts/generate-seo-weekly-report.sh",
-    "check:weekly-review": "bash scripts/check-weekly-review-cadence.sh"
+    "check:weekly-review": "bash scripts/check-weekly-review-cadence.sh",
+    "check:taxonomy": "bash scripts/check-content-taxonomy.sh"
   },
   "keywords": [],
   "author": "",
