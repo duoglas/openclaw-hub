@@ -6,135 +6,152 @@ const updatedAt = '2026-02-26';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Team Vibe Coding Playbook | coding.kuoo.uk</title>
-  <meta name="description" content="面向团队的 Claude Code / Cursor / OpenCode + oh-my-opencode 实战手册：角色分工、规则文件、Skill/MCP、CI门禁、度量指标与反模式。" />
+  <title>Team Vibe Coding 手把手教程 | coding.kuoo.uk</title>
+  <meta name="description" content="Claude Code / Cursor / OpenCode + oh-my-opencode 手把手教程：从零到团队可用的 5 步走法。" />
   <link rel="canonical" href="https://coding.kuoo.uk/" />
   <style>
     :root{--bg:#0a1022;--panel:#111a36;--card:#172246;--line:#2a396f;--text:#ecf1ff;--muted:#afbbdf;--brand:#66a3ff;--ok:#4dd6a4;--warn:#ffce6d;--bad:#ff7a7a}
     *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,Segoe UI,sans-serif;line-height:1.65}
-    .wrap{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
-    aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:18px}
-    aside h1{font-size:17px;margin:0 0 10px} aside a{display:block;color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:8px;margin:4px 0}
+    .wrap{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+    aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:16px}
+    aside h1{font-size:16px;margin:0 0 8px} aside a{display:block;color:var(--muted);text-decoration:none;padding:6px 9px;border-radius:7px;margin:3px 0;font-size:14px}
     aside a:hover{background:#1a2854;color:#fff}
-    main{padding:24px;max-width:1060px}
-    h2{margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px}
-    .hero{background:linear-gradient(120deg,#1a2d63,#0f3a7a);border:1px solid #3156a2;padding:16px;border-radius:13px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:11px}
-    .card{background:var(--card);border:1px solid var(--line);padding:11px;border-radius:9px}
-    .badge{display:inline-block;background:#253663;border-radius:999px;padding:2px 7px;font-size:12px;color:#c9d7ff}
-    pre{background:#0c1638;border:1px solid #2f447f;border-radius:9px;padding:10px;overflow:auto}
-    code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    main{padding:22px;max-width:1020px}
+    h2{margin:26px 0 8px;border-bottom:1px solid var(--line);padding-bottom:7px}
+    .step{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:10px;margin-top:14px}
+    .badge{display:inline-block;background:#253663;border-radius:999px;padding:2px 6px;font-size:11px;color:#c9d7ff}
+    pre{background:#0c1638;border:1px solid #2f447f;border-radius:9px;padding:10px;overflow:auto;font-size:13px}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#1b2855;padding:2px 5px;border-radius:4px}
     .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
-    table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:9px;overflow:hidden}
-    th,td{border-bottom:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}
-    th{color:#cdddff;background:#1a2a59}
+    ul li{margin:5px 0} strong{color:#cddcff}
   </style>
 </head>
 <body>
 <div class="wrap">
   <aside>
-    <h1>⚡ Vibe Coding Playbook</h1>
-    <a href="#north">北极星与边界</a>
-    <a href="#roles">团队角色分工</a>
-    <a href="#workflow">标准工作流（SOP）</a>
-    <a href="#rules">规则文件落地</a>
-    <a href="#skills">Skill & MCP 策略</a>
-    <a href="#gates">CI质量闸门</a>
-    <a href="#metrics">度量与反作弊</a>
-    <a href="#anti">常见翻车与修复</a>
+    <h1>⚡ Vibe Coding 教程</h1>
+    <a href="#step1">Step 1: 写 AGENTS.md 规则</a>
+    <a href="#step2">Step 2: 配置 Cursor 规则</a>
+    <a href="#step3">Step 3: 配置 Claude Code</a>
+    <a href="#step4">Step 4: 配置 OpenCode</a>
+    <a href="#step5">Step 5: 设置 CI 闸门</a>
+    <a href="#tips">省钱小妙招</a>
     <a href="https://kuoo.uk/zh/">返回主站</a>
   </aside>
   <main>
-    <section class="hero" id="north">
+    <section class="hero">
       <span class="badge">Updated {updatedAt}</span>
-      <h2 style="border:none;margin:6px 0">目标：把 AI 编程从“个人技巧”升级为“团队产能系统”</h2>
-      <p><b>北极星：</b>交付速度↑、返工率↓、线上事故率↓。不是比谁会写 prompt，而是流程可复用、质量可追责、结果可量化。</p>
+      <h2>目标：让团队在 1 天内用上 AI 编程</h2>
+      <p>不是理论手册，是手把手教程。照着做，第 1 天就能跑起来。</p>
     </section>
 
-    <section id="roles">
-      <h2>1) 角色分工（落地关键）</h2>
-      <table>
-        <tr><th>角色</th><th>工具主力</th><th>责任</th><th>交付物</th></tr>
-        <tr><td>Spec Owner</td><td>Cursor/Docs</td><td>把需求写成可验收任务（DoD）</td><td>Task Contract（输入/输出/验收）</td></tr>
-        <tr><td>Builder</td><td>Claude Code/OpenCode</td><td>实现 + 测试 + 自检</td><td>代码、测试、变更说明</td></tr>
-        <tr><td>Reviewer</td><td>Cursor + CI</td><td>审架构风险、边界条件、回滚策略</td><td>PR Review 结论</td></tr>
-        <tr><td>Ops Owner</td><td>MCP/监控</td><td>上线、观测、异常回收</td><td>发布记录 + 复盘条目</td></tr>
-      </table>
-      <p class="ok">原则：AI 可以写代码，但“是否合并”必须是人类责任闭环。</p>
-    </section>
-
-    <section id="workflow">
-      <h2>2) 标准工作流（每天就按这个跑）</h2>
-      <pre><code>S1 需求澄清 -> S2 Task Contract -> S3 实现(可并行子任务) -> S4 本地验证 -> S5 CI门禁 -> S6 人审合并 -> S7 上线观测 -> S8 复盘沉淀</code></pre>
-      <div class="grid">
-        <div class="card"><b>S2 Task Contract 必填</b><br/>目标、非目标、验收条件、风险、回滚方案、影响面。</div>
-        <div class="card"><b>S3 执行约束</b><br/>先计划后编码；大改动先“只出计划”再批准执行。</div>
-        <div class="card"><b>S4 验证清单</b><br/>单测、集成测、静态检查、性能预算、关键日志。</div>
-        <div class="card"><b>S8 复盘沉淀</b><br/>失败样例写回规则/skill，防止同类事故再次出现。</div>
-      </div>
-    </section>
-
-    <section id="rules">
-      <h2>3) 规则文件：一套规则，多工具复用</h2>
-      <p>不要三套规则三种说法。建议采用“单一事实源”：</p>
-      <pre><code>AGENTS.md               # 团队全局协作规则（唯一权威）
-CLAUDE.md               # 仅一行：@AGENTS.md
-.cursorrules            # 仅一行：遵循 AGENTS.md + 项目规则
-.opencode/preset.md     # 同样引用 AGENTS.md
-PROJECT_RULES.md        # 项目专属约束（性能/安全/发布）</code></pre>
-      <p><b>AGENTS.md 最少要有：</b></p>
+    <section class="step" id="step1">
+      <h3>Step 1：写 AGENTS.md 规则文件（10 分钟）</h3>
+      <p><strong>目标：</strong>一套规则，全工具复用。</p>
+      <p><strong>操作流程：</strong></p>
       <ul>
-        <li>禁止项：破坏性命令、越权网络访问、无测试直接合并</li>
-        <li>输出格式：结论 → 已做 → 下一步</li>
-        <li>执行权限分层：自动可做 / 必须人工确认</li>
-        <li>错误处理：失败时输出最小复现 + 回滚命令</li>
+        <li>在项目根目录创建 AGENTS.md</li>
+        <li>直接复制下面内容，改不改都行：</li>
       </ul>
+      <pre><code># AGENTS.md - 团队协作规则（唯一权威源）
+
+## 禁止项
+- 禁止执行破坏性命令（rm -rf /、DROP DATABASE）
+- 禁止越权网络访问（非白名单域名）
+- 禁止无测试直接合并（必须有 test pass）
+
+## 输出格式
+结论 → 已做 → 下一步
+
+## 执行权限分层
+自动可做：格式化、生成单元测试、写 README
+必须人工确认：数据库改动、发布、配置变更
+
+## 错误处理
+失败时输出：最小复现步骤 + 回滚命令 + 影响面</code></pre>
+      <p class="ok">下一步：所有工具的规则文件，只写一行：@AGENTS.md</p>
     </section>
 
-    <section id="skills">
-      <h2>4) Skill + MCP：把高频动作“产品化”</h2>
-      <div class="grid">
-        <div class="card"><b>优先做 Skill 的任务</b><br/>脚手架生成、回归测试、发布检查、周报生成、故障排查。</div>
-        <div class="card"><b>优先走 MCP 的任务</b><br/>GitHub/Jira/Notion/监控平台读写，统一鉴权与审计。</div>
-        <div class="card"><b>最小权限原则</b><br/>按任务授予 read/write/exec，不默认全开。</div>
-      </div>
-      <pre><code># 示例：把“发版前检查”做成 skill
-Input: branch, target_env
-Checks: changelog, migration, test pass, rollback command, feature flags
-Output: release-ready=true/false + 风险清单</code></pre>
-    </section>
-
-    <section id="gates">
-      <h2>5) CI 质量闸门（不满足就不让过）</h2>
-      <table>
-        <tr><th>闸门</th><th>规则</th><th>失败动作</th></tr>
-        <tr><td>Code Quality</td><td>lint+typecheck+tests 全绿</td><td>阻断合并</td></tr>
-        <tr><td>Spec Sync</td><td>PR 必须关联 Task Contract</td><td>阻断合并</td></tr>
-        <tr><td>Safety</td><td>涉及配置/数据迁移必须有回滚命令</td><td>阻断合并</td></tr>
-        <tr><td>Docs</td><td>接口或行为变更必须更新文档</td><td>阻断合并</td></tr>
-      </table>
-      <p class="warn">经验：团队失控通常不是“模型不够强”，而是“门禁不够硬”。</p>
-    </section>
-
-    <section id="metrics">
-      <h2>6) 指标体系（防止“看起来很忙”）</h2>
+    <section class="step" id="step2">
+      <h3>Step 2：配置 Cursor 规则（5 分钟）</h3>
+      <p><strong>目标：</strong>让 Cursor 按规则执行。</p>
+      <p><strong>操作流程：</strong></p>
       <ul>
-        <li><b>Lead Time：</b>需求到上线时长（目标持续下降）</li>
-        <li><b>Rework Rate：</b>7天内返工比例（目标持续下降）</li>
-        <li><b>Defect Escape：</b>线上漏检缺陷数（目标持续下降）</li>
-        <li><b>AI 有效产出率：</b>AI 生成代码最终被保留比例（目标上升）</li>
+        <li>打开 Cursor：File → Preferences → Cursor Settings</li>
+        <li>点击 Rules，进入规则页面</li>
+        <li>添加新规则，选择 Project Rules（只约束当前项目）</li>
+        <li>规则名称：AGENTS</li>
+        <li>规则内容：复制 AGENTS.md 全部内容，粘贴进去</li>
+        <li>保存</li>
       </ul>
-      <p class="bad">反指标：只统计“生成了多少代码/调用了多少Agent”会误导团队。</p>
+      <p class="warn">注意：Cursor 支持全局规则（User Rules）和项目规则（Project Rules）。建议优先用项目规则，避免污染其他项目。</p>
     </section>
 
-    <section id="anti">
-      <h2>7) 常见翻车点（真实高频）</h2>
-      <div class="grid">
-        <div class="card"><b>翻车1：直接让 AI 大改</b><br/>修复：先输出 plan + 文件级改动列表，再批准执行。</div>
-        <div class="card"><b>翻车2：规则分散</b><br/>修复：统一 AGENTS.md 为唯一规则源，其余文件只引用。</div>
-        <div class="card"><b>翻车3：追求速度忽视验证</b><br/>修复：CI 增加“无测试不合并”“无回滚不发布”。</div>
-        <div class="card"><b>翻车4：MCP 权限过大</b><br/>修复：按项目、按环境拆权限，生产写权限单独审批。</div>
-      </div>
+    <section class="step" id="step3">
+      <h3>Step 3：配置 Claude Code（5 分钟）</h3>
+      <p><strong>目标：</strong>Claude Code 读取 AGENTS.md。</p>
+      <p><strong>操作流程：</strong></p>
+      <ul>
+        <li>在项目根目录创建 CLAUDE.md</li>
+        <li>只写一行：@AGENTS.md</li>
+      </ul>
+      <pre><code>@AGENTS.md</code></pre>
+      <p class="ok">这样就够了。Claude Code 会自动读取 AGENTS.md，不用重复写规则。</p>
+    </section>
+
+    <section class="step" id="step4">
+      <h3>Step 4：配置 OpenCode（5 分钟）</h3>
+      <p><strong>目标：</strong>OpenCode 同样引用 AGENTS.md。</p>
+      <p><strong>操作流程：</strong></p>
+      <ul>
+        <li>在项目根目录创建 .opencode/preset.md</li>
+        <li>写：遵循 AGENTS.md 中的所有规则</li>
+      </ul>
+      <pre><code>遵循 AGENTS.md 中的所有规则</code></pre>
+      <p class="ok">三套工具（Cursor / Claude Code / OpenCode）现在都共享同一套规则。</p>
+    </section>
+
+    <section class="step" id="step5">
+      <h3>Step 5：设置 CI 质量闸门（20 分钟）</h3>
+      <p><strong>目标：</strong>不满足规则的代码不让过。</p>
+      <p><strong>最小可用配置（复制即用）：</strong></p>
+      <pre><code># .github/workflows/quality-gate.yml
+name: Quality Gate
+on: [pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: lint + typecheck
+        run: npm run lint && npm run typecheck
+      - name: tests
+        run: npm test
+      - name: spec-sync
+        run: |
+          # PR 必须关联 Task Contract
+          gh pr view $PR --json body | grep -q "Task Contract" || exit 1</code></pre>
+      <p class="bad">关键：lint/typecheck/test 不通过，CI 红了就不让合并。</p>
+    </section>
+
+    <section class="step" id="tips">
+      <h3>省钱小妙招（避免上下文溢出）</h3>
+      <ul>
+        <li><strong>方法 1：</strong>复杂项目分模块处理，别一个对话全改</li>
+        <li><strong>方法 2：</strong>用 /summarize 压缩上下文，避免重复历史</li>
+        <li><strong>方法 3：</strong>大改动先用 Plan 模式，只出计划再执行</li>
+      </ul>
+      <p class="warn">经验：上下文太长会导致额外收费，而且质量下降。</p>
+    </section>
+
+    <section class="step">
+      <h3>小干货工具推荐</h3>
+      <ul>
+        <li>mcp.so - MCP 工具仓库</li>
+        <li>smithery.ai - MCP 工具分发平台</li>
+        <li>https://www.skill-cn.com/ - Skills 资源站</li>
+      </ul>
+      <p class="ok">优先用现成的 MCP/Skills，别自己写胶水代码。</p>
     </section>
   </main>
 </div>
