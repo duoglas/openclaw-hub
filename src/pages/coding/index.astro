@@ -6,29 +6,28 @@ const updatedAt = '2026-02-26';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Team Vibe Coding Playbook（可落地版）| coding.kuoo.uk</title>
-  <meta name="description" content="面向团队的 Claude Code / Cursor / OpenCode + oh-my-opencode 实战手册：角色分工、规则文件、Skill/MCP、CI门禁、度量指标与30分钟导入路径。" />
+  <title>Team Vibe Coding Playbook | coding.kuoo.uk</title>
+  <meta name="description" content="面向团队的 Claude Code / Cursor / OpenCode + oh-my-opencode 实战手册：角色分工、规则文件、Skill/MCP、CI门禁、度量指标与反模式。" />
   <link rel="canonical" href="https://coding.kuoo.uk/" />
   <style>
     :root{--bg:#0a1022;--panel:#111a36;--card:#172246;--line:#2a396f;--text:#ecf1ff;--muted:#afbbdf;--brand:#66a3ff;--ok:#4dd6a4;--warn:#ffce6d;--bad:#ff7a7a}
     *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,Segoe UI,sans-serif;line-height:1.65}
-    .wrap{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+    .wrap{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
     aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:18px}
-    aside h1{font-size:18px;margin:0 0 10px} aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;margin:4px 0}
+    aside h1{font-size:17px;margin:0 0 10px} aside a{display:block;color:var(--muted);text-decoration:none;padding:7px 10px;border-radius:8px;margin:4px 0}
     aside a:hover{background:#1a2854;color:#fff}
-    main{padding:26px;max-width:1080px}
-    h2{margin:30px 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px}
-    .hero{background:linear-gradient(120deg,#1a2d63,#0f3a7a);border:1px solid #3156a2;padding:18px;border-radius:14px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-    .card{background:var(--card);border:1px solid var(--line);padding:12px;border-radius:10px}
-    .badge{display:inline-block;background:#253663;border-radius:999px;padding:3px 8px;font-size:12px;color:#c9d7ff}
-    pre{background:#0c1638;border:1px solid #2f447f;border-radius:10px;padding:12px;overflow:auto}
+    main{padding:24px;max-width:1060px}
+    h2{margin:28px 0 10px;border-bottom:1px solid var(--line);padding-bottom:8px}
+    .hero{background:linear-gradient(120deg,#1a2d63,#0f3a7a);border:1px solid #3156a2;padding:16px;border-radius:13px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:11px}
+    .card{background:var(--card);border:1px solid var(--line);padding:11px;border-radius:9px}
+    .badge{display:inline-block;background:#253663;border-radius:999px;padding:2px 7px;font-size:12px;color:#c9d7ff}
+    pre{background:#0c1638;border:1px solid #2f447f;border-radius:9px;padding:10px;overflow:auto}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
     .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
-    table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-    th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+    table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+    th,td{border-bottom:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}
     th{color:#cdddff;background:#1a2a59}
-    .btn{display:inline-block;text-decoration:none;background:var(--brand);color:#06142f;font-weight:700;padding:8px 12px;border-radius:8px;margin-right:8px}
   </style>
 </head>
 <body>
@@ -43,16 +42,13 @@ const updatedAt = '2026-02-26';
     <a href="#gates">CI质量闸门</a>
     <a href="#metrics">度量与反作弊</a>
     <a href="#anti">常见翻车与修复</a>
-    <a href="#bootstrap">30分钟导入清单</a>
     <a href="https://kuoo.uk/zh/">返回主站</a>
   </aside>
   <main>
     <section class="hero" id="north">
       <span class="badge">Updated {updatedAt}</span>
-      <h2 style="border:none;margin:8px 0">目标：把 AI 编程从“个人技巧”升级为“团队产能系统”</h2>
+      <h2 style="border:none;margin:6px 0">目标：把 AI 编程从“个人技巧”升级为“团队产能系统”</h2>
       <p><b>北极星：</b>交付速度↑、返工率↓、线上事故率↓。不是比谁会写 prompt，而是流程可复用、质量可追责、结果可量化。</p>
-      <a class="btn" href="#bootstrap">直接看30分钟导入</a>
-      <a class="btn" href="#rules">直接抄规则模板</a>
     </section>
 
     <section id="roles">
@@ -139,17 +135,6 @@ Output: release-ready=true/false + 风险清单</code></pre>
         <div class="card"><b>翻车3：追求速度忽视验证</b><br/>修复：CI 增加“无测试不合并”“无回滚不发布”。</div>
         <div class="card"><b>翻车4：MCP 权限过大</b><br/>修复：按项目、按环境拆权限，生产写权限单独审批。</div>
       </div>
-    </section>
-
-    <section id="bootstrap">
-      <h2>8) 30分钟导入清单（今天就能执行）</h2>
-      <ol>
-        <li>创建 <code>AGENTS.md</code>、<code>PROJECT_RULES.md</code>、PR模板。</li>
-        <li>补 4 个 CI 闸门：lint/type/test/spec-sync。</li>
-        <li>选 1 个任务跑完整流程：Task Contract → AI实现 → CI → PR。</li>
-        <li>复盘并沉淀 1 条新规则 + 1 个 Skill。</li>
-      </ol>
-      <p class="ok"><b>达标判定：</b>首个试点任务 24h 内完成且可复现。</p>
     </section>
   </main>
 </div>
