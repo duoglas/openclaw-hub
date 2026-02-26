@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-02-26 14:03
+Last updated: 2026-02-26 14:35
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,13 +11,14 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] Add FAQ schema to 3 pillar pages (EN/ZH) to enhance SERP rich snippets and user engagement | ICE 7x8x6=336
+
+
 
 ## Doing
-- [ ] Add FAQ schema to 3 pillar pages (EN/ZH) to enhance SERP rich snippets and user engagement | ICE 7x8x6=336
 - [ ] (empty)
 
 ## Done
+- [x] Add FAQ schema to 3 pillar pages (EN/ZH) to enhance SERP rich snippets and user engagement | ICE 7x8x6=336 — commit `5ab9c44`
 - [x] Add internal links from gateway/VPS guides to allowedOrigins fix article (EN/ZH) | ICE 8x10x9=720 — commit `b14f4e2`
 - [x] P2 Candidate C: 为周报新增"变现信号"字段（推荐点击/咨询线索）并回填模板 | ICE 8x6x6=288 — commit `a5521ac`
 - [x] P1 Candidate B: 为 /zh 补齐当周 weekly（问题导向）并与 /en 对齐内链与订阅导流（ICE winner: 392） — commit `8ffbb09`
