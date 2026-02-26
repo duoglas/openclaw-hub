@@ -14,3 +14,6 @@ http://openhub.plzbite.top/* https://kuoo.uk/:splat 301!
 # old root article paths -> English canonical
 /blog/:slug /en/blog/:slug/ 301
 /blog/:slug/ /en/blog/:slug/ 301
+
+# coding subdomain mapping
+https://coding.kuoo.uk/* https://kuoo.uk/coding/:splat 200

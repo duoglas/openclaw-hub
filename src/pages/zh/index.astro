@@ -12,7 +12,7 @@ const posts = (await getCollection('blog'))
 
   <img src="/images/home-hero-cartoon.png" alt="OpenClaw Hub 手绘介绍图" style="width:100%; max-width:1100px; border-radius:16px; margin:0.5rem 0 1.25rem; display:block;" />
   
-  <p style="margin:0 0 1rem;"><a href="/zh/daily/">📰 只看科技日报（连续阅读）</a> · <a href="/zh/daily/rss.xml">📡 RSS 订阅</a></p>
+  <p style="margin:0 0 1rem;"><a href="/zh/daily/">📰 只看科技日报（连续阅读）</a> · <a href="/zh/daily/rss.xml">📡 RSS 订阅</a> · <a href="/coding/">⚡ Team Vibe Coding 子站</a></p>
   <h2>最新文章</h2>
   {posts.slice(0, 20).map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
