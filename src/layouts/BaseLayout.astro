@@ -240,11 +240,12 @@ const websiteSchema = {
   <header>
     <nav>
       <a href={prefix + '/'}>{isZh ? '🤖 AI 智能体资讯站' : '🤖 AI Agent Hub'}</a>
-      <a href={prefix + '/blog/'}>{isZh ? '文章' : 'Articles'}</a>
-      <a href={prefix + '/blog/tag/comparison/'}>{isZh ? '对比' : 'Compare'}</a>
-      <a href={prefix + '/blog/tag/guide/'}>{isZh ? '教程' : 'Guides'}</a>
-      <a href={prefix + '/recommended-stack/'}>{isZh ? '推荐' : 'Recommended'}</a>
-      <a href="https://github.com/openclaw/openclaw" target="_blank">GitHub</a>
+      <a href={prefix + '/daily/'}>{isZh ? '日报' : 'Daily'}</a>
+      <a href={prefix + '/blog/'}>{isZh ? '教程库' : 'Guides'}</a>
+      <a href={prefix + '/blog/tag/troubleshooting/'}>{isZh ? '故障排查' : 'Troubleshoot'}</a>
+      <a href={prefix + '/blog/tag/deployment/'}>{isZh ? '部署' : 'Deploy'}</a>
+      <a href={prefix + '/recommended-stack/'}>{isZh ? '工具栈' : 'Stack'}</a>
+      <a href={prefix + '/daily/rss.xml'}>{isZh ? 'RSS' : 'RSS'}</a>
       <div class="lang-switch">
         <a href={enUrl} class={lang === 'en' ? 'active' : ''}>EN</a>
         <a href={zhUrl} class={lang === 'zh' ? 'active' : ''}>中文</a>
