@@ -17,19 +17,20 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] Add `BreadcrumbList` JSON-LD on EN/ZH blog index pages to strengthen list-page hierarchy signals and crawler understanding — commit `(this commit)`
-- [x] Add `BreadcrumbList` JSON-LD (+ `numberOfItems` in `ItemList`) on EN/ZH tag archive pages to strengthen tag-page hierarchy signals and SERP understanding — commit `(this commit)`
-- [x] Add `CollectionPage` + `ItemList` JSON-LD on EN/ZH tag archive pages to improve tag-page crawl understanding and long-tail SEO signals — commit `(this commit)`
-- [x] Add `ItemList` JSON-LD on EN/ZH blog index pages to improve list-page understanding by search engines — commit `(this commit)`
-- [x] Add sitewide RSS autodiscovery `<link rel="alternate" type="application/rss+xml">` for EN/ZH daily feeds to improve feed discovery in browsers/readers/search bots — commit `(this commit)`
-- [x] Improve `weekly:seo` with auto rollup from `reports/seo/daily/*.md` (snapshot count + KPI aggregate when daily fields are filled) — commit `(this commit)`
+- [x] Queue hygiene v2: backfill remaining `(this commit)` placeholders in Done with real hashes — commit `(this commit)`
+- [x] Add `BreadcrumbList` JSON-LD on EN/ZH blog index pages to strengthen list-page hierarchy signals and crawler understanding — commit `edde579`
+- [x] Add `BreadcrumbList` JSON-LD (+ `numberOfItems` in `ItemList`) on EN/ZH tag archive pages to strengthen tag-page hierarchy signals and SERP understanding — commit `835c204`
+- [x] Add `CollectionPage` + `ItemList` JSON-LD on EN/ZH tag archive pages to improve tag-page crawl understanding and long-tail SEO signals — commit `d2037b3`
+- [x] Add `ItemList` JSON-LD on EN/ZH blog index pages to improve list-page understanding by search engines — commit `6115b9d`
+- [x] Add sitewide RSS autodiscovery `<link rel="alternate" type="application/rss+xml">` for EN/ZH daily feeds to improve feed discovery in browsers/readers/search bots — commit `0285dde`
+- [x] Improve `weekly:seo` with auto rollup from `reports/seo/daily/*.md` (snapshot count + KPI aggregate when daily fields are filled) — commit `59ed405`
 - [x] Add Organization `logo` metadata to sitewide `WebSite` + blog `Article` JSON-LD for richer brand entity signals in SERP/social parsers — commit `4f27bf1`
-- [x] Add daily SEO snapshot generator (`pnpm daily:seo`) that outputs `reports/seo/daily/YYYY-MM-DD.md` with manual GSC KPI slots + auto content counts — commit `(this commit)`
-- [x] Add default social share metadata (`og:image` + `twitter:image`) in `BaseLayout`, and wire blog `heroImage` fallback in `BlogPost` for richer link previews — commit `(this commit)`
+- [x] Add daily SEO snapshot generator (`pnpm daily:seo`) that outputs `reports/seo/daily/YYYY-MM-DD.md` with manual GSC KPI slots + auto content counts — commit `65fa99a`
+- [x] Add default social share metadata (`og:image` + `twitter:image`) in `BaseLayout`, and wire blog `heroImage` fallback in `BlogPost` for richer link previews — commit `cef551c`
 - [x] Set Open Graph type by page intent (`website` default in BaseLayout, `article` in BlogPost) to improve social/SEO metadata correctness — commit `870c476`
-- [x] Add sitewide `WebSite` JSON-LD in BaseLayout (EN/ZH) to strengthen technical SEO baseline — commit `(this commit)`
-- [x] SEO hygiene: migrate static sitemap/robots domain references from `openhub.plzbite.top` to `kuoo.uk` — commit `(this commit)`
-- [x] Queue hygiene: backfill missing commit hashes for historical Done tasks and clear placeholder hashes — commit `(this commit)`
+- [x] Add sitewide `WebSite` JSON-LD in BaseLayout (EN/ZH) to strengthen technical SEO baseline — commit `cc31e0d`
+- [x] SEO hygiene: migrate static sitemap/robots domain references from `openhub.plzbite.top` to `kuoo.uk` — commit `50f9766`
+- [x] Queue hygiene: backfill missing commit hashes for historical Done tasks and clear placeholder hashes — commit `4f629d3`
 - [x] Fix root language gateway page canonical/hreflang URLs to `kuoo.uk` (remove stale `openhub.plzbite.top`) to prevent cross-domain SEO confusion — commit `e21cf69`
 - [x] Enhance blog JSON-LD with `keywords` and `image` fields for richer SERP eligibility — commit `e2dbd76`
 - [x] Add strategic “Further Reading” internal-link block to EN VPS deployment pillar (`/en/blog/openclaw-vps-deployment-complete-guide/`) — commit `e9c4d96`
