@@ -28,6 +28,9 @@ jobs:
       - name: Build check
         run: pnpm build
 
+      - name: Weekly review cadence check
+        run: pnpm check:weekly-review
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."

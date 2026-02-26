@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "daily:seo": "bash scripts/generate-seo-daily-snapshot.sh",
     "weekly:roundup": "bash scripts/generate-weekly-roundup.sh",
-    "weekly:seo": "bash scripts/generate-seo-weekly-report.sh"
+    "weekly:seo": "bash scripts/generate-seo-weekly-report.sh",
+    "check:weekly-review": "bash scripts/check-weekly-review-cadence.sh"
   },
   "keywords": [],
   "author": "",
