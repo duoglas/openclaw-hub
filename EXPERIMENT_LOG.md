@@ -63,3 +63,13 @@
 - Result: pass (local quality check + build passed).
 - Decision: scale
 
+### EXP-006
+- Hypothesis: Adding targeted internal links from high-traffic guides to new troubleshooting content will improve SEO authority flow and user discoverability.
+- Scope: Gateway-start-failed and VPS deployment guides (EN/ZH) → allowedOrigins fix article
+- Change: Added new section 3.5 (allowedOrigins error) to gateway-start-failed guides; added pre-exposure security checklist section to VPS deployment guides.
+- Start date: 2026-02-26
+- End date: 2026-02-26
+- Success metric: Build passes with no errors; internal links properly formatted and pointing to existing content.
+- Result: pass (build passed + 4 files updated + commit pushed).
+- Decision: scale
+
