@@ -18,12 +18,14 @@ mkdir -p "$OUT_DIR"
 collect_new_posts() {
   local lang="$1"
   local out=""
+  local count=0
   while IFS=$'\t' read -r d slug; do
     [ -n "$d" ] || continue
     if [[ "$d" < "$MONDAY" || "$d" > "$SUNDAY" ]]; then
       continue
     fi
     out+="- [ ] ${slug} (/${lang}/blog/${slug}/)\n"
+    count=$((count + 1))
   done < <(
     find "src/content/blog/${lang}" -maxdepth 1 -type f -name '*.md' -printf '%f\n' \
       | sed 's/\.md$//' \
@@ -35,7 +37,7 @@ collect_new_posts() {
     out="- [ ] (no dated posts this week)\n"
   fi
 
-  printf "%b" "$out"
+  printf "%s|||%b" "$count" "$out"
 }
 
 collect_changed_posts() {
@@ -145,8 +147,13 @@ collect_daily_snapshot_summary() {
   echo "- Auto-aggregated KPIs (from filled daily files): Clicks=${sum_clicks}, Impressions=${sum_impr}, Avg CTR=${avg_ctr}, Avg Position=${avg_pos}"
 }
 
-NEW_EN=$(collect_new_posts en)
-NEW_ZH=$(collect_new_posts zh)
+NEW_EN_RAW=$(collect_new_posts en)
+NEW_ZH_RAW=$(collect_new_posts zh)
+NEW_EN_COUNT=${NEW_EN_RAW%%|||*}
+NEW_ZH_COUNT=${NEW_ZH_RAW%%|||*}
+NEW_EN=${NEW_EN_RAW#*|||}
+NEW_ZH=${NEW_ZH_RAW#*|||}
+PUBLISHED_POSTS=$((NEW_EN_COUNT + NEW_ZH_COUNT))
 UPDATED=$(collect_changed_posts)
 TECH=$(collect_technical_changes)
 DAILY_SUMMARY=$(collect_daily_snapshot_summary)
@@ -178,7 +185,7 @@ cat > "$OUT_FILE" <<EOF
 | CTR | 0.00% | 0.00% | 0.00pp | Fill from GSC |
 | Avg Position | 0.0 | 0.0 | 0.0 | Lower is better |
 | Indexed Pages | 0 | 0 | 0 | Fill from GSC Indexing |
-| Published Posts | 0 | 0 | 0 | Auto list below |
+| Published Posts | 0 | ${PUBLISHED_POSTS} | n/a | Auto list below |
 
 ## 3) Top Pages (This Week)
 
