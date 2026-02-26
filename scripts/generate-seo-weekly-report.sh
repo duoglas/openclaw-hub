@@ -158,6 +158,13 @@ UPDATED=$(collect_changed_posts)
 TECH=$(collect_technical_changes)
 DAILY_SUMMARY=$(collect_daily_snapshot_summary)
 
+count_real_items() {
+  printf "%s" "$1" | awk '/^- \[ \] / && $0 !~ /\(no .*\)/ {c++} END{print c+0}'
+}
+
+UPDATED_COUNT=$(count_real_items "$UPDATED")
+TECH_COUNT=$(count_real_items "$TECH")
+
 cat > "$OUT_FILE" <<EOF
 # SEO Weekly Report
 
@@ -243,3 +250,46 @@ ${DAILY_SUMMARY}
 EOF
 
 echo "Generated: ${OUT_FILE}"
+
+cat > "WEEKLY_REVIEW.md" <<EOF
+# WEEKLY_REVIEW.md
+
+## Week Meta
+- Week: ${MONDAY} to ${SUNDAY}
+- Owner: hub-growth-worker
+- Reviewed at: ${NOW} (Asia/Shanghai)
+
+## OODA / PDCA Review
+
+### Observe (data)
+- Top gaining pages: (fill from GSC)
+- Top losing pages: (fill from GSC)
+- Top queries by impressions but low CTR: (fill from GSC)
+- New pages indexed: (fill from GSC)
+- Published posts (auto): ${PUBLISHED_POSTS}
+- Updated posts (git-tracked): ${UPDATED_COUNT}
+- Technical SEO commits (git-tracked): ${TECH_COUNT}
+
+### Orient (diagnosis)
+- Why did winners win?
+- Why did losers lose?
+- Bottlenecks (content quality / SEO tech / distribution):
+
+### Decide (next-week priorities, max 3)
+1. Improve CTR for high-impression low-CTR queries with title/meta rewrites on top 3 pages.
+2. Strengthen internal links from newly published posts to pillar pages.
+3. Close one technical SEO hygiene item (schema/canonical/redirect verification) and verify in production.
+
+### Act (execution log)
+- Task: Auto-refresh weekly review scaffold from weekly SEO report generator
+  - commit:
+  - expected impact: Reduce weekly analysis friction and keep review cadence consistent
+  - status: done
+
+## Postmortem
+- What was low-value busy work this week?
+- What should stop next week?
+- What should scale next week?
+EOF
+
+echo "Updated: WEEKLY_REVIEW.md"

@@ -11,12 +11,15 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] (empty)
+- [ ] Add auto-sync of `WEEKLY_REVIEW.md` from `weekly:seo` output to enforce review cadence (ICE: I=8, C=9, E=9, Total=26)
+- [ ] Add stale-domain scanner (`openhub.plzbite.top`) with weekly alert output (ICE: I=7, C=8, E=7, Total=22)
+- [ ] Add low-CTR query opportunity table parser from daily snapshots (ICE: I=7, C=6, E=5, Total=18)
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] Add auto-sync of `WEEKLY_REVIEW.md` from `weekly:seo` output to enforce review cadence (ICE winner: 26) — commit `(this commit)`
 - [x] Queue hygiene v2: backfill remaining `(this commit)` placeholders in Done with real hashes — commit `(this commit)`
 - [x] Add `BreadcrumbList` JSON-LD on EN/ZH blog index pages to strengthen list-page hierarchy signals and crawler understanding — commit `edde579`
 - [x] Add `BreadcrumbList` JSON-LD (+ `numberOfItems` in `ItemList`) on EN/ZH tag archive pages to strengthen tag-page hierarchy signals and SERP understanding — commit `835c204`

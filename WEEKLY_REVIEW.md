@@ -1,17 +1,20 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: ____ to ____
-- Owner: ____
-- Reviewed at: ____
+- Week: 2026-02-23 to 2026-03-01
+- Owner: hub-growth-worker
+- Reviewed at: 2026-02-26 09:01 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
 ### Observe (data)
-- Top gaining pages:
-- Top losing pages:
-- Top queries by impressions but low CTR:
-- New pages indexed:
+- Top gaining pages: (fill from GSC)
+- Top losing pages: (fill from GSC)
+- Top queries by impressions but low CTR: (fill from GSC)
+- New pages indexed: (fill from GSC)
+- Published posts (auto): 9
+- Updated posts (git-tracked): 75
+- Technical SEO commits (git-tracked): 29
 
 ### Orient (diagnosis)
 - Why did winners win?
@@ -19,15 +22,15 @@
 - Bottlenecks (content quality / SEO tech / distribution):
 
 ### Decide (next-week priorities, max 3)
-1. 
-2. 
-3. 
+1. Improve CTR for high-impression low-CTR queries with title/meta rewrites on top 3 pages.
+2. Strengthen internal links from newly published posts to pillar pages.
+3. Close one technical SEO hygiene item (schema/canonical/redirect verification) and verify in production.
 
 ### Act (execution log)
-- Task:
+- Task: Auto-refresh weekly review scaffold from weekly SEO report generator
   - commit:
-  - expected impact:
-  - status:
+  - expected impact: Reduce weekly analysis friction and keep review cadence consistent
+  - status: done
 
 ## Postmortem
 - What was low-value busy work this week?
