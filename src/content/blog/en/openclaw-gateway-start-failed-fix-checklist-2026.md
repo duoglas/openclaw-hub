@@ -97,6 +97,27 @@ openclaw gateway restart
 
 ---
 
+## 3.5) Error: `non-loopback Control UI requires gateway.controlUi.allowedOrigins`
+
+### Why it happens
+Starting with v2026.2.22, OpenClaw enforces an `allowedOrigins` whitelist for remote Control UI access. This is a security tightening that commonly affects Docker deployments.
+
+### Fix
+```bash
+# Add allowed origins (can be a single domain or * for all)
+openclaw config set gateway.controlUi.allowedOrigins "*"
+
+# Or specify a domain (more secure)
+openclaw config set gateway.controlUi.allowedOrigins "https://yourdomain.com"
+
+# Restart Gateway
+openclaw gateway restart
+```
+
+> See: [Fix non-loopback Control UI allowedOrigins error](/en/blog/openclaw-docker-allowedorigins-fix-2026/)
+
+---
+
 ## 4) systemd service won't start / keeps crashing
 
 ### Start with logs

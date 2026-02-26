@@ -187,6 +187,16 @@ sudo systemctl enable openclaw
 sudo systemctl start openclaw
 ```
 
+### Pre-exposure Gateway security checklist
+
+If you're using Docker and exposing Gateway outside the container, from v2026.2.22 you need to configure `allowedOrigins`:
+
+- Check for `non-loopback Control UI requires allowedOrigins` errors
+- Configure allowed access sources: `openclaw config set gateway.controlUi.allowedOrigins "*"` or specify a domain
+- Verify Gateway starts correctly: `openclaw gateway status`
+
+> See: [Pre-exposure Gateway security checklist](/en/blog/openclaw-docker-allowedorigins-fix-2026/)
+
 ### Basic firewall
 
 ```bash

@@ -187,6 +187,16 @@ sudo systemctl enable openclaw
 sudo systemctl start openclaw
 ```
 
+### Docker 暴露网关前的安全校验清单
+
+如果你使用 Docker 部署并在容器外暴露 Gateway，从 v2026.2.22 开始需要额外配置 `allowedOrigins`：
+
+- 检查是否有 `non-loopback Control UI requires allowedOrigins` 错误
+- 配置允许的访问源：`openclaw config set gateway.controlUi.allowedOrigins "*"` 或指定域名
+- 验证 Gateway 能正常启动：`openclaw gateway status`
+
+> 详见：[Docker 暴露网关前的安全校验清单](/zh/blog/openclaw-docker-allowedorigins-fix-2026/)
+
 ### 基础防火墙
 
 ```bash

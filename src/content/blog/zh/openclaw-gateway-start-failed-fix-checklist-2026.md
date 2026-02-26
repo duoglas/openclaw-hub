@@ -97,6 +97,27 @@ openclaw gateway restart
 
 ---
 
+## 3.5) 报错：`non-loopback Control UI requires gateway.controlUi.allowedOrigins`
+
+### 原因
+从 v2026.2.22 开始，OpenClaw 对远程访问 Control UI 强制要求配置 `allowedOrigins` 白名单，这是安全默认值收紧导致的 Docker 部署中常见问题。
+
+### 修复
+```bash
+# 添加允许访问的源（可以是单个域名或 * 用于全部开放）
+openclaw config set gateway.controlUi.allowedOrigins "*"
+
+# 或指定域名（更安全）
+openclaw config set gateway.controlUi.allowedOrigins "https://yourdomain.com"
+
+# 重启 Gateway
+openclaw gateway restart
+```
+
+> 详见：[non-loopback Control UI / allowedOrigins 报错专项修复](/zh/blog/openclaw-docker-allowedorigins-fix-2026/)
+
+---
+
 ## 4) systemd 服务起不来 / 反复崩溃
 
 ### 先看日志
