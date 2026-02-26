@@ -33,3 +33,13 @@
 - Result: pass (local check verified on current week).
 - Decision: scale
 
+### EXP-003
+- Hypothesis: Weekly stale-domain scanning on SEO-sensitive paths will prevent legacy-domain leakage into production metadata/pages.
+- Scope: `src/`, `public/`, `astro.config.mjs`
+- Change: Added `scripts/scan-stale-domain.sh`, npm script `check:stale-domain`, and weekly report integration to emit `reports/seo-weekly/stale-domain-alert-YYYY-MM-DD-to-YYYY-MM-DD.md`.
+- Start date: 2026-02-26
+- End date: 2026-02-26
+- Success metric: `pnpm check:stale-domain` passes with only allowlisted redirect references; weekly alert file generated.
+- Result: pass (local check + build passed).
+- Decision: scale
+

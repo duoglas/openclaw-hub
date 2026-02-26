@@ -12,13 +12,13 @@ Manager: main session
 
 ## Backlog
 
-- [ ] Add stale-domain scanner (`openhub.plzbite.top`) with weekly alert output (ICE: I=7, C=8, E=7, Total=22)
 - [ ] Add low-CTR query opportunity table parser from daily snapshots (ICE: I=7, C=6, E=5, Total=18)
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] Add stale-domain scanner (`openhub.plzbite.top`) with weekly alert output (ICE winner: 22) — commit `(this commit)`
 - [x] Add auto-sync of `WEEKLY_REVIEW.md` from `weekly:seo` output to enforce review cadence — add CI freshness gate (`pnpm check:weekly-review`) to block stale week reviews — commit `(this commit)`
 - [x] Add auto-sync of `WEEKLY_REVIEW.md` from `weekly:seo` output to enforce review cadence (ICE winner: 26) — commit `(this commit)`
 - [x] Queue hygiene v2: backfill remaining `(this commit)` placeholders in Done with real hashes — commit `(this commit)`

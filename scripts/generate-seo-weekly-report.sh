@@ -12,8 +12,16 @@ NOW=$(TZ="$TZ" date '+%F %H:%M')
 
 OUT_DIR="reports/seo-weekly"
 OUT_FILE="${OUT_DIR}/seo-weekly-${MONDAY}-to-${SUNDAY}.md"
+DOMAIN_ALERT_FILE="${OUT_DIR}/stale-domain-alert-${MONDAY}-to-${SUNDAY}.md"
 
 mkdir -p "$OUT_DIR"
+
+DOMAIN_HYGIENE_STATUS="not-run"
+if bash scripts/scan-stale-domain.sh >/tmp/stale_domain_weekly.log 2>&1; then
+  DOMAIN_HYGIENE_STATUS="ok"
+else
+  DOMAIN_HYGIENE_STATUS="alert"
+fi
 
 collect_new_posts() {
   local lang="$1"
@@ -225,7 +233,12 @@ ${TECH}
 
 ${DAILY_SUMMARY}
 
-## 7) Wins / Problems
+## 7) Domain Hygiene Guardrail (auto)
+
+- Stale domain scanner status: ${DOMAIN_HYGIENE_STATUS}
+- Alert file: ${DOMAIN_ALERT_FILE}
+
+## 8) Wins / Problems
 
 ### Wins
 - (fill)
@@ -233,13 +246,13 @@ ${DAILY_SUMMARY}
 ### Problems / Blockers
 - (fill)
 
-## 8) Action Plan (Next Week)
+## 9) Action Plan (Next Week)
 
 - [ ] P0: (task / owner / due)
 - [ ] P1: (task / owner / due)
 - [ ] P2: (task / owner / due)
 
-## 9) Data Sources
+## 10) Data Sources
 
 - Google Search Console (Performance + Pages + Queries)
 - Cloudflare Web Analytics (optional)
