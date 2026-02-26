@@ -15,9 +15,10 @@ Manager: main session
 - [ ] (empty)
 
 ## Doing
-- [ ] Add low-CTR query opportunity table parser from daily snapshots (ICE: I=7, C=6, E=5, Total=18)
+- [ ] (empty)
 
 ## Done
+- [x] Add low-CTR query opportunity table parser from daily snapshots (ICE winner: 18) — commit `a7f160d`
 - [x] Add stale-domain scanner (`openhub.plzbite.top`) with weekly alert output (ICE winner: 22) — commit `(this commit)`
 - [x] Add auto-sync of `WEEKLY_REVIEW.md` from `weekly:seo` output to enforce review cadence — add CI freshness gate (`pnpm check:weekly-review`) to block stale week reviews — commit `(this commit)`
 - [x] Add auto-sync of `WEEKLY_REVIEW.md` from `weekly:seo` output to enforce review cadence (ICE winner: 26) — commit `(this commit)`
