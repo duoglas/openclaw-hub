@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-02-26
+Last updated: 2026-02-26 14:03
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -18,6 +18,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] Add internal links from gateway/VPS guides to allowedOrigins fix article (EN/ZH) | ICE 8x10x9=720 — commit `b14f4e2`
 - [x] P2 Candidate C: 为周报新增"变现信号"字段（推荐点击/咨询线索）并回填模板 | ICE 8x6x6=288 — commit `a5521ac`
 - [x] P1 Candidate B: 为 /zh 补齐当周 weekly（问题导向）并与 /en 对齐内链与订阅导流（ICE winner: 392） — commit `8ffbb09`
 - [x] P1: 为 weekly 文章新增"行业动态/问题洞察/可执行建议"结构校验脚本并接入 CI，并重写当周 EN 周报为行业洞察结构（ICE winner: 576）
