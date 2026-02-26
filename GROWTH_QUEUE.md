@@ -16,11 +16,12 @@ Manager: main session
 - [ ] P2 Candidate C: 为周报新增"变现信号"字段（推荐点击/咨询线索）并回填模板 | ICE 8x6x6=288
 
 ## Doing
-- [ ] P1 Candidate B: 为 /zh 补齐当周 weekly（问题导向）并与 /en 对齐内链与订阅导流 | ICE 8x7x7=392
+- [ ] (empty)
 
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate B: 为 /zh 补齐当周 weekly（问题导向）并与 /en 对齐内链与订阅导流（ICE winner: 392） — commit `8ffbb09`
 - [x] P1: 为 weekly 文章新增"行业动态/问题洞察/可执行建议"结构校验脚本并接入 CI，并重写当周 EN 周报为行业洞察结构（ICE winner: 576）
 - [x] Add low-CTR query opportunity table parser from daily snapshots (ICE winner: 18) - commit `a7f160d`
 - [x] Add stale-domain scanner (`openhub.plzbite.top`) with weekly alert output (ICE winner: 22) - commit `(this commit)`
