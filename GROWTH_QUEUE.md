@@ -18,7 +18,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P2 Candidate C: 为周报新增"变现信号"字段（推荐点击/咨询线索）并回填模板 | ICE 8x6x6=288 — commit `pending`
+- [x] P2 Candidate C: 为周报新增"变现信号"字段（推荐点击/咨询线索）并回填模板 | ICE 8x6x6=288 — commit `a5521ac`
 - [x] P1 Candidate B: 为 /zh 补齐当周 weekly（问题导向）并与 /en 对齐内链与订阅导流（ICE winner: 392） — commit `8ffbb09`
 - [x] P1: 为 weekly 文章新增"行业动态/问题洞察/可执行建议"结构校验脚本并接入 CI，并重写当周 EN 周报为行业洞察结构（ICE winner: 576）
 - [x] P1 Candidate A: 为 weekly 文章新增"行业动态/问题洞察/可执行建议"结构校验脚本并接入 CI（避免流水账）| ICE 9x8x8=576 — commit `5d66c6a` (duplicate, already done)
