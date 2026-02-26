@@ -21,6 +21,12 @@
 - Why did losers lose?
 - Bottlenecks (content quality / SEO tech / distribution):
 
+### Monetization Signals (conversion / referral / consulting)
+- Referral clicks (top 3 pages):
+- Ad/affiliate impressions (top 3 pages):
+- Consulting inquiries: [count]
+- Revenue from referrals: [$]
+
 ### Decide (next-week priorities, max 3)
 1. Improve CTR for high-impression low-CTR queries with title/meta rewrites on top 3 pages.
 2. Strengthen internal links from newly published posts to pillar pages.

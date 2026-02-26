@@ -79,7 +79,13 @@ ${EN_LINKS}
 
 ## Next Week Focus
 
-- 
+-
+
+## Monetization Signals (Conversion / Referral / Consulting)
+
+- Top 3 pages with referral clicks:
+- Top 3 pages with ad/affiliate impressions:
+- Consulting inquiries received: [count]
 EOF
   echo "Created $EN_FILE"
 else
@@ -127,7 +133,13 @@ ${ZH_LINKS}
 
 ## 下周关注
 
-- 
+-
+
+## 变现信号（转化 / 推荐 / 咨询）
+
+- 前 3 个产生推荐点击的页面：
+- 前 3 个产生广告/联盟曝光的页面：
+- 收到咨询数量：[数量]
 EOF
   echo "Created $ZH_FILE"
 else
