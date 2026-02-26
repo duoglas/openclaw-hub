@@ -23,6 +23,7 @@ cat > "$REPORT_FILE" <<EOF
 - Avg Position:
 
 ## Top 3 Queries (manual)
+> Format: `query | clicks=12 | impressions=400 | ctr=3.00% | pos=8.4 | page=/en/blog/.../`
 1.
 2.
 3.

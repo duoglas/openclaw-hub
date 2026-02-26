@@ -3,7 +3,7 @@
 ## Week Meta
 - Week: 2026-02-23 to 2026-03-01
 - Owner: hub-growth-worker
-- Reviewed at: 2026-02-26 09:01 (Asia/Shanghai)
+- Reviewed at: 2026-02-26 10:32 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
@@ -13,8 +13,8 @@
 - Top queries by impressions but low CTR: (fill from GSC)
 - New pages indexed: (fill from GSC)
 - Published posts (auto): 9
-- Updated posts (git-tracked): 75
-- Technical SEO commits (git-tracked): 29
+- Updated posts (git-tracked): 83
+- Technical SEO commits (git-tracked): 34
 
 ### Orient (diagnosis)
 - Why did winners win?

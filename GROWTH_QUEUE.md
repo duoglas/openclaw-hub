@@ -12,10 +12,10 @@ Manager: main session
 
 ## Backlog
 
-- [ ] Add low-CTR query opportunity table parser from daily snapshots (ICE: I=7, C=6, E=5, Total=18)
+- [ ] (empty)
 
 ## Doing
-- [ ] (empty)
+- [ ] Add low-CTR query opportunity table parser from daily snapshots (ICE: I=7, C=6, E=5, Total=18)
 
 ## Done
 - [x] Add stale-domain scanner (`openhub.plzbite.top`) with weekly alert output (ICE winner: 22) — commit `(this commit)`

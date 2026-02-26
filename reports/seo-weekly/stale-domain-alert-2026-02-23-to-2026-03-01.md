@@ -1,7 +1,7 @@
 # Stale Domain Weekly Alert
 
 - Week: 2026-02-23 ~ 2026-03-01
-- Generated at: 2026-02-26 10:01 (Asia/Shanghai)
+- Generated at: 2026-02-26 10:32 (Asia/Shanghai)
 - Scanner: scripts/scan-stale-domain.sh
 - Target stale domain: `openhub.plzbite.top`
 

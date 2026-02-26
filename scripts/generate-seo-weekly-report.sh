@@ -95,7 +95,6 @@ collect_daily_snapshot_summary() {
   local cnt_ctr=0
   local sum_pos=0
   local cnt_pos=0
-  local out=""
 
   if [ ! -d "$dir" ]; then
     echo "- Daily snapshots: none"
@@ -155,6 +154,85 @@ collect_daily_snapshot_summary() {
   echo "- Auto-aggregated KPIs (from filled daily files): Clicks=${sum_clicks}, Impressions=${sum_impr}, Avg CTR=${avg_ctr}, Avg Position=${avg_pos}"
 }
 
+collect_low_ctr_opportunities() {
+  local dir="reports/seo/daily"
+  local files=()
+  local f d
+
+  if [ ! -d "$dir" ]; then
+    echo "| - | 0 | 0 | 0.00% | 0.0 | - |"
+    return
+  fi
+
+  while IFS= read -r f; do
+    d=$(basename "$f" .md)
+    if [[ "$d" < "$MONDAY" || "$d" > "$SUNDAY" ]]; then
+      continue
+    fi
+    files+=("$f")
+  done < <(find "$dir" -maxdepth 1 -type f -name '*.md' | sort)
+
+  if [ ${#files[@]} -eq 0 ]; then
+    echo "| - | 0 | 0 | 0.00% | 0.0 | - |"
+    return
+  fi
+
+  awk '
+    function trim(s) { gsub(/^[[:space:]]+|[[:space:]]+$/, "", s); return s }
+    function extract_num(s, r, tmp) {
+      if (match(tolower(s), r)) {
+        tmp = substr(tolower(s), RSTART, RLENGTH)
+        gsub(/^[^:=]*[:=][[:space:]]*/, "", tmp)
+        gsub(/%/, "", tmp)
+        return tmp + 0
+      }
+      return ""
+    }
+    function extract_text(s, r, tmp) {
+      if (match(tolower(s), r)) {
+        tmp = substr(s, RSTART, RLENGTH)
+        sub(/^[^:=]*[:=][[:space:]]*/, "", tmp)
+        return trim(tmp)
+      }
+      return ""
+    }
+    {
+      if ($0 !~ /^[[:space:]]*[0-9]+\.[[:space:]]*/) next
+      raw = $0
+      gsub(/^[[:space:]]*[0-9]+\.[[:space:]]*/, "", raw)
+      n = split(raw, parts, "|")
+      query = trim(parts[1])
+      if (query == "" || query == "-") next
+
+      clicks = extract_num(raw, /(clicks?|clk)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      impr = extract_num(raw, /(impressions?|imp)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      ctr = extract_num(raw, /ctr[:=][[:space:]]*[0-9]+([.][0-9]+)?%?/)
+      pos = extract_num(raw, /(position|pos)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      page = extract_text(raw, /(page|url|landing)[:=][[:space:]]*[^|]+/)
+
+      key = tolower(query)
+      q[key] = query
+      if (clicks != "") clicks_sum[key] += clicks
+      if (impr != "") impr_sum[key] += impr
+      if (ctr != "") { ctr_sum[key] += ctr; ctr_cnt[key] += 1 }
+      if (pos != "") { pos_sum[key] += pos; pos_cnt[key] += 1 }
+      if (page != "" && !(key in page_map)) page_map[key] = page
+    }
+    END {
+      for (k in q) {
+        impr = (k in impr_sum) ? impr_sum[k] : 0
+        if (impr < 50) continue
+        avg_ctr = (k in ctr_cnt && ctr_cnt[k] > 0) ? ctr_sum[k] / ctr_cnt[k] : 0
+        if (avg_ctr > 3.0) continue
+        clicks = (k in clicks_sum) ? clicks_sum[k] : 0
+        avg_pos = (k in pos_cnt && pos_cnt[k] > 0) ? pos_sum[k] / pos_cnt[k] : 0
+        page = (k in page_map) ? page_map[k] : "-"
+        printf "%010.2f\t| %s | %.0f | %.0f | %.2f%% | %.1f | %s |\n", impr, q[k], clicks, impr, avg_ctr, avg_pos, page
+      }
+    }
+  ' "${files[@]}" | sort -r | cut -f2- | head -n 10
+}
+
 NEW_EN_RAW=$(collect_new_posts en)
 NEW_ZH_RAW=$(collect_new_posts zh)
 NEW_EN_COUNT=${NEW_EN_RAW%%|||*}
@@ -165,6 +243,10 @@ PUBLISHED_POSTS=$((NEW_EN_COUNT + NEW_ZH_COUNT))
 UPDATED=$(collect_changed_posts)
 TECH=$(collect_technical_changes)
 DAILY_SUMMARY=$(collect_daily_snapshot_summary)
+LOW_CTR_ROWS=$(collect_low_ctr_opportunities)
+if [ -z "$LOW_CTR_ROWS" ]; then
+  LOW_CTR_ROWS="| - | 0 | 0 | 0.00% | 0.0 | - |"
+fi
 
 count_real_items() {
   printf "%s" "$1" | awk '/^- \[ \] / && $0 !~ /\(no .*\)/ {c++} END{print c+0}'
@@ -209,11 +291,11 @@ cat > "$OUT_FILE" <<EOF
 | /zh/daily/ | 0 | 0 | 0.00% | 0.0 |
 | /en/daily/ | 0 | 0 | 0.00% | 0.0 |
 
-## 4) Top Queries (This Week)
+## 4) Low-CTR Query Opportunities (auto, This Week)
 
 | Query | Clicks | Impressions | CTR | Avg Position | Landing Page |
 |---|---:|---:|---:|---:|---|
-| - | 0 | 0 | 0.00% | 0.0 | - |
+${LOW_CTR_ROWS}
 
 ## 5) Content Execution This Week
 

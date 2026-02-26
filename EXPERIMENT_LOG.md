@@ -43,3 +43,13 @@
 - Result: pass (local check + build passed).
 - Decision: scale
 
+### EXP-004
+- Hypothesis: Parsing low-CTR query rows from daily snapshots into weekly report will shorten diagnosis time and increase likelihood of title/meta optimization actions.
+- Scope: `reports/seo/daily/*.md` → `reports/seo-weekly/*.md`
+- Change: Added low-CTR query parser to `scripts/generate-seo-weekly-report.sh` and standardized daily query row format hint in `scripts/generate-seo-daily-snapshot.sh`.
+- Start date: 2026-02-26
+- End date: 2026-02-26
+- Success metric: `pnpm weekly:seo` renders low-CTR opportunity table (or explicit fallback row) with no script errors.
+- Result: pass (table rendered; fallback row shown when no structured query metrics provided).
+- Decision: iterate (collect 7 days of structured query rows, then tune thresholds).
+
