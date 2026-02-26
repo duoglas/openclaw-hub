@@ -6,139 +6,152 @@ const updatedAt = '2026-02-26';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Team Vibe Coding Playbook | coding.kuoo.uk</title>
-  <meta name="description" content="面向团队的 Claude Code / Cursor / OpenCode + oh-my-opencode 协作开发规范、规则、Skill、MCP、项目说明与落地工作流。" />
+  <title>Team Vibe Coding Playbook（可落地版）| coding.kuoo.uk</title>
+  <meta name="description" content="面向团队的 Claude Code / Cursor / OpenCode + oh-my-opencode 实战手册：角色分工、规则文件、Skill/MCP、CI门禁、度量指标与30分钟导入路径。" />
   <link rel="canonical" href="https://coding.kuoo.uk/" />
   <style>
-    :root { --bg:#0b1020; --panel:#111831; --card:#171f3d; --text:#e7ecff; --muted:#a8b2d8; --brand:#5ea1ff; --ok:#4dd4ac; --warn:#ffc666; --line:#283156; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: Inter, -apple-system, Segoe UI, sans-serif; background:var(--bg); color:var(--text); }
-    .wrap { display:grid; grid-template-columns: 280px 1fr; min-height:100vh; }
-    aside { position:sticky; top:0; height:100vh; overflow:auto; background:var(--panel); border-right:1px solid var(--line); padding:20px; }
-    aside h1 { font-size:18px; margin:0 0 12px; }
-    aside a { display:block; color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:8px; margin:4px 0; }
-    aside a:hover { background:#1b2447; color:#fff; }
-    main { padding:28px; max-width:1040px; }
-    .hero { background:linear-gradient(120deg,#17244d,#0f2b63); border:1px solid #28438b; padding:20px; border-radius:14px; }
-    h2 { margin-top:30px; border-bottom:1px solid var(--line); padding-bottom:8px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:12px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; }
-    .badge { display:inline-block; padding:2px 8px; border-radius:999px; background:#25305c; color:#bfd1ff; font-size:12px; }
-    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-    pre { background:#0d1430; border:1px solid #2a355f; padding:12px; border-radius:10px; overflow:auto; }
-    .ok { color:var(--ok); } .warn { color:var(--warn); }
-    ul li { margin:6px 0; color:#d8e0ff; }
-    .cta { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
-    .btn { background:var(--brand); color:#06112c; font-weight:700; text-decoration:none; padding:10px 14px; border-radius:10px; }
-    .btn.outline { background:transparent; color:#cfe0ff; border:1px solid #38518f; }
+    :root{--bg:#0a1022;--panel:#111a36;--card:#172246;--line:#2a396f;--text:#ecf1ff;--muted:#afbbdf;--brand:#66a3ff;--ok:#4dd6a4;--warn:#ffce6d;--bad:#ff7a7a}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,Segoe UI,sans-serif;line-height:1.65}
+    .wrap{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+    aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:18px}
+    aside h1{font-size:18px;margin:0 0 10px} aside a{display:block;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;margin:4px 0}
+    aside a:hover{background:#1a2854;color:#fff}
+    main{padding:26px;max-width:1080px}
+    h2{margin:30px 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+    .hero{background:linear-gradient(120deg,#1a2d63,#0f3a7a);border:1px solid #3156a2;padding:18px;border-radius:14px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .card{background:var(--card);border:1px solid var(--line);padding:12px;border-radius:10px}
+    .badge{display:inline-block;background:#253663;border-radius:999px;padding:3px 8px;font-size:12px;color:#c9d7ff}
+    pre{background:#0c1638;border:1px solid #2f447f;border-radius:10px;padding:12px;overflow:auto}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+    table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+    th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+    th{color:#cdddff;background:#1a2a59}
+    .btn{display:inline-block;text-decoration:none;background:var(--brand);color:#06142f;font-weight:700;padding:8px 12px;border-radius:8px;margin-right:8px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <aside>
-      <h1>⚡ Team Vibe Coding</h1>
-      <a href="#north-star">北极星目标</a>
-      <a href="#workflow">统一工作流</a>
-      <a href="#rules">团队规则层</a>
-      <a href="#skills-mcp">Skill + MCP 复用层</a>
-      <a href="#project-spec">项目级说明模板</a>
-      <a href="#ultra-loop">Ultra 持续迭代</a>
-      <a href="#rollout">两周落地计划（可当天启动）</a>
-      <a href="https://kuoo.uk/zh/">返回主站</a>
-    </aside>
-    <main>
-      <section class="hero" id="north-star">
-        <div class="badge">Updated {updatedAt}</div>
-        <h2 style="margin-top:8px;border:none;">让团队用 Claude Code + Cursor + OpenCode 稳定产出，而不是“工具秀”</h2>
-        <p>目标不是堆工具，而是把 <b>需求→实现→评审→上线→复盘</b> 变成可复制流水线。下面这套结构，能直接放进你团队日常开发。</p>
-        <div class="cta">
-          <a class="btn" href="#workflow">看统一工作流</a>
-          <a class="btn outline" href="#project-spec">看项目模板</a>
-        </div>
-      </section>
+<div class="wrap">
+  <aside>
+    <h1>⚡ Vibe Coding Playbook</h1>
+    <a href="#north">北极星与边界</a>
+    <a href="#roles">团队角色分工</a>
+    <a href="#workflow">标准工作流（SOP）</a>
+    <a href="#rules">规则文件落地</a>
+    <a href="#skills">Skill & MCP 策略</a>
+    <a href="#gates">CI质量闸门</a>
+    <a href="#metrics">度量与反作弊</a>
+    <a href="#anti">常见翻车与修复</a>
+    <a href="#bootstrap">30分钟导入清单</a>
+    <a href="https://kuoo.uk/zh/">返回主站</a>
+  </aside>
+  <main>
+    <section class="hero" id="north">
+      <span class="badge">Updated {updatedAt}</span>
+      <h2 style="border:none;margin:8px 0">目标：把 AI 编程从“个人技巧”升级为“团队产能系统”</h2>
+      <p><b>北极星：</b>交付速度↑、返工率↓、线上事故率↓。不是比谁会写 prompt，而是流程可复用、质量可追责、结果可量化。</p>
+      <a class="btn" href="#bootstrap">直接看30分钟导入</a>
+      <a class="btn" href="#rules">直接抄规则模板</a>
+    </section>
 
-      <section id="workflow">
-        <h2>1) 统一工作流（Tool-Agnostic）</h2>
-        <div class="grid">
-          <div class="card"><h3>Plan</h3><p>需求拆分为可验收任务（DoD）+ 风险点。复杂任务默认拆子任务并行。</p></div>
-          <div class="card"><h3>Build</h3><p>Claude Code/Cursor/OpenCode 任意选，但必须遵守同一工程规则与提交规范。</p></div>
-          <div class="card"><h3>Verify</h3><p>本地测试 + lint + 安全基线，未通过不得合并。</p></div>
-          <div class="card"><h3>Ship</h3><p>PR 模板强制：变更摘要、回滚方案、风险声明、观测点。</p></div>
-        </div>
-        <pre><code>Issue -> Task Contract -> AI Assisted Build -> CI Gates -> PR Review -> Merge -> Postmortem</code></pre>
-      </section>
+    <section id="roles">
+      <h2>1) 角色分工（落地关键）</h2>
+      <table>
+        <tr><th>角色</th><th>工具主力</th><th>责任</th><th>交付物</th></tr>
+        <tr><td>Spec Owner</td><td>Cursor/Docs</td><td>把需求写成可验收任务（DoD）</td><td>Task Contract（输入/输出/验收）</td></tr>
+        <tr><td>Builder</td><td>Claude Code/OpenCode</td><td>实现 + 测试 + 自检</td><td>代码、测试、变更说明</td></tr>
+        <tr><td>Reviewer</td><td>Cursor + CI</td><td>审架构风险、边界条件、回滚策略</td><td>PR Review 结论</td></tr>
+        <tr><td>Ops Owner</td><td>MCP/监控</td><td>上线、观测、异常回收</td><td>发布记录 + 复盘条目</td></tr>
+      </table>
+      <p class="ok">原则：AI 可以写代码，但“是否合并”必须是人类责任闭环。</p>
+    </section>
 
-      <section id="rules">
-        <h2>2) 团队规则层（必须仓库化）</h2>
-        <ul>
-          <li><b>全局规则：</b><code>AGENTS.md</code>（协作原则、禁区、输出格式）</li>
-          <li><b>工具规则：</b><code>.cursorrules</code> / <code>CLAUDE.md</code> / OpenCode preset 同步一份“同源规则”</li>
-          <li><b>提交规范：</b>Conventional Commits + PR 模板 + 必填 DoD</li>
-          <li><b>质量闸门：</b>CI 阻断低质量文档、无测试代码、危险改动无回滚说明</li>
-        </ul>
-        <p class="ok">关键点：规则不要放 Wiki，必须进仓库并参与 CI。</p>
-      </section>
+    <section id="workflow">
+      <h2>2) 标准工作流（每天就按这个跑）</h2>
+      <pre><code>S1 需求澄清 -> S2 Task Contract -> S3 实现(可并行子任务) -> S4 本地验证 -> S5 CI门禁 -> S6 人审合并 -> S7 上线观测 -> S8 复盘沉淀</code></pre>
+      <div class="grid">
+        <div class="card"><b>S2 Task Contract 必填</b><br/>目标、非目标、验收条件、风险、回滚方案、影响面。</div>
+        <div class="card"><b>S3 执行约束</b><br/>先计划后编码；大改动先“只出计划”再批准执行。</div>
+        <div class="card"><b>S4 验证清单</b><br/>单测、集成测、静态检查、性能预算、关键日志。</div>
+        <div class="card"><b>S8 复盘沉淀</b><br/>失败样例写回规则/skill，防止同类事故再次出现。</div>
+      </div>
+    </section>
 
-      <section id="skills-mcp">
-        <h2>3) Skill + MCP 复用层</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Skill（稳定动作封装）</h3>
-            <p>把高频任务产品化：脚手架生成、回归测试、发布检查、文档生成。</p>
-          </div>
-          <div class="card">
-            <h3>MCP（外部系统接入）</h3>
-            <p>统一接 GitHub/Jira/Notion/监控平台，避免每个成员各写各的 API glue。</p>
-          </div>
-          <div class="card">
-            <h3>权限最小化</h3>
-            <p>按任务开放工具能力（读/写/执行分级），默认最小权限。</p>
-          </div>
-        </div>
-      </section>
+    <section id="rules">
+      <h2>3) 规则文件：一套规则，多工具复用</h2>
+      <p>不要三套规则三种说法。建议采用“单一事实源”：</p>
+      <pre><code>AGENTS.md               # 团队全局协作规则（唯一权威）
+CLAUDE.md               # 仅一行：@AGENTS.md
+.cursorrules            # 仅一行：遵循 AGENTS.md + 项目规则
+.opencode/preset.md     # 同样引用 AGENTS.md
+PROJECT_RULES.md        # 项目专属约束（性能/安全/发布）</code></pre>
+      <p><b>AGENTS.md 最少要有：</b></p>
+      <ul>
+        <li>禁止项：破坏性命令、越权网络访问、无测试直接合并</li>
+        <li>输出格式：结论 → 已做 → 下一步</li>
+        <li>执行权限分层：自动可做 / 必须人工确认</li>
+        <li>错误处理：失败时输出最小复现 + 回滚命令</li>
+      </ul>
+    </section>
 
-      <section id="project-spec">
-        <h2>4) 项目级工程说明模板（直接可用）</h2>
-        <pre><code># PROJECT_RULES.md
-## 业务目标
-- 本季度目标：xx
+    <section id="skills">
+      <h2>4) Skill + MCP：把高频动作“产品化”</h2>
+      <div class="grid">
+        <div class="card"><b>优先做 Skill 的任务</b><br/>脚手架生成、回归测试、发布检查、周报生成、故障排查。</div>
+        <div class="card"><b>优先走 MCP 的任务</b><br/>GitHub/Jira/Notion/监控平台读写，统一鉴权与审计。</div>
+        <div class="card"><b>最小权限原则</b><br/>按任务授予 read/write/exec，不默认全开。</div>
+      </div>
+      <pre><code># 示例：把“发版前检查”做成 skill
+Input: branch, target_env
+Checks: changelog, migration, test pass, rollback command, feature flags
+Output: release-ready=true/false + 风险清单</code></pre>
+    </section>
 
-## 非功能约束
-- 性能预算、稳定性SLO、安全约束
+    <section id="gates">
+      <h2>5) CI 质量闸门（不满足就不让过）</h2>
+      <table>
+        <tr><th>闸门</th><th>规则</th><th>失败动作</th></tr>
+        <tr><td>Code Quality</td><td>lint+typecheck+tests 全绿</td><td>阻断合并</td></tr>
+        <tr><td>Spec Sync</td><td>PR 必须关联 Task Contract</td><td>阻断合并</td></tr>
+        <tr><td>Safety</td><td>涉及配置/数据迁移必须有回滚命令</td><td>阻断合并</td></tr>
+        <tr><td>Docs</td><td>接口或行为变更必须更新文档</td><td>阻断合并</td></tr>
+      </table>
+      <p class="warn">经验：团队失控通常不是“模型不够强”，而是“门禁不够硬”。</p>
+    </section>
 
-## 开发工作流
-- 分支策略、测试门禁、发布节奏
+    <section id="metrics">
+      <h2>6) 指标体系（防止“看起来很忙”）</h2>
+      <ul>
+        <li><b>Lead Time：</b>需求到上线时长（目标持续下降）</li>
+        <li><b>Rework Rate：</b>7天内返工比例（目标持续下降）</li>
+        <li><b>Defect Escape：</b>线上漏检缺陷数（目标持续下降）</li>
+        <li><b>AI 有效产出率：</b>AI 生成代码最终被保留比例（目标上升）</li>
+      </ul>
+      <p class="bad">反指标：只统计“生成了多少代码/调用了多少Agent”会误导团队。</p>
+    </section>
 
-## AI 协作规范
-- 可自动执行动作
-- 必须人工确认动作
-- 输出格式（结论→已做→下一步）
+    <section id="anti">
+      <h2>7) 常见翻车点（真实高频）</h2>
+      <div class="grid">
+        <div class="card"><b>翻车1：直接让 AI 大改</b><br/>修复：先输出 plan + 文件级改动列表，再批准执行。</div>
+        <div class="card"><b>翻车2：规则分散</b><br/>修复：统一 AGENTS.md 为唯一规则源，其余文件只引用。</div>
+        <div class="card"><b>翻车3：追求速度忽视验证</b><br/>修复：CI 增加“无测试不合并”“无回滚不发布”。</div>
+        <div class="card"><b>翻车4：MCP 权限过大</b><br/>修复：按项目、按环境拆权限，生产写权限单独审批。</div>
+      </div>
+    </section>
 
-## 复盘机制
-- 每周失败案例、返工率、交付周期</code></pre>
-      </section>
-
-      <section id="ultra-loop">
-        <h2>5) Ultra 持续迭代（你要的核心）</h2>
-        <ul>
-          <li>每小时监督：推进率 / 价值率 / 偏航率</li>
-          <li>连续两次低价值动作，自动熔断并切回高价值任务</li>
-          <li>所有任务必须有“可验证产出”：commit、报告、上线页面、指标变化</li>
-          <li>默认并行执行，最后统一验收</li>
-        </ul>
-        <p class="warn">不再接受“忙但没产出”的流水任务。</p>
-      </section>
-
-      <section id="rollout">
-        <h2>6) 立即落地动作（今天就能开始）</h2>
-        <ol>
-          <li>在主仓库加：<code>AGENTS.md</code>、<code>PROJECT_RULES.md</code>、PR 模板、CI 质量闸门。</li>
-          <li>挑 1 个试点项目，用这套工作流跑 3 个迭代。</li>
-          <li>记录三项指标：交付时长、返工率、线上故障率。</li>
-          <li>把高频动作沉淀为 Skills，把跨系统动作迁移到 MCP。</li>
-        </ol>
-      </section>
-    </main>
-  </div>
+    <section id="bootstrap">
+      <h2>8) 30分钟导入清单（今天就能执行）</h2>
+      <ol>
+        <li>创建 <code>AGENTS.md</code>、<code>PROJECT_RULES.md</code>、PR模板。</li>
+        <li>补 4 个 CI 闸门：lint/type/test/spec-sync。</li>
+        <li>选 1 个任务跑完整流程：Task Contract → AI实现 → CI → PR。</li>
+        <li>复盘并沉淀 1 条新规则 + 1 个 Skill。</li>
+      </ol>
+      <p class="ok"><b>达标判定：</b>首个试点任务 24h 内完成且可复现。</p>
+    </section>
+  </main>
+</div>
 </body>
 </html>
