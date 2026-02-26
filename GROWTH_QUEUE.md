@@ -11,10 +11,10 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-
-
+- [ ] Add FAQ schema to 3 pillar pages (EN/ZH) to enhance SERP rich snippets and user engagement | ICE 7x8x6=336
 
 ## Doing
+- [ ] Add FAQ schema to 3 pillar pages (EN/ZH) to enhance SERP rich snippets and user engagement | ICE 7x8x6=336
 - [ ] (empty)
 
 ## Done

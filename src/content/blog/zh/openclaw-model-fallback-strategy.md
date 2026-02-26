@@ -6,6 +6,17 @@ updatedDate: 2026-02-25
 tags: ["openclaw", "models", "guide", "fallback", "429", "rate-limit"]
 category: "guide"
 lang: "zh"
+faq:
+  - question: "为什么 OpenClaw 需要回退链？"
+    answer: "AI 提供商有速率限制、故障和性能下降。回退链让你的代理在提供商宕机或达到限制时自动保持运行——用户不会注意到。"
+  - question: "我可以在回退链中连续放置两个 Claude 模型吗？"
+    answer: "不可以。如果 Anthropic 返回 429 速率限制，第二个 Claude 模型会遇到相同的限制。始终交错供应商：Anthropic → OpenAI → Google → 其他提供商。"
+  - question: "如何为 cron 任务配置模型覆盖？"
+    answer: "在生成子代理或 cron 会话时使用 `model` 参数。为不需要顶级推理的自动化任务设置更便宜的模型，如 `google/gemini-3-flash` 或 `minimax-portal/MiniMax-M2.1`。"
+  - question: "我可以在同一个回退链中混合付费和免费模型吗？"
+    answer: "可以。许多链路首先使用顶级付费模型，然后在需要时回退到性价比高或免费的模型。这在你需要时给你质量，在你不需要时给你可用性。"
+  - question: "我如何知道模型切换发生了？"
+    answer: "检查 OpenClaw 日志中的模型选择事件，或运行 `openclaw status` 查看当前会话的活动模型。失败的回退尝试会记录提供商错误代码。"
 ---
 
 如果你只记一条：**回退链本质是可用性架构，不是“省钱小技巧”。**

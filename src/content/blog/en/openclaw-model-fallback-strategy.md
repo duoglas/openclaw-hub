@@ -6,6 +6,17 @@ updatedDate: 2026-02-16
 tags: ["openclaw", "models", "guide", "fallback", "429", "rate-limit"]
 category: "guide"
 lang: "en"
+faq:
+  - question: "Why does OpenClaw need a fallback chain?"
+    answer: "AI providers have rate limits, outages, and degraded service. A fallback chain keeps your agent operational automatically — users won't notice when one provider is down or rate-limited."
+  - question: "Should I put two Claude models back-to-back in my fallback chain?"
+    answer: "No. If Anthropic returns a 429 rate limit, a second Claude model will hit the same limit. Always interleave providers: Anthropic → OpenAI → Google → other providers."
+  - question: "How do I configure model overrides for cron jobs?"
+    answer: "Use the `model` parameter when spawning a sub-agent or cron session. Set cheaper models like `google/gemini-3-flash` or `minimax-portal/MiniMax-M2.1` for automation tasks that don't need top-tier reasoning."
+  - question: "Can I mix paid and free models in the same fallback chain?"
+    answer: "Yes. Many chains use a top-tier paid model first, then fall back to cost-effective or free models when needed. This gives you quality when you need it and availability when you don't."
+  - question: "How do I know if a model switch happened?"
+    answer: "Check OpenClaw logs for model selection events, or run `openclaw status` to see the current session's active model. Failed fallback attempts are logged with the provider error code."
 ---
 
 A well-designed fallback chain is OpenClaw's core availability architecture. It keeps your agent seamlessly operational when Anthropic rate-limits you or OpenAI goes down — users never notice the switch.

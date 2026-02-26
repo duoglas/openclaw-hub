@@ -5,6 +5,17 @@ pubDate: 2026-02-10
 tags: ["openclaw", "guide", "ai-agent"]
 category: "guide"
 lang: "en"
+faq:
+  - question: "Is OpenClaw free to use?"
+    answer: "Yes, OpenClaw is open-source and free. You pay only for the AI models you use (e.g., Anthropic, OpenAI, Google). Run it on your own hardware for complete control."
+  - question: "Can OpenClaw run on a Raspberry Pi?"
+    answer: "Yes, OpenClaw is designed to run on minimal hardware. Raspberry Pi, VPS, or even a laptop — you choose where it lives."
+  - question: "What messaging platforms does OpenClaw support?"
+    answer: "Telegram, Discord, WhatsApp (via bridge), WeChat Work (企业微信), Signal, Slack, iMessage, and more. Connect to the platforms you already use daily."
+  - question: "Is my data safe with OpenClaw?"
+    answer: "OpenClaw runs locally on your own machine. Your data never leaves your hardware unless you explicitly choose to use cloud-based AI models. You control the code and the config."
+  - question: "How is OpenClaw different from ChatGPT?"
+    answer: "ChatGPT is a cloud service. OpenClaw is a self-hosted platform that connects to ANY AI model and integrates with your tools (GitHub, Notion, email, smart home). It's your personal AI assistant, not just a chat interface."
 ---
 
 ## What is OpenClaw?

@@ -5,6 +5,17 @@ pubDate: 2026-02-10
 tags: ["openclaw", "guide", "ai-agent"]
 category: "guide"
 lang: "zh"
+faq:
+  - question: "OpenClaw 免费吗？"
+    answer: "是的，OpenClaw 是开源免费的。你只需要支付所使用的 AI 模型费用（如 Anthropic、OpenAI、Google）。可以在自己的硬件上运行，完全掌控数据。"
+  - question: "OpenClaw 能在树莓派上运行吗？"
+    answer: "可以。OpenClaw 设计用于在最小硬件上运行。树莓派、VPS 或笔记本电脑都可以。选择最适合你的环境。"
+  - question: "OpenClaw 支持哪些消息平台？"
+    answer: "Telegram、Discord、WhatsApp（通过桥接）、企业微信、Signal、Slack、iMessage 等。连接你日常使用的平台。"
+  - question: "OpenClaw 会把我的数据上传到云端吗？"
+    answer: "OpenClaw 在你自己的机器上运行。数据只有在你明确选择使用云端 AI 模型时才会离开你的硬件。你掌控代码和配置。"
+  - question: "OpenClaw 和 ChatGPT 有什么区别？"
+    answer: "ChatGPT 是云服务。OpenClaw 是自托管平台，可以连接任意 AI 模型并集成你的工具（GitHub、Notion、邮件、智能家居）。这是你的个人 AI 助手，不只是聊天界面。"
 ---
 
 如果你只想先看一句话：

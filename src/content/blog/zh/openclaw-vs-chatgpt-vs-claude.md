@@ -5,6 +5,17 @@ pubDate: 2026-02-10
 tags: ["comparison", "openclaw", "chatgpt", "claude"]
 category: "comparison"
 lang: "zh"
+faq:
+  - question: "哪个更容易上手：ChatGPT 还是 OpenClaw？"
+    answer: "ChatGPT 和 Claude 是托管产品——注册后几分钟即可开始聊天。OpenClaw 需要在自己的硬件（笔记本、VPS、树莓派）上部署并配置渠道（Telegram、Discord 等）。完整的 OpenClaw 稳定设置通常需要几小时。"
+  - question: "OpenClaw 可以配合 ChatGPT 或 Claude 使用吗？"
+    answer: "可以。OpenClaw 是一个可以通过 API 调用任意 AI 模型的代理平台，包括 OpenAI 的 GPT 和 Anthropic 的 Claude。你甚至可以配置自动切换提供商的回退链。"
+  - question: "OpenClaw 比 ChatGPT 或 Claude 更私密吗？"
+    answer: "如果你正确自托管 OpenClaw，数据会留在你的机器上，只发送给你明确授权的 AI 模型。ChatGPT 和 Claude 是云服务，受其提供商的数据政策约束。隐私最终取决于你在哪里运行 OpenClaw 以及使用哪些模型。"
+  - question: "哪个更便宜：ChatGPT 还是 OpenClaw？"
+    answer: "取决于使用情况。ChatGPT/Claude 的订阅是可预测的但有上限。OpenClaw 提供模型灵活性（例如更便宜的提供商）和大规模更好的成本控制，但增加了运维开销。对于轻度个人使用，托管产品更简单。对于重度自动化，OpenClaw 通常更具成本效益。"
+  - question: "我可以同时使用这三个吗？"
+    answer: "可以。一个常见模式是使用 OpenClaw 进行自动化和多渠道路由，然后配置 Claude 或 GPT 作为回退链中的推理模型。这同时提供了控制和模型质量。"
 ---
 
 如果你正在比较 **OpenClaw、ChatGPT、Claude**，先看一句话结论：
