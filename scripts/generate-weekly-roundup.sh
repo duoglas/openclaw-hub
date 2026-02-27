@@ -38,6 +38,39 @@ collect_daily_links() {
 EN_LINKS=$(collect_daily_links "en")
 ZH_LINKS=$(collect_daily_links "zh")
 
+# Auto-generate FAQ content from weekly report structure
+generate_weekly_faq() {
+  local lang="$1"
+  local isZh="$([ "$lang" = "zh" ] && echo "true" || echo "false")"
+  
+  if [ "$isZh" = "true" ]; then
+    cat <<'FAQEOF'
+  - question: 本周行业动态有哪些亮点？
+    answer: 本周汇总了 AI 基础设施和 Agent 生态的重要变化，以及影响独立站流量获取和变现的平台与搜索算法调整。
+  - question: 出现了哪些关键问题或故障模式？
+    answer: 本周记录了核心问题的根因模式和业务影响，帮助团队避免重复踩坑，提升系统稳定性。
+  - question: 未来 7 天有哪些可执行建议？
+    answer: 基于本周洞察，给出了具体的技术和运营改进建议，可直接落地到下周工作中。
+  - question: 如何快速定位本周日报？
+    answer: 文末提供了本周所有日报的直接链接，按时间倒序排列，方便快速回顾。
+FAQEOF
+  else
+    cat <<'FAQEOF'
+  - question: What are the highlights from this week's industry dynamics?
+    answer: This week summarizes key changes in AI infrastructure and the agent ecosystem, as well as platform and search algorithm updates affecting independent site traffic and monetization.
+  - question: What critical issues or failure patterns emerged?
+    answer: This week documents root cause patterns and business impact of core issues, helping teams avoid repeat failures and improve system stability.
+  - question: What actionable recommendations are available for the next 7 days?
+    answer: Based on weekly insights, specific technical and operational improvements are provided that can be directly implemented in the upcoming week.
+  - question: How do I quickly access this week's daily briefs?
+    answer: The article provides direct links to all daily posts from this week, ordered chronologically, for quick review.
+FAQEOF
+  fi
+}
+
+EN_FAQ=$(generate_weekly_faq "en")
+ZH_FAQ=$(generate_weekly_faq "zh")
+
 if [ ! -f "$EN_FILE" ]; then
   cat > "$EN_FILE" <<EOF
 ---
@@ -47,6 +80,8 @@ pubDate: ${SUNDAY}
 tags: ["openclaw", "weekly", "roundup", "ai", "automation"]
 category: "news"
 lang: "en"
+faq:
+${EN_FAQ}
 ---
 
 ## Industry Dynamics This Week
@@ -101,6 +136,8 @@ pubDate: ${SUNDAY}
 tags: ["openclaw", "weekly", "roundup", "ai", "automation"]
 category: "news"
 lang: "zh"
+faq:
+${ZH_FAQ}
 ---
 
 ## 本周行业动态

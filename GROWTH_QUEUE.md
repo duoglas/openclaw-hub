@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-02-27 23:14
+Last updated: 2026-02-27 23:27
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,12 +11,13 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] Candidate C: 为 weekly report 增加 FAQ 片段输出（ICE 4x4x5=80）
+- [ ] (empty)
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] Candidate C: 为 weekly report 增加 FAQ 片段输出（ICE 4x4x5=80）— commit `5d05f8b` (push pending: network to github.com:443 failed)
 - [x] Candidate B: 为 EN/ZH tag 页面补充 FAQ schema（ICE 6x5x4=120）— commit `HEAD`
 - [x] Candidate A: 在 content-check CI 中新增 stale-domain 强制检查，阻断旧域名回流 | ICE 9x9x9=729 — commit `bae8b4c`
 - [x] Add FAQ schema to 3 pillar pages (EN/ZH) to enhance SERP rich snippets and user engagement | ICE 7x8x6=336 — commit `5ab9c44`

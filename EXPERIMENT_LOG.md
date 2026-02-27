@@ -93,3 +93,13 @@
 - Result: pass (local `pnpm build` passed; routes generated for EN/ZH tag pages).
 - Decision: iterate (track GSC CTR/impressions on tag pages for 7 days).
 
+
+### EXP-009
+- Hypothesis: Weekly roundup templates with built-in FAQ snippets (EN/ZH) plus synchronized quality-check wording will improve rich-result readiness while preventing false-negative content quality failures.
+- Scope: `scripts/generate-weekly-roundup.sh`, `scripts/check-weekly-content-quality.sh`, current week EN/ZH weekly pages
+- Change: Added FAQ snippet generation in weekly scaffold for both languages; aligned ZH required heading in quality gate with generated template wording.
+- Start date: 2026-02-27
+- End date: 2026-02-27
+- Success metric: `pnpm build` passes and generated weekly EN/ZH pages contain FAQ frontmatter + required sections.
+- Result: pass (local build passed; weekly pages generated with FAQ items).
+- Decision: scale

@@ -64,3 +64,14 @@ Per-post score: 0-30 (6 dimensions x 0-5)
 - Total: 24
 - Rework needed? (Y/N): N
 
+
+- Title: Weekly FAQ Snippet Output for EN/ZH Roundup Templates
+- URL/slug: /en/blog/openclaw-weekly-YYYY-MM-DD-to-YYYY-MM-DD/ + /zh/blog/openclaw-weekly-YYYY-MM-DD-to-YYYY-MM-DD/
+- Intent Match: 4
+- Actionability: 4
+- Evidence: 4
+- Structure: 5
+- Internal Links: 3
+- Differentiation: 3
+- Total: 23
+- Rework needed? (Y/N): N
