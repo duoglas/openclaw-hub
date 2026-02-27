@@ -73,3 +73,13 @@
 - Result: pass (build passed + 4 files updated + commit pushed).
 - Decision: scale
 
+### EXP-007
+- Hypothesis: Adding stale-domain scan into CI quality gate will reduce regression risk of legacy domain references (`openhub.plzbite.top`) before merge.
+- Scope: `.github/workflows/content-check.yml` + existing `pnpm check:stale-domain` script
+- Change: Inserted dedicated CI step `Stale domain check` running `pnpm check:stale-domain` before taxonomy/frontmatter checks.
+- Start date: 2026-02-27
+- End date: 2026-02-27
+- Success metric: Local build passes and CI workflow now enforces stale-domain scan on push/PR.
+- Result: pass (local build passed; workflow includes stale-domain gate).
+- Decision: scale
+

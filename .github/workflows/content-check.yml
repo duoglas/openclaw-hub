@@ -34,6 +34,9 @@ jobs:
       - name: Weekly content quality check
         run: pnpm check:weekly-content
 
+      - name: Stale domain check
+        run: pnpm check:stale-domain
+
       - name: Content taxonomy check
         run: pnpm check:taxonomy
 
