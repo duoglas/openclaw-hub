@@ -75,11 +75,43 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: `这个“${displayTag}”标签页包含什么内容？`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `该页面聚合了所有带有“${displayTag}”标签的 OpenClaw 中文文章，包含实操教程、故障排查和配置建议。`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `应该如何阅读这个标签下的文章？`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '如果你在排障，优先看最新的问题修复文；如果你在搭建系统，再继续阅读体系化教程。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `这个标签页多久更新一次？`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '当新发布的中文文章包含该标签时，此页面会自动更新，持续保持最新。',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout title={`标签: ${displayTag}`} description={`标签 ${displayTag} 下的文章`} lang="zh">
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <h1>标签: {displayTag}</h1>
   {posts.length === 0 ? <p>暂无文章。</p> : posts.map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
@@ -92,4 +124,14 @@ const breadcrumbSchema = {
       </a>
     );
   })}
+
+  <section class="card" style="margin-top:1rem;">
+    <h2 style="margin-top:0;">常见问题</h2>
+    <h3>这个标签页包含什么？</h3>
+    <p>聚合所有与 <strong>{displayTag}</strong> 相关的 OpenClaw 中文实战文章。</p>
+    <h3>从哪篇开始看？</h3>
+    <p>先看最新故障排查文，再看进阶教程，效率最高。</p>
+    <h3>多久更新一次？</h3>
+    <p>有新中文文章打上这个标签后会自动更新。</p>
+  </section>
 </BaseLayout>

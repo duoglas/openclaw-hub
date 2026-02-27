@@ -53,3 +53,14 @@ Per-post score: 0-30 (6 dimensions x 0-5)
 - Total: 25
 - Rework needed? (Y/N): N
 
+- Title: EN/ZH Tag Archive FAQ Schema Upgrade
+- URL/slug: /en/blog/tag/[tag] + /zh/blog/tag/[tag]
+- Intent Match: 4
+- Actionability: 4
+- Evidence: 4
+- Structure: 4
+- Internal Links: 4
+- Differentiation: 4
+- Total: 24
+- Rework needed? (Y/N): N
+

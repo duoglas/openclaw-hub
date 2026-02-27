@@ -61,11 +61,43 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: `What is covered under the ${tag} tag?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `This page groups OpenClaw posts tagged ${tag}, including practical setup guides, troubleshooting notes, and implementation tips.`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `How should I read posts in this ${tag} collection?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Start from the newest troubleshooting article if you are fixing an issue now, then open deeper guide posts for architecture and best practices.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `How often is the ${tag} tag page updated?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'This list updates automatically when new English blog posts include this tag, so it stays current with recently published fixes and tutorials.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout title={`Tag: ${tag}`} description={`Posts tagged ${tag}`} lang="en">
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <h1>Tag: {tag}</h1>
   {posts.length === 0 ? <p>No posts yet.</p> : posts.map(post => {
     const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
@@ -78,4 +110,14 @@ const breadcrumbSchema = {
       </a>
     );
   })}
+
+  <section class="card" style="margin-top:1rem;">
+    <h2 style="margin-top:0;">FAQ</h2>
+    <h3>What is covered under this tag?</h3>
+    <p>OpenClaw guides and troubleshooting posts related to <strong>{tag}</strong>.</p>
+    <h3>Where should I start?</h3>
+    <p>Start with the newest issue-focused post, then continue with deeper setup tutorials.</p>
+    <h3>How often is this page updated?</h3>
+    <p>Automatically whenever a new English post is published with this tag.</p>
+  </section>
 </BaseLayout>

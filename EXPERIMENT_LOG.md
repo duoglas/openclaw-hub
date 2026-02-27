@@ -83,3 +83,13 @@
 - Result: pass (local build passed; workflow includes stale-domain gate).
 - Decision: scale
 
+### EXP-008
+- Hypothesis: Adding FAQPage schema + visible FAQ snippets on EN/ZH tag archive pages will improve long-tail query matching and rich-result eligibility for tag-intent searches.
+- Scope: `src/pages/en/blog/tag/[tag].astro`, `src/pages/zh/blog/tag/[tag].astro`
+- Change: Added JSON-LD `FAQPage` (3 Q&A each language) and matching on-page FAQ block to strengthen semantic coverage for each tag page.
+- Start date: 2026-02-27
+- End date: 2026-02-27
+- Success metric: Build passes; tag pages emit valid FAQ JSON-LD and visible FAQ content.
+- Result: pass (local `pnpm build` passed; routes generated for EN/ZH tag pages).
+- Decision: iterate (track GSC CTR/impressions on tag pages for 7 days).
+
