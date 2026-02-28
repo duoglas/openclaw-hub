@@ -264,3 +264,8 @@ sudo chown -R 你的用户名:你的用户名 /home/你的用户名/.openclaw
 ---
 
 *从零开始部署？请看 [VPS 完整部署指南](/blog/openclaw-vps-deployment-complete-guide)。*
+
+
+## 延伸阅读
+
+- [消息静默丢失与重复投递排查（2026）](/zh/blog/openclaw-delivery-reliability-silent-loss-replay-fix-2026/)

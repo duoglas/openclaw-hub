@@ -233,7 +233,10 @@ EOF
 - 加入 [Discord](https://discord.gg/openclaw) 或 [Telegram](https://t.me/openclaw) 社区提问
 - 运行 `openclaw doctor --verbose` 并附上输出
 
-## 延伸阅读（OpenClaw）
+## 延伸阅读
+
+- [消息静默丢失与重复投递排查（2026）](/zh/blog/openclaw-delivery-reliability-silent-loss-replay-fix-2026/)
+（OpenClaw）
 
 - [OpenClaw 是什么？一文看懂开源 AI Agent 平台（2026）](/zh/blog/what-is-openclaw/)
 - [OpenClaw vs ChatGPT vs Claude：2026 年怎么选 AI 助手？](/zh/blog/openclaw-vs-chatgpt-vs-claude/)

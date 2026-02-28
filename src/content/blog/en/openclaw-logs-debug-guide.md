@@ -277,3 +277,8 @@ A stable VPS with good connectivity makes debugging much easier — fewer networ
 - Check the [OpenClaw GitHub Issues](https://github.com/nicepkg/openclaw) for similar reports
 - Join the community on [Discord](https://discord.gg/openclaw) or [Telegram](https://t.me/openclaw)
 - Run `openclaw doctor --verbose` and share the output when asking for help
+
+
+## Related Reading
+
+- [Silent Message Loss / Replay Troubleshooting (2026)](/en/blog/openclaw-delivery-reliability-silent-loss-replay-fix-2026/)

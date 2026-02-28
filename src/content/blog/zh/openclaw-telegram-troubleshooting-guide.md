@@ -449,7 +449,10 @@ nameserver 1.1.1.1
 
 Telegram 集成已经是生产就绪状态，社区每天处理成千上万的消息。大多数问题归结于 token 配置、配对流程或网络路由 — 用上面的命令，5 分钟内就能修好。
 
-## 延伸阅读（OpenClaw）
+## 延伸阅读
+
+- [消息静默丢失与重复投递排查（2026）](/zh/blog/openclaw-delivery-reliability-silent-loss-replay-fix-2026/)
+（OpenClaw）
 
 - [OpenClaw 是什么？一文看懂开源 AI Agent 平台（2026）](/zh/blog/what-is-openclaw/)
 - [OpenClaw vs ChatGPT vs Claude：2026 年怎么选 AI 助手？](/zh/blog/openclaw-vs-chatgpt-vs-claude/)

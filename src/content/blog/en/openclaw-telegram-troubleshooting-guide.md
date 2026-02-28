@@ -454,3 +454,8 @@ Bot not responding?
 4. Read the [official Telegram channel docs](https://docs.openclaw.ai)
 
 The Telegram integration is production-ready and handles thousands of messages daily across the community. Most issues come down to token configuration, pairing flow, or network routing — all fixable in under 5 minutes with the commands above.
+
+
+## Related Reading
+
+- [Silent Message Loss / Replay Troubleshooting (2026)](/en/blog/openclaw-delivery-reliability-silent-loss-replay-fix-2026/)
