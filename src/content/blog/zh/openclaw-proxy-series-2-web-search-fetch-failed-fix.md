@@ -1,110 +1,89 @@
 ---
-title: "OpenClaw 代理系列(2)：`web_search` 一直 fetch failed？我把锅从 API Key 甩到了 Node（并修好了）"
-description: "真实故障复盘：为什么同机 Python 能通、OpenClaw 的 web_search 却一直 fetch failed。包含现象、排查路径、根因定位、最终修复（NODE_USE_ENV_PROXY=1）和浏览器 fallback 方案。"
+title: "OpenClaw 代理系列(2)：`web_search` 报 `fetch failed` 的排查与修复指南（2026）"
+description: "面向用户的实战排查手册：当 OpenClaw 的 web_search/web_fetch 出现 fetch failed 时，如何快速定位、修复并配置稳定 fallback。"
 pubDate: 2026-03-02
 tags: ["openclaw", "proxy", "web_search", "fetch failed", "troubleshooting", "systemd"]
 category: "guide"
 lang: "zh"
 ---
 
-> 系列说明：
-> - 第 1 篇讲的是：在 systemd 服务里配置代理，让 OpenClaw 能访问 Claude / OpenAI / Google。
-> - 这篇第 2 篇讲的是：**明明代理配了，为什么 `web_search` 还是 `fetch failed`**。
+> 适用场景：你已经给 OpenClaw 配了代理，但 `web_search` / `web_fetch` 仍频繁报 `fetch failed`。
 
-今天这个问题很“阴间”：
-
-- 你看到的报错：`fetch failed`
-- 体感：像是 API 挂了 / key 失效
-- 实际：都不是
-
-最后根因是：**Gateway 进程里的 Node fetch（undici）默认没按你想象那样吃系统代理环境变量**。
-
-一句话结论：
-
-✅ 在 systemd 的 OpenClaw 服务环境里加 `NODE_USE_ENV_PROXY=1`，重启后恢复。  
-✅ 同时给搜索链路加 fallback：`web_search` 失败就走浏览器搜索，不再裸报错。
+这篇是**可直接照做**的排查文档，目标是：
+- 先恢复可用（止血）
+- 再定位根因
+- 最后补上长期稳定策略
 
 ---
 
-## 1) 故障现象（用户视角）
+## 一、故障特征（先判断是否同类问题）
 
-- 多个任务连续出现 `fetch failed`
-- `web_search` / `web_fetch` 都失败
-- 但 Telegram/QQ 等消息通道多数还在线
-- cron 任务偶发成功、偶发失败，导致看起来“玄学”
+你如果遇到以下现象，基本可以按本文处理：
 
-这类问题最容易误判成：
-
-1. Brave key 过期
-2. DNS 挂了
-3. 外网断了
-
-结果都不是。
+- `web_search` 偶发或持续 `fetch failed`
+- `web_fetch` 也不稳定
+- Telegram/QQ 等通道看起来在线，但联网检索能力异常
+- 同机有些请求能通，有些请求不通（表现“玄学”）
 
 ---
 
-## 2) 我怎么排查的（按真实顺序）
+## 二、5 分钟快速止血
 
-### Step A：先验证“是不是 API 本身坏了”
+先别深挖，先让检索恢复：
 
-同机做两组请求：
+1) 保留主路径：`web_search`  
+2) 增加兜底：失败后自动走浏览器搜索  
+3) 对用户输出统一模板：
+   - 原因
+   - 已做恢复动作
+   - 是否需要人工介入
 
-- Python `requests` 请求 Brave API：**200 OK**
-- OpenClaw 内 `web_search`：**fetch failed**
+这样可以避免用户直接看到 `fetch failed`。
 
-这一步已经很关键：
+---
 
-> API 和网络并非完全不可达，问题更像是“**不同 HTTP 客户端路径行为不一致**”。
+## 三、标准排查路径（按顺序做）
 
-### Step B：做最小复现（Node fetch）
+### Step 1：确认服务在线与基础状态
 
-我用 Node 直接 `fetch` 测了多个域名（Brave/Telegram/Google），出现：
+```bash
+openclaw status
+openclaw gateway status
+```
 
-- `ETIMEDOUT`
-- `ECONNRESET`
-- `UND_ERR_CONNECT_TIMEOUT`
+### Step 2：区分“API不可达”还是“运行时链路问题”
 
-这时怀疑点收敛到：**Node fetch / undici + 代理链路**。
+在同机做对照测试：
 
-### Step C：验证 systemd 环境
+- Python `requests` 请求目标 API（如 Brave）
+- OpenClaw `web_search` 请求同目标
 
-`openclaw-gateway.service` 的 drop-in 里确实有：
+如果 Python 可通但 `web_search` 失败，优先怀疑：
+**Node fetch/undici + 代理链路**。
 
+### Step 3：检查 systemd 服务代理环境
+
+查看 gateway service 与 drop-in：
+
+```bash
+systemctl --user cat openclaw-gateway.service
+```
+
+确认至少存在：
 - `HTTP_PROXY`
 - `HTTPS_PROXY`
 - `ALL_PROXY`
+- `NO_PROXY`
 
-看起来“都配了”，但还不够。
+### Step 4：关键修复项（高概率根因）
 
-### Step D：关键实验
+在 drop-in 增加：
 
-临时加环境变量后再测：
-
-```bash
-NODE_USE_ENV_PROXY=1 node -e 'fetch("https://api.search.brave.com/res/v1/web/search?q=OpenClaw&count=1", {headers:{"X-Subscription-Token":"..."}}).then(r=>console.log(r.status)).catch(console.error)'
+```ini
+Environment="NODE_USE_ENV_PROXY=1"
 ```
 
-结果：**200**。
-
-根因坐实。
-
----
-
-## 3) 根因（Root Cause）
-
-不是 key，不是 DNS，不是目标网站挂了。
-
-是这条：
-
-> OpenClaw Gateway 运行在 Node 环境中，工具层 `web_search/web_fetch` 走 `fetch(undici)`。在当前运行方式下，仅设置 `HTTP_PROXY/HTTPS_PROXY` 还不够，必须显式启用 `NODE_USE_ENV_PROXY=1`，否则 Node fetch 不稳定/不走代理，最终表现为 `fetch failed`。
-
----
-
-## 4) 修复方案（可直接抄）
-
-编辑 systemd drop-in：
-
-`~/.config/systemd/user/openclaw-gateway.service.d/proxy.conf`
+完整示例（`~/.config/systemd/user/openclaw-gateway.service.d/proxy.conf`）：
 
 ```ini
 [Service]
@@ -122,62 +101,51 @@ systemctl --user daemon-reload
 systemctl --user restart openclaw-gateway.service
 ```
 
-验证：
+### Step 5：回归验证
 
 ```bash
 openclaw status
-# 然后实际触发一次 web_search
+# 再实际执行一次 web_search
 ```
 
-恢复标准：`web_search` 能稳定返回结果，不再出现连续 `fetch failed`。
+通过标准：
+- `web_search` 能稳定返回结果
+- 不再出现连续 `fetch failed`
 
 ---
 
-## 5) 兜底策略：web_search 失败时自动 fallback
+## 四、为什么会这样（根因解释）
 
-修复后仍建议做兜底，不要让用户看到生硬错误。
+该类问题常见根因不是 API Key，也不是 DNS，而是：
 
-推荐策略：
-
-1. 先走 `web_search`
-2. 失败时自动切 browser 搜索
-3. 返回结构化结果（标题 / 链接 / 摘要）
-4. 仅在两条链路都失败时才提示人工介入
-
-也就是说：
-
-❌ 别直接回 `fetch failed`  
-✅ 回「已自动重试 + 原因 + 现在可用的替代结果 + 是否需你介入」
+> OpenClaw 的联网工具走 Node `fetch`（undici），在某些运行方式下仅设置代理环境变量还不够，需要显式启用 `NODE_USE_ENV_PROXY=1`，否则会出现超时/重置并表现为 `fetch failed`。
 
 ---
 
-## 6) 这次复盘的 3 个工程教训
+## 五、长期稳态建议（避免复发）
 
-### 1) “同机能通”不等于“同进程能通”
-
-Python 通，不代表 Node 通；Shell 通，不代表 systemd 服务通。
-
-### 2) 先做最小复现，比盲猜快十倍
-
-先把问题压缩到一个 `node fetch` 命令，再讨论配置，效率最高。
-
-### 3) 永远给关键能力做 fallback
-
-搜索、发布、通知这些链路，必须“主路失败可切旁路”。
+1) **工具兜底**：`web_search` 失败自动降级浏览器搜索  
+2) **错误规范**：禁止直接返回裸错误  
+3) **健康巡检**：每天检查一次 gateway 状态与最近错误  
+4) **变更留痕**：所有 proxy/systemd 改动写入变更日志
 
 ---
 
-## 7) 给你的快速检查清单（30 秒版）
+## 六、FAQ
 
-- [ ] `web_search` 是否最近频繁 `fetch failed`
-- [ ] systemd drop-in 是否有 `NODE_USE_ENV_PROXY=1`
-- [ ] `systemctl --user daemon-reload && restart` 是否执行
-- [ ] 是否有 fallback（browser 或其他检索渠道）
+### Q1：我已经配置了 HTTP_PROXY，为什么还是失败？
+A：先检查是否启用了 `NODE_USE_ENV_PROXY=1`，并确认重载重启已生效。
+
+### Q2：为什么 Telegram 在线但搜索失败？
+A：消息通道在线 ≠ 联网检索链路健康。两条链路要分别验证。
+
+### Q3：修复后还偶发失败怎么办？
+A：先开 fallback（browser），再做重试+退避策略，不要把瞬时故障直接暴露给用户。
 
 ---
 
-如果你刚好也在做“代理 + OpenClaw + 多模型 + 多渠道”这套组合，这篇能帮你省至少半天。
+## 相关文章
 
-下一篇（系列 3）我准备写：
-
-**为什么“消息通道在线”≠“模型链路可用”，以及怎么做质量优先的任务调度（GLM 保活，高模型执行，失败延后不降级）。**
+- [OpenClaw Telegram 集成成功但不回复：Webhook / 409 / 权限完整排查（2026）](/zh/blog/openclaw-telegram-integration-no-reply-fix-checklist-2026/)
+- [OpenClaw 日志排查指南：从报错到根因定位](/zh/blog/openclaw-logs-debug-guide/)
+- [OpenClaw 模型回退链配置指南](/zh/blog/openclaw-model-fallback-strategy/)

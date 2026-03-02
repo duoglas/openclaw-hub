@@ -1,108 +1,87 @@
 ---
-title: "OpenClaw Proxy Series (2): `web_search` keeps saying fetch failed? I blamed Node, not your API key (and fixed it)"
-description: "A real-world incident write-up: why Python requests worked on the same machine while OpenClaw web_search/web_fetch kept failing. Includes symptoms, investigation path, root cause, fix (NODE_USE_ENV_PROXY=1), and browser fallback design."
+title: "OpenClaw Proxy Series (2): How to fix `web_search` `fetch failed` (2026 Guide)"
+description: "A practical runbook for users: when OpenClaw web_search/web_fetch keeps failing, how to diagnose, fix, and add reliable fallback behavior."
 pubDate: 2026-03-02
 tags: ["openclaw", "proxy", "web_search", "fetch failed", "troubleshooting", "systemd"]
 category: "guide"
 lang: "en"
 ---
 
-> Series context:
-> - Part 1 covered proxy setup in systemd so OpenClaw can reach Claude / OpenAI / Google.
-> - Part 2 (this post) answers: **"Why does `web_search` still fail with `fetch failed` even though proxy is configured?"**
+> Use this guide if OpenClaw has proxy configured but `web_search` / `web_fetch` still returns `fetch failed`.
 
-This bug was sneaky:
-
-- Error message: `fetch failed`
-- First instinct: bad API key or external outage
-- Actual cause: neither
-
-Final outcome:
-
-✅ Adding `NODE_USE_ENV_PROXY=1` to the OpenClaw gateway systemd environment fixed it.  
-✅ We also added a fallback rule: if `web_search` fails, switch to browser-based search instead of surfacing raw errors.
+This article is written as an operator runbook:
+- restore service first
+- identify root cause second
+- harden for long-term stability third
 
 ---
 
-## 1) Symptoms in production
+## 1) Symptoms checklist
 
-- Multiple tasks started failing with `fetch failed`
-- Both `web_search` and `web_fetch` were affected
-- Messaging channels (Telegram/QQ) were mostly still online
-- Cron jobs looked random: some runs passed, others failed
+You are likely in the same failure class if:
 
-Easy misdiagnoses:
-
-1. Brave API key expired
-2. DNS issue
-3. General internet outage
-
-None of those were true.
+- `web_search` intermittently or continuously returns `fetch failed`
+- `web_fetch` is also unstable
+- chat channels (Telegram/QQ) look online, but web retrieval is broken
+- behavior appears inconsistent on the same host
 
 ---
 
-## 2) Investigation path (real order)
+## 2) 5-minute mitigation (stop user impact first)
 
-### Step A: Verify the target API first
+Before deep debugging:
 
-On the same host:
+1. Keep primary path: `web_search`
+2. Add fallback path: browser-based search on failure
+3. Standardize user output:
+   - cause
+   - recovery action already taken
+   - whether manual intervention is required
 
-- Python `requests` to Brave API: **200 OK**
-- OpenClaw `web_search`: **fetch failed**
+This prevents raw `fetch failed` messages from reaching end users.
 
-This strongly suggested a runtime/client-path mismatch, not a provider outage.
+---
 
-### Step B: Minimal repro with Node fetch
+## 3) Standard troubleshooting sequence
 
-Testing Node `fetch` against Brave/Telegram/Google produced:
+### Step 1: Confirm service health
 
-- `ETIMEDOUT`
-- `ECONNRESET`
-- `UND_ERR_CONNECT_TIMEOUT`
+```bash
+openclaw status
+openclaw gateway status
+```
 
-Now the problem was clearly in **Node fetch/undici + proxy behavior**.
+### Step 2: Separate API outage from runtime-path issues
 
-### Step C: Inspect systemd service env
+Run side-by-side checks on the same host:
 
-The gateway drop-in already had:
+- Python `requests` to target API (e.g., Brave)
+- OpenClaw `web_search` to same target
 
+If Python works but `web_search` fails, suspect:
+**Node fetch/undici + proxy runtime path**.
+
+### Step 3: Inspect systemd proxy environment
+
+```bash
+systemctl --user cat openclaw-gateway.service
+```
+
+Verify at minimum:
 - `HTTP_PROXY`
 - `HTTPS_PROXY`
 - `ALL_PROXY`
+- `NO_PROXY`
 
-So "proxy is configured" was technically true — but still insufficient.
+### Step 4: Apply high-probability fix
 
-### Step D: Decisive experiment
+Add this to service env:
 
-With one extra env var:
-
-```bash
-NODE_USE_ENV_PROXY=1 node -e 'fetch("https://api.search.brave.com/res/v1/web/search?q=OpenClaw&count=1", {headers:{"X-Subscription-Token":"..."}}).then(r=>console.log(r.status)).catch(console.error)'
+```ini
+Environment="NODE_USE_ENV_PROXY=1"
 ```
 
-Result: **200**.
-
-Root cause confirmed.
-
----
-
-## 3) Root cause
-
-Not API key. Not DNS. Not provider downtime.
-
-Root cause:
-
-> OpenClaw Gateway tools (`web_search` / `web_fetch`) use Node `fetch` (undici). In this runtime, setting proxy env vars alone was not enough; `NODE_USE_ENV_PROXY=1` was required so Node fetch consistently honored env proxy routing.
-
-Without that, requests intermittently failed and surfaced as `fetch failed`.
-
----
-
-## 4) Fix (copy/paste)
-
-Edit:
-
-`~/.config/systemd/user/openclaw-gateway.service.d/proxy.conf`
+Example drop-in file (`~/.config/systemd/user/openclaw-gateway.service.d/proxy.conf`):
 
 ```ini
 [Service]
@@ -120,62 +99,53 @@ systemctl --user daemon-reload
 systemctl --user restart openclaw-gateway.service
 ```
 
-Validate:
+### Step 5: Regression verification
 
 ```bash
 openclaw status
 # then run a real web_search request
 ```
 
-Success criteria: `web_search` returns results consistently; no repeated `fetch failed` bursts.
+Pass criteria:
+- `web_search` consistently returns results
+- no repeated `fetch failed` bursts
 
 ---
 
-## 5) Reliability upgrade: fallback search path
+## 4) Root cause summary
 
-Even after fixing the root cause, keep a fallback to avoid user-facing dead ends.
+In this failure pattern, the issue is often not API key/DNS/provider downtime.
 
-Recommended behavior:
+Typical root cause:
 
-1. Try `web_search`
-2. If it fails, switch to browser-based search
-3. Return structured output (title / URL / snippet)
-4. Only ask for manual intervention if both paths fail
-
-So:
-
-❌ Don’t surface raw `fetch failed`  
-✅ Report "auto-retried + diagnosis + recovered path + whether human action is required"
+> OpenClaw web tools use Node `fetch` (undici). In some runtime setups, proxy env vars alone are not enough; `NODE_USE_ENV_PROXY=1` is required so Node fetch consistently honors proxy routing.
 
 ---
 
-## 6) Three engineering lessons
+## 5) Hardening recommendations
 
-### 1) "Works on this machine" is not enough
-
-Python path working does not guarantee Node path works. Interactive shell success does not guarantee systemd runtime success.
-
-### 2) Minimal repro beats guessing
-
-A tiny `node fetch` test narrowed hours of speculation into minutes.
-
-### 3) Critical features need fallback by design
-
-Search/publish/notification paths should degrade gracefully, not fail loudly.
+1. **Fallback by default**: `web_search` → browser search on failure
+2. **No raw errors to users**: always return diagnosis + recovery status
+3. **Daily health checks**: gateway + recent fetch failures
+4. **Change tracking**: log every proxy/systemd adjustment
 
 ---
 
-## 7) 30-second checklist
+## 6) FAQ
 
-- [ ] Are `web_search` failures recurring?
-- [ ] Does gateway service env include `NODE_USE_ENV_PROXY=1`?
-- [ ] Did you run `daemon-reload` + restart?
-- [ ] Do you have a browser fallback path for search?
+### Q1: I already set HTTP_PROXY. Why does it still fail?
+A: Verify `NODE_USE_ENV_PROXY=1` is set and service has been reloaded/restarted.
+
+### Q2: Why is Telegram online while search is broken?
+A: Channel connectivity and web retrieval are separate paths; test them independently.
+
+### Q3: What if failures still occur occasionally?
+A: Keep browser fallback enabled and add retry/backoff, instead of exposing transient failures directly.
 
 ---
 
-If you run OpenClaw behind proxies with multiple models/channels, this one setting can save you a lot of debugging time.
+## Related guides
 
-Next in Part 3:
-
-**Why "channel online" ≠ "model path healthy", and how to design quality-first scheduling (GLM for heartbeat, high-tier models for execution, delay instead of quality downgrade).**
+- [OpenClaw Telegram Bot Online but Not Replying: Webhook, 409 Conflict, and Permission Fix Checklist (2026)](/en/blog/openclaw-telegram-integration-no-reply-fix-checklist-2026/)
+- [OpenClaw Log Troubleshooting Guide](/en/blog/openclaw-logs-debug-guide/)
+- [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
