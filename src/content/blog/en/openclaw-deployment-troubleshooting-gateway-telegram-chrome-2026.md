@@ -76,7 +76,7 @@ openclaw gateway restart
 ### D. Service keeps crashing under systemd
 
 ```bash
-journalctl -u openclaw --no-pager -n 80
+journalctl --user -u openclaw-gateway --no-pager -n 80
 which node
 ```
 

@@ -16,16 +16,16 @@ When something breaks in OpenClaw, the logs tell you exactly what happened — i
 openclaw logs --follow
 
 # Last 100 lines
-openclaw logs --lines 100
+openclaw logs --limit 100
 
 # Filter by level
-openclaw logs --level error
+openclaw logs --json --limit 500 | grep '"level":"error"'
 
 # Gateway-specific logs
-openclaw gateway logs
+openclaw logs --follow
 
 # System journal (if running as systemd service)
-journalctl -u openclaw -n 50 --no-pager
+journalctl --user -u openclaw-gateway -n 50 --no-pager
 ```
 
 > **Tip:** Always start with `openclaw logs --follow` in one terminal while reproducing the issue in another.
@@ -199,7 +199,7 @@ Your bot token is wrong. Get a fresh one from [@BotFather](https://t.me/BotFathe
 **Pattern C — SSL/webhook errors:**
 If you're using webhook mode, your server needs a valid SSL certificate. Polling mode is simpler for VPS deployments:
 ```bash
-openclaw config set telegram.mode polling
+openclaw config set channels.telegram.mode polling
 openclaw gateway restart
 ```
 
@@ -233,10 +233,10 @@ See our [Install Troubleshooting Guide](/blog/openclaw-install-first-run-error-t
 When you hit an unknown error, follow this sequence:
 
 ```
-1. openclaw logs --level error --lines 20    ← What's the error?
+1. openclaw logs --json --limit 500 | grep '"level":"error"' | tail -n 20    ← What's the error?
 2. openclaw doctor                            ← Automated health check
 3. openclaw gateway status                    ← Is gateway alive?
-4. openclaw config validate                   ← Config syntax OK?
+4. openclaw status --all                       ← Config + channel health snapshot
 5. Reproduce with --follow                    ← Watch it happen live
 ```
 
@@ -247,7 +247,7 @@ When you hit an unknown error, follow this sequence:
 ls ~/.openclaw/logs/
 
 # Rotate logs to save disk space
-openclaw logs --rotate
+# Use system logrotate instead; CLI has no built-in rotate command
 ```
 
 On a VPS, set up log rotation to avoid filling your disk:

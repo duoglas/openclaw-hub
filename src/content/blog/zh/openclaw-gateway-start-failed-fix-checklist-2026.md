@@ -122,7 +122,7 @@ openclaw gateway restart
 
 ### 先看日志
 ```bash
-journalctl -u openclaw --no-pager -n 80
+journalctl --user -u openclaw-gateway --no-pager -n 80
 openclaw gateway status --deep
 openclaw doctor --deep
 ```
@@ -144,11 +144,11 @@ ANTHROPIC_API_KEY=sk-ant-...
 EOF
 
 # 重启服务
-sudo systemctl restart openclaw
-sudo systemctl status openclaw --no-pager
+openclaw gateway restart
+systemctl --user status openclaw-gateway --no-pager
 ```
 
-如是 PATH 问题，用 `systemctl edit openclaw` 添加可用 Node 路径后 `daemon-reload`。
+如是 PATH 问题，用 `systemctl --user edit openclaw-gateway` 添加可用 Node 路径后 `daemon-reload`。
 
 ---
 
@@ -186,7 +186,7 @@ openclaw status
 openclaw gateway status --deep
 openclaw doctor --deep
 openclaw logs --follow
-journalctl -u openclaw --no-pager -n 120
+journalctl --user -u openclaw-gateway --no-pager -n 120
 ```
 
 把输出整理后再提问，定位速度会快很多。

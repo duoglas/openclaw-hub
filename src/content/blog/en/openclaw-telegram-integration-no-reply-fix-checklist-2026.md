@@ -30,8 +30,8 @@ openclaw logs --follow
 If managed by systemd:
 
 ```bash
-systemctl status openclaw
-journalctl -u openclaw --no-pager -n 100
+openclaw gateway status
+journalctl --user -u openclaw-gateway --no-pager -n 100
 ```
 
 ---
@@ -71,7 +71,7 @@ Working in your interactive shell does not mean systemd sees the same environmen
 
 ```bash
 # Check for token/auth errors in service logs
-journalctl -u openclaw --no-pager -n 100
+journalctl --user -u openclaw-gateway --no-pager -n 100
 
 # Common location for daemon env
 cat ~/.openclaw/.env
@@ -85,7 +85,7 @@ cat >> ~/.openclaw/.env <<'EOF'
 TELEGRAM_BOT_TOKEN=123456:xxxxxx
 EOF
 
-sudo systemctl restart openclaw
+openclaw gateway restart
 openclaw gateway status
 ```
 
@@ -191,6 +191,17 @@ openclaw gateway restart
 ```
 
 ---
+
+## FAQ
+
+### Q1) Which mode should I use: polling or webhook?
+For single-host setups, polling is usually simpler and more stable. Use webhook only when you need strict inbound control and can guarantee public HTTPS reachability.
+
+### Q2) Why does it work in DM but not in group chats?
+Most often it's Telegram privacy mode or missing group policy allowlist. Re-check bot privacy settings, group permissions, and `channels.telegram.groupPolicy`/`groupAllowFrom`.
+
+### Q3) I fixed token/webhook but still no reply. What next?
+Check model-layer failures immediately (`openclaw logs --follow`). Invalid provider keys, quota exhaustion, and upstream timeout errors can all look like Telegram failures.
 
 ## Bottom line: 90% of Telegram "no reply" cases are these 3
 

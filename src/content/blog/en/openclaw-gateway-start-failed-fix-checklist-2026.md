@@ -122,7 +122,7 @@ openclaw gateway restart
 
 ### Start with logs
 ```bash
-journalctl -u openclaw --no-pager -n 80
+journalctl --user -u openclaw-gateway --no-pager -n 80
 openclaw gateway status --deep
 openclaw doctor --deep
 ```
@@ -144,11 +144,11 @@ ANTHROPIC_API_KEY=sk-ant-...
 EOF
 
 # Restart service
-sudo systemctl restart openclaw
-sudo systemctl status openclaw --no-pager
+openclaw gateway restart
+systemctl --user status openclaw-gateway --no-pager
 ```
 
-If it's a PATH issue, use `systemctl edit openclaw` to inject the correct Node bin path, then `daemon-reload`.
+If it's a PATH issue, use `systemctl --user edit openclaw-gateway` to inject the correct Node bin path, then `daemon-reload`.
 
 ---
 
@@ -186,7 +186,7 @@ openclaw status
 openclaw gateway status --deep
 openclaw doctor --deep
 openclaw logs --follow
-journalctl -u openclaw --no-pager -n 120
+journalctl --user -u openclaw-gateway --no-pager -n 120
 ```
 
 Share this output when asking for help — triage becomes much faster.

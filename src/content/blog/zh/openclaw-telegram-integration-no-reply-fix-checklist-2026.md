@@ -30,8 +30,8 @@ openclaw logs --follow
 如果是 systemd 管理：
 
 ```bash
-systemctl status openclaw
-journalctl -u openclaw --no-pager -n 100
+openclaw gateway status
+journalctl --user -u openclaw-gateway --no-pager -n 100
 ```
 
 ---
@@ -71,7 +71,7 @@ openclaw gateway status
 
 ```bash
 # 查看服务日志是否有 token/认证相关报错
-journalctl -u openclaw --no-pager -n 100
+journalctl --user -u openclaw-gateway --no-pager -n 100
 
 # 常见做法：放到 ~/.openclaw/.env
 cat ~/.openclaw/.env
@@ -85,7 +85,7 @@ cat >> ~/.openclaw/.env <<'EOF'
 TELEGRAM_BOT_TOKEN=123456:xxxxxx
 EOF
 
-sudo systemctl restart openclaw
+openclaw gateway restart
 openclaw gateway status
 ```
 
@@ -191,6 +191,17 @@ openclaw gateway restart
 ```
 
 ---
+
+## FAQ
+
+### Q1）应该选 polling 还是 webhook？
+单机部署优先 polling，配置更简单、稳定性更高。只有在你明确需要公网回调且 HTTPS/反代稳定时，再考虑 webhook。
+
+### Q2）为什么私聊正常，群里不回复？
+高频原因是 Telegram 隐私模式或群策略白名单未放行。重点复查 BotFather 隐私设置、群权限，以及 `channels.telegram.groupPolicy`/`groupAllowFrom`。
+
+### Q3）token/webhook 都修好了还是不回复怎么办？
+马上看模型层日志（`openclaw logs --follow`）。上游 key 无效、额度用尽、请求超时，都会表现成“Telegram 不回”。
 
 ## 结论：90% 的 Telegram“不回复”是这三类
 
