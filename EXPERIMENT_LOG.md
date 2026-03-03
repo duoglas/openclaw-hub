@@ -133,3 +133,13 @@
 - Success metric: `pnpm build` + `pnpm check:duplicate-slug-id` both pass; CI includes dedicated duplicate slug/id gate.
 - Result: pass (initial source-heading-only approach caused false positives; switched to rendered HTML id scan; final gate passed).
 - Decision: scale
+
+### EXP-013
+- Hypothesis: Enforcing a minimum of 2 external evidence links in latest EN/ZH weekly posts via CI will reduce unsupported claims and improve weekly content trustworthiness.
+- Scope: `scripts/check-weekly-external-evidence.sh`, `package.json`, `.github/workflows/content-check.yml`, latest EN/ZH weekly posts
+- Change: Added external evidence gate script (`check:weekly-external-evidence`), wired it into content-check CI, and inserted 3 authoritative external references into both EN/ZH weekly posts.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm check:weekly-external-evidence` passes with EN/ZH >=2 external links and `pnpm build` remains green.
+- Result: pass (EN=3, ZH=3; gate passed; build passed).
+- Decision: scale

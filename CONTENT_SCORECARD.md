@@ -75,3 +75,14 @@ Per-post score: 0-30 (6 dimensions x 0-5)
 - Differentiation: 3
 - Total: 23
 - Rework needed? (Y/N): N
+
+- Title: Weekly External Evidence Gate + EN/ZH Evidence Links Upgrade
+- URL/slug: /en/blog/openclaw-weekly-2026-02-23-to-2026-03-01/ + /zh/blog/openclaw-weekly-2026-02-23-to-2026-03-01/
+- Intent Match: 5
+- Actionability: 5
+- Evidence: 5
+- Structure: 5
+- Internal Links: 3
+- Differentiation: 3
+- Total: 26
+- Rework needed? (Y/N): N

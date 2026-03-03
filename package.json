@@ -15,6 +15,7 @@
     "check:stale-domain": "bash scripts/scan-stale-domain.sh",
     "check:weekly-content": "bash scripts/check-weekly-content-quality.sh",
     "check:weekly-scorecard": "bash scripts/check-weekly-scorecard.sh",
+    "check:weekly-external-evidence": "bash scripts/check-weekly-external-evidence.sh",
     "check:frontmatter-dates": "bash scripts/check-frontmatter-dates.sh",
     "check:duplicate-slug-id": "node scripts/check-duplicate-slug-id.mjs"
   },

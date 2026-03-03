@@ -37,6 +37,9 @@ jobs:
       - name: Weekly scorecard gate
         run: pnpm check:weekly-scorecard
 
+      - name: Weekly external evidence gate
+        run: pnpm check:weekly-external-evidence
+
       - name: Frontmatter date consistency check
         run: pnpm check:frontmatter-dates
 
