@@ -17,7 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P2 Candidate C: 扩展 noindex-leak 报告格式（按语言输出样例文件）并增加 rg 缺失时 grep 回退 | ICE 4x8x7=224 — commit `PENDING`
+- [x] P2 Candidate C: 扩展 noindex-leak 报告格式（按语言输出样例文件）并增加 rg 缺失时 grep 回退 | ICE 4x8x7=224 — commit `e738d7f`
 - [x] P1 Candidate A: 新增 RSS 自动发现完整性闸门（构建后校验 EN/ZH 全站 HTML 均包含正确 `rel=alternate` RSS 链接）并接入 CI | ICE 7x8x8=448 — commit `10997ec`
 - [x] P1 Candidate: 新增博客详情页 noindex 泄漏闸门（扫描 dist/en|zh/blog 禁止 robots/x-robots noindex）并接入 CI | ICE 9x8x8=576 — commit `908dd6c`
 - [x] P1 Candidate: 新增 redirect 规则完整性闸门（校验 _redirects 关键 301/200 规则 + 禁止 302）并接入 CI | ICE 8x8x9=576 — commit `14688d5`
