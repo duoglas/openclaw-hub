@@ -153,3 +153,13 @@
 - Success metric: `pnpm build && pnpm check:hreflang-pairs` passes with all current EN/ZH post pairs validated.
 - Result: pass (65 EN/ZH blog pairs validated).
 - Decision: scale
+
+### EXP-015
+- Hypothesis: Enforcing canonical integrity in CI for all EN/ZH blog output pages will prevent stale-domain regression and URL mismatch (encoded path / wrong host) before merge.
+- Scope: `scripts/check-canonical-integrity.sh`, `package.json`, `.github/workflows/content-check.yml`, `dist/en/blog/**/index.html`, `dist/zh/blog/**/index.html`
+- Change: Added `check:canonical-integrity` script to validate canonical existence, domain (`kuoo.uk`), and expected encoded path; wired it into Content Check workflow.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm build && pnpm check:canonical-integrity` passes with full EN/ZH blog coverage.
+- Result: pass (371 blog pages validated).
+- Decision: scale
