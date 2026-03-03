@@ -37,6 +37,9 @@ jobs:
       - name: Weekly scorecard gate
         run: pnpm check:weekly-scorecard
 
+      - name: Frontmatter date consistency check
+        run: pnpm check:frontmatter-dates
+
       - name: Stale domain check
         run: pnpm check:stale-domain
 

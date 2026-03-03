@@ -113,3 +113,13 @@
 - Success metric: Local scorecard gate passes at >=20 for both EN/ZH weekly posts; `pnpm build` remains green after CI workflow update.
 - Result: pass (EN=24, ZH=24; build passed).
 - Decision: scale
+
+### EXP-011
+- Hypothesis: Enforcing frontmatter date consistency in CI (`updatedDate >= pubDate`) will block invalid chronology metadata before merge and reduce SEO trust-risk from incorrect article freshness signals.
+- Scope: `scripts/check-frontmatter-dates.sh`, `package.json`, `.github/workflows/content-check.yml`, current EN/ZH weekly posts
+- Change: Added date-consistency checker script, npm script `check:frontmatter-dates`, CI gate step, and fixed current weekly posts where `updatedDate` was earlier than `pubDate`.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm check:frontmatter-dates` passes and `pnpm build` remains green after gate integration.
+- Result: pass (invalid dates detected first, fixed to 2026-03-01 for EN/ZH weekly, then gate + build passed).
+- Decision: scale
