@@ -112,3 +112,16 @@ Per-post score: 0-30 (6 dimensions x 0-5)
 - Differentiation: 4
 - Total: 23
 - Rework needed? (Y/N): N
+
+---
+
+- Title: weekly:seo 高跳出风险复盘队列（代理指标）
+- URL/slug: reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md (Section 7) + WEEKLY_REVIEW.md
+- Intent Match: 5
+- Actionability: 5
+- Evidence: 3
+- Structure: 4
+- Internal Links: 2
+- Differentiation: 4
+- Total: 23
+- Rework needed? (Y/N): N

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-04 02:03
+Last updated: 2026-03-04 02:36
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,12 +11,13 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] P2 Candidate B: 为 weekly:seo 增加“高跳出率内容复盘占位”输出（基于已有数据做可执行改写队列）| ICE 5x6x5=150
+- [ ] (empty)
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] P2 Candidate B: 为 weekly:seo 增加“高跳出率内容复盘占位”输出（基于已有数据做可执行改写队列）| ICE 5x6x5=150 — commit `aadfcff`
 - [x] P2 Candidate C: 扩展 noindex-leak 报告格式（按语言输出样例文件）并增加 rg 缺失时 grep 回退 | ICE 4x8x7=224 — commit `e738d7f`
 - [x] P1 Candidate A: 新增 RSS 自动发现完整性闸门（构建后校验 EN/ZH 全站 HTML 均包含正确 `rel=alternate` RSS 链接）并接入 CI | ICE 7x8x8=448 — commit `10997ec`
 - [x] P1 Candidate: 新增博客详情页 noindex 泄漏闸门（扫描 dist/en|zh/blog 禁止 robots/x-robots noindex）并接入 CI | ICE 9x8x8=576 — commit `908dd6c`

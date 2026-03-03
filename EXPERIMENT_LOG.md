@@ -295,3 +295,13 @@
 - Success metric: `pnpm check:noindex-leak && pnpm build` passes, and noindex report prints EN/ZH segmented summary.
 - Result: pass（EN 180 scanned, ZH 189 scanned, leaks=0; build passed）.
 - Decision: scale
+
+### EXP-029
+- Hypothesis: Adding a weekly high-bounce retro proxy queue (high-impression + low-CTR pages with actionable rewrite guidance) into `weekly:seo` will convert blind “复盘占位” into executable tasks and reduce no-op weekly reviews.
+- Scope: `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`
+- Change: Implemented `collect_high_bounce_retro_queue` and injected Section 7 table with owner/due/action fields; updated weekly action plan to include top-2 retro execution task.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm weekly:seo && pnpm build` passes, and weekly report includes non-placeholder high-bounce retro queue.
+- Result: pass（Section 7 generated with actionable fallback row; build passed）.
+- Decision: scale

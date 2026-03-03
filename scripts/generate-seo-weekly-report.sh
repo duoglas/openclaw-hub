@@ -466,6 +466,102 @@ collect_title_rewrite_queue() {
   ' "${files[@]}" | sort -r | cut -f2- | head -n 8
 }
 
+collect_high_bounce_retro_queue() {
+  local dir="reports/seo/daily"
+  local files=()
+  local f d
+
+  if [ ! -d "$dir" ]; then
+    echo "| - | 0 | 0.00% | 无可用行为数据，先回填 GSC + Web Analytics | owner: hub-growth-worker; due: ${SUNDAY} |"
+    return
+  fi
+
+  while IFS= read -r f; do
+    d=$(basename "$f" .md)
+    if [[ "$d" < "$MONDAY" || "$d" > "$SUNDAY" ]]; then
+      continue
+    fi
+    files+=("$f")
+  done < <(find "$dir" -maxdepth 1 -type f -name '*.md' | sort)
+
+  if [ ${#files[@]} -eq 0 ]; then
+    echo "| - | 0 | 0.00% | 无周内快照，先补齐每日快照再复盘 | owner: hub-growth-worker; due: ${SUNDAY} |"
+    return
+  fi
+
+  awk -v due="$SUNDAY" '
+    function trim(s) { gsub(/^[[:space:]]+|[[:space:]]+$/, "", s); return s }
+    function extract_num(s, r, tmp) {
+      if (match(tolower(s), r)) {
+        tmp = substr(tolower(s), RSTART, RLENGTH)
+        gsub(/^[^:=]*[:=][[:space:]]*/, "", tmp)
+        gsub(/%/, "", tmp)
+        return tmp + 0
+      }
+      return ""
+    }
+    function extract_text(s, r, tmp) {
+      if (match(tolower(s), r)) {
+        tmp = substr(s, RSTART, RLENGTH)
+        sub(/^[^:=]*[:=][[:space:]]*/, "", tmp)
+        return trim(tmp)
+      }
+      return ""
+    }
+    function normalize_page(p) {
+      out = trim(p)
+      gsub(/[?#].*$/, "", out)
+      if (out == "") out = "-"
+      return out
+    }
+    {
+      if ($0 !~ /^[[:space:]]*[0-9]+\.[[:space:]]*/) next
+      raw = $0
+      gsub(/^[[:space:]]*[0-9]+\.[[:space:]]*/, "", raw)
+
+      page = extract_text(raw, /(page|url|landing)[:=][[:space:]]*[^|]+/)
+      page = normalize_page(page)
+      if (page == "-") next
+
+      impr = extract_num(raw, /(impressions?|imp)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      ctr = extract_num(raw, /ctr[:=][[:space:]]*[0-9]+([.][0-9]+)?%?/)
+      pos = extract_num(raw, /(position|pos)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+
+      if (impr == "") impr = 0
+      if (ctr == "") ctr = 0
+      if (pos == "") pos = 30
+
+      if (impr < 80) next
+      if (ctr > 2.5) next
+
+      page_impr[page] += impr
+      page_ctr_sum[page] += ctr
+      page_ctr_cnt[page] += 1
+      page_pos_sum[page] += pos
+      page_pos_cnt[page] += 1
+    }
+    END {
+      for (p in page_impr) {
+        avg_ctr = (page_ctr_cnt[p] > 0) ? page_ctr_sum[p] / page_ctr_cnt[p] : 0
+        avg_pos = (page_pos_cnt[p] > 0) ? page_pos_sum[p] / page_pos_cnt[p] : 30
+        ctr_gap = 3.0 - avg_ctr
+        if (ctr_gap < 0) ctr_gap = 0
+        risk = int((page_impr[p] * ctr_gap) / 120 + (18 - avg_pos))
+        if (risk < 0) risk = 0
+
+        action = "重写首屏摘要与标题承诺，补充FAQ/内链以降低意图错配"
+        if (avg_ctr < 1.0) {
+          action = "优先改写标题为问题导向+结果承诺，并在前120字给出可执行步骤"
+        } else if (avg_pos <= 8) {
+          action = "保留排名优势，强化meta描述和首屏CTA，减少点击后预期落差"
+        }
+
+        printf "%010d\t| %s | %.0f | %.2f%% | %s | owner: hub-growth-worker; due: %s |\n", risk, p, page_impr[p], avg_ctr, action, due
+      }
+    }
+  ' "${files[@]}" | sort -r | cut -f2- | head -n 5
+}
+
 build_title_rewrite_act_items() {
   local rows="$1"
   local out=""
@@ -546,6 +642,11 @@ if [ -z "$TITLE_REWRITE_ROWS" ]; then
 fi
 TITLE_REWRITE_ACT_ITEMS=$(build_title_rewrite_act_items "$TITLE_REWRITE_ROWS")
 
+HIGH_BOUNCE_RETRO_ROWS=$(collect_high_bounce_retro_queue)
+if [ -z "$HIGH_BOUNCE_RETRO_ROWS" ]; then
+  HIGH_BOUNCE_RETRO_ROWS="| - | 0 | 0.00% | 无可执行数据，先补齐行为指标后复盘 | owner: hub-growth-worker; due: ${SUNDAY} |"
+fi
+
 count_real_items() {
   printf "%s" "$1" | awk '/^- \[ \] / && $0 !~ /\(no .*\)/ {c++} END{print c+0}'
 }
@@ -613,7 +714,15 @@ ${LOW_CTR_ROWS_ZH}
 |---|---:|---:|---:|---|---:|---|
 ${TITLE_REWRITE_ROWS}
 
-## 7) Content Execution This Week
+## 7) High Bounce Content Retro Queue (auto proxy)
+
+> Proxy rule: prioritize pages with high impressions + low CTR as bounce-risk candidates when direct bounce-rate data is unavailable in daily snapshots.
+
+| Page | Impressions | Avg CTR | Recommended Action | Owner / Due |
+|---|---:|---:|---|---|
+${HIGH_BOUNCE_RETRO_ROWS}
+
+## 8) Content Execution This Week
 
 ### New posts (EN)
 ${NEW_EN}
@@ -627,11 +736,11 @@ ${UPDATED}
 ### Technical SEO changes (git-tracked)
 ${TECH}
 
-## 8) Daily Snapshot Rollup (auto)
+## 9) Daily Snapshot Rollup (auto)
 
 ${DAILY_SUMMARY}
 
-## 9) GSC Data Gap Alert (auto)
+## 10) GSC Data Gap Alert (auto)
 
 | Metric | Value |
 |---|---|
@@ -640,12 +749,12 @@ ${DAILY_SUMMARY}
 | Missing Days (week) | ${GSC_GAP_MISSING_RATIO} |
 | Note | ${GSC_GAP_NOTE} |
 
-## 10) Domain Hygiene Guardrail (auto)
+## 11) Domain Hygiene Guardrail (auto)
 
 - Stale domain scanner status: ${DOMAIN_HYGIENE_STATUS}
 - Alert file: ${DOMAIN_ALERT_FILE}
 
-## 11) Wins / Problems
+## 12) Wins / Problems
 
 ### Wins
 - Published ${PUBLISHED_POSTS} post(s) this week and merged ${TECH_COUNT} technical SEO change(s), keeping content + technical cadence synchronized.
@@ -654,14 +763,15 @@ ${DAILY_SUMMARY}
 ### Problems / Blockers
 - GSC completeness status this week: ${GSC_GAP_STATUS} — ${GSC_GAP_NOTE}.
 - Several low-CTR opportunities are still in “detected” state and not yet converted into title/meta rewrite commits.
+- High-bounce-risk proxy queue still requires execution and validation against real behavior metrics (GA4/Clarity) before scaling.
 
-## 12) Action Plan (Next Week)
+## 13) Action Plan (Next Week)
 
-- [ ] P0: Backfill latest 7 daily snapshots with real GSC clicks/impressions/CTR/position data (priority raised if Section 9 is 🔴) | owner: hub-growth-worker | due: ${SUNDAY}
+- [ ] P0: Backfill latest 7 daily snapshots with real GSC clicks/impressions/CTR/position data (priority raised if Section 10 is 🔴) | owner: hub-growth-worker | due: ${SUNDAY}
 - [ ] P1: Execute title/meta rewrites for top 3 items from Section 6 and publish EN/ZH updates | owner: hub-growth-worker | due: ${SUNDAY}
-- [ ] P2: Verify legacy URL redirects and canonical behavior in production, then document results in WEEKLY_REVIEW.md | owner: hub-growth-worker | due: ${SUNDAY}
+- [ ] P1: Execute top 2 pages from Section 7 high-bounce proxy queue and compare pre/post engagement metrics | owner: hub-growth-worker | due: ${SUNDAY}
 
-## 13) Data Sources
+## 14) Data Sources
 
 - Google Search Console (Performance + Pages + Queries)
 - Cloudflare Web Analytics (optional)
@@ -688,6 +798,7 @@ cat > "WEEKLY_REVIEW.md" <<EOF
 - Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
 - Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
 - Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.
+- High-bounce-risk pages (proxy): Source from weekly report Section 7 (high impressions + low CTR proxy queue) and execute top 2 retro actions.
 - New pages indexed: Verify newly published URLs in Search Console; if data unavailable, create one indexing check task in Action Plan.
 - Published posts (auto): ${PUBLISHED_POSTS}
 - Updated posts (git-tracked): ${UPDATED_COUNT}
