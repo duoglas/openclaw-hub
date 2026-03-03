@@ -67,6 +67,9 @@ jobs:
       - name: Blog FAQ quality check
         run: pnpm check:blog-faq
 
+      - name: Redirect rules check
+        run: pnpm check:redirect-rules
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."

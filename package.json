@@ -22,7 +22,8 @@
     "check:canonical-integrity": "bash scripts/check-canonical-integrity.sh",
     "check:daily-cta": "bash scripts/check-daily-cta-variants.sh",
     "check:meta-description": "bash scripts/check-meta-description-quality.sh",
-    "check:blog-faq": "bash scripts/check-blog-faq-quality.sh"
+    "check:blog-faq": "bash scripts/check-blog-faq-quality.sh",
+    "check:redirect-rules": "bash scripts/check-redirect-rules.sh"
   },
   "keywords": [],
   "author": "",

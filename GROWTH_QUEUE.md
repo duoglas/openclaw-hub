@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-03 23:33
+Last updated: 2026-03-04 00:34
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate: 新增 redirect 规则完整性闸门（校验 _redirects 关键 301/200 规则 + 禁止 302）并接入 CI | ICE 8x8x9=576 — commit `14688d5`
 - [x] P2 Candidate: 生成“标题改写执行清单”并自动写入 WEEKLY_REVIEW.md 的 Act 区块 | ICE 7x7x6=294 — commit `4216349`
 - [x] P1 Candidate: daily:seo 增加 GSC 数据缺失告警（连续 3 天空值则标红）并接入周报 | ICE 9x7x6=378 — commit `d84169e`
 - [x] P1 Candidate: 在 weekly:seo 模板中把 Wins/Problems/Action Plan 从占位符升级为可执行默认项（禁止“fill”占位） | ICE 8x9x8=576 — commit `(this commit)`

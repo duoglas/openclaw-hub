@@ -255,3 +255,13 @@
 - Result: pass (current week shows 🔴 RED, max consecutive missing days=7; build passed).
 - Decision: scale
 
+### EXP-025
+- Hypothesis: Enforcing redirect-rule integrity in CI (`public/_redirects`) will prevent accidental SEO-critical redirect regressions (legacy domain mapping, blog canonical path normalization) before merge.
+- Scope: `scripts/check-redirect-rules.sh`, `package.json`, `.github/workflows/content-check.yml`, `public/_redirects`
+- Change: Added `check:redirect-rules` script to validate required 301/200 rules and block 302 temporary redirects; wired it into content-check CI after FAQ gate.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm check:redirect-rules && pnpm build` passes; CI now includes dedicated redirect rules gate.
+- Result: pass（redirect rules check + build passed）.
+- Decision: scale
+
