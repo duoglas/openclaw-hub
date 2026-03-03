@@ -535,16 +535,18 @@ ${DAILY_SUMMARY}
 ## 10) Wins / Problems
 
 ### Wins
-- (fill)
+- Published ${PUBLISHED_POSTS} post(s) this week and merged ${TECH_COUNT} technical SEO change(s), keeping content + technical cadence synchronized.
+- Weekly diagnostics now include low-CTR opportunities by language and title rewrite priority queue, shortening the path from signal to action.
 
 ### Problems / Blockers
-- (fill)
+- GSC KPI fields in daily snapshots are still mostly empty, which limits KPI trend reliability.
+- Several low-CTR opportunities are still in “detected” state and not yet converted into title/meta rewrite commits.
 
 ## 11) Action Plan (Next Week)
 
-- [ ] P0: (task / owner / due)
-- [ ] P1: (task / owner / due)
-- [ ] P2: (task / owner / due)
+- [ ] P0: Backfill latest 7 daily snapshots with real GSC clicks/impressions/CTR/position data | owner: hub-growth-worker | due: ${SUNDAY}
+- [ ] P1: Execute title/meta rewrites for top 3 items from Section 6 and publish EN/ZH updates | owner: hub-growth-worker | due: ${SUNDAY}
+- [ ] P2: Verify legacy URL redirects and canonical behavior in production, then document results in WEEKLY_REVIEW.md | owner: hub-growth-worker | due: ${SUNDAY}
 
 ## 12) Data Sources
 

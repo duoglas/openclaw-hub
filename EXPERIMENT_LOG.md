@@ -234,3 +234,13 @@
 - Result: pass（130 files checked, FAQ-enabled posts=6; build passed）.
 - Decision: scale
 
+
+### EXP-023
+- Hypothesis: Replacing placeholder text (`fill`) in weekly:seo generated sections (Wins/Problems/Action Plan) with default actionable statements will reduce empty weekly reviews and increase execution follow-through.
+- Scope: `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`
+- Change: Updated weekly generator to emit non-placeholder default wins/problems/action plan items with owner+due placeholders tied to current week end date; regenerated weekly report and review scaffold.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm weekly:seo && pnpm build` passes and generated report no longer contains `(fill)` in section 10/11.
+- Result: pass (generation/build passed; weekly report and review refreshed with actionable defaults).
+- Decision: scale
