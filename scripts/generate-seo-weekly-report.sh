@@ -23,6 +23,25 @@ else
   DOMAIN_HYGIENE_STATUS="alert"
 fi
 
+DOMAIN_GROUP_SECTION="- (group report unavailable)"
+if [ -f "$DOMAIN_ALERT_FILE" ]; then
+  DOMAIN_GROUP_SECTION=$(awk '
+    /^## Violations by directory/ {in_v=1; next}
+    /^## / && in_v {in_v=0}
+    /^## Allowed references by directory/ {in_a=1; next}
+    /^## / && in_a {in_a=0}
+    {
+      if (in_v) v=v $0 "\n"
+      if (in_a) a=a $0 "\n"
+    }
+    END {
+      if (v == "") v="| Directory | Count |\n|---|---:|\n| (none) | 0 |\n"
+      if (a == "") a="| Directory | Count |\n|---|---:|\n| (none) | 0 |\n"
+      printf "### Violations by directory\n%s\n### Allowed references by directory\n%s", v, a
+    }
+  ' "$DOMAIN_ALERT_FILE")
+fi
+
 collect_new_posts() {
   local lang="$1"
   local out=""
@@ -753,6 +772,8 @@ ${DAILY_SUMMARY}
 
 - Stale domain scanner status: ${DOMAIN_HYGIENE_STATUS}
 - Alert file: ${DOMAIN_ALERT_FILE}
+
+${DOMAIN_GROUP_SECTION}
 
 ## 12) Wins / Problems
 

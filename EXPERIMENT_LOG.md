@@ -355,3 +355,13 @@
 - Success metric: `pnpm build && pnpm check:tag-case` passes; when collisions exist, output includes ranked Top10 examples for direct repair.
 - Result: pass（build passed; tag-case gate passed with 130 files scanned）.
 - Decision: scale
+
+### EXP-035
+- Hypothesis: Extending stale-domain weekly diagnostics with directory-grouped counts and top samples will reduce triage time and make old-domain cleanup execution-ready instead of raw line dumps.
+- Scope: `scripts/scan-stale-domain.sh`, `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/stale-domain-alert-2026-03-02-to-2026-03-08.md`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`
+- Change: Added grouped output (violations/allowed by directory + Top3 samples) in stale-domain scanner and synced weekly report Section 11 to embed grouped table snapshot for faster review.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm check:stale-domain && pnpm weekly:seo && pnpm build` passes; weekly report contains directory-grouped stale-domain summary.
+- Result: pass（stale-domain check/weekly generation/build passed; grouped tables rendered in alert + weekly report）.
+- Decision: scale

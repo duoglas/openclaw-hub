@@ -11,12 +11,13 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] P3 Candidate H: weekly:seo 增加“旧域名残留按目录分组”报告 | ICE 4x7x6=168
+- [ ] (empty)
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] P3 Candidate H: weekly:seo 增加“旧域名残留按目录分组”报告 | ICE 4x7x6=168 — commit `(this commit)`
 - [x] P2 Candidate G: 为 check:tag-case 输出冲突样例 Top10，缩短修复路径（失败时给出变体+样例文件，便于快速修复）| ICE 5x7x6=210 — commit `d28fa83`
 - [x] P1 Candidate E: 新增标签大小写碰撞闸门（Tag case-collision）并接入 CI，阻断 `VPS/vps` 这类重复标签页风险（修复 1 处 ZH 标签大小写）| ICE 7x8x8=448 — commit `8c7c5f0`
 - [x] P3 Candidate D: 新增 WebSite JSON-LD 字段完整性闸门（name/url/inLanguage/publisher/logo）并接入 CI（含 rg→grep -RIn 回退）| ICE 6x7x6=252 — commit `33d7e7b`
