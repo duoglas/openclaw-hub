@@ -471,11 +471,11 @@ cat > "$OUT_FILE" <<EOF
 
 | KPI | Last Week | This Week | WoW | Notes |
 |---|---:|---:|---:|---|
-| Impressions | 0 | 0 | 0% | Fill from GSC |
-| Clicks | 0 | 0 | 0% | Fill from GSC |
-| CTR | 0.00% | 0.00% | 0.00pp | Fill from GSC |
+| Impressions | 0 | 0 | 0% | If GSC export is missing, keep 0 and mark data-gap in Section 10 |
+| Clicks | 0 | 0 | 0% | If GSC export is missing, keep 0 and mark data-gap in Section 10 |
+| CTR | 0.00% | 0.00% | 0.00pp | Use daily snapshots if available; otherwise keep 0.00% with data-gap note |
 | Avg Position | 0.0 | 0.0 | 0.0 | Lower is better |
-| Indexed Pages | 0 | 0 | 0 | Fill from GSC Indexing |
+| Indexed Pages | 0 | 0 | 0 | Pull from GSC Indexing export in weekly ops; if absent, keep 0 and open follow-up task |
 | Published Posts | 0 | ${PUBLISHED_POSTS} | n/a | Auto list below |
 
 ## 3) Top Pages (This Week)
@@ -571,10 +571,10 @@ cat > "WEEKLY_REVIEW.md" <<EOF
 ## OODA / PDCA Review
 
 ### Observe (data)
-- Top gaining pages: (fill from GSC)
-- Top losing pages: (fill from GSC)
-- Top queries by impressions but low CTR: (fill from GSC)
-- New pages indexed: (fill from GSC)
+- Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
+- Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
+- Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.
+- New pages indexed: Verify newly published URLs in Search Console; if data unavailable, create one indexing check task in Action Plan.
 - Published posts (auto): ${PUBLISHED_POSTS}
 - Updated posts (git-tracked): ${UPDATED_COUNT}
 - Technical SEO commits (git-tracked): ${TECH_COUNT}

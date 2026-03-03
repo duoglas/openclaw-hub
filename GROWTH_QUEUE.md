@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-03 22:36
+Last updated: 2026-03-03 23:03
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,7 +11,6 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] P1 Candidate: 在 weekly:seo 模板中把 Wins/Problems/Action Plan 从占位符升级为可执行默认项（禁止“fill”占位） | ICE 8x9x8=576
 - [ ] P1 Candidate: daily:seo 增加 GSC 数据缺失告警（连续 3 天空值则标红）并接入周报 | ICE 9x7x6=378
 - [ ] P2 Candidate: 生成“标题改写执行清单”并自动写入 WEEKLY_REVIEW.md 的 Act 区块 | ICE 7x7x6=294
 
@@ -19,6 +18,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate: 在 weekly:seo 模板中把 Wins/Problems/Action Plan 从占位符升级为可执行默认项（禁止“fill”占位） | ICE 8x9x8=576 — commit `(this commit)`
 - [x] P1 Candidate: weekly:seo 去占位符化（Wins/Problems/Action Plan 默认输出可执行内容），并同步刷新 WEEKLY_REVIEW.md | ICE 8x9x8=576 — commit `(this commit)`
 - [x] P2 Candidate C: 为博客详情页增加 FAQPage schema 最低质量检查（问答数>=2）并接入 CI | ICE 7x6x6=252 — commit `730bff7`
 - [x] P2 Candidate B: weekly:seo 自动输出“高 impression 低点击”问题查询 Top10（按语言）| ICE 8x6x6=288 — commit `(this commit)`
