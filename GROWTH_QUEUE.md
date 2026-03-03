@@ -17,7 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P2 Candidate: 生成“标题改写执行清单”并自动写入 WEEKLY_REVIEW.md 的 Act 区块 | ICE 7x7x6=294 — commit `0f67ce7`
+- [x] P2 Candidate: 生成“标题改写执行清单”并自动写入 WEEKLY_REVIEW.md 的 Act 区块 | ICE 7x7x6=294 — commit `4216349`
 - [x] P1 Candidate: daily:seo 增加 GSC 数据缺失告警（连续 3 天空值则标红）并接入周报 | ICE 9x7x6=378 — commit `d84169e`
 - [x] P1 Candidate: 在 weekly:seo 模板中把 Wins/Problems/Action Plan 从占位符升级为可执行默认项（禁止“fill”占位） | ICE 8x9x8=576 — commit `(this commit)`
 - [x] P1 Candidate: weekly:seo 去占位符化（Wins/Problems/Action Plan 默认输出可执行内容），并同步刷新 WEEKLY_REVIEW.md | ICE 8x9x8=576 — commit `(this commit)`
