@@ -17,7 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P1 Candidate: 新增文章页 canonical 完整性闸门增强版（唯一 canonical / 绝对 https / 无 query/hash / 语言路径约束 / 重复 canonical 检测）并接入现有 CI | ICE 8x8x8=512 — commit `PENDING`
+- [x] P1 Candidate: 新增文章页 canonical 完整性闸门增强版（唯一 canonical / 绝对 https / 无 query/hash / 语言路径约束 / 重复 canonical 检测）并接入现有 CI | ICE 8x8x8=512 — commit `cb49dc0`
 - [x] P2 Candidate: weekly:seo 输出补充“标题改写优先级队列”（高展现低 CTR）| ICE 7x6x7=294 — commit `8eed301`
 - [x] P1 Candidate: 新增文章页 canonical 完整性闸门（校验 dist/en/blog + dist/zh/blog canonical 域名与路径一致，阻断旧域名/错配）| ICE 9x8x8=576 — commit `2f6143d`
 - [x] P1 Candidate: 新增 EN/ZH 文章级 hreflang 配对完整性闸门并接入 CI（ICE 8x8x8=512）— commit `408e19f`
