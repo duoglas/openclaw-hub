@@ -103,3 +103,13 @@
 - Success metric: `pnpm build` passes and generated weekly EN/ZH pages contain FAQ frontmatter + required sections.
 - Result: pass (local build passed; weekly pages generated with FAQ items).
 - Decision: scale
+
+### EXP-010
+- Hypothesis: Enforcing a numeric scorecard gate for weekly EN/ZH posts in CI (threshold >=20/30) will prevent low-value weekly content from being merged and keep quality aligned with monetization-oriented structure.
+- Scope: `scripts/check-weekly-scorecard.sh`, `package.json`, `.github/workflows/content-check.yml`
+- Change: Added weekly scorecard script that auto-scores latest EN/ZH weekly posts across six dimensions (intent/actionability/evidence/structure/internal links/differentiation), added `pnpm check:weekly-scorecard`, and wired it into CI.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: Local scorecard gate passes at >=20 for both EN/ZH weekly posts; `pnpm build` remains green after CI workflow update.
+- Result: pass (EN=24, ZH=24; build passed).
+- Decision: scale

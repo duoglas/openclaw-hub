@@ -34,6 +34,9 @@ jobs:
       - name: Weekly content quality check
         run: pnpm check:weekly-content
 
+      - name: Weekly scorecard gate
+        run: pnpm check:weekly-scorecard
+
       - name: Stale domain check
         run: pnpm check:stale-domain
 
