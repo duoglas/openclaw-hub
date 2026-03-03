@@ -203,3 +203,13 @@
 - Success metric: `pnpm build && pnpm check:canonical-integrity && pnpm check:hreflang-pairs` 全通过；输出覆盖 EN/ZH 配对页数量。
 - Result: pass（build 通过；canonical 371 页通过；hreflang 65 对通过，且为 absolute alternate URLs）。
 - Decision: scale
+
+### EXP-020
+- Hypothesis: 在 CI 增加 EN/ZH description 质量闸门（长度区间 + 占位词拦截）可提前阻断低质量摘要回归，提升页面摘要稳定性与可点击性。
+- Scope: `scripts/check-meta-description-quality.sh`, `package.json`, `.github/workflows/content-check.yml`, `src/content/blog/en/*.md`, `src/content/blog/zh/*.md`
+- Change: 新增 `check:meta-description`（Python 实现）校验 description 字段存在、EN 长度 45-260、ZH 长度 25-130，并拦截 TODO/TBD/coming soon/待补充 等占位词；接入 content-check CI。
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm check:meta-description && pnpm build` 通过，且输出覆盖校验文件数。
+- Result: pass（130 files validated，build passed）。
+- Decision: scale

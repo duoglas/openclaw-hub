@@ -20,7 +20,8 @@
     "check:duplicate-slug-id": "node scripts/check-duplicate-slug-id.mjs",
     "check:hreflang-pairs": "bash scripts/check-hreflang-pairs.sh",
     "check:canonical-integrity": "bash scripts/check-canonical-integrity.sh",
-    "check:daily-cta": "bash scripts/check-daily-cta-variants.sh"
+    "check:daily-cta": "bash scripts/check-daily-cta-variants.sh",
+    "check:meta-description": "bash scripts/check-meta-description-quality.sh"
   },
   "keywords": [],
   "author": "",

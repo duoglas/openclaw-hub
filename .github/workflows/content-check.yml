@@ -61,6 +61,9 @@ jobs:
       - name: Daily CTA variant check
         run: pnpm check:daily-cta
 
+      - name: Meta description quality check
+        run: pnpm check:meta-description
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."
