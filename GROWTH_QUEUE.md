@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-03 17:06
+Last updated: 2026-03-03 17:32
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -12,7 +12,6 @@ Manager: main session
 
 ## Backlog
 - [ ] P2 Candidate: 为 weekly 文章新增“外链证据至少 2 条”质量闸门并接入 CI（ICE 7x6x6=252）
-- [ ] P2 Candidate: 新增“重复 slug / duplicate id”预检脚本并接入 CI（ICE 8x7x7=392）
 
 ## Doing
 - [ ] (empty)

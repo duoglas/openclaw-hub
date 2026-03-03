@@ -123,3 +123,13 @@
 - Success metric: `pnpm check:frontmatter-dates` passes and `pnpm build` remains green after gate integration.
 - Result: pass (invalid dates detected first, fixed to 2026-03-01 for EN/ZH weekly, then gate + build passed).
 - Decision: scale
+
+### EXP-012
+- Hypothesis: Adding a CI precheck for duplicate slugs (route-level) and duplicate rendered HTML ids will catch SEO/crawl conflicts before merge with low maintenance overhead.
+- Scope: `scripts/check-duplicate-slug-id.mjs`, `package.json`, `.github/workflows/content-check.yml`
+- Change: Added `check:duplicate-slug-id` script. It enforces unique slugs per language in `src/content/blog/**` and scans `dist/**/*.html` for duplicate rendered `id` attributes. Wired it into Content Check workflow.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm build` + `pnpm check:duplicate-slug-id` both pass; CI includes dedicated duplicate slug/id gate.
+- Result: pass (initial source-heading-only approach caused false positives; switched to rendered HTML id scan; final gate passed).
+- Decision: scale

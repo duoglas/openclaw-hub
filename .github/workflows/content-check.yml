@@ -46,6 +46,9 @@ jobs:
       - name: Content taxonomy check
         run: pnpm check:taxonomy
 
+      - name: Duplicate slug/id precheck
+        run: pnpm check:duplicate-slug-id
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."
