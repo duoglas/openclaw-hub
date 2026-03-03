@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-03 19:33
+Last updated: 2026-03-03 20:36
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate: 将文章页 hreflang alternate 升级为绝对 URL + 强化配对闸门（校验 EN↔ZH 与 x-default 的绝对链接一致性，阻断相对链接回归）| ICE 8x8x7=448 — commit `c14f6c4`
 - [x] P2 Candidate: 为每日文章模板增加“转化 CTA 变体 A/B”占位并校验（publish-daily 注入 EN/ZH CTA A/B + 新增 check:daily-cta + CI 接入）| ICE 8x5x6=240 — commit `ff10724`
 - [x] P1 Candidate: 新增文章页 canonical 完整性闸门增强版（唯一 canonical / 绝对 https / 无 query/hash / 语言路径约束 / 重复 canonical 检测）并接入现有 CI | ICE 8x8x8=512 — commit `cb49dc0`
 - [x] P2 Candidate: weekly:seo 输出补充“标题改写优先级队列”（高展现低 CTR）| ICE 7x6x7=294 — commit `8eed301`

@@ -193,3 +193,13 @@
 - Success metric: `pnpm check:daily-cta && pnpm build` 通过，最新 EN/ZH 日报均包含 CTA A/B。
 - Result: pass（latest EN/ZH daily files validated，build passed）。
 - Decision: scale
+
+### EXP-019
+- Hypothesis: 将 hreflang 配对校验从“存在性”升级为“绝对 URL 精确匹配（含 x-default）”并统一 BlogPost alternate 输出为绝对 URL，可提前阻断相对路径与跨域部署下的语言页索引漂移。
+- Scope: `src/layouts/BlogPost.astro`, `scripts/check-hreflang-pairs.sh`, `dist/en/blog/*`, `dist/zh/blog/*`
+- Change: 把 `BlogPost` 的 `alternateUrl` 改为 `${Astro.url.origin}/${otherLang}/blog/${slug}/` 绝对链接；重写 `check-hreflang-pairs.sh`，逐页校验 `hreflang` 对应 `href` 为 `https://kuoo.uk/...` 绝对 URL，并校验 EN/ZH 两侧 `x-default` 一致指向 EN canonical。
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm build && pnpm check:canonical-integrity && pnpm check:hreflang-pairs` 全通过；输出覆盖 EN/ZH 配对页数量。
+- Result: pass（build 通过；canonical 371 页通过；hreflang 65 对通过，且为 absolute alternate URLs）。
+- Decision: scale

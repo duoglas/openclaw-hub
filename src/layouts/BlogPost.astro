@@ -43,7 +43,7 @@ const contextualGuideLinks = pillarLinks.filter((item) => item.href !== normaliz
 // Build alternate URL
 const otherLang = isZh ? 'en' : 'zh';
 const baseSlug = slug || '';
-const alternateUrl = `/${otherLang}/blog/${baseSlug}/`;
+const alternateUrl = `${Astro.url.origin}/${otherLang}/blog/${baseSlug}/`;
 
 const organizationSchema = {
   '@type': 'Organization',
