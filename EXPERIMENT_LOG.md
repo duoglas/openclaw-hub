@@ -173,3 +173,13 @@
 - Success metric: `pnpm weekly:seo && pnpm build` 通过，周报中自动产出可执行标题改写队列。
 - Result: pass（周报已生成改写优先级表，构建通过）。
 - Decision: scale
+
+### EXP-017
+- Hypothesis: 在现有 canonical 校验基础上增加“唯一 canonical、绝对 https、无 query/hash、语言路径约束、重复 canonical 检测”可更早阻断跨页 canonical 污染和模板回归。
+- Scope: `scripts/check-canonical-integrity.sh`, CI `pnpm check:canonical-integrity`, `dist/en/blog/**`, `dist/zh/blog/**`
+- Change: 强化 canonical gate，新增 canonical 标签计数校验、host/协议约束、query/hash 禁止、EN/ZH 路径约束及 canonical 唯一性校验（基于 URL 去重）。
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm build && pnpm check:canonical-integrity` 通过，输出覆盖页数与唯一 canonical 数一致。
+- Result: pass（371 pages validated / 371 unique canonicals）。
+- Decision: scale
