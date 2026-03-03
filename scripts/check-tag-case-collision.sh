@@ -10,6 +10,7 @@ from pathlib import Path
 
 root = Path('src/content/blog')
 languages = ['en', 'zh']
+TOP_N = 10
 
 frontmatter_re = re.compile(r'^---\n(.*?)\n---\n?', re.S)
 inline_tags_re = re.compile(r'^tags:\s*\[(.*?)\]\s*$', re.M)
@@ -53,6 +54,14 @@ def parse_tags(frontmatter: str):
     return [t for t in tags if t]
 
 
+def sample_files(files, limit=3):
+    shown = files[:limit]
+    extra = len(files) - len(shown)
+    if extra > 0:
+        return ', '.join(shown) + f", +{extra} more"
+    return ', '.join(shown)
+
+
 failures = []
 checked_files = 0
 
@@ -81,15 +90,21 @@ for lang in languages:
 
     for lower, variants in sorted(lower_to_variants.items()):
         if len(variants) > 1:
-            detail = []
-            for variant, files in sorted(variants.items()):
-                detail.append(f"{variant} ({len(files)})")
-            failures.append((lang, lower, detail))
+            total_refs = sum(len(files) for files in variants.values())
+            failures.append((lang, lower, total_refs, variants))
 
 if failures:
     print('[tag-case] FAILED: found case-collision tags (same lowercase, different variants).')
-    for lang, lower, detail in failures:
-        print(f"[tag-case] lang={lang} key={lower} variants={', '.join(detail)}")
+    failures_sorted = sorted(failures, key=lambda x: x[2], reverse=True)
+    for idx, (lang, lower, total_refs, variants) in enumerate(failures_sorted[:TOP_N], start=1):
+        detail = []
+        for variant, files in sorted(variants.items()):
+            detail.append(f"{variant} ({len(files)}): {sample_files(files)}")
+        print(f"[tag-case] Top{idx} lang={lang} key={lower} refs={total_refs}")
+        print(f"[tag-case]   variants => {' | '.join(detail)}")
+
+    if len(failures_sorted) > TOP_N:
+        print(f"[tag-case] ... and {len(failures_sorted) - TOP_N} more collision keys")
     raise SystemExit(1)
 
 print(f"[tag-case] PASS: no tag case-collisions found across {checked_files} files.")

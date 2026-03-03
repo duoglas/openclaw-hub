@@ -345,3 +345,13 @@
 - Success metric: `pnpm check:tag-case && pnpm build` passes with zero case-collision tags.
 - Result: pass（130 files scanned, 0 collisions; build passed）.
 - Decision: scale
+
+### EXP-034
+- Hypothesis: Showing Top10 collision examples (variant + sample file paths) in `check:tag-case` failure output will shorten diagnosis time and reduce fix turnaround when collisions reappear.
+- Scope: `scripts/check-tag-case-collision.sh`, `GROWTH_QUEUE.md`
+- Change: Upgraded case-collision checker to rank collision keys by reference volume and print Top10 actionable samples per variant; keeps pass behavior unchanged when no collisions exist.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm build && pnpm check:tag-case` passes; when collisions exist, output includes ranked Top10 examples for direct repair.
+- Result: pass（build passed; tag-case gate passed with 130 files scanned）.
+- Decision: scale
