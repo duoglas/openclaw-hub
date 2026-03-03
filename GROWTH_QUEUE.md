@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate: 为 weekly 内容新增评分卡阈值闸门（EN/ZH >=20/30）并接入 CI，低于阈值阻断合并（ICE 9x9x8=648）— commit `371f397`
 - [x] Candidate C: 为 weekly report 增加 FAQ 片段输出（ICE 4x4x5=80）— commit `5d05f8b` (push pending: network to github.com:443 failed)
 - [x] Candidate B: 为 EN/ZH tag 页面补充 FAQ schema（ICE 6x5x4=120）— commit `HEAD`
 - [x] Candidate A: 在 content-check CI 中新增 stale-domain 强制检查，阻断旧域名回流 | ICE 9x9x9=729 — commit `bae8b4c`
