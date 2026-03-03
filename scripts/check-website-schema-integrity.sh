@@ -140,6 +140,11 @@ for fp in files:
 if issues:
     for i in issues:
         print(i)
+
+    print("[website-schema] Top10 failure samples:")
+    for idx, sample in enumerate(issues[:10], 1):
+        print(f"  {idx}. {sample}")
+
     print(f"[website-schema] Found {len(issues)} issue(s) across {len(files)} HTML files.")
     sys.exit(1)
 

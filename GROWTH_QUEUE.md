@@ -11,11 +11,10 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] P2 Candidate B: 为 check:website-schema 增加失败样例 Top10 输出，缩短排障路径 | ICE 6x7x7=294
 - [ ] P2 Candidate C: 在 weekly:seo 增加 schema 风险趋势统计占位（近7天）| ICE 5x6x5=150
 
 ## Doing
-- [ ] (empty)
+- [ ] P2 Candidate B: 为 check:website-schema 增加失败样例 Top10 输出，缩短排障路径 | ICE 6x7x7=294
 
 ## Done
 - [x] P1 Candidate A: 强化 WebSite JSON-LD 闸门（严格校验 publisher.logo 嵌套字段 + URL/语言一致性 + JSON 解析容错），并保留 rg 不可用时 grep -RIn 回退 | ICE 8x8x7=448 — commit `f4634a7`

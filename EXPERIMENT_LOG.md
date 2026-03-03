@@ -375,3 +375,13 @@
 - Success metric: `pnpm check:website-schema && pnpm build` passes; checker validates all EN/ZH built pages with strict rules.
 - Result: pass（strict schema gate passed on 374 EN/ZH HTML pages；build passed）.
 - Decision: scale
+
+### EXP-037
+- Hypothesis: Printing a ranked Top10 failure sample list in `check:website-schema` output will shorten triage time when schema checks fail, turning noisy logs into immediate fix targets.
+- Scope: `scripts/check-website-schema-integrity.sh`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Added explicit `Top10 failure samples` section in failure path, preserving full issue dump while surfacing first 10 actionable examples; retained existing `rg` -> `grep -RIn` fallback behavior.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm check:website-schema && pnpm build` passes, and failure path includes Top10 sample block for faster debugging.
+- Result: pass（schema gate + build passed; Top10 block now emitted on failure path）.
+- Decision: scale
