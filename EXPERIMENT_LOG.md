@@ -265,3 +265,13 @@
 - Result: pass（redirect rules check + build passed）.
 - Decision: scale
 
+### EXP-026
+- Hypothesis: Adding a noindex-leak gate for built EN/ZH blog pages will catch accidental `robots/x-robots` noindex regressions before merge and protect indexable article coverage.
+- Scope: `scripts/check-noindex-leak.sh`, `package.json`, `.github/workflows/content-check.yml`, `dist/en/blog/**`, `dist/zh/blog/**`
+- Change: Added `check:noindex-leak` script to scan built blog HTML pages and fail if any robots/x-robots meta includes `noindex`; integrated the gate into Content Check CI after redirect checks.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm build && pnpm check:noindex-leak` passes with full EN/ZH blog coverage and zero noindex findings.
+- Result: pass（369 blog pages scanned, 0 noindex leaks; build passed）.
+- Decision: scale
+

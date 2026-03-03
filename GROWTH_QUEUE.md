@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate: 新增博客详情页 noindex 泄漏闸门（扫描 dist/en|zh/blog 禁止 robots/x-robots noindex）并接入 CI | ICE 9x8x8=576 — commit `908dd6c`
 - [x] P1 Candidate: 新增 redirect 规则完整性闸门（校验 _redirects 关键 301/200 规则 + 禁止 302）并接入 CI | ICE 8x8x9=576 — commit `14688d5`
 - [x] P2 Candidate: 生成“标题改写执行清单”并自动写入 WEEKLY_REVIEW.md 的 Act 区块 | ICE 7x7x6=294 — commit `4216349`
 - [x] P1 Candidate: daily:seo 增加 GSC 数据缺失告警（连续 3 天空值则标红）并接入周报 | ICE 9x7x6=378 — commit `d84169e`

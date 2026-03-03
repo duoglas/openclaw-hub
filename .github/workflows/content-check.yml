@@ -70,6 +70,9 @@ jobs:
       - name: Redirect rules check
         run: pnpm check:redirect-rules
 
+      - name: Noindex leak check
+        run: pnpm check:noindex-leak
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."
