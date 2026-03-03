@@ -18,7 +18,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P1 Candidate A: 强化 WebSite JSON-LD 闸门（严格校验 publisher.logo 嵌套字段 + URL/语言一致性 + JSON 解析容错），并保留 rg 不可用时 grep -RIn 回退 | ICE 8x8x7=448 — commit `(this commit)`
+- [x] P1 Candidate A: 强化 WebSite JSON-LD 闸门（严格校验 publisher.logo 嵌套字段 + URL/语言一致性 + JSON 解析容错），并保留 rg 不可用时 grep -RIn 回退 | ICE 8x8x7=448 — commit `f4634a7`
 - [x] P3 Candidate H: weekly:seo 增加“旧域名残留按目录分组”报告 | ICE 4x7x6=168 — commit `(this commit)`
 - [x] P2 Candidate G: 为 check:tag-case 输出冲突样例 Top10，缩短修复路径（失败时给出变体+样例文件，便于快速修复）| ICE 5x7x6=210 — commit `d28fa83`
 - [x] P1 Candidate E: 新增标签大小写碰撞闸门（Tag case-collision）并接入 CI，阻断 `VPS/vps` 这类重复标签页风险（修复 1 处 ZH 标签大小写）| ICE 7x8x8=448 — commit `8c7c5f0`
