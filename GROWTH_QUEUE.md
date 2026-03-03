@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-03 17:32
+Last updated: 2026-03-03 17:34
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P2 Candidate: 新增“重复 slug / duplicate id”预检脚本并接入 CI（ICE 8x7x7=392）— commit `8fc1a86`
 - [x] P1 Candidate: 新增 frontmatter 日期一致性闸门（updatedDate 不得早于 pubDate）并接入 CI；修复当周 weekly 日期异常（ICE 8x8x8=512）— commit `572d115`
 - [x] P1 Candidate: 为 weekly 内容新增评分卡阈值闸门（EN/ZH >=20/30）并接入 CI，低于阈值阻断合并（ICE 9x9x8=648）— commit `371f397`
 - [x] Candidate C: 为 weekly report 增加 FAQ 片段输出（ICE 4x4x5=80）— commit `5d05f8b` (push pending: network to github.com:443 failed)
