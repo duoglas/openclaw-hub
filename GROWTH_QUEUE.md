@@ -15,9 +15,10 @@ Manager: main session
 - [ ] P2 Candidate: 为每日文章模板增加“转化 CTA 变体 A/B”占位并校验 | ICE 8x5x6=240
 
 ## Doing
-- [ ] P2 Candidate: weekly:seo 输出补充“标题改写优先级队列”（高展现低 CTR）| ICE 7x6x7=294
+- [ ] (empty)
 
 ## Done
+- [x] P2 Candidate: weekly:seo 输出补充“标题改写优先级队列”（高展现低 CTR）| ICE 7x6x7=294 — commit `8eed301`
 - [x] P1 Candidate: 新增文章页 canonical 完整性闸门（校验 dist/en/blog + dist/zh/blog canonical 域名与路径一致，阻断旧域名/错配）| ICE 9x8x8=576 — commit `2f6143d`
 - [x] P1 Candidate: 新增 EN/ZH 文章级 hreflang 配对完整性闸门并接入 CI（ICE 8x8x8=512）— commit `408e19f`
 - [x] P2 Candidate: 为 weekly 文章新增“外链证据至少 2 条”质量闸门并接入 CI（ICE 7x6x6=252）— commit `8c3f8a3`
