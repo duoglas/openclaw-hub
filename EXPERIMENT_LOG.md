@@ -285,3 +285,13 @@
 - Result: pass（EN 183 pages + ZH 192 pages validated; build passed）.
 - Decision: scale
 
+
+### EXP-028
+- Hypothesis: Expanding noindex-leak output with language-level breakdown and sample paths (plus `grep -RIn` fallback when `rg` is unavailable) will reduce triage time and improve diagnostic resilience across heterogeneous CI/dev environments.
+- Scope: `scripts/check-noindex-leak.sh`, `GROWTH_QUEUE.md`
+- Change: Upgraded noindex leak checker to emit EN/ZH scanned+leak counts and sample leaking files, and added automatic fallback path when `rg` is not installed.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm check:noindex-leak && pnpm build` passes, and noindex report prints EN/ZH segmented summary.
+- Result: pass（EN 180 scanned, ZH 189 scanned, leaks=0; build passed）.
+- Decision: scale
