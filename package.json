@@ -24,7 +24,8 @@
     "check:meta-description": "bash scripts/check-meta-description-quality.sh",
     "check:blog-faq": "bash scripts/check-blog-faq-quality.sh",
     "check:redirect-rules": "bash scripts/check-redirect-rules.sh",
-    "check:noindex-leak": "bash scripts/check-noindex-leak.sh"
+    "check:noindex-leak": "bash scripts/check-noindex-leak.sh",
+    "check:rss-autodiscovery": "bash scripts/check-rss-autodiscovery.sh"
   },
   "keywords": [],
   "author": "",

@@ -275,3 +275,13 @@
 - Result: pass（369 blog pages scanned, 0 noindex leaks; build passed）.
 - Decision: scale
 
+### EXP-027
+- Hypothesis: Adding an RSS autodiscovery integrity gate in CI for all built EN/ZH HTML pages will prevent feed-link regressions and improve subscription discoverability consistency.
+- Scope: `scripts/check-rss-autodiscovery.sh`, `package.json`, `.github/workflows/content-check.yml`, `dist/en/**/*.html`, `dist/zh/**/*.html`
+- Change: Added `check:rss-autodiscovery` script to validate each built EN/ZH page contains `rel=alternate` + `type=application/rss+xml` with language-correct RSS href/title; wired it into Content Check CI after noindex leak check.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm build && pnpm check:rss-autodiscovery` passes with full EN/ZH page coverage.
+- Result: pass（EN 183 pages + ZH 192 pages validated; build passed）.
+- Decision: scale
+

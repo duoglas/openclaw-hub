@@ -73,6 +73,9 @@ jobs:
       - name: Noindex leak check
         run: pnpm check:noindex-leak
 
+      - name: RSS autodiscovery check
+        run: pnpm check:rss-autodiscovery
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."
