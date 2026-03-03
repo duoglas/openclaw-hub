@@ -305,3 +305,13 @@
 - Success metric: `pnpm weekly:seo && pnpm build` passes, and weekly report includes non-placeholder high-bounce retro queue.
 - Result: pass（Section 7 generated with actionable fallback row; build passed）.
 - Decision: scale
+
+### EXP-030
+- Hypothesis: Enforcing a sitewide EN/ZH hreflang integrity gate (including x-default and absolute kuoo.uk URLs) will catch archive/home/daily alternate-link regressions before merge and reduce cross-language indexing drift.
+- Scope: `scripts/check-sitewide-hreflang.sh`, `src/layouts/BaseLayout.astro`, `package.json`, `.github/workflows/content-check.yml`, `dist/en/**/*.html`, `dist/zh/**/*.html`, `GROWTH_QUEUE.md`
+- Change: Added `check:sitewide-hreflang` script (Python-backed) to validate en/zh/x-default alternates on all built EN/ZH pages; integrated CI step; patched `BaseLayout` to always output opposite-language alternate link by default when page-level override is absent.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm build && pnpm check:sitewide-hreflang` passes with full EN/ZH page coverage.
+- Result: pass（sitewide hreflang check passed: 375 pages validated; build passed）.
+- Decision: scale

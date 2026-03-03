@@ -27,6 +27,8 @@ const currentPath = Astro.url.pathname;
 const enUrl = currentPath.replace(`/${lang}/`, '/en/');
 const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
 const siteUrl = 'https://kuoo.uk';
+const resolvedAlternateLang = alternateLang ?? otherLang;
+const resolvedAlternateUrl = alternateUrl ?? `${siteUrl}${currentPath.replace(`/${lang}/`, `/${resolvedAlternateLang}/`)}`;
 const siteLogo = `${siteUrl}/images/home-hero-cartoon.png`;
 const dailyRssUrl = `${siteUrl}/${lang}/daily/rss.xml`;
 const defaultOgImage = siteLogo;
@@ -74,11 +76,9 @@ const websiteSchema = {
   <meta name="twitter:image:alt" content={`${title} | AI Agent Hub`} />
   <!-- Canonical -->
   <link rel="canonical" href={Astro.url.href} />
-  {alternateUrl && alternateLang && (
-    <link rel="alternate" hreflang={alternateLang} href={alternateUrl} />
-  )}
+  <link rel="alternate" hreflang={resolvedAlternateLang} href={resolvedAlternateUrl} />
   <link rel="alternate" hreflang={lang} href={Astro.url.href} />
-  <link rel="alternate" hreflang="x-default" href={Astro.url.href.replace(`/${lang}/`, '/en/')} />
+  <link rel="alternate" hreflang="x-default" href={`${siteUrl}${currentPath.replace(`/${lang}/`, '/en/')}`} />
   <link rel="alternate" type="application/rss+xml" title={lang === 'zh' ? 'AI 科技日报 RSS' : 'AI Tech Daily RSS'} href={dailyRssUrl} />
   <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   <style>

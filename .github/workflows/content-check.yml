@@ -55,6 +55,9 @@ jobs:
       - name: Hreflang pair integrity check
         run: pnpm check:hreflang-pairs
 
+      - name: Sitewide hreflang integrity check
+        run: pnpm check:sitewide-hreflang
+
       - name: Canonical integrity check
         run: pnpm check:canonical-integrity
 
