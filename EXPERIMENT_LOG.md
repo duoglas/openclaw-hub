@@ -223,3 +223,14 @@
 - Success metric: `pnpm weekly:seo && pnpm build` 通过，周报包含 EN/ZH Top10 章节。
 - Result: pass（周报含按语言 Top10 输出；构建通过）。
 - Decision: scale
+
+### EXP-022
+- Hypothesis: Enforcing a minimum FAQ quality gate for blog detail pages (FAQ-enabled posts must include >=2 Q&A with non-empty question/answer) will prevent thin FAQ schema regression and preserve rich-result eligibility quality.
+- Scope: `scripts/check-blog-faq-quality.sh`, `package.json`, `.github/workflows/content-check.yml`, `src/content/blog/en/*.md`, `src/content/blog/zh/*.md`
+- Change: Added `check:blog-faq` script to validate FAQ frontmatter quality (>=2 Q&A, non-empty question/answer) across EN/ZH blog content and wired it into Content Check CI.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm check:blog-faq && pnpm build` passes; CI includes dedicated FAQ quality gate.
+- Result: pass（130 files checked, FAQ-enabled posts=6; build passed）.
+- Decision: scale
+

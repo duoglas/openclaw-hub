@@ -11,12 +11,13 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] P2 Candidate C: 为博客详情页增加 FAQPage schema 最低质量检查（问答数>=2）并接入 CI | ICE 7x6x6=252
+- [ ] (empty)
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] P2 Candidate C: 为博客详情页增加 FAQPage schema 最低质量检查（问答数>=2）并接入 CI | ICE 7x6x6=252 — commit `(pending)`
 - [x] P2 Candidate B: weekly:seo 自动输出“高 impression 低点击”问题查询 Top10（按语言）| ICE 8x6x6=288 — commit `(this commit)`
 - [x] P1 Candidate A: 新增 EN/ZH meta description 质量闸门（长度区间 + 占位词拦截）并接入 CI | ICE 9x8x9=648 — commit `45d6a2f`
 - [x] P1 Candidate: 将文章页 hreflang alternate 升级为绝对 URL + 强化配对闸门（校验 EN↔ZH 与 x-default 的绝对链接一致性，阻断相对链接回归）| ICE 8x8x7=448 — commit `c14f6c4`
