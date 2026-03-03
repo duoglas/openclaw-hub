@@ -52,6 +52,9 @@ jobs:
       - name: Duplicate slug/id precheck
         run: pnpm check:duplicate-slug-id
 
+      - name: Hreflang pair integrity check
+        run: pnpm check:hreflang-pairs
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."

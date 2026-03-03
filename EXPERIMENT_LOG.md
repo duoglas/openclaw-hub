@@ -143,3 +143,13 @@
 - Success metric: `pnpm check:weekly-external-evidence` passes with EN/ZH >=2 external links and `pnpm build` remains green.
 - Result: pass (EN=3, ZH=3; gate passed; build passed).
 - Decision: scale
+
+### EXP-014
+- Hypothesis: Adding an EN/ZH post-level hreflang pair integrity gate in CI will prevent alternate-link drift and reduce cross-language indexing confusion.
+- Scope: `scripts/check-hreflang-pairs.sh`, `package.json`, `.github/workflows/content-check.yml`, `dist/en/blog/*`, `dist/zh/blog/*`
+- Change: Added `check:hreflang-pairs` script that validates reciprocal `hreflang` + expected alternate `href` + `x-default` for each EN/ZH blog pair after build; wired it into Content Check workflow.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm build && pnpm check:hreflang-pairs` passes with all current EN/ZH post pairs validated.
+- Result: pass (65 EN/ZH blog pairs validated).
+- Decision: scale

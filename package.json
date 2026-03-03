@@ -17,7 +17,8 @@
     "check:weekly-scorecard": "bash scripts/check-weekly-scorecard.sh",
     "check:weekly-external-evidence": "bash scripts/check-weekly-external-evidence.sh",
     "check:frontmatter-dates": "bash scripts/check-frontmatter-dates.sh",
-    "check:duplicate-slug-id": "node scripts/check-duplicate-slug-id.mjs"
+    "check:duplicate-slug-id": "node scripts/check-duplicate-slug-id.mjs",
+    "check:hreflang-pairs": "bash scripts/check-hreflang-pairs.sh"
   },
   "keywords": [],
   "author": "",
