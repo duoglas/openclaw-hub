@@ -17,7 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P1 Candidate: 新增 EN/ZH 文章级 hreflang 配对完整性闸门并接入 CI（ICE 8x8x8=512）— commit `8cb1b9a`
+- [x] P1 Candidate: 新增 EN/ZH 文章级 hreflang 配对完整性闸门并接入 CI（ICE 8x8x8=512）— commit `408e19f`
 - [x] P2 Candidate: 为 weekly 文章新增“外链证据至少 2 条”质量闸门并接入 CI（ICE 7x6x6=252）— commit `8c3f8a3`
 - [x] P2 Candidate: 新增“重复 slug / duplicate id”预检脚本并接入 CI（ICE 8x7x7=392）— commit `8fc1a86`
 - [x] P1 Candidate: 新增 frontmatter 日期一致性闸门（updatedDate 不得早于 pubDate）并接入 CI；修复当周 weekly 日期异常（ICE 8x8x8=512）— commit `572d115`
