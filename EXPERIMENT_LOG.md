@@ -365,3 +365,13 @@
 - Success metric: `pnpm check:stale-domain && pnpm weekly:seo && pnpm build` passes; weekly report contains directory-grouped stale-domain summary.
 - Result: pass（stale-domain check/weekly generation/build passed; grouped tables rendered in alert + weekly report）.
 - Decision: scale
+
+### EXP-036
+- Hypothesis: Upgrading `check:website-schema` from string-presence checks to strict JSON-LD semantic validation (with language/path consistency and nested `publisher.logo` enforcement) will catch silent schema regressions earlier and reduce production SEO metadata drift.
+- Scope: `scripts/check-website-schema-integrity.sh`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Rewrote schema checker to parse JSON-LD blocks (`@graph` aware), enforce exactly one `WebSite` node per page, validate `name/url/inLanguage/publisher.{name,url,logo}` semantics, require `https://kuoo.uk` host and EN/ZH path-language consistency, and kept `rg` unavailable fallback to `grep -RIn`.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm check:website-schema && pnpm build` passes; checker validates all EN/ZH built pages with strict rules.
+- Result: pass（strict schema gate passed on 374 EN/ZH HTML pages；build passed）.
+- Decision: scale
