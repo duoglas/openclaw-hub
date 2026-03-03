@@ -58,6 +58,9 @@ jobs:
       - name: Canonical integrity check
         run: pnpm check:canonical-integrity
 
+      - name: Daily CTA variant check
+        run: pnpm check:daily-cta
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."

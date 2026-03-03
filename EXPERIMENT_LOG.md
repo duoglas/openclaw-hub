@@ -183,3 +183,13 @@
 - Success metric: `pnpm build && pnpm check:canonical-integrity` 通过，输出覆盖页数与唯一 canonical 数一致。
 - Result: pass（371 pages validated / 371 unique canonicals）。
 - Decision: scale
+
+### EXP-018
+- Hypothesis: 在每日文章模板内固定注入 CTA 变体 A/B，并用 CI 校验最新 EN/ZH 日报都包含 CTA 标记，可提升转化位点覆盖率并避免模板回归。
+- Scope: `scripts/publish-daily.sh`, `scripts/check-daily-cta-variants.sh`, `package.json`, `.github/workflows/content-check.yml`, latest EN/ZH daily posts
+- Change: 为 `publish-daily.sh` 增加 EN/ZH CTA A/B 区块（`CTA_VARIANT_A/B` 标记）；新增 `check:daily-cta` 脚本并接入 content-check CI gate。
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm check:daily-cta && pnpm build` 通过，最新 EN/ZH 日报均包含 CTA A/B。
+- Result: pass（latest EN/ZH daily files validated，build passed）。
+- Decision: scale
