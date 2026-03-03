@@ -2,7 +2,7 @@
 title: "OpenClaw systemd 服务管理：开机自启、崩溃自动恢复与健康监控（2026）"
 description: "手把手教你将 OpenClaw 配置为 systemd 服务，实现开机自启、进程崩溃自动重启、日志管理与健康检查。全部命令可直接复制使用。"
 pubDate: 2026-02-23
-tags: ["openclaw", "systemd", "部署", "监控", "VPS", "教程"]
+tags: ["openclaw", "systemd", "部署", "监控", "vps", "教程"]
 category: "guide"
 lang: "zh"
 ---

@@ -335,3 +335,13 @@
 - Success metric: `pnpm build && pnpm check:website-schema` passes with zero missing required fields.
 - Result: pass（全站 EN/ZH 页面校验通过；build passed）.
 - Decision: scale
+
+### EXP-033
+- Hypothesis: Enforcing tag case-collision checks in CI (same lowercase key with different case variants, e.g. `VPS` vs `vps`) will prevent duplicate/fragmented tag archive routes and keep taxonomy stable.
+- Scope: `scripts/check-tag-case-collision.sh`, `package.json`, `.github/workflows/content-check.yml`, `src/content/blog/en/*.md`, `src/content/blog/zh/*.md`
+- Change: Added `check:tag-case` gate with frontmatter parser (inline + block list tags), scanned EN/ZH posts for case-collision variants, normalized existing `VPS` tag in one ZH post to `vps`, and integrated the gate into Content Check CI.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm check:tag-case && pnpm build` passes with zero case-collision tags.
+- Result: pass（130 files scanned, 0 collisions; build passed）.
+- Decision: scale

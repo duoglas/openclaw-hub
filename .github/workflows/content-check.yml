@@ -85,6 +85,9 @@ jobs:
       - name: WebSite schema integrity check
         run: pnpm check:website-schema
 
+      - name: Tag case-collision check
+        run: pnpm check:tag-case
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."

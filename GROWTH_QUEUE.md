@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-04 03:33
+Last updated: 2026-03-04 04:36
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate E: 新增标签大小写碰撞闸门（Tag case-collision）并接入 CI，阻断 `VPS/vps` 这类重复标签页风险（修复 1 处 ZH 标签大小写）| ICE 7x8x8=448 — commit `(pending)`
 - [x] P3 Candidate D: 新增 WebSite JSON-LD 字段完整性闸门（name/url/inLanguage/publisher/logo）并接入 CI（含 rg→grep -RIn 回退）| ICE 6x7x6=252 — commit `33d7e7b`
 - [x] P2 Candidate C: 新增 Open Graph/Twitter image 绝对 URL 闸门（防止相对路径导致抓取器回退），新增构建后绝对 URL 校验脚本并接入 CI（含 rg→grep 回退）| ICE 7x7x7=343 — commit `(this commit)`
 - [x] P2 Candidate B: 新增站点级 hreflang 完整性闸门（覆盖 dist/en|zh 全站 HTML 的 en/zh/x-default 绝对 URL 与互链一致性）并接入 CI；补齐 BaseLayout 全站 alternate 对向链接默认值 | ICE 9x8x8=576 — commit `98d1e80`
