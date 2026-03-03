@@ -466,6 +466,46 @@ collect_title_rewrite_queue() {
   ' "${files[@]}" | sort -r | cut -f2- | head -n 8
 }
 
+build_title_rewrite_act_items() {
+  local rows="$1"
+  local out=""
+  local rank=0
+
+  while IFS= read -r line; do
+    [ -n "$line" ] || continue
+    if [[ "$line" =~ ^\|[[:space:]]-[[:space:]]\| ]]; then
+      continue
+    fi
+
+    local query impressions ctr avg_pos page priority focus
+    query=$(printf "%s" "$line" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2}')
+    impressions=$(printf "%s" "$line" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $3); print $3}')
+    ctr=$(printf "%s" "$line" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $4); print $4}')
+    avg_pos=$(printf "%s" "$line" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $5); print $5}')
+    page=$(printf "%s" "$line" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $6); print $6}')
+    priority=$(printf "%s" "$line" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $7); print $7}')
+    focus=$(printf "%s" "$line" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $8); print $8}')
+
+    [ -n "$query" ] || continue
+    rank=$((rank + 1))
+    out+="- [ ] Top ${rank}: \\`${page}\\`（Query: ${query}）\\n"
+    out+="  - priority: ${priority} | impressions: ${impressions} | ctr: ${ctr} | avg position: ${avg_pos}\\n"
+    out+="  - rewrite focus: ${focus}\\n"
+    out+="  - owner: hub-growth-worker | due: ${SUNDAY}\\n"
+
+    if [ "$rank" -ge 3 ]; then
+      break
+    fi
+  done <<< "$rows"
+
+  if [ -z "$out" ]; then
+    out+="- [ ] 当前缺少可计算的高展现低CTR query 数据，先完成 7 天 GSC query 回填后再生成标题改写清单。\\n"
+    out+="  - owner: hub-growth-worker | due: ${SUNDAY}\\n"
+  fi
+
+  printf "%b" "$out"
+}
+
 NEW_EN_RAW=$(collect_new_posts en)
 NEW_ZH_RAW=$(collect_new_posts zh)
 NEW_EN_COUNT=${NEW_EN_RAW%%|||*}
@@ -504,6 +544,7 @@ TITLE_REWRITE_ROWS=$(collect_title_rewrite_queue)
 if [ -z "$TITLE_REWRITE_ROWS" ]; then
   TITLE_REWRITE_ROWS="| - | 0 | 0.00% | 0.0 | - | 0 | - |"
 fi
+TITLE_REWRITE_ACT_ITEMS=$(build_title_rewrite_act_items "$TITLE_REWRITE_ROWS")
 
 count_real_items() {
   printf "%s" "$1" | awk '/^- \[ \] / && $0 !~ /\(no .*\)/ {c++} END{print c+0}'
@@ -663,10 +704,12 @@ cat > "WEEKLY_REVIEW.md" <<EOF
 3. Close one technical SEO hygiene item (schema/canonical/redirect verification) and verify in production.
 
 ### Act (execution log)
-- Task: Auto-refresh weekly review scaffold from weekly SEO report generator
+- Task: 生成“标题改写执行清单”（来自周报 Section 6）并写入本节
   - commit:
-  - expected impact: Reduce weekly analysis friction and keep review cadence consistent
+  - expected impact: 将高展现低 CTR 机会直接转为下周可执行改写任务
   - status: done
+
+${TITLE_REWRITE_ACT_ITEMS}
 
 ## Postmortem
 - What was low-value busy work this week?

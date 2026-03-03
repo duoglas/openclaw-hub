@@ -3,7 +3,7 @@
 ## Week Meta
 - Week: 2026-03-02 to 2026-03-08
 - Owner: hub-growth-worker
-- Reviewed at: 2026-03-03 23:31 (Asia/Shanghai)
+- Reviewed at: 2026-03-04 00:02 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
@@ -15,7 +15,7 @@
 - New pages indexed: Verify newly published URLs in Search Console; if data unavailable, create one indexing check task in Action Plan.
 - Published posts (auto): 4
 - Updated posts (git-tracked): 18
-- Technical SEO commits (git-tracked): 16
+- Technical SEO commits (git-tracked): 17
 
 ### Orient (diagnosis)
 - Why did winners win?
@@ -28,10 +28,13 @@
 3. Close one technical SEO hygiene item (schema/canonical/redirect verification) and verify in production.
 
 ### Act (execution log)
-- Task: Auto-refresh weekly review scaffold from weekly SEO report generator
+- Task: 生成“标题改写执行清单”（来自周报 Section 6）并写入本节
   - commit:
-  - expected impact: Reduce weekly analysis friction and keep review cadence consistent
+  - expected impact: 将高展现低 CTR 机会直接转为下周可执行改写任务
   - status: done
+
+- [ ] 当前缺少可计算的高展现低CTR query 数据，先完成 7 天 GSC query 回填后再生成标题改写清单。
+  - owner: hub-growth-worker | due: 2026-03-08
 
 ## Postmortem
 - What was low-value busy work this week?
