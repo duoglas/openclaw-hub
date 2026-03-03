@@ -244,3 +244,14 @@
 - Success metric: `pnpm weekly:seo && pnpm build` passes and generated report no longer contains `(fill)` in section 10/11.
 - Result: pass (generation/build passed; weekly report and review refreshed with actionable defaults).
 - Decision: scale
+
+### EXP-024
+- Hypothesis: Adding an automatic GSC data-gap alert (red when consecutive missing days >=3) into weekly SEO report + WEEKLY_REVIEW will surface measurement blind spots earlier and force higher-priority KPI backfill actions.
+- Scope: `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`
+- Change: Added `collect_gsc_data_gap_alert` to compute max consecutive missing days and weekly missing ratio from `reports/seo/daily/*.md`; integrated alert block into weekly report Section 9 and linked action priority in next-week plan; refreshed WEEKLY_REVIEW observe block with completeness alert context.
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm weekly:seo && pnpm build` passes; weekly report shows RED/WARN/OK alert state with consecutive missing-day count.
+- Result: pass (current week shows 🔴 RED, max consecutive missing days=7; build passed).
+- Decision: scale
+

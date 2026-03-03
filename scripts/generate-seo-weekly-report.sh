@@ -83,6 +83,60 @@ collect_technical_changes() {
   printf "%b" "$out"
 }
 
+collect_gsc_data_gap_alert() {
+  local dir="reports/seo/daily"
+  local max_streak=0
+  local current_streak=0
+  local missing_days=0
+  local total_days=7
+
+  for i in {0..6}; do
+    local d f
+    d=$(TZ="$TZ" date -d "$MONDAY +${i} days" +%F)
+    f="$dir/$d.md"
+
+    local day_missing=1
+    if [ -f "$f" ]; then
+      local clicks impr ctr pos
+      clicks=$(awk -F': *' '/^- Clicks:/{print $2; exit}' "$f" | tr -d '[:space:]')
+      impr=$(awk -F': *' '/^- Impressions:/{print $2; exit}' "$f" | tr -d '[:space:]')
+      ctr=$(awk -F': *' '/^- CTR:/{print $2; exit}' "$f" | tr -d '[:space:]')
+      pos=$(awk -F': *' '/^- Avg Position:/{print $2; exit}' "$f" | tr -d '[:space:]')
+
+      if [ -n "$clicks" ] || [ -n "$impr" ] || [ -n "$ctr" ] || [ -n "$pos" ]; then
+        day_missing=0
+      fi
+    fi
+
+    if [ "$day_missing" -eq 1 ]; then
+      missing_days=$((missing_days + 1))
+      current_streak=$((current_streak + 1))
+      if [ "$current_streak" -gt "$max_streak" ]; then
+        max_streak=$current_streak
+      fi
+    else
+      current_streak=0
+    fi
+  done
+
+  local status level note
+  if [ "$max_streak" -ge 3 ]; then
+    status="🔴 RED"
+    level="alert"
+    note="连续 ${max_streak} 天 GSC 数据缺失（>=3 天触发标红）"
+  elif [ "$max_streak" -gt 0 ]; then
+    status="🟡 WARN"
+    level="warn"
+    note="最大连续缺失 ${max_streak} 天（未达标红阈值）"
+  else
+    status="🟢 OK"
+    level="ok"
+    note="本周无连续缺失"
+  fi
+
+  printf "%s|||%s|||%s|||%s|||%s" "$status" "$max_streak" "$missing_days/$total_days" "$note" "$level"
+}
+
 collect_daily_snapshot_summary() {
   local dir="reports/seo/daily"
   local files=()
@@ -422,6 +476,15 @@ PUBLISHED_POSTS=$((NEW_EN_COUNT + NEW_ZH_COUNT))
 UPDATED=$(collect_changed_posts)
 TECH=$(collect_technical_changes)
 DAILY_SUMMARY=$(collect_daily_snapshot_summary)
+GSC_GAP_RAW=$(collect_gsc_data_gap_alert)
+GSC_GAP_STATUS=${GSC_GAP_RAW%%|||*}
+GSC_GAP_RAW=${GSC_GAP_RAW#*|||}
+GSC_GAP_STREAK=${GSC_GAP_RAW%%|||*}
+GSC_GAP_RAW=${GSC_GAP_RAW#*|||}
+GSC_GAP_MISSING_RATIO=${GSC_GAP_RAW%%|||*}
+GSC_GAP_RAW=${GSC_GAP_RAW#*|||}
+GSC_GAP_NOTE=${GSC_GAP_RAW%%|||*}
+GSC_GAP_LEVEL=${GSC_GAP_RAW##*|||}
 LOW_CTR_ROWS=$(collect_low_ctr_opportunities)
 if [ -z "$LOW_CTR_ROWS" ]; then
   LOW_CTR_ROWS="| - | 0 | 0 | 0.00% | 0.0 | - |"
@@ -527,28 +590,37 @@ ${TECH}
 
 ${DAILY_SUMMARY}
 
-## 9) Domain Hygiene Guardrail (auto)
+## 9) GSC Data Gap Alert (auto)
+
+| Metric | Value |
+|---|---|
+| Alert Status | ${GSC_GAP_STATUS} |
+| Max Consecutive Missing Days | ${GSC_GAP_STREAK} |
+| Missing Days (week) | ${GSC_GAP_MISSING_RATIO} |
+| Note | ${GSC_GAP_NOTE} |
+
+## 10) Domain Hygiene Guardrail (auto)
 
 - Stale domain scanner status: ${DOMAIN_HYGIENE_STATUS}
 - Alert file: ${DOMAIN_ALERT_FILE}
 
-## 10) Wins / Problems
+## 11) Wins / Problems
 
 ### Wins
 - Published ${PUBLISHED_POSTS} post(s) this week and merged ${TECH_COUNT} technical SEO change(s), keeping content + technical cadence synchronized.
 - Weekly diagnostics now include low-CTR opportunities by language and title rewrite priority queue, shortening the path from signal to action.
 
 ### Problems / Blockers
-- GSC KPI fields in daily snapshots are still mostly empty, which limits KPI trend reliability.
+- GSC completeness status this week: ${GSC_GAP_STATUS} — ${GSC_GAP_NOTE}.
 - Several low-CTR opportunities are still in “detected” state and not yet converted into title/meta rewrite commits.
 
-## 11) Action Plan (Next Week)
+## 12) Action Plan (Next Week)
 
-- [ ] P0: Backfill latest 7 daily snapshots with real GSC clicks/impressions/CTR/position data | owner: hub-growth-worker | due: ${SUNDAY}
+- [ ] P0: Backfill latest 7 daily snapshots with real GSC clicks/impressions/CTR/position data (priority raised if Section 9 is 🔴) | owner: hub-growth-worker | due: ${SUNDAY}
 - [ ] P1: Execute title/meta rewrites for top 3 items from Section 6 and publish EN/ZH updates | owner: hub-growth-worker | due: ${SUNDAY}
 - [ ] P2: Verify legacy URL redirects and canonical behavior in production, then document results in WEEKLY_REVIEW.md | owner: hub-growth-worker | due: ${SUNDAY}
 
-## 12) Data Sources
+## 13) Data Sources
 
 - Google Search Console (Performance + Pages + Queries)
 - Cloudflare Web Analytics (optional)
@@ -571,6 +643,7 @@ cat > "WEEKLY_REVIEW.md" <<EOF
 ## OODA / PDCA Review
 
 ### Observe (data)
+- GSC data completeness alert: ${GSC_GAP_STATUS} (${GSC_GAP_NOTE}).
 - Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
 - Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
 - Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.
