@@ -1,9 +1,9 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: 2026-02-23 to 2026-03-01
+- Week: 2026-03-02 to 2026-03-08
 - Owner: hub-growth-worker
-- Reviewed at: 2026-02-26 10:32 (Asia/Shanghai)
+- Reviewed at: 2026-03-03 19:02 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
@@ -12,20 +12,14 @@
 - Top losing pages: (fill from GSC)
 - Top queries by impressions but low CTR: (fill from GSC)
 - New pages indexed: (fill from GSC)
-- Published posts (auto): 9
-- Updated posts (git-tracked): 83
-- Technical SEO commits (git-tracked): 34
+- Published posts (auto): 4
+- Updated posts (git-tracked): 18
+- Technical SEO commits (git-tracked): 6
 
 ### Orient (diagnosis)
 - Why did winners win?
 - Why did losers lose?
 - Bottlenecks (content quality / SEO tech / distribution):
-
-### Monetization Signals (conversion / referral / consulting)
-- Referral clicks (top 3 pages):
-- Ad/affiliate impressions (top 3 pages):
-- Consulting inquiries: [count]
-- Revenue from referrals: [$]
 
 ### Decide (next-week priorities, max 3)
 1. Improve CTR for high-impression low-CTR queries with title/meta rewrites on top 3 pages.

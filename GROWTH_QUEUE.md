@@ -12,11 +12,10 @@ Manager: main session
 
 ## Backlog
 - [ ] P1 Candidate: 新增文章页 canonical 完整性闸门（校验 dist/en/blog + dist/zh/blog canonical 域名与路径一致，阻断旧域名/错配）| ICE 9x8x8=576
-- [ ] P2 Candidate: weekly:seo 输出补充“标题改写优先级队列”（高展现低 CTR）| ICE 7x6x7=294
 - [ ] P2 Candidate: 为每日文章模板增加“转化 CTA 变体 A/B”占位并校验 | ICE 8x5x6=240
 
 ## Doing
-- [ ] (empty)
+- [ ] P2 Candidate: weekly:seo 输出补充“标题改写优先级队列”（高展现低 CTR）| ICE 7x6x7=294
 
 ## Done
 - [x] P1 Candidate: 新增文章页 canonical 完整性闸门（校验 dist/en/blog + dist/zh/blog canonical 域名与路径一致，阻断旧域名/错配）| ICE 9x8x8=576 — commit `2f6143d`

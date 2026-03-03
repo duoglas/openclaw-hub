@@ -163,3 +163,13 @@
 - Success metric: `pnpm build && pnpm check:canonical-integrity` passes with full EN/ZH blog coverage.
 - Result: pass (371 blog pages validated).
 - Decision: scale
+
+### EXP-016
+- Hypothesis: Weekly report中加入“标题改写优先级队列”（高展现低CTR）可缩短从发现问题到执行改写的路径，并提升下周CTR优化执行率。
+- Scope: `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`
+- Change: 在 `weekly:seo` 增加 `collect_title_rewrite_queue`，按曝光/CTR/排名生成 Priority 分数与改写建议；输出新增专门章节并完成本周报告回填。
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm weekly:seo && pnpm build` 通过，周报中自动产出可执行标题改写队列。
+- Result: pass（周报已生成改写优先级表，构建通过）。
+- Decision: scale

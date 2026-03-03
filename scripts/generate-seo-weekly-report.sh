@@ -233,6 +233,97 @@ collect_low_ctr_opportunities() {
   ' "${files[@]}" | sort -r | cut -f2- | head -n 10
 }
 
+collect_title_rewrite_queue() {
+  local dir="reports/seo/daily"
+  local files=()
+  local f d
+
+  if [ ! -d "$dir" ]; then
+    echo "| - | 0 | 0.00% | 0.0 | - | 0 | - |"
+    return
+  fi
+
+  while IFS= read -r f; do
+    d=$(basename "$f" .md)
+    if [[ "$d" < "$MONDAY" || "$d" > "$SUNDAY" ]]; then
+      continue
+    fi
+    files+=("$f")
+  done < <(find "$dir" -maxdepth 1 -type f -name '*.md' | sort)
+
+  if [ ${#files[@]} -eq 0 ]; then
+    echo "| - | 0 | 0.00% | 0.0 | - | 0 | - |"
+    return
+  fi
+
+  awk '
+    function trim(s) { gsub(/^[[:space:]]+|[[:space:]]+$/, "", s); return s }
+    function extract_num(s, r, tmp) {
+      if (match(tolower(s), r)) {
+        tmp = substr(tolower(s), RSTART, RLENGTH)
+        gsub(/^[^:=]*[:=][[:space:]]*/, "", tmp)
+        gsub(/%/, "", tmp)
+        return tmp + 0
+      }
+      return ""
+    }
+    function extract_text(s, r, tmp) {
+      if (match(tolower(s), r)) {
+        tmp = substr(s, RSTART, RLENGTH)
+        sub(/^[^:=]*[:=][[:space:]]*/, "", tmp)
+        return trim(tmp)
+      }
+      return ""
+    }
+    function focus(ctr, pos) {
+      if (ctr < 1.0) return "问题导向标题+明确结果（优先）"
+      if (pos <= 8) return "标题+描述同步改写，强化价值点"
+      return "标题与查询意图对齐，并补充FAQ长尾"
+    }
+    {
+      if ($0 !~ /^[[:space:]]*[0-9]+\.[[:space:]]*/) next
+      raw = $0
+      gsub(/^[[:space:]]*[0-9]+\.[[:space:]]*/, "", raw)
+      n = split(raw, parts, "|")
+      query = trim(parts[1])
+      if (query == "" || query == "-") next
+
+      impr = extract_num(raw, /(impressions?|imp)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      ctr = extract_num(raw, /ctr[:=][[:space:]]*[0-9]+([.][0-9]+)?%?/)
+      pos = extract_num(raw, /(position|pos)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      page = extract_text(raw, /(page|url|landing)[:=][[:space:]]*[^|]+/)
+
+      key = tolower(query)
+      q[key] = query
+      if (impr != "") impr_sum[key] += impr
+      if (ctr != "") { ctr_sum[key] += ctr; ctr_cnt[key] += 1 }
+      if (pos != "") { pos_sum[key] += pos; pos_cnt[key] += 1 }
+      if (page != "" && !(key in page_map)) page_map[key] = page
+    }
+    END {
+      for (k in q) {
+        impr = (k in impr_sum) ? impr_sum[k] : 0
+        if (impr < 100) continue
+
+        avg_ctr = (k in ctr_cnt && ctr_cnt[k] > 0) ? ctr_sum[k] / ctr_cnt[k] : 0
+        if (avg_ctr > 3.0) continue
+
+        avg_pos = (k in pos_cnt && pos_cnt[k] > 0) ? pos_sum[k] / pos_cnt[k] : 0
+        if (avg_pos <= 0) avg_pos = 30
+
+        page = (k in page_map) ? page_map[k] : "-"
+        ctr_gap = (3.5 - avg_ctr)
+        if (ctr_gap < 0) ctr_gap = 0
+        pos_bonus = (20 - avg_pos)
+        if (pos_bonus < 0) pos_bonus = 0
+        priority = int((impr * ctr_gap) / 100 + pos_bonus)
+
+        printf "%010d\t| %s | %.0f | %.2f%% | %.1f | %s | %d | %s |\n", priority, q[k], impr, avg_ctr, avg_pos, page, priority, focus(avg_ctr, avg_pos)
+      }
+    }
+  ' "${files[@]}" | sort -r | cut -f2- | head -n 8
+}
+
 NEW_EN_RAW=$(collect_new_posts en)
 NEW_ZH_RAW=$(collect_new_posts zh)
 NEW_EN_COUNT=${NEW_EN_RAW%%|||*}
@@ -246,6 +337,11 @@ DAILY_SUMMARY=$(collect_daily_snapshot_summary)
 LOW_CTR_ROWS=$(collect_low_ctr_opportunities)
 if [ -z "$LOW_CTR_ROWS" ]; then
   LOW_CTR_ROWS="| - | 0 | 0 | 0.00% | 0.0 | - |"
+fi
+
+TITLE_REWRITE_ROWS=$(collect_title_rewrite_queue)
+if [ -z "$TITLE_REWRITE_ROWS" ]; then
+  TITLE_REWRITE_ROWS="| - | 0 | 0.00% | 0.0 | - | 0 | - |"
 fi
 
 count_real_items() {
@@ -297,7 +393,13 @@ cat > "$OUT_FILE" <<EOF
 |---|---:|---:|---:|---:|---|
 ${LOW_CTR_ROWS}
 
-## 5) Content Execution This Week
+## 5) 标题改写优先级队列（auto, 高展现低CTR）
+
+| Query | Impressions | CTR | Avg Position | Landing Page | Priority | Recommended Rewrite Focus |
+|---|---:|---:|---:|---|---:|---|
+${TITLE_REWRITE_ROWS}
+
+## 6) Content Execution This Week
 
 ### New posts (EN)
 ${NEW_EN}
@@ -311,16 +413,16 @@ ${UPDATED}
 ### Technical SEO changes (git-tracked)
 ${TECH}
 
-## 6) Daily Snapshot Rollup (auto)
+## 7) Daily Snapshot Rollup (auto)
 
 ${DAILY_SUMMARY}
 
-## 7) Domain Hygiene Guardrail (auto)
+## 8) Domain Hygiene Guardrail (auto)
 
 - Stale domain scanner status: ${DOMAIN_HYGIENE_STATUS}
 - Alert file: ${DOMAIN_ALERT_FILE}
 
-## 8) Wins / Problems
+## 9) Wins / Problems
 
 ### Wins
 - (fill)
@@ -328,13 +430,13 @@ ${DAILY_SUMMARY}
 ### Problems / Blockers
 - (fill)
 
-## 9) Action Plan (Next Week)
+## 10) Action Plan (Next Week)
 
 - [ ] P0: (task / owner / due)
 - [ ] P1: (task / owner / due)
 - [ ] P2: (task / owner / due)
 
-## 10) Data Sources
+## 11) Data Sources
 
 - Google Search Console (Performance + Pages + Queries)
 - Cloudflare Web Analytics (optional)
