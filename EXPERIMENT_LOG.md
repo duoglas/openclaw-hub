@@ -385,3 +385,13 @@
 - Success metric: `pnpm check:website-schema && pnpm build` passes, and failure path includes Top10 sample block for faster debugging.
 - Result: pass（schema gate + build passed; Top10 block now emitted on failure path）.
 - Decision: scale
+
+### EXP-038
+- Hypothesis: Adding a 7-day schema-risk trend placeholder to `weekly:seo` will expose observability gaps early and create a direct execution path to integrate schema risk metrics into daily snapshots.
+- Scope: `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`
+- Change: Added `collect_schema_risk_trend_placeholder` (7-day table), inserted Section 11 schema trend block in weekly report, shifted downstream section numbering, and added explicit action item to integrate `Schema Risk Status/Issues` into `daily:seo` output.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm weekly:seo && pnpm build` passes and weekly report includes Section 11 schema-risk trend placeholder with actionable follow-up.
+- Result: pass（weekly report + weekly review updated; build passed）.
+- Decision: iterate

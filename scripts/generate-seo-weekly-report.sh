@@ -156,6 +156,61 @@ collect_gsc_data_gap_alert() {
   printf "%s|||%s|||%s|||%s|||%s" "$status" "$max_streak" "$missing_days/$total_days" "$note" "$level"
 }
 
+collect_schema_risk_trend_placeholder() {
+  local dir="reports/seo/daily"
+  local out=""
+
+  for i in {0..6}; do
+    local d f risk_level schema_status issue_count source
+    d=$(TZ="$TZ" date -d "$MONDAY +${i} days" +%F)
+    f="$dir/$d.md"
+
+    schema_status=""
+    issue_count=""
+    source="no-snapshot"
+
+    if [ -f "$f" ]; then
+      schema_status=$(awk -F': *' '/^- Schema Risk Status:/{print $2; exit}' "$f" | tr -d '\r' | xargs)
+      issue_count=$(awk -F': *' '/^- Schema Risk Issues:/{print $2; exit}' "$f" | tr -d '\r' | xargs)
+
+      if [ -n "$schema_status" ] || [ -n "$issue_count" ]; then
+        source="daily-snapshot"
+      else
+        source="pending-integration"
+      fi
+    fi
+
+    if [ -z "$schema_status" ]; then
+      schema_status="placeholder"
+    fi
+    if [ -z "$issue_count" ]; then
+      issue_count="N/A"
+    fi
+
+    case "${schema_status,,}" in
+      pass|ok)
+        if [[ "$issue_count" =~ ^[0-9]+$ ]] && [ "$issue_count" -eq 0 ]; then
+          risk_level="🟢"
+        elif [[ "$issue_count" =~ ^[0-9]+$ ]] && [ "$issue_count" -gt 0 ]; then
+          risk_level="🔴"
+        else
+          risk_level="🟡"
+        fi
+        ;;
+      fail|error|alert)
+        risk_level="🔴"
+        ;;
+      *)
+        risk_level="🟡"
+        ;;
+    esac
+
+    out+="| ${d} | ${risk_level} | ${schema_status} | ${issue_count} | ${source} |\n"
+  done
+
+  printf "%b" "$out"
+}
+
 collect_daily_snapshot_summary() {
   local dir="reports/seo/daily"
   local files=()
@@ -631,6 +686,7 @@ PUBLISHED_POSTS=$((NEW_EN_COUNT + NEW_ZH_COUNT))
 UPDATED=$(collect_changed_posts)
 TECH=$(collect_technical_changes)
 DAILY_SUMMARY=$(collect_daily_snapshot_summary)
+SCHEMA_RISK_TREND_ROWS=$(collect_schema_risk_trend_placeholder)
 GSC_GAP_RAW=$(collect_gsc_data_gap_alert)
 GSC_GAP_STATUS=${GSC_GAP_RAW%%|||*}
 GSC_GAP_RAW=${GSC_GAP_RAW#*|||}
@@ -768,14 +824,22 @@ ${DAILY_SUMMARY}
 | Missing Days (week) | ${GSC_GAP_MISSING_RATIO} |
 | Note | ${GSC_GAP_NOTE} |
 
-## 11) Domain Hygiene Guardrail (auto)
+## 11) Schema Risk Trend (7d placeholder)
+
+| Date | Risk Level | Schema Status | Issue Count | Data Source |
+|---|---|---|---:|---|
+${SCHEMA_RISK_TREND_ROWS}
+
+> Integration note: add '- Schema Risk Status:' and '- Schema Risk Issues:' fields to daily snapshots to turn this placeholder into measurable trend stats.
+
+## 12) Domain Hygiene Guardrail (auto)
 
 - Stale domain scanner status: ${DOMAIN_HYGIENE_STATUS}
 - Alert file: ${DOMAIN_ALERT_FILE}
 
 ${DOMAIN_GROUP_SECTION}
 
-## 12) Wins / Problems
+## 13) Wins / Problems
 
 ### Wins
 - Published ${PUBLISHED_POSTS} post(s) this week and merged ${TECH_COUNT} technical SEO change(s), keeping content + technical cadence synchronized.
@@ -786,13 +850,14 @@ ${DOMAIN_GROUP_SECTION}
 - Several low-CTR opportunities are still in “detected” state and not yet converted into title/meta rewrite commits.
 - High-bounce-risk proxy queue still requires execution and validation against real behavior metrics (GA4/Clarity) before scaling.
 
-## 13) Action Plan (Next Week)
+## 14) Action Plan (Next Week)
 
 - [ ] P0: Backfill latest 7 daily snapshots with real GSC clicks/impressions/CTR/position data (priority raised if Section 10 is 🔴) | owner: hub-growth-worker | due: ${SUNDAY}
 - [ ] P1: Execute title/meta rewrites for top 3 items from Section 6 and publish EN/ZH updates | owner: hub-growth-worker | due: ${SUNDAY}
 - [ ] P1: Execute top 2 pages from Section 7 high-bounce proxy queue and compare pre/post engagement metrics | owner: hub-growth-worker | due: ${SUNDAY}
+- [ ] P2: Add schema risk metrics ('Schema Risk Status/Issues') into 'daily:seo' output so Section 11 can auto-trend real values | owner: hub-growth-worker | due: ${SUNDAY}
 
-## 14) Data Sources
+## 15) Data Sources
 
 - Google Search Console (Performance + Pages + Queries)
 - Cloudflare Web Analytics (optional)
@@ -816,6 +881,7 @@ cat > "WEEKLY_REVIEW.md" <<EOF
 
 ### Observe (data)
 - GSC data completeness alert: ${GSC_GAP_STATUS} (${GSC_GAP_NOTE}).
+- Schema risk trend (7d placeholder): review weekly report Section 11; prioritize daily snapshot schema metrics integration if Data Source stays 'pending-integration'.
 - Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
 - Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
 - Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.
