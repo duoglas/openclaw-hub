@@ -45,6 +45,14 @@ lang: "zh"
 ---
 
 ${SUMMARY}
+
+## 下一步行动（CTA）
+
+<!-- CTA_VARIANT_A -->
+- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
+
+<!-- CTA_VARIANT_B -->
+- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
 EOF
 
 cat > "$EN_FILE" <<EOF
@@ -58,6 +66,14 @@ lang: "en"
 ---
 
 ${SUMMARY}
+
+## Next-Step CTA
+
+<!-- CTA_VARIANT_A -->
+- **Variant A (Consultation conversion):** Want to apply this to your team or project? Book a 30-minute diagnostic and get an implementation checklist.
+
+<!-- CTA_VARIANT_B -->
+- **Variant B (Subscription conversion):** Want continuous signal tracking? Subscribe to the daily RSS for actionable updates.
 EOF
 
 pnpm build >/dev/null 2>&1
