@@ -233,6 +233,94 @@ collect_low_ctr_opportunities() {
   ' "${files[@]}" | sort -r | cut -f2- | head -n 10
 }
 
+collect_low_ctr_by_language() {
+  local lang="$1"
+  local dir="reports/seo/daily"
+  local files=()
+  local f d
+
+  if [ ! -d "$dir" ]; then
+    echo "| - | 0 | 0 | 0.00% | 0.0 | - |"
+    return
+  fi
+
+  while IFS= read -r f; do
+    d=$(basename "$f" .md)
+    if [[ "$d" < "$MONDAY" || "$d" > "$SUNDAY" ]]; then
+      continue
+    fi
+    files+=("$f")
+  done < <(find "$dir" -maxdepth 1 -type f -name '*.md' | sort)
+
+  if [ ${#files[@]} -eq 0 ]; then
+    echo "| - | 0 | 0 | 0.00% | 0.0 | - |"
+    return
+  fi
+
+  awk -v target_lang="$lang" '
+    function trim(s) { gsub(/^[[:space:]]+|[[:space:]]+$/, "", s); return s }
+    function extract_num(s, r, tmp) {
+      if (match(tolower(s), r)) {
+        tmp = substr(tolower(s), RSTART, RLENGTH)
+        gsub(/^[^:=]*[:=][[:space:]]*/, "", tmp)
+        gsub(/%/, "", tmp)
+        return tmp + 0
+      }
+      return ""
+    }
+    function extract_text(s, r, tmp) {
+      if (match(tolower(s), r)) {
+        tmp = substr(s, RSTART, RLENGTH)
+        sub(/^[^:=]*[:=][[:space:]]*/, "", tmp)
+        return trim(tmp)
+      }
+      return ""
+    }
+    function row_lang(page) {
+      p = tolower(page)
+      if (p ~ /^\/?en\// || p ~ /\/en\//) return "en"
+      if (p ~ /^\/?zh\// || p ~ /\/zh\//) return "zh"
+      return "other"
+    }
+    {
+      if ($0 !~ /^[[:space:]]*[0-9]+\.[[:space:]]*/) next
+      raw = $0
+      gsub(/^[[:space:]]*[0-9]+\.[[:space:]]*/, "", raw)
+      n = split(raw, parts, "|")
+      query = trim(parts[1])
+      if (query == "" || query == "-") next
+
+      clicks = extract_num(raw, /(clicks?|clk)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      impr = extract_num(raw, /(impressions?|imp)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      ctr = extract_num(raw, /ctr[:=][[:space:]]*[0-9]+([.][0-9]+)?%?/)
+      pos = extract_num(raw, /(position|pos)[:=][[:space:]]*[0-9]+([.][0-9]+)?/)
+      page = extract_text(raw, /(page|url|landing)[:=][[:space:]]*[^|]+/)
+
+      if (row_lang(page) != target_lang) next
+
+      key = tolower(query)
+      q[key] = query
+      if (clicks != "") clicks_sum[key] += clicks
+      if (impr != "") impr_sum[key] += impr
+      if (ctr != "") { ctr_sum[key] += ctr; ctr_cnt[key] += 1 }
+      if (pos != "") { pos_sum[key] += pos; pos_cnt[key] += 1 }
+      if (page != "" && !(key in page_map)) page_map[key] = page
+    }
+    END {
+      for (k in q) {
+        impr = (k in impr_sum) ? impr_sum[k] : 0
+        if (impr < 50) continue
+        avg_ctr = (k in ctr_cnt && ctr_cnt[k] > 0) ? ctr_sum[k] / ctr_cnt[k] : 0
+        if (avg_ctr > 3.0) continue
+        clicks = (k in clicks_sum) ? clicks_sum[k] : 0
+        avg_pos = (k in pos_cnt && pos_cnt[k] > 0) ? pos_sum[k] / pos_cnt[k] : 0
+        page = (k in page_map) ? page_map[k] : "-"
+        printf "%010.2f\t| %s | %.0f | %.0f | %.2f%% | %.1f | %s |\n", impr, q[k], clicks, impr, avg_ctr, avg_pos, page
+      }
+    }
+  ' "${files[@]}" | sort -r | cut -f2- | head -n 10
+}
+
 collect_title_rewrite_queue() {
   local dir="reports/seo/daily"
   local files=()
@@ -339,6 +427,16 @@ if [ -z "$LOW_CTR_ROWS" ]; then
   LOW_CTR_ROWS="| - | 0 | 0 | 0.00% | 0.0 | - |"
 fi
 
+LOW_CTR_ROWS_EN=$(collect_low_ctr_by_language en)
+if [ -z "$LOW_CTR_ROWS_EN" ]; then
+  LOW_CTR_ROWS_EN="| - | 0 | 0 | 0.00% | 0.0 | - |"
+fi
+
+LOW_CTR_ROWS_ZH=$(collect_low_ctr_by_language zh)
+if [ -z "$LOW_CTR_ROWS_ZH" ]; then
+  LOW_CTR_ROWS_ZH="| - | 0 | 0 | 0.00% | 0.0 | - |"
+fi
+
 TITLE_REWRITE_ROWS=$(collect_title_rewrite_queue)
 if [ -z "$TITLE_REWRITE_ROWS" ]; then
   TITLE_REWRITE_ROWS="| - | 0 | 0.00% | 0.0 | - | 0 | - |"
@@ -393,13 +491,25 @@ cat > "$OUT_FILE" <<EOF
 |---|---:|---:|---:|---:|---|
 ${LOW_CTR_ROWS}
 
-## 5) 标题改写优先级队列（auto, 高展现低CTR）
+## 5) High Impression Low-CTR Queries Top10 (auto, by language)
+
+### EN Top10
+| Query | Clicks | Impressions | CTR | Avg Position | Landing Page |
+|---|---:|---:|---:|---:|---|
+${LOW_CTR_ROWS_EN}
+
+### ZH Top10
+| Query | Clicks | Impressions | CTR | Avg Position | Landing Page |
+|---|---:|---:|---:|---:|---|
+${LOW_CTR_ROWS_ZH}
+
+## 6) 标题改写优先级队列（auto, 高展现低CTR）
 
 | Query | Impressions | CTR | Avg Position | Landing Page | Priority | Recommended Rewrite Focus |
 |---|---:|---:|---:|---|---:|---|
 ${TITLE_REWRITE_ROWS}
 
-## 6) Content Execution This Week
+## 7) Content Execution This Week
 
 ### New posts (EN)
 ${NEW_EN}
@@ -413,16 +523,16 @@ ${UPDATED}
 ### Technical SEO changes (git-tracked)
 ${TECH}
 
-## 7) Daily Snapshot Rollup (auto)
+## 8) Daily Snapshot Rollup (auto)
 
 ${DAILY_SUMMARY}
 
-## 8) Domain Hygiene Guardrail (auto)
+## 9) Domain Hygiene Guardrail (auto)
 
 - Stale domain scanner status: ${DOMAIN_HYGIENE_STATUS}
 - Alert file: ${DOMAIN_ALERT_FILE}
 
-## 9) Wins / Problems
+## 10) Wins / Problems
 
 ### Wins
 - (fill)
@@ -430,13 +540,13 @@ ${DAILY_SUMMARY}
 ### Problems / Blockers
 - (fill)
 
-## 10) Action Plan (Next Week)
+## 11) Action Plan (Next Week)
 
 - [ ] P0: (task / owner / due)
 - [ ] P1: (task / owner / due)
 - [ ] P2: (task / owner / due)
 
-## 11) Data Sources
+## 12) Data Sources
 
 - Google Search Console (Performance + Pages + Queries)
 - Cloudflare Web Analytics (optional)

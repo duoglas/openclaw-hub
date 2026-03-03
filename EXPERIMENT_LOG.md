@@ -213,3 +213,13 @@
 - Success metric: `pnpm check:meta-description && pnpm build` 通过，且输出覆盖校验文件数。
 - Result: pass（130 files validated，build passed）。
 - Decision: scale
+
+### EXP-021
+- Hypothesis: 在 `weekly:seo` 中按语言（EN/ZH）自动输出“高展现低CTR”Top10，可把诊断结果直接映射到语言页改写任务，提升下一步执行效率。
+- Scope: `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`
+- Change: 新增 `collect_low_ctr_by_language(en|zh)`，在周报输出 EN/ZH Top10 双表；执行 `pnpm weekly:seo` 刷新周报与复盘；任务从 Backlog->Doing->Done 留痕。
+- Start date: 2026-03-03
+- End date: 2026-03-03
+- Success metric: `pnpm weekly:seo && pnpm build` 通过，周报包含 EN/ZH Top10 章节。
+- Result: pass（周报含按语言 Top10 输出；构建通过）。
+- Decision: scale
