@@ -325,3 +325,13 @@
 - Success metric: `pnpm build && pnpm check:social-image-absolute` passes with full EN/ZH page coverage and zero relative social-image URLs.
 - Result: pass（EN 183 pages + ZH 192 pages validated; build passed）.
 - Decision: scale
+
+### EXP-032
+- Hypothesis: Enforcing WebSite JSON-LD field integrity (`name/url/inLanguage/publisher/logo`) on all built EN/ZH pages in CI will prevent schema-field regression and keep site-level entity signals stable for crawlers.
+- Scope: `scripts/check-website-schema-integrity.sh`, `package.json`, `.github/workflows/content-check.yml`, `dist/en/**/*.html`, `dist/zh/**/*.html`, `GROWTH_QUEUE.md`
+- Change: Added `check:website-schema` gate to validate WebSite JSON-LD presence and required fields across built EN/ZH HTML; integrated gate into Content Check CI; implemented `rg` unavailable fallback to `grep -RIn`.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm build && pnpm check:website-schema` passes with zero missing required fields.
+- Result: pass（全站 EN/ZH 页面校验通过；build passed）.
+- Decision: scale
