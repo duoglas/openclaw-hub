@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-04 06:32
+Last updated: 2026-03-04 07:35
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,12 +11,14 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] (empty)
+- [ ] P2 Candidate B: 为 daily:seo 增加快照数据完整性提示（GSC + Schema 字段是否填写），减少无效周报输入 | ICE 7x7x8=392
+- [ ] P3 Candidate C: 在 weekly:seo 输出“schema 风险周均值/峰值”聚合列（基于已集成日快照字段）| ICE 6x7x6=252
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate A: 在 daily:seo 集成 schema 风险自动采集（调用 website-schema 闸门并写入 Snapshot 字段），打通周报 Section 11 数据来源 | ICE 8x8x7=448 — commit `3d718dc`
 - [x] P2 Candidate C: 在 weekly:seo 增加 schema 风险趋势统计占位（近7天）| ICE 5x6x5=150 — commit `351550a`
 - [x] P2 Candidate B: 为 check:website-schema 增加失败样例 Top10 输出，缩短排障路径 | ICE 6x7x7=294 — commit `84c6485`
 - [x] P1 Candidate A: 强化 WebSite JSON-LD 闸门（严格校验 publisher.logo 嵌套字段 + URL/语言一致性 + JSON 解析容错），并保留 rg 不可用时 grep -RIn 回退 | ICE 8x8x7=448 — commit `f4634a7`

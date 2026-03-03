@@ -395,3 +395,13 @@
 - Success metric: `pnpm weekly:seo && pnpm build` passes and weekly report includes Section 11 schema-risk trend placeholder with actionable follow-up.
 - Result: pass（weekly report + weekly review updated; build passed）.
 - Decision: iterate
+
+### EXP-039
+- Hypothesis: Auto-collecting schema risk fields in `daily:seo` from `check:website-schema` output will turn weekly Section 11 from placeholder-heavy reporting into measurable daily trend data and reduce blind spots in schema hygiene.
+- Scope: `scripts/generate-seo-daily-snapshot.sh`, `reports/seo/daily/2026-03-04.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Extended daily snapshot generator to run schema gate when `dist/en`+`dist/zh` are present, then write `Schema Risk Status/Issues/Source` fields into snapshot output; fixed snapshot template escaping to avoid shell interpolation issues.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `bash scripts/generate-seo-daily-snapshot.sh 2026-03-04 && pnpm build` passes, and daily snapshot contains non-empty schema risk fields.
+- Result: pass（daily snapshot generated with `pass/0/website-schema-gate`; build passed）.
+- Decision: scale
