@@ -315,3 +315,13 @@
 - Success metric: `pnpm build && pnpm check:sitewide-hreflang` passes with full EN/ZH page coverage.
 - Result: pass（sitewide hreflang check passed: 375 pages validated; build passed）.
 - Decision: scale
+
+### EXP-031
+- Hypothesis: Enforcing absolute `og:image` / `twitter:image` URLs (https://kuoo.uk/...) in CI will prevent social crawler fallback issues caused by relative paths and keep cross-platform preview rendering stable.
+- Scope: `scripts/check-social-image-absolute.sh`, `package.json`, `.github/workflows/content-check.yml`, `dist/en/**/*.html`, `dist/zh/**/*.html`, `GROWTH_QUEUE.md`
+- Change: Added `check:social-image-absolute` gate to scan built EN/ZH HTML for `og:image` and `twitter:image` meta tags and require absolute `https://kuoo.uk/` URLs; integrated gate into Content Check CI; added `rg` unavailable fallback to `grep` in checker.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm build && pnpm check:social-image-absolute` passes with full EN/ZH page coverage and zero relative social-image URLs.
+- Result: pass（EN 183 pages + ZH 192 pages validated; build passed）.
+- Decision: scale

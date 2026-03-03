@@ -79,6 +79,9 @@ jobs:
       - name: RSS autodiscovery check
         run: pnpm check:rss-autodiscovery
 
+      - name: Social image absolute URL check
+        run: pnpm check:social-image-absolute
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."

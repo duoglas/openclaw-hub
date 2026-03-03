@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-04 02:36
+Last updated: 2026-03-04 03:33
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,13 +11,13 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] P2 Candidate C: 新增 Open Graph/Twitter image 绝对 URL 闸门（防止相对路径导致抓取器回退）| ICE 7x7x7=343
 - [ ] P3 Candidate D: 新增 WebSite JSON-LD 字段完整性闸门（name/url/inLanguage/publisher/logo）| ICE 6x7x6=252
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] P2 Candidate C: 新增 Open Graph/Twitter image 绝对 URL 闸门（防止相对路径导致抓取器回退），新增构建后绝对 URL 校验脚本并接入 CI（含 rg→grep 回退）| ICE 7x7x7=343 — commit `(this commit)`
 - [x] P2 Candidate B: 新增站点级 hreflang 完整性闸门（覆盖 dist/en|zh 全站 HTML 的 en/zh/x-default 绝对 URL 与互链一致性）并接入 CI；补齐 BaseLayout 全站 alternate 对向链接默认值 | ICE 9x8x8=576 — commit `98d1e80`
 - [x] P2 Candidate B: 为 weekly:seo 增加“高跳出率内容复盘占位”输出（基于已有数据做可执行改写队列）| ICE 5x6x5=150 — commit `aadfcff`
 - [x] P2 Candidate C: 扩展 noindex-leak 报告格式（按语言输出样例文件）并增加 rg 缺失时 grep 回退 | ICE 4x8x7=224 — commit `e738d7f`
