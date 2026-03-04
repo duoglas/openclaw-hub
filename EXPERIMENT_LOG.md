@@ -405,3 +405,13 @@
 - Success metric: `bash scripts/generate-seo-daily-snapshot.sh 2026-03-04 && pnpm build` passes, and daily snapshot contains non-empty schema risk fields.
 - Result: pass（daily snapshot generated with `pass/0/website-schema-gate`; build passed）.
 - Decision: scale
+
+### EXP-040
+- Hypothesis: Adding explicit daily snapshot input-completeness signals (GSC fields filled + schema readiness + weekly input quality flag) will reduce invalid weekly-report inputs and shorten diagnosis loops.
+- Scope: `scripts/generate-seo-daily-snapshot.sh`, `reports/seo/daily/2026-03-04.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Upgraded `daily:seo` to preserve existing manual GSC values, auto-calculate `GSC Required Fields Filled` / `Missing GSC Fields`, compute `Schema Data Readiness`, and emit `Weekly Input Quality Flag` in a new completeness block.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm daily:seo && pnpm build` passes, and daily snapshot includes machine-readable completeness hints for weekly generation.
+- Result: pass（snapshot now outputs completeness block; build passed）.
+- Decision: scale
