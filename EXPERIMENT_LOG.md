@@ -415,3 +415,26 @@
 - Success metric: `pnpm daily:seo && pnpm build` passes, and daily snapshot includes machine-readable completeness hints for weekly generation.
 - Result: pass（snapshot now outputs completeness block; build passed）.
 - Decision: scale
+
+### EXP-041
+- Hypothesis: Surfacing schema-risk weekly aggregates (avg/peak/coverage) directly in weekly report output will improve decision quality versus row-only daily snapshots and reduce false confidence when data coverage is low.
+- Scope: `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`
+- Change: Added computed `SCHEMA_WEEK_COVERAGE_PCT`, replaced free-text schema aggregate lines with a structured aggregate table (avg/peak/coverage), and updated WEEKLY_REVIEW observe text to include numeric coverage signal.
+- Start date: 2026-03-04
+- End date: 2026-03-04
+- Success metric: `pnpm weekly:seo && pnpm build` passes, and weekly report Section 11 includes explicit aggregate metrics table.
+- Result: pending (execution environment currently blocks `exec`, so build/regeneration/verification and git steps are waiting).
+- Decision: iterate
+
+### EXP-042
+- Hypothesis: 发布“`openclaw status` vs `openclaw gateway status` 区分与5分钟排障流”的中英双语 FAQ，可显著降低“在线不回复”类问题的误判率，并提升该类检索意图的着陆点击与停留质量。
+- Scope: `/zh/blog/openclaw-status-vs-gateway-status-difference-and-debug-flow-2026/` + `/en/blog/openclaw-status-vs-gateway-status-difference-and-debug-flow-2026/`
+- Change: 新增中英双语教程，提供命令级分层解释、可复制决策流、最小证据包，并加入3篇高相关内链。
+- Target channel: Google Search（故障排查长尾词）+ Telegram 社群问题答复引用
+- Expected metrics: 7天内目标页 CTR 提升 >=12%，平均参与时长 >=90s，相关问题工单首轮误判率下降 >=20%
+- Observation cycle: 7 天（D+1~D+7）
+- Start date: 2026-03-05
+- End date: 2026-03-12
+- Success metric: GSC query CTR/点击、页面参与时长、社群答复一次命中率
+- Result: pass（中英双语文章已发布到仓库，`pnpm build` 通过并生成对应 EN/ZH 路由；进入 7 天观测期，待回填 CTR/参与时长/社群一次命中率）
+- Decision: iterate（保留页面结构，7 天后按 GSC 与社群数据决定是否扩写 FAQ 与内链锚文本）
