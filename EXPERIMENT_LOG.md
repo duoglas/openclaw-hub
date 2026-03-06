@@ -438,3 +438,16 @@
 - Success metric: GSC query CTR/点击、页面参与时长、社群答复一次命中率
 - Result: pass（中英双语文章已发布到仓库，`pnpm build` 通过并生成对应 EN/ZH 路由；进入 7 天观测期，待回填 CTR/参与时长/社群一次命中率）
 - Decision: iterate（保留页面结构，7 天后按 GSC 与社群数据决定是否扩写 FAQ 与内链锚文本）
+
+### EXP-044
+- Hypothesis: 发布“`openclaw channels status --probe` 5分钟定位在线不回复”的中英双语教程，可提升高意图排障词点击质量，并减少社群中错误排障路径（只查 gateway 不查 channel）。
+- Scope: `/zh/blog/openclaw-channels-status-probe-no-reply-diagnosis-2026/` + `/en/blog/openclaw-channels-status-probe-no-reply-diagnosis-2026/`
+- Change: 新增中英双语 FAQ/教程，加入可复制命令、症状→动作映射、可验证完成清单；各文内加入 3 条高相关内链。
+- Target channel: Google Search（OpenClaw Telegram/online-no-reply 长尾词）+ Telegram 社群答疑引用
+- Expected metrics: 7 天内目标页 CTR 提升 >=10%，平均参与时长 >=100s，社群同类问题首轮定位成功率提升 >=20%
+- Observation cycle: 7 天（D+1~D+7）
+- Start date: 2026-03-06
+- End date: 2026-03-13
+- Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题一次定位率
+- Result: pass（中英双语内容已落库，`pnpm weekly:seo && pnpm build` 通过；生成 EN/ZH 路由并进入 7 天观测期）
+- Decision: iterate（保留命令级排障结构；D+7 回填 CTR/参与时长/社群一次定位率后决定是否扩展 FAQ 与内链锚文本）

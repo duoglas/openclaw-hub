@@ -156,9 +156,50 @@ collect_gsc_data_gap_alert() {
   printf "%s|||%s|||%s|||%s|||%s" "$status" "$max_streak" "$missing_days/$total_days" "$note" "$level"
 }
 
+collect_schema_risk_week_stats() {
+  local dir="reports/seo/daily"
+  local sum_issues=0
+  local numeric_days=0
+  local peak_issues=-1
+  local peak_date="N/A"
+
+  for i in {0..6}; do
+    local d f issue_count
+    d=$(TZ="$TZ" date -d "$MONDAY +${i} days" +%F)
+    f="$dir/$d.md"
+    issue_count=""
+
+    if [ -f "$f" ]; then
+      issue_count=$(awk -F': *' '/^- Schema Risk Issues:/{print $2; exit}' "$f" | tr -d '\r' | xargs)
+    fi
+
+    if [[ "$issue_count" =~ ^[0-9]+$ ]]; then
+      sum_issues=$((sum_issues + issue_count))
+      numeric_days=$((numeric_days + 1))
+      if [ "$issue_count" -gt "$peak_issues" ]; then
+        peak_issues=$issue_count
+        peak_date="$d"
+      fi
+    fi
+  done
+
+  local avg_issues="N/A"
+  if [ "$numeric_days" -gt 0 ]; then
+    avg_issues=$(awk -v s="$sum_issues" -v c="$numeric_days" 'BEGIN{printf "%.2f", s/c}')
+  fi
+
+  if [ "$peak_issues" -lt 0 ]; then
+    peak_issues="N/A"
+    peak_date="N/A"
+  fi
+
+  printf "%s|||%s|||%s|||%s" "$avg_issues" "$peak_issues" "$peak_date" "$numeric_days"
+}
+
 collect_schema_risk_trend_placeholder() {
   local dir="reports/seo/daily"
   local out=""
+  local week_peak_label="${SCHEMA_WEEK_PEAK_ISSUES} (${SCHEMA_WEEK_PEAK_DATE})"
 
   for i in {0..6}; do
     local d f risk_level schema_status issue_count source
@@ -205,7 +246,7 @@ collect_schema_risk_trend_placeholder() {
         ;;
     esac
 
-    out+="| ${d} | ${risk_level} | ${schema_status} | ${issue_count} | ${source} |\n"
+    out+="| ${d} | ${risk_level} | ${schema_status} | ${issue_count} | ${source} | ${SCHEMA_WEEK_AVG_ISSUES} | ${week_peak_label} |\n"
   done
 
   printf "%b" "$out"
@@ -686,6 +727,14 @@ PUBLISHED_POSTS=$((NEW_EN_COUNT + NEW_ZH_COUNT))
 UPDATED=$(collect_changed_posts)
 TECH=$(collect_technical_changes)
 DAILY_SUMMARY=$(collect_daily_snapshot_summary)
+SCHEMA_WEEK_STATS_RAW=$(collect_schema_risk_week_stats)
+SCHEMA_WEEK_AVG_ISSUES=${SCHEMA_WEEK_STATS_RAW%%|||*}
+SCHEMA_WEEK_STATS_RAW=${SCHEMA_WEEK_STATS_RAW#*|||}
+SCHEMA_WEEK_PEAK_ISSUES=${SCHEMA_WEEK_STATS_RAW%%|||*}
+SCHEMA_WEEK_STATS_RAW=${SCHEMA_WEEK_STATS_RAW#*|||}
+SCHEMA_WEEK_PEAK_DATE=${SCHEMA_WEEK_STATS_RAW%%|||*}
+SCHEMA_WEEK_NUMERIC_DAYS=${SCHEMA_WEEK_STATS_RAW##*|||}
+SCHEMA_WEEK_COVERAGE_PCT=$(awk -v n="$SCHEMA_WEEK_NUMERIC_DAYS" 'BEGIN{printf "%.0f%%", (n/7)*100}')
 SCHEMA_RISK_TREND_ROWS=$(collect_schema_risk_trend_placeholder)
 GSC_GAP_RAW=$(collect_gsc_data_gap_alert)
 GSC_GAP_STATUS=${GSC_GAP_RAW%%|||*}
@@ -824,13 +873,17 @@ ${DAILY_SUMMARY}
 | Missing Days (week) | ${GSC_GAP_MISSING_RATIO} |
 | Note | ${GSC_GAP_NOTE} |
 
-## 11) Schema Risk Trend (7d placeholder)
+## 11) Schema Risk Trend (7d)
 
-| Date | Risk Level | Schema Status | Issue Count | Data Source |
-|---|---|---|---:|---|
+| Date | Risk Level | Schema Status | Issue Count | Data Source | Weekly Avg Issues | Weekly Peak (Issues@Date) |
+|---|---|---|---:|---|---:|---|
 ${SCHEMA_RISK_TREND_ROWS}
 
-> Integration note: add '- Schema Risk Status:' and '- Schema Risk Issues:' fields to daily snapshots to turn this placeholder into measurable trend stats.
+| Aggregated Metric | Value |
+|---|---|
+| Weekly Avg Issues | ${SCHEMA_WEEK_AVG_ISSUES} |
+| Weekly Peak Issues | ${SCHEMA_WEEK_PEAK_ISSUES} (${SCHEMA_WEEK_PEAK_DATE}) |
+| Numeric Data Coverage | ${SCHEMA_WEEK_NUMERIC_DAYS}/7 (${SCHEMA_WEEK_COVERAGE_PCT}) |
 
 ## 12) Domain Hygiene Guardrail (auto)
 
@@ -881,7 +934,7 @@ cat > "WEEKLY_REVIEW.md" <<EOF
 
 ### Observe (data)
 - GSC data completeness alert: ${GSC_GAP_STATUS} (${GSC_GAP_NOTE}).
-- Schema risk trend (7d placeholder): review weekly report Section 11; prioritize daily snapshot schema metrics integration if Data Source stays 'pending-integration'.
+- Schema risk trend coverage: ${SCHEMA_WEEK_NUMERIC_DAYS}/7 (${SCHEMA_WEEK_COVERAGE_PCT}) days have numeric issue counts; keep daily schema snapshots running to avoid blind spots.
 - Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
 - Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
 - Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.

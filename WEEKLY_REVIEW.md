@@ -3,21 +3,21 @@
 ## Week Meta
 - Week: 2026-03-02 to 2026-03-08
 - Owner: hub-growth-worker
-- Reviewed at: 2026-03-04 07:04 (Asia/Shanghai)
+- Reviewed at: 2026-03-06 11:30 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
 ### Observe (data)
 - GSC data completeness alert: 🔴 RED (连续 7 天 GSC 数据缺失（>=3 天触发标红）).
-- Schema risk trend (7d placeholder): review weekly report Section 11; prioritize daily snapshot schema metrics integration if Data Source stays 'pending-integration'.
+- Schema risk trend coverage: 1/7 (14%) days have numeric issue counts; keep daily schema snapshots running to avoid blind spots.
 - Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
 - Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
 - Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.
 - High-bounce-risk pages (proxy): Source from weekly report Section 7 (high impressions + low CTR proxy queue) and execute top 2 retro actions.
 - New pages indexed: Verify newly published URLs in Search Console; if data unavailable, create one indexing check task in Action Plan.
-- Published posts (auto): 4
-- Updated posts (git-tracked): 19
-- Technical SEO commits (git-tracked): 31
+- Published posts (auto): 10
+- Updated posts (git-tracked): 29
+- Technical SEO commits (git-tracked): 34
 
 ### Orient (diagnosis)
 - Why did winners win?
