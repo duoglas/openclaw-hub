@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-03-05 11:25
+Last updated: 2026-03-06 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate A / EXP-044: 发布中英双语 FAQ《`openclaw channels status --probe` 5 分钟定位在线不回复》，覆盖渠道探针高意图检索并补齐3条高相关内链 | ICE 9x8x8=576 — commit `(this commit)`
 - [x] P3 Candidate C / EXP-041: 在 weekly:seo 输出“schema 风险周均值/峰值/覆盖率”聚合列（基于已集成日快照字段）| ICE 6x7x6=252 — commit `240b179`
 - [x] P1 Candidate A / EXP-042: 发布中英双语 FAQ《`openclaw status` vs `openclaw gateway status` 区分与5分钟排障流》，覆盖“在线不回复”高意图检索并补齐3条高相关内链 | ICE 8x8x8=512 — commit `2c330e1`
 - [x] P2 Candidate B: 为 daily:seo 增加快照数据完整性提示（GSC + Schema 字段是否填写），减少无效周报输入 | ICE 7x7x8=392 — commit `7ffd09a`

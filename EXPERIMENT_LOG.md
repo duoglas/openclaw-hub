@@ -449,5 +449,5 @@
 - Start date: 2026-03-06
 - End date: 2026-03-13
 - Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题一次定位率
-- Result: pass（中英双语内容已落库，`pnpm weekly:seo && pnpm build` 通过；生成 EN/ZH 路由并进入 7 天观测期）
+- Result: pass（中英双语内容已落库并完成本轮增长执行，`pnpm build` 通过；生成 EN/ZH 路由并进入 7 天观测期）
 - Decision: iterate（保留命令级排障结构；D+7 回填 CTR/参与时长/社群一次定位率后决定是否扩展 FAQ 与内链锚文本）
