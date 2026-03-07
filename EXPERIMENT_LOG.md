@@ -451,3 +451,16 @@
 - Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题一次定位率
 - Result: pass（中英双语内容已落库并完成本轮增长执行，`pnpm build` 通过；生成 EN/ZH 路由并进入 7 天观测期）
 - Decision: iterate（保留命令级排障结构；D+7 回填 CTR/参与时长/社群一次定位率后决定是否扩展 FAQ 与内链锚文本）
+
+### EXP-045
+- Hypothesis: 发布“`openclaw doctor --fix` vs `--repair` 安全修复”中英双语教程，可降低用户误用 `--force` 导致配置覆盖的风险，并提升 doctor 相关高意图检索点击质量。
+- Scope: `/zh/blog/openclaw-doctor-fix-vs-repair-safe-recovery-2026/` + `/en/blog/openclaw-doctor-fix-vs-repair-safe-recovery-2026/`
+- Change: 新增中英双语 FAQ/教程，明确 `--fix`=`--repair`、`--force` 风险边界，提供可复制的安全修复流程、验证清单与最小证据包，并加入 4 条高相关内链。
+- Target channel: Google Search（doctor/fix/repair/force 长尾检索）+ Telegram 社群排障答疑引用
+- Expected metrics: 7 天内目标页 CTR 提升 >=10%，平均参与时长 >=100s，社群中“误用 --force”类问题占比下降 >=20%
+- Observation cycle: 7 天（D+1~D+7）
+- Start date: 2026-03-07
+- End date: 2026-03-14
+- Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题类型占比
+- Result: pass（中英双语文章已落库，`pnpm build` 通过并生成 EN/ZH 路由；进入 7 天观测期）
+- Decision: iterate（保留“先 repair 后 force”结构，D+7 回填指标后决定是否扩展对比表与 FAQ）
