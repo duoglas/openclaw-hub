@@ -464,3 +464,16 @@
 - Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题类型占比
 - Result: pass（中英双语文章已落库，`pnpm build` 通过并生成 EN/ZH 路由；进入 7 天观测期）
 - Decision: iterate（保留“先 repair 后 force”结构，D+7 回填指标后决定是否扩展对比表与 FAQ）
+
+### EXP-046
+- Hypothesis: 发布“OpenClaw Skill 安装后不生效”中英双语教程，可提升技能类高意图检索的点击质量，并降低社群中“装了没反应”的重复排障成本。
+- Scope: `/zh/blog/openclaw-skill-not-working-allowlist-fix-2026/` + `/en/blog/openclaw-skill-not-working-allowlist-fix-2026/`
+- Change: 新增中英双语 FAQ/教程，提供可复制命令的 3 步排障流程（安装确认/白名单/重启验证），并加入 3 条高相关内链。
+- Target channel: Google Search（skills/allowlist/skill not working 长尾词）+ Telegram 社群答疑引用
+- Expected metrics: 7 天内目标页 CTR 提升 >=10%，平均参与时长 >=90s，社群同类问题首轮定位成功率提升 >=20%
+- Observation cycle: 7 天（D+1~D+7）
+- Start date: 2026-03-10
+- End date: 2026-03-17
+- Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群一次定位率
+- Result: pending（中英双语内容已落库，待 build/发布验证）
+- Decision: iterate（先观察 7 天检索与社群反馈，再决定是否扩展 FAQ 与内链锚文本）
