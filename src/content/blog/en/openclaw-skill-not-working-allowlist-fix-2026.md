@@ -5,6 +5,13 @@ pubDate: 2026-03-10
 tags: ["openclaw", "skills", "clawhub", "troubleshooting", "allowlist"]
 category: "tutorial"
 lang: "en"
+faq:
+  - question: "Why does a skill install but not respond?"
+    answer: "Most cases are allowlist or config issues: the skill is installed but not present in plugins.allow, or the config change wasn’t applied and the gateway wasn’t restarted. Fix those three points and validate."
+  - question: "Where do I set plugins.allow?"
+    answer: "Edit ~/.openclaw/openclaw.json and add the skill under plugins.allow, or check current values with: openclaw config get plugins.allow."
+  - question: "Do I have to restart the gateway after allowlisting?"
+    answer: "Yes. OpenClaw loads plugins on startup. Run openclaw gateway restart, then verify the skill appears in logs or responds to a test command."
 ---
 
 ## What this article solves

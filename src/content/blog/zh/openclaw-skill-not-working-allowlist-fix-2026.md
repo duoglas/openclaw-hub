@@ -5,6 +5,13 @@ pubDate: 2026-03-10
 tags: ["openclaw", "skills", "clawhub", "troubleshooting", "allowlist"]
 category: "tutorial"
 lang: "zh"
+faq:
+  - question: "为什么 Skill 安装了却不生效？"
+    answer: "绝大多数是白名单或配置未生效：Skill 已安装但不在 plugins.allow 中，或改完配置没重启 Gateway。把这三点补齐再验证。"
+  - question: "plugins.allow 在哪里配置？"
+    answer: "编辑 ~/.openclaw/openclaw.json，把技能名加入 plugins.allow；也可用 openclaw config get plugins.allow 查看当前值。"
+  - question: "白名单改完必须重启吗？"
+    answer: "必须。OpenClaw 只在启动时加载插件，改完后执行 openclaw gateway restart，再用日志或指令验证。"
 ---
 
 ## 这篇文章讲什么

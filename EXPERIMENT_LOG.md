@@ -475,5 +475,15 @@
 - Start date: 2026-03-10
 - End date: 2026-03-17
 - Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群一次定位率
-- Result: pending（中英双语内容已落库，待 build/发布验证）
+- Result: pass（2026-03-11 复核 build 通过；EN/ZH 路由生成完毕，进入 7 天观测期）
 - Decision: iterate（先观察 7 天检索与社群反馈，再决定是否扩展 FAQ 与内链锚文本）
+
+### EXP-047
+- Hypothesis: 为“Skill 安装后不生效”双语教程补齐 FAQ schema（>=3 Q&A）可提升富结果命中率与高意图检索点击质量。
+- Scope: `/zh/blog/openclaw-skill-not-working-allowlist-fix-2026/` + `/en/blog/openclaw-skill-not-working-allowlist-fix-2026/`
+- Change: 在 EN/ZH 文章 frontmatter 增加 3 条 FAQ（常见原因/白名单位置/是否需要重启），供 FAQPage schema 输出。
+- Start date: 2026-03-11
+- End date: 2026-03-11
+- Success metric: `pnpm build` 通过且 EN/ZH 页面生成 FAQ schema（>=3 条 Q&A）。
+- Result: pass（FAQ frontmatter 已添加；build 通过并生成 EN/ZH 路由）。
+- Decision: iterate（D+7 回填 CTR/参与时长与 FAQ rich result 覆盖率）。
