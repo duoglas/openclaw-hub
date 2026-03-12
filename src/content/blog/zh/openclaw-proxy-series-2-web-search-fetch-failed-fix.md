@@ -118,6 +118,9 @@ openclaw status
 
 该类问题常见根因不是 API Key，也不是 DNS，而是：
 
+> 如果你想进一步理解 OpenClaw 最近为什么持续在补 Brave 搜索链路、代理兼容和证据型检索能力，可以继续看：
+> [OpenClaw 2026.3.8 值得关注什么：Backup CLI 与 Brave LLM Context 两个实用变化](/zh/blog/openclaw-2026-3-8-backup-cli-and-brave-llm-context/)
+
 > OpenClaw 的联网工具走 Node `fetch`（undici），在某些运行方式下仅设置代理环境变量还不够，需要显式启用 `NODE_USE_ENV_PROXY=1`，否则会出现超时/重置并表现为 `fetch failed`。
 
 ---

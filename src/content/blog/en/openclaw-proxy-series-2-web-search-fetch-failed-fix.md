@@ -116,6 +116,9 @@ Pass criteria:
 
 In this failure pattern, the issue is often not API key/DNS/provider downtime.
 
+> If you want the broader context for why OpenClaw has been steadily refining Brave search reliability, proxy behavior, and evidence-oriented retrieval, read:
+> [What Actually Matters in OpenClaw 2026.3.8: Backup CLI and Brave LLM Context](/en/blog/openclaw-2026-3-8-backup-cli-and-brave-llm-context/)
+
 Typical root cause:
 
 > OpenClaw web tools use Node `fetch` (undici). In some runtime setups, proxy env vars alone are not enough; `NODE_USE_ENV_PROXY=1` is required so Node fetch consistently honors proxy routing.

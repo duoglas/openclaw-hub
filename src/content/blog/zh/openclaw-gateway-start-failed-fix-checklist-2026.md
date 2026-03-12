@@ -195,6 +195,8 @@ journalctl --user -u openclaw-gateway --no-pager -n 120
 
 ## 延伸阅读
 
+- [OpenClaw 2026.3.8 值得关注什么：Backup CLI 与 Brave LLM Context 两个实用变化](/zh/blog/openclaw-2026-3-8-backup-cli-and-brave-llm-context/)
+
 - [OpenClaw Gateway 启动失败 / 浏览器 Relay 连不上：完整排查指南（2026）](/zh/blog/openclaw-gateway-browser-relay-troubleshooting/)
 - [OpenClaw Telegram 故障排查全指南](/zh/blog/openclaw-telegram-troubleshooting-guide/)
 - [OpenClaw 日志排查指南：从报错到根因定位](/zh/blog/openclaw-logs-debug-guide/)

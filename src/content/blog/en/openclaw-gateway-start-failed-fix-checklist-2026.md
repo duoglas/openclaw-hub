@@ -195,6 +195,7 @@ Share this output when asking for help — triage becomes much faster.
 
 ## Related guides
 
+- [What Actually Matters in OpenClaw 2026.3.8: Backup CLI and Brave LLM Context](/en/blog/openclaw-2026-3-8-backup-cli-and-brave-llm-context/)
 - [OpenClaw Gateway Failed + Chrome Relay Not Connecting: Full Troubleshooting Guide](/en/blog/openclaw-gateway-browser-relay-troubleshooting/)
 - [OpenClaw Telegram Troubleshooting Guide](/en/blog/openclaw-telegram-troubleshooting-guide/)
 - [OpenClaw Logs Debug Guide: From Error to Root Cause](/en/blog/openclaw-logs-debug-guide/)

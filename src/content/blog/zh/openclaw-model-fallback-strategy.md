@@ -126,6 +126,8 @@ A：运行 `openclaw status`，或在日志中查看模型选择记录。
 
 ## 延伸阅读（OpenClaw）
 
+- [OpenClaw 2026.3.8 值得关注什么：Backup CLI 与 Brave LLM Context 两个实用变化](/zh/blog/openclaw-2026-3-8-backup-cli-and-brave-llm-context/)
+
 - [OpenClaw 是什么？一文看懂开源 AI Agent 平台（2026）](/zh/blog/what-is-openclaw/)
 - [OpenClaw vs ChatGPT vs Claude：2026 年怎么选 AI 助手？](/zh/blog/openclaw-vs-chatgpt-vs-claude/)
 - [OpenClaw 模型回退策略：稳定性、成本与质量如何平衡](/zh/blog/openclaw-model-fallback-strategy/)

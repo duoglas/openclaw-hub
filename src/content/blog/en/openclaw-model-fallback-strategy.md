@@ -101,6 +101,7 @@ A fallback chain is not cost optimization — it's your **uptime architecture**.
 
 To apply this in production, pair this guide with:
 
+- [What Actually Matters in OpenClaw 2026.3.8: Backup CLI and Brave LLM Context](/en/blog/openclaw-2026-3-8-backup-cli-and-brave-llm-context/)
 - [What is OpenClaw?](/en/blog/what-is-openclaw/)
 - [OpenClaw vs ChatGPT vs Claude (2026)](/en/blog/openclaw-vs-chatgpt-vs-claude/)
 - [OpenClaw Logs & Debug Guide](/en/blog/openclaw-logs-debug-guide/)
