@@ -487,3 +487,13 @@
 - Success metric: `pnpm build` 通过且 EN/ZH 页面生成 FAQ schema（>=3 条 Q&A）。
 - Result: pass（FAQ frontmatter 已添加；build 通过并生成 EN/ZH 路由）。
 - Decision: iterate（D+7 回填 CTR/参与时长与 FAQ rich result 覆盖率）。
+
+### EXP-048
+- Hypothesis: 对最近24小时新发布的双语 AI/Tech Daily 补强搜索摘要与 CTA 内链，可提升日报页的搜索匹配度、站内继续阅读率和向 OpenClaw 核心指南的导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-03-12/` + `/zh/blog/openclaw-daily-2026-03-12/`
+- Change: 将 EN/ZH description 从通用“Synced”文案重写为包含当日关键信号（AI+政策/制造业AI/AMD Ryzen AI 400）的可检索摘要；把 CTA 从泛化订阅/咨询文案升级为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的强相关内链。
+- Start date: 2026-03-12
+- End date: 2026-03-12
+- Success metric: `pnpm build` 通过；EN/ZH 日报生成成功；两页均含更具体 description 与 3 条高相关转化/延伸内链。
+- Result: pass（EN/ZH 日报 description 与 CTA 已升级，`pnpm build` 通过并生成对应路由）。
+- Decision: iterate（D+7 回看目标页 CTR、站内下一跳与 OpenClaw 指南页导流点击，决定是否把该模式沉淀到 daily 模板）。

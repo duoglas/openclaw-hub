@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-12）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "2026-03-12 AI / 科技日报：聚焦中国人工智能+政策推进、制造业 AI 落地、AMD Ryzen AI 400 发布，以及面向团队执行的后续观察点。"
 pubDate: 2026-03-12
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -47,7 +47,7 @@ lang: "zh"
 ## 下一步行动（CTA）
 
 <!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
+- **方案 A（咨询转化）**：想把今天这些 AI 基建与自动化信号转成可执行方案？先看[什么是 OpenClaw？](/zh/blog/what-is-openclaw/)，再结合 [OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/) 梳理你的上线路径。
 
 <!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，然后继续看 [OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)，把日常自动化的稳定性一起补上。
