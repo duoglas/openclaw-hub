@@ -17,7 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P1 Candidate A / EXP-049: 发布“OpenClaw `web_search` 500：工具同名冲突与参数约束修复”中英双语教程，覆盖 web_search 500 / tool schema conflict 高意图检索，并补齐 3 条高相关内链 | ICE 8x7x8=448 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-049: 发布“OpenClaw `web_search` 500：工具同名冲突与参数约束修复”中英双语教程，覆盖 web_search 500 / tool schema conflict 高意图检索，并补齐 3 条高相关内链 | ICE 8x7x8=448 — commit `8032e37`
 - [x] P1 Candidate A / EXP-048: 强化 2026-03-12 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时新增内容建设任务 | ICE 8x7x8=448 — commit `665f16f`
 - [x] P2 Candidate B / EXP-047: 为“Skill 安装后不生效”双语教程补齐 FAQ schema（>=3 Q&A），提升富结果命中与高意图检索点击质量 | ICE 7x7x6=294 — commit `b4b401e`
 - [x] P1 Candidate A / EXP-045: 发布中英双语 FAQ《`openclaw doctor --fix` vs `--repair` 安全修复》，覆盖 doctor/fix/repair/force 高意图检索并补齐4条高相关内链 | ICE 8x8x8=512 — commit `c8a07c6`
