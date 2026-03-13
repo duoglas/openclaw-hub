@@ -497,3 +497,16 @@
 - Success metric: `pnpm build` 通过；EN/ZH 日报生成成功；两页均含更具体 description 与 3 条高相关转化/延伸内链。
 - Result: pass（EN/ZH 日报 description 与 CTA 已升级，`pnpm build` 通过并生成对应路由）。
 - Decision: iterate（D+7 回看目标页 CTR、站内下一跳与 OpenClaw 指南页导流点击，决定是否把该模式沉淀到 daily 模板）。
+
+### EXP-049
+- Hypothesis: 发布“OpenClaw `web_search` 500：工具同名冲突与参数约束修复”中英双语教程，可提升工具调用故障类高意图检索的点击质量，并减少社群中把 schema 冲突误判为网络/代理问题的排障成本。
+- Scope: `/zh/blog/openclaw-web-search-500-tool-conflict-fix-2026/` + `/en/blog/openclaw-web-search-500-tool-conflict-fix-2026/`
+- Change: 新增中英双语 FAQ/教程，聚焦 `Parameters of tool web_search must only have these properties:query` 报错，提供可复制命令、3 步止血流程、长期治理建议与 3 条高相关内链。
+- Target channel: Google Search（web_search 500 / tool schema conflict 长尾词）+ Telegram/Discord 社群排障答疑引用
+- Expected metrics: 7 天内目标页 CTR 提升 >=10%，平均参与时长 >=90s，社群同类问题首轮误判率下降 >=20%
+- Observation cycle: 7 天（D+1~D+7）
+- Start date: 2026-03-13
+- End date: 2026-03-20
+- Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题一次定位准确率
+- Result: pending
+- Decision: pending
