@@ -508,5 +508,5 @@
 - Start date: 2026-03-13
 - End date: 2026-03-20
 - Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题一次定位准确率
-- Result: pending
-- Decision: pending
+- Result: pass（中英双语教程已落库；本轮执行完成 `pnpm build` 验证并生成 EN/ZH 路由，覆盖可复制命令、3 步止血流程、长期治理建议与 3 条高相关内链。）
+- Decision: iterate（进入 7 天观测期；D+7 回填 CTR / 参与时长 / 社群一次定位准确率，再决定是否扩写 FAQ 与追加锚文本内链。）
