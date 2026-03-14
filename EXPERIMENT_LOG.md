@@ -298,6 +298,10 @@
 
 ### EXP-029
 - Hypothesis: Adding a weekly high-bounce retro proxy queue (high-impression + low-CTR pages with actionable rewrite guidance) into `weekly:seo` will convert blind “复盘占位” into executable tasks and reduce no-op weekly reviews.
+- Hypothesis: Shipping bilingual “single-error troubleshooting” posts (e.g., `Cannot find module 'ws'`) with a 4-step copy/paste fix + verifiable done criteria will win long-tail queries and increase organic clicks to /en/blog/* and /zh/blog/*.
+  - Target channel: Google organic (long-tail error keyword searches), plus GitHub Issues/Discussions referrals when users paste the link.
+  - Expected metric: +20 impressions/day within 14 days on the new slug, CTR >= 2.5%.
+  - Observation window: 14 days (check Search Console query rows + internal weekly SEO report).
 - Scope: `scripts/generate-seo-weekly-report.sh`, `reports/seo-weekly/seo-weekly-2026-03-02-to-2026-03-08.md`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`
 - Change: Implemented `collect_high_bounce_retro_queue` and injected Section 7 table with owner/due/action fields; updated weekly action plan to include top-2 retro execution task.
 - Start date: 2026-03-04
