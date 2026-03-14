@@ -15,6 +15,17 @@
 
 ## Active Experiments
 
+### EXP-050
+- Hypothesis: 在首页与语言入口页（/、/en、/zh）首屏加入明确的“Get started / Install OpenClaw”CTA + 3-step quickstart（安装→首跑→验证），并在 CTA 上埋点事件，将提升“首页→核心指南页”点击率与站内下一跳率。
+- Scope: `/`, `/en/`, `/zh/`（首页与语言入口页）；目标落地页：`/en/blog/what-is-openclaw/`、`/en/blog/openclaw-install-first-run-error-troubleshooting/`、`/en/blog/openclaw-telegram-troubleshooting-guide/`（ZH 对应页）
+- Change: 增加首屏 CTA 模块（按钮 + 3-step list + trust hints），并用轻量脚本记录 CTA 点击（事件名、language、target href）到现有 analytics 通道（若无则先写入 console/event stub，后续接入）。
+- Start date: 2026-03-14
+- End date: 2026-03-21
+- Success metric: 7 天内首页 CTA CTR >= 2.5%；首页到核心指南页的点击占比提升 >= 20%；目标落地页平均参与时长 >= 90s。
+- Result: (pending)
+- Decision (scale / iterate / stop): (pending)
+
+
 ### EXP-001
 - Hypothesis: Question-first titles improve CTR on troubleshooting pages.
 - Scope: 10 troubleshooting posts (EN/ZH)
