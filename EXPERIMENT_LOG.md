@@ -18,12 +18,12 @@
 ### EXP-050
 - Hypothesis: 在首页与语言入口页（/、/en、/zh）首屏加入明确的“Get started / Install OpenClaw”CTA + 3-step quickstart（安装→首跑→验证），并在 CTA 上埋点事件，将提升“首页→核心指南页”点击率与站内下一跳率。
 - Scope: `/`, `/en/`, `/zh/`（首页与语言入口页）；目标落地页：`/en/blog/what-is-openclaw/`、`/en/blog/openclaw-install-first-run-error-troubleshooting/`、`/en/blog/openclaw-telegram-troubleshooting-guide/`（ZH 对应页）
-- Change: 增加首屏 CTA 模块（按钮 + 3-step list + trust hints），并用轻量脚本记录 CTA 点击（事件名、language、target href）到现有 analytics 通道（若无则先写入 console/event stub，后续接入）。
-- Start date: 2026-03-14
-- End date: 2026-03-21
+- Change: 在 `/en` 与 `/zh` 首页 hero 下插入 Quickstart CTA：2 个按钮（Install guide / What is OpenClaw）+ 3-step（Install/First run/Verify）+ 命令复制按钮；增加轻量事件 stub（console + `window.dispatchEvent('openclaw:growth')`）记录 view/click/copy。
+- Start date: 2026-03-15
+- End date: 2026-03-22
 - Success metric: 7 天内首页 CTA CTR >= 2.5%；首页到核心指南页的点击占比提升 >= 20%；目标落地页平均参与时长 >= 90s。
-- Result: (pending)
-- Decision (scale / iterate / stop): (pending)
+- Result: shipped in repo (commit `6b4bf94`), local `pnpm build` pass; tracking pending (requires analytics bridge / console sampling).
+- Decision (scale / iterate / stop): iterate（先观测 7 天；如 CTR 达标再把同模块复制到根首页 `/` 入口页，并把事件桥接到 CF Web Analytics / 自有 endpoint）
 
 
 ### EXP-001
