@@ -13,7 +13,6 @@ Manager: main session
 ## Backlog
 - [ ] P1 Candidate A / EXP-050: 在首页与 /en /zh 增加“Get started / Install OpenClaw”首屏 CTA（含 3-step quickstart）并埋点（CTA 点击/滚动/下一跳），用于提升首页→核心指南转化 | ICE 9x8x7=504
 
-- [ ] P1 Candidate A / EXP-051: 在 /en /zh / 根首页首屏 CTA 增加“命令行复制按钮 + 5s 自回显验证”微交互（复制 install + `openclaw gateway status`/`openclaw doctor`），提升 CTA 点击后真实执行率与回访率 | ICE 7x6x6=252
   - Hypothesis: “一键复制 + 可验证下一步”比纯按钮/列表更能降低行动摩擦，提升首页→指南页→安装执行链路完成率。
   - Metrics: CTA CTR（按钮点击/复制点击）、copy-to-nextpage rate（复制后 30s 内点击下一跳）、返回率（24h 内回访到 /install 或 /what-is-openclaw）。
   - Acceptance: 7 天内 copy click rate >= 1.0%；copy-to-nextpage rate >= 25%；不引入构建错误且 LCP 不退化（本地 build + lighthouse 采样无明显回归）。
@@ -22,6 +21,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate A / EXP-051: 在 /en /zh / 根首页首屏 CTA 增加“命令行复制按钮 + 5s 自回显验证”微交互（复制 install + `openclaw gateway status`/`openclaw doctor`），提升 CTA 点击后真实执行率与回访率 | ICE 7x6x6=252 — commit `dedf78c`
 - [x] P1 Candidate A / EXP-050: 在首页与 /en /zh 增加“Get started / Install OpenClaw”首屏 CTA（含 3-step quickstart）并埋点（CTA 点击/滚动/下一跳），用于提升首页→核心指南转化 | ICE 9x8x7=504 — commit `6b4bf94`
 
 ## Done

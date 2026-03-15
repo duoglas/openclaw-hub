@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-051
+- Hypothesis: “一键复制 + 可验证下一步”比纯按钮/列表更能降低行动摩擦，提升首页 CTA 点击后的真实执行率与回访率。
+- Scope: `/`, `/en/`, `/zh/` 首页 CTA（HomeQuickstartCTA 组件）
+- Change: 为第 2/3 步（`openclaw gateway status` / `openclaw doctor`）增加“验证”按钮：点击后自动复制命令 + 展开一个本地输入框；5 秒后读取用户粘贴的输出（仅本地判定，不上报文本），并触发 growth 事件 `home_cta_verify_start` / `home_cta_verify_echo(bytes)`。
+- Start date: 2026-03-15
+- End date: 2026-03-22
+- Success metric: 7 天内 copy click rate >= 1.0%；copy-to-nextpage rate >= 25%；不引入构建错误且 LCP 不退化（本地 build + lighthouse 采样无明显回归）。
+- Result: shipped in repo (commit `dedf78c`), local `pnpm build` pass.
+- Decision (scale / iterate / stop): iterate（观察 7 天；若 verify echo rate 明显高于基线 copy，考虑把 verify 状态与下一跳 CTA 更紧密绑定，例如“已验证→推荐下一步链接”）
+
 ### EXP-050
 - Hypothesis: 在首页与语言入口页（/、/en、/zh）首屏加入明确的“Get started / Install OpenClaw”CTA + 3-step quickstart（安装→首跑→验证），并在 CTA 上埋点事件，将提升“首页→核心指南页”点击率与站内下一跳率。
 - Scope: `/`, `/en/`, `/zh/`（首页与语言入口页）；目标落地页：`/en/blog/what-is-openclaw/`、`/en/blog/openclaw-install-first-run-error-troubleshooting/`、`/en/blog/openclaw-telegram-troubleshooting-guide/`（ZH 对应页）
