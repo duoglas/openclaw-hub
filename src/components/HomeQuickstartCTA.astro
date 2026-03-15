@@ -37,6 +37,13 @@ const primaryText = isZh ? '安装与首跑指南 →' : 'Install & first run gu
 const secondaryText = isZh ? '先了解 OpenClaw 是什么 →' : 'What is OpenClaw? →';
 
 const copyLabel = isZh ? '复制' : 'Copy';
+const verifyLabel = isZh ? '验证' : 'Verify';
+const verifyingLabel = isZh ? '验证中…' : 'Verifying…';
+const verifiedLabel = isZh ? '已验证' : 'Verified';
+
+const verifyHint = isZh
+  ? '已复制。5 秒后粘贴你执行命令的输出（仅本地验证，不会上报）。'
+  : 'Copied. In 5s, paste the output of the command you ran (local-only, not sent anywhere).';
 ---
 
 <section class="oc-cta" aria-label={headline}>
@@ -80,7 +87,24 @@ const copyLabel = isZh ? '复制' : 'Copy';
               >
                 {copyLabel}
               </button>
+              {(s.code.includes('openclaw gateway status') || s.code.includes('openclaw doctor')) && (
+                <button
+                  class="oc-cta__verify"
+                  type="button"
+                  data-verify={s.code}
+                  data-growth="verify"
+                  data-lang={lang}
+                >
+                  {verifyLabel}
+                </button>
+              )}
             </div>
+            {(s.code.includes('openclaw gateway status') || s.code.includes('openclaw doctor')) && (
+              <div class="oc-cta__verifyRow" aria-live="polite" data-verify-row>
+                <div class="oc-cta__verifyHint" data-verify-hint style="display:none">{verifyHint}</div>
+                <input class="oc-cta__verifyInput" data-verify-input placeholder={isZh ? '粘贴输出（可选）' : 'Paste output (optional)'} style="display:none" />
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -116,8 +140,9 @@ const copyLabel = isZh ? '复制' : 'Copy';
         text,
       };
       const done = () => {
-        btn.textContent = (btn.textContent || '').includes('复制') ? '已复制' : 'Copied';
-        setTimeout(() => (btn.textContent = (btn.textContent || '').includes('已') ? (btn.textContent.includes('已复制') ? (btn.textContent.includes('Copied') ? 'Copy' : '复制') : btn.textContent) : btn.textContent), 1200);
+        const wasZh = (btn.textContent || '').includes('复制') || (btn.textContent || '').includes('已复制');
+        btn.textContent = wasZh ? '已复制' : 'Copied';
+        setTimeout(() => (btn.textContent = wasZh ? '复制' : 'Copy'), 1200);
       };
 
       navigator.clipboard?.writeText(text).then(done).catch(() => {
@@ -134,6 +159,70 @@ const copyLabel = isZh ? '复制' : 'Copy';
 
       console.log('[growth:event]', detail);
       window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+
+      // EXP-051: arm verify micro-interaction (local-only)
+      const root = btn.closest('.oc-cta__step');
+      const verifyBtn = root?.querySelector('button[data-verify]');
+      const hintEl = root?.querySelector('[data-verify-hint]');
+      const inputEl = root?.querySelector('[data-verify-input]');
+      if (verifyBtn && hintEl && inputEl) {
+        hintEl.style.display = 'block';
+        inputEl.style.display = 'block';
+        inputEl.focus();
+        setTimeout(() => {
+          if (document.activeElement !== inputEl) inputEl.focus();
+        }, 5200);
+      }
+    }
+
+    const vbtn = e.target?.closest?.('button[data-verify]');
+    if (vbtn) {
+      const cmd = vbtn.getAttribute('data-verify') || '';
+      const lang = vbtn.getAttribute('data-lang') || undefined;
+      const root = vbtn.closest('.oc-cta__step');
+      const hintEl = root?.querySelector('[data-verify-hint]');
+      const inputEl = root?.querySelector('[data-verify-input]');
+      const isZh = (lang || '').startsWith('zh');
+
+      // Copy first
+      const copy = () => navigator.clipboard?.writeText(cmd).catch(() => {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = cmd;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+        } catch (_) {}
+      });
+
+      vbtn.textContent = isZh ? '验证中…' : 'Verifying…';
+      copy();
+
+      if (hintEl && inputEl) {
+        hintEl.style.display = 'block';
+        inputEl.style.display = 'block';
+        inputEl.focus();
+      }
+
+      const detail = { name: 'home_cta_verify_start', lang, cmd };
+      console.log('[growth:event]', detail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+
+      // 5s “echo” window: user pastes output; we just mark verified locally.
+      setTimeout(() => {
+        const val = (inputEl?.value || '').trim();
+        const ok = val.length > 0;
+        vbtn.textContent = ok ? (isZh ? '已验证' : 'Verified') : (isZh ? '验证' : 'Verify');
+        if (ok) {
+          const d2 = { name: 'home_cta_verify_echo', lang, cmd, bytes: val.length };
+          console.log('[growth:event]', d2);
+          window.dispatchEvent(new CustomEvent('openclaw:growth', { detail: d2 }));
+        }
+        setTimeout(() => {
+          vbtn.textContent = isZh ? '验证' : 'Verify';
+        }, 1400);
+      }, 5000);
     }
   };
 
@@ -196,5 +285,27 @@ const copyLabel = isZh ? '复制' : 'Copy';
     cursor: pointer;
   }
   .oc-cta__copy:hover { background: rgba(79,70,229,0.12); }
+
+  .oc-cta__verify {
+    border-radius: 10px;
+    padding: 7px 10px;
+    border: 1px solid rgba(16,185,129,0.35);
+    background: rgba(16,185,129,0.08);
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .oc-cta__verify:hover { background: rgba(16,185,129,0.12); }
+
+  .oc-cta__verifyRow { margin-top: 8px; }
+  .oc-cta__verifyHint { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px; }
+  .oc-cta__verifyInput {
+    width: min(680px, 100%);
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.95rem;
+  }
+
   .oc-cta__hint { margin-top: 10px; font-size: 0.9rem; color: var(--text-muted); }
 </style>
