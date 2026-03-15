@@ -1,0 +1,32 @@
+---
+interface Props {
+  name: string;
+  lang?: string;
+  href?: string;
+  label?: string;
+}
+
+const { name, lang, href, label } = Astro.props;
+
+const payload = {
+  name,
+  lang,
+  href,
+  label,
+  path: Astro.url?.pathname,
+};
+---
+<script type="module" define:vars={{ payload }}>
+  try {
+    // Minimal, zero-dependency event stub.
+    // If Cloudflare Web Analytics is enabled, operators can bridge this to their own endpoint.
+    // For now we leave a consistent console record for later wiring.
+    // eslint-disable-next-line no-console
+    console.log('[growth:event]', payload);
+
+    // Optional: allow a downstream script to hook into these events.
+    window.dispatchEvent(new CustomEvent('openclaw:growth', { detail: payload }));
+  } catch (e) {
+    // no-op
+  }
+</script>

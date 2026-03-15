@@ -1,0 +1,200 @@
+---
+import GrowthEvent from './GrowthEvent.astro';
+
+interface Props {
+  lang: 'en' | 'zh';
+}
+
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+
+const headline = isZh ? '3 分钟开始使用 OpenClaw' : 'Get started with OpenClaw in 3 minutes';
+const sub = isZh
+  ? '安装 → 首次运行 → 验证。把“看过”变成“跑起来”。'
+  : 'Install → First run → Verify. Turn reading into running.';
+
+const steps = isZh
+  ? [
+      { title: '安装', body: '安装 OpenClaw 并确认 gateway 正常运行。', code: 'npm i -g openclaw' },
+      { title: '首跑', body: '检查 Gateway 状态（确保服务在线）。', code: 'openclaw gateway status' },
+      { title: '验证', body: '跑一次 doctor，确认环境 OK。', code: 'openclaw doctor' },
+    ]
+  : [
+      { title: 'Install', body: 'Install OpenClaw and ensure the gateway can run.', code: 'npm i -g openclaw' },
+      { title: 'First run', body: 'Check the Gateway is up.', code: 'openclaw gateway status' },
+      { title: 'Verify', body: 'Run a quick health check.', code: 'openclaw doctor' },
+    ];
+
+const primaryHref = isZh
+  ? '/zh/blog/openclaw-install-first-run-error-troubleshooting/'
+  : '/en/blog/openclaw-install-first-run-error-troubleshooting/';
+
+const secondaryHref = isZh
+  ? '/zh/blog/what-is-openclaw/'
+  : '/en/blog/what-is-openclaw/';
+
+const primaryText = isZh ? '安装与首跑指南 →' : 'Install & first run guide →';
+const secondaryText = isZh ? '先了解 OpenClaw 是什么 →' : 'What is OpenClaw? →';
+
+const copyLabel = isZh ? '复制' : 'Copy';
+---
+
+<section class="oc-cta" aria-label={headline}>
+  <div class="oc-cta__inner">
+    <div class="oc-cta__left">
+      <h2 class="oc-cta__h">{headline}</h2>
+      <p class="oc-cta__p">{sub}</p>
+
+      <div class="oc-cta__actions">
+        <a
+          class="oc-cta__btn oc-cta__btn--primary"
+          href={primaryHref}
+          data-growth="cta-primary"
+          data-lang={lang}
+        >
+          {primaryText}
+        </a>
+        <a
+          class="oc-cta__btn oc-cta__btn--ghost"
+          href={secondaryHref}
+          data-growth="cta-secondary"
+          data-lang={lang}
+        >
+          {secondaryText}
+        </a>
+      </div>
+
+      <div class="oc-cta__steps">
+        {steps.map((s, idx) => (
+          <div class="oc-cta__step">
+            <div class="oc-cta__stepTitle">{idx + 1}. {s.title}</div>
+            <div class="oc-cta__stepBody">{s.body}</div>
+            <div class="oc-cta__codeRow">
+              <code class="oc-cta__code" data-code={s.code}>{s.code}</code>
+              <button
+                class="oc-cta__copy"
+                type="button"
+                data-copy={s.code}
+                data-growth="copy"
+                data-lang={lang}
+              >
+                {copyLabel}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="oc-cta__hint">
+        {isZh ? '提示：复制后建议立刻执行第 2 步验证服务是否在线。' : 'Tip: after copying, run step 2 to confirm the gateway is up.'}
+      </div>
+    </div>
+  </div>
+</section>
+
+<GrowthEvent name="home_cta_render" lang={lang} />
+
+<script type="module">
+  const onClick = (e) => {
+    const a = e.target?.closest?.('a[data-growth]');
+    if (a) {
+      const detail = {
+        name: 'home_cta_click',
+        kind: a.getAttribute('data-growth'),
+        lang: a.getAttribute('data-lang') || undefined,
+        href: a.getAttribute('href') || undefined,
+      };
+      console.log('[growth:event]', detail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+    }
+
+    const btn = e.target?.closest?.('button[data-copy]');
+    if (btn) {
+      const text = btn.getAttribute('data-copy') || '';
+      const detail = {
+        name: 'home_cta_copy',
+        lang: btn.getAttribute('data-lang') || undefined,
+        text,
+      };
+      const done = () => {
+        btn.textContent = (btn.textContent || '').includes('复制') ? '已复制' : 'Copied';
+        setTimeout(() => (btn.textContent = (btn.textContent || '').includes('已') ? (btn.textContent.includes('已复制') ? (btn.textContent.includes('Copied') ? 'Copy' : '复制') : btn.textContent) : btn.textContent), 1200);
+      };
+
+      navigator.clipboard?.writeText(text).then(done).catch(() => {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+          done();
+        } catch (_) {}
+      });
+
+      console.log('[growth:event]', detail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+    }
+  };
+
+  document.addEventListener('click', onClick);
+
+  // Scroll exposure (once)
+  let fired = false;
+  const el = document.querySelector('.oc-cta');
+  if (el) {
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!fired && entry.isIntersecting) {
+          fired = true;
+          const detail = { name: 'home_cta_view', lang: document.documentElement.lang };
+          console.log('[growth:event]', detail);
+          window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+          io.disconnect();
+        }
+      }
+    }, { threshold: 0.35 });
+    io.observe(el);
+  }
+</script>
+
+<style>
+  .oc-cta { margin: 1.25rem 0 1.75rem; }
+  .oc-cta__inner {
+    background: linear-gradient(135deg, rgba(79,70,229,0.10), rgba(99,102,241,0.04));
+    border: 1px solid rgba(79,70,229,0.25);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .oc-cta__h { margin: 0 0 6px; font-size: 1.4rem; }
+  .oc-cta__p { margin: 0 0 12px; color: var(--text-muted); }
+  .oc-cta__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .oc-cta__btn {
+    display: inline-block;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    border: 1px solid var(--border);
+  }
+  .oc-cta__btn--primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .oc-cta__btn--primary:hover { background: var(--accent-hover); color: #fff; }
+  .oc-cta__btn--ghost { background: #fff; color: var(--text); }
+  .oc-cta__btn--ghost:hover { background: var(--card-hover); }
+
+  .oc-cta__steps { display: grid; gap: 10px; }
+  .oc-cta__step { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+  .oc-cta__stepTitle { font-weight: 700; margin-bottom: 4px; }
+  .oc-cta__stepBody { color: var(--text-muted); margin-bottom: 8px; }
+  .oc-cta__codeRow { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .oc-cta__code { padding: 6px 10px; }
+  .oc-cta__copy {
+    border-radius: 10px;
+    padding: 7px 10px;
+    border: 1px solid rgba(79,70,229,0.35);
+    background: rgba(79,70,229,0.08);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .oc-cta__copy:hover { background: rgba(79,70,229,0.12); }
+  .oc-cta__hint { margin-top: 10px; font-size: 0.9rem; color: var(--text-muted); }
+</style>
