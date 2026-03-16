@@ -15,6 +15,17 @@
 
 ## Active Experiments
 
+### EXP-052
+- Hypothesis: 只有把首页 CTA 事件真正落到可观测平台（优先 Cloudflare Web Analytics，自定义事件）才能快速验证 EXP-050/051 的转化链路假设；最小事件闭环会显著降低后续实验测量成本。
+- Scope: `/`, `/en/`, `/zh/` 首页 CTA（HomeQuickstartCTA）；事件：view/click/copy/verify。
+- Change: 将目前“console + window.dispatchEvent”埋点升级为 Cloudflare Web Analytics 自定义事件（不上传命令输出文本），并在本日志补齐观测方法（从 CFWA 获取事件报表的路径/位点）。
+- Start date: 2026-03-16
+- End date: 2026-03-23
+- Success metric: 24h 内 CFWA 面板可见事件（view & click >0）；7 天内可产出 CTA CTR、copy rate、verify rate。
+- Result: (pending)
+- Decision (scale / iterate / stop): (pending)
+
+
 ### EXP-051
 - Hypothesis: “一键复制 + 可验证下一步”比纯按钮/列表更能降低行动摩擦，提升首页 CTA 点击后的真实执行率与回访率。
 - Scope: `/`, `/en/`, `/zh/` 首页 CTA（HomeQuickstartCTA 组件）
