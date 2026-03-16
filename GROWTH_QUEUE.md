@@ -11,7 +11,7 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [x] P1 Candidate A / EXP-052: 将首页 CTA 埋点从“console + window.dispatchEvent”升级为“Cloudflare Web Analytics 自定义事件”最小闭环（view/click/copy/verify）并写入 EXPERIMENT_LOG 观测方法 | ICE 8x7x6=336 — commit `__PENDING__`
+- [x] P1 Candidate A / EXP-052: 将首页 CTA 埋点从“console + window.dispatchEvent”升级为“Cloudflare Web Analytics 自定义事件”最小闭环（view/click/copy/verify）并写入 EXPERIMENT_LOG 观测方法 | ICE 8x7x6=336 — commit `fb9bcf7`
 
   - Hypothesis: 只有把事件真正落到可观测平台（无需自建后端）才能快速验证 EXP-050/051 的转化链路假设；最小事件闭环会显著降低后续实验的测量成本。
   - Metrics: CF Web Analytics 中 event count（home_cta_view/click_install/click_what/copy_install/verify_start/verify_echo）；事件触发率（events/pageviews）。
