@@ -22,7 +22,7 @@
 - Start date: 2026-03-16
 - End date: 2026-03-23
 - Success metric: 24h 内 CFWA 面板可见事件（view & click >0）；7 天内可产出 CTA CTR、copy rate、verify rate。
-- Result: (pending)
+- Result: shipped (commit `fb9bcf7`), awaiting CFWA data.
 - Observability / How to measure (CFWA):
   - Prereq: set `CF_WEB_ANALYTICS_TOKEN` in Cloudflare Pages env vars (Production/Preview as needed).
   - Dashboard path: Cloudflare → your site → **Analytics & Logs** → **Web Analytics** → **Events**.
