@@ -23,6 +23,12 @@
 - End date: 2026-03-23
 - Success metric: 24h 内 CFWA 面板可见事件（view & click >0）；7 天内可产出 CTA CTR、copy rate、verify rate。
 - Result: (pending)
+- Observability / How to measure (CFWA):
+  - Prereq: set `CF_WEB_ANALYTICS_TOKEN` in Cloudflare Pages env vars (Production/Preview as needed).
+  - Dashboard path: Cloudflare → your site → **Analytics & Logs** → **Web Analytics** → **Events**.
+  - Filter/expect events (names): `home_cta_view`, `home_cta_click`, `home_cta_copy`, `home_cta_verify_start`, `home_cta_verify_echo` (plus optional `home_cta_test`).
+  - Safe props forwarded: `lang`, `path`, `kind`, `href`, `label` (no command output text).
+  - Quick manual test (after deploy): open homepage, run `openclawCfaTest()` in DevTools console; then check Events count in CFWA.
 - Decision (scale / iterate / stop): (pending)
 
 

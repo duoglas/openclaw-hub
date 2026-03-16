@@ -17,3 +17,45 @@ const cfToken = import.meta.env.CF_WEB_ANALYTICS_TOKEN || '';
     data-cf-beacon={`{"token": "${cfToken}"}`}
   />
 )}
+
+{cfToken && (
+  <script is:inline define:vars={{ cfToken }}>
+    // EXP-052: Bridge internal growth events to Cloudflare Web Analytics custom events.
+    // Docs: https://developers.cloudflare.com/analytics/web-analytics/javascript-events/
+    //
+    // Privacy: we only forward event names + safe metadata (lang/path/kind/href/label).
+    // Never forward user-pasted command output (verify input).
+    (function () {
+      try {
+        var SAFE_KEYS = { lang: true, path: true, kind: true, href: true, label: true };
+        // Debug helper: in DevTools you can run `openclawCfaTest()` to emit a test event.
+        // This helps validate the beacon token is live before waiting for organic traffic.
+        window.openclawCfaTest = function () {
+          try {
+            if (typeof window.cloudflareinsights === "function") {
+              window.cloudflareinsights("track", "home_cta_test", { lang: document.documentElement.lang || "", path: location.pathname });
+            }
+          } catch (_) {}
+        };
+        var send = function (detail) {
+          if (!detail || !detail.name) return;
+          var props = {};
+          for (var k in SAFE_KEYS) {
+            if (Object.prototype.hasOwnProperty.call(detail, k) && detail[k] != null) {
+              props[k] = String(detail[k]).slice(0, 200);
+            }
+          }
+          if (typeof window.cloudflareinsights === "function") {
+            window.cloudflareinsights("track", detail.name, props);
+          }
+        };
+
+        window.addEventListener("openclaw:growth", function (e) {
+          try {
+            send(e && e.detail);
+          } catch (_) {}
+        });
+      } catch (_) {}
+    })();
+  </script>
+)}
