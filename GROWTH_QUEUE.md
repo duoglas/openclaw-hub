@@ -17,7 +17,7 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P1 Candidate A / EXP-053: 在首页 CTA 增加“Telegram 一键加入 + 复制问题模板”转化位点（并用 CFWA 事件记录 click/join/issue_template_copy），提升 CTA 后续支持链路转化与问题收敛质量 | ICE 8x6x7=336 — commit `TO_FILL`
+- [x] P1 Candidate A / EXP-053: 在首页 CTA 增加“Telegram 一键加入 + 复制问题模板”转化位点（并用 CFWA 事件记录 click/join/issue_template_copy），提升 CTA 后续支持链路转化与问题收敛质量 | ICE 8x6x7=336 — commit `7499b13`
   - Hypothesis: 对第一次运行失败的用户，“加入社群 + 复制最小证据模板”比纯文档跳转更能降低放弃率，并提高后续求助消息质量，从而提升留存与二次访问。
   - Metrics (CFWA Events): `home_cta_tg_click`, `home_cta_tg_open`, `home_cta_issue_template_copy`; (Ratios) tg_click_rate=click/pageview, template_copy_rate=copy/click.
   - Acceptance: 1) `/`, `/en/`, `/zh/` 首屏 CTA 出现 Telegram 按钮 + “Copy issue template”; 2) CFWA Events 面板 24h 内可见事件 >0; 3) 不上传用户日志文本；4) `pnpm build` 通过。

@@ -22,7 +22,7 @@
 - Start date: 2026-03-17
 - End date: 2026-03-24
 - Success metric: 24h 内 CFWA 事件 >0；7 天内 template_copy_rate（copy/click）>= 15%；tg_click_rate（tg_click/pageview）>= 0.5%。
-- Result: shipped in repo (commit `TO_FILL`), local `pnpm build` pass; awaiting CFWA events after deploy.
+- Result: shipped in repo (commit `7499b13`), local `pnpm build` pass; awaiting CFWA events after deploy.
 - Decision (scale / iterate / stop): iterate（先观察 24h/7d 事件；若 template_copy_rate < 15%，下一轮把模板按钮下沉到 verify 区或加入“复制后打开 Telegram”串联文案）
 
 
