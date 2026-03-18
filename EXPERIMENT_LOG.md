@@ -15,6 +15,17 @@
 
 ## Active Experiments
 
+### EXP-053
+- Hypothesis: 对第一次运行失败的用户，“加入社群 + 复制最小证据模板”比纯文档跳转更能降低放弃率，并提高后续求助消息质量，从而提升留存与二次访问。
+- Scope: `/`, `/en/`, `/zh/` 首页 CTA（HomeQuickstartCTA）；新增 Telegram join + issue template copy。
+- Change: 在首页 CTA 动作区新增 Telegram 按钮（新标签页打开社群入口）+ “Copy issue template” 按钮（复制最小证据模板到剪贴板）；为 Telegram click/open 与模板复制接入 CFWA 自定义事件 `home_cta_tg_click` / `home_cta_tg_open` / `home_cta_issue_template_copy`；继续确保不上传任何日志文本。
+- Start date: 2026-03-17
+- End date: 2026-03-24
+- Success metric: 24h 内 CFWA 事件 >0；7 天内 template_copy_rate（copy/click）>= 15%；tg_click_rate（tg_click/pageview）>= 0.5%。
+- Result: shipped in repo (commit `TO_FILL`), local `pnpm build` pass; awaiting CFWA events after deploy.
+- Decision (scale / iterate / stop): iterate（先观察 24h/7d 事件；若 template_copy_rate < 15%，下一轮把模板按钮下沉到 verify 区或加入“复制后打开 Telegram”串联文案）
+
+
 ### EXP-052
 - Hypothesis: 只有把首页 CTA 事件真正落到可观测平台（优先 Cloudflare Web Analytics，自定义事件）才能快速验证 EXP-050/051 的转化链路假设；最小事件闭环会显著降低后续实验测量成本。
 - Scope: `/`, `/en/`, `/zh/` 首页 CTA（HomeQuickstartCTA）；事件：view/click/copy/verify。

@@ -36,6 +36,10 @@ const secondaryHref = isZh
 const primaryText = isZh ? '安装与首跑指南 →' : 'Install & first run guide →';
 const secondaryText = isZh ? '先了解 OpenClaw 是什么 →' : 'What is OpenClaw? →';
 
+const tgHref = 'https://t.me/openclaw';
+const tgText = isZh ? '加入 Telegram 社群 →' : 'Join Telegram community →';
+const templateText = isZh ? '复制问题模板' : 'Copy issue template';
+
 const copyLabel = isZh ? '复制' : 'Copy';
 const verifyLabel = isZh ? '验证' : 'Verify';
 const verifyingLabel = isZh ? '验证中…' : 'Verifying…';
@@ -44,6 +48,34 @@ const verifiedLabel = isZh ? '已验证' : 'Verified';
 const verifyHint = isZh
   ? '已复制。5 秒后粘贴你执行命令的输出（仅本地验证，不会上报）。'
   : 'Copied. In 5s, paste the output of the command you ran (local-only, not sent anywhere).';
+
+const issueTemplate = isZh
+  ? `【问题概述】一句话描述你遇到的现象
+
+【环境】
+- 系统：
+- 安装方式：
+- OpenClaw 版本：
+
+【我执行了什么】
+- 命令：
+- 期望结果：
+- 实际结果：
+
+【补充】可选日志（请先脱敏，勿粘贴密钥）`
+  : `Issue summary (one sentence)
+
+Environment
+- OS:
+- Install method:
+- OpenClaw version:
+
+What I ran
+- Command:
+- Expected:
+- Actual:
+
+Optional logs (redact secrets before pasting)`;
 ---
 
 <section class="oc-cta" aria-label={headline}>
@@ -69,6 +101,25 @@ const verifyHint = isZh
         >
           {secondaryText}
         </a>
+        <a
+          class="oc-cta__btn oc-cta__btn--telegram"
+          href={tgHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-growth="tg"
+          data-lang={lang}
+        >
+          {tgText}
+        </a>
+        <button
+          class="oc-cta__btn oc-cta__btn--template"
+          type="button"
+          data-template={issueTemplate}
+          data-growth="issue-template"
+          data-lang={lang}
+        >
+          {templateText}
+        </button>
       </div>
 
       <div class="oc-cta__steps">
@@ -121,11 +172,56 @@ const verifyHint = isZh
   const onClick = (e) => {
     const a = e.target?.closest?.('a[data-growth]');
     if (a) {
+      const growthKind = a.getAttribute('data-growth');
       const detail = {
-        name: 'home_cta_click',
-        kind: a.getAttribute('data-growth'),
+        name: growthKind === 'tg' ? 'home_cta_tg_click' : 'home_cta_click',
+        kind: growthKind,
         lang: a.getAttribute('data-lang') || undefined,
         href: a.getAttribute('href') || undefined,
+      };
+      console.log('[growth:event]', detail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+
+      if (growthKind === 'tg') {
+        const openDetail = {
+          name: 'home_cta_tg_open',
+          kind: growthKind,
+          lang: a.getAttribute('data-lang') || undefined,
+          href: a.getAttribute('href') || undefined,
+        };
+        setTimeout(() => {
+          console.log('[growth:event]', openDetail);
+          window.dispatchEvent(new CustomEvent('openclaw:growth', { detail: openDetail }));
+        }, 80);
+      }
+    }
+
+    const templateBtn = e.target?.closest?.('button[data-template]');
+    if (templateBtn) {
+      const text = templateBtn.getAttribute('data-template') || '';
+      const lang = templateBtn.getAttribute('data-lang') || undefined;
+      const done = () => {
+        const isZh = (lang || '').startsWith('zh');
+        templateBtn.textContent = isZh ? '已复制模板' : 'Template copied';
+        setTimeout(() => (templateBtn.textContent = isZh ? '复制问题模板' : 'Copy issue template'), 1400);
+      };
+
+      navigator.clipboard?.writeText(text).then(done).catch(() => {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+          done();
+        } catch (_) {}
+      });
+
+      const detail = {
+        name: 'home_cta_issue_template_copy',
+        lang,
+        kind: 'issue-template',
       };
       console.log('[growth:event]', detail);
       window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
@@ -269,6 +365,10 @@ const verifyHint = isZh
   .oc-cta__btn--primary:hover { background: var(--accent-hover); color: #fff; }
   .oc-cta__btn--ghost { background: #fff; color: var(--text); }
   .oc-cta__btn--ghost:hover { background: var(--card-hover); }
+  .oc-cta__btn--telegram { background: rgba(14,165,233,0.12); color: var(--text); border-color: rgba(14,165,233,0.35); }
+  .oc-cta__btn--telegram:hover { background: rgba(14,165,233,0.18); }
+  .oc-cta__btn--template { background: rgba(245,158,11,0.10); color: var(--text); border-color: rgba(245,158,11,0.35); cursor: pointer; }
+  .oc-cta__btn--template:hover { background: rgba(245,158,11,0.16); }
 
   .oc-cta__steps { display: grid; gap: 10px; }
   .oc-cta__step { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
