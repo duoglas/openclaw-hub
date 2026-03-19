@@ -39,6 +39,7 @@ const secondaryText = isZh ? '先了解 OpenClaw 是什么 →' : 'What is OpenC
 const tgHref = 'https://t.me/openclaw';
 const tgText = isZh ? '加入 Telegram 社群 →' : 'Join Telegram community →';
 const templateText = isZh ? '复制问题模板' : 'Copy issue template';
+const copyAndOpenText = isZh ? '复制模板并打开 Telegram' : 'Copy template & open Telegram';
 
 const copyLabel = isZh ? '复制' : 'Copy';
 const verifyLabel = isZh ? '验证' : 'Verify';
@@ -119,6 +120,16 @@ Optional logs (redact secrets before pasting)`;
           data-lang={lang}
         >
           {templateText}
+        </button>
+        <button
+          class="oc-cta__btn oc-cta__btn--combo"
+          type="button"
+          data-template-open={issueTemplate}
+          data-growth="tg-template"
+          data-lang={lang}
+          data-tg-href={tgHref}
+        >
+          {copyAndOpenText}
         </button>
       </div>
 
@@ -225,6 +236,64 @@ Optional logs (redact secrets before pasting)`;
       };
       console.log('[growth:event]', detail);
       window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+    }
+
+    const comboBtn = e.target?.closest?.('button[data-template-open]');
+    if (comboBtn) {
+      const text = comboBtn.getAttribute('data-template-open') || '';
+      const lang = comboBtn.getAttribute('data-lang') || undefined;
+      const tgHref = comboBtn.getAttribute('data-tg-href') || 'https://t.me/openclaw';
+      const isZh = (lang || '').startsWith('zh');
+
+      const onCopied = () => {
+        comboBtn.textContent = isZh ? '已复制并打开' : 'Copied & opened';
+        setTimeout(() => {
+          comboBtn.textContent = isZh ? '复制模板并打开 Telegram' : 'Copy template & open Telegram';
+        }, 1500);
+        window.open(tgHref, '_blank', 'noopener,noreferrer');
+      };
+
+      navigator.clipboard?.writeText(text).then(onCopied).catch(() => {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+          onCopied();
+        } catch (_) {
+          window.open(tgHref, '_blank', 'noopener,noreferrer');
+        }
+      });
+
+      const copyDetail = {
+        name: 'home_cta_issue_template_copy',
+        lang,
+        kind: 'issue-template-open',
+      };
+      console.log('[growth:event]', copyDetail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail: copyDetail }));
+
+      const clickDetail = {
+        name: 'home_cta_tg_click',
+        kind: 'tg-template',
+        lang,
+        href: tgHref,
+      };
+      console.log('[growth:event]', clickDetail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail: clickDetail }));
+
+      const openDetail = {
+        name: 'home_cta_tg_open',
+        kind: 'tg-template',
+        lang,
+        href: tgHref,
+      };
+      setTimeout(() => {
+        console.log('[growth:event]', openDetail);
+        window.dispatchEvent(new CustomEvent('openclaw:growth', { detail: openDetail }));
+      }, 80);
     }
 
     const btn = e.target?.closest?.('button[data-copy]');
@@ -369,6 +438,8 @@ Optional logs (redact secrets before pasting)`;
   .oc-cta__btn--telegram:hover { background: rgba(14,165,233,0.18); }
   .oc-cta__btn--template { background: rgba(245,158,11,0.10); color: var(--text); border-color: rgba(245,158,11,0.35); cursor: pointer; }
   .oc-cta__btn--template:hover { background: rgba(245,158,11,0.16); }
+  .oc-cta__btn--combo { background: rgba(56,189,248,0.10); color: var(--text); border-color: rgba(56,189,248,0.35); cursor: pointer; }
+  .oc-cta__btn--combo:hover { background: rgba(56,189,248,0.16); }
 
   .oc-cta__steps { display: grid; gap: 10px; }
   .oc-cta__step { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
