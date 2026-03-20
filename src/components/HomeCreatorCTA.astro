@@ -1,0 +1,147 @@
+---
+import GrowthEvent from './GrowthEvent.astro';
+
+interface Props {
+  lang: 'en' | 'zh';
+}
+
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+
+const publishHref = 'https://clawhub.com/publish';
+const publishHeadline = isZh ? '发布你的 Skill' : 'Add your skill';
+const publishSub = isZh
+  ? '把你的 OpenClaw Skill 放到 ClawHub，让更多人安装、试用、反馈。'
+  : 'Ship your OpenClaw skill to ClawHub so more people can install, try, and share feedback.';
+const publishPrimaryText = isZh ? '去发布页 →' : 'Open publish page →';
+const publishSecondaryText = isZh ? '先看 Skill 安全指南 →' : 'Read the skill security guide →';
+const publishSecondaryHref = isZh
+  ? '/zh/blog/openclaw-clawhub-skill-security-guide/'
+  : '/en/blog/openclaw-clawhub-skill-security-guide/';
+---
+
+<section class="creator-cta" aria-label={publishHeadline}>
+  <div class="creator-cta__content">
+    <p class="creator-cta__eyebrow">{isZh ? 'For creators' : 'For creators'}</p>
+    <h2 class="creator-cta__title">{publishHeadline}</h2>
+    <p class="creator-cta__desc">{publishSub}</p>
+    <div class="creator-cta__actions">
+      <a
+        class="creator-cta__btn creator-cta__btn--primary"
+        href={publishHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-growth="creator-publish"
+        data-lang={lang}
+      >
+        {publishPrimaryText}
+      </a>
+      <a
+        class="creator-cta__btn creator-cta__btn--ghost"
+        href={publishSecondaryHref}
+        data-growth="creator-guide"
+        data-lang={lang}
+      >
+        {publishSecondaryText}
+      </a>
+    </div>
+  </div>
+</section>
+
+<GrowthEvent name="home_creator_cta_render" lang={lang} href={publishHref} label="creator-cta" />
+
+<script type="module">
+  const onCreatorClick = (e) => {
+    const a = e.target?.closest?.('a[data-growth]');
+    if (!a) return;
+    const kind = a.getAttribute('data-growth');
+    if (!kind || !kind.startsWith('creator-')) return;
+
+    const detail = {
+      name: 'home_creator_cta_click',
+      kind,
+      lang: a.getAttribute('data-lang') || undefined,
+      href: a.getAttribute('href') || undefined,
+    };
+    console.log('[growth:event]', detail);
+    window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+  };
+
+  document.addEventListener('click', onCreatorClick);
+</script>
+
+<style>
+  .creator-cta {
+    margin: 0 0 1.25rem;
+    border: 1px solid rgba(79, 70, 229, 0.18);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.10), rgba(99, 102, 241, 0.03));
+    border-radius: 18px;
+    padding: 1.1rem 1.1rem 1rem;
+  }
+  .creator-cta__eyebrow {
+    margin: 0 0 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6366f1;
+  }
+  .creator-cta__title {
+    margin: 0 0 0.35rem;
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    color: #111827;
+  }
+  .creator-cta__desc {
+    margin: 0 0 0.9rem;
+    color: #4b5563;
+    max-width: 52rem;
+  }
+  .creator-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .creator-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.72rem 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .creator-cta__btn:hover {
+    transform: translateY(-1px);
+  }
+  .creator-cta__btn--primary {
+    background: #4f46e5;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.18);
+  }
+  .creator-cta__btn--primary:hover {
+    background: #4338ca;
+    color: #fff;
+  }
+  .creator-cta__btn--ghost {
+    border: 1px solid rgba(79, 70, 229, 0.22);
+    background: rgba(255, 255, 255, 0.75);
+    color: #312e81;
+  }
+  .creator-cta__btn--ghost:hover {
+    background: #eef2ff;
+    color: #1e1b4b;
+  }
+  @media (max-width: 640px) {
+    .creator-cta {
+      padding: 1rem 0.9rem 0.95rem;
+    }
+    .creator-cta__actions {
+      flex-direction: column;
+    }
+    .creator-cta__btn {
+      width: 100%;
+    }
+  }
+</style>

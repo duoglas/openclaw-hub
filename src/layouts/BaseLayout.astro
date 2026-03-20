@@ -50,6 +50,9 @@ const websiteSchema = {
   description,
   publisher: organizationSchema,
 };
+const publishHref = 'https://clawhub.com/publish';
+const footerPublishText = isZh ? '发布你的 Skill' : 'Publish your skill';
+const footerPublishAria = isZh ? '打开 ClawHub 发布页' : 'Open ClawHub publish page';
 ---
 <!doctype html>
 <html lang={lang}>
@@ -163,13 +166,19 @@ const websiteSchema = {
       color: var(--text);
     }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-    footer { 
-      text-align: center; 
-      padding: 2.5rem; 
-      color: var(--text-muted); 
-      font-size: 0.875rem;
-      border-top: 1px solid var(--border);
-      margin-top: 3rem;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-bottom: 0.9rem;
+    }
+    .footer-links a {
+      color: #4f46e5;
+      font-weight: 600;
+    }
+    .footer-links a:hover {
+      color: #4338ca;
     }
     a { 
       color: #60a5fa; 
@@ -256,6 +265,18 @@ const websiteSchema = {
     <slot />
   </main>
   <footer>
+    <div class="footer-links">
+      <a
+        href={publishHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={footerPublishAria}
+      >{footerPublishText}</a>
+      <span aria-hidden="true">·</span>
+      <a href={isZh ? '/zh/blog/openclaw-clawhub-skill-security-guide/' : '/en/blog/openclaw-clawhub-skill-security-guide/'}>
+        {isZh ? 'Skill 安全指南' : 'Skill security guide'}
+      </a>
+    </div>
     <p>© 2026 AI Agent Hub · Built with 🤖 and AI</p>
   </footer>
   <Analytics />

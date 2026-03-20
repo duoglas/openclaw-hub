@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-054
+- Hypothesis: 在首页 hero 下方新增面向创作者的“发布你的 Skill / Add your skill”CTA，比仅在页脚或导航暴露发布入口更能提高创作者侧点击率，并把内容消费者转化为生态贡献者。
+- Scope: `/en/`, `/zh/` 首页 hero 下方；全站 footer 发布入口；相关引导页 `/en/blog/openclaw-clawhub-skill-security-guide/` 与 `/zh/blog/openclaw-clawhub-skill-security-guide/`。
+- Change: 新增 `HomeCreatorCTA` 组件，在 EN/ZH 首页 hero 下插入双按钮（打开 `https://clawhub.com/publish` + Skill security guide）；新增 `home_creator_cta_render` / `home_creator_cta_click` growth 事件；在全站 footer 增加 publish + guide 常驻入口，缩短创作者转化路径。
+- Start date: 2026-03-20
+- End date: 2026-03-27
+- Success metric: 24h 内 `home_creator_cta_render` 与 `home_creator_cta_click` 事件 >0；7 天内 creator CTA CTR（click/render）>= 1.5%；发布页点击率高于页脚基线入口。
+- Result: shipped in repo (commit pending), local `pnpm build` pending.
+- Decision (scale / iterate / stop): pending
+
 ### EXP-053
 - Hypothesis: 对第一次运行失败的用户，“加入社群 + 复制最小证据模板”比纯文档跳转更能降低放弃率，并提高后续求助消息质量，从而提升留存与二次访问。
 - Scope: `/`, `/en/`, `/zh/` 首页 CTA（HomeQuickstartCTA）；新增 Telegram join + issue template copy。
