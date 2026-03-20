@@ -22,8 +22,8 @@
 - Start date: 2026-03-20
 - End date: 2026-03-27
 - Success metric: 24h 内 `home_creator_cta_render` 与 `home_creator_cta_click` 事件 >0；7 天内 creator CTA CTR（click/render）>= 1.5%；发布页点击率高于页脚基线入口。
-- Result: shipped in repo (commit pending), local `pnpm build` pending.
-- Decision (scale / iterate / stop): pending
+- Result: shipped in repo (commit `84a458c`), local `pnpm build` pass.
+- Decision (scale / iterate / stop): iterate（先观察 24h render/click 是否进 CFWA；若点击主要集中在 publish 按钮，下一轮把安全指南下沉为 hover/help 文案，减少 CTA 分流）
 
 ### EXP-053
 - Hypothesis: 对第一次运行失败的用户，“加入社群 + 复制最小证据模板”比纯文档跳转更能降低放弃率，并提高后续求助消息质量，从而提升留存与二次访问。
