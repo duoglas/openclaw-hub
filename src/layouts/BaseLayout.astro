@@ -53,6 +53,7 @@ const websiteSchema = {
 const publishHref = 'https://clawhub.com/publish';
 const footerPublishText = isZh ? '发布你的 Skill' : 'Publish your skill';
 const footerPublishAria = isZh ? '打开 ClawHub 发布页' : 'Open ClawHub publish page';
+const footerGrowthLabel = isZh ? 'footer-publish-zh' : 'footer-publish-en';
 ---
 <!doctype html>
 <html lang={lang}>
@@ -271,6 +272,9 @@ const footerPublishAria = isZh ? '打开 ClawHub 发布页' : 'Open ClawHub publ
         target="_blank"
         rel="noopener noreferrer"
         aria-label={footerPublishAria}
+        data-growth="footer-publish"
+        data-lang={lang}
+        data-label={footerGrowthLabel}
       >{footerPublishText}</a>
       <span aria-hidden="true">·</span>
       <a href={isZh ? '/zh/blog/openclaw-clawhub-skill-security-guide/' : '/en/blog/openclaw-clawhub-skill-security-guide/'}>
@@ -279,6 +283,24 @@ const footerPublishAria = isZh ? '打开 ClawHub 发布页' : 'Open ClawHub publ
     </div>
     <p>© 2026 AI Agent Hub · Built with 🤖 and AI</p>
   </footer>
+  <script type="module">
+    const onFooterGrowthClick = (e) => {
+      const a = e.target?.closest?.('a[data-growth="footer-publish"]');
+      if (!a) return;
+
+      const detail = {
+        name: 'footer_publish_click',
+        kind: a.getAttribute('data-growth') || undefined,
+        lang: a.getAttribute('data-lang') || undefined,
+        label: a.getAttribute('data-label') || undefined,
+        href: a.getAttribute('href') || undefined,
+      };
+      console.log('[growth:event]', detail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+    };
+
+    document.addEventListener('click', onFooterGrowthClick);
+  </script>
   <Analytics />
 </body>
 </html>
