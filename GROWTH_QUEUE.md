@@ -12,11 +12,15 @@ Manager: main session
 
 ## Backlog
 
-
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate A / EXP-055: 强化 2026-03-21 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时内容建设任务新增的实验假设 | ICE 8x7x8=448 — commit `(this commit)`
+  - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
+  - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
+  - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-21/` 与 `/zh/blog/openclaw-daily-2026-03-21/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
+
 - [x] P1 Candidate A / EXP-054: 在 EN/ZH 首页 hero 下新增创作者 CTA（发布 Skill + 安全指南），并在全站 footer 增加发布入口，验证“内容读者→生态贡献者”转化链路 | ICE 8x6x6=288 — commit `84a458c`
   - Hypothesis: 仅靠页脚/导航很难激活创作者；把发布入口提升到首页 hero 下，可提升发布页点击率，并让内容型流量转化为 Skill 发布者。
   - Metrics (CFWA Events): `home_creator_cta_render`, `home_creator_cta_click`; 关键比率 creator_ctr=click/render，publish_share=publish_click/all_creator_click.
