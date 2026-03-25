@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-25）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "OpenAI 同时推进企业融资合作与非营利治理投入，Anthropic 预览 Claude Code 自动模式，英伟达 GTC 2026 聚焦推理与物理 AI，博通提示台积电产能仍卡住 AI 供应链，美国顾问机构则警告中国开源 AI 优势正在形成自强化竞争力。"
 pubDate: 2026-03-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -93,7 +93,7 @@ GTC公开信息里，机器人、医疗边缘AI、工业仿真、本地运行模
 ## 下一步行动（CTA）
 
 <!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
+- **方案 A（咨询转化）**：想把今天这些企业级 AI 融资、自动执行安全护栏与推理部署信号转成落地路径？先看 [什么是 OpenClaw？](/zh/blog/what-is-openclaw/)，再结合 [OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/) 梳理你的上线方案。
 
 <!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，然后继续看 [OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)，把模型价格、安全护栏与基础设施波动下的自动化稳定性一起补上。
