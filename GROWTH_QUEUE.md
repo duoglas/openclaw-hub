@@ -13,12 +13,14 @@ Manager: main session
 ## Backlog
 
 ## Doing
-- [ ] P1 Candidate A / EXP-057: 强化 2026-04-01 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时内容建设任务新增的实验假设 | ICE 8x7x8=448
+- [ ] (empty)
+
+## Done
+- [x] P1 Candidate A / EXP-057: 强化 2026-04-01 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时内容建设任务新增的实验假设 | ICE 8x7x8=448 — commit `79140a4`
   - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
   - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-01/` 与 `/zh/blog/openclaw-daily-2026-04-01/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
 
-## Done
 - [x] P1 Candidate A / EXP-056: 强化 2026-03-25 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时内容建设任务新增的实验假设 | ICE 8x7x8=448 — commit `(this commit)`
   - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
   - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
