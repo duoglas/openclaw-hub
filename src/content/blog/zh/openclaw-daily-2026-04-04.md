@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-04）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "4 月 4 日 AI / 科技日报：工信部启动普惠算力行动，英伟达 H100 租赁价格继续上涨，北京新增 15 款生成式 AI 服务完成登记，全球晶圆厂设备支出被 AI 拉动上行，生成式 AI 也在放大网络犯罪风险。"
 pubDate: 2026-04-04
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -54,8 +54,8 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
+- **先看 OpenClaw 是什么**：如果今天这些算力普惠、Agent 工作流和中小企业落地信号，让你更关心“AI 能不能真正执行任务”，先读 [/zh/blog/what-is-openclaw/](/zh/blog/what-is-openclaw/) 了解 OpenClaw 的定位、架构和适用场景。
 
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- **准备上线就看 VPS 部署**：如果 H100 租赁涨价、供需紧张让你更在意成本控制、隔离性和可控性，继续看 [/zh/blog/openclaw-vps-deployment-complete-guide/](/zh/blog/openclaw-vps-deployment-complete-guide/) 获取完整 VPS 落地路径。
+
+- **担心模型或供应波动**：如果今天的算力价格、合规约束和基础设施波动让你担心稳定性，继续看 [/zh/blog/openclaw-model-fallback-strategy/](/zh/blog/openclaw-model-fallback-strategy/) 了解实用的模型回退策略。
