@@ -15,6 +15,17 @@
 
 ## Active Experiments
 
+### EXP-059
+- Hypothesis: 对最新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-04-06/` + `/zh/blog/openclaw-daily-2026-04-06/`
+- Change: 将 EN/ZH `openclaw-daily-2026-04-06` 的 frontmatter description 从同步占位文案升级为包含 OpenAI-Microsoft 合作条款重谈、Gemini 在 Search/Workspace 深度融合、中国行业大模型落地、算力供给约束与监管版权压力等关键信号的可检索摘要；将 CTA 从泛咨询/泛订阅文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的强相关内链。
+- Start date: 2026-04-10
+- End date: 2026-04-10
+- Success metric: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
+- Result: pass（已优先消费最新日报内容建设任务 `2026-04-06`；EN/ZH frontmatter description 已去占位化，CTA 已升级为 3 条强相关内链，`pnpm build` 通过并生成对应 EN/ZH 路由。）
+- Decision (scale / iterate / stop): iterate（继续观察 7 天内日报页 CTR、站内下一跳与核心指南页导流点击；若模式持续有效，则将该规则固化到 `publish-daily.sh`，默认避免占位摘要/泛 CTA 回归。）
+
+
 ### EXP-058
 - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
 - Scope: `/en/blog/openclaw-daily-2026-04-04/` + `/zh/blog/openclaw-daily-2026-04-04/`
