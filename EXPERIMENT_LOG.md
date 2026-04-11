@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-063
+- Hypothesis: 对最近24小时内容建设假设所覆盖、但仍保留同步占位摘要与泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-04-02/` + `/zh/blog/openclaw-daily-2026-04-02/`
+- Change: 将 EN/ZH `openclaw-daily-2026-04-02` 的 frontmatter description 从同步占位文案升级为包含 OpenAI GPT-4.1 发布、Gemini 深度集成 Workspace/Cloud、中国行业大模型落地提速、推理成本优化与监管合规压力等关键信号的可检索摘要；将 CTA 从泛咨询/泛订阅文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的强相关内链。
+- Start date: 2026-04-11
+- End date: 2026-04-11
+- Success metric: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
+- Result: pass（已优先消费最近24小时内容建设假设覆盖的 `2026-04-02` 日报页；EN/ZH frontmatter description 已去占位化，CTA 已升级为 3 条强相关内链，`pnpm build` 通过并生成对应 EN/ZH 路由。）
+- Decision (scale / iterate / stop): iterate（继续观察 7 天内目标页 CTR、站内下一跳与核心指南页导流点击；若持续有效，进一步固化到 daily 发布模板。）
+
 ### EXP-062
 - Hypothesis: 对最近24小时新增内容建设假设所覆盖、但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
 - Scope: `/en/blog/openclaw-daily-2026-04-03/` + `/zh/blog/openclaw-daily-2026-04-03/`
