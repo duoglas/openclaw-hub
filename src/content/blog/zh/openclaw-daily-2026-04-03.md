@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-03）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "4 月 3 日 AI / 科技日报：OpenAI 新一轮模型能力更新传闻升温，Gemini 持续深度进入 Workspace/Cloud，中国大模型竞争转向行业 ROI 落地，算力供给与价格战并存，跨区域监管与版权合规压力继续抬升。"
 pubDate: 2026-04-03
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -80,8 +80,8 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
+- **先看 OpenClaw 是什么：**如果今天这些信号让你更在意“AI 能不能稳定执行”，先读 [/zh/blog/what-is-openclaw/](/zh/blog/what-is-openclaw/) 了解 OpenClaw 的定位、架构与适用场景。
 
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- **准备上线就看 VPS 部署：**如果你更关心算力成本与交付可控性，继续看 [/zh/blog/openclaw-vps-deployment-complete-guide/](/zh/blog/openclaw-vps-deployment-complete-guide/) 获取可落地的 VPS 路径。
+
+- **担心连续可用性就补回退策略：**如果供应与监管变量让你担心稳定性，继续看 [/zh/blog/openclaw-model-fallback-strategy/](/zh/blog/openclaw-model-fallback-strategy/) 了解实用模型回退方案。

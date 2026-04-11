@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-10 11:20
+Last updated: 2026-04-11 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -16,7 +16,12 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
-- [x] P1 Candidate A / EXP-061: 强化 2026-04-05 双语 AI/Tech Daily 的搜索摘要、日期一致性与转化内链（重写 EN/ZH description，修正正文日期，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），优先消费最近24小时内容建设任务新增实验假设 | ICE 8x7x8=448 — commit `474da64`
+- [x] P1 Candidate A / EXP-062: 强化 2026-04-03 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），优先消费最近24小时内容建设任务新增实验假设 | ICE 8x7x8=448 — commit `(this commit)`
+  - Hypothesis: 对最近24小时新增内容建设假设所覆盖、但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
+  - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
+  - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-03/` 与 `/zh/blog/openclaw-daily-2026-04-03/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
+
+- [x] P1 Candidate A / EXP-061: 强化 2026-04-05 双语 AI/Tech Daily 的搜索摘要、日期一致性与转化内链（重写 EN/ZH description，修正正文日期，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），优先消费最近24小时内容建设任务新增实验假设 | ICE 8x7x8=448 — commit `384411f`
   - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA、且存在日期元信息错位的日报页，补强可检索摘要、日期一致性与强相关 CTA 内链，可同时提升搜索匹配度、站内继续阅读率与导流准确性。
   - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；正文日期与 `pubDate` 一致；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-05/` 与 `/zh/blog/openclaw-daily-2026-04-05/` frontmatter description 去占位化；2) 正文日期修正为 2026-04-05 并与 `pubDate` 对齐；3) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；4) `pnpm build` 通过。
