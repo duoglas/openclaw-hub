@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-30）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "今日聚焦中关村白皮书提出 AI 创业 12-24 个月生死线、中国从参数竞赛转向垂直 ROI、Agent 驱动云服务竞争、AI 硬件回归高频场景，以及教育等公共政策外溢对落地节奏的影响。"
 pubDate: 2026-03-30
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -8,7 +8,7 @@ lang: "zh"
 ---
 
 《AI、科技日报》  
-日期：2026-03-29（周日）
+日期：2026-03-30（周日）
 
 今日要闻（5条）
 
@@ -84,8 +84,8 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
+- **先看什么是 OpenClaw：**如果你希望把“AI 必须证明商业价值”的趋势变成可执行流程，而不只是资讯阅读，先读 [/zh/blog/what-is-openclaw/](/zh/blog/what-is-openclaw/) 对齐架构、流程与分工。
 
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- **准备上线就看 VPS 部署：**如果你当前瓶颈是稳定性、隔离性与长期成本控制，继续看 [/zh/blog/openclaw-vps-deployment-complete-guide/](/zh/blog/openclaw-vps-deployment-complete-guide/) 获取可直接落地的生产部署路径。
+
+- **担心波动就补回退策略：**如果你担心模型/云服务波动影响连续可用性，继续看 [/zh/blog/openclaw-model-fallback-strategy/](/zh/blog/openclaw-model-fallback-strategy/) 先把多供应商回退链路设计好。
