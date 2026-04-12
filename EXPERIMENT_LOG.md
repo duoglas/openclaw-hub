@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-065
+- Hypothesis: 对最近24小时内容建设任务新增且仍保留同步占位摘要/泛 CTA 的日报页（2026-04-12），补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与核心指南导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-04-12/` + `/zh/blog/openclaw-daily-2026-04-12/`
+- Change: 将 EN/ZH `openclaw-daily-2026-04-12` 的 frontmatter description 从“同步推送占位文案”升级为包含 OpenAI 第三方工具安全事件、IPO 散户配售信号、Anthropic 自研芯片评估与工信部“人工智能+”场景发布的可检索摘要；将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的强相关内链。
+- Start date: 2026-04-12
+- End date: 2026-04-12
+- Success metric: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
+- Result: pass（已优先消费最近24小时内容建设假设对应的 `2026-04-12` 日报；EN/ZH frontmatter description 已去占位化，CTA 已升级为 3 条强相关内链，`pnpm build` 通过并生成对应 EN/ZH 路由。）
+- Decision (scale / iterate / stop): iterate（继续观察 7 天内目标页 CTR、站内下一跳与核心指南页导流点击；若持续有效，固化到 daily 发布模板，默认避免占位摘要与泛 CTA 回归。）
+
 ### EXP-064
 - Hypothesis: 对最近24小时内容建设假设所覆盖、但仍保留同步占位摘要/泛 CTA 且存在正文日期错位的日报页，补强可检索摘要、日期一致性与强相关 CTA 内链，可同时提升搜索匹配度、站内继续阅读率与导流准确性。
 - Scope: `/en/blog/openclaw-daily-2026-03-30/` + `/zh/blog/openclaw-daily-2026-03-30/`
