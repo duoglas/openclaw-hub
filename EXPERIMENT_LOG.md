@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-066
+- Hypothesis: 若把最近24小时内容建设任务连续验证有效的“description 去占位化 + 3 条强相关 CTA 内链”固化到 `publish-daily.sh`，则后续双语日报可默认具备搜索摘要质量与核心指南导流能力，减少人工返工与回归风险。
+- Scope: `scripts/publish-daily.sh`（影响后续 EN/ZH daily posts 生成）。
+- Change: 在发布脚本中移除占位 description 与咨询/订阅泛 CTA：新增基于日报正文生成 ZH 可检索摘要的逻辑、提供 EN 非占位摘要默认值，并将 EN/ZH CTA 模板统一替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的强相关内链。
+- Start date: 2026-04-12
+- End date: 2026-04-12
+- Success metric: `pnpm build` 通过；脚本模板不再写入占位 description 与泛 CTA；后续日报默认包含 3 条强相关内链 CTA。
+- Result: pass（`scripts/publish-daily.sh` 已完成模板固化，`pnpm build` 通过；仓内检索未发现“Synced with the daily Telegram AI/tech brief / 与 Telegram 当日推送同步”及 CTA Variant A/B 泛转化文案残留。）
+- Decision (scale / iterate / stop): scale（将该模板作为默认发布基线，后续继续按周抽检新日报 description 质量与内链导流指标，防止模板回退。）
+
 ### EXP-065
 - Hypothesis: 对最近24小时内容建设任务新增且仍保留同步占位摘要/泛 CTA 的日报页（2026-04-12），补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与核心指南导流效率。
 - Scope: `/en/blog/openclaw-daily-2026-04-12/` + `/zh/blog/openclaw-daily-2026-04-12/`

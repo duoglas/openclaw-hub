@@ -33,11 +33,44 @@ print(summary)
 PY
 )
 
+# Build non-placeholder, searchable descriptions from summary text
+ZH_DESC=$(printf '%s' "$SUMMARY" | python3 - <<'PY'
+import re,sys
+text = sys.stdin.read()
+text = text.replace('\r', '\n')
+lines = [re.sub(r'\s+', ' ', l).strip(' -•\t') for l in text.split('\n')]
+lines = [l for l in lines if l]
+candidates = []
+for l in lines:
+    if l.startswith('《AI、科技日报》') or l.startswith('说明：'):
+        continue
+    if re.match(r'^[【\[]?.*(今日要闻|实战案例|今日结论).*[】\]]?$', l):
+        continue
+    if re.match(r'^\d+\)', l):
+        l = re.sub(r'^\d+\)\s*', '', l)
+    if len(l) >= 8:
+        candidates.append(l)
+    if len(candidates) >= 3:
+        break
+if not candidates:
+    candidates = ["今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。"]
+joined = '；'.join(candidates)
+joined = re.sub(r'\s+', ' ', joined).strip('；;，,。.')
+if len(joined) > 120:
+    joined = joined[:119].rstrip('；;，,。.') + '。'
+elif not joined.endswith(('。','！','？')):
+    joined += '。'
+print(joined)
+PY
+)
+
+EN_DESC="Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+
 # Always overwrite today's files with synced summary
 cat > "$ZH_FILE" <<EOF
 ---
 title: "AI / 科技日报（${DATE}）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "${ZH_DESC}"
 pubDate: ${DATE}
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -48,17 +81,15 @@ ${SUMMARY}
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- 先读核心定位：[什么是 OpenClaw](/zh/blog/what-is-openclaw/)
+- 需要落地部署：[OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/)
+- 保障稳定性：[OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)
 EOF
 
 cat > "$EN_FILE" <<EOF
 ---
 title: "AI & Tech Daily Brief (${DATE})"
-description: "Synced with the daily Telegram AI/tech brief."
+description: "${EN_DESC}"
 pubDate: ${DATE}
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -69,11 +100,9 @@ ${SUMMARY}
 
 ## Next-Step CTA
 
-<!-- CTA_VARIANT_A -->
-- **Variant A (Consultation conversion):** Want to apply this to your team or project? Book a 30-minute diagnostic and get an implementation checklist.
-
-<!-- CTA_VARIANT_B -->
-- **Variant B (Subscription conversion):** Want continuous signal tracking? Subscribe to the daily RSS for actionable updates.
+- Start here: [What Is OpenClaw?](/en/blog/what-is-openclaw/)
+- Deploy with guardrails: [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/)
+- Keep reliability under load: [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
 EOF
 
 pnpm build >/dev/null 2>&1

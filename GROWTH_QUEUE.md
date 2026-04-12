@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-11 11:20
+Last updated: 2026-04-12 17:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -16,6 +16,11 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate A / EXP-066: 将最近24小时内容建设实验沉淀为 `publish-daily.sh` 默认模板规则（自动生成可检索摘要 + 强相关 CTA 内链），阻断占位 description/泛 CTA 回归 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 若把 EXP-058~EXP-065 连续验证有效的“description 去占位化 + 3 条强相关内链 CTA”固化到日报发布脚本，则后续双语日报可默认具备搜索摘要质量与导流能力，减少人工返工并提高执行一致性。
+  - Metrics: `pnpm build` 通过；`scripts/publish-daily.sh` 不再写入占位 description 与咨询/订阅泛 CTA；脚本输出默认包含 OpenClaw 核心指南/部署/模型回退 3 条强相关内链。
+  - Acceptance: 1) `publish-daily.sh` 生成 EN/ZH description 时不使用占位文案；2) CTA 模板默认替换为 3 条强相关内链；3) `pnpm build` 通过。
+
 - [x] P1 Candidate A / EXP-065: 强化 2026-04-12 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），优先消费最近24小时内容建设任务新增实验假设 | ICE 8x7x8=448 — commit `(this commit)`
   - Hypothesis: 对最近24小时内容建设任务新增且仍保留同步占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与核心指南导流效率。
   - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
