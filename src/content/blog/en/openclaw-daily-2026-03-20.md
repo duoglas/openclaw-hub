@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-20)"
-description: "Synced with the daily Telegram AI/tech brief."
+description: "NVIDIA's GTC 2026 reset the conversation around AI infrastructure, Google's reported Gemini for macOS test showed desktop assistants becoming the new battleground, Anthropic's enterprise revenue momentum highlighted the race to monetize AI, and Chinese cloud pricing signals pointed to tighter compute supply and higher deployment costs."
 pubDate: 2026-03-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -74,8 +74,6 @@ lang: "en"
 
 ## Next-Step CTA
 
-<!-- CTA_VARIANT_A -->
-- **Variant A (Consultation conversion):** Want to apply this to your team or project? Book a 30-minute diagnostic and get an implementation checklist.
-
-<!-- CTA_VARIANT_B -->
-- **Variant B (Subscription conversion):** Want continuous signal tracking? Subscribe to the daily RSS for actionable updates.
+- [What Is OpenClaw? Core concepts, architecture, and use cases](/en/blog/what-is-openclaw/)
+- [OpenClaw VPS deployment complete guide](/en/blog/openclaw-vps-deployment-complete-guide/)
+- [OpenClaw model fallback strategy for reliability and cost control](/en/blog/openclaw-model-fallback-strategy/)
