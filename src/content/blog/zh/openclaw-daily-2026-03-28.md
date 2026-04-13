@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-28）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "今日聚焦 OpenAI 面向开发者的平台化 Agent 能力、Google 多模态工作流生态、英伟达从 GPU 叙事转向基础设施 ROI、中国大模型从参数竞赛转向合规交付，以及 AI 治理与版权成本持续上升带来的执行优先级。"
 pubDate: 2026-03-28
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -84,8 +84,8 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
+- **先看什么是 OpenClaw：**如果你已经看到竞争焦点从“单模型演示”转向“可审计的 Agent 工作流”，先读 [/zh/blog/what-is-openclaw/](/zh/blog/what-is-openclaw/) 对齐角色分工、自动化边界与部署责任。
 
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- **准备上线就看 VPS 部署：**如果你下一步瓶颈是稳定交付、权限隔离与长期运行成本，继续看 [/zh/blog/openclaw-vps-deployment-complete-guide/](/zh/blog/openclaw-vps-deployment-complete-guide/) 获取生产部署路径。
+
+- **担心波动就补回退策略：**如果供应商、模型或政策波动可能影响连续可用性，继续看 [/zh/blog/openclaw-model-fallback-strategy/](/zh/blog/openclaw-model-fallback-strategy/) 先把多供应商回退链路设计好。

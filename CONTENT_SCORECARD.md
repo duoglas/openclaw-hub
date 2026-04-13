@@ -29,6 +29,19 @@ Per-post score: 0-30 (6 dimensions x 0-5)
 
 ## Latest Scored Article
 
+- Title: OpenClaw Daily 2026-03-28 Search Summary + CTA Upgrade (EN/ZH)
+- URL/slug: /en/blog/openclaw-daily-2026-03-28/ + /zh/blog/openclaw-daily-2026-03-28/
+- Intent Match: 5
+- Actionability: 4
+- Evidence: 4
+- Structure: 4
+- Internal Links: 5
+- Differentiation: 4
+- Total: 26
+- Rework needed? (Y/N): N
+
+---
+
 - Title: OpenClaw Daily 2026-03-29 Search Summary + CTA Upgrade (EN/ZH)
 - URL/slug: /en/blog/openclaw-daily-2026-03-29/ + /zh/blog/openclaw-daily-2026-03-29/
 - Intent Match: 5
