@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-04-13 18:12
+Last updated: 2026-04-13 18:37
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-04-13 18:12
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-080 — openclaw-daily-2026-03-11
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: 摘要已覆盖 GPT-5.4 模型替换、Claude 长期记忆、OpenAI 与 AMD/NVIDIA 算力合作、微软生态绑定与中国 AI 讨论从跑分转向 Agent/ROI；EN/ZH 均补全了行业动态、问题洞察与可执行建议，并替换为 What Is OpenClaw / VPS guide / model fallback 三条强相关内链。构建通过，但仍存在 `openclaw-daily-2026-03-11` duplicate id 历史警告，需后续单列技术卫生任务清理。
 
 ### EXP-079 — openclaw-daily-2026-03-13
 - Search intent match: 9/10

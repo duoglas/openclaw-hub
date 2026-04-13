@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-080
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-11` 双语日报页补强可检索摘要、行业洞察与强相关 CTA 内链，可提升搜索匹配度、模型升级/长期记忆/算力合作/微软生态绑定/中国 Agent 评测转向等主题检索覆盖，并向 OpenClaw 核心指南页导流。
+- Scope: `/en/blog/openclaw-daily-2026-03-11/` + `/zh/blog/openclaw-daily-2026-03-11/`
+- Change: 将 EN/ZH `openclaw-daily-2026-03-11` 的 frontmatter description 从同步占位文案升级为覆盖“GPT-5.4 模型替换、Claude 记忆导入、OpenAI 与 AMD/NVIDIA 算力合作、微软与 OpenAI 生态绑定、中国 AI 讨论转向 Agent 工作流与真实 ROI”的可检索摘要；补全“今日结论”为行业动态/问题洞察/可执行建议，并将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description、行业洞察与 3 条强相关内链；`CONTENT_SCORECARD.md` 评分 >=20/30。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-11.md` 已完成 description 去占位化、结论段补全与 CTA 强相关内链替换；`CONTENT_SCORECARD.md` 评分 28/30，达到发布阈值；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过。补充观察：build 仍报告 `openclaw-daily-2026-03-11` duplicate id warning，说明仓内存在历史重复 slug/loader 冲突，需后续专项清理，但不影响本次页面改造验收。）
+- Decision (scale / iterate / stop): iterate（继续回补 `2026-03-08` 等仍保留旧模板的日报页，并优先单列一次技术卫生任务处理 `2026-03-11` duplicate id warning，避免历史索引冲突抵消内容收益。）
+
 ### EXP-079
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-13` 双语日报页补强可检索摘要、行业洞察与强相关 CTA 内链，可提升搜索匹配度、基础设施/媒体生产/Agent 平台/机器人融资/微信入口等主题检索覆盖，并向 OpenClaw 核心指南页导流。
 - Scope: `/en/blog/openclaw-daily-2026-03-13/` + `/zh/blog/openclaw-daily-2026-03-13/`
