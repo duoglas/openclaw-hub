@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-12）"
-description: "2026-03-12 AI / 科技日报：聚焦中国人工智能+政策推进、制造业 AI 落地、AMD Ryzen AI 400 发布，以及面向团队执行的后续观察点。"
+description: "3月12日 AI 简报：政策层面继续推进“人工智能+”，制造业与半导体财报验证真实需求，AMD 以 Ryzen AI 400 和 ROCm 7.2 抢占端侧与边缘工作流，而扩容团队要提前盯住电力与基础设施瓶颈。"
 pubDate: 2026-03-12
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -46,8 +46,8 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把今天这些 AI 基建与自动化信号转成可执行方案？先看[什么是 OpenClaw？](/zh/blog/what-is-openclaw/)，再结合 [OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/) 梳理你的上线路径。
+- **先搞清执行模型：**如果今天的政策推进、制造业落地和端侧 AI 信号，让你准备把 AI 真正接进团队流程，先读 [什么是 OpenClaw](/zh/blog/what-is-openclaw/) ，对齐人工复核、工具执行与浏览器任务如何组成一套可运营工作流。
 
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，然后继续看 [OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)，把日常自动化的稳定性一起补上。
+- **准备上线就补部署路径：**如果你下一步要把试点自动化做成稳定、可隔离、可复用的系统，继续看 [OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/) ，拿到生产部署、权限控制与可靠性建设路径。
+
+- **担心成本和波动就先做回退：**如果电力、算力供给、供应商变化或成本压力可能打断连续可用性，继续看 [OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/) ，先把多供应商回退链路设计好，再扩大自动化覆盖面。
