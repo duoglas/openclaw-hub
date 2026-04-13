@@ -17,7 +17,7 @@ Manager: main session
 ## Doing
 
 ## Done
-- [x] P1 Candidate A / EXP-079: 强化 2026-03-13 双语 AI/Tech Daily 的搜索摘要、结论洞察与转化内链（description 去占位化 + 补全“基础设施/媒体生产/Agent 平台/机器人融资/微信入口”主题结论 + CTA 升级为强相关内链） | ICE 8x8x8=512 — commit `TBD`
+- [x] P1 Candidate A / EXP-079: 强化 2026-03-13 双语 AI/Tech Daily 的搜索摘要、结论洞察与转化内链（description 去占位化 + 补全“基础设施/媒体生产/Agent 平台/机器人融资/微信入口”主题结论 + CTA 升级为强相关内链） | ICE 8x8x8=512 — commit `64462a3`
   - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-13` 双语日报页补强可检索摘要、行业洞察与强相关 CTA 内链，可提升搜索匹配度、基础设施/媒体生产/Agent 平台/机器人融资/微信入口等主题检索覆盖，并向 OpenClaw 核心指南页导流。
   - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description、行业洞察与 3 条强相关内链；`CONTENT_SCORECARD.md` 评分 >=20/30。
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-13/` 与 `/zh/blog/openclaw-daily-2026-03-13/` frontmatter description 去占位化；2) 删除咨询/订阅泛 CTA，替换为 3 条强相关内链；3) 将结论段改为行业动态/问题洞察/可执行建议；4) `CONTENT_SCORECARD.md` 评分 >=20/30；5) `pnpm build` 与 `pnpm check:daily-cta` 通过。
