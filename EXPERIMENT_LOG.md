@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-069
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-29` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-03-29/` + `/zh/blog/openclaw-daily-2026-03-29/`
+- Change: 将 EN/ZH `openclaw-daily-2026-03-29` 的 frontmatter description 从同步占位文案升级为覆盖中关村白皮书“AI 创业 12-24 个月收入验证窗口”、中国市场从参数竞赛转向垂直 ROI、Agent 推动云服务竞争升级与 AI 硬件回归真实工作流价值的可检索摘要；将“今日结论”补全为更具体的商业兑现建议；将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm build` 通过；`pnpm check:daily-cta` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-29.md` 已完成 description 去占位化、结论段补全与 3 条强相关 CTA 内链替换；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过。）
+- Decision (scale / iterate / stop): iterate（延续此模板继续回补旧日报；下一步优先处理 `EXP-070`，为双语日报增加“占位 description / 泛 CTA 残留扫描”脚本并接入 CI，减少旧模板回归。）
+
 ### EXP-068
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-04-11` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
 - Scope: `/en/blog/openclaw-daily-2026-04-11/` + `/zh/blog/openclaw-daily-2026-04-11/`
