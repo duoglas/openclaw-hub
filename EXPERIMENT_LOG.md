@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-077
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-16` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、组织效率/办公 AI/开源模型/具身智能/AI 法律风险等主题检索覆盖，并向 OpenClaw 核心指南页导流。
+- Scope: `/en/blog/openclaw-daily-2026-03-16/` + `/zh/blog/openclaw-daily-2026-03-16/`
+- Change: 将 EN/ZH `openclaw-daily-2026-03-16` 的 frontmatter description 从同步占位文案升级为覆盖“Meta 为应对 AI 基础设施成本酝酿裁员、Gemini 深入 Workspace、英伟达被曝追加开源模型投入、具身智能融资升温、马斯克起诉 OpenAI 所释放的法律风险信号”的可检索摘要；同步将正文标题日期从 `2026-03-15` 修正为 `2026-03-16`，删除交付式尾句；将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；`CONTENT_SCORECARD.md` 评分 >=20/30。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-16.md` 已完成 description 去占位化、正文日期修正、交付式尾句删除与 CTA 强相关内链替换；`CONTENT_SCORECARD.md` 评分 28/30，达到发布阈值；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过。）
+- Decision (scale / iterate / stop): iterate（继续回补 3 月中旬仍保留旧模板的日报页，并优先排查历史日报中正文日期错位问题，减少内容卫生缺口对 SEO 收益的抵消。）
+
 ### EXP-076
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-15` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、组织效率/办公 AI/开源模型/具身智能/AI 法律风险等主题检索覆盖，并向 OpenClaw 核心指南页导流。
 - Scope: `/en/blog/openclaw-daily-2026-03-15/` + `/zh/blog/openclaw-daily-2026-03-15/`

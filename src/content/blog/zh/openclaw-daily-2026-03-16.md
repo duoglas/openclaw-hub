@@ -1,13 +1,13 @@
 ---
 title: "AI / 科技日报（2026-03-16）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "本期聚焦 Meta 为覆盖 AI 基础设施成本而酝酿裁员、Gemini 深入 Workspace 工作流、英伟达被曝追加开源模型投入、具身智能融资升温，以及马斯克起诉 OpenAI 所释放的 AI 治理与法律风险信号。"
 pubDate: 2026-03-16
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"
 ---
 
-《AI、科技日报》｜2026-03-15（手机简版）
+《AI、科技日报》｜2026-03-16（手机简版）
 
 今日要闻（5条）
 1) Meta被曝计划大规模裁员以对冲AI成本  
@@ -52,19 +52,15 @@ B) 具身智能“世界模型”走向真实任务
 来源：36氪  
 
 今日结论
-- 最值得关注：大型科技公司用AI驱动“组织瘦身+投入加码”的结构性变化。  
-- 给普通用户的建议：优先把AI用进高频办公（文档/表格/PPT/检索），先替代重复性整理。  
+- 最值得关注：大型科技公司正在把 AI 投入压力同步转化为组织重构与产品原生化布局。  
+- 给普通用户的建议：优先把 Gemini/办公 AI 工具嵌入文档、表格、检索等高频流程，先自动化重复整理工作。  
 - 明日跟踪点：  
-  1) Meta裁员计划是否官宣及范围确认  
-  2) Gemini Workspace功能开放范围与价格  
+  1) Meta 裁员计划是否官宣及落地范围  
+  2) Gemini Workspace 新能力的开放范围与价格  
   3) 英伟达开源模型路线图与发布时间  
-
-✅ 日报生成 | 已完成并交付 | 无需你介入
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- [What Is OpenClaw？先了解 OpenClaw 的核心概念与能力边界](/zh/blog/what-is-openclaw/)
+- [OpenClaw VPS 部署完整指南：从云主机到可用 Agent](/zh/blog/openclaw-vps-deployment-complete-guide/)
+- [OpenClaw 模型回退策略：同时控制稳定性、速度与成本](/zh/blog/openclaw-model-fallback-strategy/)
