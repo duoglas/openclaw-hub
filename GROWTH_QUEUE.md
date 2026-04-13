@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-13 19:12
+Last updated: 2026-04-13 19:15
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P2 Candidate C / EXP-081: 强化 2026-03-08 双语 AI/Tech Daily 的搜索摘要与转化内链（description 去占位化 + CTA 升级） | ICE 7x7x8=392 — commit `(this commit)`
+- [x] P2 Candidate C / EXP-081: 强化 2026-03-08 双语 AI/Tech Daily 的搜索摘要与转化内链（description 去占位化 + CTA 升级） | ICE 7x7x8=392 — commit `0646272`
   - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-08` 双语日报页补强可检索摘要、行业动态/问题洞察/可执行建议与强相关 CTA 内链，可提升“AI 芯片出口管制、GitHub 替代、Gemini 端侧助手、MWC AI 出海、中国 AI 应用落地”主题检索覆盖，并向 OpenClaw 核心指南页导流。
   - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description、行业洞察与 3 条强相关内链；`CONTENT_SCORECARD.md` 评分 >=20/30。
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-08/` 与 `/zh/blog/openclaw-daily-2026-03-08/` frontmatter description 去占位化；2) 删除咨询/订阅泛 CTA，替换为 3 条强相关内链；3) 将结论段改为行业动态/问题洞察/可执行建议；4) `CONTENT_SCORECARD.md` 评分 >=20/30；5) `pnpm build` 与 `pnpm check:daily-cta` 通过。
