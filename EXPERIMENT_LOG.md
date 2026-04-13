@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-079
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-13` 双语日报页补强可检索摘要、行业洞察与强相关 CTA 内链，可提升搜索匹配度、基础设施/媒体生产/Agent 平台/机器人融资/微信入口等主题检索覆盖，并向 OpenClaw 核心指南页导流。
+- Scope: `/en/blog/openclaw-daily-2026-03-13/` + `/zh/blog/openclaw-daily-2026-03-13/`
+- Change: 将 EN/ZH `openclaw-daily-2026-03-13` 的 frontmatter description 从同步占位文案升级为覆盖“英伟达拟向 Nebius 投资 20 亿美元扩 AI 云、Canal+ 联合 Google Cloud/OpenAI 把生成式 AI 接入影视生产、Gumloop 5000 万美元融资验证 Agent 工作流需求、中国具身智能融资升温、微信可能成为中国 AI Agent 入口”的可检索摘要；补全“今日结论”为行业动态/问题洞察/可执行建议，并将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description、行业洞察与 3 条强相关内链；`CONTENT_SCORECARD.md` 评分 >=20/30。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-13.md` 已完成 description 去占位化、结论段补全与 CTA 强相关内链替换；`CONTENT_SCORECARD.md` 评分 28/30，达到发布阈值；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过。补充观察：build 仍报告 `openclaw-daily-2026-03-13` duplicate id warning，说明仓内存在历史重复 slug/loader 冲突，需后续专项清理，但不影响本次页面改造验收。）
+- Decision (scale / iterate / stop): iterate（继续回补 `2026-03-11` 等仍保留旧模板的日报页，并单列一次技术卫生任务清理 `2026-03-13` duplicate id warning，避免内容收益被历史索引问题抵消。）
+
 ### EXP-077
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-16` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、组织效率/办公 AI/开源模型/具身智能/AI 法律风险等主题检索覆盖，并向 OpenClaw 核心指南页导流。
 - Scope: `/en/blog/openclaw-daily-2026-03-16/` + `/zh/blog/openclaw-daily-2026-03-16/`

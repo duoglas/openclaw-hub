@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-04-13 17:32
+Last updated: 2026-04-13 18:12
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-04-13 17:32
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-079 — openclaw-daily-2026-03-13
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: 摘要已覆盖英伟达加码 AI 云基础设施、Canal+ 将生成式 AI 接入影视生产、Gumloop 融资验证 Agent 工作流需求、具身智能融资升温与微信潜在 agent 入口；EN/ZH 均补全了行业洞察与可执行建议，并替换为 What Is OpenClaw / VPS guide / model fallback 三条强相关内链。
 
 ### EXP-077 — openclaw-daily-2026-03-16
 - Search intent match: 9/10
