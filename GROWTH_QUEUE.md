@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-13 14:06
+Last updated: 2026-04-13 15:18
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,10 +11,19 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
+- [ ] P1 Candidate A / EXP-074: 强化 2026-03-20 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“AI 基础设施全面升级 + 桌面入口竞争 + 企业收入与算力涨价”主题页的可检索摘要与行动路径 | ICE 8x7x8=448
+  - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-20` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
+  - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
+  - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-20/` 与 `/zh/blog/openclaw-daily-2026-03-20/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 与 `pnpm check:daily-cta` 通过。
 
 ## Doing
 
 ## Done
+- [x] P1 Candidate A / EXP-075: 强化 2026-03-24 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“GTC 基建升级 + Meta 新闻授权 + 中国开源 AI 压力 + Gemini 营销平台化 + RISC-V 芯片信号”主题页的可检索摘要与行动路径 | ICE 8x8x8=512 — commit `44a0972`
+  - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-24` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、主题检索覆盖与站内导流效率。
+  - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
+  - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-24/` 与 `/zh/blog/openclaw-daily-2026-03-24/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 与 `pnpm check:daily-cta` 通过。
+
 - [x] P2 Candidate B / EXP-073: 强化 2026-03-27 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为强相关内链），补齐“中国 Token 调用量放量 + 网页 Agent 开源化”主题页的可检索摘要与行动路径 | ICE 8x7x7=392 — commit `e804557`
   - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-27` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、主题检索覆盖与站内导流效率。
   - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。

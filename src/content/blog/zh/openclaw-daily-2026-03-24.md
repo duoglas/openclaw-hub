@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-24）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "本期聚焦 NVIDIA 在 GTC 2026 强化 AI 基础设施与物理 AI、Meta 把授权新闻接入 Meta AI、美国政策圈将中国开源 AI 视为竞争压力、Google 把 Gemini 深度接入营销 ROI 工作流，以及阿里达摩院 RISC-V 芯片信号带来的端侧与 Agent 算力机会。"
 pubDate: 2026-03-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -67,8 +67,6 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- [What Is OpenClaw？先了解 OpenClaw 的核心概念与能力边界](/zh/blog/what-is-openclaw/)
+- [OpenClaw VPS 部署完整指南：从云主机到可用 Agent](/zh/blog/openclaw-vps-deployment-complete-guide/)
+- [OpenClaw 模型回退策略：同时控制稳定性、速度与成本](/zh/blog/openclaw-model-fallback-strategy/)

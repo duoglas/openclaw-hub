@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-075
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-24` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、主题检索覆盖与站内导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-03-24/` + `/zh/blog/openclaw-daily-2026-03-24/`
+- Change: 将 EN/ZH `openclaw-daily-2026-03-24` 的 frontmatter description 从同步占位文案升级为覆盖“NVIDIA GTC 2026 基础设施与物理 AI、Meta 授权新闻接入 Meta AI、中国开源 AI 竞争压力、Gemini 深入营销 ROI 工作流、阿里 RISC-V 芯片信号”的可检索摘要；将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-24.md` 已完成 description 去占位化与 CTA 强相关内链替换；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过。）
+- Decision (scale / iterate / stop): iterate（继续回补仍残留旧模板的相邻 3 月日报，优先处理 `2026-03-20` 这类仍保留占位摘要与泛 CTA 的高 ICE 候选页，扩大主题检索覆盖与核心指南导流。）
+
 ### EXP-073
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-27` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、主题检索覆盖与站内导流效率。
 - Scope: `/en/blog/openclaw-daily-2026-03-27/` + `/zh/blog/openclaw-daily-2026-03-27/`
