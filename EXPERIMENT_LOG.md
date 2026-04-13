@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-068
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-04-11` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-04-11/` + `/zh/blog/openclaw-daily-2026-04-11/`
+- Change: 将 EN/ZH `openclaw-daily-2026-04-11` 的 frontmatter description 从同步占位文案升级为覆盖 ChatGPT 套餐/回退分层、OpenAI 企业营收占比、Gemma 4、Anthropic Managed Agents 与中国云算力涨价信号的可检索摘要；将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的强相关内链；同步扩展 `scripts/check-daily-cta-variants.sh`，允许“3 条强相关内链”作为新模板通过条件，避免闸门误报。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm build` 通过；`pnpm check:daily-cta` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-11.md` 已完成 description 去占位化与 3 条强相关 CTA 内链替换；`scripts/check-daily-cta-variants.sh` 已支持“CTA 变体注释或 3 条强相关内链”双判定；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过；变更已提交 `c5f2b69`。）
+- Decision (scale / iterate / stop): scale（继续按该模板回补更早日报，并将新闸门作为默认回归保护；后续可加一条周检，专抓 description 仍为同步占位文案的旧日报。）
+
 ### EXP-067
 - Hypothesis: 若在构建产物层对 `robots.txt`、`sitemap.xml`、`sitemap-index.xml` 做一致性校验，并把检查接入 CI，则可在上线前阻断 robots/sitemap 入口漂移、旧域名泄漏与兼容性回归，减少抓取失败和索引延迟风险。
 - Scope: `public/robots.txt`、`scripts/check-robots-sitemap-integrity.sh`、`package.json`、`.github/workflows/content-check.yml`

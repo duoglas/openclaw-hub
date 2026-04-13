@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-12 17:25
+Last updated: 2026-04-13 09:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,11 +11,17 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
+- [ ] (empty)
 
 ## Doing
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate A / EXP-068: 强化 2026-04-11 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消除占位摘要与泛 CTA 回归 | ICE 8x8x8=512 — commit `c5f2b69`
+  - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-04-11` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
+  - Metrics: `pnpm build` 通过；`pnpm check:daily-cta` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
+  - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-11/` 与 `/zh/blog/openclaw-daily-2026-04-11/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 与 `pnpm check:daily-cta` 通过。
+
 - [x] P1 Candidate A / EXP-067: 增加 robots/sitemap 完整性闸门（校验 `robots.txt` 同时声明 `sitemap-index.xml` 与兼容 `sitemap.xml`、禁止非 https/旧域名泄漏），并接入 content-check CI，降低抓取入口回归风险 | ICE 8x8x7=448 — commit `(this commit)`
   - Hypothesis: 若在构建产物层对 `robots.txt`、`sitemap.xml`、`sitemap-index.xml` 做一致性校验，并把检查接入 CI，则可在上线前阻断 robots/sitemap 入口漂移、旧域名泄漏与兼容性回归，减少抓取失败和索引延迟风险。
   - Metrics: `pnpm build` 通过；`pnpm check:robots-sitemap` 通过；CI 新增 robots/sitemap integrity check；`public/robots.txt` 同时声明 `sitemap-index.xml` 与 `sitemap.xml`。

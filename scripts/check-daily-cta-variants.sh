@@ -17,18 +17,22 @@ check_file() {
     return 1
   fi
 
-  if ! grep -Fq "CTA_VARIANT_A" "$file"; then
-    echo "Daily CTA check failed: CTA_VARIANT_A missing in $file"
-    return 1
-  fi
-
-  if ! grep -Fq "CTA_VARIANT_B" "$file"; then
-    echo "Daily CTA check failed: CTA_VARIANT_B missing in $file"
-    return 1
-  fi
-
   if ! grep -Eq "## (Next-Step CTA|下一步行动（CTA）)" "$file"; then
     echo "Daily CTA check failed: CTA heading missing in $file"
+    return 1
+  fi
+
+  if grep -Fq "CTA_VARIANT_A" "$file" && grep -Fq "CTA_VARIANT_B" "$file"; then
+    return 0
+  fi
+
+  local required_links=0
+  grep -Fq "what-is-openclaw" "$file" && required_links=$((required_links + 1))
+  grep -Fq "openclaw-vps-deployment-complete-guide" "$file" && required_links=$((required_links + 1))
+  grep -Fq "openclaw-model-fallback-strategy" "$file" && required_links=$((required_links + 1))
+
+  if [ "$required_links" -lt 3 ]; then
+    echo "Daily CTA check failed: expected CTA variants or 3 strong internal links in $file"
     return 1
   fi
 }
