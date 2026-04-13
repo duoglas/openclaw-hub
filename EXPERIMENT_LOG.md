@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-070
+- Hypothesis: 若在内容检查中自动扫描旧式占位 description 与 CTA 变体残留，可更早阻断历史模板回潮，减少人工抽检成本。
+- Scope: `scripts/check-daily-template-regressions.sh`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 新增双语日报模板回归扫描脚本，针对 EN/ZH `openclaw-daily-*.md` 检测占位 description、旧版 CTA Variant 标记与咨询/订阅泛 CTA 残留；脚本内保留 `rg` 不可用时回退 `grep -RIn`；并将检查接入 `pnpm check:daily-template` 与 content-check CI。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm check:daily-template` 通过；`pnpm build` 通过；CI 出现 Daily template regression check。
+- Result: pass（已新增 `scripts/check-daily-template-regressions.sh` 并接入 `package.json` 与 `.github/workflows/content-check.yml`；本地 `pnpm check:daily-template` 与 `pnpm build` 均通过。）
+- Decision (scale / iterate / stop): scale（保留为默认回归闸门；下一步可继续扩展到正文结论段是否仍含旧模板提示语，进一步减少历史模板残留。）
+
 ### EXP-069
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-29` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
 - Scope: `/en/blog/openclaw-daily-2026-03-29/` + `/zh/blog/openclaw-daily-2026-03-29/`

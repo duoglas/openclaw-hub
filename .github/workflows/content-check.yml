@@ -64,6 +64,9 @@ jobs:
       - name: Daily CTA variant check
         run: pnpm check:daily-cta
 
+      - name: Daily template regression check
+        run: pnpm check:daily-template
+
       - name: Meta description quality check
         run: pnpm check:meta-description
 

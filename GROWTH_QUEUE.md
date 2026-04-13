@@ -11,12 +11,14 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] P2 Candidate B / EXP-070: 为双语日报增加“占位 description / 泛 CTA 残留扫描”脚本并接入 CI，阻断旧模板内容回归 | ICE 7x7x6=294
+
+## Doing
+
+## Done
+- [x] P2 Candidate B / EXP-070: 为双语日报增加“占位 description / 泛 CTA 残留扫描”脚本并接入 CI，阻断旧模板内容回归 | ICE 8x8x7=448 — commit `__COMMIT__`
   - Hypothesis: 若在内容检查中自动扫描旧式占位 description 与 CTA 变体残留，可更早阻断历史模板回潮，减少人工抽检成本。
   - Metrics: 新检查脚本可在本地发现占位文案残留；`pnpm build` 与新增检查通过。
   - Acceptance: 1) 新增扫描脚本；2) package.json/CI 接入；3) 本地检查与 build 通过。
-
-## Doing
 
 ## Done
 - [x] P1 Candidate A / EXP-069: 强化 2026-03-29 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“AI 商业兑现期”主题页的可检索摘要与行动路径 | ICE 8x8x8=512 — commit `46d5d59`
