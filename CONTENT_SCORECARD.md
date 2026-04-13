@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-04-13 18:37
+Last updated: 2026-04-13 19:02
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-04-13 18:37
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-081 — openclaw-daily-2026-03-08
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: 摘要已覆盖美国 AI 芯片出口审批可能全球化、OpenAI 传闻中的 GitHub 替代产品、Google Pixel Drop 推进 Gemini 端侧助手、中国厂商借 MWC 推进 AI 出海与国内讨论从模型发布转向 ROI 落地；EN/ZH 均补全了行业动态、问题洞察与可执行建议，并替换为 What Is OpenClaw / VPS guide / model fallback 三条强相关内链。
 
 ### EXP-080 — openclaw-daily-2026-03-11
 - Search intent match: 9/10

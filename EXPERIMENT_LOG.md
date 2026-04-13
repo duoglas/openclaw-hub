@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-081
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-08` 双语日报页补强可检索摘要、行业动态/问题洞察/可执行建议与强相关 CTA 内链，可提升“AI 芯片出口管制、GitHub 替代、Gemini 端侧助手、MWC AI 出海、中国 AI 应用落地”主题检索覆盖，并向 OpenClaw 核心指南页导流。
+- Scope: `/en/blog/openclaw-daily-2026-03-08/` + `/zh/blog/openclaw-daily-2026-03-08/`
+- Change: 将 EN/ZH `openclaw-daily-2026-03-08` 的 frontmatter description 从同步占位文案升级为覆盖“美国 AI 芯片出口审批可能全球化、OpenAI 传闻中的 GitHub 替代产品、Google Pixel Drop 推进 Gemini 端侧助手、中国厂商借 MWC 推进 AI 出海、国内竞争从模型发布转向 ROI 落地”的可检索摘要；补全“今日结论”为行业动态/问题洞察/可执行建议，并将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description、行业洞察与 3 条强相关内链；`CONTENT_SCORECARD.md` 评分 >=20/30。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-08.md` 已完成 description 去占位化、结论段补全与 CTA 强相关内链替换；`CONTENT_SCORECARD.md` 评分 28/30，达到发布阈值；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过。）
+- Decision (scale / iterate / stop): iterate（继续处理 `EXP-082`，清理 `openclaw-daily-2026-03-11` duplicate id/source 历史冲突，避免内容收益被索引卫生问题抵消。）
+
 ### EXP-080
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-11` 双语日报页补强可检索摘要、行业洞察与强相关 CTA 内链，可提升搜索匹配度、模型升级/长期记忆/算力合作/微软生态绑定/中国 Agent 评测转向等主题检索覆盖，并向 OpenClaw 核心指南页导流。
 - Scope: `/en/blog/openclaw-daily-2026-03-11/` + `/zh/blog/openclaw-daily-2026-03-11/`
