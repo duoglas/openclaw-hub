@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-071
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-18` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-03-18/` + `/zh/blog/openclaw-daily-2026-03-18/`
+- Change: 将 EN/ZH `openclaw-daily-2026-03-18` 的 frontmatter description 从同步占位文案升级为覆盖 Nvidia GTC 2026、推理型基础设施、机器人落地、中国模型调用量领先与合规工作流优先级的可检索摘要；将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-18.md` 已完成 description 去占位化与 CTA 强相关内链替换；仓内检索未发现该目标页残留占位摘要或 CTA Variant 文案；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过。）
+- Decision (scale / iterate / stop): iterate（继续回补仍保留旧模板的 3 月下旬日报，并优先处理“推理/机器人/合规”主题能否导流到 OpenClaw 部署与模型回退指南的相邻日期页。）
+
 ### EXP-070
 - Hypothesis: 若在内容检查中自动扫描旧式占位 description 与 CTA 变体残留，可更早阻断历史模板回潮，减少人工抽检成本。
 - Scope: `scripts/check-daily-template-regressions.sh`、`package.json`、`.github/workflows/content-check.yml`

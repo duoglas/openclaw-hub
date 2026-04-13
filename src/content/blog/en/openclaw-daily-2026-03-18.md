@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-18)"
-description: "Synced with the daily Telegram AI/tech brief."
+description: "March 18 AI brief: Nvidia GTC 2026 shifts the market toward inference-first infrastructure, robotics deployment, China model usage stays ahead in OpenRouter traffic, and builders need compliance-ready AI workflows instead of generic model chasing."
 pubDate: 2026-03-18
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -56,8 +56,6 @@ B) 合规运营案例：上海备案+AI 内容标识（火龙果频道，待确�
 
 ## Next-Step CTA
 
-<!-- CTA_VARIANT_A -->
-- **Variant A (Consultation conversion):** Want to apply this to your team or project? Book a 30-minute diagnostic and get an implementation checklist.
-
-<!-- CTA_VARIANT_B -->
-- **Variant B (Subscription conversion):** Want continuous signal tracking? Subscribe to the daily RSS for actionable updates.
+- Start with the product baseline: [What Is OpenClaw?](/en/blog/what-is-openclaw/)
+- If you need a production setup path: [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/)
+- If compute cost and inference reliability matter: [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
