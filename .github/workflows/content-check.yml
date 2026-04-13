@@ -79,6 +79,9 @@ jobs:
       - name: RSS autodiscovery check
         run: pnpm check:rss-autodiscovery
 
+      - name: Robots/sitemap integrity check
+        run: pnpm check:robots-sitemap
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 

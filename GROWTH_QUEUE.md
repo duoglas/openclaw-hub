@@ -16,6 +16,11 @@ Manager: main session
 - [ ] (empty)
 
 ## Done
+- [x] P1 Candidate A / EXP-067: 增加 robots/sitemap 完整性闸门（校验 `robots.txt` 同时声明 `sitemap-index.xml` 与兼容 `sitemap.xml`、禁止非 https/旧域名泄漏），并接入 content-check CI，降低抓取入口回归风险 | ICE 8x8x7=448 — commit `(this commit)`
+  - Hypothesis: 若在构建产物层对 `robots.txt`、`sitemap.xml`、`sitemap-index.xml` 做一致性校验，并把检查接入 CI，则可在上线前阻断 robots/sitemap 入口漂移、旧域名泄漏与兼容性回归，减少抓取失败和索引延迟风险。
+  - Metrics: `pnpm build` 通过；`pnpm check:robots-sitemap` 通过；CI 新增 robots/sitemap integrity check；`public/robots.txt` 同时声明 `sitemap-index.xml` 与 `sitemap.xml`。
+  - Acceptance: 1) 新增 robots/sitemap 校验脚本；2) package.json 与 content-check workflow 接入；3) `public/robots.txt` 同时声明两个 sitemap 入口；4) `pnpm build` 与 `pnpm check:robots-sitemap` 通过。
+
 - [x] P1 Candidate A / EXP-066: 将最近24小时内容建设实验沉淀为 `publish-daily.sh` 默认模板规则（自动生成可检索摘要 + 强相关 CTA 内链），阻断占位 description/泛 CTA 回归 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 若把 EXP-058~EXP-065 连续验证有效的“description 去占位化 + 3 条强相关内链 CTA”固化到日报发布脚本，则后续双语日报可默认具备搜索摘要质量与导流能力，减少人工返工并提高执行一致性。
   - Metrics: `pnpm build` 通过；`scripts/publish-daily.sh` 不再写入占位 description 与咨询/订阅泛 CTA；脚本输出默认包含 OpenClaw 核心指南/部署/模型回退 3 条强相关内链。

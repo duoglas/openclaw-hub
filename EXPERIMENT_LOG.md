@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-067
+- Hypothesis: 若在构建产物层对 `robots.txt`、`sitemap.xml`、`sitemap-index.xml` 做一致性校验，并把检查接入 CI，则可在上线前阻断 robots/sitemap 入口漂移、旧域名泄漏与兼容性回归，减少抓取失败和索引延迟风险。
+- Scope: `public/robots.txt`、`scripts/check-robots-sitemap-integrity.sh`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 新增 robots/sitemap integrity gate，校验 `robots.txt` 含 `User-agent: *`、`Allow: /`、`sitemap-index.xml` 与兼容 `sitemap.xml` 双入口，拦截 `openhub.plzbite.top` 与 `http://kuoo.uk`；同时校验 `dist/sitemap.xml` 指向 `sitemap-index.xml`、`dist/sitemap-index.xml` 至少包含一个 `kuoo.uk` `<loc>`；并接入 content-check CI。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm build` 通过；`pnpm check:robots-sitemap` 通过；CI 出现 robots/sitemap integrity check。
+- Result: pass（`public/robots.txt` 已补充双 sitemap 入口，新增 `scripts/check-robots-sitemap-integrity.sh`，`package.json` 与 `content-check.yml` 已接入；本地 `pnpm build` 与 `pnpm check:robots-sitemap` 均通过。）
+- Decision (scale / iterate / stop): scale（作为 crawl/index hygiene 默认闸门保留；后续若 sitemap 分片增多，再扩展校验 index 内部 child sitemap 数量与 lastmod 一致性。）
+
 ### EXP-066
 - Hypothesis: 若把最近24小时内容建设任务连续验证有效的“description 去占位化 + 3 条强相关 CTA 内链”固化到 `publish-daily.sh`，则后续双语日报可默认具备搜索摘要质量与核心指南导流能力，减少人工返工与回归风险。
 - Scope: `scripts/publish-daily.sh`（影响后续 EN/ZH daily posts 生成）。
