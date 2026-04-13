@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-078
+- Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-14` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、GTC/模型平台/合规主题检索覆盖与向 OpenClaw 核心指南页导流效率。
+- Scope: `/en/blog/openclaw-daily-2026-03-14/` + `/zh/blog/openclaw-daily-2026-03-14/`
+- Change: 将 EN/ZH `openclaw-daily-2026-03-14` 的 frontmatter description 从同步占位文案升级为覆盖“NVIDIA GTC 2026 会前预热、阿里云百炼模型更新、中国拟人化互动服务监管、百度文心 5.0 上线、ChatGPT 版本快速更替”的可检索摘要；删除正文中的对话式尾句；将 CTA 从咨询/订阅泛文案替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-13
+- End date: 2026-04-13
+- Success metric: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-14.md` 已完成 description 去占位化、对话式尾句删除与 CTA 强相关内链替换；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过。补充观察：build 仍存在历史 `2026-03-14` duplicate id 警告，说明仓内可能有同 slug 旧文件需后续专项清理，但不影响本次页面改造验收。）
+- Decision (scale / iterate / stop): iterate（继续回补 3 月中旬仍残留旧模板的日报页，优先处理 `2026-03-15`、`2026-03-16`，并排入一次历史重复 slug 清理任务，减少 build warning 对内容卫生信号的干扰。）
+
 ### EXP-074
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-20` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
 - Scope: `/en/blog/openclaw-daily-2026-03-20/` + `/zh/blog/openclaw-daily-2026-03-20/`

@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-14)"
-description: "Synced with the daily Telegram AI/tech brief."
+description: "Ahead of NVIDIA GTC 2026, the March 14 brief tracked rising focus on AI infrastructure, Alibaba Cloud Bailian model updates, China's draft rules for anthropomorphic AI services, Baidu's Wenxin 5.0 launch, and rapid ChatGPT version changes that could disrupt enterprise workflows."
 pubDate: 2026-03-14
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -52,12 +52,8 @@ lang: "en"
 - 给普通用户建议：关注“模型版本变动”与“工具兼容性”，重要工作流预留替代方案  
 - 明日跟踪点：GTC 主题演讲预告/日程公布、国内模型平台更新清单变化
 
-需要我补充英文快报或加入链接版吗？
-
 ## Next-Step CTA
 
-<!-- CTA_VARIANT_A -->
-- **Variant A (Consultation conversion):** Want to apply this to your team or project? Book a 30-minute diagnostic and get an implementation checklist.
-
-<!-- CTA_VARIANT_B -->
-- **Variant B (Subscription conversion):** Want continuous signal tracking? Subscribe to the daily RSS for actionable updates.
+- [What Is OpenClaw? Core concepts, architecture, and use cases](/en/blog/what-is-openclaw/)
+- [OpenClaw VPS deployment complete guide](/en/blog/openclaw-vps-deployment-complete-guide/)
+- [OpenClaw model fallback strategy for reliability and cost control](/en/blog/openclaw-model-fallback-strategy/)

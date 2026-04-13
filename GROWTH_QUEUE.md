@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-13 16:06
+Last updated: 2026-04-13 16:43
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,10 +11,17 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
+- [ ] P2 Candidate B / EXP-076: 强化 2026-03-15 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“Meta AI 成本驱动组织收缩 + Gemini 深入 Workspace + 英伟达开源模型 + 具身智能融资 + OpenAI 法律风险”主题页的可检索摘要与行动路径 | ICE 7x8x8=448
+- [ ] P2 Candidate C / EXP-077: 强化 2026-03-16 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“Meta 裁员传闻 + Gemini 深入 Workspace + 英伟达开源模型投入 + 具身智能融资 + OpenAI 诉讼风险”主题页的可检索摘要与行动路径 | ICE 7x8x8=448
 
 ## Doing
 
 ## Done
+- [x] P1 Candidate A / EXP-078: 强化 2026-03-14 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“GTC 2026 会前预热 + 阿里云百炼模型更新 + 中国拟人化互动服务监管 + 百度文心 5.0 + ChatGPT 版本更替”主题页的可检索摘要与行动路径 | ICE 8x8x8=512 — commit `TBD`
+  - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-14` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、GTC/模型平台/合规主题检索覆盖与向 OpenClaw 核心指南页导流效率。
+  - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 且 CTA 替换为 3 条强相关内链。
+  - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-14/` 与 `/zh/blog/openclaw-daily-2026-03-14/` frontmatter description 去占位化；2) 删除正文中的对话式尾句；3) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；4) `pnpm build` 与 `pnpm check:daily-cta` 通过。
+
 - [x] P1 Candidate A / EXP-074: 强化 2026-03-20 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“AI 基础设施全面升级 + 桌面入口竞争 + 企业收入与算力涨价”主题页的可检索摘要与行动路径 | ICE 8x7x8=448 — commit `bce980c`
   - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-20` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
   - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
