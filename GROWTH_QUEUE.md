@@ -15,7 +15,7 @@ Manager: main session
 ## Doing
 
 ## Done
-- [x] P2 Candidate C / EXP-077: 强化 2026-03-16 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“Meta 裁员传闻 + Gemini 深入 Workspace + 英伟达开源模型投入 + 具身智能融资 + OpenAI 诉讼风险”主题页的可检索摘要与行动路径 | ICE 7x8x8=448 — commit `d1581c7`
+- [x] P2 Candidate C / EXP-077: 强化 2026-03-16 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“Meta 裁员传闻 + Gemini 深入 Workspace + 英伟达开源模型投入 + 具身智能融资 + OpenAI 诉讼风险”主题页的可检索摘要与行动路径 | ICE 7x8x8=448 — commit `4ce3ac3`
   - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-16` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、组织效率/办公 AI/开源模型/具身智能/AI 法律风险等主题检索覆盖，并向 OpenClaw 核心指南页导流。
   - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description 且 CTA 替换为 3 条强相关内链。
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-16/` 与 `/zh/blog/openclaw-daily-2026-03-16/` frontmatter description 去占位化；2) 删除正文中的交付式尾句；3) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；4) `CONTENT_SCORECARD.md` 评分 >=20/30；5) `pnpm build` 与 `pnpm check:daily-cta` 通过。
