@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-15)"
-description: "Synced with the daily Telegram AI/tech brief."
+description: "The March 15 AI & Tech Daily brief tracks Meta's AI-cost-driven restructuring pressure, Google's deeper Gemini rollout across Workspace, NVIDIA's reported multiyear open-model investment, embodied AI startup financing momentum, and the legal-risk signals emerging from Elon Musk's OpenAI lawsuit."
 pubDate: 2026-03-15
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -59,12 +59,8 @@ B) 具身智能“世界模型”走向真实任务
   2) Gemini Workspace功能开放范围与价格  
   3) 英伟达开源模型路线图与发布时间  
 
-✅ 日报生成 | 已完成并交付 | 无需你介入
-
 ## Next-Step CTA
 
-<!-- CTA_VARIANT_A -->
-- **Variant A (Consultation conversion):** Want to apply this to your team or project? Book a 30-minute diagnostic and get an implementation checklist.
-
-<!-- CTA_VARIANT_B -->
-- **Variant B (Subscription conversion):** Want continuous signal tracking? Subscribe to the daily RSS for actionable updates.
+- [What Is OpenClaw? Core concepts, architecture, and use cases](/en/blog/what-is-openclaw/)
+- [OpenClaw VPS deployment complete guide](/en/blog/openclaw-vps-deployment-complete-guide/)
+- [OpenClaw model fallback strategy for reliability and cost control](/en/blog/openclaw-model-fallback-strategy/)
