@@ -19,7 +19,7 @@ Manager: main session
 ## Doing
 
 ## Done
-- [x] P1 Candidate A / EXP-069: 强化 2026-03-29 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“AI 商业兑现期”主题页的可检索摘要与行动路径 | ICE 8x8x8=512 — commit `(pending)`
+- [x] P1 Candidate A / EXP-069: 强化 2026-03-29 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），补齐“AI 商业兑现期”主题页的可检索摘要与行动路径 | ICE 8x8x8=512 — commit `46d5d59`
   - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-29` 双语日报页补强可检索摘要与强相关 CTA 内链，可提升搜索匹配度、站内继续阅读率与向核心指南页导流效率。
   - Metrics: `pnpm build` 通过；`pnpm check:daily-cta` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-29/` 与 `/zh/blog/openclaw-daily-2026-03-29/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 与 `pnpm check:daily-cta` 通过。
