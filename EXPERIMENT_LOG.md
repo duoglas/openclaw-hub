@@ -22,7 +22,7 @@
 - Start date: 2026-04-13
 - End date: 2026-04-13
 - Success metric: `pnpm build` 通过；`pnpm check:daily-cta` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-11.md` 已完成 description 去占位化与 3 条强相关 CTA 内链替换；`scripts/check-daily-cta-variants.sh` 已支持“CTA 变体注释或 3 条强相关内链”双判定；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过；变更已提交 `c5f2b69`。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-11.md` 已完成 description 去占位化与 3 条强相关 CTA 内链替换；`scripts/check-daily-cta-variants.sh` 已支持“CTA 变体注释或 3 条强相关内链”双判定；本地 `pnpm check:daily-cta` 与 `pnpm build` 均通过；变更已提交 `fd10022`。）
 - Decision (scale / iterate / stop): scale（继续按该模板回补更早日报，并将新闸门作为默认回归保护；后续可加一条周检，专抓 description 仍为同步占位文案的旧日报。）
 
 ### EXP-067
