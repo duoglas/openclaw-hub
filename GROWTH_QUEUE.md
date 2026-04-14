@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-082: 清理 `openclaw-daily-2026-03-11` 历史 duplicate id/source 冲突，增加专项完整性闸门并接入 CI，锁定路由与 RSS 唯一性 | ICE 8x6x5=240 — commit `{{COMMIT_HASH}}`
+- [x] P1 Candidate A / EXP-082: 清理 `openclaw-daily-2026-03-11` 历史 duplicate id/source 冲突，增加专项完整性闸门并接入 CI，锁定路由与 RSS 唯一性 | ICE 8x6x5=240 — commit `32a721c`
   - Hypothesis: 若为 `openclaw-daily-2026-03-11` 增加“源文件唯一性 + 构建路由存在性 + RSS 唯一项”专项闸门并接入 CI，可提前阻断历史重复 source/slug 引发的索引卫生回归，避免内容收益被隐性冲突抵消。
   - Metrics: `pnpm check:daily-0311` 通过；`pnpm build` 通过；CI 新增 Daily 2026-03-11 duplicate/source integrity check；EN/ZH route 与 RSS 各存在且唯一。
   - Acceptance: 1) 新增 `scripts/check-daily-0311-integrity.sh`；2) `package.json` 增加 `check:daily-0311`；3) `.github/workflows/content-check.yml` 接入该检查；4) 本地 `pnpm check:daily-0311 && pnpm build` 通过。
