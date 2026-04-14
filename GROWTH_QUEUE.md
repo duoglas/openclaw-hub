@@ -11,12 +11,16 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
-- [ ] P1 Candidate A / EXP-082: 清理 `openclaw-daily-2026-03-11` 历史 duplicate id/source 冲突，消除构建 warning 并恢复内容索引卫生 | ICE 8x6x5=240
+- [ ] N/A
 
 ## Doing
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-082: 清理 `openclaw-daily-2026-03-11` 历史 duplicate id/source 冲突，增加专项完整性闸门并接入 CI，锁定路由与 RSS 唯一性 | ICE 8x6x5=240 — commit `{{COMMIT_HASH}}`
+  - Hypothesis: 若为 `openclaw-daily-2026-03-11` 增加“源文件唯一性 + 构建路由存在性 + RSS 唯一项”专项闸门并接入 CI，可提前阻断历史重复 source/slug 引发的索引卫生回归，避免内容收益被隐性冲突抵消。
+  - Metrics: `pnpm check:daily-0311` 通过；`pnpm build` 通过；CI 新增 Daily 2026-03-11 duplicate/source integrity check；EN/ZH route 与 RSS 各存在且唯一。
+  - Acceptance: 1) 新增 `scripts/check-daily-0311-integrity.sh`；2) `package.json` 增加 `check:daily-0311`；3) `.github/workflows/content-check.yml` 接入该检查；4) 本地 `pnpm check:daily-0311 && pnpm build` 通过。
 - [x] P2 Candidate C / EXP-081: 强化 2026-03-08 双语 AI/Tech Daily 的搜索摘要与转化内链（description 去占位化 + CTA 升级） | ICE 7x7x8=392 — commit `0646272`
   - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-08` 双语日报页补强可检索摘要、行业动态/问题洞察/可执行建议与强相关 CTA 内链，可提升“AI 芯片出口管制、GitHub 替代、Gemini 端侧助手、MWC AI 出海、中国 AI 应用落地”主题检索覆盖，并向 OpenClaw 核心指南页导流。
   - Metrics: `pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页均含具体 description、行业洞察与 3 条强相关内链；`CONTENT_SCORECARD.md` 评分 >=20/30。
