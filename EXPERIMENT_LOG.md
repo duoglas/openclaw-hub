@@ -22,7 +22,7 @@
 - Start date: 2026-04-14
 - End date: 2026-04-14
 - Success metric: `pnpm check:daily-heading-date` 通过；`pnpm build` 通过；CI 出现 Daily heading date consistency check；目标四个页面正文日期与 `pubDate` 对齐。
-- Result: pass（新增 `scripts/check-daily-heading-date-consistency.sh` 并接入 `package.json` 与 `.github/workflows/content-check.yml`；本地 `pnpm check:daily-heading-date` 与 `pnpm build` 均通过；`2026-03-08`、`2026-04-14` EN/ZH 正文日期已与 `pubDate` 对齐。）
+- Result: pass（新增 `scripts/check-daily-heading-date-consistency.sh` 并接入 `package.json` 与 `.github/workflows/content-check.yml`；本地 `pnpm check:daily-heading-date` 与 `pnpm build` 均通过；`2026-03-08`、`2026-04-14` EN/ZH 正文日期已与 `pubDate` 对齐；commit `8b209ba` 已推送至 `origin/growth-sync-queue`。）
 - Decision (scale / iterate / stop): scale（保留为默认内容卫生闸门；后续可扩展为“正文星期与日期一致性”校验，进一步减少模板回归。）
 
 ### EXP-082
