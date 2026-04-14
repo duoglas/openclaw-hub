@@ -88,6 +88,9 @@ jobs:
       - name: Daily 2026-03-11 duplicate/source integrity check
         run: pnpm check:daily-0311
 
+      - name: Daily heading date consistency check
+        run: pnpm check:daily-heading-date
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 

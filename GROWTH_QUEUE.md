@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-13 19:15
+Last updated: 2026-04-14 17:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-083: 为双语日报新增“正文抬头日期与 frontmatter pubDate 一致性”闸门并接入 CI，修复近期日期错位页（2026-04-14 与 2026-03-08）以阻断发布日期回归风险 | ICE 9x7x8=504 — commit `(pending)`
+  - Hypothesis: 若在 `openclaw-daily-*.md` 增加“正文抬头日期=pubDate”自动校验并纳入 CI，可在发布前拦截日期错位，减少搜索摘要与页面时效信号冲突，提升索引与读者信任稳定性。
+  - Metrics: `pnpm check:daily-heading-date` 通过；`pnpm build` 通过；CI 新增 Daily heading date consistency check；`2026-03-08` 与 `2026-04-14` EN/ZH 正文日期与 `pubDate` 全部对齐。
+  - Acceptance: 1) 新增 `scripts/check-daily-heading-date-consistency.sh`；2) `package.json` 增加 `check:daily-heading-date`；3) `.github/workflows/content-check.yml` 接入该检查；4) 修复 EN/ZH `openclaw-daily-2026-03-08` 与 `openclaw-daily-2026-04-14` 正文日期；5) 本地 `pnpm check:daily-heading-date && pnpm build` 通过。
 - [x] P1 Candidate A / EXP-082: 清理 `openclaw-daily-2026-03-11` 历史 duplicate id/source 冲突，增加专项完整性闸门并接入 CI，锁定路由与 RSS 唯一性 | ICE 8x6x5=240 — commit `32a721c`
   - Hypothesis: 若为 `openclaw-daily-2026-03-11` 增加“源文件唯一性 + 构建路由存在性 + RSS 唯一项”专项闸门并接入 CI，可提前阻断历史重复 source/slug 引发的索引卫生回归，避免内容收益被隐性冲突抵消。
   - Metrics: `pnpm check:daily-0311` 通过；`pnpm build` 通过；CI 新增 Daily 2026-03-11 duplicate/source integrity check；EN/ZH route 与 RSS 各存在且唯一。

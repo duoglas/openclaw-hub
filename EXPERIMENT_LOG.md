@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-083
+- Hypothesis: 若在 `openclaw-daily-*.md` 增加“正文抬头日期=pubDate”自动校验并纳入 CI，可在发布前拦截日期错位，减少搜索摘要与页面时效信号冲突，提升索引与读者信任稳定性。
+- Scope: `scripts/check-daily-heading-date-consistency.sh`、`package.json`、`.github/workflows/content-check.yml`、`/en|zh/blog/openclaw-daily-2026-03-08/`、`/en|zh/blog/openclaw-daily-2026-04-14/`
+- Change: 新增 `check-daily-heading-date-consistency.sh`，逐文件校验 `openclaw-daily-*.md` 的正文抬头 `《AI、科技日报》｜YYYY-MM-DD` 是否与 frontmatter `pubDate` 一致；将检查接入 `pnpm check:daily-heading-date` 与 content-check CI；同步修复 EN/ZH `openclaw-daily-2026-03-08`（03-07→03-08）与 `openclaw-daily-2026-04-14`（04-12→04-14）正文日期错位。
+- Start date: 2026-04-14
+- End date: 2026-04-14
+- Success metric: `pnpm check:daily-heading-date` 通过；`pnpm build` 通过；CI 出现 Daily heading date consistency check；目标四个页面正文日期与 `pubDate` 对齐。
+- Result: pass（新增 `scripts/check-daily-heading-date-consistency.sh` 并接入 `package.json` 与 `.github/workflows/content-check.yml`；本地 `pnpm check:daily-heading-date` 与 `pnpm build` 均通过；`2026-03-08`、`2026-04-14` EN/ZH 正文日期已与 `pubDate` 对齐。）
+- Decision (scale / iterate / stop): scale（保留为默认内容卫生闸门；后续可扩展为“正文星期与日期一致性”校验，进一步减少模板回归。）
+
 ### EXP-082
 - Hypothesis: 若为 `openclaw-daily-2026-03-11` 增加“源文件唯一性 + 构建路由存在性 + RSS 唯一项”专项闸门并接入 CI，可提前阻断历史重复 source/slug 引发的索引卫生回归，避免内容收益被隐性冲突抵消。
 - Scope: `scripts/check-daily-0311-integrity.sh`、`package.json`、`.github/workflows/content-check.yml`
