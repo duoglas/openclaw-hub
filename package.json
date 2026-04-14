@@ -31,7 +31,8 @@
     "check:social-image-absolute": "bash scripts/check-social-image-absolute.sh",
     "check:website-schema": "bash scripts/check-website-schema-integrity.sh",
     "check:tag-case": "bash scripts/check-tag-case-collision.sh",
-    "check:robots-sitemap": "bash scripts/check-robots-sitemap-integrity.sh"
+    "check:robots-sitemap": "bash scripts/check-robots-sitemap-integrity.sh",
+    "check:daily-0311": "bash scripts/check-daily-0311-integrity.sh"
   },
   "keywords": [],
   "author": "",

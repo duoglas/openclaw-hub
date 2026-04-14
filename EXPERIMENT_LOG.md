@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-082
+- Hypothesis: 若为 `openclaw-daily-2026-03-11` 增加“源文件唯一性 + 构建路由存在性 + RSS 唯一项”专项闸门并接入 CI，可提前阻断历史重复 source/slug 引发的索引卫生回归，避免内容收益被隐性冲突抵消。
+- Scope: `scripts/check-daily-0311-integrity.sh`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 新增 `check-daily-0311-integrity.sh`，校验 EN/ZH 仅存在 `openclaw-daily-2026-03-11.md` 两个源文件、无同日命名冲突、`dist/en|zh/blog/openclaw-daily-2026-03-11/index.html` 路由存在、`dist/en|zh/daily/rss.xml` 各仅包含一条目标链接；并将检查接入 `pnpm check:daily-0311` 与 content-check CI。
+- Start date: 2026-04-14
+- End date: 2026-04-14
+- Success metric: `pnpm check:daily-0311` 通过；`pnpm build` 通过；CI 出现 Daily 2026-03-11 duplicate/source integrity check。
+- Result: pass（已新增 `scripts/check-daily-0311-integrity.sh` 并接入 `package.json` 与 `.github/workflows/content-check.yml`；本地 `pnpm check:daily-0311 && pnpm build` 通过，验证 EN/ZH 路由与 RSS 目标项均唯一存在。）
+- Decision (scale / iterate / stop): iterate（将同类“历史高风险日报 slug”纳入按需专项闸门清单；下一步可泛化为参数化脚本，按日期批量验证 source/route/rss 唯一性。）
+
 ### EXP-081
 - Hypothesis: 对仍保留占位摘要与泛 CTA 的 `2026-03-08` 双语日报页补强可检索摘要、行业动态/问题洞察/可执行建议与强相关 CTA 内链，可提升“AI 芯片出口管制、GitHub 替代、Gemini 端侧助手、MWC AI 出海、中国 AI 应用落地”主题检索覆盖，并向 OpenClaw 核心指南页导流。
 - Scope: `/en/blog/openclaw-daily-2026-03-08/` + `/zh/blog/openclaw-daily-2026-03-08/`

@@ -85,6 +85,9 @@ jobs:
       - name: Robots/sitemap integrity check
         run: pnpm check:robots-sitemap
 
+      - name: Daily 2026-03-11 duplicate/source integrity check
+        run: pnpm check:daily-0311
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 
