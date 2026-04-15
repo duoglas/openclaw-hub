@@ -22,7 +22,7 @@
 - Start date: 2026-04-15
 - End date: 2026-04-15
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页无占位摘要/CTA_VARIANT 残留且正文日期一致。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-05.md` 已完成 description 去占位化、CTA 变体残留清理与正文日期修正；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-05.md` 已完成 description 去占位化、CTA 变体残留清理与正文日期修正；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `fc68f95` 已推送至 `origin/growth-sync-queue`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设任务相关假设，沿用 daily-template + heading-date + daily-cta 三闸门追踪后续新增日报，阻断占位摘要/CTA 残留回归。）
 
 ### EXP-084
