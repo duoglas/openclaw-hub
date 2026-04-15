@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-15 11:25
+Last updated: 2026-04-15 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-085: 回补 2026-04-05 EN 占位 description 与残留 CTA_VARIANT_B，并修正 ZH 正文抬头日期（2026-04-04→2026-04-05）以恢复模板与日期一致性，优先消费最近24小时内容建设延续假设 | ICE 8x7x8=448 — commit `(this commit)`
+  - Hypothesis: 对仍残留占位 description/旧 CTA 变体且存在正文日期错位的双语日报页执行一次性回补，可提升搜索摘要可检索性、恢复 CTA 导流一致性，并避免日更模板回归抵消内容增长收益。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-05/` 不再含占位摘要/CTA_VARIANT 残留且正文日期与 `pubDate` 对齐。
+  - Acceptance: 1) EN `openclaw-daily-2026-04-05.md` description 去占位化；2) 移除 EN 目标页 `CTA_VARIANT_B` 残留并保留 3 条强相关 CTA 内链；3) ZH 目标页正文抬头日期改为 `2026-04-05` 并与 `pubDate` 对齐；4) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-084: 回补 2026-04-10 双语日报残留占位摘要与泛 CTA（description 去占位化 + 正文日期与 pubDate 对齐 + CTA 升级为强相关内链），消费最近24小时内容建设实验假设并完成二次验证闭环 | ICE 8x7x8=448 — commit `(this commit)`
   - Hypothesis: 对仍残留占位 description、正文日期错位与泛 CTA 的双语日报页进行二次回补，可恢复搜索摘要信号一致性并提升向核心指南页导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-10/` description 去占位化、正文日期与 `pubDate` 对齐、CTA 为 3 条强相关内链。
