@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-14 17:25
+Last updated: 2026-04-15 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-084: 回补 2026-04-10 双语日报残留占位摘要与泛 CTA（description 去占位化 + 正文日期与 pubDate 对齐 + CTA 升级为强相关内链），消费最近24小时内容建设实验假设并完成二次验证闭环 | ICE 8x7x8=448 — commit `(this commit)`
+  - Hypothesis: 对仍残留占位 description、正文日期错位与泛 CTA 的双语日报页进行二次回补，可恢复搜索摘要信号一致性并提升向核心指南页导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-10/` description 去占位化、正文日期与 `pubDate` 对齐、CTA 为 3 条强相关内链。
+  - Acceptance: 1) 更新 EN/ZH `openclaw-daily-2026-04-10.md` description；2) 修正正文日期为 2026-04-10；3) 移除 CTA_VARIANT_A/B 泛 CTA，替换为 3 条强相关内链；4) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-083: 为双语日报新增“正文抬头日期与 frontmatter pubDate 一致性”闸门并接入 CI，修复近期日期错位页（2026-04-14 与 2026-03-08）以阻断发布日期回归风险 | ICE 9x7x8=504 — commit `8b209ba`
   - Hypothesis: 若在 `openclaw-daily-*.md` 增加“正文抬头日期=pubDate”自动校验并纳入 CI，可在发布前拦截日期错位，减少搜索摘要与页面时效信号冲突，提升索引与读者信任稳定性。
   - Metrics: `pnpm check:daily-heading-date` 通过；`pnpm build` 通过；CI 新增 Daily heading date consistency check；`2026-03-08` 与 `2026-04-14` EN/ZH 正文日期与 `pubDate` 全部对齐。
