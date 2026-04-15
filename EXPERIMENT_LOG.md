@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-084
+- Hypothesis: 对仍残留占位 description、正文日期错位与泛 CTA 的 `2026-04-10` 双语日报页进行二次回补，可恢复搜索摘要信号一致性并提升向核心指南页导流质量。
+- Scope: `/en/blog/openclaw-daily-2026-04-10/` + `/zh/blog/openclaw-daily-2026-04-10/`
+- Change: 将 EN `openclaw-daily-2026-04-10` description 从占位文案升级为覆盖 OpenAI-Microsoft 条款重谈、Gemini 融合、行业落地、算力供给与监管版权压力的可检索摘要；将 ZH description 升级为对应中文可检索摘要；将 EN/ZH 正文日期从 `2026-04-06` 修正为 `2026-04-10` 并与 `pubDate` 对齐；移除 CTA_VARIANT A/B 泛 CTA，统一替换为指向 `what-is-openclaw`、`openclaw-vps-deployment-complete-guide`、`openclaw-model-fallback-strategy` 的 3 条强相关内链。
+- Start date: 2026-04-15
+- End date: 2026-04-15
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm build` 通过；EN/ZH 目标页 description 去占位化、正文日期与 `pubDate` 对齐、CTA 为 3 条强相关内链。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-10.md` 已完成 description 去占位化、正文日期修正与 CTA 强相关内链替换；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date` 与 `pnpm build` 全部通过。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设任务产生的日报假设；下一步优先回补 `2026-04-05` EN 残留占位 description，并维持 daily-template + heading-date 双闸门防回归。）
+
 ### EXP-083
 - Hypothesis: 若在 `openclaw-daily-*.md` 增加“正文抬头日期=pubDate”自动校验并纳入 CI，可在发布前拦截日期错位，减少搜索摘要与页面时效信号冲突，提升索引与读者信任稳定性。
 - Scope: `scripts/check-daily-heading-date-consistency.sh`、`package.json`、`.github/workflows/content-check.yml`、`/en|zh/blog/openclaw-daily-2026-03-08/`、`/en|zh/blog/openclaw-daily-2026-04-14/`

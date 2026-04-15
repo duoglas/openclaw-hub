@@ -9,6 +9,14 @@ Last updated: 2026-04-13 19:02
 
 ## Entries
 
+### EXP-084 — openclaw-daily-2026-04-10
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: EN/ZH `openclaw-daily-2026-04-10` 已完成 description 去占位化、正文日期修正（2026-04-10，与 `pubDate` 对齐）与 CTA 强相关内链替换（What Is OpenClaw / VPS guide / model fallback）；`pnpm check:daily-template`、`pnpm check:daily-heading-date` 与 `pnpm build` 均通过。
+
 ### EXP-081 — openclaw-daily-2026-03-08
 - Search intent match: 9/10
 - Summary specificity: 9/10

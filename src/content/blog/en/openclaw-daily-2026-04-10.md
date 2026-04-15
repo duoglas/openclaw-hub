@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-10)"
-description: "Synced with the daily Telegram AI/tech brief."
+description: "April 10 AI brief: OpenAI–Microsoft partnership terms face renewed scrutiny, Gemini keeps expanding across Search and Workspace, China enterprise AI shifts from pilots to ROI-led deployment, compute supply remains the core bottleneck, and regulation-plus-copyright pressure keeps rising."
 pubDate: 2026-04-10
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -8,7 +8,7 @@ lang: "en"
 ---
 
 《AI、科技日报》  
-日期：2026-04-06（周一）
+日期：2026-04-10（周五）
 
 今日要闻（5条）
 
@@ -74,8 +74,6 @@ lang: "en"
 
 ## Next-Step CTA
 
-<!-- CTA_VARIANT_A -->
-- **Variant A (Consultation conversion):** Want to apply this to your team or project? Book a 30-minute diagnostic and get an implementation checklist.
-
-<!-- CTA_VARIANT_B -->
-- **Variant B (Subscription conversion):** Want continuous signal tracking? Subscribe to the daily RSS for actionable updates.
+- Start here: [What Is OpenClaw?](/en/blog/what-is-openclaw/)
+- Deploy with guardrails: [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/)
+- Keep reliability under load: [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
