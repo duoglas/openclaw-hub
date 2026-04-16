@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-086
+- Hypothesis: 对新发布但仍使用通用摘要的 `2026-04-16` 双语日报页执行 description 可检索化回补，可提升主题检索匹配与摘要点击意图一致性，并延续最近24小时内容建设“模板回归前置修复”收益。
+- Scope: `/en/blog/openclaw-daily-2026-04-16/` + `/zh/blog/openclaw-daily-2026-04-16/`
+- Change: 将 EN `openclaw-daily-2026-04-16` description 从通用摘要升级为覆盖 TAC 扩容/GPT-5.4-Cyber、Agents SDK 沙箱升级、MAI-Image-2-Efficient 降本提速、ASML 上调 2026 指引与中国 AI+教育行动计划的可检索摘要；将 ZH description 升级为对应中文可检索摘要；保留 EN/ZH 页面既有 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-16
+- End date: 2026-04-16
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页 description 去通用化并覆盖当日核心主题。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-16.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，保持“发布后即做模板回归扫描 + 当日摘要可检索化修正”的双步闭环，减少通用摘要进入索引层的窗口期。）
+
 ### EXP-085
 - Hypothesis: 对仍残留占位 description、旧 CTA 变体残留且正文日期错位的 `2026-04-05` 双语日报页执行一次性回补，可提升搜索摘要可检索性、恢复 CTA 导流一致性，并避免日更模板回归抵消内容增长收益。
 - Scope: `/en/blog/openclaw-daily-2026-04-05/` + `/zh/blog/openclaw-daily-2026-04-05/`

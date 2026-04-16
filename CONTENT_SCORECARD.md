@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-04-13 19:02
+Last updated: 2026-04-16 11:24
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-04-13 19:02
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-086 — openclaw-daily-2026-04-16
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: EN/ZH `openclaw-daily-2026-04-16` description 已从通用摘要升级为覆盖 TAC 扩容/GPT-5.4-Cyber、Agents SDK 沙箱升级、MAI-Image-2-Efficient、ASML 2026 指引与中国 AI+教育行动计划的可检索摘要；CTA 保持 What Is OpenClaw / VPS guide / model fallback 三条强相关内链；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过。
 
 ### EXP-084 — openclaw-daily-2026-04-10
 - Search intent match: 9/10
