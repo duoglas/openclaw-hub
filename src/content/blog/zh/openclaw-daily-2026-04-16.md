@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-16）"
-description: "今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。"
+description: "聚焦 OpenAI 网络安全分级开放与 Agents SDK 沙箱升级、微软 MAI-Image-2-Efficient 降本提速、ASML 上调 2026 指引、中国“AI+教育”行动计划，提炼可执行落地信号。"
 pubDate: 2026-04-16
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

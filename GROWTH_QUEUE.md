@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-15 17:24
+Last updated: 2026-04-16 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-086: 回补 2026-04-16 双语日报通用 description（升级为可检索摘要，消费最近24小时内容建设延续假设），保持 CTA 强相关内链并完成质量闭环 | ICE 8x7x8=448 — commit `(this commit)`
+  - Hypothesis: 对新发布但仍使用通用摘要的双语日报页进行 description 可检索化回补，可提升主题检索匹配与摘要点击意图一致性，并延续最近24小时内容建设“模板回归前置修复”收益。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-16/` description 不再为通用文案且覆盖当日核心主题。
+  - Acceptance: 1) 更新 EN/ZH `openclaw-daily-2026-04-16.md` description 为可检索摘要；2) 保持 3 条强相关 CTA 内链不回退；3) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-085: 回补 2026-04-05 EN 占位 description 与残留 CTA_VARIANT_B，并修正 ZH 正文抬头日期（2026-04-04→2026-04-05）以恢复模板与日期一致性，优先消费最近24小时内容建设延续假设 | ICE 8x7x8=448 — commit `fc68f95`
   - Hypothesis: 对仍残留占位 description/旧 CTA 变体且存在正文日期错位的双语日报页执行一次性回补，可提升搜索摘要可检索性、恢复 CTA 导流一致性，并避免日更模板回归抵消内容增长收益。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-05/` 不再含占位摘要/CTA_VARIANT 残留且正文日期与 `pubDate` 对齐。
