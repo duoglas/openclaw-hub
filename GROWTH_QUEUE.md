@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-086: 回补 2026-04-16 双语日报通用 description（升级为可检索摘要，消费最近24小时内容建设延续假设），保持 CTA 强相关内链并完成质量闭环 | ICE 8x7x8=448 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-086: 回补 2026-04-16 双语日报通用 description（升级为可检索摘要，消费最近24小时内容建设延续假设），保持 CTA 强相关内链并完成质量闭环 | ICE 8x7x8=448 — commit `865e291`
   - Hypothesis: 对新发布但仍使用通用摘要的双语日报页进行 description 可检索化回补，可提升主题检索匹配与摘要点击意图一致性，并延续最近24小时内容建设“模板回归前置修复”收益。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-16/` description 不再为通用文案且覆盖当日核心主题。
   - Acceptance: 1) 更新 EN/ZH `openclaw-daily-2026-04-16.md` description 为可检索摘要；2) 保持 3 条强相关 CTA 内链不回退；3) 本地检查与构建全部通过。
