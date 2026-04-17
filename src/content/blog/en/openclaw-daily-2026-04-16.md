@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-16)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "Searchable AI & tech brief on OpenAI TAC/GPT‑5.4‑Cyber expansion, Agents SDK sandbox upgrades, Microsoft's MAI-Image-2-Efficient cost gains, ASML’s raised 2026 sales outlook, and China’s AI+Education rollout."
 pubDate: 2026-04-16
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

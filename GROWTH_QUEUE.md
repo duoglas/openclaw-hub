@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-17 11:22
+Last updated: 2026-04-17 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-087: 强化 2026-04-16 双语 AI/Tech Daily 的搜索摘要可检索性（description 去模板化并绑定当日高意图信号），优先消费最近24小时内容建设任务新增实验假设 | ICE 8x7x8=448 — commit `PLACEHOLDER_COMMIT`
+  - Hypothesis: 对当天新发布日报页（`2026-04-16`）将 EN/ZH description 从泛化模板升级为覆盖 OpenAI TAC 与 GPT‑5.4‑Cyber、Agents SDK 沙箱升级、微软 MAI-Image-2-Efficient 降本提速、ASML 上调销售指引与中国“AI+教育”行动推进的可检索摘要，可提升 SERP 主题匹配与高意图检索点击质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-16/` description 去模板化且与正文主题一致。
+  - Acceptance: 1) 更新 EN/ZH `openclaw-daily-2026-04-16.md` frontmatter description；2) 保持正文日期与 `pubDate` 一致；3) 保持 3 条强相关 CTA 内链；4) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-086: 强化 2026-04-17 双语 AI/Tech Daily 的搜索摘要可检索性（description 去模板化并绑定当日高意图信号），优先消费最近24小时内容建设任务新增实验假设 | ICE 8x7x8=448 — commit `(this commit)`
   - Hypothesis: 对当天新发布日报页（`2026-04-17`）将 EN/ZH description 从泛化模板升级为包含 GPT‑Rosalind、Codex 多代理、Firefly Assistant、Robotaxi 试运营与斯坦福 AI Index 竞争格局的可检索摘要，可提升 SERP 主题匹配与高意图检索点击质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-17/` description 去模板化且与正文主题一致。

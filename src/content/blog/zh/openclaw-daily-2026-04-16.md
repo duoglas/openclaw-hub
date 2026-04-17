@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-16）"
-description: "今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。"
+description: "今日 AI 与科技焦点：OpenAI TAC 与 GPT‑5.4‑Cyber 扩容、Agents SDK 沙箱升级、微软 MAI-Image-2-Efficient 降本提速、ASML 上调 2026 销售指引、中国“AI+教育”行动推进。"
 pubDate: 2026-04-16
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
