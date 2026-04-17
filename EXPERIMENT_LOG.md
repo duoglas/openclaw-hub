@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-086
+- Hypothesis: 对当天新发布但 description 仍偏泛化模板的 `2026-04-17` 双语日报页，升级为包含当日高意图主题信号（GPT‑Rosalind、Codex 多代理、Firefly Assistant、Robotaxi 试运营、Stanford AI Index）的可检索摘要，可提升 SERP 主题匹配与高意图检索点击质量。
+- Scope: `/en/blog/openclaw-daily-2026-04-17/` + `/zh/blog/openclaw-daily-2026-04-17/`
+- Change: 将 EN `openclaw-daily-2026-04-17` description 从泛化模板升级为覆盖 GPT‑Rosalind、Codex 桌面多代理、Firefly Assistant、Robotaxi 测试与 Stanford AI Index 的英文可检索摘要；将 ZH 对应 description 升级为同主题中文可检索摘要；保持正文日期与 `pubDate` 对齐并保留 3 条强相关 CTA 内链。
+- Start date: 2026-04-17
+- End date: 2026-04-17
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页 description 去模板化并与正文主题一致。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-17.md` 已完成 description 去模板化升级；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设任务新增日报，维持 description 可检索摘要 + 日期一致性 + 强相关 CTA 三闸门联动，降低模板化回归风险。）
+
 ### EXP-085
 - Hypothesis: 对仍残留占位 description、旧 CTA 变体残留且正文日期错位的 `2026-04-05` 双语日报页执行一次性回补，可提升搜索摘要可检索性、恢复 CTA 导流一致性，并避免日更模板回归抵消内容增长收益。
 - Scope: `/en/blog/openclaw-daily-2026-04-05/` + `/zh/blog/openclaw-daily-2026-04-05/`

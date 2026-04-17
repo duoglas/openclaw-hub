@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-17）"
-description: "今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。"
+description: "今日聚焦 GPT‑Rosalind 生命科学模型、Codex 多代理后台协作、Adobe Firefly 助手跨应用工作流、Uber+Nuro Robotaxi 试运营推进与斯坦福 AI 指数中美竞争新格局。"
 pubDate: 2026-04-17
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

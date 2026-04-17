@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-04-13 19:02
+Last updated: 2026-04-17 11:22
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-04-13 19:02
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-086 — openclaw-daily-2026-04-17
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: EN/ZH `openclaw-daily-2026-04-17` frontmatter description 已从泛化模板升级为覆盖 GPT‑Rosalind、Codex 多代理后台协作、Adobe Firefly Assistant 跨应用工作流、Uber+Nuro Robotaxi 试运营与斯坦福 AI Index 中美竞争格局的可检索摘要；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过。
 
 ### EXP-084 — openclaw-daily-2026-04-10
 - Search intent match: 9/10

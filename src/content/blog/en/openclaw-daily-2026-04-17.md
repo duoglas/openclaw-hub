@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-17)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "OpenAI launched GPT‑Rosalind for life science research, Codex added parallel desktop agents, Adobe brought Firefly Assistant into Creative Cloud workflows, Uber+Nuro moved robotaxi pilots forward, and the Stanford AI Index showed tightening US‑China model competition with divergent strengths."
 pubDate: 2026-04-17
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
