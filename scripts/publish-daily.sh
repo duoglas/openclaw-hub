@@ -8,6 +8,14 @@ EN_FILE="src/content/blog/en/${SLUG}.md"
 ZH_FILE="src/content/blog/zh/${SLUG}.md"
 CRON_ID="fdc137d1-c50d-4686-9b1d-c6c923890cf8" # daily-ai-tech
 
+# Skip if today's post already exists on origin/main
+git fetch origin main --quiet || true
+if git ls-tree -r --name-only origin/main | grep -q "^${EN_FILE}$" \
+  && git ls-tree -r --name-only origin/main | grep -q "^${ZH_FILE}$"; then
+  echo "Already published ${SLUG}"
+  exit 0
+fi
+
 # Pull latest daily summary from cron runs (prefer same-day run, fallback to latest available)
 SUMMARY=$(python3 - <<'PY'
 import json,subprocess,datetime,sys
@@ -34,10 +42,9 @@ PY
 )
 
 # Build non-placeholder, searchable descriptions from summary text
-ZH_DESC=$(printf '%s' "$SUMMARY" | python3 - <<'PY'
-import re,sys
-text = sys.stdin.read()
-text = text.replace('\r', '\n')
+ZH_DESC=$(SUMMARY_TEXT="$SUMMARY" python3 - <<'PY'
+import os,re
+text = os.environ.get('SUMMARY_TEXT', '').replace('\r', '\n')
 lines = [re.sub(r'\s+', ' ', l).strip(' -•\t') for l in text.split('\n')]
 lines = [l for l in lines if l]
 candidates = []
