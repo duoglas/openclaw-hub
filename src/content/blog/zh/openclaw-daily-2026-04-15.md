@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-15）"
-description: "今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。"
+description: "可检索的 AI/科技日报摘要：覆盖 OpenAI Trusted Access 与 GPT-5.4-Cyber、Anthropic Project Glasswing、Stanford AI Index 2026、中国全球 AI 治理倡议及湖北‘人工智能+制造’专项行动。"
 pubDate: 2026-04-15
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
