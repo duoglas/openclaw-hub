@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-15)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "Searchable AI/tech brief covering OpenAI Trusted Access + GPT-5.4-Cyber, Anthropic Project Glasswing, Stanford AI Index 2026 signals, China AI governance initiative, and Hubei AI+manufacturing execution plan."
 pubDate: 2026-04-15
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
