@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-17)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "Searchable brief on GPT‑Rosalind life-science model preview, Codex desktop multi-agent upgrade, Adobe Firefly Assistant workflow automation, Uber + Nuro robotaxi pilot, and Stanford AI Index 2026 U.S.-China capability shift."
 pubDate: 2026-04-17
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
