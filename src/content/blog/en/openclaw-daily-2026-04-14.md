@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-14)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "Searchable brief on OpenAI third-party tool security incident, IPO retail allocation signal, Anthropic custom AI chip exploration, ongoing AI infrastructure capex surge, and China MIIT’s AI+ high-value scenario rollout."
 pubDate: 2026-04-14
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

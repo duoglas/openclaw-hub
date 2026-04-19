@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-14）"
-description: "今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。"
+description: "可检索 AI/科技速览：覆盖 OpenAI 第三方工具安全事件、IPO 向散户预留份额信号、Anthropic 自研 AI 芯片评估、全球算力基建持续加码与工信部“人工智能+”高价值场景发布。"
 pubDate: 2026-04-14
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
