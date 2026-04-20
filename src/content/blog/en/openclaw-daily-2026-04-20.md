@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-20)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "April 20 AI brief: OpenAI shipped Codex computer-use and long-task automation upgrades, Meta and Broadcom expanded multi-generation MTIA co-design, Anthropic launched Claude Design and Project Glasswing, and Alibaba Cloud’s Qwen3.6 pricing/context signals intensifying enterprise model-selection pressure in China."
 pubDate: 2026-04-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

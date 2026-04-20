@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-20）"
-description: "时间：2026-04-20（周一，Asia/Shanghai）；范围：全球 + 中国（已尽量用官方/一手来源；不确定处已标“待确认”）；OpenAI 发布 Codex 重大更新（电脑操作、多插件、记忆、自动化）。"
+description: "4月20日 AI / 科技日报：OpenAI 发布可操作电脑与长任务自动化的 Codex 更新，Meta 与 Broadcom 扩大 MTIA 多代共研，Anthropic 上线 Claude Design 与 Project Glasswing，阿里云百炼 Qwen3.6 的计费与长上下文能力凸显中国企业模型选型与成本竞争。"
 pubDate: 2026-04-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
