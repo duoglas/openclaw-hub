@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-19）"
-description: "今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。"
+description: "可检索 AI 日报摘要：覆盖 OpenAI 与 Cerebras 超 200 亿美元推理算力合作、Cerebras IPO 收入集中度、GPT-Rosalind 生命科学模型、斯坦福 AI Index 2026 中美差距收敛与 DeepSeek 融资信号。"
 pubDate: 2026-04-19
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

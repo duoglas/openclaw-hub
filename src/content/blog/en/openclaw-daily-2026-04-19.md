@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-19)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "Searchable AI daily brief on OpenAI–Cerebras $20B inference partnership, Cerebras IPO revenue concentration, GPT-Rosalind for life sciences, Stanford AI Index 2026 US-China convergence, and DeepSeek fundraising signals."
 pubDate: 2026-04-19
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

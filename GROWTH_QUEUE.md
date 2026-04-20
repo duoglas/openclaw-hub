@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-20 11:24
+Last updated: 2026-04-20 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-090: 回补 2026-04-19 双语日报通用 description（升级为可检索摘要，优先消费最近24小时内容建设新增实验假设），保持 CTA 强相关内链并完成 build 闭环 | ICE 8x8x8=512 — commit `1d772b3`
+  - Hypothesis: 对最近24小时新发布但使用通用摘要的双语日报页进行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-19/` description 不再为通用文案且覆盖当日核心主题。
+  - Acceptance: 1) 更新 EN/ZH `openclaw-daily-2026-04-19.md` description 为可检索摘要；2) 保持 3 条强相关 CTA 内链不回退；3) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-089: 回补 2026-04-20 双语日报通用 description（升级为可检索摘要，优先消费最近24小时内容建设新增实验假设），保持 CTA 强相关内链并完成 build 闭环 | ICE 8x8x8=512 — commit `58f2f8b`
   - Hypothesis: 对最近24小时新发布但使用通用摘要的双语日报页进行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-20/` description 不再为通用文案且覆盖当日核心主题。
