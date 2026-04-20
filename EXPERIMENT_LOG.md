@@ -22,7 +22,7 @@
 - Start date: 2026-04-20
 - End date: 2026-04-20
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-20.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/temp-daily-publish`。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-20.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `58f2f8b` 已推送至 `origin/temp-daily-publish`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，保持“发布后即做模板回归扫描 + 当日摘要可检索化修正”的闭环，降低通用摘要进入索引层窗口期。）
 
 ### EXP-088
