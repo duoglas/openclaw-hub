@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-02)"
-description: "AI/tech daily for 2026-03-02 covering key AI launches, tooling updates, and workflow changes that matter to OpenClaw operators and builders."
+description: "Australian AI child-safety enforcement, AWS outage risk, Wall Street AI repricing, Pony.ai economics, and 224G interconnect testing drove the 2026-03-02 brief."
 pubDate: 2026-03-02
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-02-28)"
-description: "AI/tech daily for 2026-02-28 covering major model, infrastructure, and product updates, plus practical workflow implications for OpenClaw users."
+description: "Government AI procurement risk, OpenAI fundraising, Canada safety talks, Copilot Tasks, and Chinese video model competition defined the 2026-02-28 brief."
 pubDate: 2026-02-28
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

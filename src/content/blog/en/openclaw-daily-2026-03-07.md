@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-07)"
-description: "AI/tech daily for 2026-03-07 covering model news, ecosystem shifts, and concrete workflow signals relevant to OpenClaw users."
+description: "Global AI chip export controls, OpenAI developer-platform rumors, Gemini device expansion, and Chinese MWC AI momentum drove the 2026-03-07 brief."
 pubDate: 2026-03-07
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

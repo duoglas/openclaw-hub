@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-04)"
-description: "AI/tech daily for 2026-03-04 covering AI platform updates, infrastructure signals, and actionable workflow takeaways for OpenClaw users."
+description: "OpenAI defense collaboration, Microsoft alignment, China model supply signals, Google Home Gemini rumors, and AI governance pressure anchored the 2026-03-04 brief."
 pubDate: 2026-03-04
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
