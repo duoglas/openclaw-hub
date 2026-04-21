@@ -2,7 +2,7 @@
 # Build output should not be committed.
 dist/
 
-
+.env
 .astro/
 node_modules/
 
