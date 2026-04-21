@@ -109,8 +109,9 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- 如果电力、监管和平台变化开始影响你的部署判断，先读[OpenClaw 架构说明](/zh/blog/what-is-openclaw/)，把 what OpenClaw is 和系统定位先对齐。
+- 如果基础设施成本和控制力变得更重要，就按[OpenClaw VPS 部署指南](/zh/blog/openclaw-vps-deployment-complete-guide/)做一轮 OpenClaw VPS 部署核对。
+- 如果真正的风险是供应商波动和模型失稳，就直接套用[OpenClaw 推荐模型策略](/zh/blog/openclaw-model-fallback-strategy/)，先把 fallback 方案部署好。
+- 今天这篇的核心不是新闻本身，而是基础设施纪律。
+- 把托管策略和模型策略绑在一起。
+- 这样自动化才扛得住外部变化。

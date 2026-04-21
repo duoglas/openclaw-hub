@@ -92,8 +92,9 @@ GTC公开信息里，机器人、医疗边缘AI、工业仿真、本地运行模
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把今天这些企业级 AI 融资、自动执行安全护栏与推理部署信号转成落地路径？先看 [什么是 OpenClaw？](/zh/blog/what-is-openclaw/)，再结合 [OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/) 梳理你的上线方案。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，然后继续看 [OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)，把模型价格、安全护栏与基础设施波动下的自动化稳定性一起补上。
+- 如果自动编码、AI 融资和推理部署变化开始影响你的方案判断，先读[OpenClaw 架构说明](/zh/blog/what-is-openclaw/)，先明确 what OpenClaw is 和你真正要搭的系统。
+- 如果你在评估更稳妥的上线方式，就按[OpenClaw VPS 部署指南](/zh/blog/openclaw-vps-deployment-complete-guide/)做一次 OpenClaw VPS 部署核对，再决定权限边界。
+- 如果你最担心的是模型价格、安全护栏或容量变化，就先落地[OpenClaw 推荐模型策略](/zh/blog/openclaw-model-fallback-strategy/)，把 fallback 放到生产前面。
+- 今天最正确的下一步是缩小范围，但把控制做扎实。
+- 稳定的自动化先靠部署纪律。
+- 然后再扩展 agent 自主度。

@@ -11,8 +11,9 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把今天这些 AI 基建、桌面入口竞争和企业变现信号转成执行路径？先看[什么是 OpenClaw？](/zh/blog/what-is-openclaw/)，再结合 [OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/) 梳理你的上线方案。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，然后继续看 [OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)，把模型、价格和基础设施波动下的自动化稳定性一起补上。
+- 如果 GTC、Gemini 桌面化和云价格变化让你更难判断路线，先看[OpenClaw 架构说明](/zh/blog/what-is-openclaw/)，先把 what OpenClaw is 与系统定位想清楚。
+- 如果今天这些基础设施和桌面 Agent 信号让你想推进上线，就按[OpenClaw VPS 部署指南](/zh/blog/openclaw-vps-deployment-complete-guide/)走一遍 OpenClaw VPS 部署清单。
+- 如果你最担心的是价格、供应商和模型变化带来的不稳定，就直接落地[OpenClaw 推荐模型策略](/zh/blog/openclaw-model-fallback-strategy/)，把 fallback 规则写进日常运行方案。
+- 把这些信号当部署输入，而不是只当行业新闻。
+- 强执行的人会把架构、托管和模型策略串成一条线。
+- 这样自动化才不会被外部变化带偏。

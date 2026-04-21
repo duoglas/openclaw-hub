@@ -87,10 +87,9 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **先看 OpenClaw 是什么**：如果今天的信号让你更关心“AI 能不能真正执行任务，而不只是聊天”，先读 [/zh/blog/what-is-openclaw/](/zh/blog/what-is-openclaw/) 了解 OpenClaw 的定位、架构和适用场景。
-
-<!-- CTA_VARIANT_B -->
-- **准备上线就看 VPS 部署**：如果你正在评估部署成本、隔离性和可控性，继续看 [/zh/blog/openclaw-vps-deployment-complete-guide/](/zh/blog/openclaw-vps-deployment-complete-guide/) 获取完整 VPS 落地路径。
-
-- **担心模型价格或稳定性波动**：如果日报里提到的 OpenAI / Gemini 供给变化让你担心可用性和成本，继续看 [/zh/blog/openclaw-model-fallback-strategy/](/zh/blog/openclaw-model-fallback-strategy/) 了解实用的模型回退策略。
+- 如果今天的信号再次说明执行力比模型噱头更重要，先读[OpenClaw 架构说明](/zh/blog/what-is-openclaw/)，先把 what OpenClaw is 和系统定位彻底看明白。
+- 如果你在比较成本、控制力和生产可用性，就按[OpenClaw VPS 部署指南](/zh/blog/openclaw-vps-deployment-complete-guide/)走完整的 OpenClaw VPS 部署路径。
+- 如果你真正担心的是价格、配额和供应商波动，继续看[OpenClaw 推荐模型策略](/zh/blog/openclaw-model-fallback-strategy/)，把 fallback 方案变成默认运行策略。
+- 这是从新闻走向可执行流程的最短路径。
+- 架构先定，部署再定，回退最后补齐。
+- 顺着这个顺序做，系统会稳很多。

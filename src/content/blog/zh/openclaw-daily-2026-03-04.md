@@ -83,8 +83,9 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- 如果国防、微软和 Gemini 这些信号让整套栈更难判断，先看[OpenClaw 架构说明](/zh/blog/what-is-openclaw/)，先把 what OpenClaw is 和系统边界想清楚。
+- 如果你准备从实验走向上线，就按[OpenClaw VPS 部署指南](/zh/blog/openclaw-vps-deployment-complete-guide/)把 OpenClaw VPS 部署路径逐项过一遍。
+- 如果你最担心的是模型方向、价格和可用性变化，继续看[OpenClaw 推荐模型策略](/zh/blog/openclaw-model-fallback-strategy/)，先把 fallback 规则定下来。
+- 今天正确的动作是先降不确定性，不是继续堆工具。
+- 架构、托管和模型策略要一起定。
+- 这比追单个新品更有用。

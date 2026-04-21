@@ -71,8 +71,9 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- 如果出口管制和 Gemini 扩张让整个 AI 栈变得更不稳定，先读[OpenClaw 架构说明](/zh/blog/what-is-openclaw/)，把 what OpenClaw is 和系统边界先建立起来。
+- 如果你需要一条能扛住政策与供应商波动的执行路径，就直接按[OpenClaw VPS 部署指南](/zh/blog/openclaw-vps-deployment-complete-guide/)做 OpenClaw VPS 部署基线检查。
+- 如果你最怕的是模型访问、价格和可用性突然变化，继续看[OpenClaw 推荐模型策略](/zh/blog/openclaw-model-fallback-strategy/)，把 fallback 方案先部署到关键流程里。
+- 面对今天这种信号，正确动作是补韧性，不是慌着换工具。
+- 架构清晰、VPS 稳、fallback 在位，系统就更抗波动。
+- 这才是日报之后该做的动作。

@@ -90,8 +90,9 @@ lang: "zh"
 
 ## 下一步行动（CTA）
 
-<!-- CTA_VARIANT_A -->
-- **方案 A（咨询转化）**：想把这套能力落地到你的团队/项目？可基于你的现状给出 30 分钟诊断与实施清单。
-
-<!-- CTA_VARIANT_B -->
-- **方案 B（订阅转化）**：想持续追踪同类机会与风险？订阅日报 RSS，每天获取可执行更新。
+- 如果今天的 Claude 与英伟达信号让你想先把思路理顺，先读[OpenClaw 架构说明](/zh/blog/what-is-openclaw/)，先弄清 what OpenClaw is，再决定要不要照搬这些工作流。
+- 如果这些融资与基础设施变化让你倾向自托管，直接对照[OpenClaw VPS 部署指南](/zh/blog/openclaw-vps-deployment-complete-guide/)做一次 OpenClaw VPS 部署清单自查。
+- 如果你更担心供应商波动影响稳定性，就先落地[OpenClaw 推荐模型策略](/zh/blog/openclaw-model-fallback-strategy/)，把 fallback 方案在关键流程上线前补齐。
+- 今天最值钱的动作不是追热闹，而是把架构、部署、回退三件事串起来。
+- 先读架构，再核对 VPS，再锁 fallback。
+- 这样后面加自动化，返工会少很多。
