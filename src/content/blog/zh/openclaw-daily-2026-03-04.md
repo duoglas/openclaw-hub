@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-04）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "OpenAI 与五角大楼合作、微软协同声明、中国模型供给信号、Google Home Gemini 传闻与治理压力，是 2026-03-04 这期 AI/科技日报的核心主题。"
 pubDate: 2026-03-04
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

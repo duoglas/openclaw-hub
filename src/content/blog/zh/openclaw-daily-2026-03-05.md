@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-05）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "AI 数据中心电力成本承诺、Google 与 Epic 和解、供应链审查与能源治理压力，共同构成了 2026-03-05 这期 AI/科技日报的重点。"
 pubDate: 2026-03-05
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

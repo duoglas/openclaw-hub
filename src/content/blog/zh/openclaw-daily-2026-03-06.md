@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-06）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "OpenAI 语音模型传闻、黄仁勋投资表态、Anthropic 国防合作动向与模拟芯片涨价压力，构成了 2026-03-06 这期 AI/科技日报。"
 pubDate: 2026-03-06
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

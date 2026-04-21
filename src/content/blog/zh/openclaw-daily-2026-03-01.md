@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-01）"
-description: "与 Telegram 当日推送同步的 AI 与科技要点。"
+description: "OpenAI 融资消息、AI 大厂法律博弈、DeepSeek 动向、英伟达地缘议题与微软政企合作，共同定义了 2026-03-01 这期 AI/科技日报。"
 pubDate: 2026-03-01
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
