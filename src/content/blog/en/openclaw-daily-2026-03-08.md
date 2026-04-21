@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-08)"
-description: "March 8 AI brief: a possible global expansion of U.S. AI chip export approvals could reshape GPU supply and training costs, OpenAI’s reported GitHub alternative hints at a fight for the developer entry point, Google’s latest Pixel Drop pushes Gemini deeper into device-native assistance, MWC 2026 shows Chinese vendors turning AI into overseas commercial products, and China’s AI market is moving from model launches toward practical deployment and ROI."
+description: "March 8 AI brief: possible global U.S. chip-export expansion could reshape GPU supply, while OpenAI GitHub-rival rumors, Gemini device expansion, and MWC momentum signal a wider fight for AI entry points."
 pubDate: 2026-03-08
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

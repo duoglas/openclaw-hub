@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-11)"
-description: "March 11 AI brief: OpenAI pushes GPT-5.4 and another model transition cycle, Anthropic turns Claude into a longer-memory assistant, OpenAI's AMD/NVIDIA infrastructure ties show compute partnerships matter as much as model releases, Microsoft and OpenAI still signal enterprise ecosystem alignment, and China’s AI conversation is shifting from benchmark hype toward agent workflows and real ROI."
+description: "March 11 AI brief: OpenAI pushes GPT-5.4, Claude moves toward longer memory, and fresh OpenAI-AMD-NVIDIA signals show compute alliances becoming a core moat in the AI platform race."
 pubDate: 2026-03-11
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

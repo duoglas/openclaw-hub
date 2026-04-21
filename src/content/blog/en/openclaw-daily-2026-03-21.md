@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-21)"
-description: "AI & Tech Daily Brief for 2026-03-21: Nvidia GTC 2026 shifts attention to AI infrastructure, Gemini for macOS tests the desktop race, Anthropic enterprise revenue momentum intensifies commercialization pressure, and China's AI cloud pricing signals tighter compute supply."
+description: "March 21 AI brief: Nvidia GTC 2026 shifted attention to AI infrastructure, Gemini for macOS tested the desktop race, Anthropic’s enterprise momentum intensified commercialization pressure, and China cloud pricing signaled tighter compute supply."
 pubDate: 2026-03-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

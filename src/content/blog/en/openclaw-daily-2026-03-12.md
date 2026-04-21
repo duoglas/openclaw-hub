@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-12)"
-description: "March 12 AI brief: China doubles down on the AI+ policy rollout, manufacturing and semiconductor earnings confirm real demand, AMD pushes Ryzen AI 400 and ROCm 7.2 for edge workflows, and operators should watch power and infrastructure bottlenecks before scaling automation."
+description: "March 12 AI brief: China doubles down on AI+ policy, manufacturing and chip earnings confirm real demand, and enterprise buyers keep shifting from hype to ROI, deployment speed, and infrastructure readiness."
 pubDate: 2026-03-12
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

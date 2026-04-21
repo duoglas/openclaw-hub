@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-13）"
-description: "3月13日 AI 简报：英伟达传出拟向 Nebius 投资 20 亿美元继续扩张 AI 云，Canal+ 联合 Google Cloud 与 OpenAI 将生成式 AI 接入影视主流程，Gumloop 融资 5000 万美元验证 Agent 工作流需求，具身智能融资继续升温，而微信可能成为中国 AI Agent 的关键入口。"
+description: "3月13日 AI 简报：英伟达云投入加码，生成式 AI 进入影视主流程，Agent 自动化融资继续升温。"
 pubDate: 2026-03-13
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-11）"
-description: "3月11日 AI 简报：OpenAI 推出 GPT-5.4 并开启新一轮模型替换，Anthropic 让 Claude 朝长期记忆助手演进，OpenAI 与 AMD/NVIDIA 的合作信号说明算力联盟正变成核心护城河，微软与 OpenAI 的生态绑定仍未松动，而中国 AI 讨论也开始从跑分转向 Agent 工作流与真实 ROI。"
+description: "3月11日 AI 简报：OpenAI 推 GPT-5.4，Claude 向长期记忆助手演进，算力联盟正变成平台护城河。"
 pubDate: 2026-03-11
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

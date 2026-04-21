@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-15）"
-description: "可检索的 AI/科技日报摘要：覆盖 OpenAI Trusted Access 与 GPT-5.4-Cyber、Anthropic Project Glasswing、Stanford AI Index 2026、中国全球 AI 治理倡议及湖北‘人工智能+制造’专项行动。"
+description: "4月15日 AI 简报：聚焦 OpenAI Trusted Access、Project Glasswing、AI Index 2026 与中国治理倡议。"
 pubDate: 2026-04-15
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

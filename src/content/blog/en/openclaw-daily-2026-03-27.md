@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-27)"
-description: "China’s daily AI token usage has surged past 140 trillion, AI infrastructure demand is expanding China’s chip supply chain, Ai2’s open MolmoWeb points to transparent browser agents, U.S. data-center politics are tightening, and Nvidia’s policy reach is becoming part of the AI power map."
+description: "China’s daily AI token usage surged past 140 trillion, infrastructure demand kept expanding chip and cloud pressure, and new web-agent open-source moves showed execution-layer tooling becoming the next battleground."
 pubDate: 2026-03-27
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

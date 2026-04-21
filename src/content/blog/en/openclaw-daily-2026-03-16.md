@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-16)"
-description: "The March 16 AI & Tech Daily brief tracks Meta's reported layoff planning to offset AI infrastructure costs, Google's deeper Gemini rollout across Workspace, NVIDIA's reported multiyear investment in open models, embodied AI financing momentum, and the legal-risk signals emerging from Elon Musk's OpenAI lawsuit."
+description: "The March 16 AI brief tracks Meta’s layoff planning under AI infrastructure costs, Google’s deeper Gemini integration, Nvidia’s open-model push, and legal-risk signals reshaping enterprise and consumer AI adoption."
 pubDate: 2026-03-16
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

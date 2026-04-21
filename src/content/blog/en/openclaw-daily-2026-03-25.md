@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-25)"
-description: "OpenAI pushes enterprise financing and nonprofit governance, Anthropic previews Claude Code auto mode, Nvidia doubles down on inference and physical AI at GTC 2026, Broadcom flags TSMC capacity pressure, and U.S. advisors warn China's open-source AI edge is compounding."
+description: "OpenAI pushed enterprise financing and nonprofit governance, Anthropic previewed Claude Code auto mode, and Nvidia extended physical AI, making March 25 a signal that AI competition now centers on execution, safety, and deployment."
 pubDate: 2026-03-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

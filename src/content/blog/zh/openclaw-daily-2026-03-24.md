@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-24）"
-description: "本期聚焦 NVIDIA 在 GTC 2026 强化 AI 基础设施与物理 AI、Meta 把授权新闻接入 Meta AI、美国政策圈将中国开源 AI 视为竞争压力、Google 把 Gemini 深度接入营销 ROI 工作流，以及阿里达摩院 RISC-V 芯片信号带来的端侧与 Agent 算力机会。"
+description: "3月24日 AI 简报：英伟达强化 AI 基建与物理 AI，Meta 扩大新闻接入，Gemini 深入营销工作流。"
 pubDate: 2026-03-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

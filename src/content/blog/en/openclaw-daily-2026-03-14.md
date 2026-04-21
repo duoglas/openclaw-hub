@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-14)"
-description: "Ahead of NVIDIA GTC 2026, the March 14 brief tracked rising focus on AI infrastructure, Alibaba Cloud Bailian model updates, China's draft rules for anthropomorphic AI services, Baidu's Wenxin 5.0 launch, and rapid ChatGPT version changes that could disrupt enterprise workflows."
+description: "Ahead of NVIDIA GTC 2026, the March 14 brief tracked AI infrastructure focus, Alibaba Cloud Bailian updates, China’s anthropomorphic-service rules, and the next phase of platform competition around usable AI products."
 pubDate: 2026-03-14
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

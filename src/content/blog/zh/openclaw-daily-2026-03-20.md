@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-20）"
-description: "本期聚焦 NVIDIA 在 GTC 2026 把竞争重心推向 AI 基础设施升级、Google 测试 Gemini for macOS 抢占桌面入口、Anthropic 企业收入信号揭示商业化竞争，以及中国云厂商算力涨价与阿里 AI 组织加速带来的部署成本和行业落地变化。"
+description: "3月20日 AI 简报：GTC 2026 推高 AI 基建竞争，Gemini 试探桌面入口，中国云厂商释放算力涨价信号。"
 pubDate: 2026-03-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

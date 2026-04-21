@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-05)"
-description: "April 5 AI brief: China launched an inclusive compute initiative for SMEs, NVIDIA H100 rental prices kept climbing under demand pressure, Beijing added 15 newly registered generative AI services, 12-inch fab equipment spending is accelerating on AI demand, and generative AI abuse is expanding enterprise security risk."
+description: "April 5 AI brief: China launched an inclusive compute initiative for SMEs, NVIDIA H100 rental prices kept rising, and platform competition moved toward lower-cost access, infrastructure control, and more practical AI adoption."
 pubDate: 2026-04-05
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

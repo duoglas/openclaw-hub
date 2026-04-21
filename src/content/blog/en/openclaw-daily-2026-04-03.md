@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-03)"
-description: "April 3 AI brief: OpenAI model capability refresh chatter, deeper Gemini integration into Workspace/Cloud, China's shift from model hype to industry ROI delivery, ongoing compute bottlenecks with price-war pressure, and rising cross-region AI compliance constraints."
+description: "April 3 AI brief: OpenAI capability-refresh chatter, deeper Gemini integration into Workspace and Cloud, and China’s AI-plus push together showed that product embedding, not benchmark theater, is driving the next adoption wave."
 pubDate: 2026-04-03
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

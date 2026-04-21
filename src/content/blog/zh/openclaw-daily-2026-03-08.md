@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-03-08）"
-description: "3月8日 AI 简报：美国可能把 AI 芯片出口审批扩展到全球，正在重塑 GPU 供给与训练成本；OpenAI 被传开发 GitHub 替代产品，开发者入口争夺升温；Google 在新一轮 Pixel Drop 中继续把 Gemini 下沉到终端助手；MWC 2026 显示中国厂商正把 AI 推向海外商业化，而国内竞争也开始从模型发布转向真实落地与 ROI。"
+description: "3月8日 AI 简报：美国或扩大 AI 芯片出口审批，OpenAI 开发者入口竞争升温，Gemini 继续向设备侧下沉。"
 pubDate: 2026-03-08
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

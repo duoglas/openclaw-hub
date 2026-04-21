@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-20)"
-description: "NVIDIA's GTC 2026 reset the conversation around AI infrastructure, Google's reported Gemini for macOS test showed desktop assistants becoming the new battleground, Anthropic's enterprise revenue momentum highlighted the race to monetize AI, and Chinese cloud pricing signals pointed to tighter compute supply and higher deployment costs."
+description: "NVIDIA’s GTC 2026 reset attention on AI infrastructure, Gemini for macOS highlighted the desktop race, Anthropic’s enterprise momentum raised commercialization pressure, and China cloud pricing signaled tighter compute supply."
 pubDate: 2026-03-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

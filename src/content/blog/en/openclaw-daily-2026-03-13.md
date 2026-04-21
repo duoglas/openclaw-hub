@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-13)"
-description: "March 13 AI brief: Nvidia's reported $2B Nebius investment extends the AI cloud buildout, Canal+ moves generative AI into mainstream media production with Google Cloud and OpenAI, Gumloop's $50M round signals agent workflow demand, China's embodied AI financing stays hot, and WeChat may become a major consumer agent entry point."
+description: "March 13 AI brief: Nvidia’s reported Nebius investment extends cloud buildout, Canal+ moves generative AI deeper into media production, and Gumloop financing shows workflow automation becoming a real software category."
 pubDate: 2026-03-13
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
