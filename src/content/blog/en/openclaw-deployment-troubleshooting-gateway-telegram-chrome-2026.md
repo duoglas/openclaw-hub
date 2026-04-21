@@ -2,7 +2,7 @@
 title: "OpenClaw Deployment Troubleshooting Checklist (2026): Gateway Fails, Telegram Bot Silent, Chrome Relay Not Connecting"
 description: "A practical, command-first guide to fix the three most common OpenClaw deployment failures: gateway startup errors, Telegram bot not replying, and Chrome Browser Relay connection timeouts."
 pubDate: 2026-03-01
-tags: ["openclaw", "deployment", "gateway", "telegram", "chrome relay", "troubleshooting"]
+tags: ["openclaw", "gateway", "telegram", "chrome relay", "troubleshooting"]
 category: "guide"
 lang: "en"
 ---

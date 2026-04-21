@@ -2,7 +2,7 @@
 title: "OpenClaw 部署报错排查清单（2026）：Gateway 启动失败、Telegram 不回、Chrome Relay 连接失败"
 description: "一篇解决 OpenClaw 三大高频部署问题的实战教程：Gateway 启动失败、Telegram 机器人不回复、Chrome Browser Relay 连不上。附可直接执行命令与稳定化建议。"
 pubDate: 2026-03-01
-tags: ["openclaw", "deployment", "gateway", "telegram", "chrome relay", "troubleshooting"]
+tags: ["openclaw", "gateway", "telegram", "chrome relay", "troubleshooting"]
 category: "guide"
 lang: "zh"
 ---
