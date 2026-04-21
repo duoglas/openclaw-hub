@@ -56,7 +56,11 @@ const footerPublishAria = isZh ? '打开 ClawHub 发布页' : 'Open ClawHub publ
 const footerGrowthLabel = isZh ? 'footer-publish-zh' : 'footer-publish-en';
 const AD_ENABLED = false;
 const AD_CLIENT = import.meta.env.PUBLIC_ADSENSE_CLIENT || '';
-const AD_SLOT_BELOW_CONTENT = import.meta.env.PUBLIC_ADSENSE_SLOT_BELOW || '';
+const AD_SLOT_HEADER = import.meta.env.PUBLIC_ADSENSE_SLOT_HEADER || '';
+const AD_SLOT_ARTICLE_TOP = import.meta.env.PUBLIC_ADSENSE_SLOT_ARTICLE_TOP || '';
+const AD_SLOT_ARTICLE_MIDDLE = import.meta.env.PUBLIC_ADSENSE_SLOT_ARTICLE_MIDDLE || '';
+const AD_SLOT_FOOTER = import.meta.env.PUBLIC_ADSENSE_SLOT_FOOTER || '';
+const showAdSlot = (slot: string) => AD_ENABLED && AD_CLIENT && slot;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -170,8 +174,11 @@ const AD_SLOT_BELOW_CONTENT = import.meta.env.PUBLIC_ADSENSE_SLOT_BELOW || '';
       color: var(--text);
     }
     main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-    .ad-slot { margin: 2rem 0 1rem; min-height: 120px; display: block; }
-    .ad-slot-below-content { border-top: 1px solid var(--border); padding-top: 1rem; text-align: center; }
+    .ad-slot { margin: 2rem 0 1rem; min-height: 120px; display: block; text-align: center; }
+    .ad-slot--header { margin: 1rem auto 0; max-width: 900px; padding: 0 1.5rem; }
+    .ad-slot--article-top { margin-top: 0; }
+    .ad-slot--article-middle { border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); padding: 1rem 0; }
+    .ad-slot--footer { border-top: 1px solid var(--border); padding-top: 1rem; }
     .footer-links {
       display: flex;
       justify-content: center;
@@ -267,15 +274,39 @@ const AD_SLOT_BELOW_CONTENT = import.meta.env.PUBLIC_ADSENSE_SLOT_BELOW || '';
       </div>
     </nav>
   </header>
+  {showAdSlot(AD_SLOT_HEADER) && (
+    <aside class="ad-slot ad-slot--header" aria-label={isZh ? '赞助内容' : 'Sponsored'}>
+      <ins
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client={AD_CLIENT}
+        data-ad-slot={AD_SLOT_HEADER}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+    </aside>
+  )}
   <main>
-    <slot />
-    {AD_ENABLED && AD_CLIENT && AD_SLOT_BELOW_CONTENT && (
-      <aside class="ad-slot ad-slot-below-content" aria-label={isZh ? '赞助内容' : 'Sponsored'}>
+    {showAdSlot(AD_SLOT_ARTICLE_TOP) && (
+      <aside class="ad-slot ad-slot--article-top" aria-label={isZh ? '赞助内容' : 'Sponsored'}>
         <ins
           class="adsbygoogle"
           style="display:block"
           data-ad-client={AD_CLIENT}
-          data-ad-slot={AD_SLOT_BELOW_CONTENT}
+          data-ad-slot={AD_SLOT_ARTICLE_TOP}
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </aside>
+    )}
+    <slot />
+    {showAdSlot(AD_SLOT_ARTICLE_MIDDLE) && (
+      <aside class="ad-slot ad-slot--article-middle" aria-label={isZh ? '赞助内容' : 'Sponsored'}>
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client={AD_CLIENT}
+          data-ad-slot={AD_SLOT_ARTICLE_MIDDLE}
           data-ad-format="auto"
           data-full-width-responsive="true"
         ></ins>
@@ -283,6 +314,18 @@ const AD_SLOT_BELOW_CONTENT = import.meta.env.PUBLIC_ADSENSE_SLOT_BELOW || '';
     )}
   </main>
   <footer>
+    {showAdSlot(AD_SLOT_FOOTER) && (
+      <aside class="ad-slot ad-slot--footer" aria-label={isZh ? '赞助内容' : 'Sponsored'}>
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client={AD_CLIENT}
+          data-ad-slot={AD_SLOT_FOOTER}
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </aside>
+    )}
     <div class="footer-links">
       <a
         href={publishHref}
