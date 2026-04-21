@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw AI & Tech Daily (2026-02-17)"
-description: "OpenClaw AI & Tech daily briefing for 2026-02-17: key updates, practical actions, and next-step watchpoints."
+description: "Dirty worktree warnings, update drift, and safe rollback habits for OpenClaw operators, plus openclaw best model 2026 guidance for stable daily use."
 pubDate: 2026-02-17
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw AI & Tech Daily (2026-02-14)"
-description: "OpenClaw AI & Tech daily briefing for 2026-02-14: key updates, practical actions, and next-step watchpoints."
+description: "How to build a content and ops feedback loop in OpenClaw, turning daily evidence, CTR reviews, and openclaw best model 2026 choices into action."
 pubDate: 2026-02-14
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

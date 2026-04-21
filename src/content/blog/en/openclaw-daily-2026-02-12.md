@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw AI & Tech Daily (2026-02-12)"
-description: "OpenClaw AI & Tech daily briefing for 2026-02-12: key updates, practical actions, and next-step watchpoints."
+description: "Browser automation stability checklist for OpenClaw, with monitoring baselines, rollback habits, and openclaw best model 2026 decision signals."
 pubDate: 2026-02-12
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

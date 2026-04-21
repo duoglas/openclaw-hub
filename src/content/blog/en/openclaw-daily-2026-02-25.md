@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw AI & Tech Daily (2026-02-25)"
-description: "OpenClaw AI & Tech daily briefing for 2026-02-25: key updates, practical actions, and next-step watchpoints."
+description: "OpenClaw v2026.2.23, SSRF config changes, and sessions cleanup guidance, with openclaw recommended model 2026 relevance for operators."
 pubDate: 2026-02-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

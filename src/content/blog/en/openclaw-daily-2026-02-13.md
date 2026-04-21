@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw AI & Tech Daily (2026-02-13)"
-description: "OpenClaw AI & Tech daily briefing for 2026-02-13: key updates, practical actions, and next-step watchpoints."
+description: "Security-by-default guidance for OpenClaw permissions, access scoping, and practical openclaw recommended model 2026 tradeoffs for safer automation."
 pubDate: 2026-02-13
 tags: ["openclaw", "daily", "automation"]
 category: "guide"

@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw AI & Tech Daily (2026-02-20)"
-description: "OpenClaw AI & Tech daily briefing for 2026-02-20: key updates, practical actions, and next-step watchpoints."
+description: "Sonnet 4.6 support, 1M context, and infostealer risks in OpenClaw deployments, plus openclaw recommended model 2026 takeaways for upgrades."
 pubDate: 2026-02-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
