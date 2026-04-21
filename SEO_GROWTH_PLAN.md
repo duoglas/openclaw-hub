@@ -4,6 +4,7 @@
 Increase Google Search clicks/impressions for kuoo.uk with weekly execution.
 
 ## Baseline (2026-02-25)
+- Legacy domain baseline: openhub.plzbite.top prior to 301 migration.
 - Clicks: 1
 - Impressions: 118
 - CTR: 0.8%
