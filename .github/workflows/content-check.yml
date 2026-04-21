@@ -139,6 +139,7 @@ jobs:
             --exclude 'raspberrypi.com'
             --exclude 'github.com/example/'
             --exclude 'github.com/nicepkg/openclaw'
+            --exclude 'github\.com/duoglas/openclaw-hub/issues/new'
             --exclude 'clawhub.dev'
             './dist/**/*.html'
           fail: true
