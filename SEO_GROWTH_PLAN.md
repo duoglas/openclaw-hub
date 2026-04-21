@@ -1,7 +1,7 @@
 # SEO Growth Plan (Execution Log)
 
 ## Goal
-Increase Google Search clicks/impressions for openhub.plzbite.top with weekly execution.
+Increase Google Search clicks/impressions for kuoo.uk with weekly execution.
 
 ## Baseline (2026-02-25)
 - Clicks: 1

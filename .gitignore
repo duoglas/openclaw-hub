@@ -5,3 +5,8 @@ dist/
 
 .astro/
 node_modules/
+
+# Secrets — never commit. Added R5-takeover 2026-04-21.
+.env
+.env.local
+.env.*.local
