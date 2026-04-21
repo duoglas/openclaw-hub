@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-21）"
-description: "时间：2026-04-21（周二）；OpenAI 宣布完成 1220 亿美元融资，投后估值 8520 亿美元；发生了什么：OpenAI 官方发布新一轮融资信息，并披露其当前营收、用户规模与算力扩张计划。"
+description: "OpenAI 以 1220 亿美元融资达成 8520 亿美元估值，NVIDIA 开源 Ising 量子校准与纠错模型，中国发布拟人化互动服务管理办法，叠加工信部“人工智能+质量”路线与微软 Copilot Agent 集成，标志 AI 正加速进入重资本投入与强监管并行阶段。"
 pubDate: 2026-04-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
