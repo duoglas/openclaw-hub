@@ -54,7 +54,7 @@ const publishHref = 'https://clawhub.com/';
 const footerPublishText = isZh ? '发布你的 Skill' : 'Publish your skill';
 const footerPublishAria = isZh ? '打开 ClawHub 发布页' : 'Open ClawHub publish page';
 const footerGrowthLabel = isZh ? 'footer-publish-zh' : 'footer-publish-en';
-const AD_ENABLED = false;
+const AD_ENABLED = import.meta.env.PUBLIC_ADSENSE_ENABLED === 'true';
 const AD_CLIENT = import.meta.env.PUBLIC_ADSENSE_CLIENT || '';
 const AD_SLOT_HEADER = import.meta.env.PUBLIC_ADSENSE_SLOT_HEADER || '';
 const AD_SLOT_ARTICLE_TOP = import.meta.env.PUBLIC_ADSENSE_SLOT_ARTICLE_TOP || '';
