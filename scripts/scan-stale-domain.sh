@@ -6,8 +6,16 @@ cd "$(dirname "$0")/.."
 TZ="Asia/Shanghai"
 TODAY=$(TZ="$TZ" date +%F)
 WEEKDAY=$(TZ="$TZ" date +%u) # 1=Mon..7=Sun
-MONDAY=$(TZ="$TZ" date -d "$TODAY -$((WEEKDAY-1)) days" +%F)
-SUNDAY=$(TZ="$TZ" date -d "$MONDAY +6 days" +%F)
+# Cross-platform date arithmetic: BSD date (macOS) vs GNU date (Linux)
+if date -v+1d >/dev/null 2>&1; then
+  # BSD date (macOS)
+  MONDAY=$(TZ="$TZ" date -j -v-$((WEEKDAY-1))d -f "%F" "$TODAY" +%F)
+  SUNDAY=$(TZ="$TZ" date -j -v+6d -f "%F" "$MONDAY" +%F)
+else
+  # GNU date (Linux / CI)
+  MONDAY=$(TZ="$TZ" date -d "$TODAY -$((WEEKDAY-1)) days" +%F)
+  SUNDAY=$(TZ="$TZ" date -d "$MONDAY +6 days" +%F)
+fi
 NOW=$(TZ="$TZ" date '+%F %H:%M')
 
 STALE_DOMAIN="openhub.plzbite.top"
