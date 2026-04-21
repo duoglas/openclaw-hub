@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-03-01)"
-description: "Synced with the daily Telegram AI/tech brief."
+description: "AI/tech daily for 2026-03-01 covering notable AI product launches, platform shifts, and actionable signals relevant to OpenClaw workflows."
 pubDate: 2026-03-01
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
