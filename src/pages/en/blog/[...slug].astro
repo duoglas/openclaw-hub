@@ -51,9 +51,17 @@ export async function getStaticPaths() {
       .slice(0, 3)
       .map(({ title, href }) => ({ title, href }));
 
+    // Stale-daily noindex policy: daily briefs older than STALE_DAILY_DAYS days
+    // emit <meta robots="noindex,follow">. Keeps fresh briefs in the index,
+    // lets crawlers follow out-links, and steers equity to weekly roundups /
+    // evergreen guides. Tune the cutoff in one place.
+    const STALE_DAILY_DAYS = 60;
+    const ageMs = Date.now() - post.data.pubDate.valueOf();
+    const noindex = isDaily && ageMs > STALE_DAILY_DAYS * 24 * 3600 * 1000;
+
     return {
       params: { slug },
-      props: { ...post, prevDaily, nextDaily, relatedPosts },
+      props: { ...post, prevDaily, nextDaily, relatedPosts, noindex },
     };
   });
 }
@@ -62,12 +70,13 @@ type Props = CollectionEntry<'blog'> & {
   prevDaily?: { title: string; href: string } | null;
   nextDaily?: { title: string; href: string } | null;
   relatedPosts?: { title: string; href: string }[];
+  noindex?: boolean;
 };
 
 const post = Astro.props;
 const { Content } = await post.render();
 const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
 ---
-<BlogPost {...post.data} slug={slug} prevDaily={post.prevDaily} nextDaily={post.nextDaily}>
+<BlogPost {...post.data} slug={slug} prevDaily={post.prevDaily} nextDaily={post.nextDaily} noindex={post.noindex}>
   <Content />
 </BlogPost>
