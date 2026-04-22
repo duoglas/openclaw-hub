@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-091
+- Hypothesis: 对最近24小时新发布且仍使用 EN 通用摘要的 `2026-04-22` 双语日报页执行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
+- Scope: `/en/blog/openclaw-daily-2026-04-22/`（EN description 回补）+ `/zh/blog/openclaw-daily-2026-04-22/`（CTA 一致性复核）
+- Change: 将 EN `openclaw-daily-2026-04-22` description 从通用摘要升级为覆盖 Anthropic 与 Amazon 十年超 1000 亿美元 AWS 投入与 5GW 算力、Adobe CX Enterprise Coworker 企业 Agentic AI 工作流、NVIDIA Hannover Messe 工业 AI 展示、特斯拉上海 AI 语音助手登记、Forge Nano 16 亿美元 SPAC 上市信号的可检索摘要；保持 EN/ZH 页面既有 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-22
+- End date: 2026-04-22
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN 目标页 description 去通用化并覆盖当日核心主题。
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-22.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；待与本次增长执行 commit 一并推送到远端分支。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报内容，执行“发布后即扫通用摘要 + 当日可检索化修补”闭环，压缩通用摘要进入索引窗口期。）
+
 ### EXP-090
 - Hypothesis: 对最近24小时新发布且仍使用 ZH 通用摘要的 `2026-04-21` 双语日报页执行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
 - Scope: `/zh/blog/openclaw-daily-2026-04-21/`（ZH description 回补）+ `/en/blog/openclaw-daily-2026-04-21/`（CTA 一致性复核）
