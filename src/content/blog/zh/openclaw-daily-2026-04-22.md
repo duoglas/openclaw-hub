@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-22）"
-description: "OpenAI 中文帮助中心今天没搜到，就不强凑，直接收口现有证据。《AI、科技日报》｜2026-04-22；1. Anthropic 与 Amazon 扩大合作：锁定未来十年超 1000 亿美元 AWS 算力；Anthropic 官方 4。"
+description: "2026-04-22 可检索 AI/科技摘要：Anthropic 与 Amazon 锁定十年超 1000 亿美元 AWS 算力、Adobe 发布企业级 Agentic 工作流、NVIDIA 在汉诺威工博会推进工业 AI、特斯拉在上海登记 AI 语音助手、Forge Nano 以 16 亿美元 SPAC 显示 AI 芯片材料链资本升温。"
 pubDate: 2026-04-22
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

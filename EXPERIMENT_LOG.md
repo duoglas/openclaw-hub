@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-091
+- Hypothesis: 对最近24小时新发布且出现 description 异常（EN 通用摘要、ZH 截断/噪音摘要）的 `2026-04-22` 双语日报页执行可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
+- Scope: `/en/blog/openclaw-daily-2026-04-22/` + `/zh/blog/openclaw-daily-2026-04-22/`
+- Change: 将 EN `openclaw-daily-2026-04-22` description 从通用摘要升级为覆盖 Anthropic-Amazon 十年超 1000 亿美元 AWS 算力协议、Adobe 企业级 Agentic workflow、NVIDIA Hannover 工业 AI 落地、Tesla 上海 AI 语音助手登记、Forge Nano 16 亿美元 SPAC 的可检索摘要；将 ZH `openclaw-daily-2026-04-22` description 从截断/噪音文本升级为覆盖同主题的中文可检索摘要；保持 EN/ZH 页面既有 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-22
+- End date: 2026-04-22
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页 description 去通用化/去截断并覆盖当日核心主题。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-22.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；build 保持既有 duplicate id warning（历史内容索引问题）但不影响本次验收。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后即扫 description 质量（通用/截断）+ 当日可检索化修补”闭环，压缩低质量摘要进入索引窗口期。）
+
 ### EXP-090
 - Hypothesis: 对最近24小时新发布且仍使用 ZH 通用摘要的 `2026-04-21` 双语日报页执行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
 - Scope: `/zh/blog/openclaw-daily-2026-04-21/`（ZH description 回补）+ `/en/blog/openclaw-daily-2026-04-21/`（CTA 一致性复核）
