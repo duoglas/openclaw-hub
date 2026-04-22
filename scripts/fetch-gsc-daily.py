@@ -51,9 +51,12 @@ import sys
 from pathlib import Path
 from typing import Iterable
 
-# Default property URL. GSC property is URL-prefix style (trailing slash
-# matters); keep this matching astro.config.mjs `site`.
-DEFAULT_SITE_URL = "https://kuoo.uk/"
+# Default property. GSC has two property types: URL-prefix ("https://kuoo.uk/")
+# and Domain ("sc-domain:kuoo.uk"). They are SEPARATE properties — the auth'd
+# account must be verified on exactly the one we query. kuoo.uk is registered
+# as a Domain Property (verified via DNS), so the API needs "sc-domain:" form.
+# Confirmed via searchconsole.sites.list() on 2026-04-22.
+DEFAULT_SITE_URL = "sc-domain:kuoo.uk"
 
 # Credential paths. We never open these files ourselves — google-auth does.
 WORKSPACE = Path.home() / ".openclaw" / "workspace"
@@ -172,7 +175,40 @@ def _load_credentials():
 
 
 def _build_service(creds):
+    """Build the Search Console discovery client, routed through a proxy if set.
+
+    google-api-python-client talks to Google via **httplib2**, which — unlike
+    ``requests`` — does NOT honour ``HTTPS_PROXY`` / ``HTTP_PROXY`` env vars.
+    On networks where ``*.googleapis.com`` requires an egress proxy (see
+    memory/global_mem.txt §NETWORK), the client would silently hang for 120s
+    on every ``.execute()`` call.
+
+    We therefore read ``HTTPS_PROXY`` / ``HTTP_PROXY`` ourselves and wire an
+    explicit ``httplib2.ProxyInfo`` into the transport. When no proxy env var
+    is set, we fall back to the library default (direct connection), so this
+    stays a no-op in proxy-less environments like CI.
+    """
+    from urllib.parse import urlparse
     from googleapiclient.discovery import build
+
+    proxy_url = (os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
+                 or os.environ.get("HTTP_PROXY") or os.environ.get("http_proxy"))
+    if proxy_url:
+        import httplib2
+        import socks  # PySocks; required by httplib2 ProxyInfo even for HTTP.
+        from google_auth_httplib2 import AuthorizedHttp
+        u = urlparse(proxy_url)
+        scheme = (u.scheme or "http").lower()
+        proxy_type = socks.PROXY_TYPE_SOCKS5 if scheme.startswith("socks") else socks.PROXY_TYPE_HTTP
+        proxy_info = httplib2.ProxyInfo(
+            proxy_type=proxy_type,
+            proxy_host=u.hostname,
+            proxy_port=u.port or (1080 if proxy_type == socks.PROXY_TYPE_SOCKS5 else 8080),
+        )
+        http = AuthorizedHttp(creds, http=httplib2.Http(timeout=60, proxy_info=proxy_info))
+        # ``http=`` and ``credentials=`` are mutually exclusive in build().
+        return build("searchconsole", "v1", http=http, cache_discovery=False)
+
     # cache_discovery=False avoids a noisy warning on newer oauth stacks.
     return build("searchconsole", "v1", credentials=creds, cache_discovery=False)
 
