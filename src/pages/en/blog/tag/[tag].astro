@@ -94,7 +94,7 @@ const faqSchema = {
 };
 ---
 
-<BaseLayout title={`Tag: ${tag}`} description={`Posts tagged ${tag}`} lang="en">
+<BaseLayout title={`Tag: ${tag}`} description={`Posts tagged ${tag}`} lang="en" noindex={true}>
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

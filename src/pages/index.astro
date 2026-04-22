@@ -1,41 +1,242 @@
 ---
+import { getCollection } from 'astro:content';
+
+// Pull latest non-daily guide posts for both locales, so the root page offers
+// real entry points to crawlers (and users) instead of a bare language picker.
+const allPosts = await getCollection('blog');
+const isGuide = (id: string) => !id.replace(/^[a-z]+\//, '').startsWith('openclaw-daily-');
+
+const topEn = allPosts
+  .filter((p) => p.data.lang === 'en' && isGuide(p.id))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+
+const topZh = allPosts
+  .filter((p) => p.data.lang === 'zh' && isGuide(p.id))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+
+const toHref = (id: string) => {
+  const m = id.match(/^([a-z]+)\/(.+)\.md$/);
+  if (!m) return '/';
+  return `/${m[1]}/blog/${m[2]}/`;
+};
+
+const siteUrl = 'https://kuoo.uk';
+const description =
+  'OpenClaw Guide: bilingual hub of practical AI agent tutorials, model comparison notes, and a daily AI/tech brief. Pick English or 中文 and dive in.';
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AI Agent Hub',
+  alternateName: 'OpenClaw Guide',
+  url: `${siteUrl}/`,
+  description,
+  inLanguage: ['en', 'zh'],
+  publisher: {
+    '@type': 'Organization',
+    name: 'AI Agent Hub',
+    url: siteUrl,
+    logo: `${siteUrl}/images/home-hero-cartoon.png`,
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/en/blog/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is OpenClaw?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'OpenClaw is an open AI agent runtime and skill marketplace. This site publishes tutorials, troubleshooting notes, and a daily AI/tech brief that help users get the most out of OpenClaw and the broader AI agent ecosystem.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is the content free to read?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. All guides, model comparisons, and daily briefs are free to read in both English and Simplified Chinese. Source code is also open under the OpenClaw project.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How often is the site updated?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A bilingual daily AI/tech brief ships on most weekdays. Long-form tutorials and troubleshooting guides are added as new ecosystem features and issues emerge.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '这个站点是做什么的？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'OpenClaw 是一个开放的 AI 智能体运行时与技能市场，本站提供中英文双语的实战教程、模型对比、故障排查与每日 AI/科技简报。',
+      },
+    },
+  ],
+};
 ---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OpenClaw Guide | Choose Language</title>
-  <meta name="description" content="OpenClaw Guide bilingual portal. Choose English or 中文." />
-  <link rel="canonical" href="https://kuoo.uk/" />
-  <link rel="alternate" hreflang="en" href="https://kuoo.uk/en/" />
-  <link rel="alternate" hreflang="zh" href="https://kuoo.uk/zh/" />
-  <link rel="alternate" hreflang="x-default" href="https://kuoo.uk/" />
+  <title>OpenClaw Guide · AI Agent Hub — bilingual tutorials & daily AI brief</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="OpenClaw, AI Agent, AI agent hub, Claude, ChatGPT, LLM tutorial, OpenClaw 教程, AI 智能体, AI 日报" />
+  <link rel="canonical" href={`${siteUrl}/`} />
+  <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
+  <link rel="alternate" hreflang="zh" href={`${siteUrl}/zh/`} />
+  <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en/`} />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="OpenClaw Guide · AI Agent Hub" />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={`${siteUrl}/`} />
+  <meta property="og:site_name" content="AI Agent Hub" />
+  <meta property="og:image" content={`${siteUrl}/images/home-hero-cartoon.png`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OpenClaw Guide · AI Agent Hub" />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteUrl}/images/home-hero-cartoon.png`} />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <style>
-    :root { --accent: #e74c3c; --bg: #0f0f0f; --text: #e0e0e0; --card: #1a1a2e; }
+    :root {
+      --accent: #e74c3c; --accent-2: #4f46e5;
+      --bg: #0f0f12; --text: #e8e8ee; --muted: #a8a8b3;
+      --card: #1a1a2e; --card-hover: #222244; --border: #2a2a40;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); }
-    main { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-    .card { width: 100%; max-width: 820px; background: var(--card); border-radius: 14px; padding: 28px; }
-    h1 { margin: 0 0 10px; color: #fff; }
-    p { margin: 0 0 18px; color: #bfbfbf; }
-    .actions { display: grid; gap: 12px; }
-    a.btn { display: block; text-decoration: none; text-align: center; padding: 12px 14px; border-radius: 10px; font-weight: 700; }
-    a.en { background: var(--accent); color: #fff; }
-    a.zh { border: 1px solid #555; color: #fff; }
+    body {
+      margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+    }
+    main { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
+    header.hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2a1a3e 100%);
+      border-radius: 16px; padding: 32px 28px; margin-bottom: 28px;
+      border: 1px solid var(--border);
+    }
+    header.hero h1 { margin: 0 0 10px; font-size: 2rem; color: #fff; }
+    header.hero p  { margin: 0 0 18px; color: var(--muted); font-size: 1.05rem; }
+    .lang-cta { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; margin-top: 18px; }
+    .lang-cta a {
+      text-align: center; padding: 14px 18px; border-radius: 10px;
+      text-decoration: none; font-weight: 700; font-size: 1rem;
+    }
+    .lang-cta a.en { background: var(--accent); color: #fff; }
+    .lang-cta a.zh { background: var(--accent-2); color: #fff; }
+    .lang-cta a:hover { filter: brightness(1.1); }
+    .hero-img { width: 100%; border-radius: 12px; margin: 8px 0 0; display: block; }
+    section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 24px; margin: 18px 0; }
+    section h2 { margin: 0 0 14px; color: #fff; font-size: 1.35rem; }
+    ul.posts { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    ul.posts li { border-bottom: 1px dashed var(--border); padding: 10px 0; }
+    ul.posts li:last-child { border-bottom: none; }
+    ul.posts a { color: var(--text); text-decoration: none; font-weight: 600; }
+    ul.posts a:hover { color: var(--accent); }
+    ul.posts .desc { display: block; color: var(--muted); font-size: 0.92rem; margin-top: 4px; font-weight: 400; }
+    .two-col { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } .lang-cta { grid-template-columns: 1fr; } }
+    .quick-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .quick-links a {
+      display: inline-block; padding: 6px 12px; border-radius: 999px;
+      background: #222244; color: var(--text); text-decoration: none;
+      font-size: 0.88rem; border: 1px solid var(--border);
+    }
+    .quick-links a:hover { background: var(--accent); color: #fff; }
+    .faq h3 { margin: 14px 0 4px; color: #fff; font-size: 1.02rem; }
+    .faq p  { margin: 0 0 10px; color: var(--muted); }
+    footer.foot { color: var(--muted); font-size: 0.85rem; text-align: center; margin-top: 32px; }
+    footer.foot a { color: var(--muted); }
   </style>
 </head>
 <body>
   <main>
-    <div class="card">
-      <h1>🦞 OpenClaw Guide</h1>
-      <p>Select your language / 选择语言</p>
-      <img src="/images/home-hero-cartoon.png" alt="OpenClaw Hub hand-drawn infographic" style="width:100%; border-radius:12px; margin: 8px 0 16px; display:block;" />
-      <div class="actions">
-        <a class="btn en" href="/en/">Enter English Site</a>
-        <a class="btn zh" href="/zh/">进入中文站点</a>
+    <header class="hero">
+      <h1>🦞 OpenClaw Guide — AI Agent Hub</h1>
+      <p>
+        Bilingual tutorials, model comparisons, and a daily AI/tech brief for builders of AI agents.
+        <br/>面向 AI 智能体开发者的中英文实战教程、模型对比与每日 AI/科技简报。
+      </p>
+      <img class="hero-img" src="/images/home-hero-cartoon.png" alt="OpenClaw Hub hand-drawn infographic showing an AI agent ecosystem" />
+      <div class="lang-cta">
+        <a class="en" href="/en/" aria-label="Enter the English site">Enter English Site →</a>
+        <a class="zh" href="/zh/" aria-label="进入中文站点">进入中文站点 →</a>
       </div>
+      <div class="quick-links">
+        <a href="/en/daily/">🗞 Daily AI Brief (EN)</a>
+        <a href="/zh/daily/">🗞 每日 AI 简报（中文）</a>
+        <a href="/en/blog/">📚 English Blog</a>
+        <a href="/zh/blog/">📚 中文博客</a>
+      </div>
+    </header>
+
+    <div class="two-col">
+      <section>
+        <h2>📘 Featured Guides (English)</h2>
+        <ul class="posts">
+          {topEn.map((p) => (
+            <li>
+              <a href={toHref(p.id)}>{p.data.title}</a>
+              <span class="desc">{p.data.description}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>📗 精选指南（中文）</h2>
+        <ul class="posts">
+          {topZh.map((p) => (
+            <li>
+              <a href={toHref(p.id)}>{p.data.title}</a>
+              <span class="desc">{p.data.description}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
+
+    <section>
+      <h2>ℹ️ About this site / 关于本站</h2>
+      <p>
+        <strong>OpenClaw Guide</strong> (AI Agent Hub) publishes hands-on tutorials, troubleshooting notes,
+        and a daily AI/tech brief covering Claude, ChatGPT, open-source LLMs, and agent orchestration.
+        Content is maintained in parallel English and Simplified Chinese editions.
+      </p>
+      <p>
+        <strong>AI Agent Hub（OpenClaw 指南）</strong> 持续更新中英双语的 AI 智能体实战教程、
+        模型对比笔记，以及每日 AI/科技简报，覆盖 Claude、ChatGPT、开源 LLM 与智能体编排等主题。
+      </p>
+    </section>
+
+    <section class="faq">
+      <h2>❓ FAQ / 常见问题</h2>
+      <h3>What is OpenClaw?</h3>
+      <p>OpenClaw is an open AI agent runtime and skill marketplace. This site documents how to get the most out of it and the broader AI agent ecosystem.</p>
+      <h3>Is everything free?</h3>
+      <p>Yes. Guides and daily briefs are free to read in both English and Simplified Chinese; the project itself is open source.</p>
+      <h3>这个站点是做什么的？</h3>
+      <p>OpenClaw 是一个开放的 AI 智能体运行时与技能市场，本站提供实战教程、故障排查和每日简报。</p>
+      <h3>内容多久更新一次？</h3>
+      <p>每日 AI/科技简报大多数工作日都会更新；长篇教程随生态变化持续补充。</p>
+    </section>
+
+    <footer class="foot">
+      <p>© {new Date().getFullYear()} AI Agent Hub · OpenClaw Guide · <a href="/en/">English</a> · <a href="/zh/">中文</a></p>
+    </footer>
   </main>
 </body>
 </html>

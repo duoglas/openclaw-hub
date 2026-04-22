@@ -108,7 +108,7 @@ const faqSchema = {
 };
 ---
 
-<BaseLayout title={`标签: ${displayTag}`} description={`标签 ${displayTag} 下的文章`} lang="zh">
+<BaseLayout title={`标签: ${displayTag}`} description={`标签 ${displayTag} 下的文章`} lang="zh" noindex={true}>
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

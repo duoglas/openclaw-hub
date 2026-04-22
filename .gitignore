@@ -10,3 +10,7 @@ node_modules/
 .env
 .env.local
 .env.*.local
+
+# Python bytecode cache
+__pycache__/
+*.pyc

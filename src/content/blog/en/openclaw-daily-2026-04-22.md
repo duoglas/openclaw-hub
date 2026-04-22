@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-22)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "Searchable AI & tech brief for April 22, 2026: Anthropic-Amazon’s $100B+ AWS compute pact, Adobe’s enterprise agentic workflow launch, NVIDIA’s Hannover industrial AI push, Tesla’s Shanghai AI voice filing, and Forge Nano’s $1.6B SPAC signal for upstream chip materials."
 pubDate: 2026-04-22
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
