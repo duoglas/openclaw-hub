@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-091: 回补 2026-04-22 EN 双语日报通用 description（升级为可检索摘要，优先消费最近24小时内容建设新增实验假设），保持 CTA 强相关内链并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-091: 回补 2026-04-22 EN 双语日报通用 description（升级为可检索摘要，优先消费最近24小时内容建设新增实验假设），保持 CTA 强相关内链并完成 build 闭环 | ICE 9x8x8=576 — commit `54b4cf1`
   - Hypothesis: 对最近24小时新发布且仍使用 EN 通用摘要的双语日报页执行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en/blog/openclaw-daily-2026-04-22/` description 不再为通用文案且覆盖当日核心主题。
   - Acceptance: 1) 更新 EN `openclaw-daily-2026-04-22.md` description 为可检索摘要；2) 保持 EN/ZH 页面 3 条强相关 CTA 内链不回退；3) 本地检查与构建全部通过。
