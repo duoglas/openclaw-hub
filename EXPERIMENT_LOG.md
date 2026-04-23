@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-091
+- Hypothesis: 对最近24小时新增且仍含通用或截断 description 的双语日报页（`2026-04-22`、`2026-04-23`）执行当日可检索摘要回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
+- Scope: `/en|zh/blog/openclaw-daily-2026-04-22/` + `/en|zh/blog/openclaw-daily-2026-04-23/`
+- Change: 将 EN `openclaw-daily-2026-04-22` 与 `openclaw-daily-2026-04-23` description 从通用摘要升级为覆盖当日核心主题的可检索摘要；将 ZH `openclaw-daily-2026-04-22` 与 `openclaw-daily-2026-04-23` description 从异常引导语/截断句升级为完整可检索摘要；保持 EN/ZH 页面既有 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-23
+- End date: 2026-04-23
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；四个目标页 description 均去通用化且无截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-22.md` 与 `openclaw-daily-2026-04-23.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后即扫 description 质量 + 当日回补”的闭环，避免通用/截断摘要进入索引窗口期。）
+
 ### EXP-090
 - Hypothesis: 对最近24小时新发布且仍使用 ZH 通用摘要的 `2026-04-21` 双语日报页执行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
 - Scope: `/zh/blog/openclaw-daily-2026-04-21/`（ZH description 回补）+ `/en/blog/openclaw-daily-2026-04-21/`（CTA 一致性复核）

@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-23）"
-description: "1. OpenAI 推出 ChatGPT「workspace agents」；OpenAI 4 月 22 日发布 workspace agents，面向 Business、Enterprise、Edu、Teachers 计划开放研究预览。"
+description: "可检索摘要：OpenAI 发布 ChatGPT workspace agents 与本地隐私脱敏 Privacy Filter，Google Cloud Next 2026 主推 Gemini Enterprise Agent Platform，NVIDIA 扩大与 Google Cloud 的 agentic/physical AI 基础设施合作，广东发布 AI 全域应用行动方案。"
 pubDate: 2026-04-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
