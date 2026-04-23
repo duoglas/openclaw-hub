@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-092
+- Hypothesis: 对最近24小时新增日报中出现正文截断（“全能 …”）的双语页面做当日补全，可恢复页面信息完整度与可读性，避免摘要/正文语义断裂对检索匹配与导流转化造成损失。
+- Scope: `/en|zh/blog/openclaw-daily-2026-04-23/`
+- Change: 补全 EN/ZH `openclaw-daily-2026-04-23.md` 中被截断的“实战案例”与“今日结论/明日跟踪点”段落，新增案例2（Privacy Filter 脱敏管道）与可执行建议，保持既有可检索 description 与 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-23
+- End date: 2026-04-23
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页不再含“全能 …”截断句且结构完整。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-23.md` 已完成截断补全并新增案例2与结论段；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后完整性扫描（截断/缺段）+ 当日修补”闭环，降低内容完整性回归。）
+
 ### EXP-091
 - Hypothesis: 对最近24小时新增且仍含通用或截断 description 的双语日报页（`2026-04-22`、`2026-04-23`）执行当日可检索摘要回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-04-22/` + `/en|zh/blog/openclaw-daily-2026-04-23/`

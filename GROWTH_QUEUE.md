@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-21 17:22
+Last updated: 2026-04-23 17:28
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-092: 修复 2026-04-23 双语日报正文截断（补全实战案例2 + 今日结论），保持可检索摘要与强相关 CTA，完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对最近24小时新增日报中出现正文截断（“全能 …”）的双语页面做当日补全，可恢复页面信息完整度与可读性，避免摘要/正文语义断裂对检索匹配与导流转化造成损失。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-23/` 不再存在截断句，且补全“实战案例2+今日结论+跟踪点”。
+  - Acceptance: 1) 补全 EN/ZH `openclaw-daily-2026-04-23.md` 截断正文；2) 保持既有 description 与 3 条强相关 CTA 不回退；3) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-091: 回补 2026-04-22 与 2026-04-23 双语日报 description（优先消费最近24小时内容建设新增实验假设），去除通用/截断摘要并升级为可检索摘要，保持 CTA 强相关内链并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最近24小时新增且仍含通用或截断 description 的双语日报页（2026-04-22、2026-04-23）做当日可检索摘要回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-22/` 与 `/en|zh/blog/openclaw-daily-2026-04-23/` description 不再为通用或截断文案。
@@ -143,6 +147,10 @@ Manager: main session
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-04/` 与 `/zh/blog/openclaw-daily-2026-04-04/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
 
 ## Done
+- [x] P1 Candidate A / EXP-092: 修复 2026-04-23 双语日报正文截断（补全实战案例2 + 今日结论），保持可检索摘要与强相关 CTA，完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对最近24小时新增日报中出现正文截断（“全能 …”）的双语页面做当日补全，可恢复页面信息完整度与可读性，避免摘要/正文语义断裂对检索匹配与导流转化造成损失。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-23/` 不再存在截断句，且补全“实战案例2+今日结论+跟踪点”。
+  - Acceptance: 1) 补全 EN/ZH `openclaw-daily-2026-04-23.md` 截断正文；2) 保持既有 description 与 3 条强相关 CTA 不回退；3) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-057: 强化 2026-04-01 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时内容建设任务新增的实验假设 | ICE 8x7x8=448 — commit `79140a4`
   - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
   - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
