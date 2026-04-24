@@ -36,7 +36,7 @@ search_pattern() {
   if [ "$SEARCH_BIN" = "rg" ]; then
     output=$(rg -n --no-heading --glob 'openclaw-daily-*.md' -e "$pattern" src/content/blog/en src/content/blog/zh || true)
   else
-    output=$(grep -RIn -E --include='openclaw-daily-*.md' -- "$pattern" src/content/blog/en src/content/blog/zh || true)
+    output=$(grep -RIn -E --include='openclaw-daily-*.md' -e "$pattern" src/content/blog/en src/content/blog/zh || true)
   fi
 
   if [ -n "$output" ]; then

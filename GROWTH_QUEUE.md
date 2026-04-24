@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-24 11:23
+Last updated: 2026-04-24 17:23
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-094: 修复 daily-template 回归检查脚本在 grep 回退路径下的误报警噪声（确保无 `No such file or directory` 假阳性输出），延续最近24小时内容建设“发布后即扫并快速回补”实验闭环 | ICE 8x8x9=576 — commit `COMMIT_SHA_PLACEHOLDER`
+  - Hypothesis: 在部分环境缺少 `rg` 时，`check-daily-template-regressions.sh` 的 `grep -- "pattern"` 写法会把 pattern 误当文件并输出大量 `No such file or directory`，降低闸门可读性并掩盖真实异常；修复为 `grep -e "pattern"` 后可稳定输出“只在真失败时报错”，提高日更回归闸门可维护性。
+  - Metrics: `pnpm check:daily-template` 输出无 grep 误报；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 修复 `scripts/check-daily-template-regressions.sh` 的 grep 参数写法；2) 在本地完整执行 daily 三闸门 + build；3) 输出不再出现 `No such file or directory` 误报警噪声。
 - [x] P1 Candidate A / EXP-093: 修复 2026-04-24 双语日报正文截断与摘要退化（补全案例2 + 今日结论 + 明日跟踪点，回补 EN/ZH 可检索 description），优先消费最近24小时内容建设新增实验假设并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最近24小时新增日报中出现正文截断（“发生…”）与摘要退化（EN 通用 description、ZH 截断 description）的双语页面做当日回补，可恢复页面信息完整度、提高检索匹配，并避免导流与转化在索引窗口期受损。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-24/` 不再含“发生…”截断句，且 EN/ZH description 为可检索摘要。
