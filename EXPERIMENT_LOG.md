@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-093
+- Hypothesis: 对最近24小时新增日报中出现正文截断（“发生…”）与摘要退化（EN 通用 description、ZH 截断 description）的双语页面做当日回补，可恢复页面信息完整度、提高检索匹配，并避免导流与转化在索引窗口期受损。
+- Scope: `/en|zh/blog/openclaw-daily-2026-04-24/`
+- Change: 回补 EN `openclaw-daily-2026-04-24` description 为覆盖 GPT-5.5 Codex 企业落地、中美 AI 知识产权摩擦、联合国治理议程、Adobe CX Enterprise Coworker 与 Anthropic Claude Design 的可检索摘要；回补 ZH description 为对应中文可检索摘要；补全 EN/ZH 正文中被截断的“案例2：OpenAI 广告化试点”段落，并新增“今日结论（3条可执行建议）+ 明日跟踪点”；保留 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-24
+- End date: 2026-04-24
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页不再含“发生…”截断句且 description 去通用/去截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-24.md` 已完成 description 回补与正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后即扫 description 质量 + 正文截断扫描 + 当日回补”闭环，降低索引窗口期内容质量回归风险。）
+
 ### EXP-092
 - Hypothesis: 对最近24小时新增日报中出现正文截断（“全能 …”）的双语页面做当日补全，可恢复页面信息完整度与可读性，避免摘要/正文语义断裂对检索匹配与导流转化造成损失。
 - Scope: `/en|zh/blog/openclaw-daily-2026-04-23/`
