@@ -22,7 +22,7 @@
 - Start date: 2026-04-24
 - End date: 2026-04-24
 - Success metric: `pnpm check:daily-template` 输出无 grep 误报；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。
-- Result: pass（`scripts/check-daily-template-regressions.sh` 已修复 grep 回退参数；本地 daily 三闸门与 build 全部通过，且不再出现 `No such file or directory` 误报警噪声；commit `COMMIT_SHA_PLACEHOLDER` 已准备推送。）
+- Result: pass（`scripts/check-daily-template-regressions.sh` 已修复 grep 回退参数；本地 daily 三闸门与 build 全部通过，且不再出现 `No such file or directory` 误报警噪声；commit `ff990c4` 已推送至 `origin/publish-daily-temp`。）
 - Decision (scale / iterate / stop): scale（保留该修复为默认检查基线；后续新增检查脚本时统一使用 `grep -e` 模式，避免同类误报回归。）
 
 ### EXP-093
