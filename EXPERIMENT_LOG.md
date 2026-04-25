@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-095
+- Hypothesis: 最近24小时新增的 `2026-04-25` 双语日报出现 EN 页面正文中文错配与 EN/ZH description 模板化退化，会削弱检索匹配与导流可信度；当日回补为“语言一致正文 + 可检索摘要 + 强相关 CTA”可恢复索引窗口期内容质量并延续增长闭环。
+- Scope: `/en|zh/blog/openclaw-daily-2026-04-25/`
+- Change: 重写 EN `openclaw-daily-2026-04-25.md` 正文为英文，保留 Confirmed/To Verify 边界；将 EN description 升级为覆盖 Meta-AWS Graviton 扩容、NVIDIA+Adobe+WPP 企业智能体、GPT-5.5 Codex 生产化信号的可检索摘要；将 ZH description 升级为对应中文可检索摘要；保持 EN/ZH 页面 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-25
+- End date: 2026-04-25
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN 页面正文无中文错配且 EN/ZH description 为可检索摘要。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-25.md` 已完成语言一致性与 description 回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。补充观察：`check-daily-template-regressions.sh` 在当前环境执行期间仍出现 `grep: ... No such file or directory` 噪声，判定为脚本运行环境问题，不影响本次内容改造验收。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，执行“发布后即扫语言一致性 + description 质量 + 当日回补”的闭环，降低索引窗口期质量回归。）
+
 ### EXP-094
 - Hypothesis: 在部分环境缺少 `rg` 时，`check-daily-template-regressions.sh` 的 `grep -- "pattern"` 写法会把 pattern 误当文件并输出大量 `No such file or directory`，降低闸门可读性并掩盖真实异常；修复为 `grep -e "pattern"` 后可稳定输出“只在真失败时报错”，提高日更回归闸门可维护性。
 - Scope: `scripts/check-daily-template-regressions.sh`（影响 `pnpm check:daily-template` 回退路径稳定性）
