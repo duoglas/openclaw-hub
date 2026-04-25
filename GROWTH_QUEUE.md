@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-25 11:24
+Last updated: 2026-04-25 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-096: 回补 2026-04-24 EN 日报语言错配（中文正文误入 EN 页）并重写为英文可检索版本，联动最近24小时内容建设假设完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时内容回补中，`/en/blog/openclaw-daily-2026-04-24/` 仍出现中文正文误入 EN 页，会拉低英文检索匹配与读者信任；当日修复为“英文正文 + 可检索结构 + 强相关 CTA”可恢复索引窗口期质量并延续增长闭环。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN `openclaw-daily-2026-04-24.md` 无中文字符且保留 3 条强相关 CTA 内链。
+  - Acceptance: 1) 重写 EN `openclaw-daily-2026-04-24.md` 为英文正文并保留“结论/要闻/案例/建议/跟踪点”结构；2) 保持 EN description 与 3 条 CTA 强相关内链不回退；3) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-095: 回补 2026-04-25 双语日报语言错配与摘要退化（EN 正文去中文占位 + EN/ZH description 升级为可检索摘要），优先消费最近24小时内容建设新增实验假设并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增的 2026-04-25 双语日报出现 EN 页面正文中文错配与 EN/ZH description 模板化退化，会削弱检索匹配与导流可信度；当日回补为“语言一致正文 + 可检索摘要 + 强相关 CTA”可恢复索引窗口期内容质量并延续增长闭环。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-25/` EN 正文不再为中文错配且 EN/ZH description 为可检索摘要。

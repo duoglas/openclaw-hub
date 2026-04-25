@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-096
+- Hypothesis: 最近24小时内容回补后，`/en/blog/openclaw-daily-2026-04-24/` 仍存在中文正文误入 EN 页，会削弱英文检索匹配与导流可信度；当日修复为“英文正文 + 可检索结构 + 强相关 CTA”可恢复索引窗口期质量并延续增长闭环。
+- Scope: `/en/blog/openclaw-daily-2026-04-24/`
+- Change: 将 EN `openclaw-daily-2026-04-24.md` 从中文正文重写为英文版本，保留“Key Conclusion / Top 5 Signals / Practical Cases / Actionable Recommendations / What to Watch”结构；保持 frontmatter description 为可检索英文摘要；保持 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-25
+- End date: 2026-04-25
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN 页面正文无中文字符且结构完整。
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-24.md` 已完成英文重写并通过“无中文字符”校验；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过。补充观察：`check-daily-template-regressions.sh` 仍输出 `grep: ... No such file or directory` 噪声，判定为 grep 模式参数在当前环境下的兼容性问题，不影响本次内容验收。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后即扫 EN 语言一致性 + description 质量 + CTA 完整性”闭环；并排入脚本兼容性修复以消除检查噪声。）
+
 ### EXP-095
 - Hypothesis: 最近24小时新增的 `2026-04-25` 双语日报出现 EN 页面正文中文错配与 EN/ZH description 模板化退化，会削弱检索匹配与导流可信度；当日回补为“语言一致正文 + 可检索摘要 + 强相关 CTA”可恢复索引窗口期内容质量并延续增长闭环。
 - Scope: `/en|zh/blog/openclaw-daily-2026-04-25/`
