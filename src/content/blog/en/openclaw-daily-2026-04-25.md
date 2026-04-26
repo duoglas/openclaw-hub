@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-25)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "2026-04-25 AI daily: Meta expands AWS Graviton for agentic workloads, NVIDIA and Adobe push governed enterprise agents, GPT-5.5 Codex scales inside NVIDIA, with watchpoints on DeepSeek Huawei-chip preview and OpenAI Codex consulting rollout."
 pubDate: 2026-04-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -15,6 +15,17 @@
 
 ## Active Experiments
 
+### EXP-095
+- Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 非摘要化/截断 description，以及正文“案例2”截断做当日回补，可显著提升索引窗口期的主题可检索性与页面完整性，避免导流与转化信号衰减。
+- Scope: `/en|zh/blog/openclaw-daily-2026-04-25/` + `/en|zh/blog/openclaw-daily-2026-04-26/`
+- Change: 将 EN/ZH `openclaw-daily-2026-04-25` description 从通用模板/流程叙述改为覆盖 Meta 扩大 AWS Graviton、NVIDIA+Adobe/WPP 企业智能体、GPT-5.5 Codex 企业落地、DeepSeek 华为芯片预览与 OpenAI Codex 企业化推进的可检索摘要；将 EN/ZH `openclaw-daily-2026-04-26` description 从通用模板/截断文案改为覆盖 Amazon-Anthropic 长期算力绑定、Meta Graviton 扩容、NVIDIA+Google Cloud Agentic/Physical AI、Adobe CX Enterprise Coworker 与上海产业级 AI 进展的可检索摘要；补全 EN/ZH `openclaw-daily-2026-04-26.md` 被截断的“案例 2”段落，并新增“今日结论（3条可执行建议）+ 明日跟踪点”，保留 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-26
+- End date: 2026-04-26
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-25/` 与 `/en|zh/blog/openclaw-daily-2026-04-26/` description 不再为通用/截断文案，且 `2026-04-26` EN/ZH 正文不再含“案例 2：Adobe 把 AI 做成营销“同…”` 截断。
+- Result: pass（四个目标文件 `src/content/blog/en|zh/openclaw-daily-2026-04-25.md`、`openclaw-daily-2026-04-26.md` 已完成 description 回补；`openclaw-daily-2026-04-26` EN/ZH 正文截断已补全并新增“今日结论 + 明日跟踪点”；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，固定执行“发布后即扫 description + 正文截断 + 当日回补 + 三闸门+build”闭环，压缩低质量摘要进入索引窗口期。）
+
+
 ### EXP-094
 - Hypothesis: 在部分环境缺少 `rg` 时，`check-daily-template-regressions.sh` 的 `grep -- "pattern"` 写法会把 pattern 误当文件并输出大量 `No such file or directory`，降低闸门可读性并掩盖真实异常；修复为 `grep -e "pattern"` 后可稳定输出“只在真失败时报错”，提高日更回归闸门可维护性。
 - Scope: `scripts/check-daily-template-regressions.sh`（影响 `pnpm check:daily-template` 回退路径稳定性）

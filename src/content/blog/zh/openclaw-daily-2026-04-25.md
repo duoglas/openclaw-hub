@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-25）"
-description: "取证完成。现在按 runbook 收口成日报，保留“已确认 / 待确认”边界。《AI、科技日报》；日期：2026-04-25（亚洲/上海）；1. Meta 扩大与 AWS 合作，准备用 Graviton 芯片跑 agentic AI。"
+description: "2026-04-25 AI日报：Meta 扩大 AWS Graviton 承载 agentic AI，NVIDIA 联合 Adobe/WPP 推进可治理营销智能体，GPT-5.5 Codex 在企业内加速落地，并跟踪 DeepSeek 华为芯片预览与 OpenAI Codex 企业化进展。"
 pubDate: 2026-04-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
