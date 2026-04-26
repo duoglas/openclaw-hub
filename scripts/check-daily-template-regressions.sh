@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-if command -v rg >/dev/null 2>&1; then
+if command -v rg >/dev/null 2>&1 && rg --version 2>/dev/null | head -n 1 | grep -qi 'ripgrep'; then
   SEARCH_BIN="rg"
 else
   SEARCH_BIN="grep"

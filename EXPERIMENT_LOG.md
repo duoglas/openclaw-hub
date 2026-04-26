@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-096
+- Hypothesis: 当前环境 `~/.local/bin/rg` 实为 grep 包装脚本而非 ripgrep，导致 `check-daily-template-regressions.sh` 误走 rg 分支并输出 `grep: ... No such file or directory` 假阳性噪声；若改为“仅识别真实 ripgrep 才走 rg 分支”，可恢复闸门可读性并降低误判风险。
+- Scope: `scripts/check-daily-template-regressions.sh`（影响 `pnpm check:daily-template` 在多环境下的执行稳定性）
+- Change: 将检查脚本的搜索后端识别从“存在 `rg` 命令”升级为“`rg --version` 首行包含 `ripgrep` 才使用 rg，否则强制回退 grep”；保留 `grep -RIn -E ... -e "$pattern"` 参数模式，避免 pattern 被误解析为文件；执行 `pnpm check:daily-template && pnpm check:daily-heading-date && pnpm check:daily-cta && pnpm build` 完整验证。
+- Start date: 2026-04-26
+- End date: 2026-04-26
+- Success metric: `pnpm check:daily-template` 无 `No such file or directory` 噪声且通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。
+- Result: pass（已确认本机 `~/.local/bin/rg` 为 shell 包装脚本，完成脚本判定修复后本地四项检查全部通过，且 `pnpm check:daily-template` 输出恢复干净；commit `(this commit)` 已准备推送。）
+- Decision (scale / iterate / stop): scale（后续所有“可选依赖工具探测”统一采用“命令存在 + 版本签名匹配”双判定，避免同类假工具回归。）
+
 ### EXP-095
 - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 非摘要化/截断 description，以及正文“案例2”截断做当日回补，可显著提升索引窗口期的主题可检索性与页面完整性，避免导流与转化信号衰减。
 - Scope: `/en|zh/blog/openclaw-daily-2026-04-25/` + `/en|zh/blog/openclaw-daily-2026-04-26/`

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-24 17:23
+Last updated: 2026-04-26 17:23
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-096: 修复 daily-template 闸门在非 ripgrep 环境下的“假 rg”误判（优先消费最近24小时内容建设延续假设），避免检查输出 `No such file or directory` 噪声并完成 build 闭环 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: 当前环境 `~/.local/bin/rg` 实为 grep 包装脚本，导致 `check-daily-template-regressions.sh` 误走 rg 分支并持续输出假阳性噪声；若改为“仅识别真实 ripgrep 才走 rg 分支”，可恢复闸门输出可读性并降低误判风险。
+  - Metrics: `pnpm check:daily-template` 通过且无 `grep: ... No such file or directory` 噪声；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `scripts/check-daily-template-regressions.sh` 增加 `rg --version` 严格识别（仅匹配 ripgrep）；2) 非 ripgrep 环境自动回退 grep 分支；3) 本地 daily 三闸门与 build 全部通过且输出无噪声。
 - [x] P1 Candidate A / EXP-095: 回补 2026-04-25 与 2026-04-26 双语日报 description 与正文截断（优先消费最近24小时内容建设“发布后即扫并快速回补”假设），保持强相关 CTA 并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 非摘要化/截断 description，以及正文“案例2”截断做当日回补，可显著提升索引窗口期的主题可检索性与页面完整性，避免导流与转化信号衰减。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-25/` 与 `/en|zh/blog/openclaw-daily-2026-04-26/` description 不再为通用/截断文案，且 `2026-04-26` EN/ZH 正文不再含“案例 2：Adobe 把 AI 做成营销“同…”` 截断。
