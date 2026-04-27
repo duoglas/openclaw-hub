@@ -23,7 +23,7 @@
 - Start date: 2026-04-27
 - End date: 2026-04-27
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页不再含“ChatGPT 上车：CarPlay 已进…”截断且 description 去通用化。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-27.md` 已完成 description 可检索化回补与正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-27.md` 已完成 description 可检索化回补与正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `d4e26fe` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，固定执行“发布后即扫 description 质量 + 正文截断 + 当日回补 + 三闸门+build”闭环。）
 
 ### EXP-096
@@ -33,7 +33,7 @@
 - Start date: 2026-04-26
 - End date: 2026-04-26
 - Success metric: `pnpm check:daily-template` 无 `No such file or directory` 噪声且通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。
-- Result: pass（已确认本机 `~/.local/bin/rg` 为 shell 包装脚本，完成脚本判定修复后本地四项检查全部通过，且 `pnpm check:daily-template` 输出恢复干净；commit `(this commit)` 已准备推送。）
+- Result: pass（已确认本机 `~/.local/bin/rg` 为 shell 包装脚本，完成脚本判定修复后本地四项检查全部通过，且 `pnpm check:daily-template` 输出恢复干净；commit `d4e26fe` 已推送。）
 - Decision (scale / iterate / stop): scale（后续所有“可选依赖工具探测”统一采用“命令存在 + 版本签名匹配”双判定，避免同类假工具回归。）
 
 ### EXP-095
@@ -43,7 +43,7 @@
 - Start date: 2026-04-26
 - End date: 2026-04-26
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-25/` 与 `/en|zh/blog/openclaw-daily-2026-04-26/` description 不再为通用/截断文案，且 `2026-04-26` EN/ZH 正文不再含“案例 2：Adobe 把 AI 做成营销“同…”` 截断。
-- Result: pass（四个目标文件 `src/content/blog/en|zh/openclaw-daily-2026-04-25.md`、`openclaw-daily-2026-04-26.md` 已完成 description 回补；`openclaw-daily-2026-04-26` EN/ZH 正文截断已补全并新增“今日结论 + 明日跟踪点”；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Result: pass（四个目标文件 `src/content/blog/en|zh/openclaw-daily-2026-04-25.md`、`openclaw-daily-2026-04-26.md` 已完成 description 回补；`openclaw-daily-2026-04-26` EN/ZH 正文截断已补全并新增“今日结论 + 明日跟踪点”；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `d4e26fe` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，固定执行“发布后即扫 description + 正文截断 + 当日回补 + 三闸门+build”闭环，压缩低质量摘要进入索引窗口期。）
 
 
@@ -64,7 +64,7 @@
 - Start date: 2026-04-24
 - End date: 2026-04-24
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页不再含“发生…”截断句且 description 去通用/去截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-24.md` 已完成 description 回补与正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-24.md` 已完成 description 回补与正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `d4e26fe` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后即扫 description 质量 + 正文截断扫描 + 当日回补”闭环，降低索引窗口期内容质量回归风险。）
 
 ### EXP-092
@@ -74,7 +74,7 @@
 - Start date: 2026-04-23
 - End date: 2026-04-23
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页不再含“全能 …”截断句且结构完整。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-23.md` 已完成截断补全并新增案例2与结论段；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-23.md` 已完成截断补全并新增案例2与结论段；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `d4e26fe` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后完整性扫描（截断/缺段）+ 当日修补”闭环，降低内容完整性回归。）
 
 ### EXP-091
@@ -84,7 +84,7 @@
 - Start date: 2026-04-23
 - End date: 2026-04-23
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；四个目标页 description 均去通用化且无截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-22.md` 与 `openclaw-daily-2026-04-23.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-22.md` 与 `openclaw-daily-2026-04-23.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `d4e26fe` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后即扫 description 质量 + 当日回补”的闭环，避免通用/截断摘要进入索引窗口期。）
 
 ### EXP-090

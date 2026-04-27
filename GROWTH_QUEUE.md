@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-097: 回补 2026-04-27 双语日报 description 通用占位与正文截断（优先消费最近24小时内容建设新增假设），补齐 EN/中文内容一致性并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-097: 回补 2026-04-27 双语日报 description 通用占位与正文截断（优先消费最近24小时内容建设新增假设），补齐 EN/中文内容一致性并完成 build 闭环 | ICE 9x8x8=576 — commit `d4e26fe`
   - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 低可检索 description 与正文“实战案例”截断做当日回补，可显著提升索引窗口期主题匹配与页面完整性，避免首日流量转化损失。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-27/` description 不再为通用/低信息摘要，且 EN/ZH 正文无“ChatGPT 上车：CarPlay 已进…”截断。
   - Acceptance: 1) 回补 EN `openclaw-daily-2026-04-27.md` description 为可检索摘要；2) 回补 ZH `openclaw-daily-2026-04-27.md` description 为可检索摘要；3) 补全 EN/ZH 正文“实战案例 + 今日结论 + 明日跟踪点”；4) 保持 3 条强相关 CTA 内链不回退；5) 本地检查与构建全部通过。
