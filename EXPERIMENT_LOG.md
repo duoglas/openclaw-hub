@@ -15,6 +15,17 @@
 
 ## Active Experiments
 
+
+### EXP-097
+- Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 低可检索 description 与正文“实战案例”截断做当日回补，可显著提升索引窗口期主题匹配与页面完整性，避免首日流量转化损失。
+- Scope: `/en|zh/blog/openclaw-daily-2026-04-27/`
+- Change: 将 EN `openclaw-daily-2026-04-27` description 从通用模板文案升级为覆盖 OpenAI 免费层广告化、Anthropic Project Glasswing、NVIDIA+Google Cloud agentic/physical AI、Adobe CX Enterprise Coworker 与上海产业级 AI 推进的可检索摘要；将 ZH `openclaw-daily-2026-04-27` description 升级为对应中文可检索摘要；补全 EN/ZH 正文被截断的“实战案例 + 今日结论 + 明日跟踪点”，保持 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-27
+- End date: 2026-04-27
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页不再含“ChatGPT 上车：CarPlay 已进…”截断且 description 去通用化。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-27.md` 已完成 description 可检索化回补与正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已准备推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，固定执行“发布后即扫 description 质量 + 正文截断 + 当日回补 + 三闸门+build”闭环。）
+
 ### EXP-096
 - Hypothesis: 当前环境 `~/.local/bin/rg` 实为 grep 包装脚本而非 ripgrep，导致 `check-daily-template-regressions.sh` 误走 rg 分支并输出 `grep: ... No such file or directory` 假阳性噪声；若改为“仅识别真实 ripgrep 才走 rg 分支”，可恢复闸门可读性并降低误判风险。
 - Scope: `scripts/check-daily-template-regressions.sh`（影响 `pnpm check:daily-template` 在多环境下的执行稳定性）

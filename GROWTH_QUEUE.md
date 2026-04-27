@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-26 17:23
+Last updated: 2026-04-27 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-097: 回补 2026-04-27 双语日报 description 通用占位与正文截断（优先消费最近24小时内容建设新增假设），补齐 EN/中文内容一致性并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 低可检索 description 与正文“实战案例”截断做当日回补，可显著提升索引窗口期主题匹配与页面完整性，避免首日流量转化损失。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-27/` description 不再为通用/低信息摘要，且 EN/ZH 正文无“ChatGPT 上车：CarPlay 已进…”截断。
+  - Acceptance: 1) 回补 EN `openclaw-daily-2026-04-27.md` description 为可检索摘要；2) 回补 ZH `openclaw-daily-2026-04-27.md` description 为可检索摘要；3) 补全 EN/ZH 正文“实战案例 + 今日结论 + 明日跟踪点”；4) 保持 3 条强相关 CTA 内链不回退；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-096: 修复 daily-template 闸门在非 ripgrep 环境下的“假 rg”误判（优先消费最近24小时内容建设延续假设），避免检查输出 `No such file or directory` 噪声并完成 build 闭环 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: 当前环境 `~/.local/bin/rg` 实为 grep 包装脚本，导致 `check-daily-template-regressions.sh` 误走 rg 分支并持续输出假阳性噪声；若改为“仅识别真实 ripgrep 才走 rg 分支”，可恢复闸门输出可读性并降低误判风险。
   - Metrics: `pnpm check:daily-template` 通过且无 `grep: ... No such file or directory` 噪声；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。
