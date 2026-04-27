@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-27 11:24
+Last updated: 2026-04-27 17:23
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-098: 修复 2026-03-30 双语日报“今日结论”截断（补齐结论+建议+明日跟踪点）并完成 build 闭环，优先消费最近24小时内容建设“发布后完整性扫描”延续假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对历史日报中仍存在“今日结论”截断的双语页面做一次性补全，可恢复页面完整度与可读性，减少索引窗口中摘要/正文语义断裂导致的导流损耗。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-03-30/` 不再出现“最关键信…”截断。
+  - Acceptance: 1) 补全 EN/ZH `openclaw-daily-2026-03-30.md` 的“今日结论”；2) 新增“明日跟踪点”并保持 3 条强相关 CTA 不回退；3) 本地三闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-097: 回补 2026-04-27 双语日报 description 通用占位与正文截断（优先消费最近24小时内容建设新增假设），补齐 EN/中文内容一致性并完成 build 闭环 | ICE 9x8x8=576 — commit `d4e26fe`
   - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 低可检索 description 与正文“实战案例”截断做当日回补，可显著提升索引窗口期主题匹配与页面完整性，避免首日流量转化损失。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-27/` description 不再为通用/低信息摘要，且 EN/ZH 正文无“ChatGPT 上车：CarPlay 已进…”截断。

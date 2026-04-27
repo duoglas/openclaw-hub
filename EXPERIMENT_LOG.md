@@ -15,6 +15,15 @@
 
 ## Active Experiments
 
+### EXP-098
+- Hypothesis: 对历史日报中仍存在“今日结论”截断的双语页面做一次性补全，可恢复页面完整度与可读性，减少索引窗口中摘要/正文语义断裂导致的导流损耗。
+- Scope: `/en|zh/blog/openclaw-daily-2026-03-30/`
+- Change: 补全 EN/ZH `openclaw-daily-2026-03-30.md` 中被截断的“今日结论”（“最关键信…”）段落，统一新增“明日跟踪点”，并保持 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-27
+- End date: 2026-04-27
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-03-30/` 不再出现“最关键信…”截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-30.md` 已完成“今日结论”补全与“明日跟踪点”新增；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设延续假设，固定执行“发布后完整性扫描（截断/缺段）+ 当日回补 + 三闸门+build”闭环。）
 
 ### EXP-097
 - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 低可检索 description 与正文“实战案例”截断做当日回补，可显著提升索引窗口期主题匹配与页面完整性，避免首日流量转化损失。
