@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-100
+- Hypothesis: 仅靠模板/CTA/日期闸门仍会漏过“正文悬空字段（如 `可能影响：` 空值）与截断尾句”这类可读性缺陷；若对最近2天 EN/ZH 日报增加专用完整性闸门并接入 CI，可在发布窗口期更早拦截内容残缺，减少首日导流损耗与返工成本。
+- Scope: `scripts/check-daily-fresh-completeness.sh`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 新增 `check-daily-fresh-completeness.sh`，默认仅扫描 EN/ZH 最新 2 篇 `openclaw-daily-*.md`，校验“悬空 `可能影响：` 条目”与常见截断尾句；将检查接入 `pnpm check:daily-fresh-completeness` 与 content-check CI；执行 `pnpm check:daily-fresh-completeness && pnpm build` 完整验证。
+- Start date: 2026-04-28
+- End date: 2026-04-28
+- Success metric: `pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；CI 出现 Fresh daily completeness check；最新 2 天 EN/ZH 日报无“悬空可能影响”与常见截断尾句。
+- Result: pass（已新增 `scripts/check-daily-fresh-completeness.sh` 并接入 `package.json` 与 `.github/workflows/content-check.yml`；本地 `pnpm check:daily-fresh-completeness` 与 `pnpm build` 均通过。）
+- Decision (scale / iterate / stop): iterate（下一步可将“最近2天”参数化为发布窗口配置，并逐步纳入更多截断模式，保持高灵敏且避免历史存量噪声。）
+
 ### EXP-099
 - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description 与 EN/ZH 正文“可能影…”截断做当日回补，可提升索引窗口期主题匹配和页面完整度，减少首日导流损耗。
 - Scope: `/en|zh/blog/openclaw-daily-2026-04-28/`

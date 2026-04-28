@@ -91,6 +91,9 @@ jobs:
       - name: Daily heading date consistency check
         run: pnpm check:daily-heading-date
 
+      - name: Fresh daily completeness check
+        run: pnpm check:daily-fresh-completeness
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 
