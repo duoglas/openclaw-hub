@@ -22,7 +22,7 @@
 - Start date: 2026-04-28
 - End date: 2026-04-28
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-28/` EN description 不再为通用模板，且 EN/ZH 正文不再含“可能影…”截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-28.md` 已完成 EN description 可检索化回补与 EN/ZH 正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-28.md` 已完成 EN description 可检索化回补与 EN/ZH 正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `cc75fee` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后完整性扫描（description 通用占位 + 正文截断）+ 当日回补 + 三闸门+build”闭环。）
 
 ### EXP-098

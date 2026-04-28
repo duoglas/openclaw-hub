@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-099: 回补 2026-04-28 双语日报 EN 通用 description 与 EN/ZH 正文截断（优先消费最近24小时内容建设新增假设），补齐可检索摘要与“今日结论/明日跟踪点”并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-099: 回补 2026-04-28 双语日报 EN 通用 description 与 EN/ZH 正文截断（优先消费最近24小时内容建设新增假设），补齐可检索摘要与“今日结论/明日跟踪点”并完成 build 闭环 | ICE 9x8x8=576 — commit `cc75fee`
   - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description 与 EN/ZH 正文“可能影…”截断做当日回补，可提升索引窗口期主题匹配和页面完整度，减少首日导流损耗。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-28/` EN description 不再为通用模板，且 EN/ZH 正文不再含“可能影…”截断。
   - Acceptance: 1) 回补 EN `openclaw-daily-2026-04-28.md` description 为可检索摘要；2) 补全 EN/ZH 正文“实战案例2 + 今日结论 + 明日跟踪点”；3) 保持 3 条强相关 CTA 内链不回退；4) 本地三闸门 + build 全部通过。
