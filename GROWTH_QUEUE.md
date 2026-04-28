@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-27 17:23
+Last updated: 2026-04-28 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,14 +17,14 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-099: 回补 2026-04-28 双语日报 EN 通用 description 与 EN/ZH 正文截断（优先消费最近24小时内容建设新增假设），补齐可检索摘要与“今日结论/明日跟踪点”并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description 与 EN/ZH 正文“可能影…”截断做当日回补，可提升索引窗口期主题匹配和页面完整度，减少首日导流损耗。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-28/` EN description 不再为通用模板，且 EN/ZH 正文不再含“可能影…”截断。
+  - Acceptance: 1) 回补 EN `openclaw-daily-2026-04-28.md` description 为可检索摘要；2) 补全 EN/ZH 正文“实战案例2 + 今日结论 + 明日跟踪点”；3) 保持 3 条强相关 CTA 内链不回退；4) 本地三闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-098: 修复 2026-03-30 双语日报“今日结论”截断（补齐结论+建议+明日跟踪点）并完成 build 闭环，优先消费最近24小时内容建设“发布后完整性扫描”延续假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对历史日报中仍存在“今日结论”截断的双语页面做一次性补全，可恢复页面完整度与可读性，减少索引窗口中摘要/正文语义断裂导致的导流损耗。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-03-30/` 不再出现“最关键信…”截断。
   - Acceptance: 1) 补全 EN/ZH `openclaw-daily-2026-03-30.md` 的“今日结论”；2) 新增“明日跟踪点”并保持 3 条强相关 CTA 不回退；3) 本地三闸门 + build 全部通过。
-- [x] P1 Candidate A / EXP-097: 回补 2026-04-27 双语日报 description 通用占位与正文截断（优先消费最近24小时内容建设新增假设），补齐 EN/中文内容一致性并完成 build 闭环 | ICE 9x8x8=576 — commit `d4e26fe`
-  - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 低可检索 description 与正文“实战案例”截断做当日回补，可显著提升索引窗口期主题匹配与页面完整性，避免首日流量转化损失。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-27/` description 不再为通用/低信息摘要，且 EN/ZH 正文无“ChatGPT 上车：CarPlay 已进…”截断。
-  - Acceptance: 1) 回补 EN `openclaw-daily-2026-04-27.md` description 为可检索摘要；2) 回补 ZH `openclaw-daily-2026-04-27.md` description 为可检索摘要；3) 补全 EN/ZH 正文“实战案例 + 今日结论 + 明日跟踪点”；4) 保持 3 条强相关 CTA 内链不回退；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-096: 修复 daily-template 闸门在非 ripgrep 环境下的“假 rg”误判（优先消费最近24小时内容建设延续假设），避免检查输出 `No such file or directory` 噪声并完成 build 闭环 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: 当前环境 `~/.local/bin/rg` 实为 grep 包装脚本，导致 `check-daily-template-regressions.sh` 误走 rg 分支并持续输出假阳性噪声；若改为“仅识别真实 ripgrep 才走 rg 分支”，可恢复闸门输出可读性并降低误判风险。
   - Metrics: `pnpm check:daily-template` 通过且无 `grep: ... No such file or directory` 噪声；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。

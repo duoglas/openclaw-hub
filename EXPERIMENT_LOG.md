@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-099
+- Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description 与 EN/ZH 正文“可能影…”截断做当日回补，可提升索引窗口期主题匹配和页面完整度，减少首日导流损耗。
+- Scope: `/en|zh/blog/openclaw-daily-2026-04-28/`
+- Change: 将 EN `openclaw-daily-2026-04-28` description 从通用模板摘要升级为覆盖 Claude Design、NVIDIA+Google Cloud agentic/physical AI、Adobe CX Enterprise Coworker、微软-OpenAI 条款调整与 DeepSeek 新模型市场反应的可检索摘要；补全 EN/ZH 正文被截断的“实战案例2”结尾，并新增“今日结论（3条可执行建议）+ 明日跟踪点”，保持 3 条强相关 CTA 内链（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-28
+- End date: 2026-04-28
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-28/` EN description 不再为通用模板，且 EN/ZH 正文不再含“可能影…”截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-28.md` 已完成 EN description 可检索化回补与 EN/ZH 正文补全；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后完整性扫描（description 通用占位 + 正文截断）+ 当日回补 + 三闸门+build”闭环。）
+
 ### EXP-098
 - Hypothesis: 对历史日报中仍存在“今日结论”截断的双语页面做一次性补全，可恢复页面完整度与可读性，减少索引窗口中摘要/正文语义断裂导致的导流损耗。
 - Scope: `/en|zh/blog/openclaw-daily-2026-03-30/`
