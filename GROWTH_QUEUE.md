@@ -17,42 +17,6 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-102: 将 2026-04-29 英文日报正文从中英混排回补为完整英文版本（含 Top 5、2个案例、结论与次日跟踪）并保持强相关 CTA，完成四闸门+build+推送闭环，优先消费最近24小时内容建设延续假设 | ICE 9x8x8=576 — commit `(this commit)`
-  - Hypothesis: 最近24小时新增日报若英文页仍保留中文框架或混排，会削弱英文检索匹配与可读性；当日回补为完整英文叙事可提升索引窗口期覆盖与首日导流质量。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en/blog/openclaw-daily-2026-04-29/` 标题与正文结构为完整英文且 CTA 保持 3 条强相关内链。
-  - Acceptance: 1) EN `openclaw-daily-2026-04-29.md` 标题、正文结构与分段文案统一为英文；2) 保留既有核心事实与“2案例+结论+明日跟踪点”；3) CTA 维持 3 条强相关内链不回退；4) 本地四闸门 + build 全部通过。
-- [x] P1 Candidate A / EXP-101: 回补 2026-04-29 双语日报 EN 通用 description、ZH 截断 description 与正文尾段截断（“Amaz…”），补齐“现实建议 + 今日结论 + 明日跟踪点”并完成四闸门+build 闭环，优先消费最近24小时内容建设新增假设 | ICE 9x8x8=576 — commit `2b73243`
-  - Hypothesis: 最近24小时新增日报若保留通用/截断 description 与正文尾段截断，会削弱索引窗口期主题匹配和页面完整度；当日完成双语回补可降低首日导流损耗与返工。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-29/` 无通用/截断 description 且不再含 `Amaz…`。
-  - Acceptance: 1) 回补 EN/ZH `openclaw-daily-2026-04-29.md` description 为可检索摘要；2) 补全 EN/ZH 案例2尾段并新增“现实建议 + 今日结论 + 明日跟踪点”；3) 保持 3 条强相关 CTA 不回退；4) 本地四闸门 + build 全部通过。
-- [x] P1 Candidate A / EXP-100: 新增“最近2天双语日报完整性闸门”（悬空“可能影响：”与截断尾句扫描）并接入 CI，优先消费最近24小时内容建设“发布后完整性扫描”延续假设 | ICE 8x8x8=512 — commit `(this commit)`
-  - Hypothesis: 仅靠模板/CTA/日期闸门仍会漏过“正文悬空字段（如 `可能影响：` 空值）与截断尾句”这类可读性缺陷；若对最近2天 EN/ZH 日报增加专用完整性闸门并接入 CI，可在发布窗口期更早拦截内容残缺，减少首日导流损耗与返工成本。
-  - Metrics: `pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；CI 新增 Fresh daily completeness check；最新 2 天 EN/ZH 日报无“悬空可能影响”与常见截断尾句。
-  - Acceptance: 1) 新增 `scripts/check-daily-fresh-completeness.sh`（默认检查 EN/ZH 最新2篇日报）；2) `package.json` 增加 `check:daily-fresh-completeness`；3) `.github/workflows/content-check.yml` 接入该检查；4) 本地 `pnpm check:daily-fresh-completeness && pnpm build` 通过。
-- [x] P1 Candidate A / EXP-099: 回补 2026-04-28 双语日报 EN 通用 description 与 EN/ZH 正文截断（优先消费最近24小时内容建设新增假设），补齐可检索摘要与“今日结论/明日跟踪点”并完成 build 闭环 | ICE 9x8x8=576 — commit `cc75fee`
-  - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description 与 EN/ZH 正文“可能影…”截断做当日回补，可提升索引窗口期主题匹配和页面完整度，减少首日导流损耗。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-28/` EN description 不再为通用模板，且 EN/ZH 正文不再含“可能影…”截断。
-  - Acceptance: 1) 回补 EN `openclaw-daily-2026-04-28.md` description 为可检索摘要；2) 补全 EN/ZH 正文“实战案例2 + 今日结论 + 明日跟踪点”；3) 保持 3 条强相关 CTA 内链不回退；4) 本地三闸门 + build 全部通过。
-- [x] P1 Candidate A / EXP-098: 修复 2026-03-30 双语日报“今日结论”截断（补齐结论+建议+明日跟踪点）并完成 build 闭环，优先消费最近24小时内容建设“发布后完整性扫描”延续假设 | ICE 9x8x8=576 — commit `(this commit)`
-  - Hypothesis: 对历史日报中仍存在“今日结论”截断的双语页面做一次性补全，可恢复页面完整度与可读性，减少索引窗口中摘要/正文语义断裂导致的导流损耗。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-03-30/` 不再出现“最关键信…”截断。
-  - Acceptance: 1) 补全 EN/ZH `openclaw-daily-2026-03-30.md` 的“今日结论”；2) 新增“明日跟踪点”并保持 3 条强相关 CTA 不回退；3) 本地三闸门 + build 全部通过。
-- [x] P1 Candidate A / EXP-096: 修复 daily-template 闸门在非 ripgrep 环境下的“假 rg”误判（优先消费最近24小时内容建设延续假设），避免检查输出 `No such file or directory` 噪声并完成 build 闭环 | ICE 8x8x8=512 — commit `(this commit)`
-  - Hypothesis: 当前环境 `~/.local/bin/rg` 实为 grep 包装脚本，导致 `check-daily-template-regressions.sh` 误走 rg 分支并持续输出假阳性噪声；若改为“仅识别真实 ripgrep 才走 rg 分支”，可恢复闸门输出可读性并降低误判风险。
-  - Metrics: `pnpm check:daily-template` 通过且无 `grep: ... No such file or directory` 噪声；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。
-  - Acceptance: 1) `scripts/check-daily-template-regressions.sh` 增加 `rg --version` 严格识别（仅匹配 ripgrep）；2) 非 ripgrep 环境自动回退 grep 分支；3) 本地 daily 三闸门与 build 全部通过且输出无噪声。
-- [x] P1 Candidate A / EXP-095: 回补 2026-04-25 与 2026-04-26 双语日报 description 与正文截断（优先消费最近24小时内容建设“发布后即扫并快速回补”假设），保持强相关 CTA 并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
-  - Hypothesis: 对最近24小时新增日报页中出现的 EN 通用 description、ZH 非摘要化/截断 description，以及正文“案例2”截断做当日回补，可显著提升索引窗口期的主题可检索性与页面完整性，避免导流与转化信号衰减。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-25/` 与 `/en|zh/blog/openclaw-daily-2026-04-26/` description 不再为通用/截断文案，且 `2026-04-26` EN/ZH 正文不再含“案例 2：Adobe 把 AI 做成营销“同…”` 截断。
-  - Acceptance: 1) 回补 EN/ZH `openclaw-daily-2026-04-25.md` description 为可检索摘要；2) 回补 EN/ZH `openclaw-daily-2026-04-26.md` description 为可检索摘要；3) 补全 EN/ZH `openclaw-daily-2026-04-26.md` 截断的“案例2 + 今日结论 + 明日跟踪点”；4) 保持 3 条强相关 CTA 内链不回退；5) 本地检查与构建全部通过。
-- [x] P1 Candidate A / EXP-094: 修复 daily-template 回归检查脚本在 grep 回退路径下的误报警噪声（确保无 `No such file or directory` 假阳性输出），延续最近24小时内容建设“发布后即扫并快速回补”实验闭环 | ICE 8x8x9=576 — commit `ff990c4`
-  - Hypothesis: 在部分环境缺少 `rg` 时，`check-daily-template-regressions.sh` 的 `grep -- "pattern"` 写法会把 pattern 误当文件并输出大量 `No such file or directory`，降低闸门可读性并掩盖真实异常；修复为 `grep -e "pattern"` 后可稳定输出“只在真失败时报错”，提高日更回归闸门可维护性。
-  - Metrics: `pnpm check:daily-template` 输出无 grep 误报；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过。
-  - Acceptance: 1) 修复 `scripts/check-daily-template-regressions.sh` 的 grep 参数写法；2) 在本地完整执行 daily 三闸门 + build；3) 输出不再出现 `No such file or directory` 误报警噪声。
-- [x] P1 Candidate A / EXP-093: 修复 2026-04-24 双语日报正文截断与摘要退化（补全案例2 + 今日结论 + 明日跟踪点，回补 EN/ZH 可检索 description），优先消费最近24小时内容建设新增实验假设并完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
-  - Hypothesis: 对最近24小时新增日报中出现正文截断（“发生…”）与摘要退化（EN 通用 description、ZH 截断 description）的双语页面做当日回补，可恢复页面信息完整度、提高检索匹配，并避免导流与转化在索引窗口期受损。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-24/` 不再含“发生…”截断句，且 EN/ZH description 为可检索摘要。
-  - Acceptance: 1) 补全 EN/ZH `openclaw-daily-2026-04-24.md` 中案例2、今日结论、明日跟踪点；2) 回补 EN/ZH description 为可检索摘要；3) 保持 3 条强相关 CTA 内链不回退；4) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-092: 修复 2026-04-23 双语日报正文截断（补全实战案例2 + 今日结论），保持可检索摘要与强相关 CTA，完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最近24小时新增日报中出现正文截断（“全能 …”）的双语页面做当日补全，可恢复页面信息完整度与可读性，避免摘要/正文语义断裂对检索匹配与导流转化造成损失。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-23/` 不再存在截断句，且补全“实战案例2+今日结论+跟踪点”。
@@ -183,7 +147,7 @@ Manager: main session
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-04/` 与 `/zh/blog/openclaw-daily-2026-04-04/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
 
 ## Done
-- [x] P1 Candidate A / EXP-102: 将 2026-04-29 英文日报正文从中英混排回补为完整英文版本（含 Top 5、2个案例、结论与次日跟踪）并保持强相关 CTA，完成四闸门+build+推送闭环，优先消费最近24小时内容建设延续假设 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-102: 将 2026-04-29 英文日报正文从中英混排回补为完整英文版本（含 Top 5、2个案例、结论与次日跟踪）并保持强相关 CTA，完成四闸门+build+推送闭环，优先消费最近24小时内容建设延续假设 | ICE 9x8x8=576 — commit `6ba6301`
   - Hypothesis: 最近24小时新增日报若英文页仍保留中文框架或混排，会削弱英文检索匹配与可读性；当日回补为完整英文叙事可提升索引窗口期覆盖与首日导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en/blog/openclaw-daily-2026-04-29/` 标题与正文结构为完整英文且 CTA 保持 3 条强相关内链。
   - Acceptance: 1) EN `openclaw-daily-2026-04-29.md` 标题、正文结构与分段文案统一为英文；2) 保留既有核心事实与“2案例+结论+明日跟踪点”；3) CTA 维持 3 条强相关内链不回退；4) 本地四闸门 + build 全部通过。

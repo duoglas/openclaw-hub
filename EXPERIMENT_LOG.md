@@ -22,7 +22,7 @@
 - Start date: 2026-04-29
 - End date: 2026-04-29
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en/blog/openclaw-daily-2026-04-29/` 标题与结构为完整英文叙事。
-- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-29.md` 已完成英文结构化回补；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-29.md` 已完成英文结构化回补；本地四项闸门 + build 全部通过；commit `6ba6301` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后完整性扫描 + 当日语言一致性回补 + 四闸门+build”闭环。）
 
 ### EXP-101
