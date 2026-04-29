@@ -22,7 +22,7 @@
 - Start date: 2026-04-29
 - End date: 2026-04-29
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-29/` 不再含通用/截断 description 与 `Amaz…` 截断尾句。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-29.md` 已完成 description 回补与正文补全；本地四项闸门 + build 全部通过。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-29.md` 已完成 description 回补与正文补全；本地四项闸门 + build 全部通过；commit `2b73243` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，固定执行“发布后完整性扫描 + 当日回补 + 四闸门+build”闭环。）
 
 ### EXP-100
