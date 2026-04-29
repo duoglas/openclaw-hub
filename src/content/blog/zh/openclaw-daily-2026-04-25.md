@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-25）"
-description: "2026-04-25 AI日报：Meta 扩大 AWS Graviton 承载 agentic AI，NVIDIA 联合 Adobe/WPP 推进可治理营销智能体，GPT-5.5 Codex 在企业内加速落地，并跟踪 DeepSeek 华为芯片预览与 OpenAI Codex 企业化进展。"
+description: "Meta、NVIDIA、OpenAI 与华为线索交错，企业级 AI 落地继续提速。"
 pubDate: 2026-04-25
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

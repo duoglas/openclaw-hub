@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-26）"
-description: "2026-04-26 AI日报：Amazon 加码 Anthropic 并扩展 Trainium 长期算力绑定，Meta 扩大 Graviton 承载 agentic AI，NVIDIA 与 Google Cloud 推进 Agentic/Physical AI 基础设施，Adobe 发布 CX Enterprise Coworker，上海加速产业级 AI 落地。"
+description: "Amazon、Meta、NVIDIA、Adobe 与上海同步加码产业级 AI 基础设施。"
 pubDate: 2026-04-26
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

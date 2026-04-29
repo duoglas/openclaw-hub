@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-22）"
-description: "可检索摘要：Anthropic 与 Amazon 十年超 1000 亿美元 AWS 算力合作，Adobe 发布企业级 Agent 工作流产品，NVIDIA 在汉诺威展示工业 AI 落地，特斯拉上海登记 AI 语音助手，Forge Nano 拟以 16 亿美元 SPAC 上市。"
+description: "Anthropic 联合 Amazon 扩算力，Adobe、NVIDIA、特斯拉同步推进企业与工业 AI。"
 pubDate: 2026-04-22
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

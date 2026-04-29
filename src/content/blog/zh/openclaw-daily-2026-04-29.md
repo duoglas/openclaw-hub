@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-29）"
-description: "Anthropic 发布 Claude 创意工作连接器；AWS 扩大 OpenAI/Codex 接入 Bedrock 并推出桌面助手 Amazon Quick；NVIDIA 发布开源多模态 Nemotron 3 Nano Omni；中科院发布磐石100，国内持续加码 AI 生成内容标识监管。"
+description: "Claude 创意连接器、AWS 接入 OpenAI/Codex、NVIDIA 多模态开源与国内 AI 监管同日推进。"
 pubDate: 2026-04-29
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-21）"
-description: "OpenAI 以 1220 亿美元融资达成 8520 亿美元估值，NVIDIA 开源 Ising 量子校准与纠错模型，中国发布拟人化互动服务管理办法，叠加工信部“人工智能+质量”路线与微软 Copilot Agent 集成，标志 AI 正加速进入重资本投入与强监管并行阶段。"
+description: "OpenAI 巨额融资、NVIDIA 开源量子模型，中国同步强化 AI 监管与产业落地。"
 pubDate: 2026-04-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

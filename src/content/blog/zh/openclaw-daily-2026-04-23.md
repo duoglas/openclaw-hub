@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-23）"
-description: "可检索摘要：OpenAI 发布 ChatGPT workspace agents 与本地隐私脱敏 Privacy Filter，Google Cloud Next 2026 主推 Gemini Enterprise Agent Platform，NVIDIA 扩大与 Google Cloud 的 agentic/physical AI 基础设施合作，广东发布 AI 全域应用行动方案。"
+description: "OpenAI、Google Cloud、NVIDIA 与广东同步推进工作流智能体和产业级 AI 应用。"
 pubDate: 2026-04-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

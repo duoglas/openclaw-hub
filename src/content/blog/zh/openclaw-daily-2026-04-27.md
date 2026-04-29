@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-27）"
-description: "2026-04-27 AI日报：OpenAI 在部分国家 ChatGPT 免费层开始投放广告，Anthropic 联合 AWS/Google/Microsoft/NVIDIA 推出 Project Glasswing，NVIDIA 与 Google Cloud 推进 Agentic/Physical AI 基础设施，Adobe 发布 CX Enterprise Coworker，上海持续强化产业级 AI 组织与治理。"
+description: "OpenAI 广告试水，Anthropic、NVIDIA、Adobe 与上海治理动作同步推进。"
 pubDate: 2026-04-27
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

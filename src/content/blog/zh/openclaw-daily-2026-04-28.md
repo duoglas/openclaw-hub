@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-28）"
-description: "2026-04-28 AI/科技日报：Anthropic 发布 Claude Design，NVIDIA 与 Google Cloud 推进 agentic/physical AI 基础设施，Adobe 推出 CX Enterprise Coworker；微软与 OpenAI 合作条款据报调整、DeepSeek 新模型预览后市场反应更理性，并附 Amazon Rufus 与广东 300+ AI 应用落地信号。"
+description: "Claude Design 发布，NVIDIA、Adobe、微软、OpenAI 与 DeepSeek 动向集中出现。"
 pubDate: 2026-04-28
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -9,14 +9,12 @@ if [[ ! -d dist/en || ! -d dist/zh ]]; then
   exit 1
 fi
 
-if command -v rg >/dev/null 2>&1; then
-  LIST_CMD="rg --files dist/en dist/zh -g '*.html'"
+if command -v find >/dev/null 2>&1; then
+  mapfile -t FILES < <(find dist/en dist/zh -type f -name '*.html' | sort)
 else
-  echo "[website-schema] [warn] rg not found, fallback to grep -RIn mode"
-  LIST_CMD="grep -RIn --include='*.html' '.' dist/en dist/zh | cut -d: -f1 | sort -u"
+  echo "[website-schema] find not available"
+  exit 1
 fi
-
-mapfile -t FILES < <(eval "$LIST_CMD")
 
 if [[ "${#FILES[@]}" -eq 0 ]]; then
   echo "[website-schema] No HTML files found under dist/en or dist/zh"

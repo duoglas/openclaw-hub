@@ -11,11 +11,7 @@ fi
 collect_meta_lines() {
   local file="$1"
 
-  if command -v rg >/dev/null 2>&1; then
-    rg -n -e '<meta[^>]+property="og:image"[^>]*>' -e '<meta[^>]+name="twitter:image"[^>]*>' "$file" || true
-  else
-    grep -nE '<meta[^>]+(property="og:image"|name="twitter:image")[^>]*>' "$file" || true
-  fi
+  grep -nE '<meta[^>]+(property="og:image"|name="twitter:image")[^>]*>' -- "$file" || true
 }
 
 check_lang() {

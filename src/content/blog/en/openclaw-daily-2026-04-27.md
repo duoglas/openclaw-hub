@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-27)"
-description: "2026-04-27 AI daily: OpenAI begins ads on ChatGPT free tiers in selected markets, Anthropic launches Project Glasswing with major security partners, NVIDIA and Google Cloud expand agentic/physical AI infrastructure, Adobe ships CX Enterprise Coworker, and Shanghai advances city-scale AI deployment governance."
+description: "2026-04-27 AI daily: ChatGPT ads expand in some markets as Anthropic, NVIDIA, Google Cloud, Adobe, and Shanghai push enterprise AI rollout."
 pubDate: 2026-04-27
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

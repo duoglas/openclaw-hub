@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-28)"
-description: "2026-04-28 AI daily: Anthropic launches Claude Design, NVIDIA and Google Cloud expand agentic/physical AI infrastructure, Adobe ships CX Enterprise Coworker, Microsoft-OpenAI partnership terms reportedly shift toward multi-cloud flexibility, and DeepSeek’s new preview meets a more execution-focused market response."
+description: "2026-04-28 AI daily: Anthropic ships Claude Design as NVIDIA, Adobe, Microsoft, OpenAI, and DeepSeek reshape the enterprise AI stack."
 pubDate: 2026-04-28
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

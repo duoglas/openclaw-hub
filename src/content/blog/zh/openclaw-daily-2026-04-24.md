@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-24）"
-description: "2026-04-24 科技日报：NVIDIA 披露 GPT-5.5 驱动 Codex 在企业规模落地，白宫升级中美 AI 知识产权博弈，联合国平台聚焦 AI 治理；同时 Adobe 推出 CX Enterprise Coworker、Anthropic 发布 Claude Design，AI 正加速进入营销与视觉生产主流程。"
+description: "NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。"
 pubDate: 2026-04-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
