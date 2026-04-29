@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-101: 回补 2026-04-29 双语日报 EN 通用 description、ZH 截断 description 与正文尾段截断（“Amaz…”），补齐“现实建议 + 今日结论 + 明日跟踪点”并完成四闸门+build 闭环，优先消费最近24小时内容建设新增假设 | ICE 9x8x8=576 — commit `(pending)`
+  - Hypothesis: 最近24小时新增日报若保留通用/截断 description 与正文尾段截断，会削弱索引窗口期主题匹配和页面完整度；当日完成双语回补可降低首日导流损耗与返工。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-29/` 无通用/截断 description 且不再含 `Amaz…`。
+  - Acceptance: 1) 回补 EN/ZH `openclaw-daily-2026-04-29.md` description 为可检索摘要；2) 补全 EN/ZH 案例2尾段并新增“现实建议 + 今日结论 + 明日跟踪点”；3) 保持 3 条强相关 CTA 不回退；4) 本地四闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-100: 新增“最近2天双语日报完整性闸门”（悬空“可能影响：”与截断尾句扫描）并接入 CI，优先消费最近24小时内容建设“发布后完整性扫描”延续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: 仅靠模板/CTA/日期闸门仍会漏过“正文悬空字段（如 `可能影响：` 空值）与截断尾句”这类可读性缺陷；若对最近2天 EN/ZH 日报增加专用完整性闸门并接入 CI，可在发布窗口期更早拦截内容残缺，减少首日导流损耗与返工成本。
   - Metrics: `pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；CI 新增 Fresh daily completeness check；最新 2 天 EN/ZH 日报无“悬空可能影响”与常见截断尾句。

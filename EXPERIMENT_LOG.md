@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-101
+- Hypothesis: 最近24小时新增日报（2026-04-29）若仍保留通用/截断 description 与正文尾段截断（如“Amaz…”），会削弱索引窗口期的主题匹配与页面完整度；当日完成 EN/ZH 双语回补（可检索摘要 + 案例2补全 + 今日结论/明日跟踪点）可提升首日导流质量并减少返工。
+- Scope: `/en|zh/blog/openclaw-daily-2026-04-29/`
+- Change: 将 EN `openclaw-daily-2026-04-29` description 从通用模板摘要升级为覆盖 Claude 创意连接器、AWS+OpenAI/Codex Bedrock 扩展、Amazon Quick、NVIDIA Nemotron 3 Nano Omni 与中国“磐石100+生成内容标识执法”的可检索摘要；将 ZH description 从截断文案升级为对应中文可检索摘要；补全 EN/ZH 正文案例2尾段截断（`Amaz…`），新增“现实建议 + 今日结论（3条）+ 明日跟踪点（3条）”，保持 3 条强相关 CTA 内链不回退。
+- Start date: 2026-04-29
+- End date: 2026-04-29
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-29/` 不再含通用/截断 description 与 `Amaz…` 截断尾句。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-29.md` 已完成 description 回补与正文补全；本地四项闸门 + build 全部通过。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，固定执行“发布后完整性扫描 + 当日回补 + 四闸门+build”闭环。）
+
 ### EXP-100
 - Hypothesis: 仅靠模板/CTA/日期闸门仍会漏过“正文悬空字段（如 `可能影响：` 空值）与截断尾句”这类可读性缺陷；若对最近2天 EN/ZH 日报增加专用完整性闸门并接入 CI，可在发布窗口期更早拦截内容残缺，减少首日导流损耗与返工成本。
 - Scope: `scripts/check-daily-fresh-completeness.sh`、`package.json`、`.github/workflows/content-check.yml`
