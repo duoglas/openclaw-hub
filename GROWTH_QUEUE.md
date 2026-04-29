@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-28 11:24
+Last updated: 2026-04-29 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-102: 将 2026-04-29 英文日报正文从中英混排回补为完整英文版本（含 Top 5、2个案例、结论与次日跟踪）并保持强相关 CTA，完成四闸门+build+推送闭环，优先消费最近24小时内容建设延续假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报若英文页仍保留中文框架或混排，会削弱英文检索匹配与可读性；当日回补为完整英文叙事可提升索引窗口期覆盖与首日导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en/blog/openclaw-daily-2026-04-29/` 标题与正文结构为完整英文且 CTA 保持 3 条强相关内链。
+  - Acceptance: 1) EN `openclaw-daily-2026-04-29.md` 标题、正文结构与分段文案统一为英文；2) 保留既有核心事实与“2案例+结论+明日跟踪点”；3) CTA 维持 3 条强相关内链不回退；4) 本地四闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-101: 回补 2026-04-29 双语日报 EN 通用 description、ZH 截断 description 与正文尾段截断（“Amaz…”），补齐“现实建议 + 今日结论 + 明日跟踪点”并完成四闸门+build 闭环，优先消费最近24小时内容建设新增假设 | ICE 9x8x8=576 — commit `2b73243`
   - Hypothesis: 最近24小时新增日报若保留通用/截断 description 与正文尾段截断，会削弱索引窗口期主题匹配和页面完整度；当日完成双语回补可降低首日导流损耗与返工。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-29/` 无通用/截断 description 且不再含 `Amaz…`。
@@ -179,6 +183,10 @@ Manager: main session
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-04/` 与 `/zh/blog/openclaw-daily-2026-04-04/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
 
 ## Done
+- [x] P1 Candidate A / EXP-102: 将 2026-04-29 英文日报正文从中英混排回补为完整英文版本（含 Top 5、2个案例、结论与次日跟踪）并保持强相关 CTA，完成四闸门+build+推送闭环，优先消费最近24小时内容建设延续假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报若英文页仍保留中文框架或混排，会削弱英文检索匹配与可读性；当日回补为完整英文叙事可提升索引窗口期覆盖与首日导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en/blog/openclaw-daily-2026-04-29/` 标题与正文结构为完整英文且 CTA 保持 3 条强相关内链。
+  - Acceptance: 1) EN `openclaw-daily-2026-04-29.md` 标题、正文结构与分段文案统一为英文；2) 保留既有核心事实与“2案例+结论+明日跟踪点”；3) CTA 维持 3 条强相关内链不回退；4) 本地四闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-092: 修复 2026-04-23 双语日报正文截断（补全实战案例2 + 今日结论），保持可检索摘要与强相关 CTA，完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最近24小时新增日报中出现正文截断（“全能 …”）的双语页面做当日补全，可恢复页面信息完整度与可读性，避免摘要/正文语义断裂对检索匹配与导流转化造成损失。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-23/` 不再存在截断句，且补全“实战案例2+今日结论+跟踪点”。

@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-102
+- Hypothesis: 最近24小时新增日报（2026-04-29）若英文页保留中文框架或混排，会削弱英文检索匹配与阅读完成率；当日回补为完整英文叙事可提升索引窗口期主题匹配与首日导流质量。
+- Scope: `/en/blog/openclaw-daily-2026-04-29/`
+- Change: 将 EN `openclaw-daily-2026-04-29.md` 的标题与正文框架统一为英文（Top 5 Stories、What happened/Why it matters/Potential impact、Practical Cases、Today’s Bottom Line、What to watch tomorrow），保持既有事实点与 3 条强相关 CTA（What Is OpenClaw / VPS guide / model fallback）不回退。
+- Start date: 2026-04-29
+- End date: 2026-04-29
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en/blog/openclaw-daily-2026-04-29/` 标题与结构为完整英文叙事。
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-29.md` 已完成英文结构化回补；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，执行“发布后完整性扫描 + 当日语言一致性回补 + 四闸门+build”闭环。）
+
 ### EXP-101
 - Hypothesis: 最近24小时新增日报（2026-04-29）若仍保留通用/截断 description 与正文尾段截断（如“Amaz…”），会削弱索引窗口期的主题匹配与页面完整度；当日完成 EN/ZH 双语回补（可检索摘要 + 案例2补全 + 今日结论/明日跟踪点）可提升首日导流质量并减少返工。
 - Scope: `/en|zh/blog/openclaw-daily-2026-04-29/`
