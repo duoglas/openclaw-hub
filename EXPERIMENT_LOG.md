@@ -948,3 +948,14 @@
 - Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题一次定位准确率
 - Result: pass（中英双语教程已落库；本轮执行完成 `pnpm build` 验证并生成 EN/ZH 路由，覆盖可复制命令、3 步止血流程、长期治理建议与 3 条高相关内链。）
 - Decision: iterate（进入 7 天观测期；D+7 回填 CTR / 参与时长 / 社群一次定位准确率，再决定是否扩写 FAQ 与追加锚文本内链。）
+
+
+### EXP-092
+- Hypothesis: 对最近24小时新发布且出现 EN 通用摘要 + ZH 截断摘要的双语日报页执行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
+- Scope: `/en/blog/openclaw-daily-2026-04-30/` + `/zh/blog/openclaw-daily-2026-04-30/`
+- Change: 回补 EN/ZH `openclaw-daily-2026-04-30.md` frontmatter description，EN 从通用模板摘要升级为可检索主题摘要，ZH 从截断异常文本升级为完整可检索摘要；保留 3 条强相关 CTA 内链。
+- Start date: 2026-04-30
+- End date: 2026-04-30
+- Success metric: `pnpm check:daily-template && pnpm check:daily-heading-date && pnpm check:daily-cta && pnpm build` 全部通过，且 EN/ZH description 均为主题可检索文案。
+- Result: pass（4 项检查与 build 均通过；`openclaw-daily-2026-04-30` EN/ZH description 已完成回补并与正文主题一致）。
+- Decision: scale

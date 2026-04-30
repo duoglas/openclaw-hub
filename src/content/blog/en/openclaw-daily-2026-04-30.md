@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-04-30)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "April 30, 2026 AI/tech brief: Anthropic pushes Claude into creative workflows, Amazon highlights in-house chip growth, Adobe closes Semrush acquisition, NVIDIA ships Nemotron 3 Nano Omni, and China launches AI+software actions—signaling competition shifting from model scores to infrastructure and workflow execution."
 pubDate: 2026-04-30
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

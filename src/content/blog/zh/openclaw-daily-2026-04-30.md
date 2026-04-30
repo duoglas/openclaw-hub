@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-04-30）"
-description: "1. Anthropic 上线“Claude for Creative Work”；发生了什么：Anthropic 新闻页显示，4 月 28 日发布了 “Claude for Creative Work”。；为什么重要：这说明大模型竞争正。"
+description: "2026-04-30 AI/科技要点：Anthropic 将 Claude 推向创意工作流、Amazon 强化自研芯片增长、Adobe 完成 Semrush 收购、NVIDIA 发布 Nemotron 3 Nano Omni、中国推进“人工智能+软件”专项行动，折射 AI 竞争从模型参数转向算力与工作流落地。"
 pubDate: 2026-04-30
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
