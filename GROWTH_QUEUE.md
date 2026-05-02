@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-04-30 11:24
+Last updated: 2026-05-02 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-093: 修复 2026-05-02 双语日报生成噪音与 EN 语言错位（description 可检索化 + EN 正文英文化 + 模板闸门识别草稿噪音/失效 rg wrapper），消费最近24小时内容建设新增页面质量假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对最新发布日报中的草稿噪音、EN 页面中文正文与 ZH 截断型 description 进行发布窗口内修复，并把“开始撰稿/web_search 服务不可用”等生成过程文本纳入模板回归扫描，可提升搜索摘要匹配、语言一致性与后续自动化质检可靠性。
+  - Metrics: `pnpm check:daily-template` 通过且不再输出 rg fallback 误报；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-02/` 无草稿噪音、description 覆盖当日核心主题、EN 正文为英文。
+  - Acceptance: 1) 更新 EN/ZH `openclaw-daily-2026-05-02.md` description 为可检索摘要；2) 移除正文中的生成过程文本；3) EN 页面改为英文正文并保持 3 条强相关 CTA 内链；4) `check-daily-template` 增加生成噪音扫描并修复失效 `rg` wrapper 回退；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-092: 回补 2026-04-30 双语日报 description（修复 EN 通用摘要与 ZH 截断异常，升级为可检索摘要并保持强相关 CTA 内链），优先消费最近24小时内容建设延续假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最近24小时新发布且出现 EN 通用摘要 + ZH 截断摘要的双语日报页执行 description 可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-30/` description 不再为通用/截断文案且覆盖当日核心主题。

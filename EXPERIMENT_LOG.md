@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-093
+- Hypothesis: 对最新发布的 `2026-05-02` 双语日报中草稿噪音、EN 页面中文正文与 ZH 截断型 description 执行发布窗口内修复，并把“开始撰稿/web_search 服务不可用”等生成过程文本纳入模板回归扫描，可提升搜索摘要匹配、语言一致性与后续自动化质检可靠性。
+- Scope: `/en/blog/openclaw-daily-2026-05-02/` + `/zh/blog/openclaw-daily-2026-05-02/` + `scripts/check-daily-template-regressions.sh`
+- Change: 将 EN description 从通用摘要升级为覆盖 NVIDIA Nemotron 3 Nano Omni、OpenAI GPT-5.5、Adobe-Semrush 品牌可发现性与 NVIDIA-Google Cloud Rubin 基础设施的可检索摘要，并将 EN 正文从中文改写为英文；将 ZH description 从生成过程/截断噪音升级为中文可检索摘要；移除正文中的“素材已足够，停止搜索。开始撰稿”等草稿噪音；扩展 daily-template 闸门扫描生成过程文本，并在本机 `rg` wrapper 失效时稳定回退到 GNU grep。
+- Start date: 2026-05-02
+- End date: 2026-05-02
+- Success metric: `pnpm check:daily-template` 通过且无 rg fallback 噪音；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页 description 可检索且正文无草稿噪音，EN 页面语言与 `lang: en` 一致。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-02.md` 已完成 description 可检索化、草稿噪音清理与 EN 正文英文化；`scripts/check-daily-template-regressions.sh` 已增加生成噪音扫描并修复失效 `rg` wrapper 回退；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；build 保持 Astro 对目标页 duplicate id 的历史/缓存型 warning，但 `pnpm check:duplicate-slug-id` 通过且仓内仅有 EN/ZH 两个目标源文件。）
+- Decision (scale / iterate / stop): scale（保留生成过程文本扫描为默认日报模板闸门；下一步可把“EN 页面中文比例/heading 语言一致性”做成独立检查，进一步阻断语言错位进入索引窗口期。）
+
 ### EXP-091
 - Hypothesis: 对最近24小时新发布且出现 description 异常（EN 通用摘要、ZH 截断/噪音摘要）的 `2026-04-22` 双语日报页执行可检索化回补，可提升主题检索匹配、摘要点击意图一致性与核心指南导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-04-22/` + `/zh/blog/openclaw-daily-2026-04-22/`

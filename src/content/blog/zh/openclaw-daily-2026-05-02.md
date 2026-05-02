@@ -1,23 +1,15 @@
 ---
 title: "AI / 科技日报（2026-05-02）"
-description: "素材已足够，停止搜索。开始撰稿。；# AI、科技日报 — 2026年5月2日；> **说明：** 本次报告依赖的 web_search 服务不可用（4次尝试均失败），所有条目均通过 L1 官方源直抓核实。中国AI动态因来源不可达未能覆盖。"
+description: "NVIDIA Nemotron 3 Nano Omni、OpenAI GPT-5.5、Adobe 收购 Semrush 与 NVIDIA-Google Cloud Rubin 基础设施合作，指向多模态 Agent、AI 品牌发现与推理成本下降。"
 pubDate: 2026-05-02
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"
 ---
 
-素材已足够，停止搜索。开始撰稿。
-
----
-
 # AI、科技日报 — 2026年5月2日
 
-> **说明：** 本次报告依赖的 web_search 服务不可用（4次尝试均失败），所有条目均通过 L1 官方源直抓核实。中国AI动态因来源不可达未能覆盖；所有条目日期为4月22日-30日，属于近一周最新动态。web_search 恢复后将优先补充当日新闻和中国条目。
-
----
-
-## 📰 今日要闻（5条）
+## 📰 今日要闻（4条）
 
 ### 1. NVIDIA 发布 Nemotron 3 Nano Omni：统一多模态开源模型，AI Agent 效率提升9倍
 
