@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-094
+- Hypothesis: 若对最新 EN 日报增加发布前语言一致性检查，可在索引窗口期前拦截 `lang: en` 页面混入中文正文或中文抬头，避免搜索摘要语言错位并降低人工回补成本。
+- Scope: `scripts/check-latest-daily-en-language.sh` + `package.json` + `.github/workflows/content-check.yml` + 最新 `/en/blog/openclaw-daily-*/` 页面
+- Change: 新增最新 EN 日报语言一致性闸门：自动选择 `src/content/blog/en/openclaw-daily-*.md` 中 `pubDate` 最新文件，校验 frontmatter `lang: en`、正文 H1 必须以 `# AI & Tech Daily Brief` 开头，并在去除 URL 后限制 CJK 字符数不超过 20；将检查接入 `pnpm check:latest-daily-en-language` 与 content-check CI。
+- Start date: 2026-05-02
+- End date: 2026-05-02
+- Success metric: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；CI 出现 Latest EN daily language consistency check。
+- Result: pass（新增最新 EN 日报语言一致性闸门并接入 package/CI；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；最新 EN 日报 `src/content/blog/en/openclaw-daily-2026-05-02.md` 满足英文 H1 与 CJK 阈值。）
+- Decision (scale / iterate / stop): scale（保留为默认发布闸门，优先阻断最新日报语言错位；后续可迭代为滚动 7 天扫描，并先批量修复历史 EN 页面中文正文后再扩大范围。）
+
 ### EXP-093
 - Hypothesis: 对最新发布的 `2026-05-02` 双语日报中草稿噪音、EN 页面中文正文与 ZH 截断型 description 执行发布窗口内修复，并把“开始撰稿/web_search 服务不可用”等生成过程文本纳入模板回归扫描，可提升搜索摘要匹配、语言一致性与后续自动化质检可靠性。
 - Scope: `/en/blog/openclaw-daily-2026-05-02/` + `/zh/blog/openclaw-daily-2026-05-02/` + `scripts/check-daily-template-regressions.sh`

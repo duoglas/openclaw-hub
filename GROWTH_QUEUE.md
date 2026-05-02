@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-02 11:25
+Last updated: 2026-05-02 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-094: 为最新 EN 日报新增语言一致性闸门（锁定最新 `openclaw-daily` 的 `lang: en`、英文 H1 与正文 CJK 字符阈值），消费 EXP-093 的“EN 页面中文比例/heading 语言一致性”延续假设并接入 CI | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 若对最新 EN 日报增加发布前语言一致性检查，可在索引窗口期前拦截 `lang: en` 页面混入中文正文或中文抬头，避免搜索摘要语言错位并降低人工回补成本。
+  - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；content-check CI 新增 Latest EN daily language consistency check。
+  - Acceptance: 1) 新增 `scripts/check-latest-daily-en-language.sh`；2) `package.json` 增加 `check:latest-daily-en-language`；3) `.github/workflows/content-check.yml` 接入该检查；4) 最新 EN 日报 `2026-05-02` 通过英文 H1 与 CJK 阈值检查；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-093: 修复 2026-05-02 双语日报生成噪音与 EN 语言错位（description 可检索化 + EN 正文英文化 + 模板闸门识别草稿噪音/失效 rg wrapper），消费最近24小时内容建设新增页面质量假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最新发布日报中的草稿噪音、EN 页面中文正文与 ZH 截断型 description 进行发布窗口内修复，并把“开始撰稿/web_search 服务不可用”等生成过程文本纳入模板回归扫描，可提升搜索摘要匹配、语言一致性与后续自动化质检可靠性。
   - Metrics: `pnpm check:daily-template` 通过且不再输出 rg fallback 误报；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-02/` 无草稿噪音、description 覆盖当日核心主题、EN 正文为英文。
