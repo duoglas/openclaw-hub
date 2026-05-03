@@ -30,6 +30,58 @@ CTA_PATTERNS=(
   '订阅每日简报，持续获取可直接执行的更新'
 )
 
+latest_daily_file() {
+  local lang="$1"
+  find "src/content/blog/${lang}" -maxdepth 1 -type f -name 'openclaw-daily-*.md' | sort | tail -1
+}
+
+check_latest_conclusion_completeness() {
+  local lang="$1"
+  local heading_pattern="$2"
+  local required_label_pattern="$3"
+  local file
+  file="$(latest_daily_file "$lang")"
+
+  if [ -z "$file" ] || [ ! -f "$file" ]; then
+    echo "Daily template regression check failed: missing latest ${lang} daily file"
+    return 1
+  fi
+
+  local section
+  section=$(awk -v heading="$heading_pattern" '
+    $0 ~ heading { in_section=1; print; next }
+    in_section && /^## / { exit }
+    in_section { print }
+  ' "$file")
+
+  if [ -z "$section" ]; then
+    echo "Daily template regression check failed: latest ${lang} daily is missing conclusion section: $file"
+    return 1
+  fi
+
+  local plain_length
+  plain_length=$(printf '%s\n' "$section" | sed -E 's/\[[^]]+\]\([^)]+\)//g; s/[#*_`>\-]//g; s/[[:space:]]//g' | wc -m | tr -d ' ')
+  if [ "$plain_length" -lt 160 ]; then
+    echo "Daily template regression check failed: latest ${lang} conclusion section looks too thin (${plain_length} chars): $file"
+    return 1
+  fi
+
+  local label_count
+  label_count=$(printf '%s\n' "$section" | grep -Ec "$required_label_pattern" || true)
+  if [ "$label_count" -lt 3 ]; then
+    echo "Daily template regression check failed: latest ${lang} conclusion section must include 3 actionable conclusion labels: $file"
+    return 1
+  fi
+
+  local banned_output
+  banned_output=$(printf '%s\n' "$section" | grep -En '(\.\.\.|……|待补充|待完善|TODO|TBD|placeholder|Placeholder|占位|未完|稍后补|to be added|coming soon)' || true)
+  if [ -n "$banned_output" ]; then
+    echo "Daily template regression check failed: latest ${lang} conclusion section contains unfinished placeholder/ellipsis residue: $file"
+    printf '%s\n' "$banned_output"
+    return 1
+  fi
+}
+
 search_pattern() {
   local label="$1"
   local pattern="$2"
@@ -71,4 +123,7 @@ for pattern in "${CTA_PATTERNS[@]}"; do
   search_pattern "generic CTA" "$pattern"
 done
 
-echo "Daily template regression check passed: no placeholder descriptions or generic CTA residue found in EN/ZH daily posts"
+check_latest_conclusion_completeness "en" "^## Takeaways$" "^\*\*(Most important signal|Second signal|Actionable implication):\*\*"
+check_latest_conclusion_completeness "zh" "^## 今日结论$" "^\*\*(最值得关注|第二个信号|可执行建议)：\*\*"
+
+echo "Daily template regression check passed: no placeholder descriptions, generic CTA residue, or latest conclusion placeholders found in EN/ZH daily posts"

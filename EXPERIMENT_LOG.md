@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-096
+- Hypothesis: 若在 `check:daily-template` 中对最新双语日报结论段增加结构化完整性检查，可在发布前拦截“结论未完稿但模板检查通过”的质量回归，避免低质量摘要与导流建议进入索引窗口期。
+- Scope: `scripts/check-daily-template-regressions.sh` + 最新 `/en/blog/openclaw-daily-*/` 与 `/zh/blog/openclaw-daily-*/` 页面
+- Change: 扩展 daily-template 回归脚本：自动定位最新 EN/ZH 日报，提取 EN `## Takeaways` 与 ZH `## 今日结论` 至下一二级标题前的内容，校验结论区存在、纯文本厚度不少于 160 字符、包含三条行动标签（EN: Most important signal / Second signal / Actionable implication；ZH: 最值得关注 / 第二个信号 / 可执行建议），并拦截 `...`、`……`、TODO、TBD、placeholder、占位、未完、稍后补等未完稿残留。
+- Start date: 2026-05-03
+- End date: 2026-05-03
+- Success metric: `pnpm check:daily-template`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；最新 EN/ZH 日报结论段无占位符/截断省略号残留。
+- Result: pass（`scripts/check-daily-template-regressions.sh` 已新增 latest conclusion completeness gate；最新 `src/content/blog/en|zh/openclaw-daily-2026-05-03.md` 通过结论区结构、厚度、三标签与占位残留检查；本地 `pnpm check:daily-template`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)`。）
+- Decision (scale / iterate / stop): scale（保留为 daily-template 默认发布闸门；下一步可将该检查从 latest 扩展为滚动 7 天，先批量修复历史标题命名差异后再扩大覆盖。）
+
 ### EXP-095
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description 与双语结论占位符进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-03/` + `/zh/blog/openclaw-daily-2026-05-03/`
