@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-02 17:20
+Last updated: 2026-05-03 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-095: 修复 2026-05-03 双语日报发布窗口质量回归（EN 正文英文化 + ZH description 可检索化 + 双语结论补全），消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description 与双语结论占位符进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性与站内导流质量。
+  - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-03/` 无中文/英文错位、无截断 description、无结论占位符。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-03.md` H1 与正文改为英文；2) ZH description 从截断正文升级为可检索摘要；3) EN/ZH 今日结论补全；4) 保持 3 条强相关 CTA 内链；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-094: 为最新 EN 日报新增语言一致性闸门（锁定最新 `openclaw-daily` 的 `lang: en`、英文 H1 与正文 CJK 字符阈值），消费 EXP-093 的“EN 页面中文比例/heading 语言一致性”延续假设并接入 CI | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 若对最新 EN 日报增加发布前语言一致性检查，可在索引窗口期前拦截 `lang: en` 页面混入中文正文或中文抬头，避免搜索摘要语言错位并降低人工回补成本。
   - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；content-check CI 新增 Latest EN daily language consistency check。

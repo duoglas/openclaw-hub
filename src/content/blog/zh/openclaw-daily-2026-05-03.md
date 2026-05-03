@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-03）"
-description: "# AI、科技日报；2026-05-03 07:30｜聚焦 AI / 科技行业；### 1. OpenAI 模型、Codex、Managed Agents 进入 AWS / Bedrock 生态。"
+description: "OpenAI 模型、Codex 与托管 Agent 进入 AWS Bedrock，Adobe 收购 Semrush 押注 AI 时代品牌可见性，NVIDIA 发布 Nemotron 3 Nano Omni，MIT 报道 AI 睡眠脑电平台。"
 pubDate: 2026-05-03
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -87,7 +87,11 @@ Beacon Biosignals 的路径是：居家 EEG 设备采集睡眠脑电，再用机
 
 ## 今日结论
 
-**最值得关注：…
+**最值得关注：** 云厂商正在成为企业 Agent 的默认分发层。OpenAI 进入 Bedrock，会让 Agent 落地更像常规云采购，而不是单独的 AI 试验项目。
+
+**第二个信号：** AI 发现正在成为新的增长入口。Adobe 收购 Semrush 说明，品牌未来不只要优化搜索结果页，还要优化 AI 系统如何理解、摘要和推荐自己。
+
+**可执行建议：** 做 Agent 或采用 Agent 的团队，应优先补齐部署护栏：运行时隔离、模型回退、可观测性、内容来源标注，以及从内容页指向实施指南的清晰内链。
 
 ## 下一步行动（CTA）
 
