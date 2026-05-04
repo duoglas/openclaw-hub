@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-098: 将最新 EN 日报语言一致性闸门从单篇扩展为最近 3 篇滚动检查（可配置 `ROLLING_EN_DAILY_LIMIT`），消费 EXP-097 的“latest 语言闸门扩展”延续假设并接入 CI 命名 | ICE 9x8x8=576 — commit `fad038e`
+- [x] P1 Candidate A / EXP-098: 将最新 EN 日报语言一致性闸门从单篇扩展为最近 3 篇滚动检查（可配置 `ROLLING_EN_DAILY_LIMIT`），消费 EXP-097 的“latest 语言闸门扩展”延续假设并接入 CI 命名 | ICE 9x8x8=576 — commit `f815f75`
   - Hypothesis: 若把最新 EN 日报语言一致性检查从单篇扩展为最近 3 篇滚动窗口，可在发布窗口内发现连续日更回归，避免最近内容被索引前出现 `lang: en` 页面中文正文或中文 H1，且不被更早历史未修复页面阻塞。
   - Metrics: `pnpm check:latest-daily-en-language` 覆盖最近 3 篇 EN 日报并通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；content-check CI 步骤命名升级为 Rolling EN daily language consistency check。
   - Acceptance: 1) `scripts/check-latest-daily-en-language.sh` 按 `pubDate` 选择最近 3 篇 EN 日报；2) 继续校验 `lang: en`、英文 H1 与 URL 外 CJK 阈值；3) 支持 `ROLLING_EN_DAILY_LIMIT` 调整窗口；4) 最新 `2026-05-02` 至 `2026-05-04` EN 日报通过；5) 本地检查与构建全部通过。
