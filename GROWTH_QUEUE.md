@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-04 11:28
+Last updated: 2026-05-04 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-098: 将最新 EN 日报语言一致性闸门从单篇扩展为最近 3 篇滚动检查（可配置 `ROLLING_EN_DAILY_LIMIT`），消费 EXP-097 的“latest 语言闸门扩展”延续假设并接入 CI 命名 | ICE 9x8x8=576 — commit `fad038e`
+  - Hypothesis: 若把最新 EN 日报语言一致性检查从单篇扩展为最近 3 篇滚动窗口，可在发布窗口内发现连续日更回归，避免最近内容被索引前出现 `lang: en` 页面中文正文或中文 H1，且不被更早历史未修复页面阻塞。
+  - Metrics: `pnpm check:latest-daily-en-language` 覆盖最近 3 篇 EN 日报并通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；content-check CI 步骤命名升级为 Rolling EN daily language consistency check。
+  - Acceptance: 1) `scripts/check-latest-daily-en-language.sh` 按 `pubDate` 选择最近 3 篇 EN 日报；2) 继续校验 `lang: en`、英文 H1 与 URL 外 CJK 阈值；3) 支持 `ROLLING_EN_DAILY_LIMIT` 调整窗口；4) 最新 `2026-05-02` 至 `2026-05-04` EN 日报通过；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-097: 修复 2026-05-04 双语日报发布窗口质量回归（EN 正文英文化 + ZH description 可检索化 + 双语结论补全 + 截断来源 URL 修复），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `6e05091`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、缺失结论段与截断来源 URL 进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、来源可信度与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-04/` 无 EN/ZH 语言错位、无截断 description、无结论缺失。

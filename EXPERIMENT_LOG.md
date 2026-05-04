@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-098
+- Hypothesis: 若把最新 EN 日报语言一致性检查从单篇扩展为最近 3 篇滚动窗口，可在发布窗口内发现连续日更回归，避免最近内容被索引前出现 `lang: en` 页面中文正文或中文 H1，且不被更早历史未修复页面阻塞。
+- Scope: `scripts/check-latest-daily-en-language.sh` + `.github/workflows/content-check.yml` + 最近 3 篇 `/en/blog/openclaw-daily-*/` 页面
+- Change: 将 `check-latest-daily-en-language.sh` 从单一 latest 文件检查升级为按 `pubDate` 倒序选择最近 3 篇 EN 日报；继续校验 frontmatter `lang: en`、正文 H1 必须以 `# AI & Tech Daily Brief` 开头、URL 外 CJK 字符数不超过 20；增加 `ROLLING_EN_DAILY_LIMIT` 环境变量以便后续扩展到 7 天；同步将 CI 步骤命名为 Rolling EN daily language consistency check。
+- Start date: 2026-05-04
+- End date: 2026-05-04
+- Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；最近 3 篇 EN 日报无语言错位。
+- Result: pass（`scripts/check-latest-daily-en-language.sh` 已覆盖 `src/content/blog/en/openclaw-daily-2026-05-04.md`、`2026-05-03.md` 与 `2026-05-02.md`；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `fad038e`；build 保持既有 Astro duplicate id warning，不阻塞产物生成。）
+- Decision (scale / iterate / stop): iterate（下一步在先修复 `2026-04-30`、`2026-04-23`、`2026-04-22`、`2026-04-21` 等 EN 历史语言错位页后，将 `ROLLING_EN_DAILY_LIMIT` 从 3 扩展到 7，完成滚动 7 天语言一致性闸门。）
+
 ### EXP-097
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、缺失结论段与截断来源 URL 进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、来源可信度与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-04/` + `/zh/blog/openclaw-daily-2026-05-04/`

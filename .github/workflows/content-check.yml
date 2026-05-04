@@ -91,7 +91,7 @@ jobs:
       - name: Daily heading date consistency check
         run: pnpm check:daily-heading-date
 
-      - name: Latest EN daily language consistency check
+      - name: Rolling EN daily language consistency check
         run: pnpm check:latest-daily-en-language
 
       - name: Social image absolute URL check
