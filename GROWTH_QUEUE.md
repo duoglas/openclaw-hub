@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-03 17:20
+Last updated: 2026-05-04 11:28
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-097: 修复 2026-05-04 双语日报发布窗口质量回归（EN 正文英文化 + ZH description 可检索化 + 双语结论补全 + 截断来源 URL 修复），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `5915e0e`
+  - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、缺失结论段与截断来源 URL 进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、来源可信度与站内导流质量。
+  - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-04/` 无 EN/ZH 语言错位、无截断 description、无结论缺失。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-04.md` H1 与正文改为英文；2) ZH description 从截断正文升级为可检索摘要；3) EN/ZH 今日结论补全；4) 修复 Anthropic 来源截断 URL；5) 保持 3 条强相关 CTA 内链；6) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-096: 将“最新日报结论占位符/截断省略号”纳入 daily-template 闸门（校验最新 EN/ZH 结论区存在、厚度、三段行动标签与无 TODO/TBD/省略号残留），消费 EXP-095 发布窗口质量延续假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 若在 `check:daily-template` 中对最新双语日报结论段增加结构化完整性检查，可在发布前拦截“结论未完稿但模板检查通过”的质量回归，避免低质量摘要与导流建议进入索引窗口期。
   - Metrics: `pnpm check:daily-template` 通过且覆盖 latest EN `## Takeaways` 与 latest ZH `## 今日结论`；`pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；CI 既有 Daily template regression check 自动执行新增逻辑。
