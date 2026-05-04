@@ -22,7 +22,7 @@
 - Start date: 2026-05-04
 - End date: 2026-05-04
 - Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；最近 3 篇 EN 日报无语言错位。
-- Result: pass（`scripts/check-latest-daily-en-language.sh` 已覆盖 `src/content/blog/en/openclaw-daily-2026-05-04.md`、`2026-05-03.md` 与 `2026-05-02.md`；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `f815f75`；build 保持既有 Astro duplicate id warning，不阻塞产物生成。）
+- Result: pass（`scripts/check-latest-daily-en-language.sh` 已覆盖 `src/content/blog/en/openclaw-daily-2026-05-04.md`、`2026-05-03.md` 与 `2026-05-02.md`；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `f815f75`；build 未出现阻塞错误。）
 - Decision (scale / iterate / stop): iterate（下一步在先修复 `2026-04-30`、`2026-04-23`、`2026-04-22`、`2026-04-21` 等 EN 历史语言错位页后，将 `ROLLING_EN_DAILY_LIMIT` 从 3 扩展到 7，完成滚动 7 天语言一致性闸门。）
 
 ### EXP-097
