@@ -22,7 +22,7 @@
 - Start date: 2026-05-04
 - End date: 2026-05-04
 - Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；EN/ZH 目标页无语言错位、截断 description、结论缺失或截断来源 URL。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-04.md` 已完成 EN 正文英文化、ZH description 可检索化、双语结论补全与 Anthropic 来源 URL 修复；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `5915e0e`；build 保持 Astro 对 2026-05-04 目标页 duplicate id 的历史/缓存型 warning，未阻塞产物生成。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-04.md` 已完成 EN 正文英文化、ZH description 可检索化、双语结论补全与 Anthropic 来源 URL 修复；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `6e05091`；build 保持 Astro 对 2026-05-04 目标页 duplicate id 的历史/缓存型 warning，未阻塞产物生成。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报；下一步建议把 latest 语言/结论闸门扩展为滚动 7 天，并单列 duplicate id warning 来源排查，避免发布窗口内内容质量修复被构建索引噪音抵消。）
 
 ### EXP-096
