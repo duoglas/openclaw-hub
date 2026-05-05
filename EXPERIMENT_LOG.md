@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-100
+- Hypothesis: 若把最新日报正文截断与结论缺失从人工发布后修补升级为滚动 4 篇自动闸门，可在索引窗口内拦截 `…`/`...` 截断正文、缺失 Takeaways/今日结论与要闻结构不完整，减少低质量日报进入搜索结果。
+- Scope: `scripts/check-rolling-daily-body-completeness.sh` + `.github/workflows/content-check.yml` + `/en|zh/blog/openclaw-daily-2026-05-02/` + 最近 4 篇 EN/ZH 日报
+- Change: 新增 `check:rolling-daily-body`，按 `pubDate` 选取最近 4 篇 EN/ZH 日报，检查正文疑似截断省略号、结论段存在且含三类行动标签、结论厚度不少于 180 字符，并要求 CTA 前至少 4 条编号要闻；将检查接入 content-check CI；同步回补 EN `2026-05-02` 来源与 Takeaways，补全 ZH 第 4 条 NVIDIA-Google Cloud 正文、来源与今日结论。
+- Start date: 2026-05-05
+- End date: 2026-05-05
+- Success metric: `pnpm check:rolling-daily-body`、`pnpm check:daily-template`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；最近 4 篇 EN/ZH 日报无正文截断省略号、无结论缺失、无少于 4 条要闻的结构回归。
+- Result: pass（新增滚动 4 篇日报正文完整性闸门并接入 package/CI；`src/content/blog/en|zh/openclaw-daily-2026-05-02.md` 已回补 EN Takeaways、ZH 第 4 条完整正文/来源与今日结论；本地 `pnpm check:rolling-daily-body`、`pnpm check:daily-template`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；build 保持 Astro 对 2026-05-02 目标页 duplicate id 的历史/缓存型 warning，未阻塞产物生成；commit `(this commit)`。）
+- Decision (scale / iterate / stop): scale（保留为默认内容发布闸门；下一步建议在清理 2026-05-02 duplicate id warning 后，将 `ROLLING_DAILY_BODY_LIMIT` 从 4 扩展到 7，覆盖完整一周发布窗口。）
+
 ### EXP-099
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、双语正文截断与结论缺失进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-05/` + `/zh/blog/openclaw-daily-2026-05-05/`

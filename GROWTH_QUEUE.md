@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-05 11:24
+Last updated: 2026-05-05 17:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-100: 将双语日报正文完整性闸门扩展为最近 4 篇滚动检查（正文截断省略号 + 结论段三标签 + 至少 4 条要闻），并回补 2026-05-02 EN/ZH 结论与 ZH 第 4 条截断正文，消费 EXP-099 的“正文截断标记扫描”延续假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 若把最新日报正文截断与结论缺失从人工发布后修补升级为滚动 4 篇自动闸门，可在索引窗口内拦截 `…`/`...` 截断正文、缺失 Takeaways/今日结论与要闻结构不完整，减少低质量日报进入搜索结果。
+  - Metrics: `pnpm check:rolling-daily-body` 通过并覆盖最近 4 篇 EN/ZH 日报；`pnpm check:daily-template` 通过；`pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`2026-05-02` EN/ZH 不再缺结论，ZH 第 4 条无截断省略号。
+  - Acceptance: 1) 新增 `scripts/check-rolling-daily-body-completeness.sh`；2) `package.json` 增加 `check:rolling-daily-body`；3) `.github/workflows/content-check.yml` 接入 Rolling daily body completeness check；4) 回补 EN/ZH `openclaw-daily-2026-05-02.md` 结论段，补全 ZH 第 4 条正文与来源；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-099: 修复 2026-05-05 双语日报发布窗口质量回归（EN 正文英文化 + ZH description 可检索化 + 双语结论补全 + 截断正文修复），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `997afb0`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、双语正文截断与结论缺失进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-05/` 无 EN/ZH 语言错位、无截断 description、无正文截断、无结论缺失。

@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-04-16 11:24
+Last updated: 2026-05-05 17:25
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-04-16 11:24
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-100 — rolling daily body completeness + openclaw-daily-2026-05-02
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: 回补 EN/ZH `openclaw-daily-2026-05-02` 结论与 ZH 第 4 条正文截断，并新增最近 4 篇双语日报正文完整性闸门；可检索摘要与 CTA 保持强相关，`pnpm check:rolling-daily-body`、`pnpm check:daily-template`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过。
 
 ### EXP-086 — openclaw-daily-2026-04-16
 - Search intent match: 9/10

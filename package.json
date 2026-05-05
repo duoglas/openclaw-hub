@@ -34,7 +34,8 @@
     "check:robots-sitemap": "bash scripts/check-robots-sitemap-integrity.sh",
     "check:daily-0311": "bash scripts/check-daily-0311-integrity.sh",
     "check:daily-heading-date": "bash scripts/check-daily-heading-date-consistency.sh",
-    "check:latest-daily-en-language": "bash scripts/check-latest-daily-en-language.sh"
+    "check:latest-daily-en-language": "bash scripts/check-latest-daily-en-language.sh",
+    "check:rolling-daily-body": "bash scripts/check-rolling-daily-body-completeness.sh"
   },
   "keywords": [],
   "author": "",

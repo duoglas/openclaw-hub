@@ -49,7 +49,21 @@ lang: "zh"
 
 ### 4. NVIDIA + Google Cloud 深化合作：Vera Rubin 芯片为 Agent 和物理 AI 提供下一代基础设施
 
-**发生了什么：** 在 Google Cloud Next 大会上，NVIDIA 与 Google Cloud 宣布新的合作里程碑。核心是 Google Cloud A5X 实例将搭载 NVIDIA Vera Rubin NVL72 机架系统，推理成本降至上代的1/10，单站点集群可扩展至 80,000 块 Rubin GPU。Thinking Machines Lab 和 OpenAI 已在 A4X Max 实例上运行训练…
+**发生了什么：** 在 Google Cloud Next 大会上，NVIDIA 与 Google Cloud 宣布新的合作里程碑。核心是 Google Cloud A5X 实例将搭载 NVIDIA Vera Rubin NVL72 机架系统，面向大规模训练、推理、Agent 与物理 AI 工作负载。Google Cloud 同时强调 A4X / A4 系列实例正在服务前沿实验室和企业训练场景。
+
+**为什么重要：** Agent 和机器人系统对推理成本、集群规模、网络延迟与供给稳定性都高度敏感。云厂商围绕 Rubin、Blackwell 等硬件打包新实例，说明 AI 基础设施竞争正在从“有没有 GPU”升级为“能不能稳定承载长链路 Agent 工作负载”。
+
+**可能影响：** 更多容量和更低单位成本会推动企业把多模态 Agent、文档理解、机器人仿真和生产推理迁移到云上；同时也会让模型回退、成本监控和区域可用性成为上线前必须检查的运行指标。
+
+→ [L1·直抓] https://cloud.google.com/blog/products/compute/introducing-a4x-and-a4-vms-powered-by-nvidia
+
+## 今日结论
+
+**最值得关注：** 多模态 Agent 正在从模型能力演示转向可部署基础设施。NVIDIA 的 Nemotron 3 Nano Omni 与 Google Cloud Rubin 路线都在降低多模态推理和企业部署门槛。
+
+**第二个信号：** AI 时代的品牌发现也在平台化。Adobe 收购 Semrush 说明 SEO、GEO 与 Agent 搜索可见性正在合并成新的企业增长工作流。
+
+**可执行建议：** 使用 OpenClaw 落地 Agent 时，不要只看单一模型能力；应同时配置模型回退、部署监控、可引用内容页和清晰来源，确保 Agent 能稳定执行、被搜索系统理解，也能把用户导向正确下一步。
 
 ## 下一步行动（CTA）
 
