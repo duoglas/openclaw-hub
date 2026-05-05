@@ -22,7 +22,7 @@
 - Start date: 2026-05-05
 - End date: 2026-05-05
 - Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；EN/ZH 目标页无语言错位、截断 description、正文截断或结论缺失。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-05.md` 已完成 EN 正文英文化、ZH description 可检索化、双语第 5 条正文补全、截断 `可能…` 清理与双语结论补全；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)`。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-05.md` 已完成 EN 正文英文化、ZH description 可检索化、双语第 5 条正文补全、截断 `可能…` 清理与双语结论补全；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `997afb0`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报；下一步建议把 `daily-template` 增加正文截断标记扫描，拦截 `可能…`/`Likely…` 这类正文未完稿残留。）
 
 ### EXP-098

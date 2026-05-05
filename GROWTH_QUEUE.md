@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-099: 修复 2026-05-05 双语日报发布窗口质量回归（EN 正文英文化 + ZH description 可检索化 + 双语结论补全 + 截断正文修复），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-099: 修复 2026-05-05 双语日报发布窗口质量回归（EN 正文英文化 + ZH description 可检索化 + 双语结论补全 + 截断正文修复），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `997afb0`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、双语正文截断与结论缺失进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-05/` 无 EN/ZH 语言错位、无截断 description、无正文截断、无结论缺失。
   - Acceptance: 1) EN `openclaw-daily-2026-05-05.md` H1 与正文改为英文；2) ZH description 从截断正文升级为可检索摘要；3) EN/ZH 第 5 条正文补全并移除 `可能…` 截断；4) EN/ZH 今日结论补全；5) 保持 3 条强相关 CTA 内链；6) 本地检查与构建全部通过。
