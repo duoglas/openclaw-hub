@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-101
+- Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description 与双语结论未结构化/截断残留进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
+- Scope: `/en/blog/openclaw-daily-2026-05-06/` + `/zh/blog/openclaw-daily-2026-05-06/`
+- Change: 将 EN `openclaw-daily-2026-05-06` 从中文正文与中文抬头改写为英文 H1、英文正文、英文 Takeaways，并升级 description 覆盖 NVIDIA/ServiceNow 企业 Agent、OpenAI 记忆来源与 GPT-5.5 Instant、AWS/OpenAI Bedrock、模数共振政策、Adobe/Semrush AI 搜索可见性；将 ZH description 从截断正文升级为中文可检索摘要；将 ZH 今日结论补齐为最值得关注/第二个信号/可执行建议三标签结构，并清理截断省略号；保留 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 内链。
+- Start date: 2026-05-06
+- End date: 2026-05-06
+- Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body` 与 `pnpm build` 全部通过；EN/ZH 目标页无语言错位、截断 description、结论缺失或省略号残留。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-06.md` 已完成 EN 正文英文化、ZH description 可检索化、双语三标签结论补全与截断省略号清理；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body` 与 `pnpm build` 全部通过；commit `(this commit)`。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报；下一步建议把 rolling body completeness 从最近 4 篇扩展到 7 篇前，先专项清理近期 duplicate id warning 与历史 EN 语言错位页，降低扩大窗口时的阻塞风险。）
+
 ### EXP-100
 - Hypothesis: 若把最新日报正文截断与结论缺失从人工发布后修补升级为滚动 4 篇自动闸门，可在索引窗口内拦截 `…`/`...` 截断正文、缺失 Takeaways/今日结论与要闻结构不完整，减少低质量日报进入搜索结果。
 - Scope: `scripts/check-rolling-daily-body-completeness.sh` + `.github/workflows/content-check.yml` + `/en|zh/blog/openclaw-daily-2026-05-02/` + 最近 4 篇 EN/ZH 日报

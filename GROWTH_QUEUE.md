@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-05 17:25
+Last updated: 2026-05-06 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-101: 修复 2026-05-06 双语日报发布窗口质量回归（EN 正文英文化 + EN/ZH 结构化结论补全 + ZH description 可检索化 + 截断省略号清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description 与双语结论未结构化/截断残留进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
+  - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:rolling-daily-body` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-06/` 无 EN/ZH 语言错位、无截断 description、无结论缺失或省略号残留。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-06.md` H1 与正文改为英文；2) EN/ZH 结论补齐为三标签结构；3) ZH description 从截断正文升级为可检索摘要；4) 清理 `明日跟踪点` 截断省略号；5) 保持 3 条强相关 CTA 内链；6) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-100: 将双语日报正文完整性闸门扩展为最近 4 篇滚动检查（正文截断省略号 + 结论段三标签 + 至少 4 条要闻），并回补 2026-05-02 EN/ZH 结论与 ZH 第 4 条截断正文，消费 EXP-099 的“正文截断标记扫描”延续假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 若把最新日报正文截断与结论缺失从人工发布后修补升级为滚动 4 篇自动闸门，可在索引窗口内拦截 `…`/`...` 截断正文、缺失 Takeaways/今日结论与要闻结构不完整，减少低质量日报进入搜索结果。
   - Metrics: `pnpm check:rolling-daily-body` 通过并覆盖最近 4 篇 EN/ZH 日报；`pnpm check:daily-template` 通过；`pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`2026-05-02` EN/ZH 不再缺结论，ZH 第 4 条无截断省略号。
