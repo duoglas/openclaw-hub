@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-06 11:25
+Last updated: 2026-05-06 17:26
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-102: 消除 Astro stale content cache 引发的最新日报 duplicate id build warning（新增 prebuild 清理 `.astro` 缓存），消费 EXP-101/EXP-100 的 duplicate id warning 后续假设 | ICE 8x8x9=576 — commit `(this commit)`
+  - Hypothesis: 若在每次生产构建前清理 Astro 生成的 `.astro` 内容缓存，可阻断日报发布窗口内由 stale content cache 造成的虚假 duplicate id warning，降低构建日志噪音，避免真实 duplicate slug/id 问题被误判或淹没。
+  - Metrics: `pnpm check:duplicate-slug-id` 通过；`pnpm check:rolling-daily-body` 通过；`pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过且 build 日志无 `Duplicate id` warning。
+  - Acceptance: 1) 新增 `scripts/clean-astro-cache.mjs`；2) `package.json` 增加 `prebuild` 自动清理 `.astro`；3) 清理不触碰源内容与 dist 发布文件；4) 本地检查与构建全部通过，且 duplicate id warning 消失。
 - [x] P1 Candidate A / EXP-101: 修复 2026-05-06 双语日报发布窗口质量回归（EN 正文英文化 + EN/ZH 结构化结论补全 + ZH description 可检索化 + 截断省略号清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description 与双语结论未结构化/截断残留进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:rolling-daily-body` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-06/` 无 EN/ZH 语言错位、无截断 description、无结论缺失或省略号残留。

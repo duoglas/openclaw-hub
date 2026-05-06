@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-102
+- Hypothesis: 若在每次生产构建前清理 Astro 生成的 `.astro` 内容缓存，可阻断日报发布窗口内由 stale content cache 造成的虚假 duplicate id warning，降低构建日志噪音，避免真实 duplicate slug/id 问题被误判或淹没。
+- Scope: `scripts/clean-astro-cache.mjs` + `package.json` build lifecycle + 最新 `/en|zh/blog/openclaw-daily-2026-05-06/` 构建日志
+- Change: 新增 `scripts/clean-astro-cache.mjs`，仅删除仓库根目录下的 `.astro` 生成缓存；在 `package.json` 增加 `prebuild`，确保 `pnpm build` 前自动清理 stale Astro content cache；保留现有 `check:duplicate-slug-id` 源文件与产物 duplicate id 检查，形成“源文件唯一性 + 干净内容缓存构建”的双层闭环。
+- Start date: 2026-05-06
+- End date: 2026-05-06
+- Success metric: `pnpm check:duplicate-slug-id`、`pnpm check:rolling-daily-body`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；`pnpm build` 日志不再出现最新日报 `Duplicate id` warning。
+- Result: pass（新增 build 前 `.astro` 缓存清理脚本并接入 `prebuild`；本地 `pnpm check:duplicate-slug-id`、`pnpm check:rolling-daily-body`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；`/tmp/openclaw-hub-exp102-gate.log` 未检出 `warn` 或 `Duplicate id`；commit `(this commit)`。）
+- Decision (scale / iterate / stop): scale（保留为默认生产构建卫生步骤；下一步可将 `ROLLING_DAILY_BODY_LIMIT` 从 4 扩展到 7，继续扩大最新日报质量闸门覆盖范围。）
+
 ### EXP-101
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description 与双语结论未结构化/截断残留进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-06/` + `/zh/blog/openclaw-daily-2026-05-06/`

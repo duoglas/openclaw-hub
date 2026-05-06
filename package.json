@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/clean-astro-cache.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "daily:seo": "bash scripts/generate-seo-daily-snapshot.sh",
