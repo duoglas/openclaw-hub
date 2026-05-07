@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-05-05 17:25
+Last updated: 2026-05-07 17:20
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-05-05 17:25
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-104 — rolling 7-day daily quality gate + openclaw-daily-2026-04-30
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: EN/ZH `openclaw-daily-2026-04-30` 已完成 EN 正文英文化、ZH 三标签结论补全与截断省略号清理；`check:latest-daily-en-language` 默认扩展为最近 7 篇 EN 日报，`check:rolling-daily-body` 默认扩展为最近 7 篇 EN/ZH 日报；CTA 保持 What Is OpenClaw / VPS guide / model fallback 三条强相关内链，本地检查与构建全部通过。
 
 ### EXP-100 — rolling daily body completeness + openclaw-daily-2026-05-02
 - Search intent match: 9/10

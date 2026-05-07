@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-ROLLING_LIMIT="${ROLLING_EN_DAILY_LIMIT:-3}"
+ROLLING_LIMIT="${ROLLING_EN_DAILY_LIMIT:-7}"
 
 mapfile -t target_files < <(python3 - "$ROLLING_LIMIT" <<'PY'
 from pathlib import Path
@@ -13,7 +13,7 @@ import sys
 try:
     limit = int(sys.argv[1])
 except Exception:
-    limit = 3
+    limit = 7
 
 items = []
 for path in Path('src/content/blog/en').glob('openclaw-daily-*.md'):

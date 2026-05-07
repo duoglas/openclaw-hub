@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-104: 将最新日报质量闸门从发布窗口扩展到滚动 7 篇（EN 语言一致性 3→7 + 双语正文完整性 4→7），并回补 2026-04-30 EN/ZH 日报语言错位、结论结构与截断正文，消费 EXP-102/EXP-100 的滚动窗口扩展假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 若把 EN 语言一致性与双语正文完整性默认检查窗口扩展到最近 7 篇，并同步修复扩窗暴露的 `2026-04-30` EN 中文正文/缺失英文 H1 与双语截断结论，可在完整一周索引窗口内拦截语言错位、正文截断和结论结构回归。
+  - Metrics: `pnpm check:latest-daily-en-language` 覆盖最近 7 篇 EN 日报并通过；`pnpm check:rolling-daily-body` 覆盖最近 7 篇 EN/ZH 日报并通过；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `scripts/check-latest-daily-en-language.sh` 默认窗口从 3 扩展到 7；2) `scripts/check-rolling-daily-body-completeness.sh` 默认窗口从 4 扩展到 7；3) EN `openclaw-daily-2026-04-30.md` 改为英文 H1、英文正文、英文 Takeaways；4) ZH `2026-04-30` 今日结论升级为三标签结构并清理截断省略号；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-103: 修复 2026-05-07 双语日报发布窗口质量回归（EN 正文英文化 + 双语 description 可检索化 + 双语结论补全 + 截断来源清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description、双语结论缺失与来源截断进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:rolling-daily-body` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

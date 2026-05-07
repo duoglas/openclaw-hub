@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-104
+- Hypothesis: 若把 EN 语言一致性与双语正文完整性默认检查窗口扩展到最近 7 篇，并同步修复扩窗暴露的 `2026-04-30` EN 中文正文/缺失英文 H1 与双语截断结论，可在完整一周索引窗口内拦截语言错位、正文截断和结论结构回归。
+- Scope: `scripts/check-latest-daily-en-language.sh` + `scripts/check-rolling-daily-body-completeness.sh` + `/en/blog/openclaw-daily-2026-04-30/` + `/zh/blog/openclaw-daily-2026-04-30/` + 最近 7 篇 EN/ZH 日报
+- Change: 将 `ROLLING_EN_DAILY_LIMIT` 默认值从 3 扩展到 7，将 `ROLLING_DAILY_BODY_LIMIT` 默认值从 4 扩展到 7；将 EN `openclaw-daily-2026-04-30` 从中文正文、缺失英文 H1 与截断跟踪点改写为英文 H1、英文正文、英文 Takeaways；将 ZH 今日结论改为最值得关注/第二个信号/可执行建议三标签结构并移除截断省略号；保留 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 内链。
+- Start date: 2026-05-07
+- End date: 2026-05-07
+- Success metric: `pnpm check:latest-daily-en-language` 覆盖最近 7 篇 EN 日报并通过；`pnpm check:rolling-daily-body` 覆盖最近 7 篇 EN/ZH 日报并通过；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过；`2026-04-30` EN/ZH 无语言错位、截断结论或三标签缺失。
+- Result: pass（最近 7 篇 EN 语言一致性与最近 7 篇 EN/ZH 正文完整性检查均通过；`src/content/blog/en/openclaw-daily-2026-04-30.md` 已英文化并补全 Takeaways，`src/content/blog/zh/openclaw-daily-2026-04-30.md` 已补齐三标签结论并清理截断省略号；本地质量门与构建全部通过；commit `(this commit)`。）
+- Decision (scale / iterate / stop): scale（保留 7 篇滚动窗口作为默认发布质量闸门；下一步可在修复 2026-04-23 与更早 EN 历史语言错位后，将窗口扩展到 10 或 14 篇。）
+
 ### EXP-103
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description、双语结论缺失与来源截断进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-07/` + `/zh/blog/openclaw-daily-2026-05-07/`
