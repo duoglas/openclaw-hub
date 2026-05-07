@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-103
+- Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description、双语结论缺失与来源截断进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
+- Scope: `/en/blog/openclaw-daily-2026-05-07/` + `/zh/blog/openclaw-daily-2026-05-07/`
+- Change: 将 EN `openclaw-daily-2026-05-07` 从中文正文与无英文 H1 改写为英文 H1、英文正文、英文 Takeaways，并升级 description 覆盖 GPT-5.5 Instant、OpenAI B2B Signals、MRC AI 训练网络、GitHub agentic software 验证与中国具身智能安全；将 ZH description 从截断正文升级为中文可检索摘要；补全 ZH 今日结论为最值得关注/第二个信号/可执行建议三标签结构；清理 EN/ZH 新华网来源截断省略号；保留 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 内链。
+- Start date: 2026-05-07
+- End date: 2026-05-07
+- Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过；EN/ZH 目标页无语言错位、截断 description、结论缺失或来源省略号残留。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-07.md` 已完成 EN 正文英文化、双语 description 可检索化、双语三标签结论补全与新华网来源截断清理；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过；build 仍出现 Astro 对 2026-05-07 目标页 duplicate id warning，但 `check:duplicate-slug-id` 通过且源文件唯一，未阻塞产物生成；commit `(this commit)`。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报；下一步建议排查 Astro 对最新日报的 duplicate id warning 是否来自内容 collection sync 过程，而不是源文件重复。）
+
 ### EXP-102
 - Hypothesis: 若在每次生产构建前清理 Astro 生成的 `.astro` 内容缓存，可阻断日报发布窗口内由 stale content cache 造成的虚假 duplicate id warning，降低构建日志噪音，避免真实 duplicate slug/id 问题被误判或淹没。
 - Scope: `scripts/clean-astro-cache.mjs` + `package.json` build lifecycle + 最新 `/en|zh/blog/openclaw-daily-2026-05-06/` 构建日志
