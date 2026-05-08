@@ -1,0 +1,67 @@
+---
+title: "AI & Tech Daily Brief (2026-05-08)"
+description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+pubDate: 2026-05-08
+tags: ["ai", "tech", "daily", "news"]
+category: "news"
+lang: "en"
+---
+
+《AI、科技日报》  
+2026-05-08 早间版
+
+## 今日要闻（5条）
+
+1. OpenAI 推出 ChatGPT「可信联系人」安全功能  
+发生了什么：OpenAI 5月7日开始推出 Trusted Contact。成人用户可指定一位可信联系人；若系统和人工审核判断用户可能存在严重自伤风险，ChatGPT 可向联系人发出有限通知，不包含聊天全文。  
+为什么重要：AI 助手开始从“只在对话里劝阻”走向“连接现实世界支持”。这会直接影响 AI 产品的安全、隐私、责任边界。  
+可能影响：后续大模型产品会更重视危机干预、人审流程、隐私最小化披露；普通用户需要理解这类功能的开启条件和通知范围。
+
+2. NVIDIA 把 AI 基建议题推到“能源层”  
+发生了什么：NVIDIA 与美国能源部在 Genesis Mission 上继续合作，NVIDIA 文章披露 DOE 与 NVIDIA 正在 Argonne 建两台 AI 超算：Equinox 使用 1 万颗 Grace Blackwell GPU，Solstice 计划使用 10 万颗 Vera Rubin GPU。  
+为什么重要：AI 竞争不只是模型和芯片，已经变成“电力 + 超算 + 数据 + 科学发现”的国家级基础设施竞争。  
+可能影响：AI 数据中心、电网、核能/天然气/储能、科学计算会更深绑定；未来 AI 成本不只看 GPU，也要看电力和并网速度。
+
+3. 中国电子信息制造业一季度高增长  
+发生了什么：工信部数据显示，2026年一季度规模以上电子信息制造业增加值同比增长 13.6%；集成电路产量 1272 亿块，同比增长 24.3%；智能手机产量 2.98 亿台，同比增长 6.9%。  
+为什么重要：这是 AI 硬件、终端、算力设备产业链的底层景气指标。芯片产量增长尤其值得看。  
+可能影响：国产电子产业链韧性增强，AI 手机、端侧 AI、工业电子和服务器链条有更强供应基础；但微型计算机设备产量同比下降 8.4%，PC 端仍需观察。
+
+4. Meta 扩大 AI 年龄识别与青少年保护  
+发生了什么：Meta 5月5日宣布强化年龄保障技术，包括用 AI 分析资料、文本、互动线索，并加入视觉分析来识别可能未成年账号；相关青少年保护将扩展到欧盟、巴西，以及美国 Facebook。  
+为什么重要：平台正在把 AI 用于内容治理和未成年人保护，但这也会引出误判、隐私、监管合规问题。  
+可能影响：社交平台会更依赖 AI 做身份与风险判断；用户可能遇到更频繁的年龄验证、账号限制或申诉流程。
+
+5. 中国首个卫星物联网业务商用试验获批  
+发生了什么：新华社报道，工信部近日批复首个卫星物联网业务商用试验，北京国电高科获批依托“天启星座”提供广覆盖、低功耗、高可靠物联网连接，试验期两年。  
+为什么重要：这是商业航天和物联网结合的落地信号，适合海洋渔业、能源水利、交通物流等地面网络覆盖弱的场景。  
+可能影响：卫星通信会从“高大上通信”进一步进入产业物联网；低速、低功耗、广覆盖连接可能成为商业航天的更现实收入入口。
+
+## 实战案例（2个）
+
+1. AI + 新药研发：国产科学计算机模拟蛋白质运动  
+新华社报道，思朗科技“天穹”科学计算机可模拟蛋白质分子运动，把药物作用于蛋白质的过程做成动态模拟，帮助药物筛选从“大海捞针”转向“有的放矢”。  
+可学点：AI/科学计算真正有价值的地方，不是替代实验，而是先缩小实验搜索空间，提高研发命中率。
+
+2. ChatGPT 进入 Excel 和 Google Sheets  
+OpenAI 版本说明显示，ChatGPT for Excel and Google Sheets 已全球可用，可在表格侧边栏帮助处理公式、预算、追踪表、多表分析和清洗。  
+可学点：普通用户最容易落地的 AI 场景，仍然是办公软件内嵌。建议先从“清洗表格、解释公式、生成汇总”开始，不要直接让它替你做未经复核的财务或经营结论。
+
+## 今日结论
+
+最值得关注：  
+AI 行业主线正在从“模型发布”转向三件事：安全治理、基础设施、产业落地。OpenAI 和 Meta 代表安全治理，NVIDIA 代表能源与算力底座，中国工信部数据和卫星物联网代表产业化。
+
+给普通用户建议：  
+今天最实用的是关注 ChatGPT 表格能力。如果你常处理 Excel/Sheets，可以先用它做公式解释、数据清洗、周报汇总；关键数据仍要人工复核。
+
+明日跟踪点：  
+1. OpenAI Trusted Contact 是否引发隐私和监管讨论。  
+2. NVIDIA / DOE 的 AI 超算项目是否有更多官方技术细节。  
+3. 中国卫星物联网商用试验是否出现工信部原文或企业…
+
+## Next-Step CTA
+
+- Start here: [What Is OpenClaw?](/en/blog/what-is-openclaw/)
+- Deploy with guardrails: [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/)
+- Keep reliability under load: [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
