@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-08 11:20
+Last updated: 2026-05-08 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-106: 将 daily-template 结论完整性闸门从 latest 扩展为最近 7 篇滚动检查（可配置 `ROLLING_DAILY_CONCLUSION_LIMIT`），消费 EXP-105 的 7 篇窗口扩展假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 若把 EN/ZH 日报结论区结构检查从最新单篇扩展到最近 7 篇，可与现有语言一致性和正文完整性窗口对齐，在完整一周索引窗口内拦截 Takeaways/今日结论缺失、三标签不足、结论过薄和占位/省略号残留。
+  - Metrics: `pnpm check:daily-template` 覆盖最近 7 篇 EN/ZH 日报结论并通过；`pnpm check:latest-daily-en-language`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `scripts/check-daily-template-regressions.sh` 新增 `ROLLING_DAILY_CONCLUSION_LIMIT` 默认 7；2) EN/ZH 最近 7 篇日报均校验结论区存在、厚度、三标签与占位/省略号残留；3) 缺少 7 篇文件时失败；4) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-105: 修复 2026-05-08 双语日报发布窗口质量回归（EN 正文英文化 + 双语 description 可检索化 + 双语结论三标签补全 + 截断省略号清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description、双语结论标签不完整与明日跟踪点截断省略号进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:rolling-daily-body` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

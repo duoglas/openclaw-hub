@@ -10,6 +10,7 @@ else
 fi
 
 FILES=("src/content/blog/en/openclaw-daily-*.md" "src/content/blog/zh/openclaw-daily-*.md")
+ROLLING_DAILY_CONCLUSION_LIMIT="${ROLLING_DAILY_CONCLUSION_LIMIT:-7}"
 
 PLACEHOLDER_PATTERNS=(
   'Synced with the daily Telegram AI/tech brief'
@@ -30,20 +31,21 @@ CTA_PATTERNS=(
   '订阅每日简报，持续获取可直接执行的更新'
 )
 
-latest_daily_file() {
+latest_daily_files() {
   local lang="$1"
-  find "src/content/blog/${lang}" -maxdepth 1 -type f -name 'openclaw-daily-*.md' | sort | tail -1
+  find "src/content/blog/${lang}" -maxdepth 1 -type f -name 'openclaw-daily-*.md' \
+    | sort -r \
+    | head -n "$ROLLING_DAILY_CONCLUSION_LIMIT"
 }
 
-check_latest_conclusion_completeness() {
+check_conclusion_completeness() {
   local lang="$1"
   local heading_pattern="$2"
   local required_label_pattern="$3"
-  local file
-  file="$(latest_daily_file "$lang")"
+  local file="$4"
 
   if [ -z "$file" ] || [ ! -f "$file" ]; then
-    echo "Daily template regression check failed: missing latest ${lang} daily file"
+    echo "Daily template regression check failed: missing ${lang} daily file in rolling conclusion window"
     return 1
   fi
 
@@ -55,28 +57,28 @@ check_latest_conclusion_completeness() {
   ' "$file")
 
   if [ -z "$section" ]; then
-    echo "Daily template regression check failed: latest ${lang} daily is missing conclusion section: $file"
+    echo "Daily template regression check failed: rolling ${lang} daily is missing conclusion section: $file"
     return 1
   fi
 
   local plain_length
   plain_length=$(printf '%s\n' "$section" | sed -E 's/\[[^]]+\]\([^)]+\)//g; s/[#*_`>\-]//g; s/[[:space:]]//g' | wc -m | tr -d ' ')
   if [ "$plain_length" -lt 160 ]; then
-    echo "Daily template regression check failed: latest ${lang} conclusion section looks too thin (${plain_length} chars): $file"
+    echo "Daily template regression check failed: rolling ${lang} conclusion section looks too thin (${plain_length} chars): $file"
     return 1
   fi
 
   local label_count
   label_count=$(printf '%s\n' "$section" | grep -Ec "$required_label_pattern" || true)
   if [ "$label_count" -lt 3 ]; then
-    echo "Daily template regression check failed: latest ${lang} conclusion section must include 3 actionable conclusion labels: $file"
+    echo "Daily template regression check failed: rolling ${lang} conclusion section must include 3 actionable conclusion labels: $file"
     return 1
   fi
 
   local banned_output
   banned_output=$(printf '%s\n' "$section" | grep -En '(\.\.\.|……|待补充|待完善|TODO|TBD|placeholder|Placeholder|占位|未完|稍后补|to be added|coming soon)' || true)
   if [ -n "$banned_output" ]; then
-    echo "Daily template regression check failed: latest ${lang} conclusion section contains unfinished placeholder/ellipsis residue: $file"
+    echo "Daily template regression check failed: rolling ${lang} conclusion section contains unfinished placeholder/ellipsis residue: $file"
     printf '%s\n' "$banned_output"
     return 1
   fi
@@ -123,7 +125,20 @@ for pattern in "${CTA_PATTERNS[@]}"; do
   search_pattern "generic CTA" "$pattern"
 done
 
-check_latest_conclusion_completeness "en" "^## Takeaways$" "^\*\*(Most important signal|Second signal|Actionable implication):\*\*"
-check_latest_conclusion_completeness "zh" "^## 今日结论$" "^\*\*(最值得关注|第二个信号|可执行建议)：\*\*"
+for lang in en zh; do
+  mapfile -t rolling_files < <(latest_daily_files "$lang")
+  if [ "${#rolling_files[@]}" -lt "$ROLLING_DAILY_CONCLUSION_LIMIT" ]; then
+    echo "Daily template regression check failed: expected ${ROLLING_DAILY_CONCLUSION_LIMIT} ${lang} daily files in rolling conclusion window, found ${#rolling_files[@]}"
+    exit 1
+  fi
 
-echo "Daily template regression check passed: no placeholder descriptions, generic CTA residue, or latest conclusion placeholders found in EN/ZH daily posts"
+  for file in "${rolling_files[@]}"; do
+    if [ "$lang" = "en" ]; then
+      check_conclusion_completeness "$lang" "^## Takeaways$" "^\*\*(Most important signal|Second signal|Actionable implication):\*\*" "$file"
+    else
+      check_conclusion_completeness "$lang" "^## 今日结论$" "^\*\*(最值得关注|第二个信号|可执行建议)：\*\*" "$file"
+    fi
+  done
+done
+
+echo "Daily template regression check passed: no placeholder descriptions, generic CTA residue, or conclusion placeholders found in latest ${ROLLING_DAILY_CONCLUSION_LIMIT} EN/ZH daily posts"

@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-106
+- Hypothesis: 若把 EN/ZH 日报结论区结构检查从最新单篇扩展到最近 7 篇，可与现有语言一致性和正文完整性窗口对齐，在完整一周索引窗口内拦截 Takeaways/今日结论缺失、三标签不足、结论过薄和占位/省略号残留。
+- Scope: `scripts/check-daily-template-regressions.sh` + 最近 7 篇 EN/ZH 日报
+- Change: 将 `check:daily-template` 中的结论完整性检查从 latest 单篇改为最近 7 篇滚动窗口，新增 `ROLLING_DAILY_CONCLUSION_LIMIT` 可配置默认值；对 EN `## Takeaways` 与 ZH `## 今日结论` 逐篇校验结论区存在、纯文本厚度、三条行动标签和 TODO/TBD/占位/省略号残留，并在文件数量不足时失败。
+- Start date: 2026-05-08
+- End date: 2026-05-08
+- Success metric: `pnpm check:daily-template` 覆盖最近 7 篇 EN/ZH 日报结论并通过；`pnpm check:latest-daily-en-language`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
+- Result: pass（`scripts/check-daily-template-regressions.sh` 已将结论完整性闸门扩展为最近 7 篇 EN/ZH 日报滚动检查；本地 `pnpm check:daily-template`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过；commit `(this commit)`。）
+- Decision (scale / iterate / stop): scale（保留 7 篇结论滚动窗口作为默认发布质量闸门；下一步可在修复更早历史日报后，把语言/正文/结论三类窗口统一扩展到 10 或 14 篇。）
+
 ### EXP-105
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description、双语结论标签不完整与明日跟踪点截断省略号进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-08/` + `/zh/blog/openclaw-daily-2026-05-08/`
