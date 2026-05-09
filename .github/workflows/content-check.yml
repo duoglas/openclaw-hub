@@ -25,8 +25,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build check
-        run: pnpm build
+      - name: Build duplicate-id warning gate
+        run: pnpm check:build-duplicate-id-warning
 
       - name: Weekly review cadence check
         run: pnpm check:weekly-review

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-09 11:22
+Last updated: 2026-05-09 17:21
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-108: 将 EXP-107 暴露的 Astro duplicate id build warning 风险前置为 CI 构建日志闸门（干净缓存构建 + Duplicate id warning 扫描），消费最近24小时日报质量修复后的构建噪音假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: 若在 CI 的构建阶段直接捕获并阻断 Astro `Duplicate id` warning，可避免最新日报发布窗口内由内容同步/缓存/源文件异常产生的构建噪音被误判为可忽略，降低真实路由与锚点冲突进入索引窗口的风险。
+  - Metrics: `pnpm check:build-duplicate-id-warning` 通过且输出 `Build duplicate-id warning gate passed`；`pnpm check:duplicate-slug-id`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增 `scripts/check-build-duplicate-id-warning.mjs`，清理 `.astro` 后执行 Astro build 并扫描 `Duplicate id` warning；2) `package.json` 增加 `check:build-duplicate-id-warning`；3) content-check CI 的 Build check 替换为该严格闸门；4) 本地检查与构建全部通过，且当前构建无 duplicate id warning。
 - [x] P1 Candidate A / EXP-107: 修复 2026-05-09 双语日报发布窗口质量回归（EN 正文英文化 + 双语 description 可检索化 + 双语结论三标签补全 + 截断正文清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description、双语正文截断与结论缺失进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:rolling-daily-body` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

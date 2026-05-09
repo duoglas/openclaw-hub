@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-108
+- Hypothesis: 若在 CI 的构建阶段直接捕获并阻断 Astro `Duplicate id` warning，可避免最新日报发布窗口内由内容同步/缓存/源文件异常产生的构建噪音被误判为可忽略，降低真实路由与锚点冲突进入索引窗口的风险。
+- Scope: `scripts/check-build-duplicate-id-warning.mjs` + `package.json` + `.github/workflows/content-check.yml` + Astro build output
+- Change: 新增严格构建日志闸门：先复用 `scripts/clean-astro-cache.mjs` 清理 `.astro` 内容缓存，再执行 `pnpm exec astro build` 并扫描完整 stdout/stderr；若出现 `Duplicate id` warning 则直接失败。将该闸门接入 `check:build-duplicate-id-warning`，并替换 content-check CI 原有普通 Build check，保留后续 `check:duplicate-slug-id` 的源文件与产物层检查。
+- Start date: 2026-05-09
+- End date: 2026-05-09
+- Success metric: `pnpm check:build-duplicate-id-warning`、`pnpm check:duplicate-slug-id`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body` 与 `pnpm build` 全部通过；构建输出无 `Duplicate id` warning。
+- Result: pass（新增 `scripts/check-build-duplicate-id-warning.mjs` 并接入 package/CI；本地 `pnpm check:build-duplicate-id-warning` 已执行干净缓存 Astro build 并通过，输出 `Build duplicate-id warning gate passed`；`pnpm check:duplicate-slug-id`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body` 与 `pnpm build` 全部通过；commit `(this commit)`。）
+- Decision (scale / iterate / stop): scale（将 duplicate id warning 作为 CI 阻断项保留；下一步可扩展为可配置 build warning allowlist，只拦截 SEO/索引相关 warning，避免普通构建噪音掩盖真实内容卫生风险。）
+
 ### EXP-107
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description、双语正文截断与结论缺失进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-09/` + `/zh/blog/openclaw-daily-2026-05-09/`
