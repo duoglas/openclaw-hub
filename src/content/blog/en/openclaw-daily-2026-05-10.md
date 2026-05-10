@@ -1,0 +1,80 @@
+---
+title: "AI & Tech Daily Brief (2026-05-10)"
+description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+pubDate: 2026-05-10
+tags: ["ai", "tech", "daily", "news"]
+category: "news"
+lang: "en"
+---
+
+# AI、科技日报｜2026-05-10 早报
+
+## 今日要闻（5条）
+
+### 1. Anthropic 与 SpaceX 达成算力合作，Claude 提升使用额度
+**发生了什么：** Anthropic 宣布与 SpaceX 达成合作，将使用 SpaceX Colossus 1 数据中心全部算力，称可获得超 300MW 新容量、超 22 万块 NVIDIA GPU，并同步提高 Claude Code 与 Claude API 使用额度。  
+**为什么重要：** AI 公司竞争焦点继续从“模型能力”转向“算力供给”。  
+**可能影响：** Claude 用户短期体验改善；长期看，大模型公司会继续绑定能源、数据中心、芯片供应链。
+
+### 2. Amazon CEO 解释为何继续重押 AI 基础设施
+**发生了什么：** Amazon CEO Andy Jassy 表示，AI 是重大拐点，AWS 类业务需要提前投入土地、电力、数据中心、芯片和网络设备，回报会滞后体现。  
+**为什么重要：** 云厂商正在用“先烧 CapEx、后兑现收入”的逻辑押注 AI。  
+**可能影响：** AI 云服务价格、可用算力、企业上云节奏，都会被巨头资本开支周期影响。
+
+### 3. NVIDIA 推进 Spectrum-X 与 MRC，AI 集群网络成为新战场
+**发生了什么：** NVIDIA 介绍 Spectrum-X Ethernet 与 MRC 多路径可靠连接协议，称已面向大规模 AI 训练网络，相关开放规范通过 Open Compute Project 发布。  
+**为什么重要：** 大模型训练不只拼 GPU，也拼网络稳定性、吞吐和故障绕行能力。  
+**可能影响：** 未来 AI 基础设施采购会更重视“整套 AI 工厂”：GPU、网络、存储、调度一起买。
+
+### 4. 中国发布人工智能终端智能化分级系列国标
+**发生了什么：** 据新华网转引人民日报，工信部、商务部、市场监管总局等启动实施《人工智能终端智能化分级》系列国家标准，采用“2+N”架构，覆盖手机、电脑、电视、眼镜、汽车座舱、音箱、耳机等。  
+**为什么重要：** AI 终端从营销概念走向可分级、可测试、可目录化。  
+**可能影响：** 普通消费者以后买 AI 手机、AI 电脑、AI 眼镜，可能会看到更明确的智能化等级标识。
+
+### 5. 四部门发布 AI 与能源双向赋能行动方案
+**发生了什么：** 据新华网转引科技日报，国家发展改革委、国家能源局、工信部、国家数据局发布行动方案，提出到 2027 年初步构建支撑 AI 创新的安全、绿色、经济能源保障体系，到 2030 年 AI 算力设施清洁能源保障能力等达到世界领先水平。  
+**为什么重要：** AI 算力扩张正在倒逼能源系统升级。  
+**可能影响：** 数据中心选址、绿电交易、算电协同、能源行业大模型，会成为中国 AI 基建重点方向。
+
+## 实战案例（2个）
+
+### 案例 1：ChatGPT 进入 Excel 和 Google Sheets
+OpenAI 版本说明显示，ChatGPT for Excel and Google Sheets 已全球可用，可在表格侧边栏中帮助处理公式、预算、追踪表、多工作表文件和清洗任务。
+
+**给普通用户的价值：**  
+以后做预算表、报销表、库存表，不一定要先学复杂公式，可以直接让 AI 在表格里辅助整理。
+
+**注意：**  
+涉及财务、统计、合同数据时，仍要人工复核公式和结果。
+
+### 案例 2：中国 AI 终端分级标准落地
+AI 手机、AI 电脑、AI 眼镜等设备未来可能按 L1 响应级、L2 工具级、L3 辅助级、L4 协同级区分能力。
+
+**给普通用户的价值：**  
+买设备时少看“AI 黑话”，多看是否有明确等级、测试方法、适用场景。
+
+**注意：**  
+当前多数产品仍集中在 L1/L2，部分新品可到 L3；L4 还需后续完善。
+
+## 今日结论
+
+**最值得关注：**  
+AI 行业今天的主线是“算力 + 能源 + 网络 + 终端标准”。模型能力仍重要，但基础设施和落地规则正在变成竞争核心。
+
+**给普通用户建议：**  
+买 AI 设备先别冲首发。优先看三点：  
+1. 是否有本地处理能力；  
+2. 是否能接入常用办公/生活应用；  
+3. 是否有清楚的隐私、数据控制和智能化等级说明。
+
+**明日跟踪点：**  
+1. Anthropic 新算力是否真正改善 Claude 限额和响应稳定性；  
+2. 中国 AI 终端分级标准是否进入电商、以旧换新、产品目录；  
+3. AI + 能源行动方案是否释放具体试点城市、企业和数据中心项目。
+…
+
+## Next-Step CTA
+
+- Start here: [What Is OpenClaw?](/en/blog/what-is-openclaw/)
+- Deploy with guardrails: [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/)
+- Keep reliability under load: [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
