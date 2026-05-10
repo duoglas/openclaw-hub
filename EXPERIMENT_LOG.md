@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-109
+- Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、双语结论标签不完整与截断省略号残留进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
+- Scope: `/en/blog/openclaw-daily-2026-05-10/` + `/zh/blog/openclaw-daily-2026-05-10/`
+- Change: 将 EN `openclaw-daily-2026-05-10` 从中文正文与中文 H1 改写为英文 H1、英文正文、英文 Takeaways，并升级 description 覆盖 Anthropic-SpaceX 算力合作、Amazon AI 基建资本开支、NVIDIA Spectrum-X/MRC 训练网络、中国 AI 终端智能化分级国标与 AI+能源行动方案；将 ZH description 从截断正文升级为中文可检索摘要；将 EN/ZH 今日结论补齐为三标签结构；清理结论末尾截断省略号；保留 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 内链。
+- Start date: 2026-05-10
+- End date: 2026-05-10
+- Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过；EN/ZH 目标页无语言错位、截断 description、结论标签缺失或正文省略号残留。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-10.md` 已完成 EN 正文英文化、双语 description 可检索化、双语三标签结论补全与截断省略号清理；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过；commit `(this commit)`。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报；下一步建议把 publish-daily 生成阶段的 EN 输出与 ZH description 质量进一步前置，减少发布后人工回补。）
+
 ### EXP-108
 - Hypothesis: 若在 CI 的构建阶段直接捕获并阻断 Astro `Duplicate id` warning，可避免最新日报发布窗口内由内容同步/缓存/源文件异常产生的构建噪音被误判为可忽略，降低真实路由与锚点冲突进入索引窗口的风险。
 - Scope: `scripts/check-build-duplicate-id-warning.mjs` + `package.json` + `.github/workflows/content-check.yml` + Astro build output
