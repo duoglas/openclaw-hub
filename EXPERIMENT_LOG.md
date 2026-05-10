@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-110
+- Hypothesis: 若把语言一致性、正文完整性与结论完整性默认窗口从 7 篇统一扩展到最近 10 篇，并让结论检查按 pubDate 而非文件名排序，可覆盖更完整的索引窗口，降低历史文件命名/发布间隔导致的质量回归漏检。
+- Scope: `scripts/check-latest-daily-en-language.sh` + `scripts/check-rolling-daily-body-completeness.sh` + `scripts/check-daily-template-regressions.sh` + 最近 10 篇 EN/ZH 日报
+- Change: 将 `ROLLING_EN_DAILY_LIMIT`、`ROLLING_DAILY_BODY_LIMIT` 与 `ROLLING_DAILY_CONCLUSION_LIMIT` 默认值统一从 7 扩展到 10；将 daily-template 的滚动结论文件选择从文件名排序改为读取 frontmatter `pubDate` 后排序，避免发布间隔或文件名异常造成窗口漂移。
+- Start date: 2026-05-10
+- End date: 2026-05-10
+- Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:rolling-daily-body`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过；默认检查窗口覆盖最近 10 篇发布窗口。
+- Result: pass（已将 EN 语言一致性、双语正文完整性与双语结论完整性默认窗口统一扩展到最近 10 篇；daily-template 结论窗口已改为按 `pubDate` 排序；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:rolling-daily-body`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过；commit `(this commit)`。）
+- Decision (scale / iterate / stop): scale（保留 10 篇滚动窗口作为默认发布质量闸门；下一步可先用环境变量试跑 14 篇，若暴露 2026-04-23 或更早历史质量问题，再以小批量修复后扩窗。）
+
 ### EXP-109
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、双语结论标签不完整与截断省略号残留进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-10/` + `/zh/blog/openclaw-daily-2026-05-10/`

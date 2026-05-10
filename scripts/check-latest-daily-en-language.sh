@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-ROLLING_LIMIT="${ROLLING_EN_DAILY_LIMIT:-7}"
+ROLLING_LIMIT="${ROLLING_EN_DAILY_LIMIT:-10}"
 
 mapfile -t target_files < <(python3 - "$ROLLING_LIMIT" <<'PY'
 from pathlib import Path

@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-ROLLING_DAILY_BODY_LIMIT="${ROLLING_DAILY_BODY_LIMIT:-7}"
+ROLLING_DAILY_BODY_LIMIT="${ROLLING_DAILY_BODY_LIMIT:-10}"
 
 latest_daily_files() {
   local lang="$1"

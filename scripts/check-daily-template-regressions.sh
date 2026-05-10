@@ -10,7 +10,7 @@ else
 fi
 
 FILES=("src/content/blog/en/openclaw-daily-*.md" "src/content/blog/zh/openclaw-daily-*.md")
-ROLLING_DAILY_CONCLUSION_LIMIT="${ROLLING_DAILY_CONCLUSION_LIMIT:-7}"
+ROLLING_DAILY_CONCLUSION_LIMIT="${ROLLING_DAILY_CONCLUSION_LIMIT:-10}"
 
 PLACEHOLDER_PATTERNS=(
   'Synced with the daily Telegram AI/tech brief'
@@ -33,9 +33,12 @@ CTA_PATTERNS=(
 
 latest_daily_files() {
   local lang="$1"
-  find "src/content/blog/${lang}" -maxdepth 1 -type f -name 'openclaw-daily-*.md' \
+  find "src/content/blog/${lang}" -maxdepth 1 -type f -name 'openclaw-daily-*.md' -print0 \
+    | xargs -0 grep -H '^pubDate:' \
+    | sed -E 's#^(.*):pubDate:[[:space:]]*([0-9-]+).*#\2\t\1#' \
     | sort -r \
-    | head -n "$ROLLING_DAILY_CONCLUSION_LIMIT"
+    | head -n "$ROLLING_DAILY_CONCLUSION_LIMIT" \
+    | cut -f2-
 }
 
 check_conclusion_completeness() {

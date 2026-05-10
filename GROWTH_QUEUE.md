@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-10 11:23
+Last updated: 2026-05-10 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-110: 将三类最新日报质量闸门统一扩展为最近 10 篇（EN 语言一致性 + 双语正文完整性 + 双语结论完整性），并把 daily-template 结论窗口改为按 pubDate 排序，消费 EXP-104/EXP-106 的滚动窗口扩展假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 若把语言一致性、正文完整性与结论完整性默认窗口从 7 篇统一扩展到最近 10 篇，并让结论检查按 pubDate 而非文件名排序，可覆盖更完整的索引窗口，降低历史文件命名/发布间隔导致的质量回归漏检。
+  - Metrics: `pnpm check:latest-daily-en-language` 覆盖最近 10 篇 EN 日报并通过；`pnpm check:rolling-daily-body` 覆盖最近 10 篇 EN/ZH 日报并通过；`pnpm check:daily-template` 覆盖最近 10 篇 EN/ZH 结论并通过；`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `ROLLING_EN_DAILY_LIMIT` 默认 10；2) `ROLLING_DAILY_BODY_LIMIT` 默认 10；3) `ROLLING_DAILY_CONCLUSION_LIMIT` 默认 10；4) daily-template 滚动结论窗口按 frontmatter `pubDate` 选取最新文件；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-109: 修复 2026-05-10 双语日报发布窗口质量回归（EN 正文英文化 + 双语 description 可检索化 + 双语结论三标签补全 + 截断省略号清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/中文 H1、ZH 截断型 description、双语结论标签不完整与截断省略号残留进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过。
