@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-10 17:20
+Last updated: 2026-05-11 11:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-111: 修复 2026-05-11 双语日报发布窗口质量回归（EN 正文英文化 + 双语 description 可检索化 + 双语三标签结论补全 + 截断省略号清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description 与双语结论截断进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
+  - Metrics: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-11.md` H1 与正文改为英文；2) EN/ZH description 升级为覆盖 Anthropic-SpaceX 算力、Amazon AI 基建、OpenAI 可信联系人/记忆来源/表格工作流、NVIDIA-ServiceNow 企业 Agent 与中国 AI 终端分级的可检索摘要；3) EN/ZH 结论补齐为三标签结构；4) 清理双语截断省略号；5) 保持 3 条强相关 CTA 内链；6) 本地检查、严格 duplicate-id warning 闸门与构建全部通过。
 - [x] P1 Candidate A / EXP-110: 将三类最新日报质量闸门统一扩展为最近 10 篇（EN 语言一致性 + 双语正文完整性 + 双语结论完整性），并把 daily-template 结论窗口改为按 pubDate 排序，消费 EXP-104/EXP-106 的滚动窗口扩展假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 若把语言一致性、正文完整性与结论完整性默认窗口从 7 篇统一扩展到最近 10 篇，并让结论检查按 pubDate 而非文件名排序，可覆盖更完整的索引窗口，降低历史文件命名/发布间隔导致的质量回归漏检。
   - Metrics: `pnpm check:latest-daily-en-language` 覆盖最近 10 篇 EN 日报并通过；`pnpm check:rolling-daily-body` 覆盖最近 10 篇 EN/ZH 日报并通过；`pnpm check:daily-template` 覆盖最近 10 篇 EN/ZH 结论并通过；`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过。
