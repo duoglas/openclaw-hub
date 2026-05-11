@@ -64,6 +64,9 @@ jobs:
       - name: Daily CTA variant check
         run: pnpm check:daily-cta
 
+      - name: Publish daily template generation gate
+        run: pnpm check:publish-daily-template
+
       - name: Daily template regression check
         run: pnpm check:daily-template
 

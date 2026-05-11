@@ -37,7 +37,8 @@
     "check:daily-heading-date": "bash scripts/check-daily-heading-date-consistency.sh",
     "check:latest-daily-en-language": "bash scripts/check-latest-daily-en-language.sh",
     "check:rolling-daily-body": "bash scripts/check-rolling-daily-body-completeness.sh",
-    "check:build-duplicate-id-warning": "node scripts/check-build-duplicate-id-warning.mjs"
+    "check:build-duplicate-id-warning": "node scripts/check-build-duplicate-id-warning.mjs",
+    "check:publish-daily-template": "bash scripts/check-publish-daily-template.sh"
   },
   "keywords": [],
   "author": "",

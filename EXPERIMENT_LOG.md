@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-112
+- Hypothesis: 若在 `publish-daily.sh` 生成阶段直接阻断 EN 原始中文正文、缺失 H1/结论与构建 warning，而不是等发布后回补，可减少最新日报进入索引窗口前的语言错位、摘要薄弱和三标签结论缺失风险。
+- Scope: `scripts/publish-daily.sh` + `scripts/check-publish-daily-template.sh` + `package.json` + `.github/workflows/content-check.yml`
+- Change: 将 publish-daily 从“EN/ZH 直接写入 cron summary 后再人工修复”改为生成 `ZH_BODY` 与 `EN_BODY`：ZH 自动补齐正文 H1 与三标签今日结论，EN 不再写入原始 `${SUMMARY}`，而是生成英文 H1、Top Stories、Practical Cases 与 Takeaways；新增发布模板闸门，检查 EN 输出不用 raw SUMMARY、双语正文生成器存在、核心质量闸门在发布提交前执行，并接入 content-check CI。
+- Start date: 2026-05-11
+- End date: 2026-05-11
+- Success metric: `pnpm check:publish-daily-template`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过；publish-daily 生成阶段不再允许 EN 页面发布原始中文 cron summary。
+- Result: pass（已新增 `scripts/check-publish-daily-template.sh`，`package.json` 增加 `check:publish-daily-template`，content-check CI 增加 Publish daily template generation gate；`scripts/publish-daily.sh` 已改为 `EN_BODY`/`ZH_BODY` 生成并在提交前执行核心日报质量闸门、duplicate-id warning 闸门与 build；本地全部验收命令通过；commit `(this commit)`。）
+- Decision (scale / iterate / stop): scale（保留发布模板生成闸门；下一步建议把 EN_BODY 从通用英文结构升级为可复用的主题词提取/翻译层，以进一步减少发布后人工英文化成本。）
+
 ### EXP-111
 - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description 与双语结论截断进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-05-11/` + `/zh/blog/openclaw-daily-2026-05-11/`

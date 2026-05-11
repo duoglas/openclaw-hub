@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-11 11:22
+Last updated: 2026-05-11 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-112: 将 publish-daily 生成阶段前置为质量闸门（EN 不再发布原始中文 cron summary + 自动生成双语结构化正文 + CI 接入发布模板检查），消费 EXP-111 的发布前置假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 若在 `publish-daily.sh` 生成阶段直接阻断 EN 原始中文正文、缺失 H1/结论与构建 warning，而不是等发布后回补，可减少最新日报进入索引窗口前的语言错位、摘要薄弱和三标签结论缺失风险。
+  - Metrics: `pnpm check:publish-daily-template`、`pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `publish-daily.sh` 新增 `EN_BODY`/`ZH_BODY` 生成，EN 文件不再写入原始 `${SUMMARY}`；2) ZH 自动补 H1 与三标签今日结论；3) publish 流程提交前运行核心日报质量闸门与严格 duplicate-id warning 闸门；4) 新增 `check:publish-daily-template` 并接入 content-check CI；5) 本地检查与构建全部通过。
 - [x] P1 Candidate A / EXP-111: 修复 2026-05-11 双语日报发布窗口质量回归（EN 正文英文化 + 双语 description 可检索化 + 双语三标签结论补全 + 截断省略号清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `9828b9d`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description 与双语结论截断进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过。
