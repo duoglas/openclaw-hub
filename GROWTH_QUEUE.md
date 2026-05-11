@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-111: 修复 2026-05-11 双语日报发布窗口质量回归（EN 正文英文化 + 双语 description 可检索化 + 双语三标签结论补全 + 截断省略号清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-111: 修复 2026-05-11 双语日报发布窗口质量回归（EN 正文英文化 + 双语 description 可检索化 + 双语三标签结论补全 + 截断省略号清理），优先消费最近24小时内容建设新增日报质量假设 | ICE 9x8x8=576 — commit `9828b9d`
   - Hypothesis: 对最新发布日报中 EN 页面中文正文/缺失英文 H1、ZH 截断型 description 与双语结论截断进行发布窗口内修复，可在索引前恢复语言一致性、摘要可检索性、页面完整性与站内导流质量。
   - Metrics: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过。
   - Acceptance: 1) EN `openclaw-daily-2026-05-11.md` H1 与正文改为英文；2) EN/ZH description 升级为覆盖 Anthropic-SpaceX 算力、Amazon AI 基建、OpenAI 可信联系人/记忆来源/表格工作流、NVIDIA-ServiceNow 企业 Agent 与中国 AI 终端分级的可检索摘要；3) EN/ZH 结论补齐为三标签结构；4) 清理双语截断省略号；5) 保持 3 条强相关 CTA 内链；6) 本地检查、严格 duplicate-id warning 闸门与构建全部通过。

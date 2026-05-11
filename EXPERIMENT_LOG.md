@@ -22,7 +22,7 @@
 - Start date: 2026-05-11
 - End date: 2026-05-11
 - Success metric: `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过；EN/ZH 目标页无语言错位、截断 description、结论标签缺失或正文省略号残留。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-11.md` 已完成 EN 正文英文化、双语 description 可检索化、双语三标签结论补全与截断省略号清理；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过；commit `(this commit)`。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-11.md` 已完成 EN 正文英文化、双语 description 可检索化、双语三标签结论补全与截断省略号清理；本地 `pnpm check:latest-daily-en-language`、`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:rolling-daily-body`、`pnpm check:duplicate-slug-id`、`pnpm check:build-duplicate-id-warning` 与 `pnpm build` 全部通过；commit `9828b9d`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报；下一步建议把 publish-daily 生成阶段的 EN H1/正文语言一致性、ZH description 长度和三标签结论完整性前置，减少发布后回补。）
 
 ### EXP-110
