@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-103
+- Hypothesis: 最近24小时新增日报（2026-05-12）若英文页仍保留通用模板正文，且中文页 description 携带 `###` 标题片段与正文截取，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性与英文读者完成率；当日回补为完整英文叙事并同步清理双语摘要，可提升搜索可见性与核心指南导流质量。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-12/`
+- Change: 将 EN `openclaw-daily-2026-05-12.md` 从通用模板正文回补为覆盖中国智能体规范应用意见、AI 终端智能化分级标准、Anthropic + SpaceX Claude 算力扩容、NVIDIA + ServiceNow 企业级自主 Agent、ChatGPT 记忆来源/GPT-5.5 Instant/表格侧边栏的完整英文日报；将 EN/ZH description 升级为可检索摘要；保持 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 不回退。
+- Start date: 2026-05-12
+- End date: 2026-05-12
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面不再含通用模板正文，EN/ZH description 均为具体可检索摘要。
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-05-12.md` 已完成完整英文实稿回补；`src/content/blog/en|zh/openclaw-daily-2026-05-12.md` description 已可检索化；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
+
 ### EXP-102
 - Hypothesis: 最近24小时新增日报（2026-04-29）若英文页保留中文框架或混排，会削弱英文检索匹配与阅读完成率；当日回补为完整英文叙事可提升索引窗口期主题匹配与首日导流质量。
 - Scope: `/en/blog/openclaw-daily-2026-04-29/`

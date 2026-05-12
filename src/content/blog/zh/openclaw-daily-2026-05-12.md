@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-12）"
-description: "2026-05-12 早报；### 1. 中国三部门发布智能体规范应用与创新发展实施意见；发生了什么：国家网信办、国家发改委、工信部联合发布《智能体规范应用与创新发展实施意见》，明确智能体要在安全可控、规范有序、创新驱动、应用牵引框架下发展。"
+description: "2026-05-12 AI 科技日报：中国发布智能体规范应用意见与 AI 终端智能化分级标准，Anthropic 借 SpaceX 扩大 Claude 算力，NVIDIA 与 ServiceNow 推进企业级自主 Agent，ChatGPT 更新记忆来源、GPT-5.5 Instant 与表格侧边栏。"
 pubDate: 2026-05-12
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
