@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-04-16 11:24
+Last updated: 2026-05-12 17:24
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-04-16 11:24
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-104 — home latest daily spotlight
+- Search intent match: 8/10
+- Summary specificity: 8/10
+- CTA relevance: 9/10
+- Total: 25/30
+- Publish decision: pass
+- Notes: EN/ZH 首页新增最新日报 Spotlight，自动选取 `openclaw-daily-2026-05-12` 并展示其可检索 description；CTA 分为日报详情、RSS 订阅与连续阅读，事件覆盖 `home_latest_daily_render` / `home_latest_daily_click`，适合观察首页读者是否从通用安装/教程入口转入当日 AI Agent 与科技日报内容。`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过。
 
 ### EXP-086 — openclaw-daily-2026-04-16
 - Search intent match: 9/10

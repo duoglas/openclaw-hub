@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HomeQuickstartCTA from '../../components/HomeQuickstartCTA.astro';
 import HomeCreatorCTA from '../../components/HomeCreatorCTA.astro';
+import LatestDailySpotlight from '../../components/LatestDailySpotlight.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'zh')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const latestDaily = posts.find(post => post.id.includes('openclaw-daily-'));
+const latestDailySlug = latestDaily?.id.replace(/^zh\//, '').replace(/\.md$/, '');
 ---
 <BaseLayout title="首页" lang="zh">
   <h1>🤖 AI 智能体资讯站</h1>
@@ -16,6 +20,16 @@ const posts = (await getCollection('blog'))
   
   <HomeCreatorCTA lang="zh" />
   <HomeQuickstartCTA lang="zh" />
+  {latestDaily && latestDailySlug && (
+    <LatestDailySpotlight
+      lang="zh"
+      title={latestDaily.data.title}
+      description={latestDaily.data.description}
+      href={`/zh/blog/${latestDailySlug}/`}
+      dateLabel={latestDaily.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
+      rssHref="/zh/daily/rss.xml"
+    />
+  )}
 <p style="margin:0 0 1rem;"><a href="/zh/daily/">📰 只看科技日报（连续阅读）</a> · <a href="/zh/daily/rss.xml">📡 RSS 订阅</a> · <a href="/coding/">⚡ Team Vibe Coding 子站</a></p>
   <h2>最新文章</h2>
   {posts.slice(0, 20).map(post => {

@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-104
+- Hypothesis: 最近24小时新增日报（2026-05-12）已完成正文与摘要质量回补后，若首页仍只通过“最新文章”列表曝光，当日高时效内容的首屏后段可见性、RSS 订阅转化与连续阅读入口点击会被教程/安装 CTA 稀释；在 EN/ZH 首页新增最新日报 Spotlight，可提升当日日报点击率与日报读者留存。
+- Scope: `/en/` + `/zh/` 首页，自动指向 `/en|zh/blog/openclaw-daily-2026-05-12/` 与 `/en|zh/daily/rss.xml`
+- Change: 新增 `src/components/LatestDailySpotlight.astro`，在 EN/ZH 首页 HomeCreatorCTA 与 HomeQuickstartCTA 之后展示最新 `openclaw-daily-*` 的标题、可检索 description、日报详情按钮、RSS 订阅按钮与连续阅读入口；新增 `home_latest_daily_render` 与 `home_latest_daily_click` 事件，用 `daily-latest` / `daily-rss` / `daily-list` 区分点击路径。
+- Start date: 2026-05-12
+- End date: 2026-05-12
+- Success metric: `pnpm build` 通过；`dist/en/index.html` 与 `dist/zh/index.html` 含 `home_latest_daily_render` / `home_latest_daily_click`；Spotlight 链接指向最新 2026-05-12 双语日报；四项日报闸门继续通过。
+- Result: pass（已新增双语最新日报 Spotlight，并验证 EN/ZH 构建产物含最新日报链接、render/click 事件、RSS 与连续阅读入口；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
+- Decision (scale / iterate / stop): iterate（上线后观察 `home_latest_daily_click` 中 `daily-latest`、`daily-rss`、`daily-list` 分布；若点击集中在最新日报，可进一步把日报主题内链与首页推荐位联动。）
+
 ### EXP-103
 - Hypothesis: 最近24小时新增日报（2026-05-12）若英文页仍保留通用模板正文，且中文页 description 携带 `###` 标题片段与正文截取，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性与英文读者完成率；当日回补为完整英文叙事并同步清理双语摘要，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-12/`

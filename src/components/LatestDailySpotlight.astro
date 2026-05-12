@@ -1,0 +1,172 @@
+---
+import GrowthEvent from './GrowthEvent.astro';
+
+interface Props {
+  lang: 'en' | 'zh';
+  title: string;
+  description: string;
+  href: string;
+  dateLabel: string;
+  rssHref: string;
+}
+
+const { lang, title, description, href, dateLabel, rssHref } = Astro.props;
+const isZh = lang === 'zh';
+
+const eyebrow = isZh ? '今日 AI 速读' : 'Today in AI';
+const headline = isZh ? '先读最新日报，再继续看教程' : 'Read the latest brief before the guides';
+const body = isZh
+  ? '把最新政策、算力、企业 Agent 与办公 AI 信号放到首页首屏后段，减少新日报只能依赖列表自然曝光的问题。'
+  : 'Surface the newest policy, compute, enterprise-agent, and productivity-AI signals near the top of the homepage instead of relying only on the article list.';
+const primaryText = isZh ? '打开最新日报 →' : 'Open latest brief →';
+const rssText = isZh ? '订阅日报 RSS →' : 'Subscribe to daily RSS →';
+const listText = isZh ? '连续阅读日报 →' : 'Browse all daily briefs →';
+const listHref = isZh ? '/zh/daily/' : '/en/daily/';
+---
+
+<section class="daily-spotlight" aria-label={headline}>
+  <div class="daily-spotlight__meta">{eyebrow} · {dateLabel}</div>
+  <div class="daily-spotlight__grid">
+    <div>
+      <h2 class="daily-spotlight__headline">{headline}</h2>
+      <p class="daily-spotlight__body">{body}</p>
+      <a class="daily-spotlight__titleLink" href={href} data-growth="daily-latest" data-lang={lang}>
+        {title}
+      </a>
+      <p class="daily-spotlight__desc">{description}</p>
+    </div>
+    <div class="daily-spotlight__actions">
+      <a class="daily-spotlight__btn daily-spotlight__btn--primary" href={href} data-growth="daily-latest" data-lang={lang}>
+        {primaryText}
+      </a>
+      <a class="daily-spotlight__btn daily-spotlight__btn--ghost" href={rssHref} data-growth="daily-rss" data-lang={lang}>
+        {rssText}
+      </a>
+      <a class="daily-spotlight__small" href={listHref} data-growth="daily-list" data-lang={lang}>
+        {listText}
+      </a>
+    </div>
+  </div>
+</section>
+
+<GrowthEvent name="home_latest_daily_render" lang={lang} href={href} label="latest-daily-spotlight" />
+
+<script type="module">
+  const onLatestDailyClick = (e) => {
+    const a = e.target?.closest?.('a[data-growth]');
+    if (!a) return;
+    const kind = a.getAttribute('data-growth');
+    if (!kind || !kind.startsWith('daily-')) return;
+
+    const detail = {
+      name: 'home_latest_daily_click',
+      kind,
+      lang: a.getAttribute('data-lang') || undefined,
+      href: a.getAttribute('href') || undefined,
+    };
+    console.log('[growth:event]', detail);
+    window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+  };
+
+  document.addEventListener('click', onLatestDailyClick);
+</script>
+
+<style>
+  .daily-spotlight {
+    margin: 0 0 1.25rem;
+    border: 1px solid rgba(14, 165, 233, 0.22);
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.10), rgba(79, 70, 229, 0.05));
+    border-radius: 18px;
+    padding: 1.1rem;
+  }
+  .daily-spotlight__meta {
+    margin: 0 0 0.45rem;
+    color: #0369a1;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .daily-spotlight__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+  }
+  .daily-spotlight__headline {
+    margin: 0 0 0.35rem;
+    color: #0f172a;
+    font-size: clamp(1.25rem, 2.3vw, 1.75rem);
+  }
+  .daily-spotlight__body,
+  .daily-spotlight__desc {
+    margin: 0 0 0.65rem;
+    color: #475569;
+  }
+  .daily-spotlight__titleLink {
+    display: inline-block;
+    margin: 0 0 0.35rem;
+    color: #3730a3;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .daily-spotlight__titleLink:hover {
+    color: #1e1b4b;
+    text-decoration: underline;
+  }
+  .daily-spotlight__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    min-width: 190px;
+  }
+  .daily-spotlight__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.7rem 0.95rem;
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    text-align: center;
+  }
+  .daily-spotlight__btn--primary {
+    background: #0284c7;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(2, 132, 199, 0.16);
+  }
+  .daily-spotlight__btn--primary:hover {
+    background: #0369a1;
+    color: #fff;
+  }
+  .daily-spotlight__btn--ghost {
+    border: 1px solid rgba(2, 132, 199, 0.24);
+    background: rgba(255, 255, 255, 0.72);
+    color: #075985;
+  }
+  .daily-spotlight__btn--ghost:hover {
+    background: #e0f2fe;
+    color: #0c4a6e;
+  }
+  .daily-spotlight__small {
+    color: #475569;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .daily-spotlight__small:hover {
+    color: #0f172a;
+  }
+  @media (max-width: 720px) {
+    .daily-spotlight {
+      padding: 1rem 0.9rem;
+    }
+    .daily-spotlight__grid {
+      grid-template-columns: 1fr;
+    }
+    .daily-spotlight__actions {
+      min-width: 0;
+    }
+  }
+</style>

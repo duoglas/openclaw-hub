@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HomeQuickstartCTA from '../../components/HomeQuickstartCTA.astro';
 import HomeCreatorCTA from '../../components/HomeCreatorCTA.astro';
+import LatestDailySpotlight from '../../components/LatestDailySpotlight.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'en')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const latestDaily = posts.find(post => post.id.includes('openclaw-daily-'));
+const latestDailySlug = latestDaily?.id.replace(/^en\//, '').replace(/\.md$/, '');
 ---
 <BaseLayout title="Home" lang="en">
   <h1>🤖 AI Agent Hub</h1>
@@ -16,6 +20,16 @@ const posts = (await getCollection('blog'))
   
   <HomeCreatorCTA lang="en" />
   <HomeQuickstartCTA lang="en" />
+  {latestDaily && latestDailySlug && (
+    <LatestDailySpotlight
+      lang="en"
+      title={latestDaily.data.title}
+      description={latestDaily.data.description}
+      href={`/en/blog/${latestDailySlug}/`}
+      dateLabel={latestDaily.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+      rssHref="/en/daily/rss.xml"
+    />
+  )}
 <p style="margin:0 0 1rem;"><a href="/en/daily/">📰 Daily Briefs Only (continuous)</a> · <a href="/en/daily/rss.xml">📡 RSS feed</a></p>
   <h2>Latest Articles</h2>
   {posts.slice(0, 20).map(post => {
