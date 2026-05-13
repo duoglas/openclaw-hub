@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-106
+- Hypothesis: 最近24小时新增日报（2026-05-13）完成质量回补后，若 `/en|zh/daily/` 仍只是平铺归档列表，读者从首页 Spotlight、RSS 或站内连续阅读入口进入时会先面对历史列表而不是最新日报；在日报归档页顶部新增最新日报 hero、RSS CTA、可观测点击事件与 ItemList JSON-LD，可提升最新日报打开率、RSS 订阅点击与搜索引擎对连续日报集合的理解。
+- Scope: `/en/daily/` + `/zh/daily/`，以及 `scripts/check-daily-index-growth.sh`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 将 EN/ZH 日报归档页改为“最新日报 hero + RSS CTA + 历史归档”结构，自动指向最新 `openclaw-daily-2026-05-13`；新增 `daily_index_latest_render` 与 `daily_index_click`（latest/rss/archive kind）增长事件；输出前 20 篇日报的 ItemList JSON-LD；新增 `pnpm check:daily-index-growth` 并接入 content-check CI。
+- Start date: 2026-05-13
+- End date: 2026-05-13
+- Success metric: `pnpm build` 通过；`pnpm check:daily-index-growth` 通过；`pnpm check:rss-autodiscovery` 通过；`pnpm check:website-schema` 通过；EN/ZH daily index 构建产物含 latest/RSS CTA、增长事件、ItemList JSON-LD，并链接最新 2026-05-13 日报。
+- Result: pass（EN/ZH `/daily/` 已新增最新日报 hero、RSS CTA、`daily_index_latest_render`/`daily_index_click` 事件与 ItemList JSON-LD；新增专项检查并接入 CI；本地 build + daily-index-growth + RSS autodiscovery + Website schema 全部通过；commit `(this commit)` 已推送。）
+- Decision (scale / iterate / stop): iterate（上线后观察 `daily_index_click` 的 latest/rss/archive 分布；若 latest 点击占比高，可把日报归档页进一步扩展为主题筛选与连续阅读漏斗。）
+
 ### EXP-105
 - Hypothesis: 最近24小时新增日报（2026-05-13）若英文页仍为中文正文、中文 description 仍截取标题片段且双语正文存在“中…”截断，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性与读者完成率；当日回补为完整英文叙事、可检索摘要和完整结论段，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-13/`

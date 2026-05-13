@@ -1,23 +1,62 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GrowthEvent from '../../../components/GrowthEvent.astro';
 import { getCollection } from 'astro:content';
 
+const siteUrl = 'https://kuoo.uk';
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'en')
   .filter(p => p.id.replace(/^en\//,'').startsWith('openclaw-daily-'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
----
-<BaseLayout title="AI & Tech Daily" description="Continuous AI/tech daily brief reading with RSS feed." lang="en">
-  <h1>📰 AI & Tech Daily</h1>
-  <p style="margin:0.6rem 0 1rem; color:var(--text-muted);">Read all daily briefs in one place, in date order.</p>
-  <p style="margin:0 0 1.2rem;">
-    <a href="/en/daily/rss.xml">📡 Subscribe via RSS (EN)</a>
-  </p>
 
-  {posts.map(post => {
-    const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+const latestPost = posts[0];
+const olderPosts = posts.slice(1);
+const getSlug = (post) => post.id.replace(/^en\//, '').replace(/\.md$/, '');
+const latestSlug = latestPost ? getSlug(latestPost) : '';
+const latestHref = latestSlug ? `/en/blog/${latestSlug}/` : '/en/daily/rss.xml';
+const latestDate = latestPost?.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'AI & Tech Daily archive',
+  inLanguage: 'en',
+  numberOfItems: posts.length,
+  itemListElement: posts.slice(0, 20).map((post, index) => {
+    const slug = getSlug(post);
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `${siteUrl}/en/blog/${slug}/`,
+      name: post.data.title,
+      datePublished: post.data.pubDate.toISOString(),
+      description: post.data.description,
+    };
+  }),
+};
+---
+<BaseLayout title="AI & Tech Daily" description="Continuous AI/tech daily brief reading with latest brief, archive, and RSS feed." lang="en">
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <h1>📰 AI & Tech Daily</h1>
+  <p style="margin:0.6rem 0 1rem; color:var(--text-muted);">Read the newest brief first, then continue through the archive in date order.</p>
+
+  {latestPost && (
+    <section class="card daily-index-hero" aria-label="Latest AI and tech daily brief">
+      <div class="daily-index-hero__meta">Latest brief · {latestDate}</div>
+      <h2 style="margin:0 0 0.5rem; border:0; padding:0;">{latestPost.data.title}</h2>
+      <p style="margin:0 0 1rem; color:var(--text-muted);">{latestPost.data.description}</p>
+      <div class="daily-index-hero__actions">
+        <a class="daily-index-hero__btn" href={latestHref} data-daily-index-growth="latest" data-lang="en">Open latest brief →</a>
+        <a class="daily-index-hero__link" href="/en/daily/rss.xml" data-daily-index-growth="rss" data-lang="en">Subscribe via RSS →</a>
+      </div>
+    </section>
+  )}
+
+  <h2>Archive</h2>
+  {olderPosts.map(post => {
+    const slug = getSlug(post);
     return (
-      <a href={`/en/blog/${slug}/`} style="text-decoration:none; color:inherit;">
+      <a href={`/en/blog/${slug}/`} style="text-decoration:none; color:inherit;" data-daily-index-growth="archive" data-lang="en">
         <div class="card" style="cursor:pointer; margin-bottom:10px;">
           <h3 style="margin:0 0 6px;">{post.data.title}</h3>
           <p style="margin:0 0 6px; color:#999;">{post.data.description}</p>
@@ -28,4 +67,63 @@ const posts = (await getCollection('blog'))
       </a>
     );
   })}
+
+  <GrowthEvent name="daily_index_latest_render" lang="en" href={latestHref} label="daily-index-latest" />
+
+  <script type="module">
+    const onDailyIndexClick = (e) => {
+      const a = e.target?.closest?.('a[data-daily-index-growth]');
+      if (!a) return;
+      const detail = {
+        name: 'daily_index_click',
+        kind: a.getAttribute('data-daily-index-growth'),
+        lang: a.getAttribute('data-lang') || undefined,
+        href: a.getAttribute('href') || undefined,
+      };
+      console.log('[growth:event]', detail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+    };
+
+    document.addEventListener('click', onDailyIndexClick);
+  </script>
 </BaseLayout>
+
+<style>
+  .daily-index-hero {
+    border-color: rgba(79, 70, 229, 0.26);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.10), rgba(14, 165, 233, 0.08));
+  }
+  .daily-index-hero__meta {
+    margin-bottom: 0.45rem;
+    color: #3730a3;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .daily-index-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .daily-index-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.72rem 1rem;
+    border-radius: 12px;
+    background: #4f46e5;
+    color: #fff;
+    font-weight: 800;
+  }
+  .daily-index-hero__btn:hover {
+    background: #4338ca;
+    color: #fff;
+  }
+  .daily-index-hero__link {
+    font-weight: 800;
+    color: #0369a1;
+  }
+</style>

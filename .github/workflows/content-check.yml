@@ -94,6 +94,9 @@ jobs:
       - name: Fresh daily completeness check
         run: pnpm check:daily-fresh-completeness
 
+      - name: Daily index growth check
+        run: pnpm check:daily-index-growth
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 

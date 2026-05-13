@@ -1,23 +1,62 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GrowthEvent from '../../../components/GrowthEvent.astro';
 import { getCollection } from 'astro:content';
 
+const siteUrl = 'https://kuoo.uk';
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'zh')
   .filter(p => p.id.replace(/^zh\//,'').startsWith('openclaw-daily-'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
----
-<BaseLayout title="AI/科技日报" description="连续阅读 AI/科技日报，支持 RSS 订阅。" lang="zh">
-  <h1>📰 AI / 科技日报</h1>
-  <p style="margin:0.6rem 0 1rem; color:var(--text-muted);">按日期连续阅读科技日报内容。</p>
-  <p style="margin:0 0 1.2rem;">
-    <a href="/zh/daily/rss.xml">📡 订阅 RSS（中文）</a>
-  </p>
 
-  {posts.map(post => {
-    const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+const latestPost = posts[0];
+const olderPosts = posts.slice(1);
+const getSlug = (post) => post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+const latestSlug = latestPost ? getSlug(latestPost) : '';
+const latestHref = latestSlug ? `/zh/blog/${latestSlug}/` : '/zh/daily/rss.xml';
+const latestDate = latestPost?.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'AI/科技日报归档',
+  inLanguage: 'zh',
+  numberOfItems: posts.length,
+  itemListElement: posts.slice(0, 20).map((post, index) => {
+    const slug = getSlug(post);
+    return {
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `${siteUrl}/zh/blog/${slug}/`,
+      name: post.data.title,
+      datePublished: post.data.pubDate.toISOString(),
+      description: post.data.description,
+    };
+  }),
+};
+---
+<BaseLayout title="AI/科技日报" description="连续阅读 AI/科技日报，突出最新日报、归档和 RSS 订阅。" lang="zh">
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <h1>📰 AI / 科技日报</h1>
+  <p style="margin:0.6rem 0 1rem; color:var(--text-muted);">先读最新日报，再按日期连续阅读历史内容。</p>
+
+  {latestPost && (
+    <section class="card daily-index-hero" aria-label="最新 AI 科技日报">
+      <div class="daily-index-hero__meta">最新日报 · {latestDate}</div>
+      <h2 style="margin:0 0 0.5rem; border:0; padding:0;">{latestPost.data.title}</h2>
+      <p style="margin:0 0 1rem; color:var(--text-muted);">{latestPost.data.description}</p>
+      <div class="daily-index-hero__actions">
+        <a class="daily-index-hero__btn" href={latestHref} data-daily-index-growth="latest" data-lang="zh">打开最新日报 →</a>
+        <a class="daily-index-hero__link" href="/zh/daily/rss.xml" data-daily-index-growth="rss" data-lang="zh">订阅 RSS →</a>
+      </div>
+    </section>
+  )}
+
+  <h2>历史归档</h2>
+  {olderPosts.map(post => {
+    const slug = getSlug(post);
     return (
-      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit;">
+      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit;" data-daily-index-growth="archive" data-lang="zh">
         <div class="card" style="cursor:pointer; margin-bottom:10px;">
           <h3 style="margin:0 0 6px;">{post.data.title}</h3>
           <p style="margin:0 0 6px; color:#999;">{post.data.description}</p>
@@ -28,4 +67,63 @@ const posts = (await getCollection('blog'))
       </a>
     );
   })}
+
+  <GrowthEvent name="daily_index_latest_render" lang="zh" href={latestHref} label="daily-index-latest" />
+
+  <script type="module">
+    const onDailyIndexClick = (e) => {
+      const a = e.target?.closest?.('a[data-daily-index-growth]');
+      if (!a) return;
+      const detail = {
+        name: 'daily_index_click',
+        kind: a.getAttribute('data-daily-index-growth'),
+        lang: a.getAttribute('data-lang') || undefined,
+        href: a.getAttribute('href') || undefined,
+      };
+      console.log('[growth:event]', detail);
+      window.dispatchEvent(new CustomEvent('openclaw:growth', { detail }));
+    };
+
+    document.addEventListener('click', onDailyIndexClick);
+  </script>
 </BaseLayout>
+
+<style>
+  .daily-index-hero {
+    border-color: rgba(79, 70, 229, 0.26);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.10), rgba(14, 165, 233, 0.08));
+  }
+  .daily-index-hero__meta {
+    margin-bottom: 0.45rem;
+    color: #3730a3;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .daily-index-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .daily-index-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0.72rem 1rem;
+    border-radius: 12px;
+    background: #4f46e5;
+    color: #fff;
+    font-weight: 800;
+  }
+  .daily-index-hero__btn:hover {
+    background: #4338ca;
+    color: #fff;
+  }
+  .daily-index-hero__link {
+    font-weight: 800;
+    color: #0369a1;
+  }
+</style>
