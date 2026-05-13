@@ -1,6 +1,6 @@
 # CONTENT_SCORECARD.md
 
-Last updated: 2026-05-12 17:24
+Last updated: 2026-05-13 11:20
 
 ## Scoring rubric
 - Search intent match (0-10): 是否覆盖该页核心新闻主题与高意图检索词
@@ -8,6 +8,14 @@ Last updated: 2026-05-12 17:24
 - CTA relevance (0-10): CTA 是否与主题强相关并导向核心转化页
 
 ## Entries
+
+### EXP-105 — openclaw-daily-2026-05-13
+- Search intent match: 9/10
+- Summary specificity: 9/10
+- CTA relevance: 10/10
+- Total: 28/30
+- Publish decision: pass
+- Notes: EN/ZH `openclaw-daily-2026-05-13` 已完成语言一致性修复、description 可检索化与截断结论补全；摘要覆盖 NVIDIA/SAP 可信智能体运行时、ChatGPT Free 网页图片、中国 AI 终端分级、智能体规范应用意见与 Amazon Trainium/Graviton/自研硅；CTA 保持 What Is OpenClaw / VPS guide / model fallback 三条强相关内链；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过。
 
 ### EXP-104 — home latest daily spotlight
 - Search intent match: 8/10

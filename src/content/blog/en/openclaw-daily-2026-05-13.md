@@ -1,86 +1,96 @@
 ---
 title: "AI & Tech Daily Brief (2026-05-13)"
-description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+description: "NVIDIA and SAP push governed enterprise agents, ChatGPT Free gets richer web images, China defines AI terminal levels and agent governance, while Amazon reframes AI compute around Trainium and Graviton."
 pubDate: 2026-05-13
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"
 ---
 
-# AI、科技日报｜2026-05-13 早报
+# AI & Tech Daily Brief | 2026-05-13 Morning Brief
 
-## 今日要闻（5条）
+## Top Stories (5)
 
-### 1. NVIDIA 与 SAP 扩大合作，把“可信智能体”嵌入企业系统  
-**发生了什么：** NVIDIA 5月12日宣布，SAP 将把 NVIDIA OpenShell 嵌入 SAP Business AI Platform，用作 SAP AI agents 的运行时安全层；SAP 工程师也会参与 OpenShell 开源共建。  
+### 1. NVIDIA and SAP expand cooperation to embed a trusted agent runtime into enterprise systems
+**What happened:** NVIDIA announced on May 12 that SAP will embed NVIDIA OpenShell into SAP Business AI Platform as the runtime security layer for SAP AI agents, while SAP engineers will also contribute to OpenShell as an open source project.
 
-**为什么重要：** 企业智能体要接触财务、采购、供应链等核心系统，真正难点不只是“能做事”，而是权限、审计、隔离和失控防护。  
+**Why it matters:** Enterprise agents are moving toward finance, procurement, supply-chain and other core systems. The hard problem is no longer only whether an agent can complete a task, but whether permissions, audit trails, isolation and failure controls are reliable enough for production.
 
-**可能影响：** 企业 AI Agent 落地会更偏向“可治理、可审计、可控执行”，未来采购企业 AI 产品时，安全运行时可能成为标配。
-
----
-
-### 2. OpenAI 向免费用户扩大 ChatGPT 回答中的网页图片展示  
-**发生了什么：** OpenAI 帮助中心版本说明显示，5月12日起，ChatGPT Free 用户在使用 5.5-Instant 回答时，会看到更多来自网页的内联图片，覆盖人物、地点、产品等视觉主题，并提供来源归属。  
-
-**为什么重要：** 这是 ChatGPT 从纯文本问答继续向“图文信息入口”演进。搜索、百科、导购、旅行类问题会更直观。  
-
-**可能影响：** 普通用户获取信息的路径会更短；但图片来源、版权、时效性和误配风险也更需要注意。
+**Potential impact:** Enterprise AI agent adoption will increasingly be judged by governance, auditability and controlled execution. Runtime security may become a default requirement when companies evaluate AI products.
 
 ---
 
-### 3. 中国发布《人工智能终端智能化分级》系列国家标准  
-**发生了什么：** 新华网5月12日报道，工信部、商务部、市场监管总局等部门近日联合启动实施《人工智能终端智能化分级》系列国家标准。标准采用“2+N”架构，覆盖手机、电脑、电视、眼镜、汽车座舱、音箱、耳机等首批 7 类终端，并提出 L1 至 L4 分级。  
+### 2. OpenAI expands inline web images in ChatGPT answers for free users
+**What happened:** OpenAI's help center release notes say that from May 12, ChatGPT Free users using 5.5-Instant will see more inline images from the web in answers, especially for people, places, products and other visual topics, with source attribution.
 
-**为什么重要：** AI 手机、AI PC、AI 眼镜等产品过去容易“概念先行”。分级标准相当于给 AI 终端提供统一“体检表”。  
+**Why it matters:** ChatGPT is continuing to evolve from a text-only Q&A product into a richer visual information entry point. Search, encyclopedia, shopping and travel questions can become more direct and easier to scan.
 
-**可能影响：** 消费者更容易判断产品是不是“真 AI”；厂商宣传会更受约束；后续以旧换新、产品目录和检测平台可能跟进。
-
----
-
-### 4. 中国三部门推动智能体规范应用与创新发展  
-**发生了什么：** 新华网5月11日报道，国家网信办、国家发改委、工信部近日联合印发《智能体规范应用与创新发展实施意见》，强调安全可控、规范有序、创新驱动、应用牵引，并提出 19 个典型应用场景。  
-
-**为什么重要：** 智能体比聊天机器人权限更高，可能跨应用、调工具、执行任务，因此隐私泄露、越权操作、行为失控风险更大。  
-
-**可能影响：** 中国智能体产业会进入“应用推进 + 安全治理”并行阶段。企业做 Agent 产品，权限管理、行为管控、合规服务会变成硬要求。
+**Potential impact:** Users may reach useful information faster, but source quality, copyright, freshness and image mismatch risk will matter more.
 
 ---
 
-### 5. Amazon 强化 AI 芯片叙事，强调 Trainium、Graviton 与自研硅业务规模  
-**发生了什么：** Amazon 5月12日发布 AI 芯片科普与业务说明，称 AWS Trainium、Graviton 在各自工作负载上提供更高性价比，并提到 Amazon 自研硅业务年化收入规模已超过 200 亿美元。  
+### 3. China releases national standards for AI terminal intelligence levels
+**What happened:** Xinhua reported on May 12 that Chinese authorities including MIIT, the Ministry of Commerce and the State Administration for Market Regulation have launched the national standard series for AI terminal intelligence levels. The standards use a "2+N" architecture, cover the first seven terminal categories including phones, PCs, TVs, glasses, vehicle cockpits, speakers and earphones, and define L1 to L4 intelligence levels.
 
-**为什么重要：** AI 算力竞争不只在 GPU。云厂商正在用自研芯片降低训练和推理成本，争夺大模型和企业 AI 工作负载。  
+**Why it matters:** AI phones, AI PCs and AI glasses have often been marketed with vague claims. A level-based standard gives AI devices a more consistent evaluation framework.
 
-**可能影响：** 未来 AI 服务价格、推理速度、云厂商锁定效应都会受芯片生态影响。企业选云时会更关注“模型 + 芯片 + 成本”的组合。
-
----
-
-## 实战案例
-
-### 案例1：企业智能体落地，先看“权限边界”而不是只看模型能力  
-NVIDIA + SAP 的合作说明，企业 Agent 进入核心业务系统时，关键不是让它“更聪明”，而是让它在可控环境里行动。  
-
-普通企业可以直接借鉴三点：  
-- 给 Agent 最小权限，不默认开放全库、全网、全系统。  
-- 所有关键动作要有日志和可回滚机制。  
-- 财务、采购、客户数据等高风险场景，先做人审或半自动。
-
-### 案例2：买 AI 终端，等分级标准和检测结果比看发布会更靠谱  
-中国 AI 终端分级标准落地后，手机、电脑、耳机、车机等产品未来可能出现更清晰的智能化等级。  
-
-普通用户选购时建议：  
-- 不只看“内置大模型”。  
-- 重点看是否能离线处理、是否能跨应用执行、是否有隐私控制。  
-- 等标准适配产品目录或检测结果出来，再判断是不是值得升级。
+**Potential impact:** Consumers may get a clearer way to judge whether a product is truly AI-capable. Vendors' marketing claims may face tighter scrutiny, and trade-in programs, product catalogs and certification platforms may follow.
 
 ---
 
-## 今日结论
+### 4. Three Chinese agencies push regulated and innovative agent adoption
+**What happened:** Xinhua reported on May 11 that the Cyberspace Administration of China, the National Development and Reform Commission and MIIT jointly issued implementation opinions on regulated agent adoption and innovation. The document emphasizes safe, controllable, orderly and application-led development, and lists 19 typical application scenarios.
 
-### 最值得关注  
-**智能体正在进入“生产可用”阶段。**  
-全球看 NVIDIA/SAP 推企业安全运行时；中…
+**Why it matters:** Agents have more authority than chatbots: they can cross applications, call tools and execute tasks. That makes privacy leakage, unauthorized actions and uncontrolled behavior more serious than in ordinary Q&A systems.
+
+**Potential impact:** China's agent industry is moving into a phase where application expansion and safety governance advance together. For enterprise agent products, permission management, behavior control and compliance services will become hard requirements.
+
+---
+
+### 5. Amazon strengthens its AI chip narrative around Trainium, Graviton and custom silicon scale
+**What happened:** Amazon published an AI chip explainer and business update on May 12, saying AWS Trainium and Graviton deliver better price-performance for their target workloads and noting that Amazon's custom silicon business has exceeded a $20 billion annualized revenue run rate.
+
+**Why it matters:** AI compute competition is not only about GPUs. Cloud providers are using custom chips to reduce training and inference costs and to win large-model and enterprise AI workloads.
+
+**Potential impact:** Future AI service pricing, inference speed and cloud lock-in will all be influenced by chip ecosystems. Enterprise cloud selection will pay more attention to the combined stack of model, chip and cost.
+
+---
+
+## Practical Cases
+
+### Case 1: For enterprise agents, review permission boundaries before model capability
+The NVIDIA + SAP partnership shows that once agents enter core business systems, the key question is not simply whether the model is smarter. It is whether the agent can act inside a controlled and observable runtime.
+
+Companies can borrow three immediate practices:
+- Give agents least-privilege access instead of opening every database, network and system by default.
+- Keep logs and rollback paths for every high-impact action.
+- Use human review or semi-automation first for finance, procurement, customer data and other high-risk workflows.
+
+### Case 2: When buying AI devices, wait for level standards and test results instead of trusting launch slogans
+After China's AI terminal level standards land, phones, PCs, earphones and vehicle systems may start to show clearer intelligence levels.
+
+For buyers, the useful checklist is:
+- Do not stop at the phrase "built-in large model."
+- Check whether the device can process locally, execute across apps and offer privacy controls.
+- Wait for standard-aligned catalogs or test results before deciding whether an upgrade is worth the cost.
+
+---
+
+## Today's Bottom Line
+
+### Most important signal
+**Agents are entering a production-readiness phase.**
+Globally, NVIDIA and SAP are pushing secure enterprise runtimes. In China, policy is moving agent adoption toward regulated deployment. The common thread is that agents are no longer just demos: they need permission design, observability and accountability.
+
+### What builders should do next
+- Treat every agent action as an auditable operation, not a chat completion.
+- Separate low-risk retrieval tasks from high-risk execution tasks.
+- Design fallback, approval and rollback flows before connecting agents to business systems.
+
+### What to watch tomorrow
+- Whether SAP and NVIDIA publish more implementation details for OpenShell in enterprise agents.
+- Whether China's AI terminal level standards lead to certified device lists or early vendor claims.
+- Whether OpenAI's richer visual answers increase pressure on search and content attribution.
 
 ## Next-Step CTA
 
