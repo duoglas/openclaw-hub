@@ -97,6 +97,9 @@ jobs:
       - name: Daily index growth check
         run: pnpm check:daily-index-growth
 
+      - name: Latest daily surface alignment check
+        run: pnpm check:latest-daily-surface
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 

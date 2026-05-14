@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-14 11:20
+Last updated: 2026-05-14 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-108: 新增“最新日报发现面一致性”闸门（首页 Spotlight + 日报归档 latest hero + RSS 首项 + sitemap 全部指向最新双语日报），消费最近24小时 2026-05-14 日报曝光延续假设 | ICE 8x7x8=448 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报完成质量回补后，若首页 Spotlight、日报归档页、RSS 首项或 sitemap 任一发现入口未同步到最新 2026-05-14，会稀释首日索引窗口与读者连续阅读路径；把这些发现面纳入 CI 闸门，可提升最新日报曝光一致性、RSS 订阅入口质量与搜索抓取稳定性。
+  - Metrics: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；EN/ZH 首页、`/daily/`、RSS 首项与 sitemap 均包含 `/en|zh/blog/openclaw-daily-2026-05-14/`；CI 新增 Latest daily surface alignment check。
+  - Acceptance: 1) 新增 `scripts/check-latest-daily-surface.sh`；2) `package.json` 增加 `check:latest-daily-surface`；3) content-check CI 接入该闸门；4) 本地 build + 专项检查通过。
 - [x] P1 Candidate A / EXP-107: 回补 2026-05-14 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 正文截断补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报若英文页仍为中文正文、英文 description 仍为通用模板、中文 description 为正文截断片段且双语结论以省略号截断，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性与读者完成率；当日回补为完整英文叙事、可检索摘要和完整结论段，可提升搜索可见性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-14/` description 覆盖当日核心主题且正文无截断。

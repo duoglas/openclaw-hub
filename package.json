@@ -35,7 +35,8 @@
     "check:daily-0311": "bash scripts/check-daily-0311-integrity.sh",
     "check:daily-heading-date": "bash scripts/check-daily-heading-date-consistency.sh",
     "check:daily-fresh-completeness": "bash scripts/check-daily-fresh-completeness.sh",
-    "check:daily-index-growth": "bash scripts/check-daily-index-growth.sh"
+    "check:daily-index-growth": "bash scripts/check-daily-index-growth.sh",
+    "check:latest-daily-surface": "bash scripts/check-latest-daily-surface.sh"
   },
   "keywords": [],
   "author": "",

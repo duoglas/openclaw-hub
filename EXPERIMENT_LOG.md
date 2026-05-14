@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-108
+- Hypothesis: 最近24小时新增日报（2026-05-14）完成质量回补后，若首页 Spotlight、日报归档页 latest hero、RSS 首项或 sitemap 任一发现入口未同步到最新日报，会削弱首日索引窗口、RSS 订阅点击与站内连续阅读路径；将“最新日报发现面一致性”固化为 CI 闸门，可稳定放大当日内容建设收益。
+- Scope: `/en/` + `/zh/` 首页、`/en|zh/daily/`、`/en|zh/daily/rss.xml`、`sitemap-0.xml`，以及 `scripts/check-latest-daily-surface.sh`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 新增 `scripts/check-latest-daily-surface.sh`，自动识别 EN/ZH 最新 `openclaw-daily-*`，验证构建产物中的首页 Spotlight、日报归档 latest hero、RSS 首项与 sitemap URL 全部对齐到最新日报，并验证 `home_latest_daily_click` / `daily_index_click` 增长事件仍存在；新增 `pnpm check:latest-daily-surface` 并接入 content-check CI。
+- Start date: 2026-05-14
+- End date: 2026-05-14
+- Success metric: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；EN/ZH 最新日报发现入口全部指向 `/en|zh/blog/openclaw-daily-2026-05-14/`；RSS 首项为最新日报；CI 出现 Latest daily surface alignment check。
+- Result: pass（已新增最新日报发现面一致性闸门，并验证 EN/ZH 首页、日报归档页、RSS 首项与 sitemap 均对齐 2026-05-14 最新日报；本地 build + `pnpm check:latest-daily-surface` 通过；commit `(this commit)` 待提交推送。）
+- Decision (scale / iterate / stop): scale（后续每次新增日报后自动阻断首页/RSS/sitemap 未同步最新日报的回归，继续观察 `home_latest_daily_click` 与 `daily_index_click` 对最新日报打开率的贡献。）
+
 ### EXP-107
 - Hypothesis: 最近24小时新增日报（2026-05-14）若英文页仍为中文正文、英文 description 仍为通用模板、中文 description 为正文截断片段且双语结论以省略号截断，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性与读者完成率；当日回补为完整英文叙事、可检索摘要和完整结论段，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-14/`
