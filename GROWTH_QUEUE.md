@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-13 17:25
+Last updated: 2026-05-14 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-107: 回补 2026-05-14 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 正文截断补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报若英文页仍为中文正文、英文 description 仍为通用模板、中文 description 为正文截断片段且双语结论以省略号截断，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性与读者完成率；当日回补为完整英文叙事、可检索摘要和完整结论段，可提升搜索可见性与核心指南导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-14/` description 覆盖当日核心主题且正文无截断。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-14.md` 从中文混排回补为完整英文 Top 5、案例、结论与跟踪点；2) EN/ZH description 升级为可检索摘要；3) EN/ZH 今日结论与明日跟踪点补全，无省略号截断；4) 保持 3 条强相关 CTA 内链不回退；5) 本地四闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-106: 强化 EN/ZH 日报归档页最新日报转化位（latest hero + RSS CTA + daily_index 增长事件 + ItemList JSON-LD），消费最近24小时 2026-05-13 日报曝光延续假设 | ICE 8x7x8=448 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报完成质量回补后，若 `/en|zh/daily/` 仍只是平铺列表，读者从首页 Spotlight 或 RSS 入口进入归档时容易被历史列表稀释；在日报归档页顶部突出最新 2026-05-13 日报、RSS 订阅与可观测点击事件，并补充 ItemList 结构化数据，可提升最新日报打开率、RSS 订阅点击与归档页索引理解。
   - Metrics: `pnpm build` 通过；`pnpm check:daily-index-growth` 通过；`pnpm check:rss-autodiscovery` 通过；`pnpm check:website-schema` 通过；`dist/en|zh/daily/index.html` 包含 `daily_index_latest_render`、`daily_index_click`、latest/RSS CTA 与 ItemList JSON-LD，且自动指向 `/en|zh/blog/openclaw-daily-2026-05-13/`。
