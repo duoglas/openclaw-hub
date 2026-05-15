@@ -68,6 +68,6 @@ const post = Astro.props;
 const { Content } = await post.render();
 const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
 ---
-<BlogPost {...post.data} slug={slug} prevDaily={post.prevDaily} nextDaily={post.nextDaily}>
+<BlogPost {...post.data} slug={slug} prevDaily={post.prevDaily} nextDaily={post.nextDaily} relatedPosts={post.relatedPosts}>
   <Content />
 </BlogPost>

@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import ArticleFeedback from '../components/ArticleFeedback.astro';
 import Giscus from '../components/Giscus.astro';
+import GrowthEvent from '../components/GrowthEvent.astro';
 import type { CollectionEntry } from 'astro:content';
 
 type NavLink = { title: string; href: string };
@@ -165,11 +166,12 @@ const faqSchema = faq.length > 0 ? {
     )}
 
     {relatedPosts.length > 0 && (
-      <section class="related-posts card" style="margin-top:1rem;">
+      <section class="related-posts card" data-growth-surface="related-posts" style="margin-top:1rem;">
+        <GrowthEvent name="blog_related_posts_render" lang={lang} href={normalizedSlug} label={slug} />
         <h3 style="margin:0 0 8px;">{isZh ? '相关文章' : 'Related Posts'}</h3>
         <ul style="margin:0; padding-left:1.2rem;">
           {relatedPosts.map((item) => (
-            <li style="margin:0.4rem 0;"><a href={item.href}>{item.title}</a></li>
+            <li style="margin:0.4rem 0;"><a href={item.href} data-growth-link="related-post">{item.title}</a></li>
           ))}
         </ul>
       </section>

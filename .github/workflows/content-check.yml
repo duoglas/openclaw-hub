@@ -100,6 +100,9 @@ jobs:
       - name: Latest daily surface alignment check
         run: pnpm check:latest-daily-surface
 
+      - name: Daily related posts growth check
+        run: pnpm check:daily-related-posts
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 

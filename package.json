@@ -36,7 +36,8 @@
     "check:daily-heading-date": "bash scripts/check-daily-heading-date-consistency.sh",
     "check:daily-fresh-completeness": "bash scripts/check-daily-fresh-completeness.sh",
     "check:daily-index-growth": "bash scripts/check-daily-index-growth.sh",
-    "check:latest-daily-surface": "bash scripts/check-latest-daily-surface.sh"
+    "check:latest-daily-surface": "bash scripts/check-latest-daily-surface.sh",
+    "check:daily-related-posts": "bash scripts/check-daily-related-posts.sh"
   },
   "keywords": [],
   "author": "",
