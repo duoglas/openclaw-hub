@@ -22,7 +22,7 @@
 - Start date: 2026-05-16
 - End date: 2026-05-16
 - Success metric: `pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily evidence matrix completeness check。
-- Result: pass（已新增最新日报 Evidence Matrix 完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、最新日报发现面、相关文章闸门、duplicate precheck 与 build 全部通过；commit `b737739` 已推送。）
+- Result: pass（已新增最新日报 Evidence Matrix 完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、最新日报发现面、相关文章闸门、duplicate precheck 与 build 全部通过；commit `2df2d14` 已推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时日报发布质量基线；下一步可把 `LATEST_COUNT` 从 1 扩展到发布窗口配置，并观察是否需要扫描所有近 7 天日报。）
 
 ### EXP-111

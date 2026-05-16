@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-112: 新增最新日报 Evidence Matrix 完整性闸门（要求 EN/ZH 最新日报包含证据矩阵、至少 5 条来源明细、禁止 `-…`/省略号截断），消费 EXP-111 最近24小时证据矩阵截断复盘假设 | ICE 8x7x8=448 — commit `b737739`
+- [x] P1 Candidate A / EXP-112: 新增最新日报 Evidence Matrix 完整性闸门（要求 EN/ZH 最新日报包含证据矩阵、至少 5 条来源明细、禁止 `-…`/省略号截断），消费 EXP-111 最近24小时证据矩阵截断复盘假设 | ICE 8x7x8=448 — commit `2df2d14`
   - Hypothesis: 最近24小时 2026-05-16 日报已补全证据矩阵，但若后续发布再次出现 `-…` 截断或证据矩阵缺失，会削弱内容可信度、来源可核验性与读者完成率；将最新日报 Evidence Matrix 完整性纳入 CI，可在上线前阻断证据质量回归。
   - Metrics: `pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；content-check CI 新增 Daily evidence matrix completeness check。
   - Acceptance: 1) 新增 `scripts/check-daily-evidence-matrix.mjs`，默认检查最新 EN/ZH 日报；2) EN 要求 `## Evidence Matrix`，ZH 要求 `## 证据矩阵`；3) 每个矩阵至少 5 条来源明细，且禁止省略号/截断 bullet；4) `package.json` 与 content-check CI 接入；5) 本地专项检查 + 日报闸门 + duplicate precheck + build 全部通过。
