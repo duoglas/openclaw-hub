@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-15 17:20
+Last updated: 2026-05-16 11:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-111: 回补 2026-05-16 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 证据矩阵补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `1b6100c`
+  - Hypothesis: 最近24小时新增日报若英文页仍为中文正文、中文 description 仍为标题截断片段且双语证据矩阵只有省略号，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性与读者信任；当日回补为完整英文叙事、可检索摘要和完整证据矩阵，可提升搜索可见性、阅读完成率与核心指南导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-16/` description 覆盖当日核心主题且正文/证据矩阵无省略号截断。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-16.md` 从中文混排回补为完整英文 Top 5、案例、结论与跟踪点；2) EN/ZH description 升级为可检索摘要；3) EN/ZH 证据矩阵补全为来源类别清单，无 `-…` 截断；4) 保持 3 条强相关 CTA 内链不回退；5) 本地六闸门 + duplicate precheck + build 全部通过。
 - [x] P1 Candidate A / EXP-110: 修复双语文章页 Related Posts 计算后未传入布局的转化断点，并新增最新日报相关文章增长闸门，消费最近24小时 2026-05-15 日报连续阅读假设 | ICE 8x7x8=448 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报已经通过首页 Spotlight、日报归档和 RSS 获得发现入口，但文章页静态路径虽然计算了 `relatedPosts` 却没有传入 `BlogPost`，导致“相关文章”模块不渲染；修复传参并把最新日报相关文章渲染纳入 CI，可提升日报读者站内下一跳、降低读后跳出，并让 `blog_related_posts_render` 成为可观测增长事件。
   - Metrics: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；EN/ZH 最新日报构建页均含 3 条非自身相关文章链接与 `blog_related_posts_render`。

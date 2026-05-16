@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-111
+- Hypothesis: 最近24小时新增日报（2026-05-16）若英文页仍为中文正文、中文 description 仍是标题/首条截断摘要，且 EN/ZH 证据矩阵只有省略号，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、页面可信度与阅读完成率；当日回补为完整英文叙事、可检索摘要和完整证据矩阵，可提升搜索可见性与核心指南导流质量。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-16/`
+- Change: 将 EN `openclaw-daily-2026-05-16.md` 从中文混排回补为完整英文日报，覆盖 ChatGPT 个人财务、Anthropic + PwC 企业 Claude 部署、AWS Trainium 高校研究生态、中国 AI 科技伦理审查先导计划、NVIDIA + Ineffable Intelligence 强化学习基础设施；将 EN/ZH description 升级为可检索摘要；补全 EN/ZH 证据矩阵，移除公开正文中的工具降级说明和 `-…` 截断；保持 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 不回退。
+- Start date: 2026-05-16
+- End date: 2026-05-16
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，证据矩阵不再含 `-…` 截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-16.md` 已完成语言一致性、description 可检索化与证据矩阵补全；本地六项日报闸门 + duplicate precheck + build 全部通过；commit `1b6100c` 已推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 证据矩阵完整性 + 发现面/相关文章闸门 + build”闭环；下一步可新增证据矩阵截断专项检查，避免 `-…` 类缺口再次漏过。）
+
 ### EXP-110
 - Hypothesis: 最近24小时新增日报（2026-05-15）已经完成正文质量回补并出现在首页 Spotlight、日报归档、RSS 与 sitemap，但 EN/ZH blog detail 路由只计算 `relatedPosts`、没有传入 `BlogPost`，导致文章页“相关文章”模块不渲染；修复该转化断点并新增最新日报相关文章闸门，可提升日报读者站内下一跳、降低读后跳出，并把相关文章曝光变成可观测增长事件。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-15/`，以及 `src/pages/en|zh/blog/[...slug].astro`、`src/layouts/BlogPost.astro`、`scripts/check-daily-related-posts.sh`、`package.json`、`.github/workflows/content-check.yml`
