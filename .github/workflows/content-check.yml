@@ -103,6 +103,9 @@ jobs:
       - name: Daily related posts growth check
         run: pnpm check:daily-related-posts
 
+      - name: Daily evidence matrix completeness check
+        run: pnpm check:daily-evidence-matrix
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 

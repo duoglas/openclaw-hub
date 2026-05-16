@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-112
+- Hypothesis: 最近24小时 2026-05-16 日报已把 EN/ZH 证据矩阵从 `-…` 截断回补为完整来源明细；但如果后续发布缺少 Evidence Matrix、来源条数不足或再次出现省略号截断，会削弱页面可信度、来源可核验性与读者完成率。把最新日报证据矩阵完整性固化为 CI 闸门，可稳定放大 EXP-111 的内容质量收益。
+- Scope: `scripts/check-daily-evidence-matrix.mjs`、`package.json`、`.github/workflows/content-check.yml`，默认覆盖最新 EN/ZH `openclaw-daily-*`。
+- Change: 新增 `check-daily-evidence-matrix.mjs`，自动识别最新 EN/ZH 日报，要求 EN 存在 `## Evidence Matrix`、ZH 存在 `## 证据矩阵`，矩阵区间内至少 5 条来源明细，且禁止 `-…`、`...`、行尾省略号等截断 bullet；新增 `pnpm check:daily-evidence-matrix` 并接入 content-check CI。
+- Start date: 2026-05-16
+- End date: 2026-05-16
+- Success metric: `pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily evidence matrix completeness check。
+- Result: pass（已新增最新日报 Evidence Matrix 完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、最新日报发现面、相关文章闸门、duplicate precheck 与 build 全部通过；commit `b737739` 已推送。）
+- Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时日报发布质量基线；下一步可把 `LATEST_COUNT` 从 1 扩展到发布窗口配置，并观察是否需要扫描所有近 7 天日报。）
+
 ### EXP-111
 - Hypothesis: 最近24小时新增日报（2026-05-16）若英文页仍为中文正文、中文 description 仍是标题/首条截断摘要，且 EN/ZH 证据矩阵只有省略号，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、页面可信度与阅读完成率；当日回补为完整英文叙事、可检索摘要和完整证据矩阵，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-16/`
