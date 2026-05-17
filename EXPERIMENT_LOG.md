@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-114
+- Hypothesis: 最近24小时新增日报已多次出现 EN 页面中文混排/中文正文回归；若只依赖人工发布后回补，会错过首日索引窗口。新增最新英文日报语言一致性闸门，扫描中文结构标题、中文字段标签与异常 CJK 占比，可在 CI 阶段阻断英文页语言回归，稳定提升英文检索匹配、读者完成率与日报质量闭环效率。
+- Scope: `scripts/check-daily-en-language-consistency.mjs`、`package.json`、`.github/workflows/content-check.yml`，默认覆盖最新 EN `openclaw-daily-*`。
+- Change: 新增 `check-daily-en-language-consistency.mjs`，自动识别最新英文日报，阻断中文日报标题/章节、`发生了什么：`、`为什么重要：`、`可能影响：`、`普通用户建议：`、`明日跟踪点：`、`证据矩阵` 等中文结构残留，并通过 CJK 字符与英文词量比例捕捉大段未翻译正文；新增 `pnpm check:daily-en-language` 并接入 content-check CI。
+- Start date: 2026-05-17
+- End date: 2026-05-17
+- Success metric: `pnpm check:daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily English language consistency check。
+- Result: pass（已新增最新英文日报语言一致性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、duplicate precheck 与 build 全部通过；commit `(this commit)` 待提交推送。）
+- Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时英文日报发布质量基线；下一步可根据误报情况扩展为最近 2 篇或加入更多中文模板标签。）
+
 ### EXP-113
 - Hypothesis: 最近24小时新增日报（2026-05-17）若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为标题/首条截断摘要，且 EN/ZH 缺少证据矩阵并在“短期内最实用的 AI 方向…”处截断，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、页面可信度与阅读完成率；当日回补为完整英文叙事、可检索摘要、完整结论和来源矩阵，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-17/`

@@ -38,7 +38,8 @@
     "check:daily-index-growth": "bash scripts/check-daily-index-growth.sh",
     "check:latest-daily-surface": "bash scripts/check-latest-daily-surface.sh",
     "check:daily-related-posts": "bash scripts/check-daily-related-posts.sh",
-    "check:daily-evidence-matrix": "node scripts/check-daily-evidence-matrix.mjs"
+    "check:daily-evidence-matrix": "node scripts/check-daily-evidence-matrix.mjs",
+    "check:daily-en-language": "node scripts/check-daily-en-language-consistency.mjs"
   },
   "keywords": [],
   "author": "",

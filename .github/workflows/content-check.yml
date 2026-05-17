@@ -106,6 +106,9 @@ jobs:
       - name: Daily evidence matrix completeness check
         run: pnpm check:daily-evidence-matrix
 
+      - name: Daily English language consistency check
+        run: pnpm check:daily-en-language
+
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 
