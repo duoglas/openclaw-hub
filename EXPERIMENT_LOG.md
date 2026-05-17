@@ -22,7 +22,7 @@
 - Start date: 2026-05-17
 - End date: 2026-05-17
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文和证据矩阵不再含省略号截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-17.md` 已完成语言一致性、description 可检索化、结论补全与证据矩阵补全；本地七项日报闸门 + duplicate precheck + build 全部通过；commit `b02b03d` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-17.md` 已完成语言一致性、description 可检索化、结论补全与证据矩阵补全；本地七项日报闸门 + duplicate precheck + build 全部通过；commit `830a424` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 证据矩阵完整性 + 发现面/相关文章闸门 + build”闭环；下一步建议把英文正文中文残留纳入自动闸门。）
 
 ### EXP-112
