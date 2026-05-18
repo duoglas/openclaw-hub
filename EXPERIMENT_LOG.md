@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-116
+- Hypothesis: 最近24小时新增日报已多次需要人工回补“今日结论/明日跟踪点”；若这些行动段缺失、条数不足或以省略号截断，会削弱读者完成率、下一步判断和日报作为连续阅读入口的转化价值。把最新日报行动段完整性纳入 CI，可在发布阶段阻断结尾质量回归，稳定放大 EXP-115 的质量收益。
+- Scope: `scripts/check-daily-action-sections.sh`、`package.json`、`.github/workflows/content-check.yml`，默认覆盖最新 EN/ZH `openclaw-daily-*`。
+- Change: 新增 `check-daily-action-sections.sh`，自动识别最新 EN/ZH 日报，要求 EN `## Today’s Bottom Line` 与 `## What to Watch Tomorrow`、ZH `## 今日结论` 与 `## 明日跟踪点` 均存在且各至少 3 条 bullet，并阻断行动段 bullet 以 `...` 或 `…` 截断；新增 `pnpm check:daily-action-sections` 并接入 content-check CI。
+- Start date: 2026-05-18
+- End date: 2026-05-18
+- Success metric: `pnpm check:daily-action-sections` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily action sections completeness check。
+- Result: pass（已新增最新日报行动段完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、英文语言、duplicate precheck 与 build 全部通过；commit `(this commit)` 待提交推送。）
+- Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时日报发布质量基线；下一步可按发布窗口把 `LATEST_COUNT` 扩展到最近 2 篇，或把行动段质量进一步纳入内容评分。）
+
 ### EXP-115
 - Hypothesis: 最近24小时新增日报（2026-05-18）若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 在实战案例 2 处以省略号截断并缺少证据矩阵，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整结论/跟踪点和证据矩阵，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-18/`
@@ -22,7 +32,7 @@
 - Start date: 2026-05-18
 - End date: 2026-05-18
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文和证据矩阵不再含省略号截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-18.md` 已完成语言一致性、description 可检索化、正文补全与证据矩阵补全；本地八项日报闸门 + duplicate precheck + build 全部通过；commit `(this commit)` 待提交推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-18.md` 已完成语言一致性、description 可检索化、正文补全与证据矩阵补全；本地八项日报闸门 + duplicate precheck + build 全部通过；commit `391c612` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 证据矩阵完整性 + 发现面/相关文章闸门 + build”闭环；下一步建议把双语日报结论/跟踪点缺失也纳入自动闸门。）
 
 ### EXP-114

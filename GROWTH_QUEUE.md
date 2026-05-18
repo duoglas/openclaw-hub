@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-18 11:24
+Last updated: 2026-05-18 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,7 +17,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-115: 回补 2026-05-18 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 正文截断补全 + 证据矩阵补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-116: 新增最新日报“今日结论/明日跟踪点”行动段完整性闸门（EN Bottom Line/Watch + ZH 今日结论/明日跟踪点均至少 3 条 bullet，禁止省略号截断），消费 EXP-115 后续“结论/跟踪点缺失纳入自动闸门”假设 | ICE 8x7x8=448 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报已多次需要人工回补“今日结论/明日跟踪点”；若这些行动段缺失、条数不足或以省略号截断，会削弱读者完成率、下一步判断和日报作为连续阅读入口的转化价值。把最新日报行动段完整性纳入 CI，可在发布阶段阻断结尾质量回归，稳定放大 EXP-115 的质量收益。
+  - Metrics: `pnpm check:daily-action-sections` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；content-check CI 新增 Daily action sections completeness check。
+  - Acceptance: 1) 新增 `scripts/check-daily-action-sections.sh`，默认检查最新 EN/ZH 日报；2) EN 要求 `## Today’s Bottom Line` 与 `## What to Watch Tomorrow` 各至少 3 条 bullet；3) ZH 要求 `## 今日结论` 与 `## 明日跟踪点` 各至少 3 条 bullet；4) 禁止行动段 bullet 以 `...` 或 `…` 截断；5) `package.json` 与 content-check CI 接入；6) 本地专项检查 + 日报质量闸门 + duplicate precheck + build 全部通过。
+- [x] P1 Candidate A / EXP-115: 回补 2026-05-18 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 正文截断补全 + 证据矩阵补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `391c612`
   - Hypothesis: 最近24小时新增日报若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 在实战案例 2 处以省略号截断并缺少证据矩阵，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整结论/跟踪点和证据矩阵，可提升搜索可见性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-05-18/` description 覆盖当日核心主题且正文/证据矩阵无省略号截断。
   - Acceptance: 1) EN `openclaw-daily-2026-05-18.md` 从中文混排回补为完整英文 Top 5、案例、结论与跟踪点；2) EN/ZH description 升级为可检索摘要；3) EN/ZH 实战案例 2、今日结论与明日跟踪点补全，无省略号截断；4) EN/ZH 证据矩阵补全为至少 5 条来源明细；5) 保持 3 条强相关 CTA 内链不回退；6) 本地八闸门 + duplicate precheck + build 全部通过。
