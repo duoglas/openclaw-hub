@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-117: 回补 2026-05-19 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 结论/跟踪点 bullet 化 + 证据矩阵补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `28055b4`
+- [x] P1 Candidate A / EXP-117: 回补 2026-05-19 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 结论/跟踪点 bullet 化 + 证据矩阵补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `93d1ebd`
   - Hypothesis: 最近24小时新增日报若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 缺少证据矩阵并以省略号截断明日跟踪点，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整行动段和证据矩阵，可提升搜索可见性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
   - Acceptance: 1) EN `openclaw-daily-2026-05-19.md` 从中文正文回补为完整英文 Top 5、案例、结论、跟踪点与证据矩阵；2) EN/ZH description 升级为可检索摘要；3) EN/ZH 今日结论/明日跟踪点均至少 3 条 bullet 且无省略号截断；4) EN/ZH 证据矩阵补全为至少 5 条来源明细；5) 保持 3 条强相关 CTA 内链不回退；6) 本地九项日报闸门 + duplicate precheck + build 全部通过。
