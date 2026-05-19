@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-118
+- Hypothesis: 最近24小时新增日报连续出现英文页语言回归、description 泛化、行动段/证据矩阵截断等发布后返工；若 `publish-daily.sh` 在 commit/push 前强制运行完整日报质量闸门，可在源头阻断低质量日报进入主分支，减少首日索引窗口损耗与人工回补频率。
+- Scope: `scripts/publish-daily.sh`
+- Change: 将日报发布脚本从“只执行静默 build 后提交推送”升级为“先 build，再串行执行 daily template、heading date、CTA、fresh completeness、latest surface、related posts、evidence matrix、English language、action sections 与 duplicate slug/id 十项闸门，全部通过后才 commit/push”。
+- Start date: 2026-05-19
+- End date: 2026-05-19
+- Success metric: `pnpm build` 通过；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness`、`pnpm check:latest-daily-surface`、`pnpm check:daily-related-posts`、`pnpm check:daily-evidence-matrix`、`pnpm check:daily-en-language`、`pnpm check:daily-action-sections`、`pnpm check:duplicate-slug-id` 全部通过；发布脚本在 commit/push 前执行完整闸门。
+- Result: pass（`scripts/publish-daily.sh` 已接入完整日报质量闸门；本地 build + 十项日报/索引卫生闸门全部通过；commit `(this commit)` 待提交推送。）
+- Decision (scale / iterate / stop): iterate（下一步继续把发布脚本的 EN 生成从“中文摘要直写”升级为结构化英文实稿生成，同时默认输出 Evidence Matrix 与行动段，进一步减少被闸门阻断后的人工返工。）
+
 ### EXP-117
 - Hypothesis: 最近24小时新增日报（2026-05-19）若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 缺少证据矩阵并以省略号截断明日跟踪点，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整行动段和证据矩阵，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-19/`

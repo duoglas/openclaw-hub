@@ -112,10 +112,29 @@ ${SUMMARY}
 - Keep reliability under load: [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
 EOF
 
-pnpm build >/dev/null 2>&1
+echo "Running daily quality gates for ${SLUG}..."
+pnpm build
+
+DAILY_QUALITY_CHECKS=(
+  "check:daily-template"
+  "check:daily-heading-date"
+  "check:daily-cta"
+  "check:daily-fresh-completeness"
+  "check:latest-daily-surface"
+  "check:daily-related-posts"
+  "check:daily-evidence-matrix"
+  "check:daily-en-language"
+  "check:daily-action-sections"
+  "check:duplicate-slug-id"
+)
+
+for check in "${DAILY_QUALITY_CHECKS[@]}"; do
+  echo "Running pnpm ${check}..."
+  pnpm "${check}"
+done
 
 git add "$EN_FILE" "$ZH_FILE" scripts/publish-daily.sh
 git commit -m "content: sync daily site post with Telegram AI/tech brief (${DATE})" || true
 git push origin main
 
-echo "Published ${SLUG} (en+zh, synced from cron summary)"
+echo "Published ${SLUG} (en+zh, synced from cron summary after quality gates)"
