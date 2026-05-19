@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-117
+- Hypothesis: 最近24小时新增日报（2026-05-19）若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 缺少证据矩阵并以省略号截断明日跟踪点，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整行动段和证据矩阵，可提升搜索可见性与核心指南导流质量。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-19/`
+- Change: 将 EN `openclaw-daily-2026-05-19.md` 从中文正文回补为完整英文日报，覆盖 Anthropic 收购 Stainless、NVIDIA Vera CPU 交付、Amazon Alexa+ 生成播客、中国实体产业 AI 落地与北斗时空产业扩张；将 EN/ZH description 升级为可检索摘要；补全 EN/ZH 今日结论、明日跟踪点和证据矩阵，保持 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 不回退。
+- Start date: 2026-05-19
+- End date: 2026-05-19
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，行动段与证据矩阵无省略号截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-19.md` 已完成语言一致性、description 可检索化、行动段补全与证据矩阵补全；本地九项日报闸门 + duplicate precheck + build 全部通过；commit `28055b4` 已推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 英文语言一致性 + 行动段完整性 + 证据矩阵完整性 + 发现面/相关文章闸门 + build”闭环；下一步建议扩展最新日报发布脚本，默认生成证据矩阵和英文实稿，减少发布后返工。）
+
 ### EXP-116
 - Hypothesis: 最近24小时新增日报已多次需要人工回补“今日结论/明日跟踪点”；若这些行动段缺失、条数不足或以省略号截断，会削弱读者完成率、下一步判断和日报作为连续阅读入口的转化价值。把最新日报行动段完整性纳入 CI，可在发布阶段阻断结尾质量回归，稳定放大 EXP-115 的质量收益。
 - Scope: `scripts/check-daily-action-sections.sh`、`package.json`、`.github/workflows/content-check.yml`，默认覆盖最新 EN/ZH `openclaw-daily-*`。
