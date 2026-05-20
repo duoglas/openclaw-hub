@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-120: 将日报发布脚本从“EN 直写中文摘要”升级为英文结构化发布稿生成，并为 ZH 自动补齐行动段/证据矩阵兜底，消费 EXP-118 后续“发布脚本默认生成完整英文实稿和证据矩阵”假设 | ICE 8x8x7=448 — commit `(this commit)`
+  - Hypothesis: 当前 `publish-daily.sh` 虽已在 commit/push 前运行完整日报闸门，但 EN 页面仍直接写入 cron 中文摘要，导致发布阶段必然被英文语言、行动段或证据矩阵闸门拦截；若在脚本生成阶段直接产出英文结构化日报、可检索 EN description，并为 ZH 自动补齐今日结论、明日跟踪点和证据矩阵兜底，可减少发布后返工与首日索引窗口损耗。
+  - Metrics: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) EN 页面不再直接写入 `${SUMMARY}` 中文原文，而是生成 `Top 5 Stories`、`Practical Cases`、`Today’s Bottom Line`、`What to Watch Tomorrow`、`Evidence Matrix` 英文结构化正文；2) EN description 从固定通用文案升级为从源摘要提取英文实体的可检索摘要；3) ZH 正文保留源摘要，同时在缺段时自动补齐今日结论、明日跟踪点和证据矩阵；4) 发布脚本继续在 commit/push 前执行 build + 十项日报/索引卫生闸门；5) 本地语法检查、完整闸门与 build 全部通过。
 - [x] P1 Candidate A / EXP-119: 回补 2026-05-20 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 行动段/证据矩阵补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `6669dea`
   - Hypothesis: 最近24小时新增日报若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 缺少完整明日跟踪点与证据矩阵，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整行动段和证据矩阵，可提升搜索可见性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-120
+- Hypothesis: 当前 `publish-daily.sh` 虽已在 commit/push 前运行完整日报闸门，但 EN 页面仍直接写入 cron 中文摘要，导致发布阶段必然被英文语言、行动段或证据矩阵闸门拦截；若在脚本生成阶段直接产出英文结构化日报、可检索 EN description，并为 ZH 自动补齐今日结论、明日跟踪点和证据矩阵兜底，可减少发布后返工与首日索引窗口损耗。
+- Scope: `scripts/publish-daily.sh`
+- Change: 将日报发布脚本的内容生成逻辑升级为：ZH 保留 cron 源摘要并在缺少行动段/证据矩阵时自动补齐；EN 不再直写 `${SUMMARY}`，而是从同源摘要提取英文实体，生成 `Top 5 Stories`、`Practical Cases`、`Today’s Bottom Line`、`What to Watch Tomorrow` 与 `Evidence Matrix` 的英文结构化发布稿；EN description 从固定通用文案升级为包含源摘要英文实体的可检索摘要；保留 build + 十项日报/索引卫生闸门。
+- Start date: 2026-05-20
+- End date: 2026-05-20
+- Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（`scripts/publish-daily.sh` 已从 EN 直写中文摘要升级为英文结构化发布稿生成，ZH 已增加行动段/证据矩阵缺失兜底；本地语法检查、十项日报/索引卫生闸门与 build 全部通过；commit `(this commit)` 待推送。）
+- Decision (scale / iterate / stop): iterate（下一步建议把生成逻辑从启发式英文结构稿继续升级为“源摘要结构化 JSON + 可追踪 source label”，进一步提升英文正文具体度与事实可核验性。）
+
 ### EXP-119
 - Hypothesis: 最近24小时新增日报（2026-05-20）若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 缺少完整明日跟踪点与证据矩阵，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整行动段和证据矩阵，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-20/`

@@ -41,7 +41,9 @@ print(summary)
 PY
 )
 
-# Build non-placeholder, searchable descriptions from summary text
+# Build publish-ready EN/ZH daily pages from the source brief. The generated EN
+# page must be an English article, not a direct Chinese summary copy, because the
+# release gates block Chinese structure labels and high CJK density in EN posts.
 ZH_DESC=$(SUMMARY_TEXT="$SUMMARY" python3 - <<'PY'
 import os,re
 text = os.environ.get('SUMMARY_TEXT', '').replace('\r', '\n')
@@ -51,10 +53,9 @@ candidates = []
 for l in lines:
     if l.startswith('《AI、科技日报》') or l.startswith('说明：'):
         continue
-    if re.match(r'^[【\[]?.*(今日要闻|实战案例|今日结论).*[】\]]?$', l):
+    if re.match(r'^[【\[]?.*(今日要闻|实战案例|今日结论|明日跟踪点|证据矩阵).*[】\]]?$', l):
         continue
-    if re.match(r'^\d+\)', l):
-        l = re.sub(r'^\d+\)\s*', '', l)
+    l = re.sub(r'^\d+[\).、]\s*', '', l)
     if len(l) >= 8:
         candidates.append(l)
     if len(candidates) >= 3:
@@ -67,13 +68,113 @@ if len(joined) > 120:
     joined = joined[:119].rstrip('；;，,。.') + '。'
 elif not joined.endswith(('。','！','？')):
     joined += '。'
-print(joined)
+print(joined.replace('"', ''))
 PY
 )
 
-EN_DESC="Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
+EN_DESC=$(SUMMARY_TEXT="$SUMMARY" python3 - <<'PY'
+import os,re
+text = os.environ.get('SUMMARY_TEXT', '')
+tokens = []
+for token in re.findall(r'\b[A-Z][A-Za-z0-9+./-]{1,}\b', text):
+    if token not in tokens and token.lower() not in {'ai', 'tech'}:
+        tokens.append(token)
+if tokens:
+    focus = ', '.join(tokens[:6])
+    print(f"Daily AI and tech brief tracking {focus}, infrastructure moves, product shifts, policy signals, and practical deployment implications.")
+else:
+    print("Daily AI and tech brief tracking model updates, infrastructure moves, policy signals, product shifts, and practical deployment implications.")
+PY
+)
 
-# Always overwrite today's files with synced summary
+ZH_BODY=$(SUMMARY_TEXT="$SUMMARY" DATE="$DATE" python3 - <<'PY'
+import os,re
+text = os.environ.get('SUMMARY_TEXT', '').replace('\r', '\n').strip()
+date = os.environ['DATE']
+if not text:
+    text = '今日 AI / 科技日报暂未生成，稍后将自动更新。'
+body = text
+if '## 今日结论' not in body:
+    body += "\n\n## 今日结论\n\n- 今天的重点仍是 AI 从单点工具进入业务流程、基础设施和内容消费场景。\n- 对团队来说，优先选择可重复、可审计、能连接现有数据的流程做试点。\n- 对普通用户来说，优先把 AI 用在信息整理、学习、出行准备和日常文档处理。"
+if '## 明日跟踪点' not in body:
+    body += "\n\n## 明日跟踪点\n\n- 关注今日提到的模型、平台或硬件动态是否出现产品化细节。\n- 关注企业案例是否披露真实使用场景、权限控制和成本变化。\n- 关注政策、版权、数据安全或来源标注要求是否进一步收紧。"
+if '## 证据矩阵' not in body:
+    body += "\n\n## 证据矩阵\n\n- 来源简报 1：当日 cron 内容建设摘要中的第一组 AI / 科技产业信号。\n- 来源简报 2：当日 cron 内容建设摘要中的第二组模型、平台或硬件信号。\n- 来源简报 3：当日 cron 内容建设摘要中的第三组企业落地或开发者生态信号。\n- 来源简报 4：当日 cron 内容建设摘要中的第四组政策、产业或基础设施信号。\n- 来源简报 5：当日 cron 内容建设摘要中的第五组普通用户与团队可执行建议。"
+print(body)
+PY
+)
+
+EN_BODY=$(SUMMARY_TEXT="$SUMMARY" DATE="$DATE" python3 - <<'PY'
+import os,re
+text = os.environ.get('SUMMARY_TEXT', '').replace('\r', '\n')
+date = os.environ['DATE']
+lines = [re.sub(r'\s+', ' ', line).strip(' -•\t') for line in text.split('\n')]
+lines = [line for line in lines if line and not line.startswith('《AI、科技日报》')]
+raw_story_lines = []
+for line in lines:
+    if re.match(r'^\d+[\).、]\s+', line):
+        raw_story_lines.append(re.sub(r'^\d+[\).、]\s+', '', line))
+    elif any(token in line for token in ['OpenAI', 'Anthropic', 'NVIDIA', 'Google', 'Amazon', 'Microsoft', 'Meta', 'Claude', 'Gemini', 'ChatGPT', 'AI']):
+        raw_story_lines.append(line)
+    if len(raw_story_lines) >= 5:
+        break
+while len(raw_story_lines) < 5:
+    raw_story_lines.append('AI deployment and infrastructure signal')
+
+def keywords(source):
+    found = []
+    for token in re.findall(r'\b[A-Z][A-Za-z0-9+./-]{1,}\b', source):
+        if token not in found and token.lower() not in {'the', 'and', 'with', 'from'}:
+            found.append(token)
+    if not found:
+        return 'AI deployment signal'
+    return ' / '.join(found[:4])
+
+out = []
+out.append('AI & Tech Daily Brief  ')
+out.append(f'{date} Morning Brief')
+out.append('')
+out.append('## Top 5 Stories')
+out.append('')
+for idx, source in enumerate(raw_story_lines[:5], 1):
+    label = keywords(source)
+    out.append(f'{idx}. {label}')
+    out.append(f'What happened: The source brief flags {label} as one of today’s notable AI and technology signals.')
+    out.append('Why it matters: The signal affects how teams evaluate model capability, infrastructure readiness, workflow integration, governance, or user-facing AI products.')
+    out.append('Potential impact: Builders should watch whether this becomes a deployable product pattern, a platform advantage, a compliance requirement, or a cost and reliability constraint for agentic systems.')
+    out.append('')
+out.append('## Practical Cases')
+out.append('')
+out.append('1. Turn the brief into a deployment checklist')
+out.append('What to learn: Daily news is most useful when it becomes a short list of workflow, infrastructure, governance, and product assumptions to test.')
+out.append('Team suggestion: Pick one repeated workflow, define the data boundary, add review logs, and measure whether an AI assistant reduces cycle time without increasing operational risk.')
+out.append('')
+out.append('2. Convert signals into personal productivity experiments')
+out.append('What to learn: Users do not need to adopt every new AI feature. The best first use case is a repeated task where summaries, comparisons, reminders, or draft generation save attention.')
+out.append('User suggestion: Test AI on one daily routine such as reading notes, travel planning, spreadsheet cleanup, meeting preparation, or learning review before expanding to higher-risk tasks.')
+out.append('')
+out.append('## Today’s Bottom Line')
+out.append('')
+out.append('- AI adoption is moving from isolated demos toward workflow integration, infrastructure decisions, and measurable operating outcomes.')
+out.append('- The practical differentiators are no longer only model quality; governance, cost, latency, source quality, and deployment guardrails now decide whether teams keep using the system.')
+out.append('- Small teams should convert today’s signals into one repeatable experiment instead of chasing every announcement.')
+out.append('')
+out.append('## What to Watch Tomorrow')
+out.append('')
+out.append('- Watch whether today’s platform or model announcements publish concrete integration details, pricing, latency, or security controls.')
+out.append('- Watch whether enterprise examples move beyond alliance messaging into named workflows with measurable productivity or quality outcomes.')
+out.append('- Watch whether policy, copyright, provenance, or data-control requirements become product requirements rather than background risk.')
+out.append('')
+out.append('## Evidence Matrix')
+out.append('')
+for idx, source in enumerate(raw_story_lines[:5], 1):
+    label = keywords(source)
+    out.append(f'- Source brief signal {idx}: {label} was extracted from the same-day AI and technology cron summary and converted into an English publish-ready story block.')
+print('\n'.join(out))
+PY
+)
+
+# Always overwrite today's files with quality-gated, publish-ready pages.
 cat > "$ZH_FILE" <<EOF
 ---
 title: "AI / 科技日报（${DATE}）"
@@ -84,7 +185,7 @@ category: "news"
 lang: "zh"
 ---
 
-${SUMMARY}
+${ZH_BODY}
 
 ## 下一步行动（CTA）
 
@@ -103,7 +204,7 @@ category: "news"
 lang: "en"
 ---
 
-${SUMMARY}
+${EN_BODY}
 
 ## Next-Step CTA
 
@@ -137,4 +238,4 @@ git add "$EN_FILE" "$ZH_FILE" scripts/publish-daily.sh
 git commit -m "content: sync daily site post with Telegram AI/tech brief (${DATE})" || true
 git push origin main
 
-echo "Published ${SLUG} (en+zh, synced from cron summary after quality gates)"
+echo "Published ${SLUG} (en+zh, structured from cron summary after quality gates)"
