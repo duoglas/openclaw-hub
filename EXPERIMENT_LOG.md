@@ -22,7 +22,7 @@
 - Start date: 2026-05-20
 - End date: 2026-05-20
 - Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（`scripts/publish-daily.sh` 已从 EN 直写中文摘要升级为英文结构化发布稿生成，ZH 已增加行动段/证据矩阵缺失兜底；本地语法检查、十项日报/索引卫生闸门与 build 全部通过；commit `(this commit)` 待推送。）
+- Result: pass（`scripts/publish-daily.sh` 已从 EN 直写中文摘要升级为英文结构化发布稿生成，ZH 已增加行动段/证据矩阵缺失兜底；本地语法检查、十项日报/索引卫生闸门与 build 全部通过；commit `abb08f0` 已推送。）
 - Decision (scale / iterate / stop): iterate（下一步建议把生成逻辑从启发式英文结构稿继续升级为“源摘要结构化 JSON + 可追踪 source label”，进一步提升英文正文具体度与事实可核验性。）
 
 ### EXP-119
