@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-119
+- Hypothesis: 最近24小时新增日报（2026-05-20）若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 缺少完整明日跟踪点与证据矩阵，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整行动段和证据矩阵，可提升搜索可见性与核心指南导流质量。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-20/`
+- Change: 将 EN `openclaw-daily-2026-05-20.md` 从中文正文回补为完整英文日报，覆盖 Anthropic + KPMG 全球联盟、NVIDIA + Google Cloud 开发者生态、Amazon Alexa+ 生成播客、NVIDIA Vera CPU 交付、上海太空算力布局；将 EN/ZH description 升级为可检索摘要；补全 EN/ZH 今日结论、明日跟踪点和证据矩阵，保持 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 不回退。
+- Start date: 2026-05-20
+- End date: 2026-05-20
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，行动段与证据矩阵无省略号截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-20.md` 已完成语言一致性、description 可检索化、行动段补全与证据矩阵补全；本地十项日报/索引卫生闸门 + build 全部通过；commit `0f7ea86` 待提交推送。）
+- Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 英文语言一致性 + 行动段完整性 + 证据矩阵完整性 + 发现面/相关文章闸门 + build”闭环；下一步建议把发布脚本生成阶段进一步强化为默认产出完整英文实稿和证据矩阵，减少发布后回补。）
+
 ### EXP-118
 - Hypothesis: 最近24小时新增日报连续出现英文页语言回归、description 泛化、行动段/证据矩阵截断等发布后返工；若 `publish-daily.sh` 在 commit/push 前强制运行完整日报质量闸门，可在源头阻断低质量日报进入主分支，减少首日索引窗口损耗与人工回补频率。
 - Scope: `scripts/publish-daily.sh`
@@ -22,7 +32,7 @@
 - Start date: 2026-05-19
 - End date: 2026-05-19
 - Success metric: `pnpm build` 通过；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness`、`pnpm check:latest-daily-surface`、`pnpm check:daily-related-posts`、`pnpm check:daily-evidence-matrix`、`pnpm check:daily-en-language`、`pnpm check:daily-action-sections`、`pnpm check:duplicate-slug-id` 全部通过；发布脚本在 commit/push 前执行完整闸门。
-- Result: pass（`scripts/publish-daily.sh` 已接入完整日报质量闸门；本地 build + 十项日报/索引卫生闸门全部通过；commit `(this commit)` 待提交推送。）
+- Result: pass（`scripts/publish-daily.sh` 已接入完整日报质量闸门；本地 build + 十项日报/索引卫生闸门全部通过；commit `0f7ea86` 已提交，待推送。）
 - Decision (scale / iterate / stop): iterate（下一步继续把发布脚本的 EN 生成从“中文摘要直写”升级为结构化英文实稿生成，同时默认输出 Evidence Matrix 与行动段，进一步减少被闸门阻断后的人工返工。）
 
 ### EXP-117

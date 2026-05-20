@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-19 17:20
+Last updated: 2026-05-20 11:23
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-119: 回补 2026-05-20 双语日报质量缺口（EN 从中文正文改为完整英文实稿 + EN/ZH description 可检索化 + 行动段/证据矩阵补全），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `0f7ea86`
+  - Hypothesis: 最近24小时新增日报若英文页仍为中文正文、EN description 仍为通用模板、ZH description 仍为正文截断摘要，且 EN/ZH 缺少完整明日跟踪点与证据矩阵，会削弱首日索引窗口期的语言匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索摘要、完整行动段和证据矩阵，可提升搜索可见性与核心指南导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-20.md` 从中文正文回补为完整英文 Top 5、案例、结论、跟踪点与证据矩阵；2) EN/ZH description 升级为可检索摘要；3) EN/ZH 今日结论/明日跟踪点均至少 3 条 bullet 且无省略号截断；4) EN/ZH 证据矩阵补全为至少 5 条来源明细；5) 保持 3 条强相关 CTA 内链不回退；6) 本地十项日报/索引卫生闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-118: 将最近24小时日报发布脚本接入完整日报质量闸门（build + template/date/CTA/fresh/surface/related/evidence/EN language/action/duplicate），消费 EXP-117 “发布脚本默认生成证据矩阵和英文实稿、减少发布后返工”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报连续出现英文页语言回归、description 泛化、行动段/证据矩阵截断等发布后返工；若 `publish-daily.sh` 在 commit/push 前强制运行完整日报质量闸门，可在源头阻断低质量日报进入主分支，减少首日索引窗口损耗与人工回补频率。
   - Metrics: `pnpm build` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；发布脚本在 `git commit`/`git push` 前串行执行上述闸门。
