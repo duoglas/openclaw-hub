@@ -22,7 +22,7 @@
 - Start date: 2026-05-20
 - End date: 2026-05-20
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，行动段与证据矩阵无省略号截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-20.md` 已完成语言一致性、description 可检索化、行动段补全与证据矩阵补全；本地十项日报/索引卫生闸门 + build 全部通过；commit `0f7ea86` 待提交推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-20.md` 已完成语言一致性、description 可检索化、行动段补全与证据矩阵补全；本地十项日报/索引卫生闸门 + build 全部通过；commit `6669dea` 待提交推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 英文语言一致性 + 行动段完整性 + 证据矩阵完整性 + 发现面/相关文章闸门 + build”闭环；下一步建议把发布脚本生成阶段进一步强化为默认产出完整英文实稿和证据矩阵，减少发布后回补。）
 
 ### EXP-118
@@ -32,7 +32,7 @@
 - Start date: 2026-05-19
 - End date: 2026-05-19
 - Success metric: `pnpm build` 通过；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness`、`pnpm check:latest-daily-surface`、`pnpm check:daily-related-posts`、`pnpm check:daily-evidence-matrix`、`pnpm check:daily-en-language`、`pnpm check:daily-action-sections`、`pnpm check:duplicate-slug-id` 全部通过；发布脚本在 commit/push 前执行完整闸门。
-- Result: pass（`scripts/publish-daily.sh` 已接入完整日报质量闸门；本地 build + 十项日报/索引卫生闸门全部通过；commit `0f7ea86` 已提交，待推送。）
+- Result: pass（`scripts/publish-daily.sh` 已接入完整日报质量闸门；本地 build + 十项日报/索引卫生闸门全部通过；commit `6669dea` 已提交，待推送。）
 - Decision (scale / iterate / stop): iterate（下一步继续把发布脚本的 EN 生成从“中文摘要直写”升级为结构化英文实稿生成，同时默认输出 Evidence Matrix 与行动段，进一步减少被闸门阻断后的人工返工。）
 
 ### EXP-117
