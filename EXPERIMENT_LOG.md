@@ -22,7 +22,7 @@
 - Start date: 2026-05-21
 - End date: 2026-05-21
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 `1. AI` 泛化故事块，ZH description 不再含 Markdown 标题残留，EN/ZH 证据矩阵均为具体来源明细。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-21.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-21.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `bdb1a69` 已推送。）
 - Decision (scale / iterate / stop): iterate（下一步建议把发布脚本的 story extraction 从大写 token 启发式升级为按 `### N.` / `发生了什么` / `为什么重要` / `可能影响` 结构解析，避免 EN 再生成 `AI` 泛化标题和泛化证据。）
 
 ### EXP-120
