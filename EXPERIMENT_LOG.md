@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-121
+- Hypothesis: 最近24小时新增日报（2026-05-21）若 EN 页面虽然通过语言闸门但 Top 5 仍为 `AI` 泛化占位、ZH description 仍含 Markdown 标题残留，且 EN/ZH 证据矩阵只写“来源简报”泛标签，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文实稿、可检索 ZH 摘要和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-21/`
+- Change: 将 EN `openclaw-daily-2026-05-21.md` 从启发式泛化故事块回补为完整英文日报，覆盖 Anthropic + KPMG 全球联盟、Anthropic 前沿 AI 价值观外部对话、NVIDIA + Google Cloud 开发者生态、Amazon Alexa+ 生成播客、中国 AI 相关硬件与终端收入增长，并补充电气装备垂类大模型与 ChatGPT 个人财务入口实战案例；将 ZH description 去除 Markdown 标题残留并升级为可检索摘要；将 EN/ZH 证据矩阵从泛化来源标签改为 5 条具体来源明细，保持 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 不回退。
+- Start date: 2026-05-21
+- End date: 2026-05-21
+- Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 `1. AI` 泛化故事块，ZH description 不再含 Markdown 标题残留，EN/ZH 证据矩阵均为具体来源明细。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-21.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
+- Decision (scale / iterate / stop): iterate（下一步建议把发布脚本的 story extraction 从大写 token 启发式升级为按 `### N.` / `发生了什么` / `为什么重要` / `可能影响` 结构解析，避免 EN 再生成 `AI` 泛化标题和泛化证据。）
+
 ### EXP-120
 - Hypothesis: 当前 `publish-daily.sh` 虽已在 commit/push 前运行完整日报闸门，但 EN 页面仍直接写入 cron 中文摘要，导致发布阶段必然被英文语言、行动段或证据矩阵闸门拦截；若在脚本生成阶段直接产出英文结构化日报、可检索 EN description，并为 ZH 自动补齐今日结论、明日跟踪点和证据矩阵兜底，可减少发布后返工与首日索引窗口损耗。
 - Scope: `scripts/publish-daily.sh`

@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-21）"
-description: "# AI、科技日报；2026-05-21 07:30｜北京时区；### 1. Anthropic 与 KPMG 达成全球联盟，Claude 将覆盖 27.6 万+员工。"
+description: "Anthropic 与 KPMG 推动 Claude 覆盖 27.6 万员工，NVIDIA 与 Google Cloud 扩大开发者生态，Alexa+ 生成播客，中国 AI 硬件收入增长，垂类大模型进入制造场景。"
 pubDate: 2026-05-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -65,11 +65,11 @@ OpenAI Help Center 版本说明显示，ChatGPT 已开始向美国 Pro 用户推
 
 ## 证据矩阵
 
-- 来源简报 1：当日 cron 内容建设摘要中的第一组 AI / 科技产业信号。
-- 来源简报 2：当日 cron 内容建设摘要中的第二组模型、平台或硬件信号。
-- 来源简报 3：当日 cron 内容建设摘要中的第三组企业落地或开发者生态信号。
-- 来源简报 4：当日 cron 内容建设摘要中的第四组政策、产业或基础设施信号。
-- 来源简报 5：当日 cron 内容建设摘要中的第五组普通用户与团队可执行建议。
+- 来源简报 1：Anthropic 关于 KPMG 全球联盟与 Claude 覆盖 27.6 万+员工的官方信息。
+- 来源简报 2：Anthropic 关于前沿 AI 价值观、模型行为和外部伦理对话的文章。
+- 来源简报 3：NVIDIA 关于 Google Cloud 开发者社区、JAX on NVIDIA GPU、Dynamo 推理优化、Gemma / Nemotron 多智能体学习路径的更新。
+- 来源简报 4：Amazon 关于 Alexa+ 按需生成播客、AP / Reuters / Washington Post / TIME 等内容来源的产品说明。
+- 来源简报 5：新华网 / 科技日报转引国家税务总局发票数据，对 AI 相关材料、芯片、智能车载设备和机器人收入增长的报道。
 
 ## 下一步行动（CTA）
 

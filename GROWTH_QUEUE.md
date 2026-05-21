@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-121: 回补 2026-05-21 双语日报质量缺口（EN 从启发式泛化块改为完整英文实稿 + ZH description 去标题残留 + EN/ZH 证据矩阵具体化），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报若 EN 页面虽然通过语言闸门但 Top 5 仍为 `AI` 泛化占位、ZH description 仍含 Markdown 标题残留，且 EN/ZH 证据矩阵只写“来源简报”泛标签，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文实稿、可检索 ZH 摘要和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-21.md` 从 `AI`/泛化 source brief 块回补为覆盖 Anthropic + KPMG、Anthropic AI values、NVIDIA + Google Cloud、Alexa+、中国 AI 硬件增长的完整英文日报；2) ZH description 去除 `#`/`###`/日期标题残留并升级为可检索摘要；3) EN/ZH 证据矩阵补全为 5 条具体来源明细；4) 保持 3 条强相关 CTA 内链不回退；5) 本地十项日报/索引卫生闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-120: 将日报发布脚本从“EN 直写中文摘要”升级为英文结构化发布稿生成，并为 ZH 自动补齐行动段/证据矩阵兜底，消费 EXP-118 后续“发布脚本默认生成完整英文实稿和证据矩阵”假设 | ICE 8x8x7=448 — commit `abb08f0`
   - Hypothesis: 当前 `publish-daily.sh` 虽已在 commit/push 前运行完整日报闸门，但 EN 页面仍直接写入 cron 中文摘要，导致发布阶段必然被英文语言、行动段或证据矩阵闸门拦截；若在脚本生成阶段直接产出英文结构化日报、可检索 EN description，并为 ZH 自动补齐今日结论、明日跟踪点和证据矩阵兜底，可减少发布后返工与首日索引窗口损耗。
   - Metrics: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
