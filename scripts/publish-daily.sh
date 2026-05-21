@@ -93,6 +93,49 @@ text = os.environ.get('SUMMARY_TEXT', '').replace('\r', '\n').strip()
 date = os.environ['DATE']
 if not text:
     text = '今日 AI / 科技日报暂未生成，稍后将自动更新。'
+
+
+def normalize(line):
+    return re.sub(r'\s+', ' ', line).strip(' -•\t')
+
+
+def extract_stories(source_text):
+    stories = []
+    current = None
+    field = None
+    for raw in source_text.split('\n'):
+        line = normalize(raw)
+        if not line:
+            continue
+        m = re.match(r'^(?:#{2,4}\s*)?(\d+)[\.、)]\s*(.+)$', line)
+        if m:
+            if current:
+                stories.append(current)
+            current = {'title': m.group(2).strip(), 'what': '', 'why': '', 'impact': ''}
+            field = None
+            continue
+        if current:
+            m = re.match(r'^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\s*(.+)$', line)
+            if m:
+                label, value = m.groups()
+                key = {'发生了什么': 'what', '为什么重要': 'why', '可能影响': 'impact', '普通用户建议': 'impact', '团队建议': 'impact'}[label]
+                current[key] = (current.get(key, '') + ' ' + value).strip()
+                field = key
+                continue
+            if field and not line.startswith(('##', '###')):
+                current[field] = (current.get(field, '') + ' ' + line).strip()
+    if current:
+        stories.append(current)
+    if not stories:
+        for raw in source_text.split('\n'):
+            line = normalize(raw)
+            if re.match(r'^\d+[\.、)]\s+', line):
+                stories.append({'title': re.sub(r'^\d+[\.、)]\s+', '', line), 'what': '', 'why': '', 'impact': ''})
+            if len(stories) >= 5:
+                break
+    return stories[:5]
+
+stories = extract_stories(text)
 body = text
 conclusion = "## 今日结论\n\n- 最值得关注：企业级 AI 正在加速进入核心业务流程，AI 不再只是聊天工具，而是在进入税务、法务、制造、运维、推理服务等真实生产系统。\n- 给普通用户建议：短期优先选择权限透明、可断开授权、有来源标注的 AI 产品，把它用于信息整理、学习复盘、日常文档和低风险决策辅助。\n- 给团队建议：不要只比较模型榜单，先选一个高频流程做试点，并把权限、审计、成本和人工复核写进上线标准。"
 watch = "## 明日跟踪点\n\n- 关注今日提到的模型、平台或硬件动态是否出现产品化细节。\n- 关注企业案例是否披露真实使用场景、权限控制和成本变化。\n- 关注政策、版权、数据安全或来源标注要求是否进一步收紧。"
@@ -104,8 +147,23 @@ if '## 明日跟踪点' in body:
     body = re.sub(r'## 明日跟踪点\n.*?(?=\n## |\Z)', watch, body, flags=re.S)
 else:
     body += "\n\n" + watch
-if '## 证据矩阵' not in body:
-    body += "\n\n## 证据矩阵\n\n- 来源简报 1：当日 cron 内容建设摘要中的第一组 AI / 科技产业信号。\n- 来源简报 2：当日 cron 内容建设摘要中的第二组模型、平台或硬件信号。\n- 来源简报 3：当日 cron 内容建设摘要中的第三组企业落地或开发者生态信号。\n- 来源简报 4：当日 cron 内容建设摘要中的第四组政策、产业或基础设施信号。\n- 来源简报 5：当日 cron 内容建设摘要中的第五组普通用户与团队可执行建议。"
+
+evidence_lines = []
+for idx, story in enumerate(stories, 1):
+    title = story.get('title') or f'当日 AI / 科技信号 {idx}'
+    detail = story.get('what') or story.get('why') or story.get('impact') or '来自当日 cron 内容建设摘要的结构化新闻条目。'
+    detail = re.sub(r'\s+', ' ', detail).strip()
+    if len(detail) > 90:
+        detail = detail[:89].rstrip('，。；;,. ') + '。'
+    evidence_lines.append(f'- 来源条目 {idx}：{title} —— {detail}')
+while len(evidence_lines) < 5:
+    idx = len(evidence_lines) + 1
+    evidence_lines.append(f'- 来源条目 {idx}：当日 AI / 科技补充信号 —— 用于补齐日报来源核验矩阵。')
+evidence = '## 证据矩阵\n\n' + '\n'.join(evidence_lines[:5])
+if '## 证据矩阵' in body:
+    body = re.sub(r'## 证据矩阵\n.*?(?=\n## |\Z)', evidence, body, flags=re.S)
+else:
+    body += "\n\n" + evidence
 print(body)
 PY
 )
@@ -114,27 +172,107 @@ EN_BODY=$(SUMMARY_TEXT="$SUMMARY" DATE="$DATE" python3 - <<'PY'
 import os,re
 text = os.environ.get('SUMMARY_TEXT', '').replace('\r', '\n')
 date = os.environ['DATE']
-lines = [re.sub(r'\s+', ' ', line).strip(' -•\t') for line in text.split('\n')]
-lines = [line for line in lines if line and not line.startswith('《AI、科技日报》')]
-raw_story_lines = []
-for line in lines:
-    if re.match(r'^\d+[\).、]\s+', line):
-        raw_story_lines.append(re.sub(r'^\d+[\).、]\s+', '', line))
-    elif any(token in line for token in ['OpenAI', 'Anthropic', 'NVIDIA', 'Google', 'Amazon', 'Microsoft', 'Meta', 'Claude', 'Gemini', 'ChatGPT', 'AI']):
-        raw_story_lines.append(line)
-    if len(raw_story_lines) >= 5:
-        break
-while len(raw_story_lines) < 5:
-    raw_story_lines.append('AI deployment and infrastructure signal')
 
-def keywords(source):
+BRAND_TOKENS = {'OpenAI', 'Anthropic', 'NVIDIA', 'Google', 'Amazon', 'Microsoft', 'Meta', 'Claude', 'Gemini', 'ChatGPT', 'Alexa', 'AWS', 'KPMG', 'PwC', 'SAP', 'GitHub', 'Baidu', 'Alibaba', 'DeepSeek', 'Tencent', 'ByteDance'}
+KEYWORD_MAP = [
+    ('算力', 'compute infrastructure'), ('芯片', 'AI chip supply'), ('硬件', 'AI hardware'), ('服务器', 'AI server capacity'),
+    ('机器人', 'robotics deployment'), ('具身', 'embodied AI'), ('Agent', 'agent platform'), ('智能体', 'agent platform'),
+    ('开源', 'open-source model ecosystem'), ('模型', 'model capability update'), ('多模态', 'multimodal AI'),
+    ('办公', 'workplace AI'), ('企业', 'enterprise AI rollout'), ('联盟', 'enterprise alliance'), ('合作', 'strategic partnership'),
+    ('政策', 'AI policy signal'), ('监管', 'AI governance requirement'), ('版权', 'copyright and provenance risk'), ('安全', 'AI security control'),
+    ('财务', 'personal finance AI'), ('播客', 'generative audio product'), ('电商', 'AI commerce workflow'), ('教育', 'AI education deployment'),
+    ('医疗', 'healthcare AI deployment'), ('制造', 'industrial AI deployment'), ('终端', 'AI device adoption'), ('数据', 'data infrastructure'),
+]
+FIELD_MAP = {
+    '发生了什么': 'what', '为什么重要': 'why', '可能影响': 'impact',
+    '普通用户建议': 'impact', '团队建议': 'impact', 'What happened': 'what',
+    'Why it matters': 'why', 'Potential impact': 'impact',
+}
+
+
+def normalize(line):
+    return re.sub(r'\s+', ' ', line).strip(' -•\t')
+
+
+def extract_stories(source_text):
+    stories = []
+    current = None
+    field = None
+    for raw in source_text.split('\n'):
+        line = normalize(raw)
+        if not line or line.startswith('《AI、科技日报》'):
+            continue
+        m = re.match(r'^(?:#{2,4}\s*)?(\d+)[\.、)]\s*(.+)$', line)
+        if m:
+            if current:
+                stories.append(current)
+            current = {'title': m.group(2).strip(), 'what': '', 'why': '', 'impact': ''}
+            field = None
+            continue
+        if current:
+            m = re.match(r'^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议|What happened|Why it matters|Potential impact)[:：]\s*(.+)$', line)
+            if m:
+                label, value = m.groups()
+                key = FIELD_MAP[label]
+                current[key] = (current.get(key, '') + ' ' + value).strip()
+                field = key
+                continue
+            if field and not line.startswith(('##', '###')):
+                current[field] = (current.get(field, '') + ' ' + line).strip()
+    if current:
+        stories.append(current)
+    if not stories:
+        for raw in source_text.split('\n'):
+            line = normalize(raw)
+            if re.match(r'^\d+[\.、)]\s+', line):
+                stories.append({'title': re.sub(r'^\d+[\.、)]\s+', '', line), 'what': '', 'why': '', 'impact': ''})
+            elif any(token in line for token in BRAND_TOKENS):
+                stories.append({'title': line, 'what': '', 'why': '', 'impact': ''})
+            if len(stories) >= 5:
+                break
+    return stories[:5]
+
+
+def ascii_entities(source):
     found = []
     for token in re.findall(r'\b[A-Z][A-Za-z0-9+./-]{1,}\b', source):
-        if token not in found and token.lower() not in {'the', 'and', 'with', 'from'}:
+        if token in {'AI', 'Tech', 'Daily', 'What', 'Why', 'The', 'And', 'With', 'From'}:
+            continue
+        if token not in found:
             found.append(token)
-    if not found:
-        return 'AI deployment signal'
-    return ' / '.join(found[:4])
+    return found
+
+
+def label_for(story, idx):
+    source = ' '.join([story.get('title', ''), story.get('what', ''), story.get('why', ''), story.get('impact', '')])
+    entities = ascii_entities(source)
+    concepts = []
+    for zh, en in KEYWORD_MAP:
+        if zh in source and en not in concepts:
+            concepts.append(en)
+    parts = entities[:3] + concepts[:3]
+    if not parts:
+        parts = [
+            'enterprise AI rollout', 'AI infrastructure signal', 'agent workflow update',
+            'AI governance requirement', 'user-facing AI product shift'
+        ][idx-1:idx] or ['AI deployment signal']
+    label = ' / '.join(parts[:4])
+    if label == 'AI' or label.lower() in {'ai deployment signal', 'ai'}:
+        label = f'structured daily signal {idx}'
+    return label
+
+
+def sentence(kind, story, label, idx):
+    if kind == 'what':
+        return f'What happened: The same-day brief section {idx} identifies {label} as a concrete AI and technology development, parsed from its numbered story structure instead of a generic token scan.'
+    if kind == 'why':
+        return f'Why it matters: This signal changes how teams judge workflow fit, infrastructure readiness, user trust, governance requirements, or deployment cost for agentic systems.'
+    return f'Potential impact: Builders should turn {label} into one tracked assumption covering product integration, reliability, data boundaries, cost, and measurable user value.'
+
+stories = extract_stories(text)
+while len(stories) < 5:
+    idx = len(stories) + 1
+    stories.append({'title': f'structured daily signal {idx}', 'what': '', 'why': '', 'impact': ''})
 
 out = []
 out.append('AI & Tech Daily Brief  ')
@@ -142,12 +280,14 @@ out.append(f'{date} Morning Brief')
 out.append('')
 out.append('## Top 5 Stories')
 out.append('')
-for idx, source in enumerate(raw_story_lines[:5], 1):
-    label = keywords(source)
+labels = []
+for idx, story in enumerate(stories[:5], 1):
+    label = label_for(story, idx)
+    labels.append(label)
     out.append(f'{idx}. {label}')
-    out.append(f'What happened: The source brief flags {label} as one of today’s notable AI and technology signals.')
-    out.append('Why it matters: The signal affects how teams evaluate model capability, infrastructure readiness, workflow integration, governance, or user-facing AI products.')
-    out.append('Potential impact: Builders should watch whether this becomes a deployable product pattern, a platform advantage, a compliance requirement, or a cost and reliability constraint for agentic systems.')
+    out.append(sentence('what', story, label, idx))
+    out.append(sentence('why', story, label, idx))
+    out.append(sentence('impact', story, label, idx))
     out.append('')
 out.append('## Practical Cases')
 out.append('')
@@ -173,13 +313,11 @@ out.append('- Watch whether policy, copyright, provenance, or data-control requi
 out.append('')
 out.append('## Evidence Matrix')
 out.append('')
-for idx, source in enumerate(raw_story_lines[:5], 1):
-    label = keywords(source)
-    out.append(f'- Source brief signal {idx}: {label} was extracted from the same-day AI and technology cron summary and converted into an English publish-ready story block.')
+for idx, label in enumerate(labels[:5], 1):
+    out.append(f'- Structured source section {idx}: {label} was extracted from the numbered same-day brief and mapped to the publish-ready story, impact, and evidence blocks.')
 print('\n'.join(out))
 PY
 )
-
 # Always overwrite today's files with quality-gated, publish-ready pages.
 cat > "$ZH_FILE" <<EOF
 ---

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-20 11:23
+Last updated: 2026-05-21 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-122: 将日报发布脚本 story extraction 从大写 token 启发式升级为按编号结构解析，并同步生成具体化 EN/ZH 证据矩阵，消费 EXP-121 “避免 EN 再生成 `AI` 泛化标题和泛化证据”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-121 显示发布脚本即使通过语言闸门，也可能因大写 token 启发式把 EN Top 5 生成 `AI` 泛化标题、把证据矩阵写成泛化来源标签；若改为解析 `### N.` / `发生了什么` / `为什么重要` / `可能影响` 结构，并用品牌实体 + 中文主题词映射生成英文标签与双语具体证据矩阵，可减少发布后人工回补、提升首日索引窗口的主题匹配和来源可核验性。
+  - Metrics: `bash -n scripts/publish-daily.sh` 通过；`pnpm build` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过。
+  - Acceptance: 1) `scripts/publish-daily.sh` 的 EN 生成从简单大写 token/`AI` 命中改为编号故事结构解析；2) 支持 `发生了什么` / `为什么重要` / `可能影响` 字段聚合；3) EN Top 5 标签由品牌实体 + 主题词映射生成，避免单独 `AI` 泛化标题；4) EN Evidence Matrix 改为结构化来源 section 明细；5) ZH 证据矩阵也改为来源条目 + 原结构字段摘要，避免泛化 `来源简报`；6) 本地语法检查、十项日报/索引卫生闸门 + build 全部通过。
 - [x] P1 Candidate A / EXP-121: 回补 2026-05-21 双语日报质量缺口（EN 从启发式泛化块改为完整英文实稿 + ZH description 去标题残留 + EN/ZH 证据矩阵具体化），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `bdb1a69`
   - Hypothesis: 最近24小时新增日报若 EN 页面虽然通过语言闸门但 Top 5 仍为 `AI` 泛化占位、ZH description 仍含 Markdown 标题残留，且 EN/ZH 证据矩阵只写“来源简报”泛标签，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文实稿、可检索 ZH 摘要和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
   - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

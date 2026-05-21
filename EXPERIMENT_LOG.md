@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-122
+- Hypothesis: EXP-121 显示最近24小时日报发布链路即使通过语言闸门，也可能因 `publish-daily.sh` 使用大写 token 启发式，把 EN Top 5 生成 `AI` 泛化标题、把 EN/ZH 证据矩阵写成泛化来源标签；若发布脚本改为解析 `### N.` / `发生了什么` / `为什么重要` / `可能影响` 的编号故事结构，并用品牌实体 + 中文主题词映射生成英文标签与双语具体证据矩阵，可减少发布后人工回补、提升首日索引窗口的主题匹配、摘要一致性与来源可核验性。
+- Scope: `scripts/publish-daily.sh`
+- Change: 为 ZH/EN 发布稿生成增加结构化故事解析器；ZH 证据矩阵从固定 `来源简报 1-5` 改为基于来源条目的标题与结构字段摘要；EN 生成从单纯扫描 `OpenAI/Anthropic/.../AI` 行与大写 token 改为解析编号 story、字段聚合、品牌实体提取与中文主题词映射，Top 5 与 Evidence Matrix 使用具体 source section 标签，避免单独 `AI` 泛化标题和泛化 evidence。
+- Start date: 2026-05-21
+- End date: 2026-05-21
+- Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm build` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；脚本不再依赖单一 `AI` token 生成 story label。
+- Result: pass（`scripts/publish-daily.sh` 已完成结构化 story extraction、EN label 主题映射和 EN/ZH 具体证据矩阵生成升级；本地语法检查、十项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
+- Decision (scale / iterate / stop): iterate（下一步建议把结构化解析器抽成独立可单测脚本，并增加 fixture 覆盖“纯中文标题 + 品牌实体 + 无编号 fallback”三类摘要，进一步降低发布窗口回归风险。）
+
 ### EXP-121
 - Hypothesis: 最近24小时新增日报（2026-05-21）若 EN 页面虽然通过语言闸门但 Top 5 仍为 `AI` 泛化占位、ZH description 仍含 Markdown 标题残留，且 EN/ZH 证据矩阵只写“来源简报”泛标签，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文实稿、可检索 ZH 摘要和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-21/`
