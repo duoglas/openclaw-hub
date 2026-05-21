@@ -22,7 +22,7 @@
 - Start date: 2026-05-21
 - End date: 2026-05-21
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 `1. AI` 泛化故事块，ZH description 不再含 Markdown 标题残留，EN/ZH 证据矩阵均为具体来源明细。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-21.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `bdb1a69` 待提交推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-21.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): iterate（下一步建议把发布脚本的 story extraction 从大写 token 启发式升级为按 `### N.` / `发生了什么` / `为什么重要` / `可能影响` 结构解析，避免 EN 再生成 `AI` 泛化标题和泛化证据。）
 
 ### EXP-120
@@ -72,7 +72,7 @@
 - Start date: 2026-05-18
 - End date: 2026-05-18
 - Success metric: `pnpm check:daily-action-sections` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily action sections completeness check。
-- Result: pass（已新增最新日报行动段完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、英文语言、duplicate precheck 与 build 全部通过；commit `bdb1a69` 待提交推送。）
+- Result: pass（已新增最新日报行动段完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、英文语言、duplicate precheck 与 build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时日报发布质量基线；下一步可按发布窗口把 `LATEST_COUNT` 扩展到最近 2 篇，或把行动段质量进一步纳入内容评分。）
 
 ### EXP-115
@@ -92,7 +92,7 @@
 - Start date: 2026-05-17
 - End date: 2026-05-17
 - Success metric: `pnpm check:daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily English language consistency check。
-- Result: pass（已新增最新英文日报语言一致性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、duplicate precheck 与 build 全部通过；commit `bdb1a69` 待提交推送。）
+- Result: pass（已新增最新英文日报语言一致性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、duplicate precheck 与 build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时英文日报发布质量基线；下一步可根据误报情况扩展为最近 2 篇或加入更多中文模板标签。）
 
 ### EXP-113
@@ -132,7 +132,7 @@
 - Start date: 2026-05-15
 - End date: 2026-05-15
 - Success metric: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；EN/ZH 最新日报构建页均含 `data-growth-surface="related-posts"`、`blog_related_posts_render` 与 3 条非自身相关文章链接。
-- Result: pass（已修复 EN/ZH 文章页 relatedPosts 传参断点；最新双语日报构建页均渲染 3 条非自身相关文章链接与 `blog_related_posts_render`；本地 build、最新日报发现面、相关文章增长闸门与日报质量闸门全部通过；commit `bdb1a69` 待提交推送。）
+- Result: pass（已修复 EN/ZH 文章页 relatedPosts 传参断点；最新双语日报构建页均渲染 3 条非自身相关文章链接与 `blog_related_posts_render`；本地 build、最新日报发现面、相关文章增长闸门与日报质量闸门全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最新日报发布后的站内连续阅读基线；后续观察 `blog_related_posts_render` 与相关文章点击，若数据有效再加入点击事件分型。）
 
 ### EXP-109
@@ -142,7 +142,7 @@
 - Start date: 2026-05-15
 - End date: 2026-05-15
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-15.md` 已完成语言一致性、description 可检索化与正文补全；本地五项闸门 + build 全部通过；commit `bdb1a69` 待提交推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-15.md` 已完成语言一致性、description 可检索化与正文补全；本地五项闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 发现面一致性 + build”闭环。）
 
 ### EXP-108
@@ -152,7 +152,7 @@
 - Start date: 2026-05-14
 - End date: 2026-05-14
 - Success metric: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；EN/ZH 最新日报发现入口全部指向 `/en|zh/blog/openclaw-daily-2026-05-14/`；RSS 首项为最新日报；CI 出现 Latest daily surface alignment check。
-- Result: pass（已新增最新日报发现面一致性闸门，并验证 EN/ZH 首页、日报归档页、RSS 首项与 sitemap 均对齐 2026-05-14 最新日报；本地 build + `pnpm check:latest-daily-surface` 通过；commit `bdb1a69` 待提交推送。）
+- Result: pass（已新增最新日报发现面一致性闸门，并验证 EN/ZH 首页、日报归档页、RSS 首项与 sitemap 均对齐 2026-05-14 最新日报；本地 build + `pnpm check:latest-daily-surface` 通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（后续每次新增日报后自动阻断首页/RSS/sitemap 未同步最新日报的回归，继续观察 `home_latest_daily_click` 与 `daily_index_click` 对最新日报打开率的贡献。）
 
 ### EXP-107
@@ -162,7 +162,7 @@
 - Start date: 2026-05-14
 - End date: 2026-05-14
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-14.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `bdb1a69` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-14.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-106
@@ -172,7 +172,7 @@
 - Start date: 2026-05-13
 - End date: 2026-05-13
 - Success metric: `pnpm build` 通过；`pnpm check:daily-index-growth` 通过；`pnpm check:rss-autodiscovery` 通过；`pnpm check:website-schema` 通过；EN/ZH daily index 构建产物含 latest/RSS CTA、增长事件、ItemList JSON-LD，并链接最新 2026-05-13 日报。
-- Result: pass（EN/ZH `/daily/` 已新增最新日报 hero、RSS CTA、`daily_index_latest_render`/`daily_index_click` 事件与 ItemList JSON-LD；新增专项检查并接入 CI；本地 build + daily-index-growth + RSS autodiscovery + Website schema 全部通过；commit `bdb1a69` 已推送。）
+- Result: pass（EN/ZH `/daily/` 已新增最新日报 hero、RSS CTA、`daily_index_latest_render`/`daily_index_click` 事件与 ItemList JSON-LD；新增专项检查并接入 CI；本地 build + daily-index-growth + RSS autodiscovery + Website schema 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（上线后观察 `daily_index_click` 的 latest/rss/archive 分布；若 latest 点击占比高，可把日报归档页进一步扩展为主题筛选与连续阅读漏斗。）
 
 ### EXP-105
@@ -182,7 +182,7 @@
 - Start date: 2026-05-13
 - End date: 2026-05-13
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-13.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `bdb1a69` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-13.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-104
@@ -192,7 +192,7 @@
 - Start date: 2026-05-12
 - End date: 2026-05-12
 - Success metric: `pnpm build` 通过；`dist/en/index.html` 与 `dist/zh/index.html` 含 `home_latest_daily_render` / `home_latest_daily_click`；Spotlight 链接指向最新 2026-05-12 双语日报；四项日报闸门继续通过。
-- Result: pass（已新增双语最新日报 Spotlight，并验证 EN/ZH 构建产物含最新日报链接、render/click 事件、RSS 与连续阅读入口；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过；commit `bdb1a69` 已推送。）
+- Result: pass（已新增双语最新日报 Spotlight，并验证 EN/ZH 构建产物含最新日报链接、render/click 事件、RSS 与连续阅读入口；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（上线后观察 `home_latest_daily_click` 中 `daily-latest`、`daily-rss`、`daily-list` 分布；若点击集中在最新日报，可进一步把日报主题内链与首页推荐位联动。）
 
 ### EXP-103
@@ -202,7 +202,7 @@
 - Start date: 2026-05-12
 - End date: 2026-05-12
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面不再含通用模板正文，EN/ZH description 均为具体可检索摘要。
-- Result: pass（`src/content/blog/en/openclaw-daily-2026-05-12.md` 已完成完整英文实稿回补；`src/content/blog/en|zh/openclaw-daily-2026-05-12.md` description 已可检索化；本地四项闸门 + build 全部通过；commit `bdb1a69` 已推送。）
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-05-12.md` 已完成完整英文实稿回补；`src/content/blog/en|zh/openclaw-daily-2026-05-12.md` description 已可检索化；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-102
@@ -252,7 +252,7 @@
 - Start date: 2026-04-27
 - End date: 2026-04-27
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-03-30/` 不再出现“最关键信…”截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-30.md` 已完成“今日结论”补全与“明日跟踪点”新增；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `bdb1a69` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-30.md` 已完成“今日结论”补全与“明日跟踪点”新增；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设延续假设，固定执行“发布后完整性扫描（截断/缺段）+ 当日回补 + 三闸门+build”闭环。）
 
 ### EXP-097
@@ -333,7 +333,7 @@
 - Start date: 2026-04-21
 - End date: 2026-04-21
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；ZH 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/zh/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `bdb1a69` 已推送至 `origin/publish-daily-2026-04-21`。）
+- Result: pass（`src/content/blog/zh/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/publish-daily-2026-04-21`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报内容，执行“发布后即扫通用摘要 + 当日可检索化修补”闭环，压缩通用摘要进入索引窗口期。）
 
 ### EXP-089
@@ -343,7 +343,7 @@
 - Start date: 2026-04-21
 - End date: 2026-04-21
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `bdb1a69` 已推送至 `origin/publish-daily-2026-04-21`。）
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/publish-daily-2026-04-21`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报内容，执行“发布后即扫通用摘要 + 当日可检索化修补”闭环，压缩通用摘要进入索引窗口期。）
 
 ### EXP-088
@@ -353,7 +353,7 @@
 - Start date: 2026-04-18
 - End date: 2026-04-18
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-15.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `bdb1a69` 已推送至 `origin/growth-sync-queue`。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-15.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/growth-sync-queue`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，保持“发布后即做模板回归扫描 + 当日摘要可检索化修正”的闭环，减少通用摘要进入索引层窗口期。）
 
 ### EXP-087
