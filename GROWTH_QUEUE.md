@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-123: 回补 2026-05-22 双语日报质量缺口（EN 从结构化泛化稿改为完整英文实稿 + ZH description 去工具报错/标题残留 + 正文截断补全 + 证据矩阵具体化），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报若 EN 页面仍是“same-day brief section”结构化泛化稿、ZH description 含工具报错和标题残留，且 ZH 购物 Agent 注意事项以省略号截断，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文实稿、可检索 ZH 摘要、完整行动建议和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
+  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-22.md` 从结构化泛化段落回补为覆盖 NVIDIA COMPUTEX、OpenAI Codex、Anthropic + KPMG、Amazon AWS 数据中心社区、中国 AI 伦理安全指引的完整英文日报；2) ZH description 去除工具报错说明、Markdown 标题残留并升级为可检索摘要；3) ZH 案例 2 移除省略号截断并补全消费上限/取消路径；4) EN/ZH 证据矩阵补全为 5 条具体来源明细；5) 保持 3 条强相关 CTA 内链不回退；6) 本地十项日报/索引卫生闸门 + build 全部通过；质量评分 27/30。
 - [x] P1 Candidate A / EXP-122: 将日报发布脚本 story extraction 从大写 token 启发式升级为按编号结构解析，并同步生成具体化 EN/ZH 证据矩阵，消费 EXP-121 “避免 EN 再生成 `AI` 泛化标题和泛化证据”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-121 显示发布脚本即使通过语言闸门，也可能因大写 token 启发式把 EN Top 5 生成 `AI` 泛化标题、把证据矩阵写成泛化来源标签；若改为解析 `### N.` / `发生了什么` / `为什么重要` / `可能影响` 结构，并用品牌实体 + 中文主题词映射生成英文标签与双语具体证据矩阵，可减少发布后人工回补、提升首日索引窗口的主题匹配和来源可核验性。
   - Metrics: `bash -n scripts/publish-daily.sh` 通过；`pnpm build` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过。
