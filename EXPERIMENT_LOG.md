@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-124
+- Hypothesis: EXP-123 显示最近24小时英文日报即使通过英文语言、一致性、行动段和证据矩阵闸门，仍可能保留 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story` 等流畅但低事实密度的泛化句式；若新增最新英文日报事实具体度闸门，要求 Top 5 标题、Evidence Matrix 和正文具备足够命名实体与具体 source detail，可在 CI 阶段阻断“可读但不具体”的英文日报回归，减少首日索引窗口损耗与发布后人工回补。
+- Scope: `scripts/check-daily-brief-specificity.mjs`、`package.json`、`.github/workflows/content-check.yml`，默认覆盖最新 EN `openclaw-daily-*`。
+- Change: 新增 `check-daily-brief-specificity.mjs`，阻断 `same-day brief section`、`mapped to the publish-ready story`、`concrete AI and technology development`、`source brief` 等泛化句式；阻断 `### N. AI` / `Technology` / `Source brief` 等泛化 Top Stories 标题；要求最新 EN 日报 Top Stories 至少 5 条、多数标题含可识别实体，Evidence Matrix 至少 5 条带命名实体与 source detail 的 bullet；新增 `pnpm check:daily-brief-specificity` 并接入 content-check CI。
+- Start date: 2026-05-22
+- End date: 2026-05-22
+- Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily brief specificity check。
+- Result: pass（已新增最新英文日报事实具体度闸门并接入 package/CI；本地专项检查、十项日报/索引卫生闸门与 build 全部通过；commit `(this commit)` 待提交推送；质量评分 27/30。）
+- Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时英文日报发布质量基线；下一步可为 `scripts/publish-daily.sh` 增加 fixture 单测，覆盖结构化 story extraction、泛化句式拦截与 Evidence Matrix 具体化。）
+
 ### EXP-123
 - Hypothesis: 最近24小时新增日报（2026-05-22）若 EN 页面仍是 `same-day brief section` 结构化泛化稿、ZH description 含工具报错说明和 Markdown 标题残留，且 ZH 购物 Agent 注意事项以省略号截断，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索 ZH 摘要、完整风险提示和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-22/`
