@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-125
+- Hypothesis: 最近24小时新增日报（2026-05-23）若 EN 页面仍保留 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story` 等泛化结构稿，ZH description 含 Markdown 标题残留且 ZH 案例 2 以省略号截断，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索 ZH 摘要、完整风险提示和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-23/`
+- Change: 将 EN `openclaw-daily-2026-05-23.md` 从结构化泛化稿回补为完整英文日报，覆盖 Anthropic Project Glasswing 漏洞发现、NVIDIA COMPUTEX / GTC Taipei AI 工厂与机器人平台、TC260-005 AI 应用伦理安全指引、工信部工业知识智能计算标准征求意见、新华网九章四号光量子计算进展，并补充 OpenAI Codex 持续工作流案例；将 ZH description 从 Markdown 标题残留升级为可检索摘要；补全 ZH 案例 2 省略号截断、状态与来源；将 EN/ZH 证据矩阵扩展为 6 条具体来源明细，保持 What Is OpenClaw / VPS guide / model fallback 三条强相关 CTA 不回退。
+- Start date: 2026-05-23
+- End date: 2026-05-23
+- Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现泛化结构稿句式，ZH description 不再含 Markdown 标题残留，ZH 正文不再含省略号截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-23.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 案例 2 截断补全与 EN/ZH 证据矩阵具体化；本地十一项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送；质量评分 27/30。）
+- Decision (scale / iterate / stop): iterate（下一步建议为 `publish-daily.sh` 增加 fixture 单测，确保最新日报发布时不会再次生成泛化英文结构稿、Markdown 标题残留 description 或省略号截断正文。）
+
 ### EXP-124
 - Hypothesis: EXP-123 显示最近24小时英文日报即使通过英文语言、一致性、行动段和证据矩阵闸门，仍可能保留 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story` 等流畅但低事实密度的泛化句式；若新增最新英文日报事实具体度闸门，要求 Top 5 标题、Evidence Matrix 和正文具备足够命名实体与具体 source detail，可在 CI 阶段阻断“可读但不具体”的英文日报回归，减少首日索引窗口损耗与发布后人工回补。
 - Scope: `scripts/check-daily-brief-specificity.mjs`、`package.json`、`.github/workflows/content-check.yml`，默认覆盖最新 EN `openclaw-daily-*`。
