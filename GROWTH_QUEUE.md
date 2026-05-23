@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-125: 回补 2026-05-23 双语日报质量缺口（EN 从泛化结构稿改为完整英文实稿 + ZH description 去标题残留 + 正文截断补全 + 双语证据矩阵具体化），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate A / EXP-125: 回补 2026-05-23 双语日报质量缺口（EN 从泛化结构稿改为完整英文实稿 + ZH description 去标题残留 + 正文截断补全 + 双语证据矩阵具体化），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `a0ecc42`
   - Hypothesis: 最近24小时新增日报若 EN 页面仍保留 `same-day brief section` / `concrete AI and technology development` / `mapped to the publish-ready story` 泛化句式，ZH description 含 Markdown 标题残留且正文含省略号截断，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文实稿、可检索 ZH 摘要、完整行动建议和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
   - Metrics: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
   - Acceptance: 1) EN `openclaw-daily-2026-05-23.md` 从结构化泛化稿回补为覆盖 Anthropic Project Glasswing、NVIDIA AI 工厂/机器人/自动驾驶、TC260-005 AI 伦理安全指引、工信部工业知识智能计算标准、九章四号光量子计算和 OpenAI Codex 的完整英文日报；2) ZH description 去除 Markdown 标题残留并升级为可检索摘要；3) ZH 案例 2 移除省略号截断并补全状态/来源；4) EN/ZH 证据矩阵补全为 6 条具体来源明细；5) 保持 3 条强相关 CTA 内链不回退；6) 本地十一项日报/索引卫生闸门 + build 全部通过；质量评分 27/30。
