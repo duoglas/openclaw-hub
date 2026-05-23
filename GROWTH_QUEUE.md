@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-126: 为日报发布脚本新增 EN 生成器 fixture 闸门并移除泛化英文结构稿短语，消费 EXP-125 “publish-daily.sh 增加 fixture 单测”后续假设 | ICE 8x8x8=512 — commit `8a78165`
+- [x] P1 Candidate A / EXP-126: 为日报发布脚本新增 EN 生成器 fixture 闸门并移除泛化英文结构稿短语，消费 EXP-125 “publish-daily.sh 增加 fixture 单测”后续假设 | ICE 8x8x8=512 — commit `d83579a`
   - Hypothesis: EXP-125 显示最新日报需要人工回补 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story` 等泛化结构稿；若在发布脚本生成器层移除这些短语并新增 fixture 闸门，可在发布前阻断低事实密度英文稿回归，减少首日索引窗口损耗与人工返工。
   - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
   - Acceptance: 1) `scripts/publish-daily.sh` EN generator 不再写入 `same-day brief section` / `concrete AI and technology development` / `mapped to the publish-ready story` / `Structured source section` 泛化句式；2) EN story/evidence 输出改为使用 `detail_from` 提取源 `what/why/impact` 明细；3) 新增 `scripts/check-publish-daily-generator-fixture.mjs` 阻断生成器泛化短语回归；4) `package.json` 与 content-check CI 接入；5) 本地专项检查、十一项日报/索引卫生闸门 + build 全部通过；质量评分 27/30。
