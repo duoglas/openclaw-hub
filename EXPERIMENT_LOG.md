@@ -32,7 +32,7 @@
 - Start date: 2026-05-22
 - End date: 2026-05-22
 - Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily brief specificity check。
-- Result: pass（已新增最新英文日报事实具体度闸门并接入 package/CI；本地专项检查、十项日报/索引卫生闸门与 build 全部通过；commit `a0ecc42` 已推送；质量评分 27/30。）
+- Result: pass（已新增最新英文日报事实具体度闸门并接入 package/CI；本地专项检查、十项日报/索引卫生闸门与 build 全部通过；commit `(this commit)` 待提交推送；质量评分 27/30。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时英文日报发布质量基线；下一步可为 `scripts/publish-daily.sh` 增加 fixture 单测，覆盖结构化 story extraction、泛化句式拦截与 Evidence Matrix 具体化。）
 
 ### EXP-123
@@ -42,7 +42,7 @@
 - Start date: 2026-05-22
 - End date: 2026-05-22
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 `same-day brief section` 泛化叙述，ZH description 不再含工具报错/标题残留，ZH 正文不再含省略号截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-22.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 案例 2 截断补全与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `a0ecc42` 已推送；质量评分 27/30。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-22.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 案例 2 截断补全与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送；质量评分 27/30。）
 - Decision (scale / iterate / stop): iterate（下一步建议在发布脚本中增加“泛化句式”闸门，阻断 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story` 这类通过语言检查但缺少事实密度的英文日报。）
 
 ### EXP-122
