@@ -112,6 +112,9 @@ jobs:
       - name: Daily brief specificity check
         run: pnpm check:daily-brief-specificity
 
+      - name: Publish daily generator fixture check
+        run: pnpm check:publish-daily-generator-fixture
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 

@@ -41,7 +41,8 @@
     "check:daily-evidence-matrix": "node scripts/check-daily-evidence-matrix.mjs",
     "check:daily-en-language": "node scripts/check-daily-en-language-consistency.mjs",
     "check:daily-action-sections": "bash scripts/check-daily-action-sections.sh",
-    "check:daily-brief-specificity": "node scripts/check-daily-brief-specificity.mjs"
+    "check:daily-brief-specificity": "node scripts/check-daily-brief-specificity.mjs",
+    "check:publish-daily-generator-fixture": "node scripts/check-publish-daily-generator-fixture.mjs"
   },
   "keywords": [],
   "author": "",

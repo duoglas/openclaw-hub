@@ -262,12 +262,25 @@ def label_for(story, idx):
     return label
 
 
+def detail_from(story, key, fallback):
+    value = re.sub(r'\s+', ' ', story.get(key, '')).strip()
+    if not value:
+        value = fallback
+    # Keep the generated English page specific without leaking long raw cron text.
+    if len(value) > 170:
+        value = value[:169].rstrip('，。；;,. ') + '.'
+    return value
+
+
 def sentence(kind, story, label, idx):
     if kind == 'what':
-        return f'What happened: The same-day brief section {idx} identifies {label} as a concrete AI and technology development, parsed from its numbered story structure instead of a generic token scan.'
+        detail = detail_from(story, 'what', f'{label} is the primary named signal in story {idx}.')
+        return f'What happened: {label} anchors story {idx}; source detail: {detail}'
     if kind == 'why':
-        return f'Why it matters: This signal changes how teams judge workflow fit, infrastructure readiness, user trust, governance requirements, or deployment cost for agentic systems.'
-    return f'Potential impact: Builders should turn {label} into one tracked assumption covering product integration, reliability, data boundaries, cost, and measurable user value.'
+        detail = detail_from(story, 'why', 'The item affects workflow fit, infrastructure readiness, trust controls, governance requirements, or deployment cost.')
+        return f'Why it matters: {detail}'
+    detail = detail_from(story, 'impact', f'Teams can convert {label} into one tracked assumption for integration quality, reliability, data boundaries, cost, and user value.')
+    return f'Potential impact: {detail}'
 
 stories = extract_stories(text)
 while len(stories) < 5:
@@ -313,8 +326,9 @@ out.append('- Watch whether policy, copyright, provenance, or data-control requi
 out.append('')
 out.append('## Evidence Matrix')
 out.append('')
-for idx, label in enumerate(labels[:5], 1):
-    out.append(f'- Structured source section {idx}: {label} was extracted from the numbered same-day brief and mapped to the publish-ready story, impact, and evidence blocks.')
+for idx, (label, story) in enumerate(zip(labels[:5], stories[:5]), 1):
+    source_detail = detail_from(story, 'what', story.get('why') or story.get('impact') or f'{label} is the named signal for story {idx}.')
+    out.append(f'- Evidence item {idx}: {label} — {source_detail}')
 print('\n'.join(out))
 PY
 )

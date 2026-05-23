@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-126
+- Hypothesis: EXP-125 显示最新日报虽然已回补为完整英文实稿，但 `publish-daily.sh` EN 生成器仍含 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story`、`Structured source section` 等会再次生成泛化结构稿的短语；若在生成器层改为引用结构化 story 的 `what/why/impact` source detail，并新增 fixture 闸门扫描生成器，可在 CI 阶段阻断低事实密度英文日报回归，减少首日索引窗口损耗与发布后人工回补。
+- Scope: `scripts/publish-daily.sh`、`scripts/check-publish-daily-generator-fixture.mjs`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 将 EN generator 的 `sentence()` 从固定泛化句式改为通过 `detail_from()` 使用 story `what/why/impact` 明细；Evidence Matrix 从 `Structured source section ... mapped to the publish-ready story` 改为 `Evidence item ... source_detail`；新增 `check-publish-daily-generator-fixture.mjs`，扫描 EN generator 禁止泛化短语并要求 source-detail hooks；新增 `pnpm check:publish-daily-generator-fixture` 并接入 content-check CI。
+- Start date: 2026-05-23
+- End date: 2026-05-23
+- Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Publish daily generator fixture check。
+- Result: pass（已移除发布脚本 EN 生成器中的泛化结构稿短语，新增 fixture 闸门并接入 package/CI；本地专项检查、bash 语法检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8a78165` 已提交，待推送；质量评分 27/30。）
+- Decision (scale / iterate / stop): scale（保留该 fixture 闸门作为发布脚本生成质量基线；下一步可把生成器进一步抽成独立 JS 模块并用真实 cron 摘要 fixture 做快照测试。）
+
 ### EXP-125
 - Hypothesis: 最近24小时新增日报（2026-05-23）若 EN 页面仍保留 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story` 等泛化结构稿，ZH description 含 Markdown 标题残留且 ZH 案例 2 以省略号截断，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文叙事、可检索 ZH 摘要、完整风险提示和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-23/`
@@ -32,7 +42,7 @@
 - Start date: 2026-05-22
 - End date: 2026-05-22
 - Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily brief specificity check。
-- Result: pass（已新增最新英文日报事实具体度闸门并接入 package/CI；本地专项检查、十项日报/索引卫生闸门与 build 全部通过；commit `(this commit)` 待提交推送；质量评分 27/30。）
+- Result: pass（已新增最新英文日报事实具体度闸门并接入 package/CI；本地专项检查、十项日报/索引卫生闸门与 build 全部通过；commit `8a78165` 已提交，待推送；质量评分 27/30。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时英文日报发布质量基线；下一步可为 `scripts/publish-daily.sh` 增加 fixture 单测，覆盖结构化 story extraction、泛化句式拦截与 Evidence Matrix 具体化。）
 
 ### EXP-123
@@ -42,7 +52,7 @@
 - Start date: 2026-05-22
 - End date: 2026-05-22
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 `same-day brief section` 泛化叙述，ZH description 不再含工具报错/标题残留，ZH 正文不再含省略号截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-22.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 案例 2 截断补全与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送；质量评分 27/30。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-22.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 案例 2 截断补全与 EN/ZH 证据矩阵具体化；本地十项日报/索引卫生闸门 + build 全部通过；commit `8a78165` 已提交，待推送；质量评分 27/30。）
 - Decision (scale / iterate / stop): iterate（下一步建议在发布脚本中增加“泛化句式”闸门，阻断 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story` 这类通过语言检查但缺少事实密度的英文日报。）
 
 ### EXP-122

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-23 11:23
+Last updated: 2026-05-23 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-126: 为日报发布脚本新增 EN 生成器 fixture 闸门并移除泛化英文结构稿短语，消费 EXP-125 “publish-daily.sh 增加 fixture 单测”后续假设 | ICE 8x8x8=512 — commit `8a78165`
+  - Hypothesis: EXP-125 显示最新日报需要人工回补 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story` 等泛化结构稿；若在发布脚本生成器层移除这些短语并新增 fixture 闸门，可在发布前阻断低事实密度英文稿回归，减少首日索引窗口损耗与人工返工。
+  - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `scripts/publish-daily.sh` EN generator 不再写入 `same-day brief section` / `concrete AI and technology development` / `mapped to the publish-ready story` / `Structured source section` 泛化句式；2) EN story/evidence 输出改为使用 `detail_from` 提取源 `what/why/impact` 明细；3) 新增 `scripts/check-publish-daily-generator-fixture.mjs` 阻断生成器泛化短语回归；4) `package.json` 与 content-check CI 接入；5) 本地专项检查、十一项日报/索引卫生闸门 + build 全部通过；质量评分 27/30。
 - [x] P1 Candidate A / EXP-125: 回补 2026-05-23 双语日报质量缺口（EN 从泛化结构稿改为完整英文实稿 + ZH description 去标题残留 + 正文截断补全 + 双语证据矩阵具体化），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `a0ecc42`
   - Hypothesis: 最近24小时新增日报若 EN 页面仍保留 `same-day brief section` / `concrete AI and technology development` / `mapped to the publish-ready story` 泛化句式，ZH description 含 Markdown 标题残留且正文含省略号截断，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补为完整英文实稿、可检索 ZH 摘要、完整行动建议和具体证据矩阵，可提升搜索可见性与核心指南导流质量。
   - Metrics: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
