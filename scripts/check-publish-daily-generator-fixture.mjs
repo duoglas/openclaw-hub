@@ -12,6 +12,10 @@ const bannedGeneratedPhrases = [
   'mapped to the publish-ready story',
   'source brief',
   'Structured source section',
+  'primary named signal',
+  'The item affects workflow fit',
+  'named signal for story',
+  'item affects workflow fit',
 ];
 
 const generatorStart = source.indexOf('EN_BODY=$(SUMMARY_TEXT="$SUMMARY"');
@@ -30,8 +34,10 @@ if (failures.length > 0) {
 }
 
 const requiredSignals = [
+  'compact_title',
   'detail_from',
   'Evidence item',
+  'story.get(\'title\'',
   'story.get(\'what\'',
   'story.get(\'why\'',
   'story.get(\'impact\'',

@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-128
+- Hypothesis: EXP-127 已发现 `publish-daily.sh` 在空字段标签或字段缺失时会回退到 `primary named signal`、`The item affects workflow fit...`、`named signal for story` 等泛化句式；若把 fallback 改为引用 source title/label，并让 generator fixture 闸门直接阻断这些回归短语，可在发布前减少低事实密度英文日报进入首日索引窗口，降低后续人工回补频率。
+- Scope: `scripts/publish-daily.sh`、`scripts/check-publish-daily-generator-fixture.mjs`
+- Change: 为 EN generator 新增 `compact_title`，在 What/Why/Impact 与 Evidence Matrix fallback 中优先引用 source title 或 label；移除 generator 中 `primary named signal`、`The item affects workflow fit...`、`named signal for story` 等泛化句式；扩展 `check-publish-daily-generator-fixture.mjs` 的 banned phrases 与 required signals，静态要求 `compact_title` 与 `story.get('title')`。
+- Start date: 2026-05-24
+- End date: 2026-05-24
+- Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；generator fixture 能阻断 EXP-127 发现的 fallback 泛化句式。
+- Result: pass（`publish-daily.sh` 已把 fallback 改为 source title/label 驱动，fixture 闸门已覆盖 EXP-127 发现的三类泛化短语与 title fallback required signals；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
+- Decision (scale / iterate / stop): scale（保留 generator fixture 作为发布脚本静态质量基线；下一步可把 EN generator 抽成独立 JS/Python 模块并用真实 cron 摘要做快照测试。）
+
 ### EXP-127
 - Hypothesis: 最近24小时新增日报（2026-05-24）若 EN 页面因 `发生了什么：` / `为什么重要：` / `可能影响：` 采用空标签换行而未被 `publish-daily.sh` 解析，生成 `primary named signal`、`The item affects workflow fit...`、`named signal for story` 等低事实密度 fallback，且发布脚本未串行运行 `check:daily-brief-specificity`，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补完整英文实稿、修复解析器并强化发布/CI 闸门，可提升搜索可见性并减少后续日报泛化回归。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-24/`、`scripts/publish-daily.sh`、`scripts/check-daily-brief-specificity.mjs`

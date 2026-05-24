@@ -264,6 +264,13 @@ def label_for(story, idx):
     return label
 
 
+def compact_title(story, label, idx):
+    title = re.sub(r'\s+', ' ', story.get('title', '')).strip(' -—:：')
+    if title and title.lower() not in {'ai', 'technology', 'tech'}:
+        return title[:140].rstrip('，。；;,. ')
+    return f'{label} daily story {idx}'
+
+
 def detail_from(story, key, fallback):
     value = re.sub(r'\s+', ' ', story.get(key, '')).strip()
     if not value:
@@ -275,13 +282,14 @@ def detail_from(story, key, fallback):
 
 
 def sentence(kind, story, label, idx):
+    title = compact_title(story, label, idx)
     if kind == 'what':
-        detail = detail_from(story, 'what', f'{label} is the primary named signal in story {idx}.')
+        detail = detail_from(story, 'what', f'{title} is the source story behind the {label} section.')
         return f'What happened: {label} anchors story {idx}; source detail: {detail}'
     if kind == 'why':
-        detail = detail_from(story, 'why', 'The item affects workflow fit, infrastructure readiness, trust controls, governance requirements, or deployment cost.')
+        detail = detail_from(story, 'why', f'{title} changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.')
         return f'Why it matters: {detail}'
-    detail = detail_from(story, 'impact', f'Teams can convert {label} into one tracked assumption for integration quality, reliability, data boundaries, cost, and user value.')
+    detail = detail_from(story, 'impact', f'Teams should turn {title} into a tracked assumption for integration quality, reliability, data boundaries, cost, and user value.')
     return f'Potential impact: {detail}'
 
 stories = extract_stories(text)
@@ -330,7 +338,8 @@ out.append('')
 out.append('## Evidence Matrix')
 out.append('')
 for idx, (label, story) in enumerate(zip(labels[:5], stories[:5]), 1):
-    source_detail = detail_from(story, 'what', story.get('why') or story.get('impact') or f'{label} is the named signal for story {idx}.')
+    title = compact_title(story, label, idx)
+    source_detail = detail_from(story, 'what', story.get('why') or story.get('impact') or f'{title} is the source story behind evidence item {idx}.')
     out.append(f'- Evidence item {idx}: {label} — {source_detail}')
 print('\n'.join(out))
 PY
