@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-127
+- Hypothesis: 最近24小时新增日报（2026-05-24）若 EN 页面因 `发生了什么：` / `为什么重要：` / `可能影响：` 采用空标签换行而未被 `publish-daily.sh` 解析，生成 `primary named signal`、`The item affects workflow fit...`、`named signal for story` 等低事实密度 fallback，且发布脚本未串行运行 `check:daily-brief-specificity`，会削弱首日索引窗口期的主题匹配、摘要点击意图一致性、来源可核验性与读者完成率；当日回补完整英文实稿、修复解析器并强化发布/CI 闸门，可提升搜索可见性并减少后续日报泛化回归。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-24/`、`scripts/publish-daily.sh`、`scripts/check-daily-brief-specificity.mjs`
+- Change: 将 EN `openclaw-daily-2026-05-24.md` 从 generator fallback 泛化稿回补为完整英文日报，覆盖 Anthropic Project Glasswing / Claude Mythos Preview、NVIDIA Vera Rubin NVL72 / Jetson Thor / COMPUTEX、Amazon Alexa+ on-demand podcasts、OpenAI Codex Appshots / Goal mode、Xinhua 中国 AI 教育文旅养老机器人落地；将 ZH description 从截断残句升级为可检索摘要；修复 `publish-daily.sh` 的 ZH/EN story extraction，使空字段标签可捕获下一行明细；EN generator 改为 `### N.` story heading；发布质量闸门加入 `check:daily-brief-specificity`；specificity 闸门新增 fallback 句式拦截。
+- Start date: 2026-05-24
+- End date: 2026-05-24
+- Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 generator fallback 句式，ZH description 不再截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-24.md` 已完成 EN 完整英文实稿回补与 ZH description 可检索化；`publish-daily.sh` 已修复空字段标签解析、输出 `### N.` story heading 并在发布前运行 `check:daily-brief-specificity`；specificity 闸门已阻断 fallback 泛化句式；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `b2929e8` 已推送；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 specificity 闸门作为发布脚本强制闸门；下一步可把 `publish-daily.sh` 的 Python 生成器抽成独立模块并用真实 cron 摘要 fixture 做快照测试。）
+
 ### EXP-126
 - Hypothesis: EXP-125 显示最新日报虽然已回补为完整英文实稿，但 `publish-daily.sh` EN 生成器仍含 `same-day brief section`、`concrete AI and technology development`、`mapped to the publish-ready story`、`Structured source section` 等会再次生成泛化结构稿的短语；若在生成器层改为引用结构化 story 的 `what/why/impact` source detail，并新增 fixture 闸门扫描生成器，可在 CI 阶段阻断低事实密度英文日报回归，减少首日索引窗口损耗与发布后人工回补。
 - Scope: `scripts/publish-daily.sh`、`scripts/check-publish-daily-generator-fixture.mjs`、`package.json`、`.github/workflows/content-check.yml`

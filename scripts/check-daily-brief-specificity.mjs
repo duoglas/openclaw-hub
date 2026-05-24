@@ -43,6 +43,9 @@ const genericPhrasePatterns = [
   { label: 'source brief filler', pattern: /source brief\s*\d*/i },
   { label: 'generic AI development line', pattern: /this source describes a concrete AI development/i },
   { label: 'generic daily news sentence', pattern: /today(?:'s)? AI and technology news (?:shows|highlights)/i },
+  { label: 'generator fallback primary named signal', pattern: /is the primary named signal in story \d+/i },
+  { label: 'generator fallback evidence signal', pattern: /is the named signal for story \d+/i },
+  { label: 'generic workflow-fit fallback', pattern: /The item affects workflow fit, infrastructure readiness, trust controls, governance requirements, or deployment cost\./i },
 ];
 
 const genericStoryTitlePattern = /^###\s+\d+\.\s*(AI|Technology|Tech|Source brief|Same-day brief|Concrete AI development)\s*$/gim;

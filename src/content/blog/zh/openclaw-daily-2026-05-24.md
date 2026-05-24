@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-24）"
-description: "Anthropic：AI 安全扫描进入“找漏洞比修漏洞快”的阶段；Anthropic 发布 Project Glasswing 初步进展。其称 Claude Mythos Preview 与约 50 个合作伙伴，已发现超过 1 万个高危或。"
+description: "追踪 Anthropic Project Glasswing 漏洞扫描、NVIDIA COMPUTEX AI 工厂与机器人、Alexa+ 个性化播客、OpenAI Codex Goal mode，以及中国 AI 在教育文旅养老场景落地。"
 pubDate: 2026-05-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

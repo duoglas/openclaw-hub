@@ -115,11 +115,12 @@ def extract_stories(source_text):
             field = None
             continue
         if current:
-            m = re.match(r'^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\s*(.+)$', line)
+            m = re.match(r'^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\s*(.*)$', line)
             if m:
                 label, value = m.groups()
                 key = {'发生了什么': 'what', '为什么重要': 'why', '可能影响': 'impact', '普通用户建议': 'impact', '团队建议': 'impact'}[label]
-                current[key] = (current.get(key, '') + ' ' + value).strip()
+                if value:
+                    current[key] = (current.get(key, '') + ' ' + value).strip()
                 field = key
                 continue
             if field and not line.startswith(('##', '###')):
@@ -210,11 +211,12 @@ def extract_stories(source_text):
             field = None
             continue
         if current:
-            m = re.match(r'^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议|What happened|Why it matters|Potential impact)[:：]\s*(.+)$', line)
+            m = re.match(r'^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议|What happened|Why it matters|Potential impact)[:：]\s*(.*)$', line)
             if m:
                 label, value = m.groups()
                 key = FIELD_MAP[label]
-                current[key] = (current.get(key, '') + ' ' + value).strip()
+                if value:
+                    current[key] = (current.get(key, '') + ' ' + value).strip()
                 field = key
                 continue
             if field and not line.startswith(('##', '###')):
@@ -297,7 +299,8 @@ labels = []
 for idx, story in enumerate(stories[:5], 1):
     label = label_for(story, idx)
     labels.append(label)
-    out.append(f'{idx}. {label}')
+    out.append(f'### {idx}. {label}')
+    out.append('')
     out.append(sentence('what', story, label, idx))
     out.append(sentence('why', story, label, idx))
     out.append(sentence('impact', story, label, idx))
@@ -384,6 +387,7 @@ DAILY_QUALITY_CHECKS=(
   "check:daily-evidence-matrix"
   "check:daily-en-language"
   "check:daily-action-sections"
+  "check:daily-brief-specificity"
   "check:duplicate-slug-id"
 )
 
