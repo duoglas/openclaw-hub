@@ -22,7 +22,7 @@
 - Start date: 2026-05-24
 - End date: 2026-05-24
 - Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 generator fallback 句式，ZH description 不再截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-24.md` 已完成 EN 完整英文实稿回补与 ZH description 可检索化；`publish-daily.sh` 已修复空字段标签解析、输出 `### N.` story heading 并在发布前运行 `check:daily-brief-specificity`；specificity 闸门已阻断 fallback 泛化句式；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `b2929e8` 已推送；质量评分 28/30。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-24.md` 已完成 EN 完整英文实稿回补与 ZH description 可检索化；`publish-daily.sh` 已修复空字段标签解析、输出 `### N.` story heading 并在发布前运行 `check:daily-brief-specificity`；specificity 闸门已阻断 fallback 泛化句式；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `1841c1f` 已推送；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 specificity 闸门作为发布脚本强制闸门；下一步可把 `publish-daily.sh` 的 Python 生成器抽成独立模块并用真实 cron 摘要 fixture 做快照测试。）
 
 ### EXP-126
