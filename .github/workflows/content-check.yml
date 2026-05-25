@@ -118,6 +118,9 @@ jobs:
       - name: Daily generator real cron fixture check
         run: pnpm check:daily-generator-real-cron-fixture
 
+      - name: Daily ZH generator real cron fixture check
+        run: pnpm check:daily-zh-generator-real-cron-fixture
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 
