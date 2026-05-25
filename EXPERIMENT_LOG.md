@@ -22,7 +22,7 @@
 - Start date: 2026-05-25
 - End date: 2026-05-25
 - Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily generator real cron fixture check。
-- Result: pass（EN generator 已抽成共享 JS 模块，发布脚本已改为调用该模块，真实 cron fixture 快照闸门与静态 source-detail hook 闸门均已通过；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `d8e4f3a`；质量评分 28/30。）
+- Result: pass（EN generator 已抽成共享 JS 模块，发布脚本已改为调用该模块，真实 cron fixture 快照闸门与静态 source-detail hook 闸门均已通过；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ab84b25`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留真实 cron fixture 作为发布脚本生成质量基线；下一步可把 ZH 补齐逻辑也抽成共享模块，并新增 EN/ZH 双语 fixture 以覆盖 description 与证据矩阵一致性。）
 
 ### EXP-128
