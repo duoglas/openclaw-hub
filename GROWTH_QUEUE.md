@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-24 11:22
+Last updated: 2026-05-25 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-129: 将日报 EN generator 抽成共享 JS 模块并新增真实 cron 摘要 fixture 快照闸门，消费 EXP-128 “真实 cron 摘要 fixture / generator 模块化”后续假设 | ICE 8x8x8=512 — commit `d8e4f3a`
+  - Hypothesis: EXP-128 已把 EN fallback 具体化，但核心生成逻辑仍内嵌在 `publish-daily.sh` heredoc 中，只能做静态短语扫描；若抽成 `scripts/lib/daily-generator.mjs` 并用真实 2026-05-24 cron 摘要 fixture 做快照闸门，可在 CI 中提前发现空字段标签解析、实体标签、Evidence Matrix 和行动段回归，减少低事实密度日报进入首日索引窗口。
+  - Metrics: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/lib/daily-generator.mjs`，集中维护 extractStories / labelFor / compactTitle / detailFrom / generateEnglishDailyBody；2) `publish-daily.sh` 改为调用共享 JS generator，降低 heredoc 内嵌逻辑不可测风险；3) 新增 `scripts/check-daily-generator-real-cron-fixture.mjs`，用 2026-05-24 真实结构摘要覆盖空字段标签、5 条 Top Stories、5 条 Evidence Matrix、行动段与 banned phrases；4) `check-publish-daily-generator-fixture` 改为同时验证发布脚本调用共享模块和模块源码 source-detail hooks；5) `package.json` 与 content-check CI 接入真实 cron fixture 闸门；6) 本地专项检查、十一项日报/索引卫生闸门 + build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-128: 强化日报发布脚本 EN fallback 具体度并扩展 generator fixture 静态闸门，消费 EXP-127 “真实 cron 摘要 fixture / fallback 泛化句式”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-127 已发现 `publish-daily.sh` 在空字段标签或字段缺失时会回退到 `primary named signal`、`The item affects workflow fit...`、`named signal for story` 等泛化句式；若把 fallback 改为引用 source title/label，并让 generator fixture 闸门直接阻断这些回归短语，可在发布前减少低事实密度英文日报进入首日索引窗口。
   - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

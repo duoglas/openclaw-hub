@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-129
+- Hypothesis: EXP-128 已把 EN fallback 具体化，但核心生成逻辑仍内嵌在 `publish-daily.sh` heredoc 中，只能依赖静态短语扫描；若抽成 `scripts/lib/daily-generator.mjs` 并用真实 2026-05-24 cron 摘要 fixture 做快照闸门，可在 CI 中提前发现空字段标签解析、实体标签、Evidence Matrix 和行动段回归，减少低事实密度英文日报进入首日索引窗口。
+- Scope: `scripts/lib/daily-generator.mjs`、`scripts/publish-daily.sh`、`scripts/check-publish-daily-generator-fixture.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 将 EN 日报生成器从 shell heredoc 抽成共享 JS module；`publish-daily.sh` 改为通过 Node 调用 `generateEnglishDailyBody`；新增真实 cron 摘要 fixture 闸门，覆盖 EXP-127/128 暴露的空字段标签、命名实体标签、证据矩阵、行动段和 banned phrase 回归；更新静态 fixture 闸门以验证共享模块 source-detail hooks，并接入 package/CI。
+- Start date: 2026-05-25
+- End date: 2026-05-25
+- Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily generator real cron fixture check。
+- Result: pass（EN generator 已抽成共享 JS 模块，发布脚本已改为调用该模块，真实 cron fixture 快照闸门与静态 source-detail hook 闸门均已通过；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `d8e4f3a`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留真实 cron fixture 作为发布脚本生成质量基线；下一步可把 ZH 补齐逻辑也抽成共享模块，并新增 EN/ZH 双语 fixture 以覆盖 description 与证据矩阵一致性。）
+
 ### EXP-128
 - Hypothesis: EXP-127 已发现 `publish-daily.sh` 在空字段标签或字段缺失时会回退到 `primary named signal`、`The item affects workflow fit...`、`named signal for story` 等泛化句式；若把 fallback 改为引用 source title/label，并让 generator fixture 闸门直接阻断这些回归短语，可在发布前减少低事实密度英文日报进入首日索引窗口，降低后续人工回补频率。
 - Scope: `scripts/publish-daily.sh`、`scripts/check-publish-daily-generator-fixture.mjs`
