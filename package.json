@@ -45,7 +45,8 @@
     "check:publish-daily-generator-fixture": "node scripts/check-publish-daily-generator-fixture.mjs",
     "check:daily-generator-real-cron-fixture": "node scripts/check-daily-generator-real-cron-fixture.mjs",
     "check:daily-zh-generator-real-cron-fixture": "node scripts/check-daily-zh-generator-real-cron-fixture.mjs",
-    "check:daily-bilingual-generator-pair-fixture": "node scripts/check-daily-bilingual-generator-pair-fixture.mjs"
+    "check:daily-bilingual-generator-pair-fixture": "node scripts/check-daily-bilingual-generator-pair-fixture.mjs",
+    "check:daily-fixture-source-dedup": "node scripts/check-daily-fixture-source-dedup.mjs"
   },
   "keywords": [],
   "author": "",

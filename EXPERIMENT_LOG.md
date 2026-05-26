@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-132
+- Hypothesis: EXP-131 已新增 EN/ZH pair fixture，但 EN、ZH、pair 三个检查脚本仍重复维护同一 2026-05-24 真实 cron 摘要、expected labels 与 banned fallback；若抽成共享 fixture module 并新增去重闸门，可减少 fixture 漂移、降低后续发布脚本质量检查维护成本，并让 CI 阻断重复 fixture 回归。
+- Scope: `scripts/fixtures/daily-real-cron-2026-05-24.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/check-daily-zh-generator-real-cron-fixture.mjs`、`scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/check-daily-fixture-source-dedup.mjs`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 新增共享真实 cron fixture 模块，集中导出 fixture date、source summary、expectedSignals、banned fallback phrases 与 EN/ZH required outputs；三个真实 cron fixture 检查脚本改为统一 import 共享 source；新增 daily fixture source dedup 闸门，阻断检查脚本重新内联 2026-05-24 fixture；同步接入 package script 与 content-check CI。
+- Start date: 2026-05-26
+- End date: 2026-05-26
+- Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily fixture source dedup check。
+- Result: pass（已抽出共享真实 cron fixture module，三个 EN/ZH/pair fixture 检查脚本已统一 import；新增去重闸门并接入 package/CI；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留共享 fixture source + dedup 闸门作为发布脚本生成质量检查的维护基线；下一步可把 fixture 覆盖扩展到最新 2026-05-26 日报，验证新增内容建设样本不会出现 description 或 evidence drift。）
+
 ### EXP-131
 - Hypothesis: EXP-130 已把 ZH generator 抽成共享模块，但 EN/ZH 仍分别用独立 fixture 验证；若新增同一真实 cron 摘要的双语 pair fixture，并同时修复 ZH description 对 Markdown 标题和空字段标签的泄漏，可在 CI 中提前发现双语来源顺序、证据矩阵条数、description 具体度和泛化 fallback 回归，减少发布窗口人工返工。
 - Scope: `scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/lib/daily-zh-generator.mjs`、`package.json`、`.github/workflows/content-check.yml`

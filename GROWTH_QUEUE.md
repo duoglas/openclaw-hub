@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-26 11:26
+Last updated: 2026-05-26 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-132: 将 2026-05-24 真实 cron fixture 抽成共享模块并新增去重闸门，消费 EXP-131 “fixture source 抽成共享文件”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-131 已新增 EN/ZH pair fixture，但 EN、ZH、pair 三个检查脚本仍重复维护同一 2026-05-24 真实 cron 摘要、expected labels 与 banned fallback；若抽成共享 fixture module 并新增去重闸门，可减少 fixture 漂移、降低后续发布脚本质量检查维护成本，并让 CI 阻断重复 fixture 回归。
+  - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/fixtures/daily-real-cron-2026-05-24.mjs`，集中维护真实 cron 摘要、日期、expectedSignals、banned fallback 与 EN/ZH required outputs；2) EN、ZH、pair 三个 fixture 检查脚本改为统一 import 共享 fixture source；3) 新增 `scripts/check-daily-fixture-source-dedup.mjs` 阻断三个检查脚本重新内联 2026-05-24 fixture；4) `package.json` 与 content-check CI 接入去重闸门；5) 本地专项检查、十一项日报/索引卫生闸门 + build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-131: 新增 EN/ZH 双语 generator pair fixture 闸门并修复 ZH description 标题/字段标签泄漏，消费 EXP-130 “EN/ZH pair fixture 一致性”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-130 已把 ZH generator 抽成共享模块，但 EN/ZH 仍分别用独立 fixture 验证；若新增同一真实 cron 摘要的双语 pair fixture，并同时修复 ZH description 对 Markdown 标题和空字段标签的泄漏，可在 CI 中提前发现双语来源顺序、证据矩阵条数、description 具体度和泛化 fallback 回归，减少发布窗口人工返工。
   - Metrics: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

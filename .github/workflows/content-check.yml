@@ -124,6 +124,9 @@ jobs:
       - name: Daily bilingual generator pair fixture check
         run: pnpm check:daily-bilingual-generator-pair-fixture
 
+      - name: Daily fixture source dedup check
+        run: pnpm check:daily-fixture-source-dedup
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 
