@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-12）"
-description: "2026-05-12 AI 科技日报：中国发布智能体规范应用意见与 AI 终端智能化分级标准，Anthropic 借 SpaceX 扩大 Claude 算力，NVIDIA 与 ServiceNow 推进企业级自主 Agent，ChatGPT 更新记忆来源、GPT-5.5 Instant 与表格侧边栏。"
+description: "2026-05-12 AI 日报：中国发布智能体规范，Anthropic 扩 Claude 算力，NVIDIA 与 ServiceNow 推企业 Agent，ChatGPT 更新记忆来源。"
 pubDate: 2026-05-12
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

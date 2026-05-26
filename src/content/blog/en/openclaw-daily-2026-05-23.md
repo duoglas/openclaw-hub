@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-05-23)"
-description: "Anthropic reports Project Glasswing vulnerability findings, NVIDIA previews AI factory and robotics hardware, China publishes AI ethics guidance, MIIT opens an industrial AI standard review, Jiuzhang-4 advances photonic quantum computing, and OpenAI updates Codex workflows."
+description: "May 23 AI brief: Anthropic reports Project Glasswing findings, NVIDIA previews AI factory hardware, China issues AI ethics guidance, and OpenAI updates Codex."
 pubDate: 2026-05-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-23）"
-description: "Anthropic Project Glasswing 披露 AI 漏洞发现进展，NVIDIA 推进 AI 工厂、机器人与自动驾驶平台，中国发布 AI 应用伦理安全指引，工信部征求工业知识智能计算标准意见，九章四号展示光量子计算进展，OpenAI Codex 更新持续工作流能力。"
+description: "2026-05-23 AI 日报：Anthropic 披露漏洞发现，NVIDIA 推 AI 工厂与机器人，中国发布 AI 伦理指引，OpenAI 更新 Codex。"
 pubDate: 2026-05-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

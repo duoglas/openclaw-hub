@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-22）"
-description: "NVIDIA 预热 Vera Rubin、Jetson Thor 与自动驾驶基础设施，OpenAI 升级 Codex 工作流，Anthropic 与 KPMG 将 Claude 扩展至 27.6 万员工，Amazon 把 AI 数据中心扩张与社区治理绑定，中国发布 AI 应用伦理安全指引。"
+description: "2026-05-22 AI 日报：NVIDIA 预热新硬件，OpenAI 升级 Codex，Anthropic 扩展企业 Claude，中国发布 AI 伦理安全指引。"
 pubDate: 2026-05-22
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

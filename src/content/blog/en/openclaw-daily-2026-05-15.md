@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-05-15)"
-description: "Anthropic and the Gates Foundation fund AI for public-good deployments, Codex reaches ChatGPT mobile, Alexa shopping agents automate purchases, NVIDIA backs reinforcement-learning infrastructure, and Baidu Create2026 focuses on enterprise agents and China AI infrastructure."
+description: "May 15 AI brief: Anthropic and Gates fund AI for good, Codex reaches ChatGPT mobile, Alexa agents automate shopping, and Baidu focuses on enterprise agents."
 pubDate: 2026-05-15
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

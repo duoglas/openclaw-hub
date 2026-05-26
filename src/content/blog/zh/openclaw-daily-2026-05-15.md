@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-15）"
-description: "Anthropic 与 Gates Foundation 推进 AI 公益合作，OpenAI 把 Codex 远程访问带到 ChatGPT 手机端，Amazon Alexa 购物代理开始自动采购，NVIDIA 押注强化学习基础设施，百度 Create2026 聚焦 Agent、安全、多模态与国产 AI 基础设施。"
+description: "2026-05-15 AI 日报：Anthropic 与盖茨基金会做 AI 公益，Codex 进 ChatGPT 手机端，Alexa 购物代理与百度 Agent 成焦点。"
 pubDate: 2026-05-15
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
