@@ -121,6 +121,9 @@ jobs:
       - name: Daily ZH generator real cron fixture check
         run: pnpm check:daily-zh-generator-real-cron-fixture
 
+      - name: Daily bilingual generator pair fixture check
+        run: pnpm check:daily-bilingual-generator-pair-fixture
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 

@@ -66,13 +66,15 @@ export function buildZhDescription(sourceText) {
   const lines = String(sourceText || '')
     .replace(/\r/g, '\n')
     .split('\n')
-    .map((line) => normalize(line).replace(/^\d+[\).、]\s*/, ''))
+    .map((line) => normalize(line).replace(/^#{1,6}\s*/, '').replace(/^\d+[\).、]\s*/, ''))
     .filter(Boolean);
 
   const candidates = [];
   for (const line of lines) {
     if (line.startsWith('《AI、科技日报》') || line.startsWith('说明：')) continue;
     if (/^[【\[]?.*(今日要闻|实战案例|今日结论|明日跟踪点|证据矩阵).*[】\]]?$/.test(line)) continue;
+    if (/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]?\s*$/.test(line)) continue;
+    if (/^[A-Za-z0-9+./ -]+$/.test(line) && !/[\u4e00-\u9fff]/.test(line)) continue;
     if (line.length >= 8) candidates.push(line);
     if (candidates.length >= 3) break;
   }

@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-131
+- Hypothesis: EXP-130 已把 ZH generator 抽成共享模块，但 EN/ZH 仍分别用独立 fixture 验证；若新增同一真实 cron 摘要的双语 pair fixture，并同时修复 ZH description 对 Markdown 标题和空字段标签的泄漏，可在 CI 中提前发现双语来源顺序、证据矩阵条数、description 具体度和泛化 fallback 回归，减少发布窗口人工返工。
+- Scope: `scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/lib/daily-zh-generator.mjs`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 新增 EN/ZH 双语 generator pair fixture，使用 2026-05-24 真实 cron 摘要同时调用 `generateEnglishDailyBody`、`generateZhDailyBody` 与 `buildZhDescription`；验证 5 条 story 顺序、EN label、EN/ZH Evidence Matrix 映射、行动段存在与 banned fallback；修复 ZH description 构建逻辑，过滤 Markdown heading、空字段标签和纯英文标题，避免 description 泄漏 `### 1.` 或 `发生了什么` 等结构噪声；新增 package script 并接入 content-check CI。
+- Start date: 2026-05-26
+- End date: 2026-05-26
+- Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily bilingual generator pair fixture check。
+- Result: pass（已新增双语 pair fixture 并接入 package/CI；ZH description 已过滤 Markdown 标题、字段标签和纯英文标题；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 EN/ZH pair fixture 作为发布脚本双语一致性基线；下一步可把 fixture source 抽成共享文件，避免 EN、ZH、pair 三个检查脚本重复维护同一真实 cron 摘要。）
+
 ### EXP-130
 - Hypothesis: EXP-129 已把 EN generator 抽成共享模块，但 ZH description、行动段和证据矩阵补齐逻辑仍内嵌在 `publish-daily.sh` 的 Python heredoc 中；若抽成 `scripts/lib/daily-zh-generator.mjs` 并用真实 2026-05-24 cron 摘要做 fixture 闸门，可在 CI 中提前发现 ZH 空字段标签解析、description 具体度、行动段和证据矩阵回归，减少发布窗口人工返工。
 - Scope: `scripts/lib/daily-zh-generator.mjs`、`scripts/publish-daily.sh`、`scripts/check-publish-daily-generator-fixture.mjs`、`scripts/check-daily-zh-generator-real-cron-fixture.mjs`、`package.json`、`.github/workflows/content-check.yml`
