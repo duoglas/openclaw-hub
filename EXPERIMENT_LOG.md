@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-133
+- Hypothesis: 最近24小时新增日报（2026-05-27）若 EN 页面仍保留 `daily story N`、`anchors story`、`source story behind`、`named source signal` 等 generator 泛化占位句式，且 ZH 页面含实战案例省略号与证据矩阵截断，会削弱首日索引窗口期的事实密度、摘要点击一致性、来源可核验性与读者完成率；当日回补完整双语实稿并强化 specificity 闸门，可提升搜索可见性与核心指南导流质量，并减少同类低事实密度日报进入主分支。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-27/`、`scripts/check-daily-brief-specificity.mjs`
+- Change: 将 EN `openclaw-daily-2026-05-27.md` 从 generator 泛化稿回补为完整英文日报，覆盖 Anthropic Korea / KiYoung Choi、Amazon Alexa+ France、NVIDIA Vera CPU、Tencent/Alibaba/Baidu/China Mobile AI entry points、Huawei Tau Law；将 ZH description 升级为可检索摘要，补全 ZH 实战案例 2、今日结论、明日跟踪点与证据矩阵，移除省略号和截断句；扩展 latest EN specificity 闸门，阻断 `daily story N`、`anchors story`、`source story behind`、`named source signal` 等低事实密度 fallback，并补充 Huawei / China Mobile / France 实体识别。
+- Start date: 2026-05-27
+- End date: 2026-05-27
+- Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 generator fallback 句式，ZH 页面不再含实战案例省略号或证据矩阵截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-27.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 实战案例/证据矩阵补全；`check-daily-brief-specificity.mjs` 已阻断 EXP-133 暴露的 `daily story N` / `anchors story` / `named source signal` 泛化 fallback；本地十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 expanded specificity 闸门作为最新英文日报事实密度基线；下一步建议把发布脚本 EN generator 从 CJK 丢弃式 fallback 升级为结构化翻译/摘要 fixture，避免需要发布后人工回补。）
+
 ### EXP-132
 - Hypothesis: EXP-131 已新增 EN/ZH pair fixture，但 EN、ZH、pair 三个检查脚本仍重复维护同一 2026-05-24 真实 cron 摘要、expected labels 与 banned fallback；若抽成共享 fixture module 并新增去重闸门，可减少 fixture 漂移、降低后续发布脚本质量检查维护成本，并让 CI 阻断重复 fixture 回归。
 - Scope: `scripts/fixtures/daily-real-cron-2026-05-24.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/check-daily-zh-generator-real-cron-fixture.mjs`、`scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/check-daily-fixture-source-dedup.mjs`、`package.json`、`.github/workflows/content-check.yml`

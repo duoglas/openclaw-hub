@@ -46,10 +46,15 @@ const genericPhrasePatterns = [
   { label: 'generator fallback primary named signal', pattern: /is the primary named signal in story \d+/i },
   { label: 'generator fallback evidence signal', pattern: /is the named signal for story \d+/i },
   { label: 'generic workflow-fit fallback', pattern: /The item affects workflow fit, infrastructure readiness, trust controls, governance requirements, or deployment cost\./i },
+  { label: 'generated daily story placeholder', pattern: /\bdaily story \d+\b/i },
+  { label: 'generated source-detail placeholder', pattern: /is the source story behind the .+ section/i },
+  { label: 'generated anchors-story placeholder', pattern: /anchors story \d+; source detail/i },
+  { label: 'generic named source signal', pattern: /This item provides a named source signal for tracking AI product, infrastructure, governance, and deployment implications\./i },
+  { label: 'generic tracked-assumption fallback', pattern: /Teams should turn .+ into a tracked assumption for integration quality, reliability, data boundaries, cost, and (?:use|user value)\.?/i },
 ];
 
 const genericStoryTitlePattern = /^###\s+\d+\.\s*(AI|Technology|Tech|Source brief|Same-day brief|Concrete AI development)\s*$/gim;
-const namedEntitySource = '\\b(NVIDIA|OpenAI|Anthropic|Claude|KPMG|Amazon|AWS|Codex|ChatGPT|Google|Microsoft|Meta|Apple|Baidu|Alibaba|Tencent|Gemini|DeepSeek|Mistral|Perplexity|xAI|GTC|COMPUTEX|Vera|Rubin|Jetson|Alexa|China|Chinese|Europe|EU|United States|US|Japan|Korea)\\b';
+const namedEntitySource = '\\b(NVIDIA|OpenAI|Anthropic|Claude|KPMG|Amazon|AWS|Codex|ChatGPT|Google|Microsoft|Meta|Apple|Baidu|Alibaba|Tencent|Huawei|China Mobile|Gemini|DeepSeek|Mistral|Perplexity|xAI|GTC|COMPUTEX|Vera|Rubin|Jetson|Alexa|China|Chinese|Europe|EU|United States|US|Japan|Korea|France)\\b';
 const namedEntityPattern = new RegExp(namedEntitySource);
 const namedEntityGlobalPattern = new RegExp(namedEntitySource, 'g');
 

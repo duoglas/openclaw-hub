@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-26 17:24
+Last updated: 2026-05-27 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-133: 回补 2026-05-27 双语日报质量缺口（EN 从 generator 泛化占位稿改为完整英文实稿 + ZH 实战案例/证据矩阵截断补全 + specificity 闸门拦截 daily story/source-signal fallback），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报若 EN 页面仍保留 `daily story N`、`anchors story`、`named source signal` 等 generator 泛化占位句式，且 ZH 页面含实战案例省略号与证据矩阵截断，会削弱首日索引窗口期的事实密度、摘要点击一致性、来源可核验性与读者完成率；当日回补完整双语实稿并强化 specificity 闸门，可减少同类低事实密度日报进入主分支。
+  - Metrics: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) EN `openclaw-daily-2026-05-27.md` 从泛化 generator 输出回补为覆盖 Anthropic Korea、Amazon Alexa+ France、NVIDIA Vera CPU、中国 AI 入口竞争、Huawei Tau Law 的完整英文日报；2) ZH description 升级为可检索摘要；3) ZH 实战案例 2、今日结论、明日跟踪点与证据矩阵补全，无省略号截断；4) `check-daily-brief-specificity.mjs` 阻断 `daily story N`、`anchors story`、`source story behind`、`named source signal` 等低事实密度 fallback，并补充 Huawei / China Mobile / France 实体识别；5) 最新日报发现面、相关文章、证据矩阵、语言、行动段、duplicate precheck 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-132: 将 2026-05-24 真实 cron fixture 抽成共享模块并新增去重闸门，消费 EXP-131 “fixture source 抽成共享文件”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-131 已新增 EN/ZH pair fixture，但 EN、ZH、pair 三个检查脚本仍重复维护同一 2026-05-24 真实 cron 摘要、expected labels 与 banned fallback；若抽成共享 fixture module 并新增去重闸门，可减少 fixture 漂移、降低后续发布脚本质量检查维护成本，并让 CI 阻断重复 fixture 回归。
   - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
