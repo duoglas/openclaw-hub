@@ -13,6 +13,12 @@ const KEYWORD_MAP = [
   ['医疗', 'healthcare AI deployment'], ['制造', 'industrial AI deployment'], ['终端', 'AI device adoption'], ['数据', 'data infrastructure'],
 ];
 
+const ZH_ENTITY_MAP = [
+  ['腾讯', 'Tencent'], ['阿里', 'Alibaba'], ['百度', 'Baidu'], ['中国移动', 'China Mobile'], ['华为', 'Huawei'],
+  ['Marvis', 'Tencent'], ['百炼', 'Alibaba'], ['DuMate', 'Baidu'], ['MoMA', 'China Mobile'], ['韬', 'Huawei'],
+  ['韩国', 'Korea'], ['法国', 'France'], ['中国', 'China'], ['美国', 'US'], ['欧洲', 'Europe'],
+];
+
 const FIELD_MAP = new Map([
   ['发生了什么', 'what'], ['为什么重要', 'why'], ['可能影响', 'impact'],
   ['普通用户建议', 'impact'], ['团队建议', 'impact'], ['What happened', 'what'],
@@ -73,6 +79,10 @@ export function extractStories(sourceText) {
   return stories.slice(0, 5);
 }
 
+function hasCjk(source) {
+  return /[\u3400-\u9fff\uf900-\ufaff]/.test(String(source || ''));
+}
+
 function asciiEntities(source) {
   const found = [];
   for (const match of String(source || '').matchAll(/\b[A-Z][A-Za-z0-9+./-]{1,}\b/g)) {
@@ -85,7 +95,11 @@ function asciiEntities(source) {
 
 export function labelFor(story, idx) {
   const source = [story?.title, story?.what, story?.why, story?.impact].filter(Boolean).join(' ');
-  const entities = asciiEntities(source);
+  const mappedEntities = [];
+  for (const [zh, en] of ZH_ENTITY_MAP) {
+    if (source.includes(zh) && !mappedEntities.includes(en)) mappedEntities.push(en);
+  }
+  const entities = [...mappedEntities, ...asciiEntities(source).filter((entity) => !mappedEntities.includes(entity))];
   const concepts = [];
   for (const [zh, en] of KEYWORD_MAP) {
     if (source.includes(zh) && !concepts.includes(en)) concepts.push(en);
@@ -103,15 +117,18 @@ export function labelFor(story, idx) {
 
 export function compactTitle(story, label, idx) {
   const title = String(story?.title || '').replace(/\s+/g, ' ').replace(/^[\s\-—:：]+|[\s\-—:：]+$/g, '');
-  if (title && !['ai', 'technology', 'tech'].includes(title.toLowerCase())) {
+  if (title && !hasCjk(title) && !['ai', 'technology', 'tech'].includes(title.toLowerCase())) {
     return title.slice(0, 140).replace(/[，。；;,.\s]+$/g, '');
   }
   return `${label} daily story ${idx}`;
 }
 
 export function detailFrom(story, key, fallback) {
+  const safeFallback = hasCjk(fallback)
+    ? 'This item provides a named source signal for tracking AI product, infrastructure, governance, and deployment implications.'
+    : fallback;
   let value = String(story?.[key] || '').replace(/\s+/g, ' ').trim();
-  if (!value) value = fallback;
+  if (!value || hasCjk(value)) value = safeFallback;
   if (value.length > 170) value = `${value.slice(0, 169).replace(/[，。；;,.\s]+$/g, '')}.`;
   return value;
 }
