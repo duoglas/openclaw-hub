@@ -120,30 +120,46 @@ export function compactTitle(story, label, idx) {
   if (title && !hasCjk(title) && !['ai', 'technology', 'tech'].includes(title.toLowerCase())) {
     return title.slice(0, 140).replace(/[，。；;,.\s]+$/g, '');
   }
-  return `${label} daily story ${idx}`;
+  return `${label} signal ${idx}`;
 }
 
-export function detailFrom(story, key, fallback) {
-  const safeFallback = hasCjk(fallback)
-    ? 'This item provides a named source signal for tracking AI product, infrastructure, governance, and deployment implications.'
-    : fallback;
+function englishSignalSummary(story, label, idx) {
+  const source = [story?.title, story?.what, story?.why, story?.impact].filter(Boolean).join(' ');
+  const entityBits = [];
+  for (const [zh, en] of ZH_ENTITY_MAP) {
+    if (source.includes(zh) && !entityBits.includes(en)) entityBits.push(en);
+  }
+  for (const token of asciiEntities(source)) {
+    if (!entityBits.includes(token)) entityBits.push(token);
+  }
+  const conceptBits = [];
+  for (const [zh, en] of KEYWORD_MAP) {
+    if (source.includes(zh) && !conceptBits.includes(en)) conceptBits.push(en);
+  }
+  const entities = entityBits.slice(0, 3).join(', ') || label;
+  const concepts = conceptBits.slice(0, 3).join(', ') || 'AI product, infrastructure, governance, or deployment change';
+  return `Source ${idx} centers on ${entities} and ${concepts}; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.`;
+}
+
+export function detailFrom(story, key, fallback, label = '', idx = 1) {
+  const safeFallback = hasCjk(fallback) ? englishSignalSummary(story, label, idx) : fallback;
   let value = String(story?.[key] || '').replace(/\s+/g, ' ').trim();
   if (!value || hasCjk(value)) value = safeFallback;
-  if (value.length > 170) value = `${value.slice(0, 169).replace(/[，。；;,.\s]+$/g, '')}.`;
+  if (value.length > 190) value = `${value.slice(0, 189).replace(/[，。；;,.\s]+$/g, '')}.`;
   return value;
 }
 
 function sentence(kind, story, label, idx) {
   const title = compactTitle(story, label, idx);
   if (kind === 'what') {
-    const detail = detailFrom(story, 'what', `${title} is the source story behind the ${label} section.`);
-    return `What happened: ${label} anchors story ${idx}; source detail: ${detail}`;
+    const detail = detailFrom(story, 'what', `${title} gives the ${label} section a concrete source detail.`, label, idx);
+    return `What happened: ${detail}`;
   }
   if (kind === 'why') {
-    const detail = detailFrom(story, 'why', `${title} changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.`);
+    const detail = detailFrom(story, 'why', `${title} changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.`, label, idx);
     return `Why it matters: ${detail}`;
   }
-  const detail = detailFrom(story, 'impact', `Teams should turn ${title} into a tracked assumption for integration quality, reliability, data boundaries, cost, and user value.`);
+  const detail = detailFrom(story, 'impact', `Teams should turn ${title} into a tracked assumption for integration quality, reliability, data boundaries, cost, and user value.`, label, idx);
   return `Potential impact: ${detail}`;
 }
 
@@ -203,7 +219,7 @@ export function generateEnglishDailyBody(sourceText, date) {
     const idx = index + 1;
     const story = stories[index];
     const title = compactTitle(story, label, idx);
-    const sourceDetail = detailFrom(story, 'what', story?.why || story?.impact || `${title} is the source story behind evidence item ${idx}.`);
+    const sourceDetail = detailFrom(story, 'what', story?.why || story?.impact || `${title} provides source detail for evidence item ${idx}.`, label, idx);
     out.push(`- Evidence item ${idx}: ${label} — ${sourceDetail}`);
   });
 

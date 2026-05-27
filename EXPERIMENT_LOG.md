@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-134
+- Hypothesis: EXP-133 已通过 latest specificity 闸门发现并阻断 `daily story N`、`anchors story`、`source story behind`、`named source signal` 等低事实密度占位句；若 EN generator 在遇到中文 what/why/impact 时不再丢弃源信息，而是基于实体映射、英文 token 与主题词生成英文 source projection，并用真实 cron fixture 阻断 CJK 泄漏和占位短语回归，可减少最新日报发布后人工回补和首日索引窗口损耗。
+- Scope: `scripts/lib/daily-generator.mjs`、`scripts/check-publish-daily-generator-fixture.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/fixtures/daily-real-cron-2026-05-24.mjs`
+- Change: 新增 EN generator 的 `englishSignalSummary`，把中文源字段投影为实体/主题驱动的英文 source detail；将 CJK title fallback 从 `daily story` 改为 neutral signal；移除 `source story behind`、`anchors story`、`named source signal` 等占位句；扩展 publish generator fixture 与 real cron fixture，阻断 EXP-133 暴露的 fallback 短语、EN 输出 CJK 泄漏，并要求 Xinhua/China fixture 项生成英文 source projection。
+- Start date: 2026-05-27
+- End date: 2026-05-27
+- Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm build` 通过。
+- Result: pass（EN generator 已把 CJK fallback 改为实体/主题 projection，真实 cron fixture 已阻断 CJK 泄漏与 EXP-133 fallback 短语；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 CJK-to-English source projection 与 fixture 闸门作为日报发布生成基线；下一步可扩展到 2026-05-27 fixture，验证 Huawei/China Mobile/France 等最新样本的 projection 覆盖度。）
+
 ### EXP-133
 - Hypothesis: 最近24小时新增日报（2026-05-27）若 EN 页面仍保留 `daily story N`、`anchors story`、`source story behind`、`named source signal` 等 generator 泛化占位句式，且 ZH 页面含实战案例省略号与证据矩阵截断，会削弱首日索引窗口期的事实密度、摘要点击一致性、来源可核验性与读者完成率；当日回补完整双语实稿并强化 specificity 闸门，可提升搜索可见性与核心指南导流质量，并减少同类低事实密度日报进入主分支。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-27/`、`scripts/check-daily-brief-specificity.mjs`

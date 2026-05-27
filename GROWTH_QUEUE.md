@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-27 11:24
+Last updated: 2026-05-27 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-134: 将 EN 日报 generator 的 CJK fallback 从泛化占位句升级为实体/主题投影摘要，并扩展真实 cron fixture 阻断 CJK 泄漏与 EXP-133 fallback 短语回归，消费 EXP-133 “结构化翻译/摘要 fixture”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-133 已通过 latest specificity 闸门发现并阻断 `daily story N`、`anchors story`、`source story behind`、`named source signal` 等低事实密度占位句；若 EN generator 在遇到中文 what/why/impact 时不再丢弃源信息，而是基于实体映射、英文 token 与主题词生成英文 source projection，并用真实 cron fixture 阻断 CJK 泄漏和占位短语回归，可减少最新日报发布后人工回补和首日索引窗口损耗。
+  - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `scripts/lib/daily-generator.mjs` 新增 `englishSignalSummary`，对中文源字段生成基于 China/Xinhua 等实体与 robotics deployment / AI education deployment 等主题的英文 projection；2) 移除 generator 中 `daily story`、`source story behind`、`anchors story`、`named source signal` fallback；3) `check-publish-daily-generator-fixture.mjs` 静态阻断 EXP-133 fallback 短语；4) `check-daily-generator-real-cron-fixture.mjs` 阻断 EN generator 输出 CJK，并要求 Xinhua/China fixture 项具备英文 source projection；5) 真实 cron shared fixture 更新 banned fallback 与期望 label；6) 本地专项检查、十一项日报/索引卫生闸门 + build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-133: 回补 2026-05-27 双语日报质量缺口（EN 从 generator 泛化占位稿改为完整英文实稿 + ZH 实战案例/证据矩阵截断补全 + specificity 闸门拦截 daily story/source-signal fallback），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报若 EN 页面仍保留 `daily story N`、`anchors story`、`named source signal` 等 generator 泛化占位句式，且 ZH 页面含实战案例省略号与证据矩阵截断，会削弱首日索引窗口期的事实密度、摘要点击一致性、来源可核验性与读者完成率；当日回补完整双语实稿并强化 specificity 闸门，可减少同类低事实密度日报进入主分支。
   - Metrics: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

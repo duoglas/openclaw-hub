@@ -20,6 +20,10 @@ const bannedGeneratedPhrases = [
   'The item affects workflow fit',
   'named signal for story',
   'item affects workflow fit',
+  'daily story',
+  'source story behind',
+  'anchors story',
+  'This item provides a named source signal',
 ];
 
 if (!source.includes("import { generateEnglishDailyBody } from './scripts/lib/daily-generator.mjs';")) {

@@ -18,6 +18,8 @@ const storyCount = (body.match(/^### \d+\./gm) || []).length;
 const evidenceCount = (body.match(/^- Evidence item \d+:/gm) || []).length;
 if (storyCount !== 5) failures.push(`expected 5 Top Stories, found ${storyCount}`);
 if (evidenceCount !== 5) failures.push(`expected 5 Evidence Matrix items, found ${evidenceCount}`);
+if (/[\u3400-\u9fff\uf900-\ufaff]/.test(body)) failures.push('English generator output leaked CJK text from the source summary');
+if (!body.includes('Source 5 centers on China, Xinhua')) failures.push('missing CJK-to-English source projection for Xinhua/China fixture item');
 
 if (failures.length > 0) {
   console.error('Daily generator real cron fixture check failed:');
