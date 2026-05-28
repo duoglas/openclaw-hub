@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-136: 回补 2026-05-28 双语日报质量缺口（EN 从 generator 泛化占位稿改为完整英文实稿 + ZH description 可检索化 + heading 间距修复），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `016fb0c`
+- [x] P1 Candidate A / EXP-136: 回补 2026-05-28 双语日报质量缺口（EN 从 generator 泛化占位稿改为完整英文实稿 + ZH description 可检索化 + heading 间距修复），优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `f175bb8`
   - Hypothesis: 最近24小时新增日报（2026-05-28）若 EN 页面保留 `signal N gives the ... concrete source detail`、`Teams should validate ...` 等 generator 泛化占位句式且多处句尾截断，ZH description 仍为截断片段，会削弱首日索引窗口期的事实密度、摘要点击一致性、来源可核验性与读者完成率；当日回补完整英文实稿并优化 ZH 摘要，可提升搜索可见性与核心指南导流质量。
   - Metrics: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
   - Acceptance: 1) EN `openclaw-daily-2026-05-28.md` 从泛化 generator 输出回补为覆盖 AWS Agentic Shopping Assistant、NVIDIA AI factory、Anthropic Korea、China 5G、AI-agent payments 的完整英文日报；2) EN description 升级为可检索摘要；3) EN Top 5、案例、今日结论、明日跟踪点与证据矩阵均使用具体来源明细且无截断；4) ZH description 升级为覆盖当日核心主题的可检索摘要，并修复证据矩阵/明日跟踪点 heading 间距；5) 最新日报发现面、相关文章、证据矩阵、语言、行动段、duplicate precheck 与 build 全部通过；质量评分 28/30。

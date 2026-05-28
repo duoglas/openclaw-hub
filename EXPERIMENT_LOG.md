@@ -22,7 +22,7 @@
 - Start date: 2026-05-28
 - End date: 2026-05-28
 - Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 generator 泛化占位句或截断句尾，ZH description 不再截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-28.md` 已完成 EN 完整英文实稿回补、EN/ZH description 可检索化与 ZH heading 间距修复；本地十一项日报/索引卫生闸门与 build 全部通过；commit `016fb0c`；质量评分 28/30。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-28.md` 已完成 EN 完整英文实稿回补、EN/ZH description 可检索化与 ZH heading 间距修复；本地十一项日报/索引卫生闸门与 build 全部通过；commit `f175bb8`；质量评分 28/30。）
 - Decision (scale / iterate / stop): iterate（下一步建议把 2026-05-28 真实内容建设样本加入 daily-real-cron fixture registry，并新增针对 `signal N gives the ... concrete source detail` 与句尾截断的 generator guardrail，避免回补型任务重复出现。）
 
 ### EXP-135
