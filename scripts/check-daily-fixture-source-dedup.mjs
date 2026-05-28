@@ -1,29 +1,40 @@
 #!/usr/bin/env node
 import { readFileSync } from 'node:fs';
 
-const fixtureModule = './fixtures/daily-real-cron-2026-05-24.mjs';
+const fixtureRegistry = './fixtures/daily-real-cron-fixtures.mjs';
 const checkedFiles = [
   'scripts/check-daily-generator-real-cron-fixture.mjs',
   'scripts/check-daily-zh-generator-real-cron-fixture.mjs',
   'scripts/check-daily-bilingual-generator-pair-fixture.mjs',
+];
+const fixtureFiles = [
+  'scripts/fixtures/daily-real-cron-2026-05-24.mjs',
+  'scripts/fixtures/daily-real-cron-2026-05-27.mjs',
 ];
 
 const failures = [];
 
 for (const file of checkedFiles) {
   const source = readFileSync(file, 'utf8');
-  if (!source.includes(fixtureModule)) {
-    failures.push(`${file} does not import the shared real cron fixture module`);
+  if (!source.includes(fixtureRegistry)) {
+    failures.push(`${file} does not import the shared real cron fixture registry`);
   }
-  if (/const\s+fixture\s*=\s*`《AI、科技日报》/.test(source) || /2026-05-24\n\n## 今日要闻/.test(source)) {
-    failures.push(`${file} reintroduced an inline 2026-05-24 cron fixture`);
+  if (/const\s+fixture\s*=\s*`《AI、科技日报》/.test(source) || /2026-05-(24|27).*## 今日要闻/s.test(source)) {
+    failures.push(`${file} reintroduced an inline real cron fixture`);
   }
 }
 
-const fixtureSource = readFileSync('scripts/fixtures/daily-real-cron-2026-05-24.mjs', 'utf8');
-for (const exportName of ['realCronFixture', 'fixtureDate', 'expectedSignals', 'bannedFallbackPhrases']) {
-  if (!fixtureSource.includes(`export const ${exportName}`)) {
-    failures.push(`shared fixture module is missing export: ${exportName}`);
+const registrySource = readFileSync('scripts/fixtures/daily-real-cron-fixtures.mjs', 'utf8');
+if (!registrySource.includes('realCronFixtures')) {
+  failures.push('shared fixture registry is missing realCronFixtures export');
+}
+
+for (const fixtureFile of fixtureFiles) {
+  const fixtureSource = readFileSync(fixtureFile, 'utf8');
+  for (const exportName of ['realCronFixture', 'fixtureDate', 'expectedSignals', 'bannedFallbackPhrases']) {
+    if (!fixtureSource.includes(`export const ${exportName}`)) {
+      failures.push(`${fixtureFile} is missing export: ${exportName}`);
+    }
   }
 }
 

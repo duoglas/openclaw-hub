@@ -48,6 +48,11 @@ export function extractStories(sourceText) {
 
     if (!current) continue;
 
+    if (line === '---' || /^#{2,6}\s+/.test(line) || /^来源[:：]/.test(line) || /^Source[:：]/i.test(line)) {
+      field = null;
+      continue;
+    }
+
     const labelMatch = line.match(/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议|What happened|Why it matters|Potential impact)[:：]\s*(.*)$/);
     if (labelMatch) {
       const key = FIELD_MAP.get(labelMatch[1]);

@@ -21,6 +21,11 @@ export function extractZhStories(sourceText) {
 
     if (!current) continue;
 
+    if (line === '---' || /^#{2,6}\s+/.test(line) || /^来源[:：]/.test(line)) {
+      field = null;
+      continue;
+    }
+
     const labelMatch = line.match(/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\s*(.*)$/);
     if (labelMatch) {
       const key = {
@@ -66,14 +71,21 @@ export function buildZhDescription(sourceText) {
   const lines = String(sourceText || '')
     .replace(/\r/g, '\n')
     .split('\n')
-    .map((line) => normalize(line).replace(/^#{1,6}\s*/, '').replace(/^\d+[\).、]\s*/, ''))
+    .map((line) => normalize(line))
     .filter(Boolean);
 
   const candidates = [];
-  for (const line of lines) {
-    if (line.startsWith('《AI、科技日报》') || line.startsWith('说明：')) continue;
+  for (const rawLine of lines) {
+    if (rawLine.startsWith('《AI、科技日报》') || rawLine.startsWith('说明：')) continue;
+    if (/^\d{4}-\d{2}-\d{2}\s*(早报|日报|Morning Brief)?$/.test(rawLine)) continue;
+    if (/^(?:#{1,6}\s*)?\d+[\).、]\s+/.test(rawLine)) continue;
+
+    let line = rawLine.replace(/^#{1,6}\s*/, '');
     if (/^[【\[]?.*(今日要闻|实战案例|今日结论|明日跟踪点|证据矩阵).*[】\]]?$/.test(line)) continue;
+    const fieldMatch = line.match(/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\s*(.*)$/);
+    if (fieldMatch) line = fieldMatch[2].trim();
     if (/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]?\s*$/.test(line)) continue;
+    if (/^来源[:：]/.test(line)) continue;
     if (/^[A-Za-z0-9+./ -]+$/.test(line) && !/[\u4e00-\u9fff]/.test(line)) continue;
     if (line.length >= 8) candidates.push(line);
     if (candidates.length >= 3) break;

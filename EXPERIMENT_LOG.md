@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-135
+- Hypothesis: EXP-134 已把 EN generator 的 CJK fallback 升级为实体/主题 projection，但真实 cron fixture 仍只覆盖 2026-05-24；若 2026-05-27 这类含“实战案例 / 今日结论 / 证据矩阵”的完整日报源进入 generator，parser 可能把 Top Story 5 后面的 section 内容继续拼进 impact，导致 Huawei Tau Law 条目被 Tencent/Alibaba/Baidu 等后续证据污染。新增 2026-05-27 fixture registry 并让 EN/ZH/pair fixture 全量遍历，可在发布前阻断 section-boundary drift、description 标题/字段泄漏和跨语言证据漂移。
+- Scope: `scripts/lib/daily-generator.mjs`、`scripts/lib/daily-zh-generator.mjs`、`scripts/fixtures/daily-real-cron-2026-05-27.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/check-daily-zh-generator-real-cron-fixture.mjs`、`scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/check-daily-fixture-source-dedup.mjs`
+- Change: 新增 2026-05-27 真实 cron fixture 与 fixture registry；EN/ZH/pair 真实 cron fixture 检查改为遍历 registry；新增 story 5 guardrail，要求 Huawei Tau Law label 保持 Huawei/China/EDA/compute infrastructure，且不能泄漏 Tencent/Alibaba/Baidu/China Mobile/Marvis/MoMA；EN/ZH parser 在 section heading、分隔线和来源行处停止字段续写；ZH description 过滤日期、编号标题和字段标签，优先取具体字段明细。
+- Start date: 2026-05-28
+- End date: 2026-05-28
+- Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-05-27 fixture 已接入 registry；parser section-boundary 污染已修复；story 5 不再泄漏 Tencent/Alibaba/Baidu 等后续 section token；ZH description 不再泄漏日期、编号标题或字段标签；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 multi-fixture registry 作为日报 generator 回归基线；下一步可把最新 2026-05-28 内容建设样本加入 fixture，并增加 URL/source 行截断专项断言，进一步覆盖来源行对英文 projection 的影响。）
+
 ### EXP-134
 - Hypothesis: EXP-133 已通过 latest specificity 闸门发现并阻断 `daily story N`、`anchors story`、`source story behind`、`named source signal` 等低事实密度占位句；若 EN generator 在遇到中文 what/why/impact 时不再丢弃源信息，而是基于实体映射、英文 token 与主题词生成英文 source projection，并用真实 cron fixture 阻断 CJK 泄漏和占位短语回归，可减少最新日报发布后人工回补和首日索引窗口损耗。
 - Scope: `scripts/lib/daily-generator.mjs`、`scripts/check-publish-daily-generator-fixture.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/fixtures/daily-real-cron-2026-05-24.mjs`

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-27 17:24
+Last updated: 2026-05-28 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-135: 扩展真实 cron fixture 到 2026-05-27 并修复日报 parser 跨 section 污染（阻断华为条目被实战案例/证据矩阵中的 Tencent/Alibaba/Baidu 误污染），消费 EXP-134 “扩展到 2026-05-27 fixture”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-134 已把 EN generator 的 CJK fallback 升级为实体/主题 projection，但真实 cron fixture 仍只覆盖 2026-05-24；若 2026-05-27 这类含“实战案例 / 今日结论 / 证据矩阵”的完整日报源进入 generator，parser 可能把 Top Story 5 后面的 section 内容继续拼进 impact，导致 Huawei Tau Law 条目被 Tencent/Alibaba/Baidu 等后续证据污染。新增 2026-05-27 fixture registry 并让 EN/ZH/pair fixture 全量遍历，可在发布前阻断 section-boundary drift、description 标题/字段泄漏和跨语言证据漂移。
+  - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/fixtures/daily-real-cron-2026-05-27.mjs`，覆盖 Anthropic Korea、Amazon Alexa+ France、NVIDIA Vera CPU、中国 AI 入口、Huawei Tau Law，并保留后续实战案例/证据矩阵 section 作为 parser 污染样本；2) 新增 `scripts/fixtures/daily-real-cron-fixtures.mjs` registry，EN/ZH/pair fixture 检查改为遍历全部真实 cron fixtures；3) `extractStories` / `extractZhStories` 在非 story section heading、`---`、来源行处停止字段续写，避免 Top Story 5 吸收后续 section；4) `buildZhDescription` 跳过日期、编号标题和字段标签，优先使用字段明细；5) dedup 闸门升级为检查 registry 与双 fixture source；6) 本地专项检查、十一项日报/索引卫生闸门 + build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-134: 将 EN 日报 generator 的 CJK fallback 从泛化占位句升级为实体/主题投影摘要，并扩展真实 cron fixture 阻断 CJK 泄漏与 EXP-133 fallback 短语回归，消费 EXP-133 “结构化翻译/摘要 fixture”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-133 已通过 latest specificity 闸门发现并阻断 `daily story N`、`anchors story`、`source story behind`、`named source signal` 等低事实密度占位句；若 EN generator 在遇到中文 what/why/impact 时不再丢弃源信息，而是基于实体映射、英文 token 与主题词生成英文 source projection，并用真实 cron fixture 阻断 CJK 泄漏和占位短语回归，可减少最新日报发布后人工回补和首日索引窗口损耗。
   - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm build` 通过。
