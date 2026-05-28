@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-136
+- Hypothesis: 最近24小时新增日报（2026-05-28）若 EN 页面保留 `signal N gives the ... concrete source detail`、`Teams should validate ...` 等 generator 泛化占位句式且多处句尾截断，ZH description 仍为截断片段，会削弱首日索引窗口期的事实密度、摘要点击一致性、来源可核验性与读者完成率；当日回补完整英文实稿并优化 ZH 摘要，可提升搜索可见性与核心指南导流质量。
+- Scope: `/en|zh/blog/openclaw-daily-2026-05-28/`
+- Change: 将 EN `openclaw-daily-2026-05-28.md` 从 generator 泛化稿回补为完整英文日报，覆盖 AWS Agentic Shopping Assistant / Kate Spade AI Gift Concierge、NVIDIA AI factory 指标、Anthropic Korea / KiYoung Choi、China 5G infrastructure、Alipay/WeChat Pay/JD.com/UnionPay AI-agent payments；将 EN/ZH description 升级为可检索摘要；修复 ZH 证据矩阵与明日跟踪点 heading 间距。
+- Start date: 2026-05-28
+- End date: 2026-05-28
+- Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 generator 泛化占位句或截断句尾，ZH description 不再截断。
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-28.md` 已完成 EN 完整英文实稿回补、EN/ZH description 可检索化与 ZH heading 间距修复；本地十一项日报/索引卫生闸门与 build 全部通过；commit `016fb0c`；质量评分 28/30。）
+- Decision (scale / iterate / stop): iterate（下一步建议把 2026-05-28 真实内容建设样本加入 daily-real-cron fixture registry，并新增针对 `signal N gives the ... concrete source detail` 与句尾截断的 generator guardrail，避免回补型任务重复出现。）
+
 ### EXP-135
 - Hypothesis: EXP-134 已把 EN generator 的 CJK fallback 升级为实体/主题 projection，但真实 cron fixture 仍只覆盖 2026-05-24；若 2026-05-27 这类含“实战案例 / 今日结论 / 证据矩阵”的完整日报源进入 generator，parser 可能把 Top Story 5 后面的 section 内容继续拼进 impact，导致 Huawei Tau Law 条目被 Tencent/Alibaba/Baidu 等后续证据污染。新增 2026-05-27 fixture registry 并让 EN/ZH/pair fixture 全量遍历，可在发布前阻断 section-boundary drift、description 标题/字段泄漏和跨语言证据漂移。
 - Scope: `scripts/lib/daily-generator.mjs`、`scripts/lib/daily-zh-generator.mjs`、`scripts/fixtures/daily-real-cron-2026-05-27.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/check-daily-zh-generator-real-cron-fixture.mjs`、`scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/check-daily-fixture-source-dedup.mjs`
