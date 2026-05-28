@@ -159,7 +159,7 @@ function sentence(kind, story, label, idx) {
     const detail = detailFrom(story, 'why', `${title} changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.`, label, idx);
     return `Why it matters: ${detail}`;
   }
-  const detail = detailFrom(story, 'impact', `Teams should turn ${title} into a tracked assumption for integration quality, reliability, data boundaries, cost, and user value.`, label, idx);
+  const detail = detailFrom(story, 'impact', `Teams should validate ${title} through a small production-adjacent pilot that checks integration quality, reliability, data boundaries, cost exposure, and user value before broad rollout.`, label, idx);
   return `Potential impact: ${detail}`;
 }
 
