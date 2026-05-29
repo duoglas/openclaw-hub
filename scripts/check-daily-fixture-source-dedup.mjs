@@ -10,6 +10,8 @@ const checkedFiles = [
 const fixtureFiles = [
   'scripts/fixtures/daily-real-cron-2026-05-24.mjs',
   'scripts/fixtures/daily-real-cron-2026-05-27.mjs',
+  'scripts/fixtures/daily-real-cron-2026-05-28.mjs',
+  'scripts/fixtures/daily-real-cron-2026-05-29.mjs',
 ];
 
 const failures = [];
@@ -19,7 +21,7 @@ for (const file of checkedFiles) {
   if (!source.includes(fixtureRegistry)) {
     failures.push(`${file} does not import the shared real cron fixture registry`);
   }
-  if (/const\s+fixture\s*=\s*`《AI、科技日报》/.test(source) || /2026-05-(24|27).*## 今日要闻/s.test(source)) {
+  if (/const\s+fixture\s*=\s*`《AI、科技日报》/.test(source) || /2026-05-(24|27|28|29).*## 今日要闻/s.test(source)) {
     failures.push(`${file} reintroduced an inline real cron fixture`);
   }
 }

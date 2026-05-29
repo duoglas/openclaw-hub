@@ -1,6 +1,7 @@
 const BRAND_TOKENS = new Set([
   'OpenAI', 'Anthropic', 'NVIDIA', 'Google', 'Amazon', 'Microsoft', 'Meta', 'Claude', 'Gemini', 'ChatGPT',
   'Alexa', 'AWS', 'KPMG', 'PwC', 'SAP', 'GitHub', 'Baidu', 'Alibaba', 'DeepSeek', 'Tencent', 'ByteDance',
+  'GPT', 'GPT-5.5', 'GPT-4.5', 'Opus', 'ICRA', 'AIGC', 'API', 'Codex', 'Nova', 'Bedrock', 'Kate', 'Spade',
 ]);
 
 const KEYWORD_MAP = [
@@ -10,12 +11,15 @@ const KEYWORD_MAP = [
   ['办公', 'workplace AI'], ['企业', 'enterprise AI rollout'], ['联盟', 'enterprise alliance'], ['合作', 'strategic partnership'],
   ['政策', 'AI policy signal'], ['监管', 'AI governance requirement'], ['版权', 'copyright and provenance risk'], ['安全', 'AI security control'],
   ['财务', 'personal finance AI'], ['播客', 'generative audio product'], ['电商', 'AI commerce workflow'], ['购物', 'AI commerce workflow'],
+  ['版本', 'model release management'], ['退役', 'model retirement planning'], ['编码', 'coding agent workflow'], ['代码', 'coding agent workflow'],
+  ['融资', 'AI capital expenditure'], ['估值', 'AI capital expenditure'], ['法院', 'AI legal precedent'], ['司法', 'AI legal precedent'], ['权属', 'data rights governance'],
   ['支付', 'agent payment workflow'], ['5G', 'compute infrastructure'], ['网络', 'compute infrastructure'], ['基站', 'compute infrastructure'],
   ['教育', 'AI education deployment'], ['医疗', 'healthcare AI deployment'], ['制造', 'industrial AI deployment'], ['终端', 'AI device adoption'], ['数据', 'data infrastructure'],
 ];
 
 const ZH_ENTITY_MAP = [
   ['腾讯', 'Tencent'], ['阿里', 'Alibaba'], ['百度', 'Baidu'], ['中国移动', 'China Mobile'], ['华为', 'Huawei'],
+  ['最高法', 'China Supreme People’s Court'], ['人民法院', 'China courts'], ['司法部', 'China Ministry of Justice'],
   ['支付宝', 'Alipay'], ['微信支付', 'WeChat Pay'], ['京东', 'JD.com'], ['银联', 'UnionPay'], ['新华社', 'Xinhua'], ['工信部', 'MIIT'],
   ['Marvis', 'Tencent'], ['百炼', 'Alibaba'], ['DuMate', 'Baidu'], ['MoMA', 'China Mobile'], ['韬', 'Huawei'],
   ['韩国', 'Korea'], ['法国', 'France'], ['中国', 'China'], ['美国', 'US'], ['欧洲', 'Europe'],
@@ -130,7 +134,17 @@ export function compactTitle(story, label, idx) {
   return `${label} signal ${idx}`;
 }
 
-function englishSignalSummary(story, label, idx) {
+function sourceFacts(source) {
+  const facts = [];
+  for (const match of String(source || '').matchAll(/\b(?:20\d{2}[-/]\d{1,2}[-/]\d{1,2}|\d+(?:\.\d+)?\s*(?:万亿|万|亿|亿美元|个|篇|月|日|%|tokens?\/秒|tokens?\/瓦)|GPT-[0-9.]+|o3|API|ICRA|AIGC|sim-to-real)\b/gi)) {
+    const token = match[0].replace(/\s+/g, ' ');
+    if (hasCjk(token)) continue;
+    if (!facts.includes(token)) facts.push(token);
+  }
+  return facts.slice(0, 5);
+}
+
+function englishSignalSummary(story, label, idx, key = 'what') {
   const source = [story?.title, story?.what, story?.why, story?.impact].filter(Boolean).join(' ');
   const entityBits = [];
   for (const [zh, en] of ZH_ENTITY_MAP) {
@@ -143,20 +157,28 @@ function englishSignalSummary(story, label, idx) {
   for (const [zh, en] of KEYWORD_MAP) {
     if (source.includes(zh) && !conceptBits.includes(en)) conceptBits.push(en);
   }
-  const entities = entityBits.slice(0, 3).join(', ') || label;
-  const concepts = conceptBits.slice(0, 3).join(', ') || 'AI product, infrastructure, governance, or deployment change';
-  return `Source ${idx} centers on ${entities} and ${concepts}; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.`;
+  const entities = entityBits.slice(0, 4).join(', ') || label;
+  const concepts = conceptBits.slice(0, 4).join(', ') || 'AI product and deployment change';
+  const facts = sourceFacts(source);
+  const factClause = facts.length ? ` The source includes concrete timing or scale signals (${facts.join(', ')}).` : '';
+  if (key === 'why') {
+    return `This matters because ${entities} links ${concepts} to adoption timing, infrastructure capacity, compliance exposure, or enterprise workflow readiness.${factClause}`;
+  }
+  if (key === 'impact') {
+    return `The likely impact is a more specific evaluation path for ${entities}: migration timing, partner dependency, governance review, cost exposure, and measurable rollout criteria.${factClause}`;
+  }
+  return `Source ${idx} reports a ${concepts} signal involving ${entities}.${factClause}`;
 }
 
 export function detailFrom(story, key, fallback, label = '', idx = 1) {
-  const sourceProjection = englishSignalSummary(story, label, idx);
+  const sourceProjection = englishSignalSummary(story, label, idx, key);
   const safeFallback = hasCjk(fallback) ? sourceProjection : fallback;
   let value = String(story?.[key] || '').replace(/\s+/g, ' ').trim();
   if (!value) value = safeFallback;
   if (hasCjk(value)) value = sourceProjection;
-  if (value.length > 320) {
-    const clipped = value.slice(0, 319).replace(/\s+\S*$/, '').replace(/[，。；;,.\s]+$/g, '');
-    value = `${clipped || value.slice(0, 319).replace(/[，。；;,.\s]+$/g, '')}.`;
+  if (value.length > 460) {
+    const clipped = value.slice(0, 459).replace(/\s+\S*$/, '').replace(/[，。；;,.\s]+$/g, '');
+    value = `${clipped || value.slice(0, 459).replace(/[，。；;,.\s]+$/g, '')}.`;
   }
   return value;
 }

@@ -30,7 +30,7 @@ for (const fixture of realCronFixtures) {
     if (label !== signal.enLabel) failures.push(`${fixtureDate}: EN label ${index + 1} drifted: ${label}`);
   });
 
-  if (fixtureDate === '2026-05-24' && !body.includes('Source 5 centers on China, Xinhua')) {
+  if (fixtureDate === '2026-05-24' && !body.includes('Source 5 reports a robotics deployment, AI education deployment signal involving China, Xinhua')) {
     failures.push('2026-05-24: missing CJK-to-English source projection for Xinhua/China fixture item');
   }
 

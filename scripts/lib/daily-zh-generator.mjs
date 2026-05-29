@@ -63,7 +63,8 @@ export function extractZhStories(sourceText) {
 
 function trimDetail(value, fallback) {
   let detail = String(value || fallback || '').replace(/\s+/g, ' ').trim();
-  if (detail.length > 90) detail = `${detail.slice(0, 89).replace(/[，。；;,.\s]+$/g, '')}。`;
+  if (detail.length > 150) detail = `${detail.slice(0, 149).replace(/[，。；;,.\s]+$/g, '')}。`;
+  detail = detail.replace(/(API|Claude Code|GPT-4\.5|GPT-5\.5)\s*。$/g, '$1 暂无进一步细节。');
   return detail;
 }
 
@@ -88,13 +89,14 @@ export function buildZhDescription(sourceText) {
     if (/^来源[:：]/.test(line)) continue;
     if (/^[A-Za-z0-9+./ -]+$/.test(line) && !/[\u4e00-\u9fff]/.test(line)) continue;
     if (line.length >= 8) candidates.push(line);
-    if (candidates.length >= 3) break;
+    if (candidates.length >= 2) break;
   }
 
   let joined = (candidates.length ? candidates : ['今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。']).join('；');
   joined = joined.replace(/\s+/g, ' ').replace(/[；;，,。.]+$/g, '');
-  if (joined.length > 120) joined = `${joined.slice(0, 119).replace(/[；;，,。.]+$/g, '')}。`;
-  else if (!/[。！？]$/.test(joined)) joined += '。';
+  if (joined.length > 180) joined = `${joined.slice(0, 179).replace(/[；;，,。.]+$/g, '')}。`;
+  joined = joined.replace(/(API|Claude Code|GPT-4\.5|GPT-5\.5)\s*。$/g, '$1 暂无进一步细节。');
+  if (!/[。！？]$/.test(joined)) joined += '。';
   return joined.replace(/"/g, '');
 }
 

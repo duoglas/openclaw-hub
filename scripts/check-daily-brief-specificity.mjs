@@ -53,6 +53,7 @@ const genericPhrasePatterns = [
   { label: 'generic tracked-assumption fallback', pattern: /Teams should turn .+ into a tracked assumption for integration quality, reliability, data boundaries, cost, and (?:use|user value)\.?/i },
   { label: 'generic concrete-source-detail fallback', pattern: /signal \d+ gives the .+ section a concrete source detail\.?/i },
   { label: 'generic validate-through-pilot fallback', pattern: /Teams should validate .+ through a small production-adjacent pilot/i },
+  { label: 'generic source-centers workflow fallback', pattern: /Source \d+ centers on .+ teams should verify workflow fit/i },
   { label: 'sentence-tail truncation', pattern: /\b(?:before|cost|cost exposure|data boundaries|integration quality|user value)\.$/im },
 ];
 
