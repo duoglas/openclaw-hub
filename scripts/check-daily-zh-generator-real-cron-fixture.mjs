@@ -16,7 +16,10 @@ for (const fixture of realCronFixtures) {
   expectedSignals.forEach((signal, index) => {
     if (stories[index]?.title !== signal.title) failures.push(`${fixtureDate}: ZH story ${index + 1} title drifted: ${stories[index]?.title || ''}`);
   });
-  if (!desc.includes(expectedSignals[0].title.split('，')[0].split('/')[0]) && !desc.includes('Anthropic')) {
+  const firstSignalAnchor = expectedSignals[0].title.split('，')[0].split('/')[0];
+  const firstSignalTokens = expectedSignals[0].requiredTokens || [];
+  const hasConcreteDescriptionAnchor = desc.includes(firstSignalAnchor) || firstSignalTokens.some((token) => desc.includes(token));
+  if (!hasConcreteDescriptionAnchor && !desc.includes('Anthropic')) {
     failures.push(`${fixtureDate}: ZH description did not use concrete source details`);
   }
   if (/今日要闻|证据矩阵|明日跟踪点|发生了什么|为什么重要|可能影响|^#+\s|### \d+\./.test(desc)) {

@@ -51,6 +51,9 @@ const genericPhrasePatterns = [
   { label: 'generated anchors-story placeholder', pattern: /anchors story \d+; source detail/i },
   { label: 'generic named source signal', pattern: /This item provides a named source signal for tracking AI product, infrastructure, governance, and deployment implications\./i },
   { label: 'generic tracked-assumption fallback', pattern: /Teams should turn .+ into a tracked assumption for integration quality, reliability, data boundaries, cost, and (?:use|user value)\.?/i },
+  { label: 'generic concrete-source-detail fallback', pattern: /signal \d+ gives the .+ section a concrete source detail\.?/i },
+  { label: 'generic validate-through-pilot fallback', pattern: /Teams should validate .+ through a small production-adjacent pilot/i },
+  { label: 'sentence-tail truncation', pattern: /\b(?:before|cost|cost exposure|data boundaries|integration quality|user value)\.$/im },
 ];
 
 const genericStoryTitlePattern = /^###\s+\d+\.\s*(AI|Technology|Tech|Source brief|Same-day brief|Concrete AI development)\s*$/gim;

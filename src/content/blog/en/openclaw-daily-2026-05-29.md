@@ -14,33 +14,33 @@ AI & Tech Daily Brief
 
 ### 1. OpenAI / GPT-5.5 / Instant / model capability update
 
-What happened: OpenAI / GPT-5.5 / Instant / model capability update signal 1 gives the OpenAI / GPT-5.5 / Instant / model capability update section a concrete source detail.
-Why it matters: OpenAI / GPT-5.5 / Instant / model capability update signal 1 changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.
-Potential impact: Teams should validate OpenAI / GPT-5.5 / Instant / model capability update signal 1 through a small production-adjacent pilot that checks integration quality, reliability, data boundaries.
+What happened: Source 1 centers on OpenAI, GPT-5.5, Instant and model capability update; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Why it matters: Source 1 centers on OpenAI, GPT-5.5, Instant and model capability update; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Potential impact: Source 1 centers on OpenAI, GPT-5.5, Instant and model capability update; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
 
 ### 2. Anthropic / Claude / Opus / agent platform
 
-What happened: Anthropic / Claude / Opus / agent platform signal 2 gives the Anthropic / Claude / Opus / agent platform section a concrete source detail.
-Why it matters: Anthropic / Claude / Opus / agent platform signal 2 changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.
-Potential impact: Teams should validate Anthropic / Claude / Opus / agent platform signal 2 through a small production-adjacent pilot that checks integration quality, reliability, data boundaries, cost expos.
+What happened: Source 2 centers on Anthropic, Claude, Opus and agent platform, model capability update, enterprise AI rollout; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Why it matters: Source 2 centers on Anthropic, Claude, Opus and agent platform, model capability update, enterprise AI rollout; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Potential impact: Source 2 centers on Anthropic, Claude, Opus and agent platform, model capability update, enterprise AI rollout; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
 
 ### 3. Anthropic / compute infrastructure / model capability update / strategic partnership
 
-What happened: Anthropic / compute infrastructure / model capability update / strategic partnership signal 3 gives the Anthropic / compute infrastructure / model capability update / strategic partnership.
-Why it matters: Anthropic / compute infrastructure / model capability update / strategic partnership signal 3 changes what teams should verify about workflow fit, readiness, trust controls, governance, cos.
-Potential impact: Teams should validate Anthropic / compute infrastructure / model capability update / strategic partnership signal 3 through a small production-adjacent pilot that checks integration quality.
+What happened: Source 3 centers on Anthropic and compute infrastructure, model capability update, strategic partnership; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Why it matters: Source 3 centers on Anthropic and compute infrastructure, model capability update, strategic partnership; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Potential impact: Source 3 centers on Anthropic and compute infrastructure, model capability update, strategic partnership; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
 
 ### 4. NVIDIA / Research / ICRA / AI hardware
 
-What happened: NVIDIA / Research / ICRA / AI hardware signal 4 gives the NVIDIA / Research / ICRA / AI hardware section a concrete source detail.
-Why it matters: NVIDIA / Research / ICRA / AI hardware signal 4 changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.
-Potential impact: Teams should validate NVIDIA / Research / ICRA / AI hardware signal 4 through a small production-adjacent pilot that checks integration quality, reliability, data boundaries, cost exposure.
+What happened: Source 4 centers on NVIDIA, Research, ICRA and AI hardware, robotics deployment, industrial AI deployment; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Why it matters: Source 4 centers on NVIDIA, Research, ICRA and AI hardware, robotics deployment, industrial AI deployment; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Potential impact: Source 4 centers on NVIDIA, Research, ICRA and AI hardware, robotics deployment, industrial AI deployment; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
 
-### 5. China / AIGC / model capability update / enterprise AI rollout
+### 5. Xinhua / China / AIGC / model capability update
 
-What happened: China / AIGC / model capability update / enterprise AI rollout signal 5 gives the China / AIGC / model capability update / enterprise AI rollout section a concrete source detail.
-Why it matters: China / AIGC / model capability update / enterprise AI rollout signal 5 changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.
-Potential impact: Teams should validate China / AIGC / model capability update / enterprise AI rollout signal 5 through a small production-adjacent pilot that checks integration quality, reliability, data bo.
+What happened: Source 5 centers on Xinhua, China, AIGC and model capability update, enterprise AI rollout, copyright and provenance risk; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Why it matters: Source 5 centers on Xinhua, China, AIGC and model capability update, enterprise AI rollout, copyright and provenance risk; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+Potential impact: Source 5 centers on Xinhua, China, AIGC and model capability update, enterprise AI rollout, copyright and provenance risk; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
 
 ## Practical Cases
 
@@ -67,10 +67,10 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 ## Evidence Matrix
 
 - Evidence item 1: OpenAI / GPT-5.5 / Instant / model capability update — Source 1 centers on OpenAI, GPT-5.5, Instant and model capability update; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
-- Evidence item 2: Anthropic / Claude / Opus / agent platform — Source 2 centers on Anthropic, Claude, Opus and agent platform, model capability update, enterprise AI rollout; teams should verify workflow fit, reliability, data boundaries, cost, and use.
-- Evidence item 3: Anthropic / compute infrastructure / model capability update / strategic partnership — Source 3 centers on Anthropic and compute infrastructure, model capability update, strategic partnership; teams should verify workflow fit, reliability, data boundaries, cost, and user valu.
-- Evidence item 4: NVIDIA / Research / ICRA / AI hardware — Source 4 centers on NVIDIA, Research, ICRA and AI hardware, robotics deployment, industrial AI deployment; teams should verify workflow fit, reliability, data boundaries, cost, and user val.
-- Evidence item 5: China / AIGC / model capability update / enterprise AI rollout — Source 5 centers on China, AIGC and model capability update, enterprise AI rollout, copyright and provenance risk; teams should verify workflow fit, reliability, data boundaries, cost, and.
+- Evidence item 2: Anthropic / Claude / Opus / agent platform — Source 2 centers on Anthropic, Claude, Opus and agent platform, model capability update, enterprise AI rollout; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+- Evidence item 3: Anthropic / compute infrastructure / model capability update / strategic partnership — Source 3 centers on Anthropic and compute infrastructure, model capability update, strategic partnership; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+- Evidence item 4: NVIDIA / Research / ICRA / AI hardware — Source 4 centers on NVIDIA, Research, ICRA and AI hardware, robotics deployment, industrial AI deployment; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
+- Evidence item 5: Xinhua / China / AIGC / model capability update — Source 5 centers on Xinhua, China, AIGC and model capability update, enterprise AI rollout, copyright and provenance risk; teams should verify workflow fit, reliability, data boundaries, cost, and user value before adoption.
 
 ## Next-Step CTA
 

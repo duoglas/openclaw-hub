@@ -34,13 +34,15 @@ for (const fixture of realCronFixtures) {
     failures.push('2026-05-24: missing CJK-to-English source projection for Xinhua/China fixture item');
   }
 
-  if (parserGuardrails?.story5ForbiddenEnLabelTokens?.length) {
-    const story5Label = labelFor(stories[4], 5);
-    for (const token of parserGuardrails.story5ForbiddenEnLabelTokens) {
-      if (story5Label.includes(token)) failures.push(`${fixtureDate}: story 5 label leaked post-story section token: ${token}`);
+  for (let index = 1; index <= 5; index += 1) {
+    const label = labelFor(stories[index - 1], index);
+    const forbidden = parserGuardrails?.[`story${index}ForbiddenEnLabelTokens`] || [];
+    const required = parserGuardrails?.[`story${index}RequiredEnLabelTokens`] || [];
+    for (const token of forbidden) {
+      if (label.includes(token)) failures.push(`${fixtureDate}: story ${index} label leaked forbidden token: ${token}`);
     }
-    for (const token of parserGuardrails.story5RequiredEnLabelTokens || []) {
-      if (!story5Label.includes(token)) failures.push(`${fixtureDate}: story 5 label missing required token: ${token}`);
+    for (const token of required) {
+      if (!label.includes(token)) failures.push(`${fixtureDate}: story ${index} label missing required token: ${token}`);
     }
   }
 }

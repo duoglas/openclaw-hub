@@ -9,12 +9,14 @@ const KEYWORD_MAP = [
   ['开源', 'open-source model ecosystem'], ['模型', 'model capability update'], ['多模态', 'multimodal AI'],
   ['办公', 'workplace AI'], ['企业', 'enterprise AI rollout'], ['联盟', 'enterprise alliance'], ['合作', 'strategic partnership'],
   ['政策', 'AI policy signal'], ['监管', 'AI governance requirement'], ['版权', 'copyright and provenance risk'], ['安全', 'AI security control'],
-  ['财务', 'personal finance AI'], ['播客', 'generative audio product'], ['电商', 'AI commerce workflow'], ['教育', 'AI education deployment'],
-  ['医疗', 'healthcare AI deployment'], ['制造', 'industrial AI deployment'], ['终端', 'AI device adoption'], ['数据', 'data infrastructure'],
+  ['财务', 'personal finance AI'], ['播客', 'generative audio product'], ['电商', 'AI commerce workflow'], ['购物', 'AI commerce workflow'],
+  ['支付', 'agent payment workflow'], ['5G', 'compute infrastructure'], ['网络', 'compute infrastructure'], ['基站', 'compute infrastructure'],
+  ['教育', 'AI education deployment'], ['医疗', 'healthcare AI deployment'], ['制造', 'industrial AI deployment'], ['终端', 'AI device adoption'], ['数据', 'data infrastructure'],
 ];
 
 const ZH_ENTITY_MAP = [
   ['腾讯', 'Tencent'], ['阿里', 'Alibaba'], ['百度', 'Baidu'], ['中国移动', 'China Mobile'], ['华为', 'Huawei'],
+  ['支付宝', 'Alipay'], ['微信支付', 'WeChat Pay'], ['京东', 'JD.com'], ['银联', 'UnionPay'], ['新华社', 'Xinhua'], ['工信部', 'MIIT'],
   ['Marvis', 'Tencent'], ['百炼', 'Alibaba'], ['DuMate', 'Baidu'], ['MoMA', 'China Mobile'], ['韬', 'Huawei'],
   ['韩国', 'Korea'], ['法国', 'France'], ['中国', 'China'], ['美国', 'US'], ['欧洲', 'Europe'],
 ];
@@ -147,10 +149,15 @@ function englishSignalSummary(story, label, idx) {
 }
 
 export function detailFrom(story, key, fallback, label = '', idx = 1) {
-  const safeFallback = hasCjk(fallback) ? englishSignalSummary(story, label, idx) : fallback;
+  const sourceProjection = englishSignalSummary(story, label, idx);
+  const safeFallback = hasCjk(fallback) ? sourceProjection : fallback;
   let value = String(story?.[key] || '').replace(/\s+/g, ' ').trim();
-  if (!value || hasCjk(value)) value = safeFallback;
-  if (value.length > 190) value = `${value.slice(0, 189).replace(/[，。；;,.\s]+$/g, '')}.`;
+  if (!value) value = safeFallback;
+  if (hasCjk(value)) value = sourceProjection;
+  if (value.length > 320) {
+    const clipped = value.slice(0, 319).replace(/\s+\S*$/, '').replace(/[，。；;,.\s]+$/g, '');
+    value = `${clipped || value.slice(0, 319).replace(/[，。；;,.\s]+$/g, '')}.`;
+  }
   return value;
 }
 

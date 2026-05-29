@@ -52,7 +52,8 @@ for (const fixture of realCronFixtures) {
   if (enEvidenceCount !== 5) failures.push(`${fixtureDate}: expected 5 EN Evidence Matrix items, found ${enEvidenceCount}`);
   if (zhEvidenceCount !== 5) failures.push(`${fixtureDate}: expected 5 ZH Evidence Matrix items, found ${zhEvidenceCount}`);
 
-  if (!zhDescription.includes('Anthropic')) {
+  const firstSignalTokens = expectedSignals[0]?.requiredTokens || [];
+  if (!zhDescription.includes('Anthropic') && !firstSignalTokens.some((token) => zhDescription.includes(token))) {
     failures.push(`${fixtureDate}: ZH description does not preserve the first concrete source detail from the shared fixture`);
   }
   if (/今日要闻|证据矩阵|明日跟踪点|发生了什么|为什么重要|可能影响|^#+\s|### \d+\./.test(zhDescription)) {

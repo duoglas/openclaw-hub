@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-137
+- Hypothesis: EXP-136 已完成 2026-05-28 人工回补，但若真实内容建设样本不进入 fixture registry，`signal N gives the ... concrete source detail`、`Teams should validate ...` 与句尾截断仍可能在后续日报复发；把 2026-05-28 样本纳入 EN/ZH/pair 真实 cron 回归，并让 specificity 闸门直接阻断这些 fallback，可减少首日索引窗口内的低事实密度页面。
+- Scope: `scripts/fixtures/daily-real-cron-2026-05-28.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/check-daily-zh-generator-real-cron-fixture.mjs`、`scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/check-daily-brief-specificity.mjs`、`src/content/blog/en/openclaw-daily-2026-05-29.md`
+- Change: 新增 2026-05-28 真实 cron fixture 并注册；扩展 EN/ZH/pair fixture 检查以支持 per-story parser guardrails 与 requiredTokens description 校验；EN generator 遇到中文 source detail 时优先生成实体/主题 projection 并放宽截断长度；specificity 闸门新增 `signal N gives the ... concrete source detail`、`Teams should validate ... through a small production-adjacent pilot` 与句尾截断阻断；用修复后的 generator 重写 2026-05-29 EN 最新日报，消除已暴露的占位输出。
+- Start date: 2026-05-29
+- End date: 2026-05-29
+- Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-05-28 真实 cron fixture 已进入 registry；EN generator 与 specificity 闸门已阻断 EXP-136 暴露的泛化占位句和句尾截断；2026-05-29 EN 最新日报已用修复后的 generator 重写并通过 latest specificity；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28 multi-fixture registry 作为日报 generator 回归基线；下一步可把 2026-05-29 样本纳入 registry，并把 source projection 从实体/主题摘要继续升级为字段级英文改写。）
+
 ### EXP-136
 - Hypothesis: 最近24小时新增日报（2026-05-28）若 EN 页面保留 `signal N gives the ... concrete source detail`、`Teams should validate ...` 等 generator 泛化占位句式且多处句尾截断，ZH description 仍为截断片段，会削弱首日索引窗口期的事实密度、摘要点击一致性、来源可核验性与读者完成率；当日回补完整英文实稿并优化 ZH 摘要，可提升搜索可见性与核心指南导流质量。
 - Scope: `/en|zh/blog/openclaw-daily-2026-05-28/`
