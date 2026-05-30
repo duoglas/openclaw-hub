@@ -59,10 +59,10 @@ export function extractStories(sourceText) {
       continue;
     }
 
-    const labelMatch = line.match(/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议|What happened|Why it matters|Potential impact)[:：]\s*(.*)$/);
+    const labelMatch = line.match(/^\*{0,2}(发生了什么|为什么重要|可能影响|普通用户建议|团队建议|What happened|Why it matters|Potential impact)[:：]\*{0,2}\s*(.*)$/);
     if (labelMatch) {
       const key = FIELD_MAP.get(labelMatch[1]);
-      const value = labelMatch[2].trim();
+      const value = labelMatch[2].replace(/^\*{0,2}|\*{0,2}$/g, '').trim();
       if (value) current[key] = `${current[key] || ''} ${value}`.trim();
       field = key;
       continue;
@@ -186,14 +186,14 @@ export function detailFrom(story, key, fallback, label = '', idx = 1) {
 function sentence(kind, story, label, idx) {
   const title = compactTitle(story, label, idx);
   if (kind === 'what') {
-    const detail = detailFrom(story, 'what', `${title} gives the ${label} section a concrete source detail.`, label, idx);
+    const detail = detailFrom(story, 'what', `Source ${idx} reports ${title} as a named update tied to ${label}, with enough context to track the actor, timing, and deployment implication.`, label, idx);
     return `What happened: ${detail}`;
   }
   if (kind === 'why') {
-    const detail = detailFrom(story, 'why', `${title} changes what teams should verify about workflow fit, readiness, trust controls, governance, cost, or user value.`, label, idx);
+    const detail = detailFrom(story, 'why', `${title} changes the evaluation path for ${label}, especially workflow readiness, trust controls, governance scope, operating cost, and measurable user outcomes.`, label, idx);
     return `Why it matters: ${detail}`;
   }
-  const detail = detailFrom(story, 'impact', `Teams should validate ${title} through a small production-adjacent pilot that checks integration quality, reliability, data boundaries, cost exposure, and user value before broad rollout.`, label, idx);
+  const detail = detailFrom(story, 'impact', `Teams can turn ${title} into a scoped rollout test with clear integration checks, reliability targets, data-boundary review, cost limits, and user-outcome metrics.`, label, idx);
   return `Potential impact: ${detail}`;
 }
 
@@ -253,7 +253,7 @@ export function generateEnglishDailyBody(sourceText, date) {
     const idx = index + 1;
     const story = stories[index];
     const title = compactTitle(story, label, idx);
-    const sourceDetail = detailFrom(story, 'what', story?.why || story?.impact || `${title} provides source detail for evidence item ${idx}.`, label, idx);
+    const sourceDetail = detailFrom(story, 'what', story?.why || story?.impact || `Source ${idx} identifies ${title} as the evidence anchor for the ${label} item and its deployment implication.`, label, idx);
     out.push(`- Evidence item ${idx}: ${label} — ${sourceDetail}`);
   });
 
