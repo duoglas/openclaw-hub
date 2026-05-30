@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-140
+- Hypothesis: EXP-139 已为 2026-05-30 样本加入 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 的字段级英文改写；若这些长文案继续内联在 `daily-generator.mjs`，后续新增样本会让 generator 分支膨胀、fixture 维护成本升高，并增加回归时误改核心生成逻辑的风险。抽成 `source-projection-rules.mjs` registry，并让 fixture 闸门检查 registry 完整性和禁止内联，可降低后续日报增长实验维护成本。
+- Scope: `scripts/lib/source-projection-rules.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/check-publish-daily-generator-fixture.mjs`
+- Change: 新增 source projection rule registry，集中维护 EXP-139 暴露的 5 条 fixture-backed 字段级英文 projection；EN generator 改为调用 `projectEnglishSourceDetail`；发布 generator fixture 闸门新增 registry required signals、内联长文案泄漏阻断与 5 条 rule name 完整性检查。
+- Start date: 2026-05-30
+- End date: 2026-05-30
+- Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（字段级英文 projection 已从 EN generator 内联分支迁移到 `source-projection-rules.mjs`；fixture 闸门已阻断长文案重新内联并检查 5 条规则完整性；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 source projection rule registry 作为后续真实 cron fixture 扩展入口；下一步可把 `KEYWORD_MAP` / `ZH_ENTITY_MAP` 也逐步抽成可测 mapping registry，减少 generator 主文件体积。）
+
 ### EXP-139
 - Hypothesis: 最近24小时新增日报（2026-05-30）若 EN 页面继续保留 `Source N reports a ... signal`、`links ... to adoption timing` 等模板化 projection，且 ZH description 泄漏 `**发生了什么：**；` 或被截成 `特别。`，会削弱首日索引窗口内的事实密度、摘要点击一致性和来源可核验性；把 2026-05-30 样本纳入 registry，并让 generator 对 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 输出字段级英文改写，可减少当日回补和后续发布回归。
 - Scope: `scripts/fixtures/daily-real-cron-2026-05-30.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/lib/daily-zh-generator.mjs`、`src/content/blog/en/openclaw-daily-2026-05-30.md`、`src/content/blog/zh/openclaw-daily-2026-05-30.md`

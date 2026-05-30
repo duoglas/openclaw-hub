@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-30 11:20
+Last updated: 2026-05-30 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-140: 将 EXP-139 的字段级英文 source projection 从 EN generator 内联分支抽成可维护规则 registry，并让发布 fixture 闸门阻断规则文案重新内联，消费 EXP-139 “phrase rule registry”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-139 已为 2026-05-30 样本加入 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 的字段级英文改写；若这些长文案继续内联在 `daily-generator.mjs`，后续新增样本会让 generator 分支膨胀、fixture 维护成本升高，并增加回归时误改核心生成逻辑的风险。抽成 `source-projection-rules.mjs` registry，并让 fixture 闸门检查 registry 完整性和禁止内联，可降低后续日报增长实验维护成本。
+  - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/lib/source-projection-rules.mjs`，集中维护 5 条 fixture-backed 字段级英文 projection 规则；2) `scripts/lib/daily-generator.mjs` 通过 `projectEnglishSourceDetail` 调用 registry，移除 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act、NVIDIA ICRA 长文案内联分支；3) `check-publish-daily-generator-fixture.mjs` 要求 generator 使用 registry，并阻断上述字段级 projection 文案重新内联；4) 真实 cron fixture、双语 pair、latest specificity、日报/索引卫生闸门与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-139: 将 2026-05-30 真实 cron 样本接入 daily-real-cron fixture registry，并把 EN source projection 从通用 Source reports 模板升级为字段级英文改写；同步修复 ZH description 粗体字段标签与句尾截断，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-05-30）若 EN 页面继续保留 `Source N reports a ... signal`、`links ... to adoption timing` 等模板化 projection，且 ZH description 泄漏 `**发生了什么：**；` 或被截成 `特别。`，会削弱首日索引窗口内的事实密度、摘要点击一致性和来源可核验性；把 2026-05-30 样本纳入 registry，并让 generator 对 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 输出字段级英文改写，可减少当日回补和后续发布回归。
   - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
