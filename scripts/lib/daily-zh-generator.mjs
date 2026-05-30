@@ -83,9 +83,9 @@ export function buildZhDescription(sourceText) {
 
     let line = rawLine.replace(/^#{1,6}\s*/, '');
     if (/^[【\[]?.*(今日要闻|实战案例|今日结论|明日跟踪点|证据矩阵).*[】\]]?$/.test(line)) continue;
-    const fieldMatch = line.match(/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\s*(.*)$/);
-    if (fieldMatch) line = fieldMatch[2].trim();
-    if (/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]?\s*$/.test(line)) continue;
+    const fieldMatch = line.match(/^\*{0,2}(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\*{0,2}\s*(.*)$/);
+    if (fieldMatch) line = fieldMatch[2].replace(/^\*{0,2}|\*{0,2}$/g, '').trim();
+    if (/^\*{0,2}(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]?\*{0,2}\s*$/.test(line)) continue;
     if (/^来源[:：]/.test(line)) continue;
     if (/^[A-Za-z0-9+./ -]+$/.test(line) && !/[\u4e00-\u9fff]/.test(line)) continue;
     if (line.length >= 8) candidates.push(line);
@@ -94,7 +94,11 @@ export function buildZhDescription(sourceText) {
 
   let joined = (candidates.length ? candidates : ['今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。']).join('；');
   joined = joined.replace(/\s+/g, ' ').replace(/[；;，,。.]+$/g, '');
-  if (joined.length > 180) joined = `${joined.slice(0, 179).replace(/[；;，,。.]+$/g, '')}。`;
+  if (joined.length > 180) {
+    const clipped = joined.slice(0, 179);
+    const sentenceEnd = Math.max(clipped.lastIndexOf('。'), clipped.lastIndexOf('！'), clipped.lastIndexOf('？'));
+    joined = `${(sentenceEnd >= 60 ? clipped.slice(0, sentenceEnd + 1) : clipped).replace(/[；;，,。.]+$/g, '')}。`;
+  }
   joined = joined.replace(/(API|Claude Code|GPT-4\.5|GPT-5\.5)\s*。$/g, '$1 暂无进一步细节。');
   if (!/[。！？]$/.test(joined)) joined += '。';
   return joined.replace(/"/g, '');

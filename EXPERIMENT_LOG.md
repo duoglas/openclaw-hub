@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-139
+- Hypothesis: 最近24小时新增日报（2026-05-30）若 EN 页面继续保留 `Source N reports a ... signal`、`links ... to adoption timing` 等模板化 projection，且 ZH description 泄漏 `**发生了什么：**；` 或被截成 `特别。`，会削弱首日索引窗口内的事实密度、摘要点击一致性和来源可核验性；把 2026-05-30 样本纳入 registry，并让 generator 对 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 输出字段级英文改写，可减少当日回补和后续发布回归。
+- Scope: `scripts/fixtures/daily-real-cron-2026-05-30.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/lib/daily-zh-generator.mjs`、`src/content/blog/en/openclaw-daily-2026-05-30.md`、`src/content/blog/zh/openclaw-daily-2026-05-30.md`
+- Change: 新增并注册 2026-05-30 真实 cron fixture；扩展 EN generator 的 2026-05-30 字段级英文 projection，覆盖 Claude Opus 4.8 effort control / Claude Code dynamic workflows / fast mode pricing、Anthropic Series H 65B/965B/47B、SAMR/NDRC AI metrology guide、Amazon Nova Act 与 3M/Accenture/Bandsintown 案例、NVIDIA eight ICRA robotics papers；修复 ZH description 粗体字段标签过滤和句号边界截断；用修复后的 generator 重写 2026-05-30 EN/ZH 最新日报。
+- Start date: 2026-05-30
+- End date: 2026-05-30
+- Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-05-30 真实 cron fixture 已进入 registry；EN generator 已为 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 输出字段级英文事实改写；ZH description 已避免粗体字段标签泄漏和 `特别。` 句尾截断；2026-05-30 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28/29/30 multi-fixture registry 作为日报 generator 回归基线；下一步可把字段级英文改写从 hard-coded source patterns 进一步抽成可维护的 phrase rule registry。）
+
 ### EXP-138
 - Hypothesis: EXP-137 已用 generator 回收 2026-05-29 EN 日报，但若 2026-05-29 当日真实样本不进入 fixture registry，GPT-5.5 退役日期、Claude Opus 4.8、Anthropic 融资、NVIDIA sim-to-real 与中国 AI 权属裁判规则这类字段级事实信号仍可能在后续发布中被压扁成 `teams should verify workflow fit` 泛化句或 ZH `Claude Code 动。` 截断残句；把该样本纳入 EN/ZH/pair 回归并强化 generator/check，可减少最新日报首日索引窗口内低事实密度与截断回归。
 - Scope: `scripts/fixtures/daily-real-cron-2026-05-29.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/lib/daily-zh-generator.mjs`、`scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/check-daily-fixture-source-dedup.mjs`、`scripts/check-daily-brief-specificity.mjs`、`src/content/blog/en/openclaw-daily-2026-05-29.md`、`src/content/blog/zh/openclaw-daily-2026-05-29.md`

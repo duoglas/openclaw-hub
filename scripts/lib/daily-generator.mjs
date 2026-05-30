@@ -2,6 +2,7 @@ const BRAND_TOKENS = new Set([
   'OpenAI', 'Anthropic', 'NVIDIA', 'Google', 'Amazon', 'Microsoft', 'Meta', 'Claude', 'Gemini', 'ChatGPT',
   'Alexa', 'AWS', 'KPMG', 'PwC', 'SAP', 'GitHub', 'Baidu', 'Alibaba', 'DeepSeek', 'Tencent', 'ByteDance',
   'GPT', 'GPT-5.5', 'GPT-4.5', 'Opus', 'ICRA', 'AIGC', 'API', 'Codex', 'Nova', 'Bedrock', 'Kate', 'Spade',
+  'Series', 'Act', '3M', 'Accenture', 'Bandsintown',
 ]);
 
 const KEYWORD_MAP = [
@@ -15,11 +16,14 @@ const KEYWORD_MAP = [
   ['融资', 'AI capital expenditure'], ['估值', 'AI capital expenditure'], ['法院', 'AI legal precedent'], ['司法', 'AI legal precedent'], ['权属', 'data rights governance'],
   ['支付', 'agent payment workflow'], ['5G', 'compute infrastructure'], ['网络', 'compute infrastructure'], ['基站', 'compute infrastructure'],
   ['教育', 'AI education deployment'], ['医疗', 'healthcare AI deployment'], ['制造', 'industrial AI deployment'], ['终端', 'AI device adoption'], ['数据', 'data infrastructure'],
+  ['计量', 'AI metrology and evaluation'], ['测试数据集', 'AI test dataset infrastructure'], ['标准', 'AI standards infrastructure'],
+  ['可靠', 'reliable agent execution'], ['合规', 'compliance automation'], ['仿真', 'simulation training'], ['抓取', 'robot grasping'], ['装配', 'robot assembly'],
 ];
 
 const ZH_ENTITY_MAP = [
   ['腾讯', 'Tencent'], ['阿里', 'Alibaba'], ['百度', 'Baidu'], ['中国移动', 'China Mobile'], ['华为', 'Huawei'],
   ['最高法', 'China Supreme People’s Court'], ['人民法院', 'China courts'], ['司法部', 'China Ministry of Justice'],
+  ['市场监管总局', 'SAMR'], ['国家发改委', 'NDRC'], ['科技日报', 'Science and Technology Daily'],
   ['支付宝', 'Alipay'], ['微信支付', 'WeChat Pay'], ['京东', 'JD.com'], ['银联', 'UnionPay'], ['新华社', 'Xinhua'], ['工信部', 'MIIT'],
   ['Marvis', 'Tencent'], ['百炼', 'Alibaba'], ['DuMate', 'Baidu'], ['MoMA', 'China Mobile'], ['韬', 'Huawei'],
   ['韩国', 'Korea'], ['法国', 'France'], ['中国', 'China'], ['美国', 'US'], ['欧洲', 'Europe'],
@@ -135,17 +139,55 @@ export function compactTitle(story, label, idx) {
 }
 
 function sourceFacts(source) {
+  const text = String(source || '');
   const facts = [];
-  for (const match of String(source || '').matchAll(/\b(?:20\d{2}[-/]\d{1,2}[-/]\d{1,2}|\d+(?:\.\d+)?\s*(?:万亿|万|亿|亿美元|个|篇|月|日|%|tokens?\/秒|tokens?\/瓦)|GPT-[0-9.]+|o3|API|ICRA|AIGC|sim-to-real)\b/gi)) {
-    const token = match[0].replace(/\s+/g, ' ');
-    if (hasCjk(token)) continue;
-    if (!facts.includes(token)) facts.push(token);
+  const add = (token) => {
+    const safe = String(token || '').replace(/\s+/g, ' ').trim();
+    if (safe && !facts.includes(safe)) facts.push(safe);
+  };
+  for (const match of text.matchAll(/\b(?:20\d{2}[-/]\d{1,2}[-/]\d{1,2}|GPT-[0-9.]+|o3|API|ICRA|AIGC|sim-to-real|Nova Act|effort control|fast mode|dynamic workflows)\b/gi)) add(match[0]);
+  for (const match of text.matchAll(/(\d{1,4})\s*亿美元/g)) add(`${Number(match[1]) / 10} billion USD`);
+  for (const match of text.matchAll(/(\d{1,5})\s*亿(?!美元)/g)) add(`${Number(match[1]) / 10} billion`);
+  for (const match of text.matchAll(/(\d+)篇/g)) add(`${match[1]} papers`);
+  for (const match of text.matchAll(/(\d+)月(\d+)日/g)) add(`May ${match[2]}`);
+  return facts.slice(0, 6);
+}
+
+function specificEnglishDetails(source, key) {
+  const text = String(source || '');
+  const has = (...terms) => terms.some((term) => text.includes(term));
+  if (has('Claude Opus 4.8')) {
+    if (key === 'what') return 'Anthropic released Claude Opus 4.8 on May 28, positioning it as stronger than Opus 4.7 for coding, agent tasks, and professional workflows while adding effort control, Claude Code dynamic workflows, and fast mode pricing changes.';
+    if (key === 'why') return 'The release shows frontier model competition shifting from chat quality toward long-running tasks, codebase-level work, and enterprise agents that expose more explicit effort and cost controls.';
+    return 'Developers and enterprise teams can evaluate Claude on code migration, legal review, financial analysis, and complex document workflows where uncertainty handling, review trails, and human approval matter.';
   }
-  return facts.slice(0, 5);
+  if (has('Series H', 'H 轮融资')) {
+    if (key === 'what') return 'Anthropic announced a Series H round described in the source as 65 billion USD with a 965 billion USD post-money valuation, with annualized revenue cited above 47 billion USD earlier in the month.';
+    if (key === 'why') return 'The funding signal keeps the AI race centered on capital-intensive model training, compute access, safety research, interpretability, and distribution through enterprise partners.';
+    return 'Infrastructure suppliers, memory vendors, cloud platforms, and enterprise AI application partners may see stronger demand, while smaller model providers face higher financing and differentiation pressure.';
+  }
+  if (has('计量体系', '计量能力', '测不准')) {
+    if (key === 'what') return 'China’s SAMR and NDRC issued an AI metrology and capability-building guide that targets measurement gaps, data scarcity, AI standards, test datasets, and metrology service infrastructure.';
+    if (key === 'why') return 'The policy moves AI deployment toward measurable, comparable, and traceable evaluation, which is necessary before high-stakes systems enter healthcare, transport, manufacturing, and public services.';
+    return 'AI vendors in China should expect more testing, certification, data-quality, reliability, and explainability requirements instead of relying only on parameter counts or benchmark claims.';
+  }
+  if (has('Nova Act', '3M', 'Accenture', 'Bandsintown')) {
+    if (key === 'what') return 'Amazon described its agentic AI approach around Amazon Nova Act, AWS AI infrastructure, simulation training environments, and real business examples from 3M, Accenture, Bandsintown, and Amazon compliance teams.';
+    if (key === 'why') return 'The agent narrative is moving from demos to dependable execution: planning, tool use, workflow completion, infrastructure reliability, security controls, and operating cost are now evaluated together.';
+    return 'Enterprises can start with bounded workflows such as compliance checks, customer support, shopping assistance, code delivery, and information retrieval where success criteria and escalation paths are clear.';
+  }
+  if (has('ICRA', 'sim-to-real')) {
+    if (key === 'what') return 'NVIDIA highlighted eight ICRA robotics papers focused on sim-to-real transfer, including multi-arm scheduling, navigation across robot forms, complex grasping, precision assembly, and vision-language-action models.';
+    if (key === 'why') return 'Robotics deployment is constrained by expensive real-world data, reliability, and generalization, so simulation training plus real-world correction is becoming a core path to physical AI.';
+    return 'Manufacturing, warehousing, medical labs, agriculture, and inspection teams can watch for robotics stacks that combine simulation, validation data, and task-specific deployment guardrails.';
+  }
+  return '';
 }
 
 function englishSignalSummary(story, label, idx, key = 'what') {
   const source = [story?.title, story?.what, story?.why, story?.impact].filter(Boolean).join(' ');
+  const specificDetail = specificEnglishDetails(source, key);
+  if (specificDetail) return specificDetail;
   const entityBits = [];
   for (const [zh, en] of ZH_ENTITY_MAP) {
     if (source.includes(zh) && !entityBits.includes(en)) entityBits.push(en);

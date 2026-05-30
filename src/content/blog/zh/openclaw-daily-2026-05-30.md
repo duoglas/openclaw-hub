@@ -1,13 +1,13 @@
 ---
 title: "AI / 科技日报（2026-05-30）"
-description: "**发生了什么：**；Anthropic 5月28日发布 Claude Opus 4.8，称其在编码、智能体任务、专业工作流上比 Opus 4.7 更强。同步上线 effort control、Claude Code dynamic workflows，并调整 fast mode 价格。"
+description: "Claude Opus 4.8、Anthropic H轮融资、中国 AI 计量能力建设、Amazon 可靠智能体和 NVIDIA ICRA 机器人进展速览。"
 pubDate: 2026-05-30
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"
 ---
 
-# AI、科技日报  
+# AI、科技日报
 2026-05-30 早报
 
 ## 今日要闻（5条）
