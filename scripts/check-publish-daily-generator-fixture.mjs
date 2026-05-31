@@ -7,10 +7,12 @@ const scriptPath = path.join(root, 'scripts/publish-daily.sh');
 const modulePath = path.join(root, 'scripts/lib/daily-generator.mjs');
 const zhModulePath = path.join(root, 'scripts/lib/daily-zh-generator.mjs');
 const projectionRulesPath = path.join(root, 'scripts/lib/source-projection-rules.mjs');
+const signalMapsPath = path.join(root, 'scripts/lib/daily-signal-maps.mjs');
 const source = fs.readFileSync(scriptPath, 'utf8');
 const generator = fs.readFileSync(modulePath, 'utf8');
 const zhGenerator = fs.readFileSync(zhModulePath, 'utf8');
 const projectionRules = fs.readFileSync(projectionRulesPath, 'utf8');
+const signalMaps = fs.readFileSync(signalMapsPath, 'utf8');
 
 const bannedGeneratedPhrases = [
   'same-day brief section',
@@ -53,11 +55,43 @@ const requiredSignals = [
   "story?.impact",
   'projectEnglishSourceDetail',
   './source-projection-rules.mjs',
+  './daily-signal-maps.mjs',
+  'KEYWORD_MAP',
+  'ZH_ENTITY_MAP',
 ];
 const missing = requiredSignals.filter((signal) => !generator.includes(signal));
 if (missing.length > 0) {
   console.error('publish-daily EN generator is missing expected source-detail fixture hooks:');
   for (const signal of missing) console.error(`- ${signal}`);
+  process.exit(1);
+}
+
+
+const generatorInlineMapLeaks = [
+  'const KEYWORD_MAP = [',
+  'const ZH_ENTITY_MAP = [',
+].filter((phrase) => generator.includes(phrase));
+if (generatorInlineMapLeaks.length > 0) {
+  console.error('publish-daily EN generator still inlines signal maps instead of using daily-signal-maps.mjs:');
+  for (const phrase of generatorInlineMapLeaks) console.error(`- ${phrase}`);
+  process.exit(1);
+}
+
+const requiredSignalMapSignals = [
+  'KEYWORD_MAP',
+  'ZH_ENTITY_MAP',
+  'dailySignalMapNames',
+  'compute infrastructure',
+  'agent platform',
+  'AI metrology and evaluation',
+  'Tencent',
+  'SAMR',
+  'Xinhua',
+];
+const missingSignalMapSignals = requiredSignalMapSignals.filter((signal) => !signalMaps.includes(signal));
+if (missingSignalMapSignals.length > 0) {
+  console.error('daily signal map registry is missing expected entity/topic mappings:');
+  for (const signal of missingSignalMapSignals) console.error(`- ${signal}`);
   process.exit(1);
 }
 

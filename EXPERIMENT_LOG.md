@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-141
+- Hypothesis: EXP-140 已把字段级 source projection 抽成 registry；若 `KEYWORD_MAP` / `ZH_ENTITY_MAP` 继续内联在 `daily-generator.mjs`，后续新增中文实体、政策主题和行业词会继续扩大主生成器体积，并提高 parser/source projection 回归时误改核心生成逻辑的风险。抽成 `daily-signal-maps.mjs` registry，并让 fixture 闸门阻断 map 重新内联，可降低后续日报增长实验维护成本。
+- Scope: `scripts/lib/daily-signal-maps.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/check-publish-daily-generator-fixture.mjs`
+- Change: 新增 daily signal map registry，集中维护 EN generator 的中文 topic keyword 与 entity projection map；EN generator 改为 import `KEYWORD_MAP` / `ZH_ENTITY_MAP`；发布 generator fixture 闸门新增 signal map registry required signals，并阻断 map 定义重新内联到 generator。
+- Start date: 2026-05-31
+- End date: 2026-05-31
+- Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（中文 topic keyword 与 entity projection map 已从 EN generator 内联定义迁移到 `daily-signal-maps.mjs`；fixture 闸门已检查 registry 完整性并阻断 map 重新内联；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 daily signal map registry 作为后续真实 cron fixture 扩展入口；下一步可为 signal map 增加重复英文 label / 过宽主题映射专项检查，减少新增词条导致的 label 噪声。）
+
 ### EXP-140
 - Hypothesis: EXP-139 已为 2026-05-30 样本加入 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 的字段级英文改写；若这些长文案继续内联在 `daily-generator.mjs`，后续新增样本会让 generator 分支膨胀、fixture 维护成本升高，并增加回归时误改核心生成逻辑的风险。抽成 `source-projection-rules.mjs` registry，并让 fixture 闸门检查 registry 完整性和禁止内联，可降低后续日报增长实验维护成本。
 - Scope: `scripts/lib/source-projection-rules.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/check-publish-daily-generator-fixture.mjs`

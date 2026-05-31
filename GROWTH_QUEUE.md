@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-30 17:22
+Last updated: 2026-05-31 11:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-141: 将 EN 日报 generator 的中文实体/主题映射从主文件抽成 daily-signal-maps registry，并让发布 fixture 闸门阻断 map 重新内联，消费 EXP-140 “KEYWORD_MAP / ZH_ENTITY_MAP registry”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-140 已把字段级 source projection 抽成 registry；若 `KEYWORD_MAP` / `ZH_ENTITY_MAP` 继续内联在 `daily-generator.mjs`，后续新增中文实体、政策主题和行业词会继续扩大主生成器体积，并提高 parser/source projection 回归时误改核心生成逻辑的风险。抽成 `daily-signal-maps.mjs` registry，并让 fixture 闸门阻断 map 重新内联，可降低后续日报增长实验维护成本。
+  - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/lib/daily-signal-maps.mjs`，集中维护中文 topic keyword 与 entity projection map；2) `scripts/lib/daily-generator.mjs` 改为 import `KEYWORD_MAP` / `ZH_ENTITY_MAP`，移除 map 内联定义；3) `check-publish-daily-generator-fixture.mjs` 要求 generator 使用 map registry，并阻断 `const KEYWORD_MAP = [` / `const ZH_ENTITY_MAP = [` 重新内联；4) 真实 cron fixture、双语 pair、latest specificity、日报/索引卫生闸门与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-140: 将 EXP-139 的字段级英文 source projection 从 EN generator 内联分支抽成可维护规则 registry，并让发布 fixture 闸门阻断规则文案重新内联，消费 EXP-139 “phrase rule registry”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-139 已为 2026-05-30 样本加入 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 的字段级英文改写；若这些长文案继续内联在 `daily-generator.mjs`，后续新增样本会让 generator 分支膨胀、fixture 维护成本升高，并增加回归时误改核心生成逻辑的风险。抽成 `source-projection-rules.mjs` registry，并让 fixture 闸门检查 registry 完整性和禁止内联，可降低后续日报增长实验维护成本。
   - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
