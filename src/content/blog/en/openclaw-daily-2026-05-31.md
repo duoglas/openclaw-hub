@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-05-31)"
-description: "Daily AI and tech brief tracking Anthropic, Claude, Opus, Code, Messages, API, infrastructure moves, product shifts, policy signals, and practical deployment implications."
+description: "Daily AI and tech brief covering Claude Opus 4.8, Anthropic Series H funding, OpenAI Codex Computer Use on Windows, the China-ASEAN AI center, and NVIDIA ICRA robotics research."
 pubDate: 2026-05-31
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -26,15 +26,15 @@ Potential impact: Infrastructure suppliers, memory vendors, cloud platforms, and
 
 ### 3. OpenAI / Codex / Windows / AI security control
 
-What happened: Source 3 reports a AI security control, model release management, coding agent workflow signal involving OpenAI, Codex, Windows, Computer.
-Why it matters: This matters because OpenAI, Codex, Windows, Computer links AI security control, model release management, coding agent workflow to adoption timing, infrastructure capacity, compliance exposure, or enterprise workflow readiness.
-Potential impact: The likely impact is a more specific evaluation path for OpenAI, Codex, Windows, Computer: migration timing, partner dependency, governance review, cost exposure, and measurable rollout criteria.
+What happened: OpenAI release notes say the Codex Windows app now supports Computer Use, allowing the agent to see, click, and type in Windows applications while adding remote-control, profile, performance, and stability updates.
+Why it matters: Coding assistants are moving beyond editor completions into desktop-level execution, where testing, debugging, local application control, remote monitoring, permissions, and security boundaries all become product requirements.
+Potential impact: Developer teams can pilot Codex on bounded Windows workflows such as test reproduction, local app debugging, cross-device task handoff, and supervised automation while tracking permission scope and regional availability.
 
 ### 4. MIIT / China / model capability update / strategic partnership
 
-What happened: Source 4 reports a model capability update, strategic partnership, AI standards infrastructure signal involving MIIT, China. The source includes concrete timing or scale signals (May 24).
-Why it matters: This matters because MIIT, China links model capability update, strategic partnership, AI standards infrastructure to adoption timing, infrastructure capacity, compliance exposure, or enterprise workflow readiness. The source includes concrete timing or scale signals (May 24).
-Potential impact: The likely impact is a more specific evaluation path for MIIT, China: migration timing, partner dependency, governance review, cost exposure, and measurable rollout criteria. The source includes concrete timing or scale signals (May 24).
+What happened: China’s MIIT said the China-ASEAN AI Industry Innovation Center was established in Beijing on May 24 as a multilateral platform for technology R&D, industrial ecosystems, governance practice, and regional capability building.
+Why it matters: The signal shifts China’s AI export and regional cooperation from individual product rollout toward shared industry platforms, standards governance, infrastructure coordination, and capability-building mechanisms.
+Potential impact: ASEAN markets may become important deployment sites for Chinese foundation models, industrial AI, and intelligent infrastructure, while governance alignment and standards cooperation become part of market entry planning.
 
 ### 5. NVIDIA / ICRA / Research / robotics deployment
 
@@ -68,8 +68,8 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 
 - Evidence item 1: Anthropic / Claude / Opus / agent platform — Anthropic released Claude Opus 4.8 on May 28, positioning it as stronger than Opus 4.7 for coding, agent tasks, and professional workflows while adding effort control, Claude Code dynamic workflows, and fast mode pricing changes.
 - Evidence item 2: Anthropic / Series / compute infrastructure / AI chip supply — Anthropic announced a Series H round described in the source as 65 billion USD with a 965 billion USD post-money valuation, with annualized revenue cited above 47 billion USD earlier in the month.
-- Evidence item 3: OpenAI / Codex / Windows / AI security control — Source 3 reports a AI security control, model release management, coding agent workflow signal involving OpenAI, Codex, Windows, Computer.
-- Evidence item 4: MIIT / China / model capability update / strategic partnership — Source 4 reports a model capability update, strategic partnership, AI standards infrastructure signal involving MIIT, China. The source includes concrete timing or scale signals (May 24).
+- Evidence item 3: OpenAI / Codex / Windows / AI security control — OpenAI release notes say the Codex Windows app now supports Computer Use, allowing the agent to see, click, and type in Windows applications while adding remote-control, profile, performance, and stability updates.
+- Evidence item 4: MIIT / China / model capability update / strategic partnership — China’s MIIT said the China-ASEAN AI Industry Innovation Center was established in Beijing on May 24 as a multilateral platform for technology R&D, industrial ecosystems, governance practice, and regional capability building.
 - Evidence item 5: NVIDIA / ICRA / Research / robotics deployment — NVIDIA highlighted eight ICRA robotics papers focused on sim-to-real transfer, including multi-arm scheduling, navigation across robot forms, complex grasping, precision assembly, and vision-language-action models.
 
 ## Next-Step CTA

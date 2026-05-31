@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-31 11:22
+Last updated: 2026-05-31 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-142: 将 2026-05-31 真实 cron 样本接入 daily-real-cron fixture registry，并修复 post-Top5 section parser 污染、OpenAI Codex Windows / 中国—东盟 AI 中心字段级英文 projection 与 ZH description 标点拼接，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-05-31）若 EN 页面继续对 OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心输出 `Source N reports...` / `This matters because ... links ...` 模板句，且 ZH parser 在 Top 5 后继续吸收实战案例字段导致 NVIDIA 证据矩阵串入 Amazon case 截断片段，会削弱首日索引窗口的事实密度、摘要点击一致性和来源可核验性；把 2026-05-31 样本纳入 registry，并修复 section boundary parser 与字段级 projection，可减少后续日报发布回归。
+  - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/fixtures/daily-real-cron-2026-05-31.mjs` 并注册进 `daily-real-cron-fixtures.mjs`，覆盖 Claude Opus 4.8、Anthropic Series H、OpenAI Codex Windows Computer Use、中国—东盟 AI 产业创新中心、NVIDIA ICRA sim-to-real；2) EN/ZH parser 在非 story section heading 处关闭当前 Top Story，阻断实战案例字段污染 story 5；3) source projection registry 新增 OpenAI Codex Windows Computer Use 与 China-ASEAN AI Innovation Center 字段级英文改写，2026-05-31 EN 日报已重写并移除 Source 3/4 模板句；4) ZH description 标点拼接避免 `。；`，ZH 证据矩阵 story 5 不再串入 Amazon case 截断；5) 真实 cron fixture、双语 pair、latest specificity、日报/索引卫生闸门与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-141: 将 EN 日报 generator 的中文实体/主题映射从主文件抽成 daily-signal-maps registry，并让发布 fixture 闸门阻断 map 重新内联，消费 EXP-140 “KEYWORD_MAP / ZH_ENTITY_MAP registry”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-140 已把字段级 source projection 抽成 registry；若 `KEYWORD_MAP` / `ZH_ENTITY_MAP` 继续内联在 `daily-generator.mjs`，后续新增中文实体、政策主题和行业词会继续扩大主生成器体积，并提高 parser/source projection 回归时误改核心生成逻辑的风险。抽成 `daily-signal-maps.mjs` registry，并让 fixture 闸门阻断 map 重新内联，可降低后续日报增长实验维护成本。
   - Metrics: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

@@ -44,6 +44,24 @@ const FIELD_PROJECTION_RULES = [
       impact: 'Manufacturing, warehousing, medical labs, agriculture, and inspection teams can watch for robotics stacks that combine simulation, validation data, and task-specific deployment guardrails.',
     },
   },
+  {
+    name: 'openai-codex-windows-computer-use',
+    terms: ['Windows 版 Codex', 'Computer Use', 'Codex app'],
+    details: {
+      what: 'OpenAI release notes say the Codex Windows app now supports Computer Use, allowing the agent to see, click, and type in Windows applications while adding remote-control, profile, performance, and stability updates.',
+      why: 'Coding assistants are moving beyond editor completions into desktop-level execution, where testing, debugging, local application control, remote monitoring, permissions, and security boundaries all become product requirements.',
+      impact: 'Developer teams can pilot Codex on bounded Windows workflows such as test reproduction, local app debugging, cross-device task handoff, and supervised automation while tracking permission scope and regional availability.',
+    },
+  },
+  {
+    name: 'china-asean-ai-innovation-center',
+    terms: ['中国—东盟人工智能产业创新中心', '东盟', '多边合作平台'],
+    details: {
+      what: 'China’s MIIT said the China-ASEAN AI Industry Innovation Center was established in Beijing on May 24 as a multilateral platform for technology R&D, industrial ecosystems, governance practice, and regional capability building.',
+      why: 'The signal shifts China’s AI export and regional cooperation from individual product rollout toward shared industry platforms, standards governance, infrastructure coordination, and capability-building mechanisms.',
+      impact: 'ASEAN markets may become important deployment sites for Chinese foundation models, industrial AI, and intelligent infrastructure, while governance alignment and standards cooperation become part of market entry planning.',
+    },
+  },
 ];
 
 export function projectEnglishSourceDetail(source, key) {

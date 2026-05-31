@@ -22,6 +22,11 @@ export function extractStories(sourceText) {
   const stories = [];
   let current = null;
   let field = null;
+  const closeCurrent = () => {
+    if (current) stories.push(current);
+    current = null;
+    field = null;
+  };
 
   for (const raw of String(sourceText || '').replace(/\r/g, '\n').split('\n')) {
     const line = normalize(raw);
@@ -29,15 +34,24 @@ export function extractStories(sourceText) {
 
     const numbered = line.match(/^(?:#{2,4}\s*)?(\d+)[\.、)]\s*(.+)$/);
     if (numbered) {
-      if (current) stories.push(current);
+      closeCurrent();
       current = { title: numbered[2].trim(), what: '', why: '', impact: '' };
+      continue;
+    }
+
+    if (line === '---') {
       field = null;
+      continue;
+    }
+
+    if (/^#{2,6}\s+/.test(line)) {
+      closeCurrent();
       continue;
     }
 
     if (!current) continue;
 
-    if (line === '---' || /^#{2,6}\s+/.test(line) || /^来源[:：]/.test(line) || /^Source[:：]/i.test(line)) {
+    if (/^来源[:：]/.test(line) || /^Source[:：]/i.test(line)) {
       field = null;
       continue;
     }
@@ -56,7 +70,7 @@ export function extractStories(sourceText) {
     }
   }
 
-  if (current) stories.push(current);
+  closeCurrent();
 
   if (stories.length === 0) {
     for (const raw of String(sourceText || '').replace(/\r/g, '\n').split('\n')) {

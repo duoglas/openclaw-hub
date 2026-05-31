@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-142
+- Hypothesis: 最近24小时新增日报（2026-05-31）若 EN 页面继续对 OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心输出 `Source N reports...` / `This matters because ... links ...` 模板句，且 ZH parser 在 Top 5 后继续吸收实战案例字段导致 NVIDIA 证据矩阵串入 Amazon case 截断片段，会削弱首日索引窗口的事实密度、摘要点击一致性和来源可核验性；把 2026-05-31 样本纳入 registry，并修复 section boundary parser 与字段级 projection，可减少后续日报发布回归。
+- Scope: `scripts/fixtures/daily-real-cron-2026-05-31.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/lib/daily-zh-generator.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-05-31.md`、`src/content/blog/zh/openclaw-daily-2026-05-31.md`
+- Change: 新增并注册 2026-05-31 真实 cron fixture；EN/ZH story parser 在非 story section heading 处关闭当前 Top Story，避免 `实战案例` 字段继续污染 story 5；source projection registry 新增 OpenAI Codex Windows Computer Use 与 China-ASEAN AI Innovation Center 两条字段级英文 projection；重写 2026-05-31 EN/ZH 最新日报，移除 Source 3/4 模板句、修复 ZH description 标点拼接与 NVIDIA 证据矩阵串入 Amazon case 截断。
+- Start date: 2026-05-31
+- End date: 2026-05-31
+- Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-05-31 真实 cron fixture 已进入 registry；EN/ZH parser 已阻断 Top 5 后 section 污染；OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心已输出字段级英文事实改写；2026-05-31 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28/29/30/31 multi-fixture registry 作为日报 generator 回归基线；下一步可为 post-Top5 实战案例和 evidence section 增加专门污染断言，减少 parser 隐性串段。）
+
 ### EXP-141
 - Hypothesis: EXP-140 已把字段级 source projection 抽成 registry；若 `KEYWORD_MAP` / `ZH_ENTITY_MAP` 继续内联在 `daily-generator.mjs`，后续新增中文实体、政策主题和行业词会继续扩大主生成器体积，并提高 parser/source projection 回归时误改核心生成逻辑的风险。抽成 `daily-signal-maps.mjs` registry，并让 fixture 闸门阻断 map 重新内联，可降低后续日报增长实验维护成本。
 - Scope: `scripts/lib/daily-signal-maps.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/check-publish-daily-generator-fixture.mjs`

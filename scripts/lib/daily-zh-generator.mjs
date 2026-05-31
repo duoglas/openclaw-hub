@@ -6,6 +6,11 @@ export function extractZhStories(sourceText) {
   const stories = [];
   let current = null;
   let field = null;
+  const closeCurrent = () => {
+    if (current) stories.push(current);
+    current = null;
+    field = null;
+  };
 
   for (const raw of String(sourceText || '').replace(/\r/g, '\n').split('\n')) {
     const line = normalize(raw);
@@ -13,20 +18,29 @@ export function extractZhStories(sourceText) {
 
     const numbered = line.match(/^(?:#{2,4}\s*)?(\d+)[\.、)]\s*(.+)$/);
     if (numbered) {
-      if (current) stories.push(current);
+      closeCurrent();
       current = { title: numbered[2].trim(), what: '', why: '', impact: '' };
+      continue;
+    }
+
+    if (line === '---') {
       field = null;
+      continue;
+    }
+
+    if (/^#{2,6}\s+/.test(line)) {
+      closeCurrent();
       continue;
     }
 
     if (!current) continue;
 
-    if (line === '---' || /^#{2,6}\s+/.test(line) || /^来源[:：]/.test(line)) {
+    if (/^来源[:：]/.test(line)) {
       field = null;
       continue;
     }
 
-    const labelMatch = line.match(/^(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\s*(.*)$/);
+    const labelMatch = line.match(/^\*{0,2}(发生了什么|为什么重要|可能影响|普通用户建议|团队建议)[:：]\*{0,2}\s*(.*)$/);
     if (labelMatch) {
       const key = {
         '发生了什么': 'what',
@@ -35,7 +49,7 @@ export function extractZhStories(sourceText) {
         '普通用户建议': 'impact',
         '团队建议': 'impact',
       }[labelMatch[1]];
-      const value = labelMatch[2].trim();
+      const value = labelMatch[2].replace(/^\*{0,2}|\*{0,2}$/g, '').trim();
       if (value) current[key] = `${current[key] || ''} ${value}`.trim();
       field = key;
       continue;
@@ -46,7 +60,7 @@ export function extractZhStories(sourceText) {
     }
   }
 
-  if (current) stories.push(current);
+  closeCurrent();
 
   if (stories.length === 0) {
     for (const raw of String(sourceText || '').replace(/\r/g, '\n').split('\n')) {
@@ -92,7 +106,9 @@ export function buildZhDescription(sourceText) {
     if (candidates.length >= 2) break;
   }
 
-  let joined = (candidates.length ? candidates : ['今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。']).join('；');
+  let joined = (candidates.length ? candidates : ['今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。'])
+    .map((candidate) => candidate.replace(/[；;，,。.]+$/g, ''))
+    .join('；');
   joined = joined.replace(/\s+/g, ' ').replace(/[；;，,。.]+$/g, '');
   if (joined.length > 180) {
     const clipped = joined.slice(0, 179);
