@@ -148,4 +148,7 @@ export const requiredZhOutputs = [
 export const parserGuardrails = {
   story4RequiredEnLabelTokens: ['Xinhua', 'MIIT', 'China', 'AI hardware'],
   story5RequiredEnLabelTokens: ['Alipay', 'WeChat Pay', 'JD.com', 'agent platform'],
+  story5ForbiddenDetailTokens: ['Kate Spade', 'Amazon Bedrock AgentCore', 'OpenAI Codex', 'Appshots'],
+  story5ForbiddenEvidenceTokens: ['Kate Spade', 'Amazon Bedrock', 'OpenAI Codex', 'Appshots'],
+  story5ForbiddenZhEvidenceTokens: ['Kate Spade', 'Amazon Bedrock AgentCore', 'OpenAI Codex', 'Appshots'],
 };

@@ -157,4 +157,7 @@ export const requiredZhOutputs = [
 export const parserGuardrails = {
   story5ForbiddenEnLabelTokens: ['Tencent', 'Alibaba', 'Baidu', 'China Mobile', 'Marvis', 'MoMA'],
   story5RequiredEnLabelTokens: ['Huawei', 'China', 'EDA', 'compute infrastructure'],
+  story5ForbiddenDetailTokens: ['Alexa+', '法国', 'NVIDIA Vera CPU', '沙箱、数据库查询'],
+  story5ForbiddenEvidenceTokens: ['Alexa+', 'France', 'NVIDIA Vera', 'sandbox'],
+  story5ForbiddenZhEvidenceTokens: ['Alexa+', '法国', 'NVIDIA Vera CPU', '沙箱、数据库查询'],
 };

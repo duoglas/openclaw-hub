@@ -83,4 +83,7 @@ export const parserGuardrails = {
   story1RequiredEnLabelTokens: ['OpenAI', 'GPT-5.5', 'Instant', 'model capability update'],
   story5RequiredEnLabelTokens: ['China Supreme People’s Court', 'China courts', 'China Ministry of Justice'],
   story5ForbiddenEnLabelTokens: ['NVIDIA', 'Anthropic', 'OpenAI'],
+  story5ForbiddenDetailTokens: ['Amazon 5月28日文章', 'Nova Act', '3M、Accenture', '豆包新增多档付费会员'],
+  story5ForbiddenEvidenceTokens: ['Amazon', 'Nova Act', '3M', 'Accenture', 'Doubao'],
+  story5ForbiddenZhEvidenceTokens: ['Amazon 5月28日文章', 'Nova Act', '3M、Accenture', '豆包新增多档付费会员'],
 };

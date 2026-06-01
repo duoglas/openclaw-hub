@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-01 11:20
+Last updated: 2026-06-01 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-144: 为含 post-Top5 实战案例的真实 cron fixture 增加 parser guardrail coverage 闸门，并补齐 2026-05-27/28/29 story 5 detail/evidence 污染断言，消费 EXP-143 后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-143 已把 2026-05-31 的 parserGuardrails 扩展到 parsed detail 与 EN/ZH evidence line；若 2026-05-27/28/29 这类同样含 Top 5 后实战案例的真实 cron fixture 不强制声明 story 5 forbidden detail/evidence token，后续新增样本可能再次只校验 label，漏掉 Top Story 5 吸收案例 section 的隐性串段。新增 coverage 闸门并补齐旧 fixture 的 post-section token 断言，可让 CI 阻断 guardrail 缺口。
+  - Metrics: `pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/check-daily-parser-guardrail-coverage.mjs`，对含 `## 实战案例` 的 post-Top5 真实 cron fixture 强制要求 story 5 detail、EN evidence、ZH evidence forbidden token；2) `package.json` 与 content-check CI 接入 coverage 闸门；3) 2026-05-27/28/29 fixtures 补齐 post-section token 污染断言，覆盖 Alexa+/NVIDIA Vera、Kate Spade/OpenAI Codex、Amazon Nova Act/豆包等案例 token；4) coverage 闸门、真实 cron EN/ZH/pair fixture、日报/索引卫生闸门与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-143: 为 2026-05-31 真实 cron fixture 增加 post-Top5 实战案例 / evidence section 污染专项断言，消费 EXP-142 后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-142 已修复 2026-05-31 NVIDIA story 5 吸收 post-Top5 实战案例与证据矩阵 Amazon 截断片段的问题；若 fixture 只检查 label 和少量 banned phrase，后续 parser 仍可能在 parsed story detail 或 EN/ZH Evidence Matrix 中重新混入 `Amazon 介绍`、`Agentic AI`、`90%+ 可靠性`、`gym` 等后续 section token。把 parserGuardrails 扩展到 parsed detail 与 evidence line 级断言，可在发布前阻断 section-boundary drift 回归。
   - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

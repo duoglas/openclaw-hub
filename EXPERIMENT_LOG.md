@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-144
+- Hypothesis: EXP-143 已把 2026-05-31 的 parserGuardrails 扩展到 parsed detail 与 EN/ZH evidence line；若 2026-05-27/28/29 这类同样含 Top 5 后实战案例的真实 cron fixture 不强制声明 story 5 forbidden detail/evidence token，后续新增样本可能再次只校验 label，漏掉 Top Story 5 吸收案例 section 的隐性串段。新增 coverage 闸门并补齐旧 fixture 的 post-section token 断言，可让 CI 阻断 guardrail 缺口。
+- Scope: `scripts/check-daily-parser-guardrail-coverage.mjs`、`scripts/fixtures/daily-real-cron-2026-05-27.mjs`、`scripts/fixtures/daily-real-cron-2026-05-28.mjs`、`scripts/fixtures/daily-real-cron-2026-05-29.mjs`、`package.json`、`.github/workflows/content-check.yml`
+- Change: 新增 Daily parser guardrail coverage 检查，对含 `## 实战案例` 的 post-Top5 真实 cron fixture 强制要求 `story5ForbiddenDetailTokens`、`story5ForbiddenEvidenceTokens`、`story5ForbiddenZhEvidenceTokens`，并要求 detail token 至少锚定 post-Top5 case section；为 2026-05-27/28/29 fixtures 补齐 story 5 post-section 污染 token 断言；同步接入 package script 与 content-check CI。
+- Start date: 2026-06-01
+- End date: 2026-06-01
+- Success metric: `pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（coverage 闸门已强制 post-Top5 case fixture 声明 detail 与 EN/ZH evidence forbidden token；2026-05-27/28/29 fixtures 已补齐 story 5 post-section 污染断言；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 parser guardrail coverage 作为真实 cron fixture 基线；下一步可把 coverage 闸门扩展为检查所有 fixture 文件自动注册进 registry，减少新增真实样本漏接 CI。）
+
 ### EXP-143
 - Hypothesis: EXP-142 已修复 2026-05-31 NVIDIA story 5 吸收 post-Top5 实战案例与证据矩阵 Amazon 截断片段的问题；若 fixture 只检查 label 和少量 banned phrase，后续 parser 仍可能在 parsed story detail 或 EN/ZH Evidence Matrix 中重新混入 `Amazon 介绍`、`Agentic AI`、`90%+ 可靠性`、`gym` 等后续 section token。把 parserGuardrails 扩展到 parsed detail 与 evidence line 级断言，可在发布前阻断 section-boundary drift 回归。
 - Scope: `scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/check-daily-zh-generator-real-cron-fixture.mjs`、`scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/fixtures/daily-real-cron-2026-05-31.mjs`

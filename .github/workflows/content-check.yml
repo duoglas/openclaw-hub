@@ -127,6 +127,9 @@ jobs:
       - name: Daily fixture source dedup check
         run: pnpm check:daily-fixture-source-dedup
 
+      - name: Daily parser guardrail coverage check
+        run: pnpm check:daily-parser-guardrail-coverage
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 
