@@ -5,7 +5,7 @@ import { buildZhDescription, extractZhStories, generateZhDailyBody } from './lib
 const failures = [];
 
 for (const fixture of realCronFixtures) {
-  const { realCronFixture, fixtureDate, bannedFallbackPhrases, requiredZhOutputs, expectedSignals } = fixture;
+  const { realCronFixture, fixtureDate, bannedFallbackPhrases, requiredZhOutputs, expectedSignals, parserGuardrails } = fixture;
   const stories = extractZhStories(realCronFixture);
   const desc = buildZhDescription(realCronFixture);
   const body = generateZhDailyBody(realCronFixture, fixtureDate);
@@ -30,6 +30,24 @@ for (const fixture of realCronFixtures) {
   }
   for (const phrase of banned) {
     if (body.includes(phrase)) failures.push(`${fixtureDate}: banned fallback leaked: ${phrase}`);
+  }
+
+  for (let index = 1; index <= 5; index += 1) {
+    const story = stories[index - 1] || {};
+    const storyText = [story.title, story.what, story.why, story.impact].filter(Boolean).join(' ');
+    const evidenceLine = body.split('\n').find((line) => line.startsWith(`- 来源条目 ${index}：`)) || '';
+    const forbiddenDetail = parserGuardrails?.[`story${index}ForbiddenDetailTokens`] || [];
+    const requiredDetail = parserGuardrails?.[`story${index}RequiredDetailTokens`] || [];
+    const forbiddenEvidence = parserGuardrails?.[`story${index}ForbiddenZhEvidenceTokens`] || parserGuardrails?.[`story${index}ForbiddenEvidenceTokens`] || forbiddenDetail;
+    for (const token of forbiddenDetail) {
+      if (storyText.includes(token)) failures.push(`${fixtureDate}: ZH story ${index} parsed detail leaked post-section token: ${token}`);
+    }
+    for (const token of requiredDetail) {
+      if (!storyText.includes(token)) failures.push(`${fixtureDate}: ZH story ${index} parsed detail missing required token: ${token}`);
+    }
+    for (const token of forbiddenEvidence) {
+      if (evidenceLine.includes(token)) failures.push(`${fixtureDate}: ZH story ${index} evidence leaked post-section token: ${token}`);
+    }
   }
 
   const evidenceCount = (body.match(/^- 来源条目 \d+：/gm) || []).length;

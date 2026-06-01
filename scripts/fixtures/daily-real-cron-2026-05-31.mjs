@@ -105,4 +105,8 @@ export const parserGuardrails = {
   story4ForbiddenEnLabelTokens: ['OpenAI', 'NVIDIA'],
   story5RequiredEnLabelTokens: ['NVIDIA', 'ICRA'],
   story5ForbiddenEnLabelTokens: ['Amazon', 'Nova', 'Accenture', 'Bandsintown'],
+  story5RequiredDetailTokens: ['8 篇 NVIDIA Research 论文', '多机械臂调度', '真实部署仍取决于可靠性和成本'],
+  story5ForbiddenDetailTokens: ['Amazon 介绍', 'Agentic AI', '90%+ 可靠性', 'gym', '点击、滚动、操作界面'],
+  story5ForbiddenEvidenceTokens: ['Amazon', 'Agentic AI', '90%+', 'gym'],
+  story5ForbiddenZhEvidenceTokens: ['Amazon 介绍', 'Agentic AI', '90%+ 可靠性', 'gym', '点击、滚动、操作界面'],
 };

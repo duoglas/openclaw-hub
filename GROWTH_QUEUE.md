@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-05-31 17:24
+Last updated: 2026-06-01 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-143: 为 2026-05-31 真实 cron fixture 增加 post-Top5 实战案例 / evidence section 污染专项断言，消费 EXP-142 后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-142 已修复 2026-05-31 NVIDIA story 5 吸收 post-Top5 实战案例与证据矩阵 Amazon 截断片段的问题；若 fixture 只检查 label 和少量 banned phrase，后续 parser 仍可能在 parsed story detail 或 EN/ZH Evidence Matrix 中重新混入 `Amazon 介绍`、`Agentic AI`、`90%+ 可靠性`、`gym` 等后续 section token。把 parserGuardrails 扩展到 parsed detail 与 evidence line 级断言，可在发布前阻断 section-boundary drift 回归。
+  - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `parserGuardrails` 支持 `storyNForbiddenDetailTokens` / `storyNRequiredDetailTokens` 与 EN/ZH evidence forbidden token 断言；2) EN real cron fixture 检查验证 parsed story detail、label 与 Evidence Matrix line，阻断 post-section token 污染；3) ZH real cron fixture 与 bilingual pair fixture 同步验证 parsed detail 和 ZH/EN evidence line；4) 2026-05-31 fixture 对 NVIDIA story 5 明确要求 NVIDIA/ICRA 事实 token，并阻断 Amazon Agentic AI / 90%+ reliability / gym / click-scroll UI token；5) 本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-142: 将 2026-05-31 真实 cron 样本接入 daily-real-cron fixture registry，并修复 post-Top5 section parser 污染、OpenAI Codex Windows / 中国—东盟 AI 中心字段级英文 projection 与 ZH description 标点拼接，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-05-31）若 EN 页面继续对 OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心输出 `Source N reports...` / `This matters because ... links ...` 模板句，且 ZH parser 在 Top 5 后继续吸收实战案例字段导致 NVIDIA 证据矩阵串入 Amazon case 截断片段，会削弱首日索引窗口的事实密度、摘要点击一致性和来源可核验性；把 2026-05-31 样本纳入 registry，并修复 section boundary parser 与字段级 projection，可减少后续日报发布回归。
   - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。

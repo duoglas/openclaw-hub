@@ -35,14 +35,29 @@ for (const fixture of realCronFixtures) {
   }
 
   for (let index = 1; index <= 5; index += 1) {
-    const label = labelFor(stories[index - 1], index);
+    const story = stories[index - 1] || {};
+    const label = labelFor(story, index);
+    const storyText = [story.title, story.what, story.why, story.impact].filter(Boolean).join(' ');
+    const evidenceLine = body.split('\n').find((line) => line.startsWith(`- Evidence item ${index}:`)) || '';
     const forbidden = parserGuardrails?.[`story${index}ForbiddenEnLabelTokens`] || [];
     const required = parserGuardrails?.[`story${index}RequiredEnLabelTokens`] || [];
+    const forbiddenDetail = parserGuardrails?.[`story${index}ForbiddenDetailTokens`] || [];
+    const requiredDetail = parserGuardrails?.[`story${index}RequiredDetailTokens`] || [];
+    const forbiddenEvidence = parserGuardrails?.[`story${index}ForbiddenEvidenceTokens`] || forbiddenDetail;
     for (const token of forbidden) {
       if (label.includes(token)) failures.push(`${fixtureDate}: story ${index} label leaked forbidden token: ${token}`);
     }
     for (const token of required) {
       if (!label.includes(token)) failures.push(`${fixtureDate}: story ${index} label missing required token: ${token}`);
+    }
+    for (const token of forbiddenDetail) {
+      if (storyText.includes(token)) failures.push(`${fixtureDate}: story ${index} parsed detail leaked post-section token: ${token}`);
+    }
+    for (const token of requiredDetail) {
+      if (!storyText.includes(token)) failures.push(`${fixtureDate}: story ${index} parsed detail missing required token: ${token}`);
+    }
+    for (const token of forbiddenEvidence) {
+      if (evidenceLine.includes(token)) failures.push(`${fixtureDate}: story ${index} evidence leaked post-section token: ${token}`);
     }
   }
 }

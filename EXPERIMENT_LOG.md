@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-143
+- Hypothesis: EXP-142 已修复 2026-05-31 NVIDIA story 5 吸收 post-Top5 实战案例与证据矩阵 Amazon 截断片段的问题；若 fixture 只检查 label 和少量 banned phrase，后续 parser 仍可能在 parsed story detail 或 EN/ZH Evidence Matrix 中重新混入 `Amazon 介绍`、`Agentic AI`、`90%+ 可靠性`、`gym` 等后续 section token。把 parserGuardrails 扩展到 parsed detail 与 evidence line 级断言，可在发布前阻断 section-boundary drift 回归。
+- Scope: `scripts/check-daily-generator-real-cron-fixture.mjs`、`scripts/check-daily-zh-generator-real-cron-fixture.mjs`、`scripts/check-daily-bilingual-generator-pair-fixture.mjs`、`scripts/fixtures/daily-real-cron-2026-05-31.mjs`
+- Change: 扩展 EN/ZH/pair fixture 检查的 parserGuardrails，使其不仅检查 story label，还检查 parsed story title/what/why/impact 与对应 EN/ZH evidence line；为 2026-05-31 NVIDIA story 5 增加 required NVIDIA detail token，并阻断 Amazon Agentic AI、90%+ reliability、gym、点击/滚动 UI 操作等 post-Top5 实战案例污染 token。
+- Start date: 2026-06-01
+- End date: 2026-06-01
+- Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（parserGuardrails 已扩展到 parsed story detail 与 EN/ZH evidence line；2026-05-31 NVIDIA story 5 已阻断 Amazon Agentic AI / 90%+ reliability / gym / 点击滚动 UI 操作等 post-section 污染 token；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 detail/evidence line 级 parserGuardrails 作为真实 cron fixture 基线；下一步可把同类 post-section 污染断言推广到所有含实战案例与证据矩阵尾部截断样本。）
+
 ### EXP-142
 - Hypothesis: 最近24小时新增日报（2026-05-31）若 EN 页面继续对 OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心输出 `Source N reports...` / `This matters because ... links ...` 模板句，且 ZH parser 在 Top 5 后继续吸收实战案例字段导致 NVIDIA 证据矩阵串入 Amazon case 截断片段，会削弱首日索引窗口的事实密度、摘要点击一致性和来源可核验性；把 2026-05-31 样本纳入 registry，并修复 section boundary parser 与字段级 projection，可减少后续日报发布回归。
 - Scope: `scripts/fixtures/daily-real-cron-2026-05-31.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/daily-generator.mjs`、`scripts/lib/daily-zh-generator.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-05-31.md`、`src/content/blog/zh/openclaw-daily-2026-05-31.md`

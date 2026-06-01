@@ -6,7 +6,7 @@ import { buildZhDescription, extractZhStories, generateZhDailyBody } from './lib
 const failures = [];
 
 for (const fixture of realCronFixtures) {
-  const { realCronFixture, fixtureDate, expectedSignals, bannedFallbackPhrases } = fixture;
+  const { realCronFixture, fixtureDate, expectedSignals, bannedFallbackPhrases, parserGuardrails } = fixture;
   const date = fixtureDate;
   const enStories = extractStories(realCronFixture);
   const zhStories = extractZhStories(realCronFixture);
@@ -35,6 +35,26 @@ for (const fixture of realCronFixtures) {
       if (!enBody.includes(token) && !zhBody.includes(token) && !zhDescription.includes(token)) {
         failures.push(`${fixtureDate}: cross-language token missing from outputs: ${token}`);
       }
+    }
+
+    const storyIndex = index + 1;
+    const enStoryText = [enStories[index]?.title, enStories[index]?.what, enStories[index]?.why, enStories[index]?.impact].filter(Boolean).join(' ');
+    const zhStoryText = [zhStories[index]?.title, zhStories[index]?.what, zhStories[index]?.why, zhStories[index]?.impact].filter(Boolean).join(' ');
+    const enEvidenceLine = enBody.split('\n').find((line) => line.startsWith(`- Evidence item ${storyIndex}:`)) || '';
+    const zhEvidenceLine = zhBody.split('\n').find((line) => line.startsWith(`- 来源条目 ${storyIndex}：`)) || '';
+    const forbiddenDetail = parserGuardrails?.[`story${storyIndex}ForbiddenDetailTokens`] || [];
+    const forbiddenEvidence = parserGuardrails?.[`story${storyIndex}ForbiddenEvidenceTokens`] || forbiddenDetail;
+    const forbiddenZhEvidence = parserGuardrails?.[`story${storyIndex}ForbiddenZhEvidenceTokens`] || forbiddenEvidence;
+    for (const token of forbiddenDetail) {
+      if (enStoryText.includes(token) || zhStoryText.includes(token)) {
+        failures.push(`${fixtureDate}: story ${storyIndex} parsed detail leaked post-section token across pair: ${token}`);
+      }
+    }
+    for (const token of forbiddenEvidence) {
+      if (enEvidenceLine.includes(token)) failures.push(`${fixtureDate}: EN evidence item ${storyIndex} leaked post-section token: ${token}`);
+    }
+    for (const token of forbiddenZhEvidence) {
+      if (zhEvidenceLine.includes(token)) failures.push(`${fixtureDate}: ZH evidence item ${storyIndex} leaked post-section token: ${token}`);
     }
   });
 
