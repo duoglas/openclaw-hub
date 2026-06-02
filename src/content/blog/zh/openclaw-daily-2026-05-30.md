@@ -83,7 +83,7 @@ NVIDIA 介绍其在 ICRA 的机器人研究成果，8篇论文聚焦机器人从
 制造、仓储、医疗实验室、农业、电力巡检等场景的机器人部署可能加速。长期看，“物理 AI”会成为 AI 从屏幕走向现实世界的重要方向。
 
 来源：NVIDIA Blog  
-https://blogs.nvidia.co…
+https://blogs.nvidia.com/blog/icra-research-robotics-simulation-to-real-world/
 
 ## 今日结论
 
