@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-146
+- Hypothesis: EXP-145 已把 2026-06-02 的 `Source N reports...`、`This matters because ... links ...` 与 `more specific evaluation path` 回收为字段级事实改写；若 `check:daily-brief-specificity` 仍只看最新 1 篇，2026-05-29 这类近 7 篇日报残留的同类模板句会继续进入可发现页面，削弱首日索引后续长尾、摘要点击一致性和来源可核验性。把闸门扩展到最近 7 篇并补齐这些模板短语阻断，可把 EXP-145 从单日修补放大为短窗口质量基线。
+- Scope: `scripts/check-daily-brief-specificity.mjs`、`src/content/blog/en/openclaw-daily-2026-05-29.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: `check:daily-brief-specificity` 默认覆盖最近 7 篇 EN 日报，并新增 `Source N reports ... signal involving`、`This matters because ... links ...`、`more specific evaluation path` / migration template 阻断；同步将 2026-05-29 EN 日报从泛化 Source 模板重写为具体事实稿，覆盖 OpenAI model retirement dates、Claude Opus 4.8、Anthropic Series H、NVIDIA ICRA sim-to-real 与中国法院 AI 生成物/数据权属规则。
+- Start date: 2026-06-02
+- End date: 2026-06-02
+- Success metric: `pnpm check:daily-brief-specificity` 通过；最近 7 篇 EN 日报不再命中 `This matters because ... links ...`、`more specific evaluation path`、`Source N reports ... signal involving`；`pnpm build` 通过。
+- Result: pass（最新 EN 日报具体度闸门已从默认 1 篇扩展为最近 7 篇；2026-05-29 残留泛化 Source/links/evaluation path 模板已重写为具体事实稿；专项 grep、`pnpm check:daily-brief-specificity` 与 `pnpm build` 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留最近 7 篇作为日报短窗口具体度基线；下一步可把字段级 source projection generator 中仍存在的 fallback 文案继续替换为规则化投影，避免未来新实体未命中时再生成模板句。）
+
 ### EXP-145
 - Hypothesis: 最近24小时新增日报（2026-06-02）若 EN 页面继续保留 `Source N reports...`、`This matters because ... links ...` 与 `more specific evaluation path` 泛化模板，会削弱 Anthropic SEC IPO、OpenAI on Bedrock、NVIDIA AI Cloud、ChatGPT job tools 与中国 AI 产业报告这些首日索引信号的事实密度、摘要点击一致性和来源可核验性；把 2026-06-02 样本纳入 registry，并新增字段级 source projection，可减少后续发布回归。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-02.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-06-02.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

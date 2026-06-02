@@ -4,7 +4,7 @@ import { join } from 'node:path';
 
 // Guard the freshest English daily briefs against fluent but low-specificity
 // publish output. Override with LATEST_COUNT=N when auditing a wider window.
-const latestCount = Number.parseInt(process.env.LATEST_COUNT || '1', 10);
+const latestCount = Number.parseInt(process.env.LATEST_COUNT || '7', 10);
 const root = process.cwd();
 const failures = [];
 
@@ -54,6 +54,10 @@ const genericPhrasePatterns = [
   { label: 'generic concrete-source-detail fallback', pattern: /signal \d+ gives the .+ section a concrete source detail\.?/i },
   { label: 'generic validate-through-pilot fallback', pattern: /Teams should validate .+ through a small production-adjacent pilot/i },
   { label: 'generic source-centers workflow fallback', pattern: /Source \d+ centers on .+ teams should verify workflow fit/i },
+  { label: 'generic source-reports signal fallback', pattern: /Source \d+ reports (?:a|an)?\s?.{0,140} signal involving /i },
+  { label: 'generic this-matters-links fallback', pattern: /This matters because .{0,180} links .{0,180} to adoption timing, infrastructure capacity, compliance exposure, or enterprise workflow readiness/i },
+  { label: 'generic evaluation-path fallback', pattern: /The likely impact is a more specific evaluation path for .{0,220}: migration timing, partner dependency, governance review, cost exposure, and measurable rollout criteria/i },
+  { label: 'generic evaluation-path phrase', pattern: /more specific evaluation path/i },
   { label: 'sentence-tail truncation', pattern: /\b(?:before|cost|cost exposure|data boundaries|integration quality|user value)\.$/im },
 ];
 

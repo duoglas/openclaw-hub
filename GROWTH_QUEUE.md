@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-02 11:25
+Last updated: 2026-06-02 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-146: 将最新 EN 日报具体度闸门从单篇扩展到最近 7 篇，并回收 2026-05-29 残留 Source/links/evaluation path 泛化模板，消费 EXP-145 后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-145 已把 2026-06-02 的 `Source N reports...`、`This matters because ... links ...` 与 `more specific evaluation path` 回收为字段级事实改写；若 `check:daily-brief-specificity` 仍只看最新 1 篇，2026-05-29 这类近 7 篇日报残留的同类模板句会继续进入可发现页面，削弱首日索引后续长尾、摘要点击一致性和来源可核验性。把闸门扩展到最近 7 篇并补齐这些模板短语阻断，可把 EXP-145 从单日修补放大为短窗口质量基线。
+  - Metrics: `pnpm check:daily-brief-specificity` 通过；最近 7 篇 EN 日报不再命中 `This matters because ... links ...`、`more specific evaluation path`、`Source N reports ... signal involving`；`pnpm build` 通过。
+  - Acceptance: 1) `scripts/check-daily-brief-specificity.mjs` 默认 `LATEST_COUNT=7`；2) 闸门新增 `Source N reports ... signal involving`、`This matters because ... links ...` 与 `more specific evaluation path` 模板阻断；3) `src/content/blog/en/openclaw-daily-2026-05-29.md` 重写为具体英文事实稿，保留 OpenAI GPT-5.5/o3/GPT-4.5 日期、Claude Opus 4.8、Anthropic Series H、NVIDIA ICRA sim-to-real、中国法院 AI 生成物/数据权属信号；4) 最新 7 篇 specificity 闸门与 build 均通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-145: 将 2026-06-02 真实 cron 样本接入 daily-real-cron fixture registry，并把 EN 日报从通用 Source 模板升级为字段级事实改写，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `6270c42`
   - Hypothesis: 最近24小时新增日报（2026-06-02）若 EN 页面继续保留 `Source N reports...`、`This matters because ... links ...` 与 `more specific evaluation path` 泛化模板，会削弱 Anthropic SEC IPO、OpenAI on Bedrock、NVIDIA AI Cloud、ChatGPT job tools 与中国 AI 产业报告这些首日索引信号的事实密度、摘要点击一致性和来源可核验性；把 2026-06-02 样本纳入 registry，并新增字段级 source projection，可减少后续发布回归。
   - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
