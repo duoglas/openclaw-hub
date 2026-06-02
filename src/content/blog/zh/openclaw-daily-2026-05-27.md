@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-27）"
-description: "Anthropic 任命 KiYoung Choi 负责韩国并准备开放首尔办公室，Amazon Alexa+ 在法国上线 Early Access，NVIDIA Vera CPU 指向 Agentic AI 数据中心，中国平台争夺 AI 入口，华为发表韬(τ)定律。"
+description: "Anthropic 任命韩国负责人，Alexa+ 进入法国，NVIDIA Vera CPU 指向 Agentic AI 数据中心，中国平台争夺 AI 入口。"
 pubDate: 2026-05-27
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

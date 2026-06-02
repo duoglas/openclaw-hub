@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-01）"
-description: "截至 2026-06-01 07:30（北京时间）；Anthropic 5月28日发布 Claude Opus 4.8，强调编码、智能体任务、长任务一致性提升；同价提供，并上线 effort control、Claude Code dynamic workflows、API 消息内 system entries 等能力。"
+description: "截至 2026-06-01 07:30；Anthropic 发布 Claude Opus 4.8，强化编码、智能体任务和长任务一致性。"
 pubDate: 2026-06-01
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-05-29）"
-description: "OpenAI 版本说明显示，5月28日更新 GPT-5.5 Instant，改进回答风格和质量；同时宣布 ChatGPT 中 OpenAI o3 将于 2026-08-26 退役，GPT-4.5 将于 2026-06-27 退役。API 暂不受影响。；OpenAI 正在把用户迁移到新一代主力模型，减少旧模型维护负担。"
+description: "OpenAI 更新 GPT-5.5 Instant，并宣布 ChatGPT 中 o3 与 GPT-4.5 退役时间；API 暂不受影响。"
 pubDate: 2026-05-29
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
