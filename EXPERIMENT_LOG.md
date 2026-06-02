@@ -22,7 +22,7 @@
 - Start date: 2026-06-02
 - End date: 2026-06-02
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-06-02 真实 cron fixture 已进入 registry；EN generator 对 Anthropic SEC IPO、OpenAI Bedrock、NVIDIA AI Cloud、ChatGPT job tools、中国 AI 产业报告输出字段级英文事实改写；2026-06-02 EN 最新日报已重写为具体英文实稿并升级 description；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `0cdd6d2`；质量评分 28/30。）
+- Result: pass（2026-06-02 真实 cron fixture 已进入 registry；EN generator 对 Anthropic SEC IPO、OpenAI Bedrock、NVIDIA AI Cloud、ChatGPT job tools、中国 AI 产业报告输出字段级英文事实改写；2026-06-02 EN 最新日报已重写为具体英文实稿并升级 description；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `6270c42`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-06-02 fixture 作为最新日报首日索引质量基线；下一步可把 `This matters because ... links ...` / `evaluation path` 这类泛化句式抽成全局 EN specificity 闸门，减少新实体未命中 projection rule 时的低事实密度输出。）
 
 ### EXP-144
