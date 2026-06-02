@@ -54,6 +54,51 @@ const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'anthropic-sec-ipo-s1',
+    terms: ['Form S-1', '潜在 IPO', 'SEC 秘密提交'],
+    details: {
+      what: 'Anthropic said on June 1 that it confidentially submitted a draft Form S-1 registration statement to the US SEC for a potential IPO, with share count and pricing still undecided.',
+      why: 'The filing moves a leading AI lab closer to public-market scrutiny, where revenue quality, losses, compute commitments, governance controls, and regulatory exposure become part of the adoption signal.',
+      impact: 'Enterprise buyers and infrastructure partners should watch whether Anthropic discloses revenue mix, cloud commitments, model-margin pressure, safety spending, and IPO timing before treating the signal as a capacity or procurement catalyst.',
+    },
+  },
+  {
+    name: 'openai-amazon-bedrock-models',
+    terms: ['Amazon Bedrock', 'AWS 身份', '网络隔离'],
+    details: {
+      what: 'AWS made GPT-5.5, GPT-5.4, and Codex available in Amazon Bedrock with OpenAI-matched pricing and enterprise access through AWS identity, network isolation, audit, and encryption controls.',
+      why: 'OpenAI distribution is moving deeper into cloud procurement channels, turning model choice into a managed-cloud governance decision rather than a standalone API integration.',
+      impact: 'AI teams can compare OpenAI, Anthropic, Meta, Mistral, and other models inside one cloud control plane while measuring permissions, audit logs, latency, data boundaries, and unit economics.'
+    },
+  },
+  {
+    name: 'nvidia-ai-cloud-ecosystem',
+    terms: ['AI Cloud', 'AI factory', '六大洲'],
+    details: {
+      what: 'NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.',
+      why: 'The competitive bottleneck is shifting from model announcements toward reliable token production, regional cloud capacity, sovereign AI infrastructure, and end-to-end inference economics.',
+      impact: 'Enterprises may increasingly buy AI capacity as a managed production layer rather than raw GPUs, making partner geography, data residency, cost per token, and service reliability key selection criteria.',
+    },
+  },
+  {
+    name: 'chatgpt-jobs-resume-tools',
+    terms: ['实时职位', '自由职业机会', '简历格式化'],
+    details: {
+      what: 'OpenAI release notes say ChatGPT can help US users find real-time jobs and freelance opportunities, and can format and download English resumes for users globally.',
+      why: 'Consumer AI is moving from general Q&A into concrete career workflows where search, matching, rewriting, formatting, and decision support happen inside one assistant experience.',
+      impact: 'Users can test ChatGPT on bounded job-search steps such as role filtering, JD-specific resume rewrites, project-description cleanup, and English resume export while checking regional availability and source quality.',
+    },
+  },
+  {
+    name: 'china-ai-industry-report-l3',
+    terms: ['6000 家', '1.2 万亿元', '待确认'],
+    details: {
+      what: 'A secondary L3 source says China has more than 6,000 AI companies and a core AI industry scale above 1.2 trillion yuan, while the original official report link was not captured in this brief.',
+      why: 'The signal is useful for tracking China AI industrial scale, regional clusters, embodied AI, compute policy, and industrial-park momentum, but it needs source confirmation before being treated as a hard benchmark.',
+      impact: 'Teams should mark the item as unconfirmed, monitor official report publication, and use it only as a directional watchpoint for policy, infrastructure, robotics, and intelligent manufacturing demand.',
+    },
+  },
+  {
     name: 'china-asean-ai-innovation-center',
     terms: ['中国—东盟人工智能产业创新中心', '东盟', '多边合作平台'],
     details: {

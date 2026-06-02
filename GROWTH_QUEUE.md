@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-01 17:22
+Last updated: 2026-06-02 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-145: 将 2026-06-02 真实 cron 样本接入 daily-real-cron fixture registry，并把 EN 日报从通用 Source 模板升级为字段级事实改写，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `0cdd6d2`
+  - Hypothesis: 最近24小时新增日报（2026-06-02）若 EN 页面继续保留 `Source N reports...`、`This matters because ... links ...` 与 `more specific evaluation path` 泛化模板，会削弱 Anthropic SEC IPO、OpenAI on Bedrock、NVIDIA AI Cloud、ChatGPT job tools 与中国 AI 产业报告这些首日索引信号的事实密度、摘要点击一致性和来源可核验性；把 2026-06-02 样本纳入 registry，并新增字段级 source projection，可减少后续发布回归。
+  - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/fixtures/daily-real-cron-2026-06-02.mjs` 并注册进 `daily-real-cron-fixtures.mjs`，覆盖 Anthropic SEC Form S-1、OpenAI/Amazon Bedrock、NVIDIA AI Cloud、ChatGPT 求职简历能力、中国 AI 产业规模 L3 待确认信号；2) `source-projection-rules.mjs` 新增 5 条字段级英文 projection 规则；3) EN `openclaw-daily-2026-06-02.md` 重写为具体英文实稿并升级 description；4) fixture 阻断 2026-06-02 通用 Source/links/evaluation path 模板句回归，且 parser guardrails 阻断 story 5 吸收 post-Top5 Bedrock case 内容；5) 最新日报发现面、相关文章、证据矩阵、语言、行动段、duplicate precheck 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-144: 为含 post-Top5 实战案例的真实 cron fixture 增加 parser guardrail coverage 闸门，并补齐 2026-05-27/28/29 story 5 detail/evidence 污染断言，消费 EXP-143 后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-143 已把 2026-05-31 的 parserGuardrails 扩展到 parsed detail 与 EN/ZH evidence line；若 2026-05-27/28/29 这类同样含 Top 5 后实战案例的真实 cron fixture 不强制声明 story 5 forbidden detail/evidence token，后续新增样本可能再次只校验 label，漏掉 Top Story 5 吸收案例 section 的隐性串段。新增 coverage 闸门并补齐旧 fixture 的 post-section token 断言，可让 CI 阻断 guardrail 缺口。
   - Metrics: `pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
