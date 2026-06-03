@@ -72,12 +72,48 @@ const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'nvidia-microsoft-agentic-windows-azure',
+    terms: ['RTX Spark', 'DGX Station', 'Microsoft Fabric', 'Foundry'],
+    details: {
+      what: 'NVIDIA said its Microsoft Build / GTC Taipei updates expand the joint AI stack across RTX Spark, DGX Station for Windows, Microsoft Fabric GPU acceleration, NVIDIA open models on Foundry, and NVIDIA OpenShell security runtime support in GitHub Copilot.',
+      why: 'The update turns agentic AI into a deployment stack across local Windows PCs, Azure services, Fabric data workflows, and private or hybrid enterprise environments rather than a standalone model release.',
+      impact: 'Developers can evaluate Windows-local agent workflows, while enterprises compare hybrid patterns around local data, cloud compute, security sandboxes, governance controls, and rollout economics.',
+    },
+  },
+  {
+    name: 'nvidia-nemoclaw-industrial-agents',
+    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys'],
+    details: {
+      what: 'NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.',
+      why: 'AI agents are moving beyond chat, writing, and coding into CAD operations, mesh generation, simulation setup, debugging, and report production.',
+      impact: 'Industrial AI adoption may depend less on raw model capability and more on safe runtimes, tool permissions, deterministic workflow integration, audit logs, and domain-specific validation.',
+    },
+  },
+  {
     name: 'nvidia-ai-cloud-ecosystem',
     terms: ['AI Cloud', 'AI factory', '六大洲'],
     details: {
       what: 'NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.',
       why: 'The competitive bottleneck is shifting from model announcements toward reliable token production, regional cloud capacity, sovereign AI infrastructure, and end-to-end inference economics.',
       impact: 'Enterprises may increasingly buy AI capacity as a managed production layer rather than raw GPUs, making partner geography, data residency, cost per token, and service reliability key selection criteria.',
+    },
+  },
+  {
+    name: 'openai-chatgpt-active-sessions',
+    terms: ['Active sessions', '活跃会话', 'Settings > Security'],
+    details: {
+      what: 'OpenAI said on June 2 that ChatGPT now includes Active sessions under Settings > Security > Active sessions, allowing users to review signed-in sessions and log out individual or unknown devices.',
+      why: 'AI accounts increasingly contain files, code, API-related workflows, business drafts, and personal context, so session control is becoming a core AI product safety feature rather than a minor account setting.',
+      impact: 'Individual users should periodically review ChatGPT login sessions, while enterprise users will likely demand stronger session controls, permission visibility, auditability, and incident response features from AI tools.',
+    },
+  },
+  {
+    name: 'china-national-data-administration-embodied-ai',
+    terms: ['国家数据局', '刘烈宏', 'National Data Administration', 'AI for Science'],
+    details: {
+      what: 'Xinhua reported that Liu Liehong, head of China’s National Data Administration, said high-quality datasets are a critical foundation for embodied intelligence’s perception-decision-action loop and for data engineering in AI for Science.',
+      why: 'China’s AI policy focus continues to broaden from large models toward datasets, sector-specific scenarios, embodied intelligence, and scientific research infrastructure.',
+      impact: 'Industrial manufacturing, transportation, culture and tourism, and research organizations may invest more in dataset construction, data governance, annotation, synthetic data, and privacy-preserving data platforms.',
     },
   },
   {

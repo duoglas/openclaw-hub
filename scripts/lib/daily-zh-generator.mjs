@@ -77,8 +77,14 @@ export function extractZhStories(sourceText) {
 
 function trimDetail(value, fallback) {
   let detail = String(value || fallback || '').replace(/\s+/g, ' ').trim();
-  if (detail.length > 150) detail = `${detail.slice(0, 149).replace(/[，。；;,.\s]+$/g, '')}。`;
-  detail = detail.replace(/(API|Claude Code|GPT-4\.5|GPT-5\.5)\s*。$/g, '$1 暂无进一步细节。');
+  if (detail.length > 220) {
+    const clipped = detail.slice(0, 219);
+    const sentenceEnd = Math.max(clipped.lastIndexOf('。'), clipped.lastIndexOf('！'), clipped.lastIndexOf('？'));
+    const commaEnd = Math.max(clipped.lastIndexOf('；'), clipped.lastIndexOf('，'));
+    const boundary = sentenceEnd >= 80 ? sentenceEnd + 1 : commaEnd >= 120 ? commaEnd : -1;
+    detail = `${(boundary > 0 ? clipped.slice(0, boundary) : clipped).replace(/[，。；;,.\sA-Za-z]$/g, '').replace(/[，。；;,.\s]+$/g, '')}。`;
+  }
+  detail = detail.replace(/(API|Claude Code|GPT-4\.5|GPT-5\.5|OpenShell|NVIDIA)\s*。$/g, '$1 暂无进一步细节。');
   return detail;
 }
 

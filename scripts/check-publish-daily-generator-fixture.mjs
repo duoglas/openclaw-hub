@@ -114,6 +114,10 @@ const requiredProjectionRuleSignals = [
   'china-ai-metrology-guide',
   'amazon-nova-act-agentic-ai',
   'nvidia-icra-sim-to-real',
+  'nvidia-microsoft-agentic-windows-azure',
+  'nvidia-nemoclaw-industrial-agents',
+  'openai-chatgpt-active-sessions',
+  'china-national-data-administration-embodied-ai',
   'projectEnglishSourceDetail',
   'sourceProjectionRuleNames',
 ];

@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-147
+- Hypothesis: 最近24小时新增日报（2026-06-03）已经暴露 NVIDIA/Microsoft Windows-Azure agentic stack、NemoClaw 工业 Agent、OpenAI Active sessions 与国家数据局具身智能数据集信号；若这些字段级 projection 只停留在手工 EN 页面而不进入 source projection registry 与真实 cron fixture，后续发布仍可能回退到 Source reports / evaluation path 模板，且 ZH 证据矩阵会继续把长 NVIDIA OpenShell 明细截断成 `GitHub Copilot 中的 N。`。把 2026-06-03 样本纳入 registry、补齐字段级英文规则并修复 ZH 句尾截断，可减少最新日报首日索引窗口内的低事实密度与截断回归。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-03.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`scripts/lib/daily-zh-generator.mjs`、`scripts/check-publish-daily-generator-fixture.mjs`、`src/content/blog/zh/openclaw-daily-2026-06-03.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-03 真实 cron fixture；source projection registry 增加 NVIDIA/Microsoft Windows-Azure stack、NemoClaw industrial agents、ChatGPT Active sessions、国家数据局 embodied AI 四条字段级英文改写，并收窄国家数据局 rule term，避免覆盖 2026-06-02 L3 中国 AI 产业报告；ZH generator 证据矩阵 detail 截断改为更长句界截断；修复 2026-06-03 ZH 页面 OpenShell 句尾截断与宇树案例省略号。
+- Start date: 2026-06-03
+- End date: 2026-06-03
+- Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-06-03 真实 cron fixture 已进入 registry；新增字段级英文 projection 已覆盖 NVIDIA/Microsoft Windows-Azure stack、NemoClaw、ChatGPT Active sessions 与国家数据局/具身智能/AI for Science；ZH 证据矩阵截断 guardrail 已修复，当前 2026-06-03 ZH 页面不再含 `GitHub Copilot 中的 N。` 或宇树案例省略号；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-06-03 fixture 作为最新日报首日索引质量基线；下一步可为 source projection rule registry 增加“term 过宽污染旧 fixture”的专项检查，防止单词级 term 覆盖不相关中文样本。）
+
 ### EXP-146
 - Hypothesis: EXP-145 已把 2026-06-02 的 `Source N reports...`、`This matters because ... links ...` 与 `more specific evaluation path` 回收为字段级事实改写；若 `check:daily-brief-specificity` 仍只看最新 1 篇，2026-05-29 这类近 7 篇日报残留的同类模板句会继续进入可发现页面，削弱首日索引后续长尾、摘要点击一致性和来源可核验性。把闸门扩展到最近 7 篇并补齐这些模板短语阻断，可把 EXP-145 从单日修补放大为短窗口质量基线。
 - Scope: `scripts/check-daily-brief-specificity.mjs`、`src/content/blog/en/openclaw-daily-2026-05-29.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
