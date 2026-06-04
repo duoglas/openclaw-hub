@@ -143,6 +143,51 @@ const FIELD_PROJECTION_RULES = [
       impact: 'ASEAN markets may become important deployment sites for Chinese foundation models, industrial AI, and intelligent infrastructure, while governance alignment and standards cooperation become part of market entry planning.',
     },
   },
+  {
+    name: 'nvidia-cvpr-physical-ai-2026',
+    terms: ['GraspGen-X', 'LCDrive', 'NitroGen', 'CVPR 论文'],
+    details: {
+      what: 'NVIDIA Research highlighted three CVPR papers: GraspGen-X for zero-shot robotic grasping, LCDrive for lower-token autonomous-driving inference, and NitroGen for training embodied agents in virtual environments.',
+      why: 'The update shows physical AI moving from isolated perception models toward full robotics and autonomous-driving pipelines that combine simulation, data generation, inference efficiency, and deployment validation.',
+      impact: 'Robotics and autonomous-driving teams can watch whether these methods reduce retraining cost for new grippers, improve decision latency, and make simulation-to-real-world training easier to operationalize.',
+    },
+  },
+  {
+    name: 'meta-business-agent-2026',
+    terms: ['Meta Business Agent', 'WhatsApp、Messenger、Instagram', 'Shopify、Zendesk、Shopee'],
+    details: {
+      what: 'Meta said it is expanding Meta Business Agent globally across WhatsApp, Messenger, Instagram, and partner systems including Shopify, Zendesk, and Shopee for Q&A, product recommendations, bookings, and lead qualification.',
+      why: 'The announcement moves customer-service agents closer to daily commerce channels, with Meta citing more than 1 billion business conversations each day across WhatsApp, Messenger, and Instagram.',
+      impact: 'Small businesses, support teams, and cross-border commerce sellers may gain faster automated sales assistance, while vendors will compete on channel coverage, handoff quality, pricing, and customer-data controls.',
+    },
+  },
+  {
+    name: 'openai-youth-safety-g7-2026',
+    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制'],
+    details: {
+      what: 'OpenAI published a pre-G7 proposal for international youth AI safety collaboration, emphasizing age identification, default protections, annual risk assessment, parental controls, and shared research mechanisms.',
+      why: 'AI safety scrutiny is expanding from model capability and misuse toward who uses the product, how minors are protected, and which responsibilities belong to providers, schools, parents, and regulators.',
+      impact: 'Education, companion, and social AI products should expect stronger requirements around age assurance, teen defaults, parental controls, risk reporting, and child-safety evaluation before broad rollout.',
+    },
+  },
+  {
+    name: 'microsoft-enterprise-agent-system-2026',
+    terms: ['AI alone won’t change your business', 'Agent 系统', 'Azure、GitHub、Microsoft 365'],
+    details: {
+      what: 'Microsoft argued that enterprise AI value depends on governable agent systems rather than standalone models, tying Azure, GitHub, Microsoft 365, Security, Fabric, identity, permissions, data, audit, and human oversight into one operating layer.',
+      why: 'The enterprise AI budget is shifting from model trials to production-system redesign, where observability, governance, identity, permissions, and workflow integration decide whether agents can be trusted at scale.',
+      impact: 'Enterprise buyers may weigh platform governance and workflow integration more heavily than model benchmark scores, strengthening bundled stacks that connect developer tools, office workflows, data platforms, and security controls.',
+    },
+  },
+  {
+    name: 'shanghai-tech-fair-2026-hard-tech',
+    terms: ['第十二届上交会', '脑机接口', '长三角协同创新专区'],
+    details: {
+      what: 'Shanghai’s government press briefing said the 12th China Shanghai International Technology Fair will feature brain-computer interfaces, biomedicine, industrial robots, large models, new displays, intelligent connected vehicles, and Yangtze River Delta innovation zones.',
+      why: 'The fair is a useful China hard-tech signal because it connects AI, robotics, brain-computer interfaces, technology transfer, regional industrial policy, and commercialization channels rather than only model releases.',
+      impact: 'Brain-computer interface vendors, industrial robotics teams, AI technology-transfer services, and Yangtze River Delta innovation programs may receive more policy, capital, and partnership attention.',
+    },
+  },
 ];
 
 export function projectEnglishSourceDetail(source, key) {
