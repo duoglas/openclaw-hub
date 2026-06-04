@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-149
+- Hypothesis: 最近24小时新增日报（2026-06-04）已经产出 NVIDIA CVPR physical AI、Meta Business Agent、OpenAI youth safety、Microsoft enterprise agent system 与上海上交会 hard-tech 字段级英文 projection；若这些新规则只存在于 registry/页面而不进入真实 cron fixture 与 story-level scope 白名单，后续 generator 可能重新退回 `Source N reports...` 或让宽词污染旧样本。把 2026-06-04 样本纳入 EN/ZH/pair fixture 并扩展 source projection scope，可锁定首日索引页面的事实密度和规则作用域。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-04.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/check-source-projection-rule-scope.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-04 真实 cron fixture，覆盖 NVIDIA CVPR physical AI、Meta Business Agent、OpenAI G7 youth safety、Microsoft enterprise agent system 与上海上交会 hard-tech；fixture 要求 EN/ZH/pair 输出保持 5 条 story、5 条 evidence、具体字段级英文 projection 和 story 5 guardrail；source projection scope 白名单新增 2026-06-04 五条允许命中，阻断新增规则跨 story/跨日期污染。
+- Start date: 2026-06-04
+- End date: 2026-06-04
+- Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-06-04 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 NVIDIA CVPR、Meta Business Agent、OpenAI youth safety、Microsoft Agent system 与上海上交会 hard-tech 五条输出；source projection rule scope 已加入 2026-06-04 story-level 允许命中并阻断跨样本污染；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity、日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-06-04 fixture 作为最新日报首日索引质量基线；下一步可自动从 fixture expected outputs / projection rule names 生成 allowed match map，减少新增真实 cron 样本时手工维护白名单的遗漏。）
+
 ### EXP-148
 - Hypothesis: EXP-147 已收窄国家数据局 projection rule term，避免污染 2026-06-02 L3 中国 AI 产业报告；若 registry 只检查规则名称存在，而不检查每个真实 cron story 的允许命中规则，后续新增 `具身智能`、`AI Cloud`、`NVIDIA` 这类宽词仍可能把旧 fixture 投影成错误字段级英文文案。新增 source projection rule scope 闸门，可在 CI 中阻断跨日期、跨 story 的 projection 过宽污染。
 - Scope: `scripts/lib/source-projection-rules.mjs`、`scripts/check-source-projection-rule-scope.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

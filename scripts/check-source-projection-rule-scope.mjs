@@ -25,6 +25,11 @@ const allowedRuleMatches = new Map([
   ['2026-06-03::NVIDIA AI Cloud 生态扩张，AI 基建继续向“区域化/主权化”推进', ['nvidia-ai-cloud-ecosystem']],
   ['2026-06-03::OpenAI 给 ChatGPT 增加“活跃会话管理”', ['openai-chatgpt-active-sessions']],
   ['2026-06-03::国家数据局强调：高质量数据集是具身智能、AI for Science 的基础', ['china-national-data-administration-embodied-ai']],
+  ['2026-06-04::NVIDIA 在 CVPR 发布物理 AI / 机器人研究进展', ['nvidia-cvpr-physical-ai-2026']],
+  ['2026-06-04::Meta 推出 / 扩展 Meta Business Agent', ['meta-business-agent-2026']],
+  ['2026-06-04::OpenAI 呼吁建立国际青少年 AI 安全机制', ['openai-youth-safety-g7-2026']],
+  ['2026-06-04::Microsoft 强调企业 AI 的重点从模型转向“Agent 系统”', ['microsoft-enterprise-agent-system-2026']],
+  ['2026-06-04::上海上交会聚焦脑机接口、大模型、智能网联等硬科技', ['shanghai-tech-fair-2026-hard-tech']],
 ]);
 
 function storyBlockFor(fixtureText, title) {
