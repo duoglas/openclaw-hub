@@ -130,6 +130,9 @@ jobs:
       - name: Daily parser guardrail coverage check
         run: pnpm check:daily-parser-guardrail-coverage
 
+      - name: Source projection rule scope check
+        run: pnpm check:source-projection-rule-scope
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 

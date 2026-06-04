@@ -200,3 +200,10 @@ export function projectEnglishSourceDetail(source, key) {
 export function sourceProjectionRuleNames() {
   return FIELD_PROJECTION_RULES.map((rule) => rule.name);
 }
+
+export function sourceProjectionRuleMatchNames(source) {
+  const text = String(source || '');
+  return FIELD_PROJECTION_RULES
+    .filter(({ terms }) => terms.some((term) => text.includes(term)))
+    .map((rule) => rule.name);
+}

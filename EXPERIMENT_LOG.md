@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-148
+- Hypothesis: EXP-147 已收窄国家数据局 projection rule term，避免污染 2026-06-02 L3 中国 AI 产业报告；若 registry 只检查规则名称存在，而不检查每个真实 cron story 的允许命中规则，后续新增 `具身智能`、`AI Cloud`、`NVIDIA` 这类宽词仍可能把旧 fixture 投影成错误字段级英文文案。新增 source projection rule scope 闸门，可在 CI 中阻断跨日期、跨 story 的 projection 过宽污染。
+- Scope: `scripts/lib/source-projection-rules.mjs`、`scripts/check-source-projection-rule-scope.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: `source-projection-rules.mjs` 新增 `sourceProjectionRuleMatchNames`；新增 source projection rule scope 检查，遍历全部真实 cron fixture story block，并按 date + title 白名单断言允许命中规则；package scripts 与 content-check CI 接入该闸门，明确防止 2026-06-03 国家数据局/具身智能 rule 污染 2026-06-02 L3 中国 AI 产业报告等旧样本。
+- Start date: 2026-06-04
+- End date: 2026-06-04
+- Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
+- Result: pass（新增 source projection rule scope 闸门已遍历全部真实 cron fixtures，并对每条 story 的允许 rule 命中做白名单断言；2026-06-02 L3 中国 AI 产业报告只命中 `china-ai-industry-report-l3`，不会被 2026-06-03 国家数据局/具身智能 rule 污染；专项 scope 闸门、发布 generator fixture、真实 cron EN/ZH/pair fixture、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 fixture story-level rule scope 作为 source projection registry 基线；下一步可自动从 fixture expected outputs 生成 allowed match map，减少新增真实 cron 样本时手工维护白名单的遗漏。）
+
 ### EXP-147
 - Hypothesis: 最近24小时新增日报（2026-06-03）已经暴露 NVIDIA/Microsoft Windows-Azure agentic stack、NemoClaw 工业 Agent、OpenAI Active sessions 与国家数据局具身智能数据集信号；若这些字段级 projection 只停留在手工 EN 页面而不进入 source projection registry 与真实 cron fixture，后续发布仍可能回退到 Source reports / evaluation path 模板，且 ZH 证据矩阵会继续把长 NVIDIA OpenShell 明细截断成 `GitHub Copilot 中的 N。`。把 2026-06-03 样本纳入 registry、补齐字段级英文规则并修复 ZH 句尾截断，可减少最新日报首日索引窗口内的低事实密度与截断回归。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-03.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`scripts/lib/daily-zh-generator.mjs`、`scripts/check-publish-daily-generator-fixture.mjs`、`src/content/blog/zh/openclaw-daily-2026-06-03.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
