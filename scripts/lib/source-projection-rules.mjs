@@ -188,6 +188,42 @@ const FIELD_PROJECTION_RULES = [
       impact: 'Brain-computer interface vendors, industrial robotics teams, AI technology-transfer services, and Yangtze River Delta innovation programs may receive more policy, capital, and partnership attention.',
     },
   },
+  {
+    name: 'openai-chatgpt-memory-lockdown-2026',
+    terms: ['Lockdown Mode', 'Memory 会自动保持更新', '文件下载等高风险外部能力'],
+    details: {
+      what: 'OpenAI’s June 4 ChatGPT release notes say Memory can stay more up to date and reduce outdated or contradictory memories, while Lockdown Mode is now available to all logged-in users to limit browsing, deep research, agents, and file downloads.',
+      why: 'The update ties personalization to isolation controls: a more persistent assistant is more useful only if users and teams can reduce prompt-injection risk, external-content exposure, and accidental data leakage.',
+      impact: 'Individual users may get more reliable ChatGPT context, while teams handling contracts, financial files, code, or customer data should test Lockdown Mode before allowing AI tools to read external pages or uploaded files.',
+    },
+  },
+  {
+    name: 'nvidia-cosmos-3-physical-ai-2026',
+    terms: ['Cosmos 3', '开放的物理 AI 世界基础模型', 'world foundation model'],
+    details: {
+      what: 'NVIDIA announced Cosmos 3 at GTC Taipei as an open physical AI world foundation model for visual reasoning, world generation, and action prediction across robotics, autonomous driving, and visual AI workflows.',
+      why: 'The AI race is extending from chat and coding into systems that understand and simulate the physical world, making synthetic data, simulation, and policy training core infrastructure for robotics and autonomous systems.',
+      impact: 'Robotics and autonomous-driving teams may rely more heavily on world models and simulation data, lowering experimentation costs while increasing dependence on NVIDIA’s compute and software stack.',
+    },
+  },
+  {
+    name: 'nvidia-physical-ai-agent-skills-2026',
+    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo'],
+    details: {
+      what: 'NVIDIA published open-source Physical AI Agent tools and skills for Omniverse, Cosmos, Isaac, Metropolis, Alpamayo, Jetson, and related workflows covering data generation, simulation, training, evaluation, and deployment.',
+      why: 'The update expands coding-agent patterns into real-world engineering loops where robotics, autonomous vehicles, and industrial digital twins need repeatable agent workflows instead of one-off scripts.',
+      impact: 'Industrial software and robotics teams can package complex procedures as reusable agent skills, shifting differentiation from owning a model toward owning verifiable, reproducible engineering workflows.',
+    },
+  },
+  {
+    name: 'unitree-star-market-ipo-2026',
+    terms: ['宇树科技', '科创板 IPO', '42.02亿元'],
+    details: {
+      what: 'Xinhua reported that Unitree Robotics’ STAR Market IPO application passed review by the Shanghai Stock Exchange listing committee, with planned fundraising of 4.202 billion yuan for robot models, robot hardware R&D, new products, and manufacturing capacity.',
+      why: 'Humanoid robots, quadruped robots, and embodied intelligence are moving from technical demos into financing, manufacturing, and commercialization tests.',
+      impact: 'China’s robotics supply chain may receive more attention across joint modules, sensors, control systems, edge compute, embodied models, and manufacturing capacity.',
+    },
+  },
 ];
 
 export function projectEnglishSourceDetail(source, key) {

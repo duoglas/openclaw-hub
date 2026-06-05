@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-151
+- Hypothesis: 最近24小时新增日报（2026-06-05）已经产出 OpenAI ChatGPT Memory / Lockdown Mode、NVIDIA Cosmos 3、NVIDIA Physical AI Agent Skills、中国高质量数据集与宇树科技 STAR Market IPO 五条字段级信号；若这些信号只停留在手工 EN/ZH 页面而不进入真实 cron fixture 与 source projection registry，后续发布仍可能回退到 `Source N reports...`、`This matters because ... links ...` 或 story 5 吸收 post-Top5 实战案例。把 2026-06-05 样本纳入 EN/ZH/pair fixture，并新增字段级 projection 与 story-level scope，可锁定首日索引页面的事实密度和规则作用域。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-05.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-05 真实 cron fixture，覆盖 OpenAI Memory / Lockdown Mode、NVIDIA Cosmos 3、NVIDIA Physical AI Agent Skills、国家数据局高质量数据集与宇树科技 STAR Market IPO；source projection registry 新增 4 条字段级英文规则并复用国家数据局 embodied AI 规则；fixture 写入 `sourceProjectionRuleMatches`、EN/ZH required outputs、banned fallback 与 story 5 post-Top5 污染 guardrail。
+- Start date: 2026-06-05
+- End date: 2026-06-05
+- Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-06-05 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 OpenAI Memory / Lockdown Mode、NVIDIA Cosmos 3、Physical AI Agent Skills、中国高质量数据集与宇树 IPO 五条输出；source projection scope 由 fixture metadata 校验通过，story 5 已阻断 OpenAI/NVIDIA post-Top5 污染；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity、日报/索引卫生闸门与 build 全部通过；commit `046daa5`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-06-05 fixture 作为最新日报首日索引质量基线；下一步可为 `source-projection-rules.mjs` 增加 rule term fixture collision sample 输出，缩短新增宽词污染时的定位时间。）
+
 ### EXP-150
 - Hypothesis: EXP-149 已为 2026-06-04 新增真实 cron fixture 和 story-level source projection scope；若 allowed match map 继续集中硬编码在 `check-source-projection-rule-scope.mjs`，每次新增真实 cron 样本都要同步改脚本与 fixture，容易漏白名单或把检查逻辑变成日期清单维护。把期望 rule matches 写回各 fixture 的 `expectedSignals`，scope 闸门自动从 fixture metadata 读取并校验 rule name，可降低新增样本维护成本，同时继续阻断宽词跨日期/跨 story 污染。
 - Scope: `scripts/check-source-projection-rule-scope.mjs`、`scripts/fixtures/daily-real-cron-2026-05-29.mjs`、`scripts/fixtures/daily-real-cron-2026-05-30.mjs`、`scripts/fixtures/daily-real-cron-2026-05-31.mjs`、`scripts/fixtures/daily-real-cron-2026-06-02.mjs`、`scripts/fixtures/daily-real-cron-2026-06-03.mjs`、`scripts/fixtures/daily-real-cron-2026-06-04.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
