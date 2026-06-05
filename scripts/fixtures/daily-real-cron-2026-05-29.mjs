@@ -11,6 +11,7 @@ export const expectedSignals = [
   },
   {
     title: 'Anthropic 发布 Claude Opus 4.8',
+    sourceProjectionRuleMatches: ['claude-opus-4-8'],
     enLabel: 'Anthropic / Claude / Opus / agent platform',
     zhEvidence: '来源条目 2：Anthropic 发布 Claude Opus 4.8',
     requiredTokens: ['Anthropic', 'Claude', 'Opus'],
@@ -23,6 +24,7 @@ export const expectedSignals = [
   },
   {
     title: 'NVIDIA 发布机器人 sim-to-real 研究进展',
+    sourceProjectionRuleMatches: ['nvidia-icra-sim-to-real'],
     enLabel: 'NVIDIA / Research / ICRA / AI hardware',
     zhEvidence: '来源条目 4：NVIDIA 发布机器人 sim-to-real 研究进展',
     requiredTokens: ['NVIDIA', 'ICRA', 'sim-to-real'],

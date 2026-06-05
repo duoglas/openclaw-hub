@@ -5,6 +5,7 @@ export const realCronFixture = "《AI、科技日报》  \n2026-05-30 早报\n\n
 export const expectedSignals = [
   {
     "title": "Anthropic 发布 Claude Opus 4.8",
+    "sourceProjectionRuleMatches": ["claude-opus-4-8"],
     "enLabel": "Anthropic / Claude / Opus / agent platform",
     "zhEvidence": "来源条目 1：Anthropic 发布 Claude Opus 4.8",
     "requiredTokens": [
@@ -15,6 +16,7 @@ export const expectedSignals = [
   },
   {
     "title": "Anthropic 宣布完成 650亿美元 H 轮融资，估值 9650亿美元",
+    "sourceProjectionRuleMatches": ["anthropic-series-h"],
     "enLabel": "Anthropic / Series / compute infrastructure / model capability update",
     "zhEvidence": "来源条目 2：Anthropic 宣布完成 650亿美元 H 轮融资，估值 9650亿美元",
     "requiredTokens": [
@@ -25,6 +27,7 @@ export const expectedSignals = [
   },
   {
     "title": "中国两部门发文布局 AI 计量能力建设",
+    "sourceProjectionRuleMatches": ["china-ai-metrology-guide"],
     "enLabel": "SAMR / NDRC / Science and Technology Daily / compute infrastructure",
     "zhEvidence": "来源条目 3：中国两部门发文布局 AI 计量能力建设",
     "requiredTokens": [
@@ -35,6 +38,7 @@ export const expectedSignals = [
   },
   {
     "title": "Amazon 强调“可靠智能体”，披露多类真实业务案例",
+    "sourceProjectionRuleMatches": ["amazon-nova-act-agentic-ai"],
     "enLabel": "Amazon / Nova / Act / agent platform",
     "zhEvidence": "来源条目 4：Amazon 强调“可靠智能体”，披露多类真实业务案例",
     "requiredTokens": [
@@ -45,6 +49,7 @@ export const expectedSignals = [
   },
   {
     "title": "NVIDIA 发布 ICRA 机器人研究进展，重点推进 sim-to-real",
+    "sourceProjectionRuleMatches": ["nvidia-icra-sim-to-real"],
     "enLabel": "NVIDIA / ICRA / robotics deployment / model capability update",
     "zhEvidence": "来源条目 5：NVIDIA 发布 ICRA 机器人研究进展，重点推进 sim-to-real",
     "requiredTokens": [

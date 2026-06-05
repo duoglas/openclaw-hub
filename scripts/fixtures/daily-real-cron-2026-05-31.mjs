@@ -5,30 +5,35 @@ export const realCronFixture = "《AI、科技日报》\n2026-05-31 早报\n\n##
 export const expectedSignals = [
   {
     title: 'Anthropic 发布 Claude Opus 4.8',
+    sourceProjectionRuleMatches: ['claude-opus-4-8'],
     enLabel: 'Anthropic / Claude / Opus / agent platform',
     zhEvidence: '来源条目 1：Anthropic 发布 Claude Opus 4.8',
     requiredTokens: ['Anthropic', 'Claude Opus 4.8', 'Claude Code'],
   },
   {
     title: 'Anthropic 宣布 650亿美元 H 轮融资，估值 9650亿美元',
+    sourceProjectionRuleMatches: ['anthropic-series-h'],
     enLabel: 'Anthropic / Series / compute infrastructure / AI chip supply',
     zhEvidence: '来源条目 2：Anthropic 宣布 650亿美元 H 轮融资，估值 9650亿美元',
     requiredTokens: ['Anthropic', '650亿美元', '9650亿美元'],
   },
   {
     title: 'OpenAI 更新 Codex：Windows 端支持 Computer Use',
+    sourceProjectionRuleMatches: ['openai-codex-windows-computer-use'],
     enLabel: 'OpenAI / Codex / Windows / AI security control',
     zhEvidence: '来源条目 3：OpenAI 更新 Codex：Windows 端支持 Computer Use',
     requiredTokens: ['OpenAI', 'Codex', 'Computer Use'],
   },
   {
     title: '中国—东盟人工智能产业创新中心成立',
+    sourceProjectionRuleMatches: ['china-asean-ai-innovation-center'],
     enLabel: 'MIIT / China / model capability update / strategic partnership',
     zhEvidence: '来源条目 4：中国—东盟人工智能产业创新中心成立',
     requiredTokens: ['工信部', '东盟', '5月24日'],
   },
   {
     title: 'NVIDIA 机器人研究强调 sim-to-real，加速真实世界机器人落地',
+    sourceProjectionRuleMatches: ['nvidia-icra-sim-to-real'],
     enLabel: 'NVIDIA / ICRA / Research / robotics deployment',
     zhEvidence: '来源条目 5：NVIDIA 机器人研究强调 sim-to-real，加速真实世界机器人落地',
     requiredTokens: ['NVIDIA', 'ICRA', 'sim-to-real'],

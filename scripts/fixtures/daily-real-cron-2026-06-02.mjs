@@ -112,30 +112,35 @@ AWS Bedrock 已支持 OpenAI 模型和 Codex。
 export const expectedSignals = [
   {
     title: 'Anthropic 已向 SEC 秘密提交 IPO 草案',
+    sourceProjectionRuleMatches: ['anthropic-sec-ipo-s1'],
     enLabel: 'US / Anthropic / SEC / compute infrastructure',
     zhEvidence: '来源条目 1：Anthropic 已向 SEC 秘密提交 IPO 草案',
     requiredTokens: ['Anthropic', 'SEC', 'Form S-1'],
   },
   {
     title: 'OpenAI 模型正式进入 Amazon Bedrock',
+    sourceProjectionRuleMatches: ['openai-amazon-bedrock-models'],
     enLabel: 'OpenAI / Amazon / Bedrock / model capability update',
     zhEvidence: '来源条目 2：OpenAI 模型正式进入 Amazon Bedrock',
     requiredTokens: ['OpenAI', 'Amazon Bedrock', 'GPT-5.5'],
   },
   {
     title: 'NVIDIA 扩大全球 AI Cloud 生态',
+    sourceProjectionRuleMatches: ['nvidia-ai-cloud-ecosystem'],
     enLabel: 'NVIDIA / Cloud / GPU / compute infrastructure',
     zhEvidence: '来源条目 3：NVIDIA 扩大全球 AI Cloud 生态',
     requiredTokens: ['NVIDIA', 'AI Cloud', 'six continents'],
   },
   {
     title: 'ChatGPT 增加求职与简历能力',
+    sourceProjectionRuleMatches: ['chatgpt-jobs-resume-tools'],
     enLabel: 'US / ChatGPT / OpenAI / model release management',
     zhEvidence: '来源条目 4：ChatGPT 增加求职与简历能力',
     requiredTokens: ['ChatGPT', 'jobs', 'resume'],
   },
   {
     title: '中国 AI 产业报告称企业数超 6000 家、核心规模超 1.2 万亿元【待确认】',
+    sourceProjectionRuleMatches: ['china-ai-industry-report-l3'],
     enLabel: 'China / L3 / compute infrastructure / robotics deployment',
     zhEvidence: '来源条目 5：中国 AI 产业报告称企业数超 6000 家、核心规模超 1.2 万亿元【待确认】',
     requiredTokens: ['China', '6,000', '1.2 trillion yuan'],

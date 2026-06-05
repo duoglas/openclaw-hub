@@ -87,30 +87,35 @@ https://en.shio.gov.cn/TrueCMS/shxwbgs/2026n_6y_wdsl/content/c3e3cb41-062a…
 export const expectedSignals = [
   {
     title: 'NVIDIA 在 CVPR 发布物理 AI / 机器人研究进展',
+    sourceProjectionRuleMatches: ['nvidia-cvpr-physical-ai-2026'],
     enLabel: 'NVIDIA / CVPR / Research / robotics deployment',
     zhEvidence: '来源条目 1：NVIDIA 在 CVPR 发布物理 AI / 机器人研究进展',
     requiredTokens: ['NVIDIA', 'CVPR', 'GraspGen-X', 'LCDrive', 'NitroGen'],
   },
   {
     title: 'Meta 推出 / 扩展 Meta Business Agent',
+    sourceProjectionRuleMatches: ['meta-business-agent-2026'],
     enLabel: 'Meta / Business / Agent / agent platform',
     zhEvidence: '来源条目 2：Meta 推出 / 扩展 Meta Business Agent',
     requiredTokens: ['Meta', 'Business Agent', 'WhatsApp', 'Shopify'],
   },
   {
     title: 'OpenAI 呼吁建立国际青少年 AI 安全机制',
+    sourceProjectionRuleMatches: ['openai-youth-safety-g7-2026'],
     enLabel: 'OpenAI / G7 / model capability update / AI governance requirement',
     zhEvidence: '来源条目 3：OpenAI 呼吁建立国际青少年 AI 安全机制',
     requiredTokens: ['OpenAI', 'G7', 'youth AI safety', 'parental controls'],
   },
   {
     title: 'Microsoft 强调企业 AI 的重点从模型转向“Agent 系统”',
+    sourceProjectionRuleMatches: ['microsoft-enterprise-agent-system-2026'],
     enLabel: 'Microsoft / Agent / Azure / robotics deployment',
     zhEvidence: '来源条目 4：Microsoft 强调企业 AI 的重点从模型转向“Agent 系统”',
     requiredTokens: ['Microsoft', 'Azure', 'GitHub', 'Microsoft 365'],
   },
   {
     title: '上海上交会聚焦脑机接口、大模型、智能网联等硬科技',
+    sourceProjectionRuleMatches: ['shanghai-tech-fair-2026-hard-tech'],
     enLabel: 'China / robotics deployment / model capability update / AI policy signal',
     zhEvidence: '来源条目 5：上海上交会聚焦脑机接口、大模型、智能网联等硬科技',
     requiredTokens: ['Shanghai', 'brain-computer interfaces', 'industrial robots', 'Yangtze River Delta'],
