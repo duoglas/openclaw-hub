@@ -198,6 +198,33 @@ const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'nvidia-korea-ecosystem-2026',
+    terms: ['Grace Blackwell', 'Vera Rubin', '韩国在机器人', '韩国', 'Korea ecosystem'],
+    details: {
+      what: 'NVIDIA CEO Jensen Huang visited Seoul and said Grace Blackwell is performing well, Vera Rubin has entered full production, and the second half of the year will be busy for AI infrastructure buildout, with Korea highlighted for robotics, physical AI, memory, and manufacturing.',
+      why: 'The signal shows AI competition shifting from model releases alone toward compute supply chains, sovereign AI capacity, robotics deployment, and local industrial ecosystems.',
+      impact: 'Korean memory, semiconductor, manufacturing, and robotics companies could become more central to NVIDIA’s next-stage AI infrastructure and physical AI partnerships.',
+    },
+  },
+  {
+    name: 'china-provincial-ai-compute-plans-2026',
+    terms: ['十五五', '30个省市', '各省级', '人工智能”和“算力', '北京、浙江、上海、广东'],
+    details: {
+      what: 'Xinhua reported that provincial 15th Five-Year Plan outlines are being published, with all provinces and municipalities mentioning artificial intelligence and compute power, 30 mentioning large models, and Beijing, Zhejiang, Shanghai, and Guangdong described as leading clusters.',
+      why: 'China’s AI industry is entering a regional specialization phase instead of relying only on single-model competition.',
+      impact: 'Beijing may focus more on model and original innovation, the Yangtze River Delta on compute, chips, and supply chains, the Pearl River Delta on application deployment, and central or western regions on compute support.',
+    },
+  },
+  {
+    name: 'china-6g-province-ministry-pilot-2026',
+    terms: ['6G 创新发展部省协同试点', '2029年', '业务场景和终端产品', '低空经济'],
+    details: {
+      what: 'Xinhua reported that China’s Ministry of Industry and Information Technology is organizing province-ministry coordinated 6G innovation pilots, aiming to form independent 6G technical solutions, business scenarios, and terminal products by 2029.',
+      why: '6G is being positioned alongside AI, satellite internet, wireless sensing, embodied intelligence, and the low-altitude economy rather than as a standalone telecom upgrade.',
+      impact: 'Communications equipment, chip components, operating systems, new terminals, industrial manufacturing, and low-altitude-economy applications may enter earlier pilot windows.',
+    },
+  },
+  {
     name: 'nvidia-cosmos-3-physical-ai-2026',
     terms: ['Cosmos 3', '开放的物理 AI 世界基础模型', 'world foundation model'],
     details: {
