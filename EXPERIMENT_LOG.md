@@ -52,7 +52,7 @@
 - Start date: 2026-06-04
 - End date: 2026-06-04
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-06-04 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 NVIDIA CVPR、Meta Business Agent、OpenAI youth safety、Microsoft Agent system 与上海上交会 hard-tech 五条输出；source projection rule scope 已加入 2026-06-04 story-level 允许命中并阻断跨样本污染；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity、日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（2026-06-04 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 NVIDIA CVPR、Meta Business Agent、OpenAI youth safety、Microsoft Agent system 与上海上交会 hard-tech 五条输出；source projection rule scope 已加入 2026-06-04 story-level 允许命中并阻断跨样本污染；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity、日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-06-04 fixture 作为最新日报首日索引质量基线；下一步可自动从 fixture expected outputs / projection rule names 生成 allowed match map，减少新增真实 cron 样本时手工维护白名单的遗漏。）
 
 ### EXP-148
@@ -62,7 +62,7 @@
 - Start date: 2026-06-04
 - End date: 2026-06-04
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（新增 source projection rule scope 闸门已遍历全部真实 cron fixtures，并对每条 story 的允许 rule 命中做白名单断言；2026-06-02 L3 中国 AI 产业报告只命中 `china-ai-industry-report-l3`，不会被 2026-06-03 国家数据局/具身智能 rule 污染；专项 scope 闸门、发布 generator fixture、真实 cron EN/ZH/pair fixture、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（新增 source projection rule scope 闸门已遍历全部真实 cron fixtures，并对每条 story 的允许 rule 命中做白名单断言；2026-06-02 L3 中国 AI 产业报告只命中 `china-ai-industry-report-l3`，不会被 2026-06-03 国家数据局/具身智能 rule 污染；专项 scope 闸门、发布 generator fixture、真实 cron EN/ZH/pair fixture、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 fixture story-level rule scope 作为 source projection registry 基线；下一步可自动从 fixture expected outputs 生成 allowed match map，减少新增真实 cron 样本时手工维护白名单的遗漏。）
 
 ### EXP-147
@@ -72,7 +72,7 @@
 - Start date: 2026-06-03
 - End date: 2026-06-03
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-06-03 真实 cron fixture 已进入 registry；新增字段级英文 projection 已覆盖 NVIDIA/Microsoft Windows-Azure stack、NemoClaw、ChatGPT Active sessions 与国家数据局/具身智能/AI for Science；ZH 证据矩阵截断 guardrail 已修复，当前 2026-06-03 ZH 页面不再含 `GitHub Copilot 中的 N。` 或宇树案例省略号；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（2026-06-03 真实 cron fixture 已进入 registry；新增字段级英文 projection 已覆盖 NVIDIA/Microsoft Windows-Azure stack、NemoClaw、ChatGPT Active sessions 与国家数据局/具身智能/AI for Science；ZH 证据矩阵截断 guardrail 已修复，当前 2026-06-03 ZH 页面不再含 `GitHub Copilot 中的 N。` 或宇树案例省略号；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-06-03 fixture 作为最新日报首日索引质量基线；下一步可为 source projection rule registry 增加“term 过宽污染旧 fixture”的专项检查，防止单词级 term 覆盖不相关中文样本。）
 
 ### EXP-146
@@ -82,7 +82,7 @@
 - Start date: 2026-06-02
 - End date: 2026-06-02
 - Success metric: `pnpm check:daily-brief-specificity` 通过；最近 7 篇 EN 日报不再命中 `This matters because ... links ...`、`more specific evaluation path`、`Source N reports ... signal involving`；`pnpm build` 通过。
-- Result: pass（最新 EN 日报具体度闸门已从默认 1 篇扩展为最近 7 篇；2026-05-29 残留泛化 Source/links/evaluation path 模板已重写为具体事实稿；专项 grep、`pnpm check:daily-brief-specificity` 与 `pnpm build` 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（最新 EN 日报具体度闸门已从默认 1 篇扩展为最近 7 篇；2026-05-29 残留泛化 Source/links/evaluation path 模板已重写为具体事实稿；专项 grep、`pnpm check:daily-brief-specificity` 与 `pnpm build` 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留最近 7 篇作为日报短窗口具体度基线；下一步可把字段级 source projection generator 中仍存在的 fallback 文案继续替换为规则化投影，避免未来新实体未命中时再生成模板句。）
 
 ### EXP-145
@@ -102,7 +102,7 @@
 - Start date: 2026-06-01
 - End date: 2026-06-01
 - Success metric: `pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（coverage 闸门已强制 post-Top5 case fixture 声明 detail 与 EN/ZH evidence forbidden token；2026-05-27/28/29 fixtures 已补齐 story 5 post-section 污染断言；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（coverage 闸门已强制 post-Top5 case fixture 声明 detail 与 EN/ZH evidence forbidden token；2026-05-27/28/29 fixtures 已补齐 story 5 post-section 污染断言；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 parser guardrail coverage 作为真实 cron fixture 基线；下一步可把 coverage 闸门扩展为检查所有 fixture 文件自动注册进 registry，减少新增真实样本漏接 CI。）
 
 ### EXP-143
@@ -112,7 +112,7 @@
 - Start date: 2026-06-01
 - End date: 2026-06-01
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（parserGuardrails 已扩展到 parsed story detail 与 EN/ZH evidence line；2026-05-31 NVIDIA story 5 已阻断 Amazon Agentic AI / 90%+ reliability / gym / 点击滚动 UI 操作等 post-section 污染 token；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（parserGuardrails 已扩展到 parsed story detail 与 EN/ZH evidence line；2026-05-31 NVIDIA story 5 已阻断 Amazon Agentic AI / 90%+ reliability / gym / 点击滚动 UI 操作等 post-section 污染 token；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 detail/evidence line 级 parserGuardrails 作为真实 cron fixture 基线；下一步可把同类 post-section 污染断言推广到所有含实战案例与证据矩阵尾部截断样本。）
 
 ### EXP-142
@@ -122,7 +122,7 @@
 - Start date: 2026-05-31
 - End date: 2026-05-31
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-31 真实 cron fixture 已进入 registry；EN/ZH parser 已阻断 Top 5 后 section 污染；OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心已输出字段级英文事实改写；2026-05-31 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（2026-05-31 真实 cron fixture 已进入 registry；EN/ZH parser 已阻断 Top 5 后 section 污染；OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心已输出字段级英文事实改写；2026-05-31 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28/29/30/31 multi-fixture registry 作为日报 generator 回归基线；下一步可为 post-Top5 实战案例和 evidence section 增加专门污染断言，减少 parser 隐性串段。）
 
 ### EXP-141
@@ -132,7 +132,7 @@
 - Start date: 2026-05-31
 - End date: 2026-05-31
 - Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（中文 topic keyword 与 entity projection map 已从 EN generator 内联定义迁移到 `daily-signal-maps.mjs`；fixture 闸门已检查 registry 完整性并阻断 map 重新内联；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（中文 topic keyword 与 entity projection map 已从 EN generator 内联定义迁移到 `daily-signal-maps.mjs`；fixture 闸门已检查 registry 完整性并阻断 map 重新内联；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 daily signal map registry 作为后续真实 cron fixture 扩展入口；下一步可为 signal map 增加重复英文 label / 过宽主题映射专项检查，减少新增词条导致的 label 噪声。）
 
 ### EXP-140
@@ -142,7 +142,7 @@
 - Start date: 2026-05-30
 - End date: 2026-05-30
 - Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（字段级英文 projection 已从 EN generator 内联分支迁移到 `source-projection-rules.mjs`；fixture 闸门已阻断长文案重新内联并检查 5 条规则完整性；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（字段级英文 projection 已从 EN generator 内联分支迁移到 `source-projection-rules.mjs`；fixture 闸门已阻断长文案重新内联并检查 5 条规则完整性；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 source projection rule registry 作为后续真实 cron fixture 扩展入口；下一步可把 `KEYWORD_MAP` / `ZH_ENTITY_MAP` 也逐步抽成可测 mapping registry，减少 generator 主文件体积。）
 
 ### EXP-139
@@ -152,7 +152,7 @@
 - Start date: 2026-05-30
 - End date: 2026-05-30
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-30 真实 cron fixture 已进入 registry；EN generator 已为 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 输出字段级英文事实改写；ZH description 已避免粗体字段标签泄漏和 `特别。` 句尾截断；2026-05-30 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（2026-05-30 真实 cron fixture 已进入 registry；EN generator 已为 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 输出字段级英文事实改写；ZH description 已避免粗体字段标签泄漏和 `特别。` 句尾截断；2026-05-30 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28/29/30 multi-fixture registry 作为日报 generator 回归基线；下一步可把字段级英文改写从 hard-coded source patterns 进一步抽成可维护的 phrase rule registry。）
 
 ### EXP-138
@@ -162,7 +162,7 @@
 - Start date: 2026-05-29
 - End date: 2026-05-29
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-29 真实 cron fixture 已进入 registry；EN generator 已输出包含 GPT-5.5/GPT-4.5 退役日期、ICRA/sim-to-real、AIGC 等字段级 fact 的英文 source detail；ZH generator 已避免 API/Claude Code 半句截断；latest specificity 和 dedup 闸门已覆盖新增回归；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（2026-05-29 真实 cron fixture 已进入 registry；EN generator 已输出包含 GPT-5.5/GPT-4.5 退役日期、ICRA/sim-to-real、AIGC 等字段级 fact 的英文 source detail；ZH generator 已避免 API/Claude Code 半句截断；latest specificity 和 dedup 闸门已覆盖新增回归；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28/29 multi-fixture registry 作为日报 generator 回归基线；下一步可把 EN source projection 继续升级为更自然的字段级英文改写，减少模板感。）
 
 ### EXP-137
@@ -172,7 +172,7 @@
 - Start date: 2026-05-29
 - End date: 2026-05-29
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-28 真实 cron fixture 已进入 registry；EN generator 与 specificity 闸门已阻断 EXP-136 暴露的泛化占位句和句尾截断；2026-05-29 EN 最新日报已用修复后的 generator 重写并通过 latest specificity；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（2026-05-28 真实 cron fixture 已进入 registry；EN generator 与 specificity 闸门已阻断 EXP-136 暴露的泛化占位句和句尾截断；2026-05-29 EN 最新日报已用修复后的 generator 重写并通过 latest specificity；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28 multi-fixture registry 作为日报 generator 回归基线；下一步可把 2026-05-29 样本纳入 registry，并把 source projection 从实体/主题摘要继续升级为字段级英文改写。）
 
 ### EXP-136
@@ -192,7 +192,7 @@
 - Start date: 2026-05-28
 - End date: 2026-05-28
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-27 fixture 已接入 registry；parser section-boundary 污染已修复；story 5 不再泄漏 Tencent/Alibaba/Baidu 等后续 section token；ZH description 不再泄漏日期、编号标题或字段标签；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（2026-05-27 fixture 已接入 registry；parser section-boundary 污染已修复；story 5 不再泄漏 Tencent/Alibaba/Baidu 等后续 section token；ZH description 不再泄漏日期、编号标题或字段标签；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 multi-fixture registry 作为日报 generator 回归基线；下一步可把最新 2026-05-28 内容建设样本加入 fixture，并增加 URL/source 行截断专项断言，进一步覆盖来源行对英文 projection 的影响。）
 
 ### EXP-134
@@ -202,7 +202,7 @@
 - Start date: 2026-05-27
 - End date: 2026-05-27
 - Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm build` 通过。
-- Result: pass（EN generator 已把 CJK fallback 改为实体/主题 projection，真实 cron fixture 已阻断 CJK 泄漏与 EXP-133 fallback 短语；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（EN generator 已把 CJK fallback 改为实体/主题 projection，真实 cron fixture 已阻断 CJK 泄漏与 EXP-133 fallback 短语；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 CJK-to-English source projection 与 fixture 闸门作为日报发布生成基线；下一步可扩展到 2026-05-27 fixture，验证 Huawei/China Mobile/France 等最新样本的 projection 覆盖度。）
 
 ### EXP-133
@@ -212,7 +212,7 @@
 - Start date: 2026-05-27
 - End date: 2026-05-27
 - Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 generator fallback 句式，ZH 页面不再含实战案例省略号或证据矩阵截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-27.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 实战案例/证据矩阵补全；`check-daily-brief-specificity.mjs` 已阻断 EXP-133 暴露的 `daily story N` / `anchors story` / `named source signal` 泛化 fallback；本地十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-27.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 实战案例/证据矩阵补全；`check-daily-brief-specificity.mjs` 已阻断 EXP-133 暴露的 `daily story N` / `anchors story` / `named source signal` 泛化 fallback；本地十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 expanded specificity 闸门作为最新英文日报事实密度基线；下一步建议把发布脚本 EN generator 从 CJK 丢弃式 fallback 升级为结构化翻译/摘要 fixture，避免需要发布后人工回补。）
 
 ### EXP-132
@@ -222,7 +222,7 @@
 - Start date: 2026-05-26
 - End date: 2026-05-26
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily fixture source dedup check。
-- Result: pass（已抽出共享真实 cron fixture module，三个 EN/ZH/pair fixture 检查脚本已统一 import；新增去重闸门并接入 package/CI；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（已抽出共享真实 cron fixture module，三个 EN/ZH/pair fixture 检查脚本已统一 import；新增去重闸门并接入 package/CI；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留共享 fixture source + dedup 闸门作为发布脚本生成质量检查的维护基线；下一步可把 fixture 覆盖扩展到最新 2026-05-26 日报，验证新增内容建设样本不会出现 description 或 evidence drift。）
 
 ### EXP-131
@@ -232,7 +232,7 @@
 - Start date: 2026-05-26
 - End date: 2026-05-26
 - Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily bilingual generator pair fixture check。
-- Result: pass（已新增双语 pair fixture 并接入 package/CI；ZH description 已过滤 Markdown 标题、字段标签和纯英文标题；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 28/30。）
+- Result: pass（已新增双语 pair fixture 并接入 package/CI；ZH description 已过滤 Markdown 标题、字段标签和纯英文标题；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 EN/ZH pair fixture 作为发布脚本双语一致性基线；下一步可把 fixture source 抽成共享文件，避免 EN、ZH、pair 三个检查脚本重复维护同一真实 cron 摘要。）
 
 ### EXP-130
@@ -262,7 +262,7 @@
 - Start date: 2026-05-24
 - End date: 2026-05-24
 - Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；generator fixture 能阻断 EXP-127 发现的 fallback 泛化句式。
-- Result: pass（`publish-daily.sh` 已把 fallback 改为 source title/label 驱动，fixture 闸门已覆盖 EXP-127 发现的三类泛化短语与 title fallback required signals；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `8b9ffcd`；质量评分 27/30。）
+- Result: pass（`publish-daily.sh` 已把 fallback 改为 source title/label 驱动，fixture 闸门已覆盖 EXP-127 发现的三类泛化短语与 title fallback required signals；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
 - Decision (scale / iterate / stop): scale（保留 generator fixture 作为发布脚本静态质量基线；下一步可把 EN generator 抽成独立 JS/Python 模块并用真实 cron 摘要做快照测试。）
 
 ### EXP-127
@@ -322,7 +322,7 @@
 - Start date: 2026-05-21
 - End date: 2026-05-21
 - Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm build` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；脚本不再依赖单一 `AI` token 生成 story label。
-- Result: pass（`scripts/publish-daily.sh` 已完成结构化 story extraction、EN label 主题映射和 EN/ZH 具体证据矩阵生成升级；本地语法检查、十项日报/索引卫生闸门 + build 全部通过；commit `8b9ffcd` 待提交推送。）
+- Result: pass（`scripts/publish-daily.sh` 已完成结构化 story extraction、EN label 主题映射和 EN/ZH 具体证据矩阵生成升级；本地语法检查、十项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): iterate（下一步建议把结构化解析器抽成独立可单测脚本，并增加 fixture 覆盖“纯中文标题 + 品牌实体 + 无编号 fallback”三类摘要，进一步降低发布窗口回归风险。）
 
 ### EXP-121
@@ -382,7 +382,7 @@
 - Start date: 2026-05-18
 - End date: 2026-05-18
 - Success metric: `pnpm check:daily-action-sections` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily action sections completeness check。
-- Result: pass（已新增最新日报行动段完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、英文语言、duplicate precheck 与 build 全部通过；commit `8b9ffcd` 待提交推送。）
+- Result: pass（已新增最新日报行动段完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、英文语言、duplicate precheck 与 build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时日报发布质量基线；下一步可按发布窗口把 `LATEST_COUNT` 扩展到最近 2 篇，或把行动段质量进一步纳入内容评分。）
 
 ### EXP-115
@@ -402,7 +402,7 @@
 - Start date: 2026-05-17
 - End date: 2026-05-17
 - Success metric: `pnpm check:daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily English language consistency check。
-- Result: pass（已新增最新英文日报语言一致性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、duplicate precheck 与 build 全部通过；commit `8b9ffcd` 待提交推送。）
+- Result: pass（已新增最新英文日报语言一致性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、duplicate precheck 与 build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时英文日报发布质量基线；下一步可根据误报情况扩展为最近 2 篇或加入更多中文模板标签。）
 
 ### EXP-113
@@ -442,7 +442,7 @@
 - Start date: 2026-05-15
 - End date: 2026-05-15
 - Success metric: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；EN/ZH 最新日报构建页均含 `data-growth-surface="related-posts"`、`blog_related_posts_render` 与 3 条非自身相关文章链接。
-- Result: pass（已修复 EN/ZH 文章页 relatedPosts 传参断点；最新双语日报构建页均渲染 3 条非自身相关文章链接与 `blog_related_posts_render`；本地 build、最新日报发现面、相关文章增长闸门与日报质量闸门全部通过；commit `8b9ffcd` 待提交推送。）
+- Result: pass（已修复 EN/ZH 文章页 relatedPosts 传参断点；最新双语日报构建页均渲染 3 条非自身相关文章链接与 `blog_related_posts_render`；本地 build、最新日报发现面、相关文章增长闸门与日报质量闸门全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最新日报发布后的站内连续阅读基线；后续观察 `blog_related_posts_render` 与相关文章点击，若数据有效再加入点击事件分型。）
 
 ### EXP-109
@@ -452,7 +452,7 @@
 - Start date: 2026-05-15
 - End date: 2026-05-15
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-15.md` 已完成语言一致性、description 可检索化与正文补全；本地五项闸门 + build 全部通过；commit `8b9ffcd` 待提交推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-15.md` 已完成语言一致性、description 可检索化与正文补全；本地五项闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 发现面一致性 + build”闭环。）
 
 ### EXP-108
@@ -462,7 +462,7 @@
 - Start date: 2026-05-14
 - End date: 2026-05-14
 - Success metric: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；EN/ZH 最新日报发现入口全部指向 `/en|zh/blog/openclaw-daily-2026-05-14/`；RSS 首项为最新日报；CI 出现 Latest daily surface alignment check。
-- Result: pass（已新增最新日报发现面一致性闸门，并验证 EN/ZH 首页、日报归档页、RSS 首项与 sitemap 均对齐 2026-05-14 最新日报；本地 build + `pnpm check:latest-daily-surface` 通过；commit `8b9ffcd` 待提交推送。）
+- Result: pass（已新增最新日报发现面一致性闸门，并验证 EN/ZH 首页、日报归档页、RSS 首项与 sitemap 均对齐 2026-05-14 最新日报；本地 build + `pnpm check:latest-daily-surface` 通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（后续每次新增日报后自动阻断首页/RSS/sitemap 未同步最新日报的回归，继续观察 `home_latest_daily_click` 与 `daily_index_click` 对最新日报打开率的贡献。）
 
 ### EXP-107
@@ -472,7 +472,7 @@
 - Start date: 2026-05-14
 - End date: 2026-05-14
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-14.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `8b9ffcd` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-14.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-106
@@ -482,7 +482,7 @@
 - Start date: 2026-05-13
 - End date: 2026-05-13
 - Success metric: `pnpm build` 通过；`pnpm check:daily-index-growth` 通过；`pnpm check:rss-autodiscovery` 通过；`pnpm check:website-schema` 通过；EN/ZH daily index 构建产物含 latest/RSS CTA、增长事件、ItemList JSON-LD，并链接最新 2026-05-13 日报。
-- Result: pass（EN/ZH `/daily/` 已新增最新日报 hero、RSS CTA、`daily_index_latest_render`/`daily_index_click` 事件与 ItemList JSON-LD；新增专项检查并接入 CI；本地 build + daily-index-growth + RSS autodiscovery + Website schema 全部通过；commit `8b9ffcd` 已推送。）
+- Result: pass（EN/ZH `/daily/` 已新增最新日报 hero、RSS CTA、`daily_index_latest_render`/`daily_index_click` 事件与 ItemList JSON-LD；新增专项检查并接入 CI；本地 build + daily-index-growth + RSS autodiscovery + Website schema 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（上线后观察 `daily_index_click` 的 latest/rss/archive 分布；若 latest 点击占比高，可把日报归档页进一步扩展为主题筛选与连续阅读漏斗。）
 
 ### EXP-105
@@ -492,7 +492,7 @@
 - Start date: 2026-05-13
 - End date: 2026-05-13
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-13.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `8b9ffcd` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-13.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-104
@@ -502,7 +502,7 @@
 - Start date: 2026-05-12
 - End date: 2026-05-12
 - Success metric: `pnpm build` 通过；`dist/en/index.html` 与 `dist/zh/index.html` 含 `home_latest_daily_render` / `home_latest_daily_click`；Spotlight 链接指向最新 2026-05-12 双语日报；四项日报闸门继续通过。
-- Result: pass（已新增双语最新日报 Spotlight，并验证 EN/ZH 构建产物含最新日报链接、render/click 事件、RSS 与连续阅读入口；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过；commit `8b9ffcd` 已推送。）
+- Result: pass（已新增双语最新日报 Spotlight，并验证 EN/ZH 构建产物含最新日报链接、render/click 事件、RSS 与连续阅读入口；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（上线后观察 `home_latest_daily_click` 中 `daily-latest`、`daily-rss`、`daily-list` 分布；若点击集中在最新日报，可进一步把日报主题内链与首页推荐位联动。）
 
 ### EXP-103
@@ -512,7 +512,7 @@
 - Start date: 2026-05-12
 - End date: 2026-05-12
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面不再含通用模板正文，EN/ZH description 均为具体可检索摘要。
-- Result: pass（`src/content/blog/en/openclaw-daily-2026-05-12.md` 已完成完整英文实稿回补；`src/content/blog/en|zh/openclaw-daily-2026-05-12.md` description 已可检索化；本地四项闸门 + build 全部通过；commit `8b9ffcd` 已推送。）
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-05-12.md` 已完成完整英文实稿回补；`src/content/blog/en|zh/openclaw-daily-2026-05-12.md` description 已可检索化；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-102
@@ -562,7 +562,7 @@
 - Start date: 2026-04-27
 - End date: 2026-04-27
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-03-30/` 不再出现“最关键信…”截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-30.md` 已完成“今日结论”补全与“明日跟踪点”新增；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `8b9ffcd` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-30.md` 已完成“今日结论”补全与“明日跟踪点”新增；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设延续假设，固定执行“发布后完整性扫描（截断/缺段）+ 当日回补 + 三闸门+build”闭环。）
 
 ### EXP-097
@@ -643,7 +643,7 @@
 - Start date: 2026-04-21
 - End date: 2026-04-21
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；ZH 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/zh/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `8b9ffcd` 已推送至 `origin/publish-daily-2026-04-21`。）
+- Result: pass（`src/content/blog/zh/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/publish-daily-2026-04-21`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报内容，执行“发布后即扫通用摘要 + 当日可检索化修补”闭环，压缩通用摘要进入索引窗口期。）
 
 ### EXP-089
@@ -653,7 +653,7 @@
 - Start date: 2026-04-21
 - End date: 2026-04-21
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `8b9ffcd` 已推送至 `origin/publish-daily-2026-04-21`。）
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/publish-daily-2026-04-21`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报内容，执行“发布后即扫通用摘要 + 当日可检索化修补”闭环，压缩通用摘要进入索引窗口期。）
 
 ### EXP-088
@@ -663,7 +663,7 @@
 - Start date: 2026-04-18
 - End date: 2026-04-18
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-15.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `8b9ffcd` 已推送至 `origin/growth-sync-queue`。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-15.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/growth-sync-queue`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，保持“发布后即做模板回归扫描 + 当日摘要可检索化修正”的闭环，减少通用摘要进入索引层窗口期。）
 
 ### EXP-087
