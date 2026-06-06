@@ -199,7 +199,7 @@ const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-korea-ecosystem-2026',
-    terms: ['Grace Blackwell', 'Vera Rubin', '韩国在机器人', '韩国', 'Korea ecosystem'],
+    terms: ['黄仁勋到访首尔', '韩国在机器人、物理 AI、存储制造', 'Korea ecosystem 2026'], 
     details: {
       what: 'NVIDIA CEO Jensen Huang visited Seoul and said Grace Blackwell is performing well, Vera Rubin has entered full production, and the second half of the year will be busy for AI infrastructure buildout, with Korea highlighted for robotics, physical AI, memory, and manufacturing.',
       why: 'The signal shows AI competition shifting from model releases alone toward compute supply chains, sovereign AI capacity, robotics deployment, and local industrial ecosystems.',
@@ -208,7 +208,7 @@ const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-provincial-ai-compute-plans-2026',
-    terms: ['十五五', '30个省市', '各省级', '人工智能”和“算力', '北京、浙江、上海、广东'],
+    terms: ['各省级“十五五”规划纲要密集发布', '30个省市提及“大模型”', '所有省市均提及“人工智能”和“算力”', '北京、浙江、上海、广东被描述为第一梯队'],
     details: {
       what: 'Xinhua reported that provincial 15th Five-Year Plan outlines are being published, with all provinces and municipalities mentioning artificial intelligence and compute power, 30 mentioning large models, and Beijing, Zhejiang, Shanghai, and Guangdong described as leading clusters.',
       why: 'China’s AI industry is entering a regional specialization phase instead of relying only on single-model competition.',
