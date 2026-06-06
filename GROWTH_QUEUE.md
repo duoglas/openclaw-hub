@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-06 11:20
+Last updated: 2026-06-06 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-153: 为 source projection rule scope 闸门增加命中 term 诊断输出，消费 EXP-152 “rule term fixture collision sample 输出”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-152 已收窄 2026-06-06 Korea / provincial planning 规则 term；若 scope 闸门失败时只输出 expected/got rule name，新增宽词污染仍需要手动回查 registry terms 与 story block。让 `sourceProjectionRuleMatches` 返回具体命中 term，并在失败信息中输出 `rule via "term"`，可缩短 projection 污染定位时间，降低最新日报 fixture 扩展成本。
+  - Metrics: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `scripts/lib/source-projection-rules.mjs` 新增 `sourceProjectionRuleMatches(source)`，返回每条命中规则及具体命中 terms；2) `sourceProjectionRuleMatchNames` 继续保留为兼容 wrapper；3) `scripts/check-source-projection-rule-scope.mjs` 在 unexpected/missing rule failure 中输出 `matched terms` 诊断，明确每条 rule 由哪些 term 触发；4) scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-152: 将 2026-06-06 真实 cron 样本接入 daily-real-cron fixture registry，并收窄 06-06 新增 source projection 规则 term 污染，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `8b9ffcd`
   - Hypothesis: 最近24小时新增日报（2026-06-06）已经产出 OpenAI Memory/Lockdown、NVIDIA 韩国 AI 基建、NVIDIA CVPR 物理 AI、中国各省十五五 AI/算力规划与 6G 部省协同试点五条字段级信号；若这些信号只停留在页面与 source projection 规则中而不进入真实 cron fixture，后续 generator 可能回退到 `Source N reports...` / `This matters because ... links ...` 模板，且新增 `韩国` / `十五五` 宽 term 会污染旧 fixture。
   - Metrics: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。

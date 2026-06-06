@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-153
+- Hypothesis: EXP-152 已收窄 2026-06-06 Korea / provincial planning 规则 term；若 source projection rule scope 闸门失败时只输出 expected/got rule name，新增宽词污染仍需要手动回查 registry terms 与 story block。让 match API 返回具体命中 term，并在失败信息中输出 `rule via "term"`，可缩短 projection 污染定位时间，降低最新日报 fixture 扩展成本。
+- Scope: `scripts/lib/source-projection-rules.mjs`、`scripts/check-source-projection-rule-scope.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `sourceProjectionRuleMatches(source)`，返回命中 rule name 与具体命中 terms；`sourceProjectionRuleMatchNames` 保持兼容 wrapper；scope 闸门改用 matches API，并在 unexpected/missing failure 中输出 `matched terms` 诊断，明确宽词污染由哪个 term 触发。
+- Start date: 2026-06-06
+- End date: 2026-06-06
+- Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
+- Result: pass（scope 闸门现在能输出具体命中 term 诊断；规则名称兼容 API 保留；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 matched terms 诊断作为 source projection registry 调试基线；下一步可增加可控的 synthetic collision fixture，直接断言失败文案包含污染 term，避免诊断输出被后续重构移除。）
+
 ### EXP-152
 - Hypothesis: 最近24小时新增日报（2026-06-06）已经产出 OpenAI Memory/Lockdown、NVIDIA 韩国 AI 基建、NVIDIA CVPR 物理 AI、中国各省十五五 AI/算力规划与 6G 部省协同试点五条字段级信号；若这些信号只停留在页面与 source projection 规则中而不进入真实 cron fixture，后续 generator 可能回退到 `Source N reports...` / `This matters because ... links ...` 模板，且新增 `韩国` / `十五五` 宽 term 会污染旧 fixture。把 2026-06-06 样本纳入 EN/ZH/pair fixture，并收窄新增规则 term，可锁定最新日报首日索引事实密度和 source projection 作用域。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-06.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

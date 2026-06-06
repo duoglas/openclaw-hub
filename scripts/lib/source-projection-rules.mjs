@@ -264,9 +264,16 @@ export function sourceProjectionRuleNames() {
   return FIELD_PROJECTION_RULES.map((rule) => rule.name);
 }
 
-export function sourceProjectionRuleMatchNames(source) {
+export function sourceProjectionRuleMatches(source) {
   const text = String(source || '');
   return FIELD_PROJECTION_RULES
-    .filter(({ terms }) => terms.some((term) => text.includes(term)))
-    .map((rule) => rule.name);
+    .map((rule) => ({
+      name: rule.name,
+      terms: rule.terms.filter((term) => text.includes(term)),
+    }))
+    .filter((match) => match.terms.length > 0);
+}
+
+export function sourceProjectionRuleMatchNames(source) {
+  return sourceProjectionRuleMatches(source).map((match) => match.name);
 }

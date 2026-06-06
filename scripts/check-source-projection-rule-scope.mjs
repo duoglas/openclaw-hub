@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { realCronFixtures } from './fixtures/daily-real-cron-fixtures.mjs';
-import { sourceProjectionRuleMatchNames, sourceProjectionRuleNames } from './lib/source-projection-rules.mjs';
+import { sourceProjectionRuleMatches, sourceProjectionRuleNames } from './lib/source-projection-rules.mjs';
 
 const knownRuleNames = new Set(sourceProjectionRuleNames());
 
@@ -48,11 +48,17 @@ for (const fixture of realCronFixtures) {
       continue;
     }
 
-    const actual = sourceProjectionRuleMatchNames(block);
+    const actualMatches = sourceProjectionRuleMatches(block);
+    const actual = actualMatches.map((match) => match.name);
     const unexpected = actual.filter((name) => !expected.includes(name));
     const missing = expected.filter((name) => !actual.includes(name));
     if (unexpected.length > 0 || missing.length > 0) {
-      failures.push(`${key} — expected [${expected.join(', ') || 'none'}], got [${actual.join(', ') || 'none'}]`);
+      const diagnostics = actualMatches
+        .map((match) => `${match.name} via ${match.terms.map((term) => JSON.stringify(term)).join(', ')}`)
+        .join('; ') || 'none';
+      failures.push(
+        `${key} — expected [${expected.join(', ') || 'none'}], got [${actual.join(', ') || 'none'}]; matched terms: ${diagnostics}`
+      );
     }
   }
 }
