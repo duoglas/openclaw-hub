@@ -22,7 +22,7 @@
 - Start date: 2026-06-07
 - End date: 2026-06-07
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（source projection scope 失败诊断已由 synthetic collision fixture 锁定；`AI Cloud` probe 会确认失败文案包含 `nvidia-ai-cloud-ecosystem via "AI Cloud"`；scope、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `d5e7002`；质量评分 28/30。）
+- Result: pass（source projection scope 失败诊断已由 synthetic collision fixture 锁定；`AI Cloud` probe 会确认失败文案包含 `nvidia-ai-cloud-ecosystem via "AI Cloud"`；scope、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `4bd3312`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 diagnostics fixture 作为 source projection registry 调试基线；下一步可为所有 projection-backed story 增加 metadata coverage 闸门，要求任一实际命中 rule 的 story 必须显式声明 sourceProjectionRuleMatches。）
 
 ### EXP-153

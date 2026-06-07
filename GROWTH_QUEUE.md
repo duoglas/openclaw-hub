@@ -17,7 +17,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate A / EXP-154: 为 source projection scope 失败诊断增加 synthetic collision fixture，消费 EXP-153 “失败文案包含污染 term”后续假设 | ICE 8x8x8=512 — commit `d5e7002`
+- [x] P1 Candidate A / EXP-154: 为 source projection scope 失败诊断增加 synthetic collision fixture，消费 EXP-153 “失败文案包含污染 term”后续假设 | ICE 8x8x8=512 — commit `4bd3312`
   - Hypothesis: EXP-153 已让 scope 失败输出 matched terms；若没有一个故意失败的 synthetic collision fixture 断言失败文案，后续重构可能保留校验本身却移除 `matched terms` / `via "term"` 诊断，导致宽词污染定位成本回升。新增可控诊断 fixture，可锁定 source projection 失败输出的可调试性。
   - Metrics: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
   - Acceptance: 1) `scripts/check-source-projection-rule-scope.mjs` 导出 `validateSourceProjectionRuleScope` 与 `formatSourceProjectionMatches`，CLI 行为保持兼容；2) 新增 `scripts/check-source-projection-rule-diagnostics.mjs`，用 synthetic `AI Cloud` collision fixture 断言失败文案包含 fixture key、expected/got rule 与 `nvidia-ai-cloud-ecosystem via "AI Cloud"`；3) `package.json` 与 content-check CI 接入 `check:source-projection-rule-diagnostics`；4) source scope、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；质量评分 28/30。
