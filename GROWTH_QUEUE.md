@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-07 11:24
+Last updated: 2026-06-07 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -17,6 +17,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate A / EXP-155: 为 source projection-backed story 增加 metadata coverage 闸门，消费 EXP-154 “projection-backed story 必须显式声明 sourceProjectionRuleMatches”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-154 已用 synthetic collision fixture 锁定 source projection 失败诊断；若 projection-backed story 可以依赖 scope 闸门的隐式空数组默认值，新增真实 cron fixture 时仍可能漏写 `sourceProjectionRuleMatches`，直到失败信息被当作普通 unexpected match 处理。新增 metadata coverage 闸门，要求任一实际命中 projection rule 的 story 必须显式声明 sourceProjectionRuleMatches，可把 fixture metadata 缺口提前变成 CI 失败。
+  - Metrics: `pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/check-source-projection-rule-metadata-coverage.mjs`，遍历全部真实 cron fixtures 并对实际命中 source projection rule 的 story 强制要求显式 `sourceProjectionRuleMatches` metadata；2) coverage 闸门内置 synthetic `AI Cloud` 缺 metadata 样本，断言失败文案包含 fixture key、缺失 metadata 提示与 `nvidia-ai-cloud-ecosystem via "AI Cloud"`；3) `package.json` 与 content-check CI 接入 `check:source-projection-rule-metadata-coverage`；4) metadata coverage、scope、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate A / EXP-154: 为 source projection scope 失败诊断增加 synthetic collision fixture，消费 EXP-153 “失败文案包含污染 term”后续假设 | ICE 8x8x8=512 — commit `4bd3312`
   - Hypothesis: EXP-153 已让 scope 失败输出 matched terms；若没有一个故意失败的 synthetic collision fixture 断言失败文案，后续重构可能保留校验本身却移除 `matched terms` / `via "term"` 诊断，导致宽词污染定位成本回升。新增可控诊断 fixture，可锁定 source projection 失败输出的可调试性。
   - Metrics: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
