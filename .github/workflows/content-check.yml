@@ -133,6 +133,9 @@ jobs:
       - name: Source projection rule scope check
         run: pnpm check:source-projection-rule-scope
 
+      - name: Source projection rule diagnostic fixture check
+        run: pnpm check:source-projection-rule-diagnostics
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 

@@ -48,7 +48,8 @@
     "check:daily-bilingual-generator-pair-fixture": "node scripts/check-daily-bilingual-generator-pair-fixture.mjs",
     "check:daily-fixture-source-dedup": "node scripts/check-daily-fixture-source-dedup.mjs",
     "check:daily-parser-guardrail-coverage": "node scripts/check-daily-parser-guardrail-coverage.mjs",
-    "check:source-projection-rule-scope": "node scripts/check-source-projection-rule-scope.mjs"
+    "check:source-projection-rule-scope": "node scripts/check-source-projection-rule-scope.mjs",
+    "check:source-projection-rule-diagnostics": "node scripts/check-source-projection-rule-diagnostics.mjs"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { fileURLToPath } from 'node:url';
 import { realCronFixtures } from './fixtures/daily-real-cron-fixtures.mjs';
 import { sourceProjectionRuleMatches, sourceProjectionRuleNames } from './lib/source-projection-rules.mjs';
 
@@ -23,50 +24,66 @@ function expectedRuleMatchesFor(signal) {
   return signal.sourceProjectionRuleMatches;
 }
 
-const failures = [];
+export function formatSourceProjectionMatches(matches) {
+  return matches
+    .map((match) => `${match.name} via ${match.terms.map((term) => JSON.stringify(term)).join(', ')}`)
+    .join('; ') || 'none';
+}
 
-for (const fixture of realCronFixtures) {
-  for (const signal of fixture.expectedSignals || []) {
-    const key = `${fixture.fixtureDate}::${signal.title}`;
-    const block = storyBlockFor(fixture.realCronFixture, signal.title);
-    if (!block) {
-      failures.push(`${key} — story block not found`);
-      continue;
-    }
+export function validateSourceProjectionRuleScope(fixtures = realCronFixtures) {
+  const failures = [];
 
-    let expected = [];
-    try {
-      expected = expectedRuleMatchesFor(signal);
-    } catch (error) {
-      failures.push(`${key} — ${error.message}`);
-      continue;
-    }
+  for (const fixture of fixtures) {
+    for (const signal of fixture.expectedSignals || []) {
+      const key = `${fixture.fixtureDate}::${signal.title}`;
+      const block = storyBlockFor(fixture.realCronFixture, signal.title);
+      if (!block) {
+        failures.push(`${key} — story block not found`);
+        continue;
+      }
 
-    const unknownExpected = expected.filter((name) => !knownRuleNames.has(name));
-    if (unknownExpected.length > 0) {
-      failures.push(`${key} — unknown expected source projection rule(s): [${unknownExpected.join(', ')}]`);
-      continue;
-    }
+      let expected = [];
+      try {
+        expected = expectedRuleMatchesFor(signal);
+      } catch (error) {
+        failures.push(`${key} — ${error.message}`);
+        continue;
+      }
 
-    const actualMatches = sourceProjectionRuleMatches(block);
-    const actual = actualMatches.map((match) => match.name);
-    const unexpected = actual.filter((name) => !expected.includes(name));
-    const missing = expected.filter((name) => !actual.includes(name));
-    if (unexpected.length > 0 || missing.length > 0) {
-      const diagnostics = actualMatches
-        .map((match) => `${match.name} via ${match.terms.map((term) => JSON.stringify(term)).join(', ')}`)
-        .join('; ') || 'none';
-      failures.push(
-        `${key} — expected [${expected.join(', ') || 'none'}], got [${actual.join(', ') || 'none'}]; matched terms: ${diagnostics}`
-      );
+      const unknownExpected = expected.filter((name) => !knownRuleNames.has(name));
+      if (unknownExpected.length > 0) {
+        failures.push(`${key} — unknown expected source projection rule(s): [${unknownExpected.join(', ')}]`);
+        continue;
+      }
+
+      const actualMatches = sourceProjectionRuleMatches(block);
+      const actual = actualMatches.map((match) => match.name);
+      const unexpected = actual.filter((name) => !expected.includes(name));
+      const missing = expected.filter((name) => !actual.includes(name));
+      if (unexpected.length > 0 || missing.length > 0) {
+        const diagnostics = formatSourceProjectionMatches(actualMatches);
+        failures.push(
+          `${key} — expected [${expected.join(', ') || 'none'}], got [${actual.join(', ') || 'none'}]; matched terms: ${diagnostics}`
+        );
+      }
     }
   }
+
+  return failures;
 }
 
-if (failures.length > 0) {
-  console.error('source projection rule scope check failed:');
-  for (const failure of failures) console.error(`- ${failure}`);
-  process.exit(1);
+function runCli() {
+  const failures = validateSourceProjectionRuleScope(realCronFixtures);
+
+  if (failures.length > 0) {
+    console.error('source projection rule scope check failed:');
+    for (const failure of failures) console.error(`- ${failure}`);
+    process.exit(1);
+  }
+
+  console.log('source projection rule scope check passed');
 }
 
-console.log('source projection rule scope check passed');
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  runCli();
+}
