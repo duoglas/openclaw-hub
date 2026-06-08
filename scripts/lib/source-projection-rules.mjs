@@ -189,6 +189,33 @@ const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'nvidia-doosan-physical-ai-factory-2026',
+    terms: ['斗山', 'Doosan', '电力方案和数据中心材料'],
+    details: {
+      what: 'NVIDIA said it is expanding cooperation with South Korea’s Doosan Group across robotics, industrial automation, AI factory infrastructure, power systems, and data-center materials.',
+      why: 'The partnership frames physical AI as a full industrial stack that combines robots, simulation, edge inference, data-center power, cooling, materials, and high-performance compute instead of a standalone GPU sale.',
+      impact: 'Manufacturing and robotics teams should watch whether Doosan and NVIDIA turn the alliance into reference deployments for robot control, factory automation, AI data centers, and power-constrained infrastructure buildouts.',
+    },
+  },
+  {
+    name: 'anthropic-opus-agent-coding-2026',
+    terms: ['Anthropic 近期升级 Opus 级模型', '长时间任务稳定性'],
+    details: {
+      what: 'Anthropic’s news page describes a late-May Opus-level upgrade focused on coding, agent tasks, professional work, and more stable long-running execution.',
+      why: 'The update keeps frontier model competition centered on durable task execution: code changes, multi-step debugging, professional review workflows, planning, and agentic tool use rather than only single-turn answer quality.',
+      impact: 'Developer and enterprise teams can benchmark Anthropic models on supervised coding agents, long-context reviews, workflow handoffs, approval points, and failure recovery before expanding production use.',
+    },
+  },
+  {
+    name: 'aws-quick-connect-bedrock-openai-2026',
+    terms: ['Amazon Quick', 'What’s Next with AWS 2026', 'Managed Agents 进入 Amazon Bedrock'],
+    details: {
+      what: 'AWS News Blog says What’s Next with AWS 2026 introduced Amazon Quick as a work AI assistant, expanded Amazon Connect agentic AI solutions, and put OpenAI models, Codex, and Managed Agents into limited preview on Amazon Bedrock.',
+      why: 'AWS is turning enterprise AI from a chat layer into governed workflow agents for customer service, hiring, healthcare, operations, software development, and internal knowledge work.',
+      impact: 'Enterprise teams can test OpenAI and AWS agent capabilities inside existing identity, network, logging, encryption, and cost-management controls while comparing Bedrock against direct model APIs.',
+    },
+  },
+  {
     name: 'openai-chatgpt-memory-lockdown-2026',
     terms: ['Lockdown Mode', 'Memory 会自动保持更新', '文件下载等高风险外部能力'],
     details: {
