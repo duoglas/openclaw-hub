@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-157
+- Hypothesis: EXP-156 已在 2026-06-08 fixture 中发现 source projection rule term 与 fixture 文本存在中文智能引号 / ASCII 引号不一致风险；若 registry 只做 exact `includes`，`What’s Next` / `What's Next` 或 `“AI factory”` / `"AI factory"` 这类近似文本会静默漏匹配，直到 EN source projection 回退为泛化模板。新增 quote-normalized near-miss 闸门，可在 CI 中阻断跨文件引号字符漂移。
+- Scope: `scripts/check-source-projection-rule-quote-normalization.mjs`、`scripts/lib/source-projection-rules.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 source projection rule quote normalization 检查，遍历真实 cron fixture story block 和 registry rule terms；当 term 含引号、原文 exact 不匹配但 quote-normalized 后可匹配时输出 near-miss 失败；内置 synthetic `“AI factory”` vs ASCII `"AI factory"` 自测；导出 `sourceProjectionRules()` 供检查脚本读取 registry；将 AWS Quick Connect rule term 的 `What's Next with AWS 2026` 与 fixture ASCII apostrophe 对齐；package script 与 content-check CI 接入该闸门。
+- Start date: 2026-06-08
+- End date: 2026-06-08
+- Success metric: `pnpm check:source-projection-rule-quote-normalization` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
+- Result: pass（quote-normalized near-miss 闸门已接入；synthetic 引号不一致样本会确认失败文案包含 `synthetic-ai-factory-smart-quotes` 与原始 smart-quote term；真实 registry 中 AWS Quick Connect `What's Next with AWS 2026` term 已与 2026-06-08 fixture 对齐；quote normalization、scope、metadata coverage、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 quote normalization 作为 source projection registry 维护基线；下一步可执行 EXP-158，为 AWS Quick Connect / Amazon Quick 增加 term 窄化检查，避免 Amazon QuickSight 等无关来源误命中。）
+
 ### EXP-156
 - Hypothesis: 最近24小时新增日报（2026-06-08）已经产出 NVIDIA-Doosan 物理 AI 工厂、Anthropic Opus 级模型升级、AWS Quick Connect + Bedrock OpenAI 企业智能体三条新信号；若这些信号只停留在 EN/ZH 页面而不进入 source projection registry 与真实 cron fixture，后续 generator 可能回退到 Source N reports 模板，且新增 projection rule 的宽 term 会污染旧 fixture。把 2026-06-08 样本纳入 registry、新增字段级英文 projection、收窄 anthropic-opus-agent-coding-2026 term 防止污染 2026-05-29/30/31 Claude Opus 4.8 stories，可锁定最新日报首日索引事实密度和 source projection 作用域。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-08.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

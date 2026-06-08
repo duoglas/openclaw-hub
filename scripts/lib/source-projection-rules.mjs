@@ -1,4 +1,4 @@
-const FIELD_PROJECTION_RULES = [
+export const FIELD_PROJECTION_RULES = [
   {
     name: 'claude-opus-4-8',
     terms: ['Claude Opus 4.8'],
@@ -208,7 +208,7 @@ const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'aws-quick-connect-bedrock-openai-2026',
-    terms: ['Amazon Quick', 'What’s Next with AWS 2026', 'Managed Agents 进入 Amazon Bedrock'],
+    terms: ['Amazon Quick', "What's Next with AWS 2026", 'Managed Agents 进入 Amazon Bedrock'],
     details: {
       what: 'AWS News Blog says What’s Next with AWS 2026 introduced Amazon Quick as a work AI assistant, expanded Amazon Connect agentic AI solutions, and put OpenAI models, Codex, and Managed Agents into limited preview on Amazon Bedrock.',
       why: 'AWS is turning enterprise AI from a chat layer into governed workflow agents for customer service, hiring, healthcare, operations, software development, and internal knowledge work.',
@@ -285,6 +285,10 @@ export function projectEnglishSourceDetail(source, key) {
   const normalizedKey = key === 'why' || key === 'impact' ? key : 'what';
   const rule = FIELD_PROJECTION_RULES.find(({ terms }) => terms.some((term) => text.includes(term)));
   return rule?.details?.[normalizedKey] || '';
+}
+
+export function sourceProjectionRules() {
+  return FIELD_PROJECTION_RULES.map((rule) => ({ ...rule, terms: [...rule.terms], details: { ...rule.details } }));
 }
 
 export function sourceProjectionRuleNames() {

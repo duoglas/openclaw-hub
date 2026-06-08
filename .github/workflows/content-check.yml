@@ -139,6 +139,9 @@ jobs:
       - name: Source projection rule metadata coverage check
         run: pnpm check:source-projection-rule-metadata-coverage
 
+      - name: Source projection rule quote normalization check
+        run: pnpm check:source-projection-rule-quote-normalization
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 

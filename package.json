@@ -50,7 +50,8 @@
     "check:daily-parser-guardrail-coverage": "node scripts/check-daily-parser-guardrail-coverage.mjs",
     "check:source-projection-rule-scope": "node scripts/check-source-projection-rule-scope.mjs",
     "check:source-projection-rule-diagnostics": "node scripts/check-source-projection-rule-diagnostics.mjs",
-    "check:source-projection-rule-metadata-coverage": "node scripts/check-source-projection-rule-metadata-coverage.mjs"
+    "check:source-projection-rule-metadata-coverage": "node scripts/check-source-projection-rule-metadata-coverage.mjs",
+    "check:source-projection-rule-quote-normalization": "node scripts/check-source-projection-rule-quote-normalization.mjs"
   },
   "keywords": [],
   "author": "",
