@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-156
+- Hypothesis: 最近24小时新增日报（2026-06-08）已经产出 NVIDIA-Doosan 物理 AI 工厂、Anthropic Opus 级模型升级、AWS Quick Connect + Bedrock OpenAI 企业智能体三条新信号；若这些信号只停留在 EN/ZH 页面而不进入 source projection registry 与真实 cron fixture，后续 generator 可能回退到 Source N reports 模板，且新增 projection rule 的宽 term 会污染旧 fixture。把 2026-06-08 样本纳入 registry、新增字段级英文 projection、收窄 anthropic-opus-agent-coding-2026 term 防止污染 2026-05-29/30/31 Claude Opus 4.8 stories，可锁定最新日报首日索引事实密度和 source projection 作用域。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-08.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-08 真实 cron fixture；source projection registry 新增 NVIDIA-Doosan、Anthropic Opus 代理编码、AWS Quick Connect Bedrock 三条字段级英文规则；收窄 anthropic-opus-agent-coding-2026 term 从 "编码、智能体任务" 改为 "Anthropic 近期升级 Opus 级模型"+"长时间任务稳定性"，避免匹配 2026-05-29/30/31 Claude Opus 4.8 story；修复 fixture 中文引号从 ASCII 改为智能引号以正确匹配 projection rule terms；fixture 写入 sourceProjectionRuleMatches、EN/ZH required outputs、banned fallback 与 story 5 post-Top5 污染 guardrail。
+- Start date: 2026-06-08
+- End date: 2026-06-08
+- Success metric: `pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-06-08 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 NVIDIA-Doosan、OpenAI Memory/Lockdown Mode、Anthropic Opus 级升级、AWS Quick Connect Bedrock、中国十五五五条输出；source projection scope 校验通过，anthropic-opus-agent-coding-2026 term 已收窄为特定短语组合，旧 fixture 不再被"编码、智能体任务"宽词污染；AWS Quick Connect story 4 同时声明 openai-amazon-bedrock-models 与 aws-quick-connect-bedrock-openai-2026 双规则命中；metadata coverage、scope、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity、日报/索引卫生闸门与 build 全部通过；commit `f460c9b`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-06-08 fixture 作为最新日报首日索引质量基线；下一步可为 source projection rule terms 增加引号字符统一检查，防止中文智能引号与 ASCII 引号不一致导致的 term 匹配静默失败。）
+
 ### EXP-155
 - Hypothesis: EXP-154 已用 synthetic collision fixture 锁定 source projection 失败诊断；若 projection-backed story 可以依赖 scope 闸门的隐式空数组默认值，新增真实 cron fixture 时仍可能漏写 `sourceProjectionRuleMatches`，直到失败信息被当作普通 unexpected match 处理。新增 metadata coverage 闸门，要求任一实际命中 projection rule 的 story 必须显式声明 sourceProjectionRuleMatches，可把 fixture metadata 缺口提前变成 CI 失败。
 - Scope: `scripts/check-source-projection-rule-metadata-coverage.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
