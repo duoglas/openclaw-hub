@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-09 11:23
+Last updated: 2026-06-09 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-159: 收紧文章与首页 tag surface，减少 latest/article 卡片标签噪声并增加 compactness CI 闸门，消费 EXP-158 “更多高风险命名/标签碰撞需要可控 probe”后续维护假设 | ICE 7x8x7=392 — commit `(this commit)`
+  - Hypothesis: 日报与指南的 tags 持续增长后，首页最新文章卡片和文章页头部会展示过多 chip，挤压标题/description 首屏空间，并让长标签或大小写碰撞在移动端形成视觉噪声。将首页可见 tags 限制为 3 个、文章页限制为 5 个，并用 `+N` 展示剩余数量，同时加上 tag surface compactness 闸门，可提升首屏可读性并防止后续回归。
+  - Metrics: `pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `BlogPost.astro` 文章页只渲染前 5 个 tags，并用 `+N` 保留剩余标签信息，tag 链接使用 `encodeURIComponent`；2) EN/ZH 首页最新文章卡片只渲染前 3 个 tags，并用 `+N` 收起溢出；3) 全局 `.tag` 样式增加最大宽度、ellipsis 与低噪声 hover，新增 `.tag--more`；4) 新增 `scripts/check-tag-surface-compactness.mjs` 并接入 `package.json` 与 content-check CI，锁定标签可见数量、溢出提示和长标签截断；5) tag surface compactness 与 build 全部通过；质量评分 27/30。
 - [x] P1 Candidate / EXP-158: 为 aws-quick-connect-bedrock-openai-2026 rule term 增加 Amazon QuickSight 窄化检查，消费 EXP-157 “Amazon Quick 子串可能误命中 QuickSight”后续假设 | ICE 5x8x8=320 — commit `(this commit)`
   - Hypothesis: EXP-157 已让 AWS Quick Connect / Bedrock OpenAI rule 的 quote term 与 2026-06-08 fixture 对齐；若 rule 继续保留 `Amazon Quick` 宽子串，包含 `Amazon QuickSight` 的无关 BI/analytics 来源会误触发 `aws-quick-connect-bedrock-openai-2026` 字段级 projection，导致非工作 AI 助手故事被改写成 AWS Quick / Bedrock Managed Agents 叙事。新增 off-topic probe 窄化闸门并移除宽 term，可阻断 Amazon QuickSight 子串污染。
   - Metrics: `pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm check:source-projection-rule-quote-normalization` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。

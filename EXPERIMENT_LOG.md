@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-159
+- Hypothesis: 日报与指南的 tags 持续增长后，首页最新文章卡片和文章页头部会展示过多 chip，挤压标题/description 首屏空间，并让长标签或大小写碰撞在移动端形成视觉噪声。将首页可见 tags 限制为 3 个、文章页限制为 5 个，并用 `+N` 展示剩余数量，同时加上 tag surface compactness 闸门，可提升首屏可读性并防止后续回归。
+- Scope: `src/layouts/BaseLayout.astro`、`src/layouts/BlogPost.astro`、`src/pages/en/index.astro`、`src/pages/zh/index.astro`、`scripts/check-tag-surface-compactness.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 文章页 tags 改为只显示前 5 个并用 `+N` 收起剩余标签，首页 EN/ZH 最新文章卡片只显示前 3 个 tags；全局 tag chip 样式改为低噪声、最大宽度 180px、ellipsis 截断，并新增 `tag--more` overflow pill；新增 tag surface compactness 检查，断言 BlogPost / EN index / ZH index 的可见 tag 上限、overflow count、文章 tag 链接编码和全局 truncation 样式；package script 与 content-check CI 接入该闸门。
+- Start date: 2026-06-09
+- End date: 2026-06-09
+- Success metric: `pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
+- Result: pass（文章页 tag surface 已限制为前 5 个，EN/ZH 首页最新文章卡片已限制为前 3 个，剩余标签以 `+N` 展示；全局 tag chip 已增加 max-width / ellipsis / 低噪声 hover；tag surface compactness 闸门已接入 package script 与 content-check CI；专项检查与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
+- Decision (scale / iterate / stop): scale（保留 compact tag surface 作为首页与文章页移动端可读性基线；下一步可继续为 tag archive 增加 normalized tag canonical / alias 检查，减少大小写或同义 tag 分裂。）
+
 ### EXP-158
 - Hypothesis: EXP-157 已让 AWS Quick Connect / Bedrock OpenAI rule 的 quote term 与 2026-06-08 fixture 对齐；若 rule 继续保留 `Amazon Quick` 宽子串，包含 `Amazon QuickSight` 的无关 BI/analytics 来源会误触发 `aws-quick-connect-bedrock-openai-2026` 字段级 projection，导致非工作 AI 助手故事被改写成 AWS Quick / Bedrock Managed Agents 叙事。新增 off-topic probe 窄化闸门并移除宽 term，可阻断 Amazon QuickSight 子串污染。
 - Scope: `scripts/check-source-projection-rule-term-narrowness.mjs`、`scripts/lib/source-projection-rules.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

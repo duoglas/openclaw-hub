@@ -34,6 +34,8 @@ const latestDailySlug = latestDaily?.id.replace(/^zh\//, '').replace(/\.md$/, ''
   <h2>最新文章</h2>
   {posts.slice(0, 20).map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+    const visibleTags = post.data.tags.slice(0, 3);
+    const hiddenTagCount = Math.max(post.data.tags.length - visibleTags.length, 0);
     return (
       <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit;">
         <div class="card" style="cursor:pointer;">
@@ -42,7 +44,7 @@ const latestDailySlug = latestDaily?.id.replace(/^zh\//, '').replace(/\.md$/, ''
           <div style="color:#666; font-size:0.85rem;">
             {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
             {' · '}
-            {post.data.tags.length > 0 && <span style="display:inline-flex;gap:4px;margin-top:4px;">{post.data.tags.map(tag => <span class="tag">{tag}</span>)}</span>}
+            {visibleTags.length > 0 && <span style="display:inline-flex;gap:4px;margin-top:4px;vertical-align:middle;">{visibleTags.map(tag => <span class="tag">{tag}</span>)}{hiddenTagCount > 0 && <span class="tag tag--more">+{hiddenTagCount}</span>}</span>}
           </div>
         </div>
       </a>
