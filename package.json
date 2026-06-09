@@ -51,7 +51,8 @@
     "check:source-projection-rule-scope": "node scripts/check-source-projection-rule-scope.mjs",
     "check:source-projection-rule-diagnostics": "node scripts/check-source-projection-rule-diagnostics.mjs",
     "check:source-projection-rule-metadata-coverage": "node scripts/check-source-projection-rule-metadata-coverage.mjs",
-    "check:source-projection-rule-quote-normalization": "node scripts/check-source-projection-rule-quote-normalization.mjs"
+    "check:source-projection-rule-quote-normalization": "node scripts/check-source-projection-rule-quote-normalization.mjs",
+    "check:source-projection-rule-term-narrowness": "node scripts/check-source-projection-rule-term-narrowness.mjs"
   },
   "keywords": [],
   "author": "",

@@ -142,6 +142,9 @@ jobs:
       - name: Source projection rule quote normalization check
         run: pnpm check:source-projection-rule-quote-normalization
 
+      - name: Source projection rule term narrowness check
+        run: pnpm check:source-projection-rule-term-narrowness
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 

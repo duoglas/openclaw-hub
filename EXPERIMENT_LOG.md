@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-158
+- Hypothesis: EXP-157 已让 AWS Quick Connect / Bedrock OpenAI rule 的 quote term 与 2026-06-08 fixture 对齐；若 rule 继续保留 `Amazon Quick` 宽子串，包含 `Amazon QuickSight` 的无关 BI/analytics 来源会误触发 `aws-quick-connect-bedrock-openai-2026` 字段级 projection，导致非工作 AI 助手故事被改写成 AWS Quick / Bedrock Managed Agents 叙事。新增 off-topic probe 窄化闸门并移除宽 term，可阻断 Amazon QuickSight 子串污染。
+- Scope: `scripts/check-source-projection-rule-term-narrowness.mjs`、`scripts/lib/source-projection-rules.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 source projection rule term narrowness 检查，使用 Amazon QuickSight off-topic probe 验证 `aws-quick-connect-bedrock-openai-2026` 不会被 `Amazon Quick` 子串误触发；脚本内置 synthetic broad matcher 自测，断言失败文案包含 probe、rule 和触发 term；移除 AWS Quick Connect rule 中的宽 term `Amazon Quick`，保留 `What's Next with AWS 2026` 与 `Managed Agents 进入 Amazon Bedrock` 作为更窄锚点；package script 与 content-check CI 接入该闸门。
+- Start date: 2026-06-09
+- End date: 2026-06-09
+- Success metric: `pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm check:source-projection-rule-quote-normalization` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
+- Result: pass（term narrowness 闸门已接入；Amazon QuickSight off-topic probe 不再命中 `aws-quick-connect-bedrock-openai-2026`；synthetic broad `Amazon Quick` matcher 会确认失败文案包含 `synthetic-amazon-quicksight-off-topic-substring`、`aws-quick-connect-bedrock-openai-2026 via "Amazon Quick"` 与 QuickSight collision reason；term narrowness、quote normalization、scope、metadata coverage、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 term narrowness probe 作为 source projection registry 维护基线；下一步可把 probe registry 泛化到更多高风险品牌子串，例如 Amazon Quick / QuickSight、AI Cloud / generic cloud、Agent / agentic 等命名碰撞。）
+
 ### EXP-157
 - Hypothesis: EXP-156 已在 2026-06-08 fixture 中发现 source projection rule term 与 fixture 文本存在中文智能引号 / ASCII 引号不一致风险；若 registry 只做 exact `includes`，`What’s Next` / `What's Next` 或 `“AI factory”` / `"AI factory"` 这类近似文本会静默漏匹配，直到 EN source projection 回退为泛化模板。新增 quote-normalized near-miss 闸门，可在 CI 中阻断跨文件引号字符漂移。
 - Scope: `scripts/check-source-projection-rule-quote-normalization.mjs`、`scripts/lib/source-projection-rules.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
