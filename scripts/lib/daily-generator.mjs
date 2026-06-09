@@ -170,12 +170,12 @@ function englishSignalSummary(story, label, idx, key = 'what') {
   const facts = sourceFacts(source);
   const factClause = facts.length ? ` The source includes concrete timing or scale signals (${facts.join(', ')}).` : '';
   if (key === 'why') {
-    return `This matters because ${entities} links ${concepts} to adoption timing, infrastructure capacity, compliance exposure, or enterprise workflow readiness.${factClause}`;
+    return `${entities} now matters for ${concepts} because buyers must check access control, infrastructure availability, operational risk, and whether the workflow can be measured in production.${factClause}`;
   }
   if (key === 'impact') {
-    return `The likely impact is a more specific evaluation path for ${entities}: migration timing, partner dependency, governance review, cost exposure, and measurable rollout criteria.${factClause}`;
+    return `Teams tracking ${entities} should convert this into concrete tests for rollout timing, vendor dependency, governance ownership, budget pressure, and success metrics.${factClause}`;
   }
-  return `Source ${idx} reports a ${concepts} signal involving ${entities}.${factClause}`;
+  return `The source tracks ${concepts} around ${entities}, giving the daily brief a named actor and deployment context.${factClause}`;
 }
 
 export function detailFrom(story, key, fallback, label = '', idx = 1) {
