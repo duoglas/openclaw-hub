@@ -189,10 +189,14 @@ const faqSchema = faq.length > 0 ? {
     font-size: 0.9rem;
   }
   .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
     margin-bottom: 1rem;
   }
   .tags a {
     text-decoration: none;
+    display: inline-flex;
   }
   .monetization-box p {
     color: var(--text-muted);

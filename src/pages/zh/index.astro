@@ -42,7 +42,7 @@ const latestDailySlug = latestDaily?.id.replace(/^zh\//, '').replace(/\.md$/, ''
           <div style="color:#666; font-size:0.85rem;">
             {post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
             {' · '}
-            {post.data.tags.map(tag => <span class="tag" style="margin-right:4px;">{tag}</span>)}
+            {post.data.tags.length > 0 && <span style="display:inline-flex;gap:4px;margin-top:4px;">{post.data.tags.map(tag => <span class="tag">{tag}</span>)}</span>}
           </div>
         </div>
       </a>
