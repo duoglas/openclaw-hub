@@ -195,5 +195,6 @@ jobs:
             --exclude 'github.com/nicepkg/openclaw'
             --exclude 'github\.com/duoglas/openclaw-hub/issues/new'
             --exclude 'clawhub.dev'
+            --exclude 'shio.gov.cn'
             './dist/**/*.html'
           fail: true
