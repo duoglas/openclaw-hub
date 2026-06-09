@@ -14,9 +14,9 @@ const checks = [
     file: files.baseLayout,
     label: 'global tag pills are visually bounded',
     tests: [
-      ['.tag has max-width cap', /\.tag\s*\{[\s\S]*max-width:\s*180px;/],
-      ['.tag truncates long labels with ellipsis', /\.tag\s*\{[\s\S]*overflow:\s*hidden;[\s\S]*text-overflow:\s*ellipsis;/],
-      ['.tag--more overflow indicator is styled', /\.tag--more\s*\{/],
+      ['.tag has max-width cap', /(?::global\()?\.tag\)?\s*\{[\s\S]*max-width:\s*180px;/],
+      ['.tag truncates long labels with ellipsis', /(?::global\()?\.tag\)?\s*\{[\s\S]*overflow:\s*hidden;[\s\S]*text-overflow:\s*ellipsis;/],
+      ['.tag--more overflow indicator is styled', /(?::global\()?\.tag--more\)?\s*\{/],
     ],
   },
   {
