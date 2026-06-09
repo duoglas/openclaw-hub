@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-03）"
-description: "NVIDIA 披露，双方在 Microsoft Build / GTC Taipei 上扩展合作：RTX Spark、DGX Station for Windows、Microsoft Fabric GPU 加速、Foundry 上的 NVIDIA 开放模型、GitHub Copilot 中的 NVIDIA OpenShell 安全运行时等；这不是单点模型。"
+description: "NVIDIA 与 Microsoft 扩展智能体 AI 合作，覆盖 Windows、本地工作站、Fabric GPU 加速、Foundry 模型与 Copilot 安全运行时。"
 pubDate: 2026-06-03
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

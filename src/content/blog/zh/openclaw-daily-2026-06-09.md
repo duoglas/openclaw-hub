@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-09）"
-description: "OpenAI 6月8日发布 ChatGPT 应用体验更新。ChatGPT 可在回答中生成交互式柱状图、折线图、饼图、散点图；长对话可生成目录；长文写作块支持全屏编辑、保存到 Library；连接 Gmail/Outlook 后，可在聊天中起草并发送邮件；ChatGPT 正从“问答工具”继续变成“办公工作台”。"
+description: "OpenAI 更新 ChatGPT 应用体验，加入交互式图表、长对话目录、全屏写作块和 Gmail/Outlook 邮件草稿能力。"
 pubDate: 2026-06-09
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

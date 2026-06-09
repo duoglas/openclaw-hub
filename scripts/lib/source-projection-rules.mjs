@@ -108,6 +108,15 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'xinhua-china-ai-education-service-robotics',
+    terms: ['教育、文旅、养老', '服务效率'],
+    details: {
+      what: 'Source 5 reports a robotics deployment, AI education deployment signal involving China, Xinhua, education, culture and tourism, elderly care, and service-efficiency scenarios.',
+      why: 'The item shows AI adoption expanding from model and platform news into public-service and local-industry use cases where deployment quality, responsibility boundaries, and offline service outcomes matter.',
+      impact: 'Product and operations teams should evaluate user experience, privacy protection, human handoff, service accountability, and measurable efficiency before scaling similar AI deployments.',
+    },
+  },
+  {
     name: 'china-national-data-administration-embodied-ai',
     terms: ['国家数据局', '刘烈宏', 'National Data Administration', 'AI for Science'],
     details: {

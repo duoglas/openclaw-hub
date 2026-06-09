@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-06）"
-description: "OpenAI 6月4日发布说明：ChatGPT 记忆会更自动地更新上下文，减少过期/矛盾记忆；Lockdown Mode 向所有登录用户开放，可限制联网、深度研究、Agent、文件下载等能力，降低提示注入导致的数据外泄风险；AI 产品开始把“长期记忆”和“安全隔离”同时推到主功能区。"
+description: "OpenAI 优化 ChatGPT 长期记忆，并开放 Lockdown Mode，用更自动的上下文更新和能力隔离降低数据外泄风险。"
 pubDate: 2026-06-06
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
