@@ -1,9 +1,9 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: 2026-06-01 to 2026-06-07
+- Week: 2026-06-08 to 2026-06-14
 - Owner: hub-growth-worker
-- Reviewed at: 2026-06-02 10:55 (Asia/Shanghai)
+- Reviewed at: 2026-06-09 09:13 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
@@ -17,7 +17,7 @@
 - New pages indexed: Verify newly published URLs in Search Console; if data unavailable, create one indexing check task in Action Plan.
 - Published posts (auto): 4
 - Updated posts (git-tracked): 4
-- Technical SEO commits (git-tracked): 2
+- Technical SEO commits (git-tracked): 3
 
 ### Orient (diagnosis)
 - Why did winners win?
@@ -36,7 +36,7 @@
   - status: done
 
 - [ ] 当前缺少可计算的高展现低CTR query 数据，先完成 7 天 GSC query 回填后再生成标题改写清单。
-  - owner: hub-growth-worker | due: 2026-06-07
+  - owner: hub-growth-worker | due: 2026-06-14
 
 ## Postmortem
 - What was low-value busy work this week?
