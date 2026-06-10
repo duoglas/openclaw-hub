@@ -2,7 +2,7 @@
 title: "OpenClaw Proxy Series (2): How to fix `web_search` `fetch failed` (2026 Guide)"
 description: "A practical runbook for users: when OpenClaw web_search/web_fetch keeps failing, how to diagnose, fix, and add reliable fallback behavior."
 pubDate: 2026-03-02
-tags: ["openclaw", "proxy", "web_search", "fetch failed", "troubleshooting", "systemd"]
+tags: ["openclaw", "proxy", "web-search", "fetch failed", "troubleshooting", "systemd"]
 category: "guide"
 lang: "en"
 ---

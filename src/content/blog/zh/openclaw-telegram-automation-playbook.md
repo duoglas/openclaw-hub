@@ -2,7 +2,7 @@
 title: "OpenClaw + Telegram 自动化实战手册（2026）"
 description: "一套可落地的 OpenClaw Telegram 自动化方案：消息流设计、指令规范、稳定性和安全加固。"
 pubDate: 2026-02-10
-tags: ["openclaw", "telegram", "automation", "tutorial"]
+tags: ["openclaw", "telegram", "automation", "guide"]
 category: "tutorial"
 lang: "zh"
 ---

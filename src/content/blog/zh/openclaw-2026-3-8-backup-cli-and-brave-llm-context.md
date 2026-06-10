@@ -2,7 +2,7 @@
 title: "OpenClaw 2026.3.8 值得关注什么：Backup CLI 与 Brave LLM Context 两个实用变化"
 description: "基于 OpenClaw 2026.3.8 官方 changelog 与近 7 天社区讨论，拆解本次最值得普通部署者关注的两个变化：本地备份 CLI 与 Brave LLM Context 搜索模式。"
 pubDate: 2026-03-12
-tags: ["openclaw", "2026.3.8", "backup", "brave", "web_search", "changelog"]
+tags: ["openclaw", "2026.3.8", "backup", "brave", "web-search", "changelog"]
 category: "guide"
 lang: "zh"
 ---

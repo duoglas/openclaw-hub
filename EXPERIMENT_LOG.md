@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-161
+- Hypothesis: EXP-160 已阻断 separator/case 级 tag canonical collision；若 `ai agents` / `ai-agent`、`tutorial` / `guide`、`silent message loss` / `delivery-reliability` 这类语义同义标签仍靠人工记忆维护，tag archive 会继续分裂长尾入口，并让首页/文章 tag chip 承载重复意图。新增显式 semantic alias registry、CI 闸门并回收现有别名，可减少标签归档分裂。
+- Scope: `scripts/lib/tag-alias-registry.mjs`、`scripts/check-tag-semantic-aliases.mjs`、`package.json`、`.github/workflows/content-check.yml`、`src/content/blog/en/*.md`、`src/content/blog/zh/*.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 tag semantic alias registry，声明 `ai-agents` -> `ai-agent`、`tutorial` -> `guide`、`silent-message-loss`/`message-loss` -> `delivery-reliability`；新增 semantic alias 检查，遍历 306 个 EN/ZH blog frontmatter tags，阻断 registry alias 继续出现，并要求 registry canonical tag 至少有内容承载；内置 synthetic `ai agents` -> `ai-agent` self-test；同步将现有 frontmatter 中的 `ai agents`、`tutorial`、`silent message loss`、`web_search`、`chrome relay`、`delivery reliability` 等标签回收到 canonical tag，避免正文代码示例被替换；package script 与 content-check CI 接入该闸门。
+- Start date: 2026-06-10
+- End date: 2026-06-10
+- Success metric: `pnpm check:tag-semantic-aliases` 通过；`pnpm check:tag-canonical-aliases` 通过；`pnpm check:tag-case` 通过；`pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
+- Result: pass（semantic alias registry 已接入；306 个 blog 文件不再使用 registry alias；`ai agents`、`tutorial`、`silent message loss`、`web_search`、`chrome relay`、`delivery reliability` 等 frontmatter tag 已回收到 canonical 标签；synthetic alias self-test 可确认失败文案包含 alias、canonical 与样本文件；semantic aliases、canonical aliases、tag case、tag surface compactness 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 semantic alias registry 作为 tag archive 基线；下一步可为 tag routes 增加 URL slug encoding/canonical path 闸门，处理空格标签如 `fetch failed` / `409 conflict` 的可抓取路径一致性。）
+
 ### EXP-160
 - Hypothesis: EXP-159 已收紧首页与文章页 tag surface；若内容库仍允许 `agent runtime` / `agent-runtime` 这类空格、下划线、连字符归一后相同但展示不同的 tag，tag archive 会分裂可发现入口并让 compact tag chip 继续承载同义噪声。新增 canonical alias 闸门并修正现有 collision，可减少 tag 归档分裂和跨语言标签噪声。
 - Scope: `scripts/check-tag-canonical-aliases.mjs`、`src/content/blog/en/openclaw-vs-hermes-vs-deerflow-2026.md`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

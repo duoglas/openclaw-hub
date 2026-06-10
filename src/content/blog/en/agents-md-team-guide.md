@@ -2,7 +2,7 @@
 title: "AGENTS.md Team Guide: Unifying AI Coding Tool Configuration"
 description: "A deep dive into AGENTS.md, CLAUDE.md, and .cursorrules — the three key AI configuration files. Includes file structures, templates, team sharing strategies, and best practices for standardizing your team's AI coding workflow."
 pubDate: 2026-02-11
-tags: ["agentic-engineering", "tutorial", "agents-md", "claude-md", "cursorrules", "team-workflow"]
+tags: ["agentic-engineering", "guide", "agents-md", "claude-md", "cursorrules", "team-workflow"]
 category: "tutorial"
 lang: "en"
 ---

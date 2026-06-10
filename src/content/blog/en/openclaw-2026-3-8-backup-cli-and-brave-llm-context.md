@@ -2,7 +2,7 @@
 title: "What Actually Matters in OpenClaw 2026.3.8: Backup CLI and Brave LLM Context"
 description: "An evidence-first breakdown of the two most practical OpenClaw 2026.3.8 changes for real operators: the new backup CLI and Brave LLM Context search mode."
 pubDate: 2026-03-12
-tags: ["openclaw", "2026.3.8", "backup", "brave", "web_search", "changelog"]
+tags: ["openclaw", "2026.3.8", "backup", "brave", "web-search", "changelog"]
 category: "guide"
 lang: "en"
 ---

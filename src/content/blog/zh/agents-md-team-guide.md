@@ -2,7 +2,7 @@
 title: "AGENTS.md 团队规范指南：统一 AI 编程工具的配置"
 description: "详解 AGENTS.md、CLAUDE.md 和 .cursorrules 三大 AI 配置文件的关系与用法。包含文件结构、模板示例、团队共享方案和最佳实践，助你统一团队的 AI 编程规范。"
 pubDate: 2026-02-11
-tags: ["agentic-engineering", "tutorial", "agents-md", "claude-md", "cursorrules", "team-workflow"]
+tags: ["agentic-engineering", "guide", "agents-md", "claude-md", "cursorrules", "team-workflow"]
 category: "tutorial"
 lang: "zh"
 ---

@@ -2,7 +2,7 @@
 title: "OpenClaw 消息静默丢失/重复投递怎么排查？2026 可靠性实战指南"
 description: "基于近 7 天真实 issue，系统排查 OpenClaw 的 silent message loss、replay、恢复链路异常与可观测性缺口，给出可执行命令与稳定化策略。"
 pubDate: 2026-02-28
-tags: ["openclaw", "delivery reliability", "silent message loss", "replay", "troubleshooting"]
+tags: ["openclaw", "delivery-reliability", "replay", "troubleshooting"]
 category: "guide"
 lang: "zh"
 ---

@@ -2,7 +2,7 @@
 title: "Cursor Update Broke Claude Code Plugin? 2026 Quick Fix Guide (Windows/macOS/Linux)"
 description: "Fix Claude Code plugin failures after Cursor updates: unresponsive button, missing sidebar entry, endless loading, and connection errors."
 pubDate: 2026-02-26
-tags: ["cursor", "claude-code", "plugin", "troubleshooting", "tutorial", "openclaw"]
+tags: ["cursor", "claude-code", "plugin", "troubleshooting", "guide", "openclaw"]
 category: "tutorial"
 lang: "en"
 ---

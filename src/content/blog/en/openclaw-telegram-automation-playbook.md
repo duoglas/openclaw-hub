@@ -2,7 +2,7 @@
 title: "OpenClaw + Telegram Automation Playbook (2026)"
 description: "A practical playbook for running OpenClaw on Telegram: message flows, command design, reliability, and security hardening."
 pubDate: 2026-02-10
-tags: ["openclaw", "telegram", "automation", "tutorial"]
+tags: ["openclaw", "telegram", "automation", "guide"]
 category: "tutorial"
 lang: "en"
 ---

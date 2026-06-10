@@ -2,7 +2,7 @@
 title: "OpenClaw Silent Message Loss / Replay: 2026 Delivery Reliability Troubleshooting Guide"
 description: "A practical, evidence-backed guide to diagnose silent message loss, replay behavior, and delivery observability gaps in OpenClaw, based on real issues from the last 7 days."
 pubDate: 2026-02-28
-tags: ["openclaw", "delivery reliability", "silent message loss", "replay", "troubleshooting"]
+tags: ["openclaw", "delivery-reliability", "replay", "troubleshooting"]
 category: "guide"
 lang: "en"
 ---

@@ -3,7 +3,7 @@ title: "OpenClaw `web_search` 500 Error: Tool Name Collision and Schema Fix Guid
 description: "A practical, evidence-based troubleshooting guide for OpenClaw error: 'Parameters of tool web_search must only have these properties:query' — with immediate mitigation and long-term prevention."
 pubDate: 2026-03-07
 updatedDate: 2026-03-07
-tags: ["openclaw", "web_search", "troubleshooting", "tool-calling", "500"]
+tags: ["openclaw", "web-search", "troubleshooting", "tool-calling", "500"]
 category: "guide"
 lang: "en"
 ---

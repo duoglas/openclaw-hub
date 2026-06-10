@@ -3,7 +3,7 @@ title: "OpenClaw Configuration File Explained: Structure, Common Errors & Fixes 
 description: "A complete walkthrough of OpenClaw's openclaw.json config — core structure, required fields, model routing, plugin allowlists, and step-by-step fixes for schema validation failures, provider timeouts, and channel startup errors."
 pubDate: 2026-02-19
 updatedDate: 2026-02-23
-tags: ["openclaw", "config", "troubleshooting", "guide", "tutorial"]
+tags: ["openclaw", "config", "troubleshooting", "guide"]
 category: "guide"
 lang: "en"
 ---

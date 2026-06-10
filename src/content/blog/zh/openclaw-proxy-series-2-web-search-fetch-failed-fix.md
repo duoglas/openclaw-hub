@@ -2,7 +2,7 @@
 title: "OpenClaw 代理系列(2)：`web_search` 报 `fetch failed` 的排查与修复指南（2026）"
 description: "面向用户的实战排查手册：当 OpenClaw 的 web_search/web_fetch 出现 fetch failed 时，如何快速定位、修复并配置稳定 fallback。"
 pubDate: 2026-03-02
-tags: ["openclaw", "proxy", "web_search", "fetch failed", "troubleshooting", "systemd"]
+tags: ["openclaw", "proxy", "web-search", "fetch failed", "troubleshooting", "systemd"]
 category: "guide"
 lang: "zh"
 ---

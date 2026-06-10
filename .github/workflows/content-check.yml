@@ -163,6 +163,9 @@ jobs:
       - name: Tag canonical alias check
         run: pnpm check:tag-canonical-aliases
 
+      - name: Tag semantic alias registry check
+        run: pnpm check:tag-semantic-aliases
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."

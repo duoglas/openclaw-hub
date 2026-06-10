@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-10 11:20
+Last updated: 2026-06-10 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-161: 新增 tag semantic alias registry，消费 EXP-160 “显式 alias registry 合并 ai agents / tutorial / silent message loss”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-160 已阻断 separator/case 级 tag canonical collision；若 `ai agents` / `ai-agent`、`tutorial` / `guide`、`silent message loss` / `delivery-reliability` 这类语义同义标签仍靠人工记忆维护，tag archive 会继续分裂长尾入口，并让首页/文章 tag chip 承载重复意图。新增显式 semantic alias registry、CI 闸门并回收现有别名，可减少标签归档分裂。
+  - Metrics: `pnpm check:tag-semantic-aliases` 通过；`pnpm check:tag-canonical-aliases` 通过；`pnpm check:tag-case` 通过；`pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/lib/tag-alias-registry.mjs`，声明 canonical tag 与语义 alias 组，并提供 normalized alias key helper；2) 新增 `scripts/check-tag-semantic-aliases.mjs`，遍历 EN/ZH blog frontmatter tags，若命中 registry alias 或 registry canonical 无内容承载则失败；3) 脚本内置 synthetic `ai agents` -> `ai-agent` self-test，断言失败文案包含 alias、canonical 与样本文件；4) 回收现有 frontmatter 中 `ai agents`、`tutorial`、`silent message loss`、`web_search`、`chrome relay`、`delivery reliability` 等分裂标签到 canonical tag，并保持正文内容不被替换；5) `package.json` 与 content-check CI 接入 `check:tag-semantic-aliases`；6) tag semantic aliases、canonical aliases、tag case、tag surface compactness 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-160: 为 tag archive 增加 canonical alias 闸门，消费 EXP-159 “normalized tag canonical / alias 检查”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
   - Hypothesis: EXP-159 已收紧首页与文章页 tag surface；若内容库仍允许 `agent runtime` / `agent-runtime` 这类空格、下划线、连字符归一后相同但展示不同的 tag，tag archive 会分裂可发现入口并让 compact tag chip 继续承载同义噪声。新增 canonical alias 闸门并修正现有 collision，可减少 tag 归档分裂和跨语言标签噪声。
   - Metrics: `pnpm check:tag-canonical-aliases` 通过；`pnpm check:tag-case` 通过；`pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
