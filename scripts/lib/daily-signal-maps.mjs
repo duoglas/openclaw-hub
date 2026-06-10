@@ -19,7 +19,7 @@ export const ZH_ENTITY_MAP = [
   ['市场监管总局', 'SAMR'], ['国家发改委', 'NDRC'], ['科技日报', 'Science and Technology Daily'],
   ['支付宝', 'Alipay'], ['微信支付', 'WeChat Pay'], ['京东', 'JD.com'], ['银联', 'UnionPay'], ['新华社', 'Xinhua'], ['工信部', 'MIIT'],
   ['Marvis', 'Tencent'], ['百炼', 'Alibaba'], ['DuMate', 'Baidu'], ['MoMA', 'China Mobile'], ['韬', 'Huawei'],
-  ['韩国', 'Korea'], ['法国', 'France'], ['中国', 'China'], ['美国', 'US'], ['欧洲', 'Europe'],
+  ['韩国', 'Korea'], ['法国', 'France'], ['中国', 'China'], ['美国', 'US'], ['欧洲', 'Europe'], ['芬兰', 'Europe'], ['阿尔托大学', 'Europe'],
 ];
 
 export function dailySignalMapNames() {
