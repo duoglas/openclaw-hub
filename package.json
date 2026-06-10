@@ -32,6 +32,7 @@
     "check:website-schema": "bash scripts/check-website-schema-integrity.sh",
     "check:tag-case": "bash scripts/check-tag-case-collision.sh",
     "check:tag-surface-compactness": "node scripts/check-tag-surface-compactness.mjs",
+    "check:tag-canonical-aliases": "node scripts/check-tag-canonical-aliases.mjs",
     "check:robots-sitemap": "bash scripts/check-robots-sitemap-integrity.sh",
     "check:daily-0311": "bash scripts/check-daily-0311-integrity.sh",
     "check:daily-heading-date": "bash scripts/check-daily-heading-date-consistency.sh",

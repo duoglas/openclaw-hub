@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-09 17:20
+Last updated: 2026-06-10 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-160: 为 tag archive 增加 canonical alias 闸门，消费 EXP-159 “normalized tag canonical / alias 检查”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
+  - Hypothesis: EXP-159 已收紧首页与文章页 tag surface；若内容库仍允许 `agent runtime` / `agent-runtime` 这类空格、下划线、连字符归一后相同但展示不同的 tag，tag archive 会分裂可发现入口并让 compact tag chip 继续承载同义噪声。新增 canonical alias 闸门并修正现有 collision，可减少 tag 归档分裂和跨语言标签噪声。
+  - Metrics: `pnpm check:tag-canonical-aliases` 通过；`pnpm check:tag-case` 通过；`pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/check-tag-canonical-aliases.mjs`，遍历 EN/ZH blog frontmatter tags，并按 lowercase + NFKC + space/underscore/hyphen collapse 生成 canonical archive key；2) 脚本内置 synthetic `agent runtime` vs `agent-runtime` collision 自测，断言失败文案包含 normalized key 与两个变体；3) 将 EN `openclaw-vs-hermes-vs-deerflow-2026.md` 的 `agent runtime` 统一为 `agent-runtime`，与 ZH 对应页保持 canonical tag 一致；4) `package.json` 与 content-check CI 接入 `check:tag-canonical-aliases`；5) tag canonical aliases、tag case、tag surface compactness 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-159: 收紧文章与首页 tag surface，减少 latest/article 卡片标签噪声并增加 compactness CI 闸门，消费 EXP-158 “更多高风险命名/标签碰撞需要可控 probe”后续维护假设 | ICE 7x8x7=392 — commit `(this commit)`
   - Hypothesis: 日报与指南的 tags 持续增长后，首页最新文章卡片和文章页头部会展示过多 chip，挤压标题/description 首屏空间，并让长标签或大小写碰撞在移动端形成视觉噪声。将首页可见 tags 限制为 3 个、文章页限制为 5 个，并用 `+N` 展示剩余数量，同时加上 tag surface compactness 闸门，可提升首屏可读性并防止后续回归。
   - Metrics: `pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。

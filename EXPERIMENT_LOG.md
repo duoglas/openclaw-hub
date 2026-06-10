@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-160
+- Hypothesis: EXP-159 已收紧首页与文章页 tag surface；若内容库仍允许 `agent runtime` / `agent-runtime` 这类空格、下划线、连字符归一后相同但展示不同的 tag，tag archive 会分裂可发现入口并让 compact tag chip 继续承载同义噪声。新增 canonical alias 闸门并修正现有 collision，可减少 tag 归档分裂和跨语言标签噪声。
+- Scope: `scripts/check-tag-canonical-aliases.mjs`、`src/content/blog/en/openclaw-vs-hermes-vs-deerflow-2026.md`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 tag canonical alias 检查，遍历 EN/ZH blog frontmatter tags，并按 lowercase + NFKC + space/underscore/hyphen collapse 生成 normalized archive key；若同一 canonical key 下存在多个展示变体或同一文件内重复 normalized tag，则输出带样本文件的失败诊断；脚本内置 `agent runtime` vs `agent-runtime` synthetic collision 自测；将 EN OpenClaw vs Hermes vs DeerFlow 页 tag 从 `agent runtime` 统一为 `agent-runtime`，并接入 package script 与 content-check CI。
+- Start date: 2026-06-10
+- End date: 2026-06-10
+- Success metric: `pnpm check:tag-canonical-aliases` 通过；`pnpm check:tag-case` 通过；`pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
+- Result: pass（tag canonical alias 闸门已接入；当前 306 个 blog 文件没有 normalized archive slug collision；EN/ZH `openclaw-vs-hermes-vs-deerflow-2026` 的 agent runtime tag 已统一为 `agent-runtime`；tag canonical aliases、tag case、tag surface compactness 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 canonical alias 闸门作为 tag archive 基线；下一步可扩展一份显式 alias registry，处理 `ai agents` / `ai-agent` 这类单复数或同义词级别的标签合并。）
+
 ### EXP-159
 - Hypothesis: 日报与指南的 tags 持续增长后，首页最新文章卡片和文章页头部会展示过多 chip，挤压标题/description 首屏空间，并让长标签或大小写碰撞在移动端形成视觉噪声。将首页可见 tags 限制为 3 个、文章页限制为 5 个，并用 `+N` 展示剩余数量，同时加上 tag surface compactness 闸门，可提升首屏可读性并防止后续回归。
 - Scope: `src/layouts/BaseLayout.astro`、`src/layouts/BlogPost.astro`、`src/pages/en/index.astro`、`src/pages/zh/index.astro`、`scripts/check-tag-surface-compactness.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

@@ -2,7 +2,7 @@
 title: "OpenClaw vs Hermes vs DeerFlow: 2026 AI Agent Runtime Deep Comparison"
 description: "A technical 2026 comparison of OpenClaw, Hermes Agent, and DeerFlow for real agent runtimes."
 pubDate: 2026-06-09
-tags: ["openclaw", "hermes", "deerflow", "ai agents", "agent runtime", "comparison"]
+tags: ["openclaw", "hermes", "deerflow", "ai agents", "agent-runtime", "comparison"]
 category: "comparison"
 lang: "en"
 ---

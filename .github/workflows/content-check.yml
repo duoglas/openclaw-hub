@@ -160,6 +160,9 @@ jobs:
       - name: Tag surface compactness check
         run: pnpm check:tag-surface-compactness
 
+      - name: Tag canonical alias check
+        run: pnpm check:tag-canonical-aliases
+
       - name: Frontmatter and content sanity check
         run: |
           echo "Checking frontmatter + content sanity..."
