@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-163
+- Hypothesis: EXP-162 已把 2026-06-11 最新日报信号接入 source projection registry；若 registry 后续允许字段级 rule 长期无人命中，或 what/why/impact 文案被复制粘贴到多条 rule，生成器会累积死规则和重复事实投影，增加新增日报首日索引回归定位成本。新增 registry health 闸门，可强制每条 rule 被真实 cron fixture story block 实际命中，并阻断重复 projection detail。
+- Scope: `scripts/check-source-projection-rule-registry-health.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 source projection rule registry health 检查，遍历 `sourceProjectionRules()` 与全部真实 cron fixture story block，要求每条 rule 至少被一个 fixture 实际 term 命中；同时校验 rule name 唯一、terms 非空、what/why/impact 完整，并阻断跨 rule 复制粘贴的重复 projection detail；脚本内置 unused-rule 与 duplicate-detail synthetic self-test；package script 与 content-check CI 接入该闸门。
+- Start date: 2026-06-11
+- End date: 2026-06-11
+- Success metric: `pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm build` 通过。
+- Result: pass（source projection registry health 闸门已接入；当前 37 条 source projection rules 均被真实 cron fixture story block 实际命中；synthetic unused-rule 与 duplicate-detail self-test 可确认失败文案包含 unused 诊断和 duplicate what/why/impact owner；registry health、scope、metadata coverage、term narrowness 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 registry health 作为 source projection rule 维护基线；下一步可把 source projection registry 分组增加 owner/category 元数据，区分 daily fixture、policy、robotics、product release 等 rule 族，降低长期维护成本。）
+
 ### EXP-162
 - Hypothesis: 最近24小时新增日报（2026-06-11）已经产出 Google DeepMind DiffusionGemma、NVIDIA DRIVE Hyperion robotaxi、OpenAI ChatGPT 模型选择器、中国人形机器人实景实训专项行动与工信部 App 跳转治理五条新信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-11 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-11.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-06-11.md`、`scripts/fixtures/daily-real-cron-2026-06-05.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

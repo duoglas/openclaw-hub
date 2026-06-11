@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-11 11:20
+Last updated: 2026-06-11 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-163: 为 source projection rule registry 增加健康闸门，消费 EXP-162 “未使用 rule / duplicate detail 维护闸门”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-162 已把 2026-06-11 最新日报信号接入 source projection registry；若 registry 后续允许字段级 rule 长期无人命中，或 what/why/impact 文案被复制粘贴到多条 rule，生成器会累积死规则和重复事实投影，增加新增日报首日索引回归定位成本。新增 registry health 闸门，可强制每条 rule 被真实 cron fixture story block 实际命中，并阻断重复 projection detail。
+  - Metrics: `pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/check-source-projection-rule-registry-health.mjs`，遍历 `sourceProjectionRules()` 与全部 `realCronFixtures` story block，要求每条 source projection rule 至少被一个真实 cron fixture 实际 term 命中；2) registry health 同时校验 rule name 唯一、terms 非空、what/why/impact 完整，并阻断跨 rule 复制粘贴的重复 detail；3) 脚本内置 unused-rule 与 duplicate-detail synthetic self-test，断言失败文案包含 unused rule 诊断与 duplicate what/why/impact owner；4) `package.json` 与 content-check CI 接入 `check:source-projection-rule-registry-health`；5) registry health、scope、metadata coverage、term narrowness 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-162: 将 2026-06-11 真实 cron 样本接入 daily-real-cron fixture registry，并为 DiffusionGemma / DRIVE Hyperion / ChatGPT 模型选择器 / 人形机器人实景实训 / App 跳转治理新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `a12c6b3`
   - Hypothesis: 最近24小时新增日报（2026-06-11）已经产出 Google DeepMind DiffusionGemma、NVIDIA DRIVE Hyperion robotaxi、OpenAI ChatGPT 模型选择器、中国人形机器人实景实训专项行动与工信部 App 跳转治理五条新信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-11 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
   - Metrics: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。

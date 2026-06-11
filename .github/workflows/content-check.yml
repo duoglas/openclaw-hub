@@ -145,6 +145,9 @@ jobs:
       - name: Source projection rule term narrowness check
         run: pnpm check:source-projection-rule-term-narrowness
 
+      - name: Source projection rule registry health check
+        run: pnpm check:source-projection-rule-registry-health
+
       - name: Daily action sections completeness check
         run: pnpm check:daily-action-sections
 
