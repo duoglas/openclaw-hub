@@ -22,7 +22,7 @@
 - Start date: 2026-06-11
 - End date: 2026-06-11
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（2026-06-11 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 DiffusionGemma、DRIVE Hyperion、ChatGPT model picker、中国人形机器人实景实训与 App 跳转治理五条输出；source projection scope/metadata 已覆盖新规则；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；专项 fixture、source projection scope/metadata、latest specificity 与 build 全部通过；commit `4f37bfb`；质量评分 28/30。）
+- Result: pass（2026-06-11 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 DiffusionGemma、DRIVE Hyperion、ChatGPT model picker、中国人形机器人实景实训与 App 跳转治理五条输出；source projection scope/metadata 已覆盖新规则；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；专项 fixture、source projection scope/metadata、latest specificity 与 build 全部通过；commit `a12c6b3`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-06-11 fixture 作为最新日报首日索引质量基线；下一步可为 source projection rule registry 增加“未使用 rule / duplicate detail”维护闸门，防止字段级规则长期膨胀后出现死规则或重复文案。）
 
 ### EXP-161
