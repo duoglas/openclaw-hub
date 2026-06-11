@@ -287,6 +287,52 @@ export const FIELD_PROJECTION_RULES = [
       impact: 'China’s robotics supply chain may receive more attention across joint modules, sensors, control systems, edge compute, embodied models, and manufacturing capacity.',
     },
   },
+  {
+    name: 'google-deepmind-diffusiongemma-2026',
+    terms: ['DiffusionGemma', '扩散式文本生成', 'RTX PRO'],
+    details: {
+      what: 'Google DeepMind released the experimental open DiffusionGemma model, using diffusion-style text generation to create text blocks in parallel, while NVIDIA announced optimizations across RTX, RTX PRO, DGX Spark, and H100 hardware.',
+      why: 'The release tests whether language-model inference can move beyond token-by-token generation toward lower-latency local interaction, while still requiring quality checks before production use.',
+      impact: 'Local AI assistants, code completion, interactive editing, and personal agent loops can benchmark DiffusionGemma for speed, but production systems should keep mature autoregressive models as the quality baseline.',
+    },
+  },
+  {
+    name: 'nvidia-drive-hyperion-robotaxi-2026',
+    terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN'],
+    details: {
+      what: 'NVIDIA expanded the DRIVE Hyperion robotaxi ecosystem with Uber/Autobrains in Munich, Foxconn L4-ready fleets in Taiwan, VinFast in Southeast Asia, and HUMAIN in Saudi Arabia and the Middle East.',
+      why: 'Autonomous driving is moving from single-vehicle demos toward platformized deployment stacks that combine vehicle compute, sensors, safety operating systems, simulation validation, and mobility-network partners.',
+      impact: 'Robotaxi competition may increasingly depend on automaker, compute-platform, ride-hailing, and safety-certification partnerships rather than only the onboard driving algorithm.',
+    },
+  },
+  {
+    name: 'openai-chatgpt-model-picker-2026',
+    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light'],
+    details: {
+      what: 'OpenAI simplified ChatGPT model selection into task-oriented options such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended across Plus and Pro users on web, iOS, and Android.',
+      why: 'The product shift hides complex model names behind speed and reasoning-strength choices, showing AI interfaces moving from model branding toward task-experience tiers.',
+      impact: 'Casual users get lower selection friction, while power users should re-map workflows after Thinking Light removal and validate which tier balances latency, cost, and reasoning depth.',
+    },
+  },
+  {
+    name: 'china-humanoid-embodied-training-2026',
+    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力'],
+    details: {
+      what: 'Xinhua reported that China’s MIIT and SASAC launched a 2026 humanoid robotics and embodied-intelligence real-world training initiative, targeting more than 100 high-value application scenarios and 10,000-unit deployment capability by year end.',
+      why: 'China’s humanoid robotics push is shifting from demonstration videos toward real production and service environments, where scenario data, standardized training spaces, and engineering validation determine commercialization.',
+      impact: 'Industrial, warehousing, healthcare, emergency-response, catering, retail, inspection, and elder-care pilots may become earlier deployment grounds for humanoid and embodied-intelligence systems.',
+    },
+  },
+  {
+    name: 'china-app-popup-jump-regulation-2026',
+    terms: ['信息窗口跳转', '摇一摇', '常态化检测监测'],
+    details: {
+      what: 'Xinhua reported that China’s MIIT required internet platforms and smart-terminal companies to standardize app information-window behavior and crack down on illegal pop-ups, induced clicks, and high-sensitivity shake-to-jump redirects.',
+      why: 'The regulatory signal turns intrusive app advertising, accidental jumps, and dark-pattern traffic acquisition into an ongoing compliance and user-experience issue rather than a seasonal campaign nuisance.',
+      impact: 'App platforms should review splash screens, pop-ups, redirect chains, ad SDKs, and shake-trigger sensitivity before recurring monitoring leads to interviews, public notices, or removal actions.',
+    },
+  },
+
 ];
 
 export function projectEnglishSourceDetail(source, key) {

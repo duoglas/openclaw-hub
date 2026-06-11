@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-162
+- Hypothesis: 最近24小时新增日报（2026-06-11）已经产出 Google DeepMind DiffusionGemma、NVIDIA DRIVE Hyperion robotaxi、OpenAI ChatGPT 模型选择器、中国人形机器人实景实训专项行动与工信部 App 跳转治理五条新信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-11 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-11.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-06-11.md`、`scripts/fixtures/daily-real-cron-2026-06-05.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-11 真实 cron fixture；source projection registry 新增 DiffusionGemma、DRIVE Hyperion robotaxi、ChatGPT model picker、中国人形机器人实景实训、App 信息窗口跳转治理五条字段级英文规则；fixture 写入 `sourceProjectionRuleMatches`、required EN/ZH outputs、banned fallback 与 story 5 guardrail；EN 2026-06-11 日报用新 generator 重新生成并升级 description；同步修正 2026-06-05 Unitree fixture label drift 为当前 canonical label。
+- Start date: 2026-06-11
+- End date: 2026-06-11
+- Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
+- Result: pass（2026-06-11 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 DiffusionGemma、DRIVE Hyperion、ChatGPT model picker、中国人形机器人实景实训与 App 跳转治理五条输出；source projection scope/metadata 已覆盖新规则；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；专项 fixture、source projection scope/metadata、latest specificity 与 build 全部通过；commit `4f37bfb`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-06-11 fixture 作为最新日报首日索引质量基线；下一步可为 source projection rule registry 增加“未使用 rule / duplicate detail”维护闸门，防止字段级规则长期膨胀后出现死规则或重复文案。）
+
 ### EXP-161
 - Hypothesis: EXP-160 已阻断 separator/case 级 tag canonical collision；若 `ai agents` / `ai-agent`、`tutorial` / `guide`、`silent message loss` / `delivery-reliability` 这类语义同义标签仍靠人工记忆维护，tag archive 会继续分裂长尾入口，并让首页/文章 tag chip 承载重复意图。新增显式 semantic alias registry、CI 闸门并回收现有别名，可减少标签归档分裂。
 - Scope: `scripts/lib/tag-alias-registry.mjs`、`scripts/check-tag-semantic-aliases.mjs`、`package.json`、`.github/workflows/content-check.yml`、`src/content/blog/en/*.md`、`src/content/blog/zh/*.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
