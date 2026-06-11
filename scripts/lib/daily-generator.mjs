@@ -112,6 +112,7 @@ export function labelFor(story, idx) {
   for (const [zh, en] of KEYWORD_MAP) {
     if (source.includes(zh) && !concepts.includes(en)) concepts.push(en);
   }
+  if (/(工信部|新华社|中国)/.test(source) && !entities.includes('China')) entities.unshift('China');
   const parts = [...entities.slice(0, 3), ...concepts.slice(0, 3)];
   let label = parts.length ? parts.slice(0, 4).join(' / ') : [
     'enterprise AI rollout', 'AI infrastructure signal', 'agent workflow update',

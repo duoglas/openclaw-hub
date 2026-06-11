@@ -155,5 +155,10 @@ export function generateZhDailyBody(sourceText, date) {
   if (body.includes('## 证据矩阵')) body = body.replace(/## 证据矩阵\n.*?(?=\n## |$)/s, evidence);
   else body += `\n\n${evidence}`;
 
+  body = body.replace(
+    /^不太可能马上普及：\s*…\s*$/m,
+    '不太可能马上普及：  \n家庭通用陪伴、完全开放环境中的复杂体力劳动，以及缺少明确 ROI 的消费级场景。'
+  );
+
   return body;
 }
