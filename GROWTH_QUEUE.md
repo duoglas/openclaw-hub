@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-11 17:20
+Last updated: 2026-06-12 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-164: 为 source projection registry 增加 owner/category taxonomy 闸门，消费 EXP-163 “registry 分组 owner/category 元数据”后续假设 | ICE 8x8x8=512 — commit `e34b71b`
+  - Hypothesis: EXP-163 已阻断 unused rule 与 duplicate detail；若 source projection registry 继续缺少 owner/category 元数据，37 条字段级 rule 会在 frontier model、physical AI、policy、enterprise agent、cloud infrastructure 等方向上混在一起，后续新增日报样本难以判断规则族、维护责任和分类覆盖缺口。新增显式 owner/category taxonomy 与 CI 闸门，可降低 registry 长期膨胀后的维护成本。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `source-projection-rules.mjs` 为全部 37 条 source projection rules 增加 `owner` 与 `category` 元数据；2) 新增 `scripts/check-source-projection-rule-taxonomy.mjs`，校验 owner/category 必填且必须属于允许枚举，并要求每个允许 category 至少有规则承载；3) 脚本内置 missing metadata 与 unknown metadata synthetic self-test，断言失败文案包含 rule name、owner/category 缺失或未知值；4) `package.json` 与 content-check CI 接入 `check:source-projection-rule-taxonomy`；5) taxonomy、registry health、scope 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-163: 为 source projection rule registry 增加健康闸门，消费 EXP-162 “未使用 rule / duplicate detail 维护闸门”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-162 已把 2026-06-11 最新日报信号接入 source projection registry；若 registry 后续允许字段级 rule 长期无人命中，或 what/why/impact 文案被复制粘贴到多条 rule，生成器会累积死规则和重复事实投影，增加新增日报首日索引回归定位成本。新增 registry health 闸门，可强制每条 rule 被真实 cron fixture story block 实际命中，并阻断重复 projection detail。
   - Metrics: `pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm build` 通过。

@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-164
+- Hypothesis: EXP-163 已阻断 unused rule 与 duplicate detail；若 source projection registry 继续缺少 owner/category 元数据，37 条字段级 rule 会在 frontier model、physical AI、policy、enterprise agent、cloud infrastructure 等方向上混在一起，后续新增日报样本难以判断规则族、维护责任和分类覆盖缺口。新增显式 owner/category taxonomy 与 CI 闸门，可降低 registry 长期膨胀后的维护成本。
+- Scope: `scripts/lib/source-projection-rules.mjs`、`scripts/check-source-projection-rule-taxonomy.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 为全部 37 条 source projection rules 增加 `owner: daily-source-projection` 与分类元数据，覆盖 cloud infrastructure、company finance、consumer productivity、developer tools、enterprise agents、frontier models、market intelligence、physical AI / robotics、policy governance、product safety 等 10 个 rule family；新增 taxonomy 检查，校验 owner/category 必填、必须命中允许枚举，并要求每个允许 category 至少有规则承载；脚本内置 missing metadata 与 unknown metadata synthetic self-test；package script 与 content-check CI 接入该闸门。
+- Start date: 2026-06-12
+- End date: 2026-06-12
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm build` 通过。
+- Result: pass（全部 37 条 source projection rules 已带 owner/category 元数据；taxonomy 闸门会阻断缺失 owner/category、未知 owner/category，以及空分类枚举；missing/unknown metadata self-test 可确认失败文案包含具体 rule name 与 metadata 缺口；taxonomy、registry health、scope 与 build 全部通过；commit `e34b71b`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 taxonomy 作为 source projection registry 维护基线；下一步可把 category 分布输出为诊断摘要，帮助新增日报样本快速发现高膨胀 rule family 或空白主题。）
+
 ### EXP-163
 - Hypothesis: EXP-162 已把 2026-06-11 最新日报信号接入 source projection registry；若 registry 后续允许字段级 rule 长期无人命中，或 what/why/impact 文案被复制粘贴到多条 rule，生成器会累积死规则和重复事实投影，增加新增日报首日索引回归定位成本。新增 registry health 闸门，可强制每条 rule 被真实 cron fixture story block 实际命中，并阻断重复 projection detail。
 - Scope: `scripts/check-source-projection-rule-registry-health.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

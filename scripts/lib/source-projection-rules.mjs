@@ -1,6 +1,8 @@
 export const FIELD_PROJECTION_RULES = [
   {
     name: 'claude-opus-4-8',
+    owner: 'daily-source-projection',
+    category: 'frontier-models',
     terms: ['Claude Opus 4.8'],
     details: {
       what: 'Anthropic released Claude Opus 4.8 on May 28, positioning it as stronger than Opus 4.7 for coding, agent tasks, and professional workflows while adding effort control, Claude Code dynamic workflows, and fast mode pricing changes.',
@@ -10,6 +12,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'anthropic-series-h',
+    owner: 'daily-source-projection',
+    category: 'company-finance',
     terms: ['Series H', 'H 轮融资'],
     details: {
       what: 'Anthropic announced a Series H round described in the source as 65 billion USD with a 965 billion USD post-money valuation, with annualized revenue cited above 47 billion USD earlier in the month.',
@@ -19,6 +23,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-ai-metrology-guide',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
     terms: ['计量体系', '计量能力', '测不准'],
     details: {
       what: 'China’s SAMR and NDRC issued an AI metrology and capability-building guide that targets measurement gaps, data scarcity, AI standards, test datasets, and metrology service infrastructure.',
@@ -28,6 +34,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'amazon-nova-act-agentic-ai',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
     terms: ['Nova Act', '3M', 'Accenture', 'Bandsintown'],
     details: {
       what: 'Amazon described its agentic AI approach around Amazon Nova Act, AWS AI infrastructure, simulation training environments, and real business examples from 3M, Accenture, Bandsintown, and Amazon compliance teams.',
@@ -37,6 +45,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-icra-sim-to-real',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
     terms: ['ICRA', 'sim-to-real'],
     details: {
       what: 'NVIDIA highlighted eight ICRA robotics papers focused on sim-to-real transfer, including multi-arm scheduling, navigation across robot forms, complex grasping, precision assembly, and vision-language-action models.',
@@ -46,6 +56,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'openai-codex-windows-computer-use',
+    owner: 'daily-source-projection',
+    category: 'developer-tools',
     terms: ['Windows 版 Codex', 'Computer Use', 'Codex app'],
     details: {
       what: 'OpenAI release notes say the Codex Windows app now supports Computer Use, allowing the agent to see, click, and type in Windows applications while adding remote-control, profile, performance, and stability updates.',
@@ -55,6 +67,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'anthropic-sec-ipo-s1',
+    owner: 'daily-source-projection',
+    category: 'company-finance',
     terms: ['Form S-1', '潜在 IPO', 'SEC 秘密提交'],
     details: {
       what: 'Anthropic said on June 1 that it confidentially submitted a draft Form S-1 registration statement to the US SEC for a potential IPO, with share count and pricing still undecided.',
@@ -64,6 +78,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'openai-amazon-bedrock-models',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
     terms: ['Amazon Bedrock', 'AWS 身份', '网络隔离'],
     details: {
       what: 'AWS made GPT-5.5, GPT-5.4, and Codex available in Amazon Bedrock with OpenAI-matched pricing and enterprise access through AWS identity, network isolation, audit, and encryption controls.',
@@ -73,6 +89,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-microsoft-agentic-windows-azure',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
     terms: ['RTX Spark', 'DGX Station', 'Microsoft Fabric', 'Foundry'],
     details: {
       what: 'NVIDIA said its Microsoft Build / GTC Taipei updates expand the joint AI stack across RTX Spark, DGX Station for Windows, Microsoft Fabric GPU acceleration, NVIDIA open models on Foundry, and NVIDIA OpenShell security runtime support in GitHub Copilot.',
@@ -82,6 +100,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-nemoclaw-industrial-agents',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
     terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys'],
     details: {
       what: 'NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.',
@@ -91,6 +111,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-ai-cloud-ecosystem',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
     terms: ['AI Cloud', 'AI factory', '六大洲'],
     details: {
       what: 'NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.',
@@ -100,6 +122,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'openai-chatgpt-active-sessions',
+    owner: 'daily-source-projection',
+    category: 'product-safety',
     terms: ['Active sessions', '活跃会话', 'Settings > Security'],
     details: {
       what: 'OpenAI said on June 2 that ChatGPT now includes Active sessions under Settings > Security > Active sessions, allowing users to review signed-in sessions and log out individual or unknown devices.',
@@ -109,6 +133,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'xinhua-china-ai-education-service-robotics',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
     terms: ['教育、文旅、养老', '服务效率'],
     details: {
       what: 'Source 5 reports a robotics deployment, AI education deployment signal involving China, Xinhua, education, culture and tourism, elderly care, and service-efficiency scenarios.',
@@ -118,6 +144,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-national-data-administration-embodied-ai',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
     terms: ['国家数据局', '刘烈宏', 'National Data Administration', 'AI for Science'],
     details: {
       what: 'Xinhua reported that Liu Liehong, head of China’s National Data Administration, said high-quality datasets are a critical foundation for embodied intelligence’s perception-decision-action loop and for data engineering in AI for Science.',
@@ -127,6 +155,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'chatgpt-jobs-resume-tools',
+    owner: 'daily-source-projection',
+    category: 'consumer-productivity',
     terms: ['实时职位', '自由职业机会', '简历格式化'],
     details: {
       what: 'OpenAI release notes say ChatGPT can help US users find real-time jobs and freelance opportunities, and can format and download English resumes for users globally.',
@@ -136,6 +166,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-ai-industry-report-l3',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
     terms: ['6000 家', '1.2 万亿元', '待确认'],
     details: {
       what: 'A secondary L3 source says China has more than 6,000 AI companies and a core AI industry scale above 1.2 trillion yuan, while the original official report link was not captured in this brief.',
@@ -145,6 +177,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-asean-ai-innovation-center',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
     terms: ['中国—东盟人工智能产业创新中心', '东盟', '多边合作平台'],
     details: {
       what: 'China’s MIIT said the China-ASEAN AI Industry Innovation Center was established in Beijing on May 24 as a multilateral platform for technology R&D, industrial ecosystems, governance practice, and regional capability building.',
@@ -154,6 +188,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-cvpr-physical-ai-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
     terms: ['GraspGen-X', 'LCDrive', 'NitroGen', 'CVPR 论文'],
     details: {
       what: 'NVIDIA Research highlighted three CVPR papers: GraspGen-X for zero-shot robotic grasping, LCDrive for lower-token autonomous-driving inference, and NitroGen for training embodied agents in virtual environments.',
@@ -163,6 +199,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'meta-business-agent-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
     terms: ['Meta Business Agent', 'WhatsApp、Messenger、Instagram', 'Shopify、Zendesk、Shopee'],
     details: {
       what: 'Meta said it is expanding Meta Business Agent globally across WhatsApp, Messenger, Instagram, and partner systems including Shopify, Zendesk, and Shopee for Q&A, product recommendations, bookings, and lead qualification.',
@@ -172,6 +210,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'openai-youth-safety-g7-2026',
+    owner: 'daily-source-projection',
+    category: 'product-safety',
     terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制'],
     details: {
       what: 'OpenAI published a pre-G7 proposal for international youth AI safety collaboration, emphasizing age identification, default protections, annual risk assessment, parental controls, and shared research mechanisms.',
@@ -181,6 +221,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'microsoft-enterprise-agent-system-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
     terms: ['AI alone won’t change your business', 'Agent 系统', 'Azure、GitHub、Microsoft 365'],
     details: {
       what: 'Microsoft argued that enterprise AI value depends on governable agent systems rather than standalone models, tying Azure, GitHub, Microsoft 365, Security, Fabric, identity, permissions, data, audit, and human oversight into one operating layer.',
@@ -190,6 +232,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'shanghai-tech-fair-2026-hard-tech',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
     terms: ['第十二届上交会', '脑机接口', '长三角协同创新专区'],
     details: {
       what: 'Shanghai’s government press briefing said the 12th China Shanghai International Technology Fair will feature brain-computer interfaces, biomedicine, industrial robots, large models, new displays, intelligent connected vehicles, and Yangtze River Delta innovation zones.',
@@ -199,6 +243,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-doosan-physical-ai-factory-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
     terms: ['斗山', 'Doosan', '电力方案和数据中心材料'],
     details: {
       what: 'NVIDIA said it is expanding cooperation with South Korea’s Doosan Group across robotics, industrial automation, AI factory infrastructure, power systems, and data-center materials.',
@@ -208,6 +254,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'anthropic-opus-agent-coding-2026',
+    owner: 'daily-source-projection',
+    category: 'frontier-models',
     terms: ['Anthropic 近期升级 Opus 级模型', '长时间任务稳定性'],
     details: {
       what: 'Anthropic’s news page describes a late-May Opus-level upgrade focused on coding, agent tasks, professional work, and more stable long-running execution.',
@@ -217,6 +265,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'aws-quick-connect-bedrock-openai-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
     terms: ["What's Next with AWS 2026", 'Managed Agents 进入 Amazon Bedrock'],
     details: {
       what: 'AWS News Blog says What’s Next with AWS 2026 introduced Amazon Quick as a work AI assistant, expanded Amazon Connect agentic AI solutions, and put OpenAI models, Codex, and Managed Agents into limited preview on Amazon Bedrock.',
@@ -226,6 +276,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'openai-chatgpt-memory-lockdown-2026',
+    owner: 'daily-source-projection',
+    category: 'product-safety',
     terms: ['Lockdown Mode', 'Memory 会自动保持更新', '文件下载等高风险外部能力'],
     details: {
       what: 'OpenAI’s June 4 ChatGPT release notes say Memory can stay more up to date and reduce outdated or contradictory memories, while Lockdown Mode is now available to all logged-in users to limit browsing, deep research, agents, and file downloads.',
@@ -235,6 +287,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-korea-ecosystem-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
     terms: ['黄仁勋到访首尔', '韩国在机器人、物理 AI、存储制造', 'Korea ecosystem 2026'], 
     details: {
       what: 'NVIDIA CEO Jensen Huang visited Seoul and said Grace Blackwell is performing well, Vera Rubin has entered full production, and the second half of the year will be busy for AI infrastructure buildout, with Korea highlighted for robotics, physical AI, memory, and manufacturing.',
@@ -244,6 +298,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-provincial-ai-compute-plans-2026',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
     terms: ['各省级“十五五”规划纲要密集发布', '30个省市提及“大模型”', '所有省市均提及“人工智能”和“算力”', '北京、浙江、上海、广东被描述为第一梯队'],
     details: {
       what: 'Xinhua reported that provincial 15th Five-Year Plan outlines are being published, with all provinces and municipalities mentioning artificial intelligence and compute power, 30 mentioning large models, and Beijing, Zhejiang, Shanghai, and Guangdong described as leading clusters.',
@@ -253,6 +309,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-6g-province-ministry-pilot-2026',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
     terms: ['6G 创新发展部省协同试点', '2029年', '业务场景和终端产品', '低空经济'],
     details: {
       what: 'Xinhua reported that China’s Ministry of Industry and Information Technology is organizing province-ministry coordinated 6G innovation pilots, aiming to form independent 6G technical solutions, business scenarios, and terminal products by 2029.',
@@ -262,6 +320,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-cosmos-3-physical-ai-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
     terms: ['Cosmos 3', '开放的物理 AI 世界基础模型', 'world foundation model'],
     details: {
       what: 'NVIDIA announced Cosmos 3 at GTC Taipei as an open physical AI world foundation model for visual reasoning, world generation, and action prediction across robotics, autonomous driving, and visual AI workflows.',
@@ -271,6 +331,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-physical-ai-agent-skills-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
     terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo'],
     details: {
       what: 'NVIDIA published open-source Physical AI Agent tools and skills for Omniverse, Cosmos, Isaac, Metropolis, Alpamayo, Jetson, and related workflows covering data generation, simulation, training, evaluation, and deployment.',
@@ -280,6 +342,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'unitree-star-market-ipo-2026',
+    owner: 'daily-source-projection',
+    category: 'company-finance',
     terms: ['宇树科技', '科创板 IPO', '42.02亿元'],
     details: {
       what: 'Xinhua reported that Unitree Robotics’ STAR Market IPO application passed review by the Shanghai Stock Exchange listing committee, with planned fundraising of 4.202 billion yuan for robot models, robot hardware R&D, new products, and manufacturing capacity.',
@@ -289,6 +353,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'google-deepmind-diffusiongemma-2026',
+    owner: 'daily-source-projection',
+    category: 'frontier-models',
     terms: ['DiffusionGemma', '扩散式文本生成', 'RTX PRO'],
     details: {
       what: 'Google DeepMind released the experimental open DiffusionGemma model, using diffusion-style text generation to create text blocks in parallel, while NVIDIA announced optimizations across RTX, RTX PRO, DGX Spark, and H100 hardware.',
@@ -298,6 +364,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'nvidia-drive-hyperion-robotaxi-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
     terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN'],
     details: {
       what: 'NVIDIA expanded the DRIVE Hyperion robotaxi ecosystem with Uber/Autobrains in Munich, Foxconn L4-ready fleets in Taiwan, VinFast in Southeast Asia, and HUMAIN in Saudi Arabia and the Middle East.',
@@ -307,6 +375,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'openai-chatgpt-model-picker-2026',
+    owner: 'daily-source-projection',
+    category: 'consumer-productivity',
     terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light'],
     details: {
       what: 'OpenAI simplified ChatGPT model selection into task-oriented options such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended across Plus and Pro users on web, iOS, and Android.',
@@ -316,6 +386,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-humanoid-embodied-training-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
     terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力'],
     details: {
       what: 'Xinhua reported that China’s MIIT and SASAC launched a 2026 humanoid robotics and embodied-intelligence real-world training initiative, targeting more than 100 high-value application scenarios and 10,000-unit deployment capability by year end.',
@@ -325,6 +397,8 @@ export const FIELD_PROJECTION_RULES = [
   },
   {
     name: 'china-app-popup-jump-regulation-2026',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
     terms: ['信息窗口跳转', '摇一摇', '常态化检测监测'],
     details: {
       what: 'Xinhua reported that China’s MIIT required internet platforms and smart-terminal companies to standardize app information-window behavior and crack down on illegal pop-ups, induced clicks, and high-sensitivity shake-to-jump redirects.',
