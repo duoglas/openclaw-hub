@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-12 11:20
+Last updated: 2026-06-12 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-165: 为 source projection taxonomy CLI 增加 category distribution 诊断摘要，消费 EXP-164 “category 分布输出”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
+  - Hypothesis: EXP-164 已让 37 条 source projection rules 拥有 owner/category 元数据；若 taxonomy 闸门只在失败时输出缺失或未知枚举，维护者仍需要手动统计各 category 的规则数量，难以及早发现 physical-ai-robotics、policy-governance 等高膨胀 rule family 或低覆盖分类。让 taxonomy CLI 稳定输出 owner/category distribution 摘要，并用 self-test 锁定格式，可降低新增日报规则后的维护判断成本。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `totalRules=37`、owner count 与按数量排序的 category distribution；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `check-source-projection-rule-taxonomy.mjs` 新增 `summarizeSourceProjectionRuleTaxonomy` 与 `formatSourceProjectionRuleTaxonomySummary`；2) CLI 成功时输出 `source projection taxonomy summary`、`owners:` 与 `categories:` 诊断；3) self-test 锁定 summary 格式和 category 按 count desc/name asc 排序；4) 当前摘要显示 37 条 rule、`daily-source-projection=37`，并暴露 `physical-ai-robotics=8`、`policy-governance=6` 等分布；5) taxonomy、registry health 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-164: 为 source projection registry 增加 owner/category taxonomy 闸门，消费 EXP-163 “registry 分组 owner/category 元数据”后续假设 | ICE 8x8x8=512 — commit `a81ab19`
   - Hypothesis: EXP-163 已阻断 unused rule 与 duplicate detail；若 source projection registry 继续缺少 owner/category 元数据，37 条字段级 rule 会在 frontier model、physical AI、policy、enterprise agent、cloud infrastructure 等方向上混在一起，后续新增日报样本难以判断规则族、维护责任和分类覆盖缺口。新增显式 owner/category taxonomy 与 CI 闸门，可降低 registry 长期膨胀后的维护成本。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm build` 通过。

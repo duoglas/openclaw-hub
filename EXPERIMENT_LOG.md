@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-165
+- Hypothesis: EXP-164 已让 37 条 source projection rules 拥有 owner/category 元数据；若 taxonomy 闸门只在失败时输出缺失或未知枚举，维护者仍需要手动统计各 category 的规则数量，难以及早发现 physical-ai-robotics、policy-governance 等高膨胀 rule family 或低覆盖分类。让 taxonomy CLI 稳定输出 owner/category distribution 摘要，并用 self-test 锁定格式，可降低新增日报规则后的维护判断成本。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `summarizeSourceProjectionRuleTaxonomy` 与 `formatSourceProjectionRuleTaxonomySummary`，按 owner/category 聚合 rule 数量，并按 count desc/name asc 输出 category distribution；taxonomy CLI 成功时打印 `totalRules`、owner counts 与 category counts；self-test 锁定 summary 格式、owner 统计和 category 排序，避免后续重构移除诊断。
+- Start date: 2026-06-12
+- End date: 2026-06-12
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `source projection taxonomy summary: totalRules=37`、`owners: daily-source-projection=37` 与 category distribution；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 已输出稳定分布摘要；当前 37 条 rule 均归属 `daily-source-projection`，category 分布为 physical-ai-robotics 8、policy-governance 6、enterprise-agents 5、cloud-infrastructure 4、company-finance/frontier-models/product-safety 各 3、consumer-productivity/market-intelligence 各 2、developer-tools 1；summary self-test、taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 taxonomy summary 作为 source projection registry 维护诊断；下一步可增加 category growth budget 或高膨胀分类提醒，避免单一 rule family 长期吞噬新增日报维护精力。）
+
 ### EXP-164
 - Hypothesis: EXP-163 已阻断 unused rule 与 duplicate detail；若 source projection registry 继续缺少 owner/category 元数据，37 条字段级 rule 会在 frontier model、physical AI、policy、enterprise agent、cloud infrastructure 等方向上混在一起，后续新增日报样本难以判断规则族、维护责任和分类覆盖缺口。新增显式 owner/category taxonomy 与 CI 闸门，可降低 registry 长期膨胀后的维护成本。
 - Scope: `scripts/lib/source-projection-rules.mjs`、`scripts/check-source-projection-rule-taxonomy.mjs`、`package.json`、`.github/workflows/content-check.yml`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
