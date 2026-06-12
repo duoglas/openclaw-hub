@@ -22,7 +22,7 @@
 - Start date: 2026-06-12
 - End date: 2026-06-12
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm build` 通过。
-- Result: pass（全部 37 条 source projection rules 已带 owner/category 元数据；taxonomy 闸门会阻断缺失 owner/category、未知 owner/category，以及空分类枚举；missing/unknown metadata self-test 可确认失败文案包含具体 rule name 与 metadata 缺口；taxonomy、registry health、scope 与 build 全部通过；commit `e34b71b`；质量评分 28/30。）
+- Result: pass（全部 37 条 source projection rules 已带 owner/category 元数据；taxonomy 闸门会阻断缺失 owner/category、未知 owner/category，以及空分类枚举；missing/unknown metadata self-test 可确认失败文案包含具体 rule name 与 metadata 缺口；taxonomy、registry health、scope 与 build 全部通过；commit `a81ab19`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 taxonomy 作为 source projection registry 维护基线；下一步可把 category 分布输出为诊断摘要，帮助新增日报样本快速发现高膨胀 rule family 或空白主题。）
 
 ### EXP-163

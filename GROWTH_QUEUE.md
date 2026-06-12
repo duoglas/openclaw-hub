@@ -20,7 +20,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-164: 为 source projection registry 增加 owner/category taxonomy 闸门，消费 EXP-163 “registry 分组 owner/category 元数据”后续假设 | ICE 8x8x8=512 — commit `e34b71b`
+- [x] P1 Candidate / EXP-164: 为 source projection registry 增加 owner/category taxonomy 闸门，消费 EXP-163 “registry 分组 owner/category 元数据”后续假设 | ICE 8x8x8=512 — commit `a81ab19`
   - Hypothesis: EXP-163 已阻断 unused rule 与 duplicate detail；若 source projection registry 继续缺少 owner/category 元数据，37 条字段级 rule 会在 frontier model、physical AI、policy、enterprise agent、cloud infrastructure 等方向上混在一起，后续新增日报样本难以判断规则族、维护责任和分类覆盖缺口。新增显式 owner/category taxonomy 与 CI 闸门，可降低 registry 长期膨胀后的维护成本。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm build` 通过。
   - Acceptance: 1) `source-projection-rules.mjs` 为全部 37 条 source projection rules 增加 `owner` 与 `category` 元数据；2) 新增 `scripts/check-source-projection-rule-taxonomy.mjs`，校验 owner/category 必填且必须属于允许枚举，并要求每个允许 category 至少有规则承载；3) 脚本内置 missing metadata 与 unknown metadata synthetic self-test，断言失败文案包含 rule name、owner/category 缺失或未知值；4) `package.json` 与 content-check CI 接入 `check:source-projection-rule-taxonomy`；5) taxonomy、registry health、scope 与 build 全部通过；质量评分 28/30。
