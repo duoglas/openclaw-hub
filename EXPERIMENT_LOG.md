@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-166
+- Hypothesis: 最近24小时新增日报（2026-06-13）已经产出 OpenAI Academy 企业 AI 课程、NVIDIA AgentPerf Blackwell 智能体基础设施基准、Anthropic Claude Corps、中国“人工智能+信息通信”实施意见与人形机器人实景实训五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-13 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-13.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-06-13.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-13 真实 cron fixture；source projection registry 新增 OpenAI Academy 企业 AI 课程、NVIDIA AgentPerf Blackwell、Anthropic Claude Corps、中国 AI+ICT 实施意见四条字段级英文规则，并复用人形机器人实景实训规则；fixture 写入 `sourceProjectionRuleMatches`、required EN/ZH outputs、banned fallback 与 story 5 guardrail；EN 2026-06-13 日报用新 generator 重新生成并升级 description。
+- Start date: 2026-06-13
+- End date: 2026-06-13
+- Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
+- Result: pass（2026-06-13 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 OpenAI Academy、NVIDIA AgentPerf Blackwell、Claude Corps、中国 AI+ICT 实施意见与人形机器人实景实训五条输出；source projection scope/registry/taxonomy 已覆盖新规则，taxonomy 当前显示 totalRules=41；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；专项 fixture、source projection scope/registry/taxonomy、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-06-13 fixture 作为最新日报首日索引质量基线；下一步可增加 source projection category growth budget，避免 enterprise-agents / policy-governance 分类继续膨胀时缺少维护提醒。）
+
 ### EXP-165
 - Hypothesis: EXP-164 已让 37 条 source projection rules 拥有 owner/category 元数据；若 taxonomy 闸门只在失败时输出缺失或未知枚举，维护者仍需要手动统计各 category 的规则数量，难以及早发现 physical-ai-robotics、policy-governance 等高膨胀 rule family 或低覆盖分类。让 taxonomy CLI 稳定输出 owner/category distribution 摘要，并用 self-test 锁定格式，可降低新增日报规则后的维护判断成本。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

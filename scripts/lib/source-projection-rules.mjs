@@ -407,6 +407,51 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
 
+  {
+    name: 'openai-academy-enterprise-ai-foundations-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    terms: ['AI Foundations', 'Applied AI Foundations', 'Agents and Workflows'],
+    details: {
+      what: 'OpenAI Academy added three enterprise AI courses — AI Foundations, Applied AI Foundations, and Agents and Workflows — to train employees on prompting, workflow design, and agent collaboration.',
+      why: 'The signal shifts AI competition from model access alone toward organizational enablement: training, repeatable workflows, and supervised agent use become part of enterprise adoption.',
+      impact: 'Enterprises can turn the curriculum into role-based AI training paths, while smaller teams can start by converting recurring reports, meeting notes, and customer replies into governed AI workflows.',
+    },
+  },
+  {
+    name: 'nvidia-agentperf-blackwell-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
+    terms: ['AgentPerf', 'GB300 NVL72', '每兆瓦并发智能体'],
+    details: {
+      what: 'NVIDIA said Artificial Analysis AgentPerf results show GB300 NVL72 leading agentic AI infrastructure, with up to 20x the concurrent agents per megawatt versus H200 in the cited workload.',
+      why: 'Agent infrastructure is being evaluated on multi-step concurrency, tool-use chains, latency, and power efficiency rather than only single-request inference speed.',
+      impact: 'Teams deploying coding, customer-support, and operations agents should compare accelerator choices by concurrent-agent capacity, energy budget, latency, and reliability under long-running workflows.',
+    },
+  },
+  {
+    name: 'anthropic-claude-corps-nonprofit-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    terms: ['Claude Corps', '1000 名早期职业人员', '2026 年 10 月'],
+    details: {
+      what: 'Anthropic launched Claude Corps as a 150 million USD program to train 1,000 early-career workers and place them full-time for one year with US nonprofits, with the first 100 participants planned for October 2026.',
+      why: 'The program shows frontier AI companies moving beyond API sales into workforce transition, AI-skill diffusion, and hands-on workflow implementation for lower-resourced organizations.',
+      impact: 'Nonprofits and public-interest organizations may get faster Claude workflow adoption, while enterprises can watch the program as a template for AI change-management, training, and deployment support.',
+    },
+  },
+  {
+    name: 'china-ai-ict-innovation-plan-2026',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
+    terms: ['人工智能+信息通信', '1 毫秒时延圈', '2026—2028年'],
+    details: {
+      what: 'China’s MIIT issued an AI + information and communications implementation plan for 2026–2028, targeting more than 30 high-value scenarios and at least 75% coverage for a 1-millisecond metropolitan compute latency circle by 2028.',
+      why: 'The plan connects AI, communications networks, edge inference, compute scheduling, 5G-A/6G, and industry applications into one infrastructure policy rather than treating AI as standalone software.',
+      impact: 'Telecom operators, equipment vendors, cloud providers, and industry-model builders may accelerate network agents, edge AI services, and low-latency smart-device deployments under clearer policy targets.',
+    },
+  },
+
 ];
 
 export function projectEnglishSourceDetail(source, key) {
