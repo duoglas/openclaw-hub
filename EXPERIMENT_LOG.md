@@ -22,7 +22,7 @@
 - Start date: 2026-06-13
 - End date: 2026-06-13
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（2026-06-13 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 OpenAI Academy、NVIDIA AgentPerf Blackwell、Claude Corps、中国 AI+ICT 实施意见与人形机器人实景实训五条输出；source projection scope/registry/taxonomy 已覆盖新规则，taxonomy 当前显示 totalRules=41；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；专项 fixture、source projection scope/registry/taxonomy、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-13 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 OpenAI Academy、NVIDIA AgentPerf Blackwell、Claude Corps、中国 AI+ICT 实施意见与人形机器人实景实训五条输出；source projection scope/registry/taxonomy 已覆盖新规则，taxonomy 当前显示 totalRules=41；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；专项 fixture、source projection scope/registry/taxonomy、latest specificity 与 build 全部通过；commit `de219f6`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-06-13 fixture 作为最新日报首日索引质量基线；下一步可增加 source projection category growth budget，避免 enterprise-agents / policy-governance 分类继续膨胀时缺少维护提醒。）
 
 ### EXP-165
