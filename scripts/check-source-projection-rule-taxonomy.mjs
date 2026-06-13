@@ -33,20 +33,45 @@ export function summarizeSourceProjectionRuleTaxonomy({ rules = sourceProjection
 
   const sortCounts = (entries) => [...entries].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 
+  const owners = sortCounts(ownerCounts.entries()).map(([name, count]) => ({
+    name,
+    count,
+    share: rules.length > 0 ? count / rules.length : 0,
+  }));
+  const categories = sortCounts(categoryCounts.entries()).map(([name, count]) => ({
+    name,
+    count,
+    share: rules.length > 0 ? count / rules.length : 0,
+  }));
+
   return {
     totalRules: rules.length,
-    owners: sortCounts(ownerCounts.entries()).map(([name, count]) => ({ name, count })),
-    categories: sortCounts(categoryCounts.entries()).map(([name, count]) => ({ name, count })),
+    owners,
+    categories,
+    largestOwner: owners[0] || null,
+    largestCategory: categories[0] || null,
   };
+}
+
+function formatShare(value) {
+  return `${Math.round(Number(value || 0) * 100)}%`;
 }
 
 export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSourceProjectionRuleTaxonomy()) {
   const ownerLine = summary.owners.map((item) => `${item.name}=${item.count}`).join(', ');
   const categoryLine = summary.categories.map((item) => `${item.name}=${item.count}`).join(', ');
+  const largestOwner = summary.largestOwner
+    ? `${summary.largestOwner.name}=${summary.largestOwner.count}/${summary.totalRules} (${formatShare(summary.largestOwner.share)})`
+    : 'n/a';
+  const largestCategory = summary.largestCategory
+    ? `${summary.largestCategory.name}=${summary.largestCategory.count}/${summary.totalRules} (${formatShare(summary.largestCategory.share)})`
+    : 'n/a';
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
     `categories: ${categoryLine}`,
+    `largest owner share: ${largestOwner}`,
+    `largest category share: ${largestCategory}`,
   ].join('\n');
 }
 
@@ -136,6 +161,8 @@ function validateSelfTests() {
     'source projection taxonomy summary: totalRules=3',
     'owners: daily-source-projection=3',
     'categories: physical-ai-robotics=2, frontier-models=1',
+    'largest owner share: daily-source-projection=3/3 (100%)',
+    'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
     if (!summaryDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy summary self-test failed: ${fragment}`);

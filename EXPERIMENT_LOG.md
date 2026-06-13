@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-167
+- Hypothesis: EXP-166 已把 source projection rules 扩到 41 条，taxonomy summary 只输出分类数量仍需要维护者手算最大 owner/category 占比；若 CLI 直接输出 largest owner/category share，并用 self-test 锁定格式，可在新增日报规则后更快判断 enterprise-agents、policy-governance、physical-ai-robotics 等 rule family 是否过度集中，降低 registry 膨胀后的维护判断成本。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: `summarizeSourceProjectionRuleTaxonomy` 为 owner/category summary 增加 share 与 largest owner/category 字段；`formatSourceProjectionRuleTaxonomySummary` 成功路径新增 `largest owner share` 与 `largest category share` 诊断；summary self-test 锁定 100% owner share 与 67% category share 格式，避免后续重构移除占比输出。
+- Start date: 2026-06-13
+- End date: 2026-06-13
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `largest owner share` 与 `largest category share`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 totalRules=41、`largest owner share: daily-source-projection=41/41 (100%)` 与 `largest category share: physical-ai-robotics=8/41 (20%)`；taxonomy self-test、registry health 与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
+- Decision (scale / iterate / stop): scale（保留占比诊断；下一步可在观察到单类占比继续升高时增加 category growth budget 或高膨胀分类提醒。）
+
 ### EXP-166
 - Hypothesis: 最近24小时新增日报（2026-06-13）已经产出 OpenAI Academy 企业 AI 课程、NVIDIA AgentPerf Blackwell 智能体基础设施基准、Anthropic Claude Corps、中国“人工智能+信息通信”实施意见与人形机器人实景实训五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-13 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-13.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-06-13.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

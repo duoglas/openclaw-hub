@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-12 17:20
+Last updated: 2026-06-13 17:21
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-167: 为 source projection taxonomy summary 增加最大 owner/category 占比诊断，消费 EXP-166 “category growth budget / 高膨胀分类提醒”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
+  - Hypothesis: EXP-166 已把 source projection rules 扩到 41 条，taxonomy summary 只输出分类数量仍需要维护者手算最大 owner/category 占比；若 CLI 直接输出 largest owner/category share，并用 self-test 锁定格式，可在新增日报规则后更快判断 enterprise-agents、policy-governance、physical-ai-robotics 等 rule family 是否过度集中，降低 registry 膨胀后的维护判断成本。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `largest owner share` 与 `largest category share`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `summarizeSourceProjectionRuleTaxonomy` 为 owner/category summary 增加 share 与 largest owner/category 字段；2) CLI 成功路径新增 `largest owner share` 与 `largest category share` 诊断；3) summary self-test 锁定 100% owner share 与 67% category share 格式；4) 当前输出显示 41 条 rule、`daily-source-projection=41/41 (100%)`、`physical-ai-robotics=8/41 (20%)`；5) taxonomy、registry health 与 build 全部通过；质量评分 27/30。
 - [x] P1 Candidate / EXP-166: 将 2026-06-13 真实 cron 样本接入 daily-real-cron fixture registry，并为 OpenAI Academy / NVIDIA AgentPerf Blackwell / Claude Corps / 中国 AI+ICT 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `de219f6`
   - Hypothesis: 最近24小时新增日报（2026-06-13）已经产出 OpenAI Academy 企业 AI 课程、NVIDIA AgentPerf Blackwell 智能体基础设施基准、Anthropic Claude Corps、中国“人工智能+信息通信”实施意见与人形机器人实景实训五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-13 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
   - Metrics: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
