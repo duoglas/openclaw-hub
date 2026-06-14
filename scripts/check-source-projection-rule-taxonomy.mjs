@@ -28,6 +28,7 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'policy-governance': 8,
   'product-safety': 5,
 };
+export const SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD = 1;
 
 function normalize(value) {
   return String(value || '').trim();
@@ -62,12 +63,17 @@ export function summarizeSourceProjectionRuleTaxonomy({ rules = sourceProjection
     };
   });
 
+  const lowHeadroomCategories = categories
+    .filter((item) => item.headroom != null && item.headroom <= SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD)
+    .sort((a, b) => a.headroom - b.headroom || b.count - a.count || a.name.localeCompare(b.name));
+
   return {
     totalRules: rules.length,
     owners,
     categories,
     largestOwner: owners[0] || null,
     largestCategory: categories[0] || null,
+    lowHeadroomCategories,
   };
 }
 
@@ -88,11 +94,15 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
   const largestCategory = summary.largestCategory
     ? `${summary.largestCategory.name}=${summary.largestCategory.count}/${summary.totalRules} (${formatShare(summary.largestCategory.share)})`
     : 'n/a';
+  const lowHeadroomLine = (summary.lowHeadroomCategories || [])
+    .map((item) => `${item.name}=${item.count}/${item.budget} (${item.headroom} headroom)`)
+    .join(', ');
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
     `categories: ${categoryLine}`,
     `category budgets: ${categoryBudgetLine || 'n/a'}`,
+    `low headroom categories: ${lowHeadroomLine || 'none'}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
   ].join('\n');
@@ -217,6 +227,7 @@ function validateSelfTests() {
     'owners: daily-source-projection=3',
     'categories: physical-ai-robotics=2, frontier-models=1',
     'category budgets: physical-ai-robotics=2/10 (8 headroom), frontier-models=1/6 (5 headroom)',
+    'low headroom categories: none',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {

@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-169: 为 source projection taxonomy summary 增加低 headroom category 预警，消费 EXP-168 “低 headroom category warning / 自动分流提醒”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
+  - Hypothesis: EXP-168 已为 source projection category 增加硬预算与 headroom；若维护者只能看到完整 budget 明细，enterprise-agents、policy-governance、cloud-infrastructure 这类只剩 1 条余量的分类仍容易在新增日报 rule 时被忽略，直到下一次超预算才失败。新增低 headroom category 摘要，可在不阻断当前构建的前提下提前提示新增 rule 应优先分流或拆分分类。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `low headroom categories`，当前锁定 enterprise-agents、policy-governance、cloud-infrastructure 三个 1-headroom 分类；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD=1`；2) taxonomy summary 增加按 headroom asc/count desc/name asc 排序的 `lowHeadroomCategories`；3) CLI 成功路径输出 `low headroom categories`，当前展示 enterprise-agents=7/8、policy-governance=7/8、cloud-infrastructure=5/6；4) summary self-test 锁定无低余量时输出 `none`，避免后续重构移除预警行；5) taxonomy、registry health 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-168: 为 source projection taxonomy 增加 category growth budget 与 over-budget 闸门，消费 EXP-167 “category growth budget / 高膨胀分类提醒”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-167 已输出 largest category share，当前 physical-ai-robotics=8/41、enterprise-agents=7/41、policy-governance=7/41 接近高膨胀区；若 taxonomy 只展示占比而没有每类 rule budget 与超额失败，后续日报新增字段级 projection 会继续挤压少数分类，维护者只能事后手工发现 registry 失衡。为每个 category 增加显式 rule budget、headroom 诊断与 over-budget self-test，可在新增真实 cron fixture 前阻断单类无节制膨胀。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category budgets` 与 headroom；over-budget synthetic self-test 锁定 `developer-tools=5/4 (over by 1)` 失败文案；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。

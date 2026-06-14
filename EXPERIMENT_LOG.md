@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-169
+- Hypothesis: EXP-168 已为 source projection category 增加硬预算与 headroom；若维护者只能看到完整 budget 明细，enterprise-agents、policy-governance、cloud-infrastructure 这类只剩 1 条余量的分类仍容易在新增日报 rule 时被忽略，直到下一次超预算才失败。新增低 headroom category 摘要，可在不阻断当前构建的前提下提前提示新增 rule 应优先分流或拆分分类。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD=1`；taxonomy summary 计算 `lowHeadroomCategories` 并按 headroom asc、count desc、name asc 排序；成功输出新增 `low headroom categories` 行；summary self-test 锁定 `none` 输出，避免 warning 诊断被后续重构移除。
+- Start date: 2026-06-14
+- End date: 2026-06-14
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `low headroom categories`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 totalRules=41，`low headroom categories: enterprise-agents=7/8 (1 headroom), policy-governance=7/8 (1 headroom), cloud-infrastructure=5/6 (1 headroom)`；taxonomy self-test 已锁定无低余量时输出 `none`；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留低余量 warning 作为新增 source projection rule 前的维护提醒；下一步可把低 headroom category 与新增日报 rule category 自动建议分流或要求补充更细 category。）
+
 ### EXP-168
 - Hypothesis: EXP-167 已输出 largest category share，当前 physical-ai-robotics=8/41、enterprise-agents=7/41、policy-governance=7/41 接近高膨胀区；若 taxonomy 只展示占比而没有每类 rule budget 与超额失败，后续日报新增字段级 projection 会继续挤压少数分类，维护者只能事后手工发现 registry 失衡。为每个 category 增加显式 rule budget、headroom 诊断与 over-budget self-test，可在新增真实 cron fixture 前阻断单类无节制膨胀。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
