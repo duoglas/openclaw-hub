@@ -70,7 +70,7 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 - Evidence item 2: China / MIIT / robotics deployment / embodied AI — Source 2 identifies China / MIIT / robotics deployment / embodied AI signal 2 as the evidence anchor for the China / MIIT / robotics deployment / embodied AI item and its deployment implication.
 - Evidence item 3: NVIDIA / Blackwell / Agentic / agent platform — Source 3 identifies NVIDIA / Blackwell / Agentic / agent platform signal 3 as the evidence anchor for the NVIDIA / Blackwell / Agentic / agent platform item and its deployment implication.
 - Evidence item 4: US / Anthropic / Fable — Source 4 identifies US / Anthropic / Fable signal 4 as the evidence anchor for the US / Anthropic / Fable item and its deployment implication.
-- Evidence item 5: Adobe / Q2 / enterprise AI rollout — Source 5 identifies Adobe / Q2 / enterprise AI rollout signal 5 as the evidence anchor for the Adobe / Q2 / enterprise AI rollout item and its deployment implication.
+- Evidence item 5: US / Adobe / Q2 / enterprise AI rollout — Source 5 identifies Adobe / Q2 / enterprise AI rollout signal 5 as the evidence anchor for the US-listed enterprise AI rollout item and its deployment implication.
 
 ## Next-Step CTA
 
