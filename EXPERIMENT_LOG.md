@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-168
+- Hypothesis: EXP-167 已输出 largest category share，当前 physical-ai-robotics=8/41、enterprise-agents=7/41、policy-governance=7/41 接近高膨胀区；若 taxonomy 只展示占比而没有每类 rule budget 与超额失败，后续日报新增字段级 projection 会继续挤压少数分类，维护者只能事后手工发现 registry 失衡。为每个 category 增加显式 rule budget、headroom 诊断与 over-budget self-test，可在新增真实 cron fixture 前阻断单类无节制膨胀。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS`，为 10 个 source projection category 配置显式 rule budget；taxonomy summary 增加 `category budgets` 行，按当前分布输出 `count/budget (headroom)`；taxonomy validation 在 category count 超预算时失败并输出 over-by 诊断；self-test 用 developer-tools synthetic rules 锁定 `developer-tools=5/4 (over by 1)` 失败文案。
+- Start date: 2026-06-14
+- End date: 2026-06-14
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `category budgets` 与 headroom；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 totalRules=41，category budgets 显示 `physical-ai-robotics=8/10 (2 headroom)`、`enterprise-agents=7/8 (1 headroom)`、`policy-governance=7/8 (1 headroom)`；over-budget self-test 已锁定 developer-tools 超预算失败文案；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 category budget 作为 source projection registry 膨胀闸门；下一步可把低 headroom category 输出为专门 warning 或把新增日报 rule 自动分流到更细 category。）
+
 ### EXP-167
 - Hypothesis: EXP-166 已把 source projection rules 扩到 41 条，taxonomy summary 只输出分类数量仍需要维护者手算最大 owner/category 占比；若 CLI 直接输出 largest owner/category share，并用 self-test 锁定格式，可在新增日报规则后更快判断 enterprise-agents、policy-governance、physical-ai-robotics 等 rule family 是否过度集中，降低 registry 膨胀后的维护判断成本。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

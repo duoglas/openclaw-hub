@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-13 17:21
+Last updated: 2026-06-14 11:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-168: 为 source projection taxonomy 增加 category growth budget 与 over-budget 闸门，消费 EXP-167 “category growth budget / 高膨胀分类提醒”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-167 已输出 largest category share，当前 physical-ai-robotics=8/41、enterprise-agents=7/41、policy-governance=7/41 接近高膨胀区；若 taxonomy 只展示占比而没有每类 rule budget 与超额失败，后续日报新增字段级 projection 会继续挤压少数分类，维护者只能事后手工发现 registry 失衡。为每个 category 增加显式 rule budget、headroom 诊断与 over-budget self-test，可在新增真实 cron fixture 前阻断单类无节制膨胀。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category budgets` 与 headroom；over-budget synthetic self-test 锁定 `developer-tools=5/4 (over by 1)` 失败文案；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS` 为 10 个 taxonomy category 设置显式上限；2) taxonomy summary 为每个 category 输出 `count/budget (headroom)`；3) `validateSourceProjectionRuleTaxonomy` 在 category count 超预算时失败并输出 over-by 诊断；4) self-test 锁定 developer-tools over-budget 文案，避免后续重构移除预算闸门；5) 当前输出显示 physical-ai-robotics=8/10、enterprise-agents=7/8、policy-governance=7/8，taxonomy、registry health 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-167: 为 source projection taxonomy summary 增加最大 owner/category 占比诊断，消费 EXP-166 “category growth budget / 高膨胀分类提醒”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
   - Hypothesis: EXP-166 已把 source projection rules 扩到 41 条，taxonomy summary 只输出分类数量仍需要维护者手算最大 owner/category 占比；若 CLI 直接输出 largest owner/category share，并用 self-test 锁定格式，可在新增日报规则后更快判断 enterprise-agents、policy-governance、physical-ai-robotics 等 rule family 是否过度集中，降低 registry 膨胀后的维护判断成本。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `largest owner share` 与 `largest category share`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
