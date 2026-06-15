@@ -29,6 +29,7 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'product-safety': 5,
 };
 export const SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD = 1;
+export const SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD = 0.8;
 
 function normalize(value) {
   return String(value || '').trim();
@@ -66,6 +67,13 @@ export function summarizeSourceProjectionRuleTaxonomy({ rules = sourceProjection
   const lowHeadroomCategories = categories
     .filter((item) => item.headroom != null && item.headroom <= SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD)
     .sort((a, b) => a.headroom - b.headroom || b.count - a.count || a.name.localeCompare(b.name));
+  const highUtilizationCategories = categories
+    .filter((item) => (
+      item.budget != null
+      && item.budget > 0
+      && item.count / item.budget >= SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD
+    ))
+    .sort((a, b) => (b.count / b.budget) - (a.count / a.budget) || b.count - a.count || a.name.localeCompare(b.name));
 
   return {
     totalRules: rules.length,
@@ -74,11 +82,16 @@ export function summarizeSourceProjectionRuleTaxonomy({ rules = sourceProjection
     largestOwner: owners[0] || null,
     largestCategory: categories[0] || null,
     lowHeadroomCategories,
+    highUtilizationCategories,
   };
 }
 
 function formatShare(value) {
   return `${Math.round(Number(value || 0) * 100)}%`;
+}
+
+function formatUtilization(item) {
+  return `${item.name}=${item.count}/${item.budget} (${formatShare(item.count / item.budget)} used, ${item.headroom} headroom)`;
 }
 
 export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSourceProjectionRuleTaxonomy()) {
@@ -97,12 +110,16 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
   const lowHeadroomLine = (summary.lowHeadroomCategories || [])
     .map((item) => `${item.name}=${item.count}/${item.budget} (${item.headroom} headroom)`)
     .join(', ');
+  const highUtilizationLine = (summary.highUtilizationCategories || [])
+    .map(formatUtilization)
+    .join(', ');
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
     `categories: ${categoryLine}`,
     `category budgets: ${categoryBudgetLine || 'n/a'}`,
     `low headroom categories: ${lowHeadroomLine || 'none'}`,
+    `high utilization categories: ${highUtilizationLine || 'none'}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
   ].join('\n');
@@ -228,11 +245,31 @@ function validateSelfTests() {
     'categories: physical-ai-robotics=2, frontier-models=1',
     'category budgets: physical-ai-robotics=2/10 (8 headroom), frontier-models=1/6 (5 headroom)',
     'low headroom categories: none',
+    'high utilization categories: none',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
     if (!summaryDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy summary self-test failed: ${fragment}`);
+    }
+  }
+
+  const highUtilizationDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
+    rules: Array.from({ length: 4 }, (_, index) => ({
+      name: `synthetic-developer-utilization-rule-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'developer-tools',
+    })).concat(Array.from({ length: 4 }, (_, index) => ({
+      name: `synthetic-company-utilization-rule-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'company-finance',
+    }))),
+  }));
+  for (const fragment of [
+    'high utilization categories: developer-tools=4/4 (100% used, 0 headroom), company-finance=4/5 (80% used, 1 headroom)',
+  ]) {
+    if (!highUtilizationDiagnostic.includes(fragment)) {
+      failures.push(`source projection taxonomy high-utilization self-test failed: ${fragment}`);
     }
   }
 

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-14 11:22
+Last updated: 2026-06-15 11:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-170: 为 source projection taxonomy summary 增加高利用率 category 预警，消费 EXP-169 “低 headroom category 自动分流提醒”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
+  - Hypothesis: EXP-169 已输出低 headroom category，但只看剩余 1 条余量会漏掉 physical-ai-robotics=8/10 这类达到 80% 利用率、但尚未进入低 headroom 的高膨胀分类。新增高利用率 category 摘要，可在新增日报 rule 前同时暴露“绝对余量不足”和“预算利用率过高”两种分流信号，降低 source projection registry 后续膨胀维护成本。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `high utilization categories`，当前锁定 enterprise-agents=7/8、policy-governance=7/8、cloud-infrastructure=5/6、physical-ai-robotics=8/10；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD=0.8`；2) taxonomy summary 增加按 utilization desc/count desc/name asc 排序的 `highUtilizationCategories`；3) CLI 成功路径输出 `high utilization categories`，当前展示 enterprise-agents=88%、policy-governance=88%、cloud-infrastructure=83%、physical-ai-robotics=80%；4) summary self-test 锁定无高利用率时输出 `none`，并新增 synthetic self-test 锁定 developer-tools 100% 与 company-finance 80% 的排序和文案；5) taxonomy、registry health 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-169: 为 source projection taxonomy summary 增加低 headroom category 预警，消费 EXP-168 “低 headroom category warning / 自动分流提醒”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
   - Hypothesis: EXP-168 已为 source projection category 增加硬预算与 headroom；若维护者只能看到完整 budget 明细，enterprise-agents、policy-governance、cloud-infrastructure 这类只剩 1 条余量的分类仍容易在新增日报 rule 时被忽略，直到下一次超预算才失败。新增低 headroom category 摘要，可在不阻断当前构建的前提下提前提示新增 rule 应优先分流或拆分分类。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `low headroom categories`，当前锁定 enterprise-agents、policy-governance、cloud-infrastructure 三个 1-headroom 分类；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。

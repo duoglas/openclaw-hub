@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-170
+- Hypothesis: EXP-169 已输出低 headroom category，但只看剩余 1 条余量会漏掉 physical-ai-robotics=8/10 这类达到 80% 利用率、但尚未进入低 headroom 的高膨胀分类。新增高利用率 category 摘要，可在新增日报 rule 前同时暴露“绝对余量不足”和“预算利用率过高”两种分流信号，降低 source projection registry 后续膨胀维护成本。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD=0.8`；taxonomy summary 计算 `highUtilizationCategories` 并按 utilization desc、count desc、name asc 排序；成功输出新增 `high utilization categories` 行；summary self-test 锁定 `none` 输出，并用 synthetic developer-tools/company-finance 样本锁定 100%/80% 利用率排序和文案。
+- Start date: 2026-06-15
+- End date: 2026-06-15
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `high utilization categories`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 totalRules=41，`high utilization categories: enterprise-agents=7/8 (88% used, 1 headroom), policy-governance=7/8 (88% used, 1 headroom), cloud-infrastructure=5/6 (83% used, 1 headroom), physical-ai-robotics=8/10 (80% used, 2 headroom)`；taxonomy self-test 已锁定无高利用率时输出 `none` 与 100%/80% synthetic 排序；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留高利用率 warning 作为新增 source projection rule 前的维护提醒；下一步可在新增规则命中高利用率 category 时自动提示分流 category 或要求提高预算理由。）
+
 ### EXP-169
 - Hypothesis: EXP-168 已为 source projection category 增加硬预算与 headroom；若维护者只能看到完整 budget 明细，enterprise-agents、policy-governance、cloud-infrastructure 这类只剩 1 条余量的分类仍容易在新增日报 rule 时被忽略，直到下一次超预算才失败。新增低 headroom category 摘要，可在不阻断当前构建的前提下提前提示新增 rule 应优先分流或拆分分类。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
