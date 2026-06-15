@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-15 11:22
+Last updated: 2026-06-15 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-171: 为 source projection taxonomy summary 增加 category capacity action 提示，消费 EXP-170 “新增 rule 命中高利用率 category 时自动提示分流或预算理由”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
+  - Hypothesis: EXP-170 已输出高利用率 category，但维护者仍需要把 high utilization 与 low headroom 两行手动合并成新增 rule 前的行动判断。新增 category capacity actions 摘要，可把 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 这类高风险分类直接转成“拆分分类或提高预算”的下一步提示，降低 source projection registry 继续膨胀时的维护判断成本。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category capacity actions`，当前提示 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `suggestSourceProjectionCategoryCapacityActions`，合并 high utilization 与 low headroom category；2) taxonomy summary 成功路径新增 `category capacity actions` 行，无风险时输出 `none`；3) 当前 CLI 输出 enterprise-agents/policy-governance/cloud-infrastructure 需分流或提高预算且包含 utilization + headroom 原因，physical-ai-robotics 包含 80% utilization 原因；4) summary self-test 锁定无 action 输出与 synthetic developer-tools/company-finance action 排序/文案；5) taxonomy、registry health 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-170: 为 source projection taxonomy summary 增加高利用率 category 预警，消费 EXP-169 “低 headroom category 自动分流提醒”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
   - Hypothesis: EXP-169 已输出低 headroom category，但只看剩余 1 条余量会漏掉 physical-ai-robotics=8/10 这类达到 80% 利用率、但尚未进入低 headroom 的高膨胀分类。新增高利用率 category 摘要，可在新增日报 rule 前同时暴露“绝对余量不足”和“预算利用率过高”两种分流信号，降低 source projection registry 后续膨胀维护成本。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `high utilization categories`，当前锁定 enterprise-agents=7/8、policy-governance=7/8、cloud-infrastructure=5/6、physical-ai-robotics=8/10；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。

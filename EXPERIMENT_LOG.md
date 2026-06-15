@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-171
+- Hypothesis: EXP-170 已输出高利用率 category，但维护者仍需要把 high utilization 与 low headroom 两行手动合并成新增 rule 前的行动判断。新增 category capacity actions 摘要，可把 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 这类高风险分类直接转成“拆分分类或提高预算”的下一步提示，降低 source projection registry 继续膨胀时的维护判断成本。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `suggestSourceProjectionCategoryCapacityActions`，合并 high utilization 与 low headroom category 并按 headroom、utilization、count、name 排序；taxonomy summary 成功路径新增 `category capacity actions` 行；summary self-test 锁定无 action 输出与 synthetic developer-tools/company-finance action 文案。
+- Start date: 2026-06-15
+- End date: 2026-06-15
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `category capacity actions`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 totalRules=41，`category capacity actions: enterprise-agents: split category or raise budget before adding new rules (88% used + 1 headroom); policy-governance: split category or raise budget before adding new rules (88% used + 1 headroom); cloud-infrastructure: split category or raise budget before adding new rules (83% used + 1 headroom); physical-ai-robotics: split category or raise budget before adding new rules (80% used)`；summary self-test 已锁定无 action 时输出 `none` 与 100%/80% synthetic action 排序/文案；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 capacity action 作为新增 source projection rule 前的维护提醒；下一步可把新增 rule 的 category 与 capacity action 自动交叉检查，要求命中高风险 category 时附带分流或提高预算理由。）
+
 ### EXP-170
 - Hypothesis: EXP-169 已输出低 headroom category，但只看剩余 1 条余量会漏掉 physical-ai-robotics=8/10 这类达到 80% 利用率、但尚未进入低 headroom 的高膨胀分类。新增高利用率 category 摘要，可在新增日报 rule 前同时暴露“绝对余量不足”和“预算利用率过高”两种分流信号，降低 source projection registry 后续膨胀维护成本。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

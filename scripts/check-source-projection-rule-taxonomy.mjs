@@ -94,6 +94,29 @@ function formatUtilization(item) {
   return `${item.name}=${item.count}/${item.budget} (${formatShare(item.count / item.budget)} used, ${item.headroom} headroom)`;
 }
 
+export function suggestSourceProjectionCategoryCapacityActions(summary = summarizeSourceProjectionRuleTaxonomy()) {
+  const actionByCategory = new Map();
+  for (const item of summary.highUtilizationCategories || []) {
+    actionByCategory.set(item.name, {
+      ...item,
+      reasons: [`${formatShare(item.count / item.budget)} used`],
+    });
+  }
+  for (const item of summary.lowHeadroomCategories || []) {
+    const existing = actionByCategory.get(item.name) || { ...item, reasons: [] };
+    existing.reasons.push(`${item.headroom} headroom`);
+    actionByCategory.set(item.name, existing);
+  }
+
+  return [...actionByCategory.values()]
+    .sort((a, b) => a.headroom - b.headroom || (b.count / b.budget) - (a.count / a.budget) || b.count - a.count || a.name.localeCompare(b.name))
+    .map((item) => ({
+      ...item,
+      action: 'split category or raise budget before adding new rules',
+      reason: [...new Set(item.reasons)].join(' + '),
+    }));
+}
+
 export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSourceProjectionRuleTaxonomy()) {
   const ownerLine = summary.owners.map((item) => `${item.name}=${item.count}`).join(', ');
   const categoryLine = summary.categories.map((item) => `${item.name}=${item.count}`).join(', ');
@@ -113,6 +136,9 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
   const highUtilizationLine = (summary.highUtilizationCategories || [])
     .map(formatUtilization)
     .join(', ');
+  const capacityActionLine = suggestSourceProjectionCategoryCapacityActions(summary)
+    .map((item) => `${item.name}: ${item.action} (${item.reason})`)
+    .join('; ');
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
@@ -120,6 +146,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `category budgets: ${categoryBudgetLine || 'n/a'}`,
     `low headroom categories: ${lowHeadroomLine || 'none'}`,
     `high utilization categories: ${highUtilizationLine || 'none'}`,
+    `category capacity actions: ${capacityActionLine || 'none'}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
   ].join('\n');
@@ -246,6 +273,7 @@ function validateSelfTests() {
     'category budgets: physical-ai-robotics=2/10 (8 headroom), frontier-models=1/6 (5 headroom)',
     'low headroom categories: none',
     'high utilization categories: none',
+    'category capacity actions: none',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
@@ -267,6 +295,7 @@ function validateSelfTests() {
   }));
   for (const fragment of [
     'high utilization categories: developer-tools=4/4 (100% used, 0 headroom), company-finance=4/5 (80% used, 1 headroom)',
+    'category capacity actions: developer-tools: split category or raise budget before adding new rules (100% used + 0 headroom); company-finance: split category or raise budget before adding new rules (80% used + 1 headroom)',
   ]) {
     if (!highUtilizationDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy high-utilization self-test failed: ${fragment}`);
