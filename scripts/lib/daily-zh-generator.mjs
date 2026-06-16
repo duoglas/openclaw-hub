@@ -160,5 +160,10 @@ export function generateZhDailyBody(sourceText, date) {
     '不太可能马上普及：  \n家庭通用陪伴、完全开放环境中的复杂体力劳动，以及缺少明确 ROI 的消费级场景。'
   );
 
+  // Some upstream cron summaries use a trailing ellipsis marker for shortened
+  // notes. The daily freshness gate treats those tails as cut-off content, so
+  // keep the complete sentence before the marker and drop the marker itself.
+  body = body.replace(/[ \t]*…[ \t]*$/gm, '');
+
   return body;
 }
