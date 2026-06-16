@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-173
+- Hypothesis: 最近24小时新增日报（2026-06-16）已经暴露 Meta Facebook AI Mode/创作工具、Amazon Content Partners 内容授权预览、OpenAI Partner Network 企业落地生态、中国人形机器人实景实训与 NVIDIA AgentPerf Blackwell 五条信号；若这些信号只停留在 ZH/泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-16 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-16.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-06-16.md`、`src/content/blog/zh/openclaw-daily-2026-06-16.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 2026-06-16 真实 cron fixture 并注册到 registry；新增 `meta-facebook-ai-tools-2026`、`amazon-content-partners-ai-crawler-preview-2026`、`openai-partner-network-enterprise-ecosystem-2026` 三条字段级英文 source projection，复用中国人形机器人实景实训与 NVIDIA AgentPerf Blackwell 规则；OpenAI Partner Network 规则附带 enterprise-agents capacity plan；重写 2026-06-16 EN/ZH 日报，移除泛化 source fallback 并保留 CTA 内链。
+- Start date: 2026-06-16
+- End date: 2026-06-16
+- Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-06-16 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 Meta Facebook AI tools、Amazon Content Partners、China humanoid embodied training、OpenAI Partner Network 与 NVIDIA AgentPerf Blackwell 五条输出；source projection scope/registry/taxonomy/metadata/term narrowness 全部通过；taxonomy 当前 totalRules=44，enterprise-agents=8/8 并由 OpenAI Partner Network 规则附带 capacity plan；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；CTA/action sections、latest specificity、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 2026-06-16 fixture 作为最新日报首日索引质量基线；下一步应优先为 enterprise-agents 满额后的新增 source projection 设计 category split / budget raise 专项实验，避免后续新增 enterprise rule 被预算闸门阻断。）
+
 ### EXP-172
 - Hypothesis: EXP-171 已输出 category capacity actions；若新增 source projection rule 命中 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 等高风险 category 时仍不要求分流或提高预算理由，维护者可能看见 warning 但继续追加规则，导致 registry 在低 headroom / 高 utilization 分类里继续膨胀。新增 proposed rule capacity plan guard，可把 capacity action 从摘要提醒升级为新增规则前的可复用校验。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

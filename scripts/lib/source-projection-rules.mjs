@@ -385,6 +385,40 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'meta-facebook-ai-tools-2026',
+    owner: 'daily-source-projection',
+    category: 'consumer-productivity',
+    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装'],
+    details: {
+      what: 'Meta added AI Mode search, AI image and video editing, AI outfit try-on, and avatar restyling features inside Facebook, moving generative tools directly into social search and creation flows.',
+      why: 'The update shows consumer AI shifting from standalone chat apps into default social-product surfaces, where search, posting, editing, and identity tools can all invoke AI in the same user journey.',
+      impact: 'Creators and everyday users may create more visual content with lower friction, while teams should watch privacy controls, provenance labeling, and platform-search behavior as AI answers enter Facebook workflows.',
+    },
+  },
+  {
+    name: 'amazon-content-partners-ai-crawler-preview-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    terms: ['Amazon Content Partners', 'gated preview', 'AWS 托管额度'],
+    details: {
+      what: 'Amazon launched Amazon Content Partners in gated preview for independent content creators, combining AI crawler traffic management, affiliate commission boosts, advertising access, and AWS hosting credits.',
+      why: 'The preview turns the AI-search content compensation problem into a commercial exchange: publishers grant structured access while platforms offer traffic controls, monetization paths, and infrastructure support.',
+      impact: 'Independent publishers, niche media, and blogs may get another lever against AI traffic erosion, while AI platforms will face more explicit licensing, crawler policy, and revenue-sharing expectations.',
+    },
+  },
+  {
+    name: 'openai-partner-network-enterprise-ecosystem-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    capacityPlan: 'Consumes the final enterprise-agents budget slot because the 2026-06-16 real cron sample contains a concrete OpenAI Partner Network deployment-ecosystem signal; future enterprise agent rules should split categories or raise budget before merge.',
+    terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问'],
+    details: {
+      what: 'OpenAI introduced Partner Network with a planned 150 million USD investment in the partner ecosystem and a goal of training 300,000 certified consultants by the end of 2026.',
+      why: 'The move shows enterprise AI adoption depending on workflow redesign, systems integration, governance, and organization change rather than model access alone.',
+      impact: 'Consulting firms, systems integrators, and industry software vendors may bind more closely to OpenAI, while enterprise buyers should evaluate implementation partners as carefully as model capability.',
+    },
+  },
+  {
     name: 'china-humanoid-embodied-training-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',

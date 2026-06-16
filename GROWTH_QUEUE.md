@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-16 11:20
+Last updated: 2026-06-16 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-173: 将 2026-06-16 真实 cron 样本接入 daily-real-cron fixture registry，并为 Meta Facebook AI tools / Amazon Content Partners / OpenAI Partner Network 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-06-16）已经暴露 Meta Facebook AI Mode/创作工具、Amazon Content Partners 内容授权预览、OpenAI Partner Network 企业落地生态、中国人形机器人实景实训与 NVIDIA AgentPerf Blackwell 五条信号；若这些信号只停留在 ZH/泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-16 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
+  - Metrics: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `scripts/fixtures/daily-real-cron-2026-06-16.mjs` 并注册进 `daily-real-cron-fixtures.mjs`，覆盖 Meta Facebook AI tools、Amazon Content Partners、China humanoid embodied training、OpenAI Partner Network 与 NVIDIA AgentPerf Blackwell 五条信号；2) `source-projection-rules.mjs` 新增 3 条字段级英文 projection，并复用 `china-humanoid-embodied-training-2026` 与 `nvidia-agentperf-blackwell-2026`；3) OpenAI Partner Network 命中 enterprise-agents 高风险 category 时附带 `capacityPlan`，避免绕过 EXP-172 新增规则容量计划约束；4) fixture 写入 story-level `sourceProjectionRuleMatches`、EN/ZH required outputs、banned generic fallback 与 story 3/5 section-boundary guardrail；5) EN/ZH `openclaw-daily-2026-06-16.md` 已由字段级 projection 重写并保留 CTA；6) 相关 source projection、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity、CTA/action sections、duplicate precheck 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-172: 为 source projection taxonomy 增加 proposed rule capacity plan guard，消费 EXP-171 “新增 rule 命中高风险 category 时附带分流或提高预算理由”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-171 已输出 category capacity actions；若新增 source projection rule 命中 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 等高风险 category 时仍不要求分流或提高预算理由，维护者可能看见 warning 但继续追加规则，导致 registry 在低 headroom / 高 utilization 分类里继续膨胀。新增 proposed rule capacity plan guard，可把 capacity action 从摘要提醒升级为新增规则前的可复用校验。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `new rule capacity plan required for: enterprise-agents, policy-governance, cloud-infrastructure, physical-ai-robotics`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。

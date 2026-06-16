@@ -1,13 +1,6 @@
----
-title: "AI / 科技日报（2026-06-16）"
-description: "2026-06-16 早间版；Meta 发布 Facebook 新 AI 功能，包括 AI Mode 搜索、AI 图片/视频编辑、AI 换装与头像重塑。"
-pubDate: 2026-06-16
-tags: ["ai", "tech", "daily", "news"]
-category: "news"
-lang: "zh"
----
+export const fixtureDate = '2026-06-16';
 
-《AI、科技日报》
+export const realCronFixture = `《AI、科技日报》
 2026-06-16 早间版
 
 ## 今日要闻（5条）
@@ -81,11 +74,13 @@ lang: "zh"
 - 最值得关注：企业级 AI 正在加速进入核心业务流程，AI 不再只是聊天工具，而是在进入税务、法务、制造、运维、推理服务等真实生产系统。
 - 给普通用户建议：短期优先选择权限透明、可断开授权、有来源标注的 AI 产品，把它用于信息整理、学习复盘、日常文档和低风险决策辅助。
 - 给团队建议：不要只比较模型榜单，先选一个高频流程做试点，并把权限、审计、成本和人工复核写进上线标准。
+
 ## 明日跟踪点
 
 - 关注今日提到的模型、平台或硬件动态是否出现产品化细节。
 - 关注企业案例是否披露真实使用场景、权限控制和成本变化。
 - 关注政策、版权、数据安全或来源标注要求是否进一步收紧。
+
 ## 证据矩阵
 
 - 来源条目 1：Meta 把 AI 搜索和创作工具继续塞进 Facebook —— Meta 发布 Facebook 新 AI 功能，包括 AI Mode 搜索、AI 图片/视频编辑、AI 换装与头像重塑。
@@ -93,9 +88,101 @@ lang: "zh"
 - 来源条目 3：中国两部门推进人形机器人与具身智能“实景实训” —— 工信部办公厅、国务院国资委办公厅发布通知，开展 2026 年度人形机器人与具身智能实景实训专项行动，目标包括真实场景训练、百个以上高价值应用场景、万台级规模落地能力。
 - 来源条目 4：OpenAI 推出 Partner Network，押注企业 AI 落地生态 —— OpenAI 发布 Partner Network，计划投入 1.5 亿美元支持合作伙伴生态，并提出到 2026 年底培训 30 万名认证顾问。
 - 来源条目 5：NVIDIA 强调 Agentic AI 需要新的基础设施指标 —— NVIDIA 发布 Blackwell 在 AgentPerf 智能体 AI 基准中的表现，称 GB300 NVL72 在相关工作负载中每兆瓦可运行的智能体数量显著高于上一代系统。
+`;
 
-## 下一步行动（CTA）
+export const expectedSignals = [
+  {
+    title: 'Meta 把 AI 搜索和创作工具继续塞进 Facebook',
+    sourceProjectionRuleMatches: ['meta-facebook-ai-tools-2026'],
+    enLabel: 'Meta / Facebook / Mode',
+    zhEvidence: '来源条目 1：Meta 把 AI 搜索和创作工具继续塞进 Facebook',
+    requiredTokens: ['Meta', 'AI Mode', 'AI image', 'Facebook'],
+  },
+  {
+    title: 'Amazon 推出 Content Partners，试图重塑 AI 时代内容分发',
+    sourceProjectionRuleMatches: ['amazon-content-partners-ai-crawler-preview-2026'],
+    enLabel: 'Amazon / Content / Partners / model capability update',
+    zhEvidence: '来源条目 2：Amazon 推出 Content Partners，试图重塑 AI 时代内容分发',
+    requiredTokens: ['Amazon Content Partners', 'gated preview', 'AWS hosting credits'],
+  },
+  {
+    title: '中国两部门推进人形机器人与具身智能“实景实训”',
+    sourceProjectionRuleMatches: ['china-humanoid-embodied-training-2026'],
+    enLabel: 'MIIT / China / L1 / robotics deployment',
+    zhEvidence: '来源条目 3：中国两部门推进人形机器人与具身智能“实景实训”',
+    requiredTokens: ['MIIT', 'SASAC', '100 high-value', '10,000-unit'],
+  },
+  {
+    title: 'OpenAI 推出 Partner Network，押注企业 AI 落地生态',
+    sourceProjectionRuleMatches: ['openai-partner-network-enterprise-ecosystem-2026'],
+    enLabel: 'OpenAI / Partner / Network / model capability update',
+    zhEvidence: '来源条目 4：OpenAI 推出 Partner Network，押注企业 AI 落地生态',
+    requiredTokens: ['OpenAI', 'Partner Network', '150 million USD', '300,000'],
+  },
+  {
+    title: 'NVIDIA 强调 Agentic AI 需要新的基础设施指标',
+    sourceProjectionRuleMatches: ['nvidia-agentperf-blackwell-2026'],
+    enLabel: 'NVIDIA / Agentic / Blackwell / agent platform',
+    zhEvidence: '来源条目 5：NVIDIA 强调 Agentic AI 需要新的基础设施指标',
+    requiredTokens: ['NVIDIA', 'AgentPerf', 'GB300 NVL72', 'concurrent agents'],
+  },
+];
 
-- 先读核心定位：[什么是 OpenClaw](/zh/blog/what-is-openclaw/)
-- 需要落地部署：[OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/)
-- 保障稳定性：[OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)
+export const bannedFallbackPhrases = [
+  'The source tracks AI product and deployment change around Meta, Facebook, Mode, App',
+  'The source tracks model capability update, enterprise alliance, robot grasping around Amazon, Content, Partners, AWS',
+  'The source tracks model capability update, enterprise AI rollout, strategic partnership around OpenAI, Partner, Network',
+  'buyers must check access control, infrastructure availability, operational risk',
+  'giving the daily brief a named actor and deployment context',
+  'today AI / technology daily not generated',
+  '今日 AI / 科技日报暂未生成',
+  '-…',
+  '...',
+];
+
+export const requiredEnglishOutputs = [
+  '### 1. Meta / Facebook / Mode',
+  '### 2. Amazon / Content / Partners / model capability update',
+  '### 3. MIIT / China / L1 / robotics deployment',
+  '### 4. OpenAI / Partner / Network / model capability update',
+  '### 5. NVIDIA / Agentic / Blackwell / agent platform',
+  'Meta added AI Mode search, AI image and video editing',
+  'Amazon launched Amazon Content Partners in gated preview',
+  'China’s MIIT and SASAC launched a 2026 humanoid robotics',
+  'OpenAI introduced Partner Network with a planned 150 million USD investment',
+  'NVIDIA said Artificial Analysis AgentPerf results show GB300 NVL72',
+  'Evidence item 1: Meta / Facebook / Mode',
+  'Evidence item 2: Amazon / Content / Partners / model capability update',
+  'Evidence item 3: MIIT / China / L1 / robotics deployment',
+  'Evidence item 4: OpenAI / Partner / Network / model capability update',
+  'Evidence item 5: NVIDIA / Agentic / Blackwell / agent platform',
+  '## Today’s Bottom Line',
+  '## What to Watch Tomorrow',
+  '## Evidence Matrix',
+];
+
+export const requiredZhOutputs = [
+  'Meta 把 AI 搜索和创作工具继续塞进 Facebook',
+  'Amazon 推出 Content Partners，试图重塑 AI 时代内容分发',
+  '中国两部门推进人形机器人与具身智能“实景实训”',
+  'OpenAI 推出 Partner Network，押注企业 AI 落地生态',
+  'NVIDIA 强调 Agentic AI 需要新的基础设施指标',
+  '## 今日结论',
+  '## 明日跟踪点',
+  '## 证据矩阵',
+  '来源条目 1：Meta 把 AI 搜索和创作工具继续塞进 Facebook',
+  '来源条目 5：NVIDIA 强调 Agentic AI 需要新的基础设施指标',
+];
+
+export const parserGuardrails = {
+  story3RequiredEnLabelTokens: ['MIIT', 'China'],
+  story3ForbiddenEnLabelTokens: ['Meta', 'Amazon', 'OpenAI', 'NVIDIA'],
+  story3RequiredDetailTokens: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力'],
+  story3ForbiddenDetailTokens: ['AI Mode', 'Amazon Content Partners', 'Partner Network', 'AgentPerf'],
+  story3ForbiddenEvidenceTokens: ['AI Mode', 'Amazon Content Partners', 'Partner Network', 'AgentPerf'],
+  story3ForbiddenZhEvidenceTokens: ['AI Mode 搜索', 'Amazon Content Partners', 'Partner Network', 'AgentPerf'],
+  story5RequiredDetailTokens: ['AgentPerf', 'GB300 NVL72', '每兆瓦'],
+  story5ForbiddenDetailTokens: ['Codex', '黑洞模拟算法', 'Chi-kwan Chan'],
+  story5ForbiddenEvidenceTokens: ['Codex', 'black hole', 'Chi-kwan Chan'],
+  story5ForbiddenZhEvidenceTokens: ['Codex', '黑洞模拟算法', 'Chi-kwan Chan'],
+};
