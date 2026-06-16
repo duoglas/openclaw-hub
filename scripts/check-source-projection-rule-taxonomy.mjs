@@ -117,6 +117,38 @@ export function suggestSourceProjectionCategoryCapacityActions(summary = summari
     }));
 }
 
+
+function hasCapacityPlan(rule) {
+  return Boolean(normalize(rule.capacityPlan) || normalize(rule.capacityJustification));
+}
+
+export function categoriesRequiringSourceProjectionCapacityPlan(summary = summarizeSourceProjectionRuleTaxonomy()) {
+  return suggestSourceProjectionCategoryCapacityActions(summary).map((item) => item.name);
+}
+
+export function validateSourceProjectionRuleCategoryCapacityPlan({
+  currentRules = sourceProjectionRules(),
+  proposedRules = [],
+} = {}) {
+  const summary = summarizeSourceProjectionRuleTaxonomy({ rules: currentRules });
+  const actionByCategory = new Map(suggestSourceProjectionCategoryCapacityActions(summary).map((item) => [item.name, item]));
+  const failures = [];
+
+  for (const rule of proposedRules) {
+    const name = normalize(rule.name) || '(unnamed proposed rule)';
+    const category = normalize(rule.category);
+    const action = actionByCategory.get(category);
+    if (action && !hasCapacityPlan(rule)) {
+      failures.push(
+        `${name} — category ${category} requires capacityPlan before adding new rules `
+          + `(${action.reason}; ${action.action})`,
+      );
+    }
+  }
+
+  return failures;
+}
+
 export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSourceProjectionRuleTaxonomy()) {
   const ownerLine = summary.owners.map((item) => `${item.name}=${item.count}`).join(', ');
   const categoryLine = summary.categories.map((item) => `${item.name}=${item.count}`).join(', ');
@@ -139,6 +171,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
   const capacityActionLine = suggestSourceProjectionCategoryCapacityActions(summary)
     .map((item) => `${item.name}: ${item.action} (${item.reason})`)
     .join('; ');
+  const capacityPlanCategories = categoriesRequiringSourceProjectionCapacityPlan(summary).join(', ');
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
@@ -147,6 +180,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `low headroom categories: ${lowHeadroomLine || 'none'}`,
     `high utilization categories: ${highUtilizationLine || 'none'}`,
     `category capacity actions: ${capacityActionLine || 'none'}`,
+    `new rule capacity plan required for: ${capacityPlanCategories || 'none'}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
   ].join('\n');
@@ -274,6 +308,7 @@ function validateSelfTests() {
     'low headroom categories: none',
     'high utilization categories: none',
     'category capacity actions: none',
+    'new rule capacity plan required for: none',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
@@ -296,10 +331,61 @@ function validateSelfTests() {
   for (const fragment of [
     'high utilization categories: developer-tools=4/4 (100% used, 0 headroom), company-finance=4/5 (80% used, 1 headroom)',
     'category capacity actions: developer-tools: split category or raise budget before adding new rules (100% used + 0 headroom); company-finance: split category or raise budget before adding new rules (80% used + 1 headroom)',
+    'new rule capacity plan required for: developer-tools, company-finance',
   ]) {
     if (!highUtilizationDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy high-utilization self-test failed: ${fragment}`);
     }
+  }
+
+  const capacityPlanFailures = validateSourceProjectionRuleCategoryCapacityPlan({
+    currentRules: Array.from({ length: 4 }, (_, index) => ({
+      name: `synthetic-developer-capacity-current-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'developer-tools',
+    })).concat(ALLOWED_SOURCE_PROJECTION_CATEGORIES
+      .filter((category) => category !== 'developer-tools')
+      .map((category) => ({
+        name: `synthetic-${category}-capacity-coverage-rule`,
+        owner: 'daily-source-projection',
+        category,
+      }))),
+    proposedRules: [
+      {
+        name: 'synthetic-new-developer-tool-rule-without-plan',
+        owner: 'daily-source-projection',
+        category: 'developer-tools',
+      },
+    ],
+  });
+  const capacityPlanDiagnostic = capacityPlanFailures.join('\n');
+  if (!capacityPlanDiagnostic.includes('synthetic-new-developer-tool-rule-without-plan — category developer-tools requires capacityPlan before adding new rules (100% used + 0 headroom; split category or raise budget before adding new rules)')) {
+    failures.push('source projection taxonomy capacity-plan self-test failed: missing capacityPlan diagnostic');
+  }
+
+  const capacityPlanPassFailures = validateSourceProjectionRuleCategoryCapacityPlan({
+    currentRules: Array.from({ length: 4 }, (_, index) => ({
+      name: `synthetic-developer-capacity-current-pass-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'developer-tools',
+    })).concat(ALLOWED_SOURCE_PROJECTION_CATEGORIES
+      .filter((category) => category !== 'developer-tools')
+      .map((category) => ({
+        name: `synthetic-${category}-capacity-pass-coverage-rule`,
+        owner: 'daily-source-projection',
+        category,
+      }))),
+    proposedRules: [
+      {
+        name: 'synthetic-new-developer-tool-rule-with-plan',
+        owner: 'daily-source-projection',
+        category: 'developer-tools',
+        capacityPlan: 'Split developer-tools into desktop-automation before adding this rule.',
+      },
+    ],
+  });
+  if (capacityPlanPassFailures.length > 0) {
+    failures.push('source projection taxonomy capacity-plan self-test failed: capacityPlan should satisfy high-risk category guard');
   }
 
   return failures;

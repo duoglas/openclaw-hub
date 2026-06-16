@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-15 17:20
+Last updated: 2026-06-16 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-172: 为 source projection taxonomy 增加 proposed rule capacity plan guard，消费 EXP-171 “新增 rule 命中高风险 category 时附带分流或提高预算理由”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-171 已输出 category capacity actions；若新增 source projection rule 命中 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 等高风险 category 时仍不要求分流或提高预算理由，维护者可能看见 warning 但继续追加规则，导致 registry 在低 headroom / 高 utilization 分类里继续膨胀。新增 proposed rule capacity plan guard，可把 capacity action 从摘要提醒升级为新增规则前的可复用校验。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `new rule capacity plan required for: enterprise-agents, policy-governance, cloud-infrastructure, physical-ai-robotics`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `categoriesRequiringSourceProjectionCapacityPlan` 与 `validateSourceProjectionRuleCategoryCapacityPlan`，自动从当前 capacity actions 计算需 plan 的高风险 category；2) proposed rule 命中高风险 category 且缺少 `capacityPlan` / `capacityJustification` 时输出包含 category、utilization/headroom reason 与 action 的失败诊断；3) taxonomy summary 新增 `new rule capacity plan required for` 行，当前锁定 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics；4) self-test 锁定 developer-tools 100% synthetic 缺 plan 失败与带 plan 通过；5) taxonomy、registry health 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-171: 为 source projection taxonomy summary 增加 category capacity action 提示，消费 EXP-170 “新增 rule 命中高利用率 category 时自动提示分流或预算理由”后续假设 | ICE 7x8x8=448 — commit `(this commit)`
   - Hypothesis: EXP-170 已输出高利用率 category，但维护者仍需要把 high utilization 与 low headroom 两行手动合并成新增 rule 前的行动判断。新增 category capacity actions 摘要，可把 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 这类高风险分类直接转成“拆分分类或提高预算”的下一步提示，降低 source projection registry 继续膨胀时的维护判断成本。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category capacity actions`，当前提示 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。

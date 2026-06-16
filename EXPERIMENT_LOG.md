@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-172
+- Hypothesis: EXP-171 已输出 category capacity actions；若新增 source projection rule 命中 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 等高风险 category 时仍不要求分流或提高预算理由，维护者可能看见 warning 但继续追加规则，导致 registry 在低 headroom / 高 utilization 分类里继续膨胀。新增 proposed rule capacity plan guard，可把 capacity action 从摘要提醒升级为新增规则前的可复用校验。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `categoriesRequiringSourceProjectionCapacityPlan` 与 `validateSourceProjectionRuleCategoryCapacityPlan`，自动读取当前 taxonomy capacity actions；proposed rule 若命中高风险 category 且缺少 `capacityPlan` / `capacityJustification`，会输出包含 category、utilization/headroom reason 与行动建议的失败诊断；taxonomy summary 新增 `new rule capacity plan required for` 行；self-test 锁定 developer-tools 100% synthetic 缺 plan 失败与带 plan 通过。
+- Start date: 2026-06-16
+- End date: 2026-06-16
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `new rule capacity plan required for`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 `new rule capacity plan required for: enterprise-agents, policy-governance, cloud-infrastructure, physical-ai-robotics`；capacity-plan self-test 已锁定高风险 proposed rule 缺 `capacityPlan` 时失败，并验证带 `capacityPlan` 可通过；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 capacity plan guard 作为后续新增 source projection rule 前的维护基线；下一步可把 proposed rule plan guard 接入生成 fixture/rule 的专用脚本，新增规则时自动执行。）
+
 ### EXP-171
 - Hypothesis: EXP-170 已输出高利用率 category，但维护者仍需要把 high utilization 与 low headroom 两行手动合并成新增 rule 前的行动判断。新增 category capacity actions 摘要，可把 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 这类高风险分类直接转成“拆分分类或提高预算”的下一步提示，降低 source projection registry 继续膨胀时的维护判断成本。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
