@@ -30,6 +30,27 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
 };
 export const SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD = 1;
 export const SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD = 0.8;
+export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
+  'cloud-infrastructure': [
+    'cloud-model-distribution',
+    'ai-infrastructure-capacity',
+  ],
+  'enterprise-agents': [
+    'enterprise-agent-platforms',
+    'vertical-workflow-agents',
+    'agent-enablement-programs',
+  ],
+  'physical-ai-robotics': [
+    'robotics-simulation-training',
+    'robotics-commercial-deployment',
+    'autonomous-mobility-systems',
+  ],
+  'policy-governance': [
+    'ai-policy-standards',
+    'ai-industrial-policy',
+    'digital-regulation-compliance',
+  ],
+};
 
 function normalize(value) {
   return String(value || '').trim();
@@ -92,6 +113,15 @@ function formatShare(value) {
 
 function formatUtilization(item) {
   return `${item.name}=${item.count}/${item.budget} (${formatShare(item.count / item.budget)} used, ${item.headroom} headroom)`;
+}
+
+export function suggestSourceProjectionCategorySplitPlans(summary = summarizeSourceProjectionRuleTaxonomy()) {
+  return suggestSourceProjectionCategoryCapacityActions(summary)
+    .filter((item) => SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS[item.name])
+    .map((item) => ({
+      ...item,
+      splitInto: SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS[item.name],
+    }));
 }
 
 export function suggestSourceProjectionCategoryCapacityActions(summary = summarizeSourceProjectionRuleTaxonomy()) {
@@ -171,6 +201,9 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
   const capacityActionLine = suggestSourceProjectionCategoryCapacityActions(summary)
     .map((item) => `${item.name}: ${item.action} (${item.reason})`)
     .join('; ');
+  const splitPlanLine = suggestSourceProjectionCategorySplitPlans(summary)
+    .map((item) => `${item.name}: split into ${item.splitInto.join(' / ')} (${item.reason})`)
+    .join('; ');
   const capacityPlanCategories = categoriesRequiringSourceProjectionCapacityPlan(summary).join(', ');
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
@@ -180,6 +213,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `low headroom categories: ${lowHeadroomLine || 'none'}`,
     `high utilization categories: ${highUtilizationLine || 'none'}`,
     `category capacity actions: ${capacityActionLine || 'none'}`,
+    `category split recommendations: ${splitPlanLine || 'none'}`,
     `new rule capacity plan required for: ${capacityPlanCategories || 'none'}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
@@ -308,6 +342,7 @@ function validateSelfTests() {
     'low headroom categories: none',
     'high utilization categories: none',
     'category capacity actions: none',
+    'category split recommendations: none',
     'new rule capacity plan required for: none',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
@@ -331,11 +366,29 @@ function validateSelfTests() {
   for (const fragment of [
     'high utilization categories: developer-tools=4/4 (100% used, 0 headroom), company-finance=4/5 (80% used, 1 headroom)',
     'category capacity actions: developer-tools: split category or raise budget before adding new rules (100% used + 0 headroom); company-finance: split category or raise budget before adding new rules (80% used + 1 headroom)',
+    'category split recommendations: none',
     'new rule capacity plan required for: developer-tools, company-finance',
   ]) {
     if (!highUtilizationDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy high-utilization self-test failed: ${fragment}`);
     }
+  }
+
+  const splitPlanDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
+    rules: Array.from({ length: 8 }, (_, index) => ({
+      name: `synthetic-enterprise-agents-split-rule-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'enterprise-agents',
+    })).concat(ALLOWED_SOURCE_PROJECTION_CATEGORIES
+      .filter((category) => category !== 'enterprise-agents')
+      .map((category) => ({
+        name: `synthetic-${category}-split-coverage-rule`,
+        owner: 'daily-source-projection',
+        category,
+      }))),
+  }));
+  if (!splitPlanDiagnostic.includes('category split recommendations: enterprise-agents: split into enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs (100% used + 0 headroom)')) {
+    failures.push('source projection taxonomy split-plan self-test failed: enterprise-agents split recommendation');
   }
 
   const capacityPlanFailures = validateSourceProjectionRuleCategoryCapacityPlan({

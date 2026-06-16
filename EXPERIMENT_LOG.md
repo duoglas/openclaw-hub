@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-174
+- Hypothesis: EXP-173 后 enterprise-agents 已达到 8/8 满额，policy-governance 与 cloud-infrastructure 也只剩 1 条 headroom；若 taxonomy 只要求新增规则附带 capacityPlan，而不输出可执行拆分方向，维护者仍需要临场判断应该拆成哪些更细分类，新增日报 source projection 会继续卡在满额 category。新增 category split recommendations，可把高风险分类直接映射为下一步可落地的拆分候选。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS` 与 `suggestSourceProjectionCategorySplitPlans`；taxonomy summary 成功路径新增 `category split recommendations` 行；当前对 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 输出具体拆分候选；self-test 锁定无风险样本输出 `none` 与 enterprise-agents 满额时的拆分文案。
+- Start date: 2026-06-16
+- End date: 2026-06-16
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `category split recommendations`；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 enterprise-agents 拆分为 `enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs`，policy-governance 拆分为 `ai-policy-standards / ai-industrial-policy / digital-regulation-compliance`，cloud-infrastructure 拆分为 `cloud-model-distribution / ai-infrastructure-capacity`，physical-ai-robotics 拆分为 `robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems`；无风险与 enterprise-agents 满额 self-test 已锁定；taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 split recommendations 作为新增 source projection rule 前的拆分提示；下一步可把推荐拆分升级为可选的新 category 枚举迁移实验，先迁移 enterprise-agents 中平台、垂直工作流、赋能计划三类规则。）
+
 ### EXP-173
 - Hypothesis: 最近24小时新增日报（2026-06-16）已经暴露 Meta Facebook AI Mode/创作工具、Amazon Content Partners 内容授权预览、OpenAI Partner Network 企业落地生态、中国人形机器人实景实训与 NVIDIA AgentPerf Blackwell 五条信号；若这些信号只停留在 ZH/泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-16 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-16.mjs`、`scripts/fixtures/daily-real-cron-fixtures.mjs`、`scripts/lib/source-projection-rules.mjs`、`src/content/blog/en/openclaw-daily-2026-06-16.md`、`src/content/blog/zh/openclaw-daily-2026-06-16.md`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-16 17:20
+Last updated: 2026-06-16 17:31
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-174: 为 source projection taxonomy 输出 category split recommendations，消费 EXP-173 “enterprise-agents 满额后需 category split / budget raise 专项实验”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-173 后 enterprise-agents 已达到 8/8 满额，policy-governance 与 cloud-infrastructure 也只剩 1 条 headroom；若 taxonomy 只要求新增规则附带 capacityPlan，而不输出可执行拆分方向，维护者仍需要临场判断应该拆成哪些更细分类，新增日报 source projection 会继续卡在满额 category。新增 category split recommendations，可把高风险分类直接映射为下一步可落地的拆分候选。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category split recommendations`，当前锁定 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 四个高风险分类的拆分方向；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS`，为 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 配置可执行拆分候选；2) 新增 `suggestSourceProjectionCategorySplitPlans`，只对当前 capacity actions 命中的高风险分类输出拆分计划；3) taxonomy summary 成功路径新增 `category split recommendations` 行，无风险 synthetic 样本输出 `none`；4) self-test 锁定 enterprise-agents 100% 满额时推荐 `enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs`；5) taxonomy 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-173: 将 2026-06-16 真实 cron 样本接入 daily-real-cron fixture registry，并为 Meta Facebook AI tools / Amazon Content Partners / OpenAI Partner Network 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-06-16）已经暴露 Meta Facebook AI Mode/创作工具、Amazon Content Partners 内容授权预览、OpenAI Partner Network 企业落地生态、中国人形机器人实景实训与 NVIDIA AgentPerf Blackwell 五条信号；若这些信号只停留在 ZH/泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-16 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
   - Metrics: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
