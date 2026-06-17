@@ -16,7 +16,7 @@ export function extractZhStories(sourceText) {
     const line = normalize(raw);
     if (!line) continue;
 
-    const numbered = line.match(/^(?:#{2,4}\s*)?(\d+)[\.、)]\s*(.+)$/);
+    const numbered = line.match(/^(?:#{2,4}\s*)?(\d+)[\.、)）]\s*(.+)$/);
     if (numbered) {
       closeCurrent();
       current = { title: numbered[2].trim(), what: '', why: '', impact: '' };
@@ -65,8 +65,8 @@ export function extractZhStories(sourceText) {
   if (stories.length === 0) {
     for (const raw of String(sourceText || '').replace(/\r/g, '\n').split('\n')) {
       const line = normalize(raw);
-      if (/^\d+[\.、)]\s+/.test(line)) {
-        stories.push({ title: line.replace(/^\d+[\.、)]\s+/, ''), what: '', why: '', impact: '' });
+      if (/^\d+[\.、)）]\s+/.test(line)) {
+        stories.push({ title: line.replace(/^\d+[\.、)）]\s+/, ''), what: '', why: '', impact: '' });
       }
       if (stories.length >= 5) break;
     }
@@ -99,7 +99,7 @@ export function buildZhDescription(sourceText) {
   for (const rawLine of lines) {
     if (rawLine.startsWith('《AI、科技日报》') || rawLine.startsWith('说明：')) continue;
     if (/^\d{4}-\d{2}-\d{2}\s*(早报|日报|Morning Brief)?$/.test(rawLine)) continue;
-    if (/^(?:#{1,6}\s*)?\d+[\).、]\s+/.test(rawLine)) continue;
+    if (/^(?:#{1,6}\s*)?\d+[\).、）]\s+/.test(rawLine)) continue;
 
     let line = rawLine.replace(/^#{1,6}\s*/, '');
     if (/^[【\[]?.*(今日要闻|实战案例|今日结论|明日跟踪点|证据矩阵).*[】\]]?$/.test(line)) continue;

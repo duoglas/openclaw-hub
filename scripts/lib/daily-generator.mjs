@@ -32,7 +32,7 @@ export function extractStories(sourceText) {
     const line = normalize(raw);
     if (!line || line.startsWith('《AI、科技日报》')) continue;
 
-    const numbered = line.match(/^(?:#{2,4}\s*)?(\d+)[\.、)]\s*(.+)$/);
+    const numbered = line.match(/^(?:#{2,4}\s*)?(\d+)[\.、)）]\s*(.+)$/);
     if (numbered) {
       closeCurrent();
       current = { title: numbered[2].trim(), what: '', why: '', impact: '' };
@@ -75,8 +75,8 @@ export function extractStories(sourceText) {
   if (stories.length === 0) {
     for (const raw of String(sourceText || '').replace(/\r/g, '\n').split('\n')) {
       const line = normalize(raw);
-      if (/^\d+[\.、)]\s+/.test(line)) {
-        stories.push({ title: line.replace(/^\d+[\.、)]\s+/, ''), what: '', why: '', impact: '' });
+      if (/^\d+[\.、)）]\s+/.test(line)) {
+        stories.push({ title: line.replace(/^\d+[\.、)）]\s+/, ''), what: '', why: '', impact: '' });
       } else if ([...BRAND_TOKENS].some((token) => line.includes(token))) {
         stories.push({ title: line, what: '', why: '', impact: '' });
       }
