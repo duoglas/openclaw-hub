@@ -15,6 +15,16 @@
 
 ## Active Experiments
 
+### EXP-175
+- Hypothesis: EXP-174 已输出 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 的 split recommendations；若只给目标分类名，不给当前 rule 到目标分类的批量迁移建议，维护者仍需要逐条阅读 44 条 registry rule 才能执行 category 枚举迁移。新增 split migration batches，可把高风险 category 的现有 rules 自动分桶到候选细分类，降低下一步真实 category migration 的人工判断成本。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`
+- Change: 新增 `SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS` 与 `suggestSourceProjectionCategorySplitMigrationBatches`；taxonomy summary 成功路径新增 `category split migration batches` 行；当前对 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 输出可执行迁移批次，并通过 rule name、terms 与 projection details 匹配目标细分类；summary self-test 锁定低风险样本输出 `none` 与 enterprise-agents 可诊断分桶。
+- Start date: 2026-06-17
+- End date: 2026-06-17
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `category split migration batches`；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 `category split migration batches: enterprise-agents: enterprise-agent-platforms=4, vertical-workflow-agents=2, agent-enablement-programs=2; policy-governance: ai-policy-standards=2, ai-industrial-policy=4, digital-regulation-compliance=1; cloud-infrastructure: cloud-model-distribution=2, ai-infrastructure-capacity=3; physical-ai-robotics: robotics-simulation-training=5, robotics-commercial-deployment=2, autonomous-mobility-systems=1`；taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision (scale / iterate / stop): scale（保留 split migration batches 作为 category enum 迁移前的准备层；下一步可新增真实 split category 枚举并分阶段迁移 enterprise-agents，避免 8/8 满额阻断后续日报 source projection rule。）
+
 ### EXP-174
 - Hypothesis: EXP-173 后 enterprise-agents 已达到 8/8 满额，policy-governance 与 cloud-infrastructure 也只剩 1 条 headroom；若 taxonomy 只要求新增规则附带 capacityPlan，而不输出可执行拆分方向，维护者仍需要临场判断应该拆成哪些更细分类，新增日报 source projection 会继续卡在满额 category。新增 category split recommendations，可把高风险分类直接映射为下一步可落地的拆分候选。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`、`GROWTH_QUEUE.md`、`EXPERIMENT_LOG.md`

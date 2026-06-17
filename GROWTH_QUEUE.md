@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-16 17:31
+Last updated: 2026-06-17 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-175: 为 source projection taxonomy 增加 category split migration batches，消费 EXP-174 “将 split recommendations 升级为可迁移 category 枚举”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-174 已输出 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 的 split recommendations；若只给目标分类名，不给当前 rule 到目标分类的批量迁移建议，维护者仍需要逐条阅读 44 条 registry rule 才能执行 category 枚举迁移。新增 split migration batches，可把高风险 category 的现有 rules 自动分桶到候选细分类，降低下一步真实 category migration 的人工判断成本。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category split migration batches`，当前覆盖 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 四个高风险分类且无 unmatched；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS`，为四个高风险分类配置 rule-name / term / detail 迁移 hint；2) 新增 `suggestSourceProjectionCategorySplitMigrationBatches`，只对当前 split recommendations 命中的高风险分类输出批量迁移分桶；3) taxonomy summary 成功路径新增 `category split migration batches` 行，低风险 synthetic 样本输出 `none`；4) self-test 锁定 enterprise-agents 8 条 rule 分桶为 platform=3、vertical=2、enablement=2、unmatched=1 的可诊断输出；5) taxonomy 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-174: 为 source projection taxonomy 输出 category split recommendations，消费 EXP-173 “enterprise-agents 满额后需 category split / budget raise 专项实验”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-173 后 enterprise-agents 已达到 8/8 满额，policy-governance 与 cloud-infrastructure 也只剩 1 条 headroom；若 taxonomy 只要求新增规则附带 capacityPlan，而不输出可执行拆分方向，维护者仍需要临场判断应该拆成哪些更细分类，新增日报 source projection 会继续卡在满额 category。新增 category split recommendations，可把高风险分类直接映射为下一步可落地的拆分候选。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category split recommendations`，当前锁定 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 四个高风险分类的拆分方向；`pnpm build` 通过。

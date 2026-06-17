@@ -52,6 +52,61 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   ],
 };
 
+export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
+  'enterprise-agents': [
+    {
+      target: 'enterprise-agent-platforms',
+      match: ['meta-business-agent', 'microsoft-enterprise-agent-system', 'aws-quick-connect', 'openai-partner-network'],
+    },
+    {
+      target: 'vertical-workflow-agents',
+      match: ['amazon-nova-act', 'nvidia-nemoclaw'],
+    },
+    {
+      target: 'agent-enablement-programs',
+      match: ['openai-academy', 'anthropic-claude-corps'],
+    },
+  ],
+  'policy-governance': [
+    {
+      target: 'ai-policy-standards',
+      match: ['metrology', 'safety', 'standards', '计量', '安全'],
+    },
+    {
+      target: 'ai-industrial-policy',
+      match: ['national-data-administration', 'ai-education', 'provincial', 'province-ministry', '6g', 'asean', 'ict', '数据局', '东盟'],
+    },
+    {
+      target: 'digital-regulation-compliance',
+      match: ['app-jump', '治理', 'compliance'],
+    },
+  ],
+  'cloud-infrastructure': [
+    {
+      target: 'cloud-model-distribution',
+      match: ['bedrock', 'openai-amazon', 'agentperf'],
+    },
+    {
+      target: 'ai-infrastructure-capacity',
+      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure'],
+    },
+  ],
+  'physical-ai-robotics': [
+    {
+      target: 'robotics-simulation-training',
+      match: ['sim-to-real', 'cvpr', 'cosmos', 'agent-skills', 'embodied-training', '实景实训'],
+    },
+    {
+      target: 'robotics-commercial-deployment',
+      match: ['doosan', 'unitree', 'service-robotics', 'ipo', 'factory'],
+    },
+    {
+      target: 'autonomous-mobility-systems',
+      match: ['drive-hyperion', 'robotaxi', 'autonomous'],
+    },
+  ],
+};
+
 function normalize(value) {
   return String(value || '').trim();
 }
@@ -97,6 +152,7 @@ export function summarizeSourceProjectionRuleTaxonomy({ rules = sourceProjection
     .sort((a, b) => (b.count / b.budget) - (a.count / a.budget) || b.count - a.count || a.name.localeCompare(b.name));
 
   return {
+    rules,
     totalRules: rules.length,
     owners,
     categories,
@@ -122,6 +178,50 @@ export function suggestSourceProjectionCategorySplitPlans(summary = summarizeSou
       ...item,
       splitInto: SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS[item.name],
     }));
+}
+
+function ruleSearchText(rule) {
+  return [
+    rule.name,
+    rule.category,
+    ...(rule.terms || []),
+    rule.details?.what,
+    rule.details?.why,
+    rule.details?.impact,
+  ].filter(Boolean).join(' ').toLowerCase();
+}
+
+export function suggestSourceProjectionCategorySplitMigrationBatches({
+  summary = null,
+  rules = summary?.rules || sourceProjectionRules(),
+} = {}) {
+  summary ||= summarizeSourceProjectionRuleTaxonomy({ rules });
+  const highRiskCategories = new Set(suggestSourceProjectionCategorySplitPlans(summary).map((item) => item.name));
+  return [...highRiskCategories]
+    .map((category) => {
+      const hints = SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS[category] || [];
+      const rulesInCategory = rules.filter((rule) => normalize(rule.category) === category);
+      const targets = hints.map((hint) => ({ target: hint.target, rules: [] }));
+      const unmatched = [];
+
+      for (const rule of rulesInCategory) {
+        const text = ruleSearchText(rule);
+        const matchedHint = hints.find((hint) => hint.match.some((token) => text.includes(token.toLowerCase())));
+        if (matchedHint) {
+          targets.find((item) => item.target === matchedHint.target).rules.push(rule.name);
+        } else {
+          unmatched.push(rule.name);
+        }
+      }
+
+      return {
+        category,
+        totalRules: rulesInCategory.length,
+        targets: targets.filter((item) => item.rules.length > 0),
+        unmatched,
+      };
+    })
+    .filter((batch) => batch.totalRules > 0);
 }
 
 export function suggestSourceProjectionCategoryCapacityActions(summary = summarizeSourceProjectionRuleTaxonomy()) {
@@ -204,6 +304,15 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
   const splitPlanLine = suggestSourceProjectionCategorySplitPlans(summary)
     .map((item) => `${item.name}: split into ${item.splitInto.join(' / ')} (${item.reason})`)
     .join('; ');
+  const splitMigrationLine = suggestSourceProjectionCategorySplitMigrationBatches({ summary })
+    .map((batch) => {
+      const targetLine = batch.targets
+        .map((target) => `${target.target}=${target.rules.length}`)
+        .join(', ');
+      const unmatchedLine = batch.unmatched.length > 0 ? `, unmatched=${batch.unmatched.length}` : '';
+      return `${batch.category}: ${targetLine}${unmatchedLine}`;
+    })
+    .join('; ');
   const capacityPlanCategories = categoriesRequiringSourceProjectionCapacityPlan(summary).join(', ');
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
@@ -214,6 +323,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `high utilization categories: ${highUtilizationLine || 'none'}`,
     `category capacity actions: ${capacityActionLine || 'none'}`,
     `category split recommendations: ${splitPlanLine || 'none'}`,
+    `category split migration batches: ${splitMigrationLine || 'none'}`,
     `new rule capacity plan required for: ${capacityPlanCategories || 'none'}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
@@ -343,6 +453,7 @@ function validateSelfTests() {
     'high utilization categories: none',
     'category capacity actions: none',
     'category split recommendations: none',
+    'category split migration batches: none',
     'new rule capacity plan required for: none',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
@@ -367,6 +478,7 @@ function validateSelfTests() {
     'high utilization categories: developer-tools=4/4 (100% used, 0 headroom), company-finance=4/5 (80% used, 1 headroom)',
     'category capacity actions: developer-tools: split category or raise budget before adding new rules (100% used + 0 headroom); company-finance: split category or raise budget before adding new rules (80% used + 1 headroom)',
     'category split recommendations: none',
+    'category split migration batches: none',
     'new rule capacity plan required for: developer-tools, company-finance',
   ]) {
     if (!highUtilizationDiagnostic.includes(fragment)) {
@@ -389,6 +501,23 @@ function validateSelfTests() {
   }));
   if (!splitPlanDiagnostic.includes('category split recommendations: enterprise-agents: split into enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs (100% used + 0 headroom)')) {
     failures.push('source projection taxonomy split-plan self-test failed: enterprise-agents split recommendation');
+  }
+
+  const splitMigrationRules = [
+    { name: 'meta-business-agent-2026', owner: 'daily-source-projection', category: 'enterprise-agents' },
+    { name: 'microsoft-enterprise-agent-system-2026', owner: 'daily-source-projection', category: 'enterprise-agents' },
+    { name: 'amazon-nova-act-agentic-ai', owner: 'daily-source-projection', category: 'enterprise-agents' },
+    { name: 'nvidia-nemoclaw-industrial-agents', owner: 'daily-source-projection', category: 'enterprise-agents' },
+    { name: 'openai-academy-enterprise-ai-foundations-2026', owner: 'daily-source-projection', category: 'enterprise-agents' },
+    { name: 'anthropic-claude-corps-nonprofit-2026', owner: 'daily-source-projection', category: 'enterprise-agents' },
+    { name: 'synthetic-unmapped-enterprise-agent', owner: 'daily-source-projection', category: 'enterprise-agents' },
+    { name: 'openai-partner-network-enterprise-ecosystem-2026', owner: 'daily-source-projection', category: 'enterprise-agents' },
+  ];
+  const splitMigrationDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
+    rules: splitMigrationRules,
+  }));
+  if (!splitMigrationDiagnostic.includes('category split migration batches: enterprise-agents: enterprise-agent-platforms=3, vertical-workflow-agents=2, agent-enablement-programs=2, unmatched=1')) {
+    failures.push('source projection taxonomy split-migration self-test failed: enterprise-agents migration batch counts');
   }
 
   const capacityPlanFailures = validateSourceProjectionRuleCategoryCapacityPlan({
