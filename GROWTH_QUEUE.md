@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-17 11:24
+Last updated: 2026-06-17 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-176: 为 source projection taxonomy 输出 category split migration details，消费 EXP-175 “split migration batches 仍只有计数、缺少可直接迁移的 rule 清单”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-175 已输出高风险 category 的 split migration batch 计数；若 CLI 只显示每个目标细分类有几条 rule，而不列出具体 rule name，维护者仍要回到 registry 手动定位并复制迁移对象。新增 split migration details，可把批量迁移从“统计摘要”升级为可直接执行的 rule 清单，降低真实 category 枚举迁移成本。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category split migration details`，当前覆盖 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 四个高风险分类的目标细分类 rule 清单；`pnpm build` 通过。
+  - Acceptance: 1) taxonomy summary 新增 `category split migration details` 行，按 batch 输出 `target=[rule|rule]` 与 unmatched 清单；2) 低风险 synthetic 样本输出 `category split migration details: none`；3) high-utilization synthetic 样本锁定 no-detail 输出，避免无 split 计划时误报；4) split migration self-test 锁定 enterprise-agents 的 platform/vertical/enablement/unmatched 具体 rule 清单；5) taxonomy 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-175: 为 source projection taxonomy 增加 category split migration batches，消费 EXP-174 “将 split recommendations 升级为可迁移 category 枚举”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-174 已输出 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 的 split recommendations；若只给目标分类名，不给当前 rule 到目标分类的批量迁移建议，维护者仍需要逐条阅读 44 条 registry rule 才能执行 category 枚举迁移。新增 split migration batches，可把高风险 category 的现有 rules 自动分桶到候选细分类，降低下一步真实 category migration 的人工判断成本。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category split migration batches`，当前覆盖 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 四个高风险分类且无 unmatched；`pnpm build` 通过。

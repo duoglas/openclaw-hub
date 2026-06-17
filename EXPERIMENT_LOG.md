@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-176
+- Hypothesis: EXP-175 已输出高风险 category 的 split migration batch 计数；若 CLI 只显示每个目标细分类有几条 rule，而不列出具体 rule name，维护者仍要回到 registry 手动定位并复制迁移对象。新增 split migration details，可把批量迁移从“统计摘要”升级为可直接执行的 rule 清单，降低真实 category 枚举迁移成本。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 在 taxonomy summary 中新增 `category split migration details` 诊断，复用 EXP-175 migration batches 输出每个目标细分类对应的具体 rule name，并补齐 none 场景与 enterprise-agents 迁移清单 self-test。
+- ICE: 8x8x8=512
+- Start date: 2026-06-17
+- End date: 2026-06-17
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 通过；CLI 输出四个高风险 category 的可复制迁移 rule 清单。
+- Result: pass（taxonomy summary 已输出 `category split migration details`，覆盖 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 的目标细分类 rule 清单；taxonomy 检查与 build 通过）。
+- Decision: scale
+
 ## Experiment Template
 - ID:
 - Hypothesis:
