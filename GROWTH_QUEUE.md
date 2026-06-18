@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-18 11:28
+Last updated: 2026-06-18 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-178: 为 consumer-productivity 与 market-intelligence 增加 category split recommendations / migration details，消费 EXP-177 “cloud/consumer/market 高风险 category split migration”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-177 后 taxonomy 已显示 consumer-productivity=4/5、market-intelligence=4/5，且两者进入 high utilization / low headroom，但 split recommendations 仍只覆盖 enterprise/cloud/policy/robotics；若不为最近24小时新增的 ChatGPT Scheduled Tasks、Anthropic Korea、Amazon Content Partners 等消费/市场信号补齐迁移方向，新增日报 source projection rule 仍需要人工临场分桶。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 consumer-productivity 与 market-intelligence 的 split recommendations、migration batches 和 migration details；`pnpm build` 通过。
+  - Acceptance: 1) taxonomy split recommendations 新增 consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai；2) market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems；3) migration hints 可把 8 条现有 consumer/market rules 分桶且无 unmatched；4) self-test 锁定最近信号分桶细节，避免后续重构移除 consumer/market details；5) taxonomy 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-177: 将 2026-06-18 真实 cron 样本接入 daily-real-cron fixture registry，并为 AWS Agent Continuum / Anthropic Korea / ChatGPT Scheduled Tasks / NVIDIA MLPerf 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `86a95ce`
   - Hypothesis: 最近24小时新增日报（2026-06-18）已暴露 AWS Continuum/Context/Bedrock AgentCore、Anthropic 首尔办公室与韩国生态、ChatGPT Scheduled Tasks/Pulse 迁移、中国 AI+ICT 实施意见、NVIDIA Blackwell MLPerf Training 6.0 五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-18 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
   - Metrics: `pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:source-projection-rule-metadata-coverage`、`pnpm check:source-projection-rule-term-narrowness`、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。

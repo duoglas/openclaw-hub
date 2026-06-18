@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-178
+- Hypothesis: EXP-177 后 taxonomy 已显示 consumer-productivity=4/5、market-intelligence=4/5，且两者进入 high utilization / low headroom；若 split recommendations 仍只覆盖 enterprise/cloud/policy/robotics，最近24小时新增的 ChatGPT Scheduled Tasks、Anthropic Korea 与 Amazon Content Partners 等消费/市场信号仍没有可直接执行的 category split migration 方向。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 consumer-productivity 新增 `career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai` split recommendations 与 migration hints；为 market-intelligence 新增 `market-sizing-reports / content-licensing-markets / regional-ai-ecosystems` split recommendations 与 migration hints；补充 recent-signal self-test 锁定 8 条现有 consumer/market rules 的 batches 与 details 输出。
+- ICE: 8x8x8=512
+- Start date: 2026-06-18
+- End date: 2026-06-18
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 consumer-productivity 与 market-intelligence 的 split recommendations、migration batches、migration details；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 当前输出 consumer-productivity split 为 `career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai`，并将 `chatgpt-jobs-resume-tools`、ChatGPT model picker / Scheduled Tasks、Meta Facebook AI tools 分桶；market-intelligence split 为 `market-sizing-reports / content-licensing-markets / regional-ai-ecosystems`，并将 China AI industry report、Amazon Content Partners、Shanghai Tech Fair / Anthropic Korea 分桶；recent-signal self-test、taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 consumer/market split migration details 作为新增日报 source projection rule 前的分桶基线；下一步可执行真实 category enum 迁移或把 split target 写入 proposed rule scaffold。）
+
 ### EXP-177
 - Hypothesis: 最近24小时新增日报（2026-06-18）已暴露 AWS Continuum/Context/Bedrock AgentCore、Anthropic 首尔办公室与韩国生态、ChatGPT Scheduled Tasks/Pulse 迁移、中国 AI+ICT 实施意见、NVIDIA Blackwell MLPerf Training 6.0 五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-18 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-18.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-06-18.md`, `src/content/blog/zh/openclaw-daily-2026-06-18.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

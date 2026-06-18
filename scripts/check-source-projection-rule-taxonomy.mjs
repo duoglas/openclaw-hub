@@ -35,6 +35,11 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
     'cloud-model-distribution',
     'ai-infrastructure-capacity',
   ],
+  'consumer-productivity': [
+    'career-productivity-workflows',
+    'chatgpt-control-surfaces',
+    'consumer-creative-ai',
+  ],
   'enterprise-agents': [
     'enterprise-agent-platforms',
     'vertical-workflow-agents',
@@ -44,6 +49,11 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
     'robotics-simulation-training',
     'robotics-commercial-deployment',
     'autonomous-mobility-systems',
+  ],
+  'market-intelligence': [
+    'market-sizing-reports',
+    'content-licensing-markets',
+    'regional-ai-ecosystems',
   ],
   'policy-governance': [
     'ai-policy-standards',
@@ -84,11 +94,39 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   'cloud-infrastructure': [
     {
       target: 'cloud-model-distribution',
-      match: ['bedrock', 'openai-amazon', 'agentperf'],
+      match: ['bedrock', 'openai-amazon', 'agentperf', 'agentcore', 'continuum'],
     },
     {
       target: 'ai-infrastructure-capacity',
       match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure'],
+    },
+  ],
+  'consumer-productivity': [
+    {
+      target: 'career-productivity-workflows',
+      match: ['jobs', 'resume', '职位', '简历', 'freelance'],
+    },
+    {
+      target: 'chatgpt-control-surfaces',
+      match: ['model-picker', 'scheduled-tasks', 'pulse', 'instant', 'thinking', 'scheduled'],
+    },
+    {
+      target: 'consumer-creative-ai',
+      match: ['facebook-ai-tools', 'ai mode', '图片', '视频', '换装', 'creative'],
+    },
+  ],
+  'market-intelligence': [
+    {
+      target: 'market-sizing-reports',
+      match: ['industry-report', '6000', '1.2', 'market scale', '产业规模'],
+    },
+    {
+      target: 'content-licensing-markets',
+      match: ['content-partners', 'crawler', 'licensing', 'gated preview'],
+    },
+    {
+      target: 'regional-ai-ecosystems',
+      match: ['shanghai-tech-fair', 'korea', 'seoul', 'naver', 'nexon', 'regional', 'ecosystem'],
     },
   ],
   'physical-ai-robotics': [
@@ -540,6 +578,28 @@ function validateSelfTests() {
   }
   if (!splitMigrationDiagnostic.includes('category split migration details: enterprise-agents: enterprise-agent-platforms=[meta-business-agent-2026|microsoft-enterprise-agent-system-2026|openai-partner-network-enterprise-ecosystem-2026], vertical-workflow-agents=[amazon-nova-act-agentic-ai|nvidia-nemoclaw-industrial-agents], agent-enablement-programs=[openai-academy-enterprise-ai-foundations-2026|anthropic-claude-corps-nonprofit-2026], unmatched=[synthetic-unmapped-enterprise-agent]')) {
     failures.push('source projection taxonomy split-migration self-test failed: enterprise-agents migration rule details');
+  }
+
+  const recentSignalSplitMigrationDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
+    rules: [
+      { name: 'chatgpt-jobs-resume-tools', owner: 'daily-source-projection', category: 'consumer-productivity' },
+      { name: 'openai-chatgpt-model-picker-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
+      { name: 'meta-facebook-ai-tools-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
+      { name: 'openai-chatgpt-scheduled-tasks-pulse-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
+      { name: 'china-ai-industry-report-l3', owner: 'daily-source-projection', category: 'market-intelligence' },
+      { name: 'shanghai-tech-fair-2026-hard-tech', owner: 'daily-source-projection', category: 'market-intelligence' },
+      { name: 'amazon-content-partners-ai-crawler-preview-2026', owner: 'daily-source-projection', category: 'market-intelligence' },
+      { name: 'anthropic-korea-seoul-office-ecosystem-2026', owner: 'daily-source-projection', category: 'market-intelligence' },
+    ],
+  }));
+  for (const fragment of [
+    'category split recommendations: consumer-productivity: split into career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai (80% used + 1 headroom); market-intelligence: split into market-sizing-reports / content-licensing-markets / regional-ai-ecosystems (80% used + 1 headroom)',
+    'category split migration batches: consumer-productivity: career-productivity-workflows=1, chatgpt-control-surfaces=2, consumer-creative-ai=1; market-intelligence: market-sizing-reports=1, content-licensing-markets=1, regional-ai-ecosystems=2',
+    'category split migration details: consumer-productivity: career-productivity-workflows=[chatgpt-jobs-resume-tools], chatgpt-control-surfaces=[openai-chatgpt-model-picker-2026|openai-chatgpt-scheduled-tasks-pulse-2026], consumer-creative-ai=[meta-facebook-ai-tools-2026]; market-intelligence: market-sizing-reports=[china-ai-industry-report-l3], content-licensing-markets=[amazon-content-partners-ai-crawler-preview-2026], regional-ai-ecosystems=[shanghai-tech-fair-2026-hard-tech|anthropic-korea-seoul-office-ecosystem-2026]',
+  ]) {
+    if (!recentSignalSplitMigrationDiagnostic.includes(fragment)) {
+      failures.push(`source projection taxonomy recent-signal split-migration self-test failed: ${fragment}`);
+    }
   }
 
   const capacityPlanFailures = validateSourceProjectionRuleCategoryCapacityPlan({
