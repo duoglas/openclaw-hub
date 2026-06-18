@@ -486,6 +486,52 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
 
+  {
+    name: 'aws-agent-continuum-enterprise-agentcore-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
+    capacityPlan: 'Uses the final cloud-infrastructure headroom for a fixture-backed AWS agent infrastructure launch; next AWS/cloud agent rules should migrate into the planned cloud-model-distribution or ai-infrastructure-capacity split before adding more rules.',
+    terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore'],
+    details: {
+      what: 'AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.',
+      why: 'The update shows cloud competition moving from model APIs toward enterprise agent infrastructure where knowledge access, secure execution, DevOps automation, auditability, and rollback become platform features.',
+      impact: 'Enterprises can pilot agents in code, security, data, and operations workflows, but should require scoped permissions, review logs, rollback paths, and measurable reliability before allowing autonomous execution.',
+    },
+  },
+  {
+    name: 'anthropic-korea-seoul-office-ecosystem-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    terms: ['首尔办公室正式开放', 'NAVER、Nexon、LG CNS', 'Samsung SDS、Channel Corp'],
+    details: {
+      what: 'Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.',
+      why: 'The move frames Korea as a strategic enterprise AI market across semiconductors, cloud, gaming, consumer electronics, IT services, and AI safety research.',
+      impact: 'Asian enterprise AI competition may intensify as Claude adoption expands into software development, customer support, knowledge work, and regional partner ecosystems.',
+    },
+  },
+  {
+    name: 'openai-chatgpt-scheduled-tasks-pulse-2026',
+    owner: 'daily-source-projection',
+    category: 'consumer-productivity',
+    terms: ['Scheduled Tasks', '统一 Scheduled 页面', 'Pulse 将逐步退出'],
+    details: {
+      what: 'OpenAI updated ChatGPT Scheduled Tasks with a unified Scheduled page for viewing, pausing, resuming, editing, and deleting tasks, faster and more reliable execution, web search, connected apps, and a gradual migration away from Pulse.',
+      why: 'The product direction moves ChatGPT from passive chat toward scheduled execution, ongoing monitoring, and proactive reminders where reliability, limits, and privacy boundaries become adoption criteria.',
+      impact: 'Users can start with low-risk reminders, daily digests, price checks, and webpage monitoring, while teams should add frequency limits, permission review, logs, and human confirmation before connecting higher-risk workflows.',
+    },
+  },
+  {
+    name: 'nvidia-blackwell-mlperf-training-6-2026',
+    owner: 'daily-source-projection',
+    category: 'frontier-models',
+    terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72'],
+    details: {
+      what: 'NVIDIA said Blackwell delivered the fastest training time across all seven MLPerf Training 6.0 benchmarks and completed an 8192-GPU Blackwell NVL72 large-scale training submission.',
+      why: 'Frontier model progress still depends on training infrastructure, where MoE workloads, low-precision training, and large-scale interconnect reliability shape model iteration speed and training economics.',
+      impact: 'Cloud providers and model labs may keep prioritizing Blackwell and GB-series clusters, making training cost, cluster stability, and network topology key constraints for next-generation model roadmaps.',
+    },
+  },
+
 ];
 
 export function projectEnglishSourceDetail(source, key) {

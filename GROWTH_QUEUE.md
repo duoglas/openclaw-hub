@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-17 17:20
+Last updated: 2026-06-18 11:28
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-177: 将 2026-06-18 真实 cron 样本接入 daily-real-cron fixture registry，并为 AWS Agent Continuum / Anthropic Korea / ChatGPT Scheduled Tasks / NVIDIA MLPerf 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `86a95ce`
+  - Hypothesis: 最近24小时新增日报（2026-06-18）已暴露 AWS Continuum/Context/Bedrock AgentCore、Anthropic 首尔办公室与韩国生态、ChatGPT Scheduled Tasks/Pulse 迁移、中国 AI+ICT 实施意见、NVIDIA Blackwell MLPerf Training 6.0 五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-18 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
+  - Metrics: `pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:source-projection-rule-metadata-coverage`、`pnpm check:source-projection-rule-term-narrowness`、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增 `scripts/fixtures/daily-real-cron-2026-06-18.mjs` 并注册进 `daily-real-cron-fixtures.mjs`，覆盖 AWS、Anthropic Korea、ChatGPT Scheduled Tasks、中国 AI+ICT 与 NVIDIA Blackwell MLPerf 五条信号；2) `source-projection-rules.mjs` 新增 4 条字段级英文 projection，并复用 `china-ai-ict-innovation-plan-2026`；3) AWS 新 rule 命中 cloud-infrastructure 高风险 category 时附带 `capacityPlan`，避免绕过 capacity guard；4) fixture 写入 story-level `sourceProjectionRuleMatches`、EN/ZH required outputs、banned generic fallback 与 story 1/3/5 section-boundary guardrail；5) EN/ZH `openclaw-daily-2026-06-18.md` 已由字段级 projection 重写并补齐 ZH 案例 2；6) 相关检查与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-176: 为 source projection taxonomy 输出 category split migration details，消费 EXP-175 “split migration batches 仍只有计数、缺少可直接迁移的 rule 清单”后续假设 | ICE 8x8x8=512 — commit `47e38fd`
   - Hypothesis: EXP-175 已输出高风险 category 的 split migration batch 计数；若 CLI 只显示每个目标细分类有几条 rule，而不列出具体 rule name，维护者仍要回到 registry 手动定位并复制迁移对象。新增 split migration details，可把批量迁移从“统计摘要”升级为可直接执行的 rule 清单，降低真实 category 枚举迁移成本。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `category split migration details`，当前覆盖 enterprise-agents、policy-governance、cloud-infrastructure、physical-ai-robotics 四个高风险分类的目标细分类 rule 清单；`pnpm build` 通过。

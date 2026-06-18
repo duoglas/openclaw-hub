@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-177
+- Hypothesis: 最近24小时新增日报（2026-06-18）已暴露 AWS Continuum/Context/Bedrock AgentCore、Anthropic 首尔办公室与韩国生态、ChatGPT Scheduled Tasks/Pulse 迁移、中国 AI+ICT 实施意见、NVIDIA Blackwell MLPerf Training 6.0 五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱首日索引事实密度。把 2026-06-18 样本纳入 fixture registry 并新增字段级 projection，可锁定当日 EN/ZH/pair 输出和 source projection 作用域。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-18.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-06-18.md`, `src/content/blog/zh/openclaw-daily-2026-06-18.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-18 真实 cron fixture；source projection registry 新增 AWS Agent Continuum/Context/Bedrock AgentCore、Anthropic Korea Seoul ecosystem、ChatGPT Scheduled Tasks/Pulse、NVIDIA Blackwell MLPerf Training 6.0 四条字段级英文规则，并复用中国 AI+ICT 规则；fixture 写入 `sourceProjectionRuleMatches`、required EN/ZH outputs、banned fallback 与 story 1/3/5 guardrail；EN/ZH 2026-06-18 日报用新 generator 重写并补齐 ZH 案例 2。
+- ICE: 9x8x8=576
+- Start date: 2026-06-18
+- End date: 2026-06-18
+- Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
+- Result: pass（2026-06-18 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 锁定 AWS Agent Continuum、Anthropic Korea、ChatGPT Scheduled Tasks、中国 AI+ICT 与 NVIDIA Blackwell MLPerf 五条输出；source projection scope/registry/taxonomy 覆盖新规则，taxonomy 当前显示 totalRules=48；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；ZH 最新日报补齐第二个实战案例；专项 fixture、source projection、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-06-18 fixture 作为最新日报首日索引质量基线；下一步优先执行 cloud-infrastructure / consumer-productivity / market-intelligence category split migration，避免低 headroom 分类继续阻断新日报 source projection rule。）
+
 ### EXP-176
 - Hypothesis: EXP-175 已输出高风险 category 的 split migration batch 计数；若 CLI 只显示每个目标细分类有几条 rule，而不列出具体 rule name，维护者仍要回到 registry 手动定位并复制迁移对象。新增 split migration details，可把批量迁移从“统计摘要”升级为可直接执行的 rule 清单，降低真实 category 枚举迁移成本。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
