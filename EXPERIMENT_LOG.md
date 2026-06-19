@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-180
+- Hypothesis: EXP-179 已锁定 17 个 split target enum 及 hint 覆盖，但新增 proposed rule 仍只能看到全局 split recommendations；若不在新增规则层面自动推荐/校验 `splitTargetCategory`，维护者仍可能把 OpenAI Partner Network、AWS AgentCore、ChatGPT Scheduled Tasks 等新日报规则继续写入满额 parent category，而没有声明应迁移到哪个 split target。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 proposed rule split target scaffold helper 与 validator，复用既有 capacity action、split recommendations 与 migration hints；taxonomy summary 输出 6 个高风险 parent category 的 split target scaffold；self-test 锁定推荐 target、非法 target 诊断与合法 target 通过。
+- ICE: 8x8x8=512
+- Start date: 2026-06-19
+- End date: 2026-06-19
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `proposed rule split target scaffold`；缺失/非法 `splitTargetCategory` 的 proposed rule self-test 失败文案包含推荐或可选 target；`pnpm build` 通过。
+- Result: pass（taxonomy CLI 已输出 6 个高风险 parent category 的 proposed rule split target scaffold；self-test 锁定 OpenAI Partner Network 新规则缺 `splitTargetCategory` 时推荐 `enterprise-agent-platforms`，非法 `cloud-model-distribution` 用在 enterprise-agents 时失败并列出三个合法 target，合法 `enterprise-agent-platforms` 通过；taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 proposed rule split target scaffold 作为真实 category enum 迁移前的新增规则入口；下一步可把真实 rule registry 分阶段迁移到 split target enum 字段，并让 registry health 检查现有 rule 的 split target 覆盖。）
+
 ### EXP-179
 - Hypothesis: EXP-178 已为 consumer-productivity 与 market-intelligence 补齐 split recommendations / migration details，但 split target 仍只是自由字符串；若后续迁移真实 category enum 前没有 allowlist、hint 覆盖、stale hint 与跨 parent 复用检查，拆分目标可能拼写漂移或出现无迁移 hint 的半成品 scaffold，导致新增日报 source projection rule 继续卡在高风险 category。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

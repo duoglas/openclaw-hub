@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-19 11:24
+Last updated: 2026-06-19 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-180: 为 proposed source projection rule 增加 split target scaffold 推荐与校验，消费 EXP-179 “真实 category enum 迁移前可为新增规则自动推荐目标 split category”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-179 已锁定 17 个 split target enum 及 hint 覆盖，但新增 proposed rule 仍只能看到全局 split recommendations；若不在新增规则层面自动推荐/校验 `splitTargetCategory`，维护者仍可能把 OpenAI Partner Network、AWS AgentCore、ChatGPT Scheduled Tasks 等新日报规则继续写入满额 parent category，而没有声明应迁移到哪个 split target。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `proposed rule split target scaffold`，并通过 self-test 锁定高风险 proposed rule 缺 `splitTargetCategory` 时给出推荐 target、非法 target 时给出 parent 可选 target；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `suggestSourceProjectionProposedRuleSplitTargets`，对命中高风险 category 的 proposed rule 基于既有 migration hints 推荐 split target；2) 新增 `validateSourceProjectionProposedRuleSplitTargetScaffold`，阻断缺失/非法 `splitTargetCategory` 的新增 rule scaffold；3) taxonomy summary 输出 6 个高风险 parent category 的 proposed rule split scaffold；4) self-test 锁定 OpenAI Partner Network 自动推荐 `enterprise-agent-platforms`、非法 `cloud-model-distribution` 对 enterprise-agents 失败、合法 target 通过；5) taxonomy 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-179: 为 source projection taxonomy 增加 split target enum coverage guard，消费 EXP-178 “真实 category enum 迁移前需锁定 split target scaffold”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-178 已为 consumer-productivity 与 market-intelligence 补齐 split recommendations / migration details，但 split target 仍只是自由字符串；若后续迁移真实 category enum 前没有 allowlist、hint 覆盖、stale hint 与跨 parent 复用检查，拆分目标可能拼写漂移或出现无迁移 hint 的半成品 scaffold，导致新增日报 source projection rule 继续卡在高风险 category。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 17/17 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 通过。

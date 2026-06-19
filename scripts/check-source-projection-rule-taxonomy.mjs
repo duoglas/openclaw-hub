@@ -355,6 +355,86 @@ export function validateSourceProjectionSplitTargetCategories(options = {}) {
   return failures;
 }
 
+function splitTargetsForCategory(category) {
+  return SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS[category] || [];
+}
+
+function findRecommendedSplitTargetForRule(rule, hints = SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS) {
+  const category = normalize(rule.category);
+  const text = ruleSearchText(rule);
+  for (const hint of hints[category] || []) {
+    const matchedToken = (hint.match || []).find((token) => text.includes(token.toLowerCase()));
+    if (matchedToken) {
+      return { target: hint.target, matchedToken };
+    }
+  }
+  return null;
+}
+
+function proposedRuleSplitTarget(rule) {
+  return normalize(rule.splitTargetCategory || rule.splitCategory || rule.targetCategory);
+}
+
+export function suggestSourceProjectionProposedRuleSplitTargets({
+  currentRules = sourceProjectionRules(),
+  proposedRules = [],
+} = {}) {
+  const summary = summarizeSourceProjectionRuleTaxonomy({ rules: currentRules });
+  const highRiskCategories = new Set(categoriesRequiringSourceProjectionCapacityPlan(summary));
+
+  return proposedRules
+    .filter((rule) => highRiskCategories.has(normalize(rule.category)))
+    .map((rule) => {
+      const name = normalize(rule.name) || '(unnamed proposed rule)';
+      const category = normalize(rule.category);
+      const allowedTargets = splitTargetsForCategory(category);
+      const declaredTarget = proposedRuleSplitTarget(rule);
+      const recommendation = findRecommendedSplitTargetForRule(rule);
+      return {
+        name,
+        category,
+        allowedTargets,
+        declaredTarget: declaredTarget || null,
+        recommendedTarget: recommendation?.target || null,
+        matchedToken: recommendation?.matchedToken || null,
+        status: declaredTarget || recommendation?.target ? 'targeted' : 'needs-target',
+      };
+    });
+}
+
+export function validateSourceProjectionProposedRuleSplitTargetScaffold({
+  currentRules = sourceProjectionRules(),
+  proposedRules = [],
+} = {}) {
+  const suggestions = suggestSourceProjectionProposedRuleSplitTargets({ currentRules, proposedRules });
+  const failures = [];
+
+  for (const suggestion of suggestions) {
+    const allowed = suggestion.allowedTargets;
+    if (allowed.length === 0) continue;
+
+    if (suggestion.declaredTarget && !allowed.includes(suggestion.declaredTarget)) {
+      failures.push(
+        `${suggestion.name} — splitTargetCategory ${suggestion.declaredTarget} is not valid for ${suggestion.category}; `
+          + `expected one of: ${allowed.join(', ')}`,
+      );
+      continue;
+    }
+
+    if (!suggestion.declaredTarget) {
+      const recommendation = suggestion.recommendedTarget
+        ? `recommended splitTargetCategory=${suggestion.recommendedTarget} via "${suggestion.matchedToken}"`
+        : `choose one splitTargetCategory: ${allowed.join(', ')}`;
+      failures.push(
+        `${suggestion.name} — category ${suggestion.category} requires splitTargetCategory before adding new rules; `
+          + recommendation,
+      );
+    }
+  }
+
+  return failures;
+}
+
 export function suggestSourceProjectionCategoryCapacityActions(summary = summarizeSourceProjectionRuleTaxonomy()) {
   const actionByCategory = new Map();
   for (const item of summary.highUtilizationCategories || []) {
@@ -464,6 +544,10 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     + `, unknown=${splitTargetSummary.unknownTargets.length}`
     + `, unusedAllowed=${splitTargetSummary.unusedAllowedTargets.length}`
     + `, duplicate=${splitTargetSummary.duplicateTargets.length}`;
+  const splitScaffoldLine = Object.entries(SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS)
+    .map(([category, targets]) => `${category} -> ${targets.join(' / ')}`)
+    .sort()
+    .join('; ');
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
@@ -477,6 +561,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `category split migration details: ${splitMigrationDetailsLine || 'none'}`,
     `new rule capacity plan required for: ${capacityPlanCategories || 'none'}`,
     `split target categories: ${splitTargetLine}`,
+    `proposed rule split target scaffold: ${splitScaffoldLine || 'none'}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
   ].join('\n');
@@ -611,6 +696,7 @@ function validateSelfTests() {
     'category split migration details: none',
     'new rule capacity plan required for: none',
     'split target categories: 17/17 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems; policy-governance -> ai-policy-standards / ai-industrial-policy / digital-regulation-compliance',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
@@ -777,6 +863,60 @@ function validateSelfTests() {
   });
   if (capacityPlanPassFailures.length > 0) {
     failures.push('source projection taxonomy capacity-plan self-test failed: capacityPlan should satisfy high-risk category guard');
+  }
+
+  const currentEnterpriseSplitRules = Array.from({ length: 8 }, (_, index) => ({
+    name: `synthetic-enterprise-current-${index + 1}`,
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+  })).concat(ALLOWED_SOURCE_PROJECTION_CATEGORIES
+    .filter((category) => category !== 'enterprise-agents')
+    .map((category) => ({
+      name: `synthetic-${category}-split-scaffold-coverage-rule`,
+      owner: 'daily-source-projection',
+      category,
+    })));
+  const splitScaffoldFailures = validateSourceProjectionProposedRuleSplitTargetScaffold({
+    currentRules: currentEnterpriseSplitRules,
+    proposedRules: [
+      {
+        name: 'synthetic-openai-partner-network-new-rule',
+        owner: 'daily-source-projection',
+        category: 'enterprise-agents',
+        terms: ['OpenAI Partner Network expands enterprise implementation partners'],
+      },
+      {
+        name: 'synthetic-enterprise-rule-invalid-target',
+        owner: 'daily-source-projection',
+        category: 'enterprise-agents',
+        splitTargetCategory: 'cloud-model-distribution',
+      },
+    ],
+  });
+  const splitScaffoldDiagnostic = splitScaffoldFailures.join('\n');
+  for (const fragment of [
+    'synthetic-openai-partner-network-new-rule — category enterprise-agents requires splitTargetCategory before adding new rules; recommended splitTargetCategory=enterprise-agent-platforms via "openai-partner-network"',
+    'synthetic-enterprise-rule-invalid-target — splitTargetCategory cloud-model-distribution is not valid for enterprise-agents; expected one of: enterprise-agent-platforms, vertical-workflow-agents, agent-enablement-programs',
+  ]) {
+    if (!splitScaffoldDiagnostic.includes(fragment)) {
+      failures.push(`source projection split target scaffold self-test failed: ${fragment}`);
+    }
+  }
+
+  const splitScaffoldPassFailures = validateSourceProjectionProposedRuleSplitTargetScaffold({
+    currentRules: currentEnterpriseSplitRules,
+    proposedRules: [
+      {
+        name: 'synthetic-openai-partner-network-new-rule-with-target',
+        owner: 'daily-source-projection',
+        category: 'enterprise-agents',
+        terms: ['OpenAI Partner Network expands enterprise implementation partners'],
+        splitTargetCategory: 'enterprise-agent-platforms',
+      },
+    ],
+  });
+  if (splitScaffoldPassFailures.length > 0) {
+    failures.push('source projection split target scaffold self-test failed: valid splitTargetCategory should satisfy scaffold guard');
   }
 
   return failures;
