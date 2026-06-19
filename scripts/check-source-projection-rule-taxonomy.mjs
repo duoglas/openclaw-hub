@@ -28,6 +28,25 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'policy-governance': 8,
   'product-safety': 5,
 };
+export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
+  'agent-enablement-programs',
+  'ai-infrastructure-capacity',
+  'ai-industrial-policy',
+  'ai-policy-standards',
+  'autonomous-mobility-systems',
+  'career-productivity-workflows',
+  'chatgpt-control-surfaces',
+  'cloud-model-distribution',
+  'consumer-creative-ai',
+  'content-licensing-markets',
+  'digital-regulation-compliance',
+  'enterprise-agent-platforms',
+  'market-sizing-reports',
+  'regional-ai-ecosystems',
+  'robotics-commercial-deployment',
+  'robotics-simulation-training',
+  'vertical-workflow-agents',
+];
 export const SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD = 1;
 export const SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD = 0.8;
 export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
@@ -266,6 +285,76 @@ export function suggestSourceProjectionCategorySplitMigrationBatches({
     .filter((batch) => batch.totalRules > 0);
 }
 
+export function summarizeSourceProjectionSplitTargetCategories({
+  splitRecommendations = SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS,
+  splitHints = SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS,
+} = {}) {
+  const recommendationTargets = new Set();
+  const hintTargets = new Set();
+  const targetParents = new Map();
+
+  for (const [parent, targets] of Object.entries(splitRecommendations)) {
+    for (const target of targets || []) {
+      recommendationTargets.add(target);
+      const parents = targetParents.get(target) || new Set();
+      parents.add(parent);
+      targetParents.set(target, parents);
+    }
+  }
+
+  for (const hints of Object.values(splitHints)) {
+    for (const hint of hints || []) {
+      if (hint?.target) hintTargets.add(hint.target);
+    }
+  }
+
+  const allowedTargets = new Set(ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES);
+  const usedTargets = new Set([...recommendationTargets, ...hintTargets]);
+  const unknownTargets = [...usedTargets].filter((target) => !allowedTargets.has(target)).sort();
+  const missingHintTargets = [...recommendationTargets].filter((target) => !hintTargets.has(target)).sort();
+  const staleHintTargets = [...hintTargets].filter((target) => !recommendationTargets.has(target)).sort();
+  const unusedAllowedTargets = [...allowedTargets].filter((target) => !usedTargets.has(target)).sort();
+  const duplicateTargets = [...targetParents.entries()]
+    .filter(([, parents]) => parents.size > 1)
+    .map(([target, parents]) => ({ target, parents: [...parents].sort() }))
+    .sort((a, b) => a.target.localeCompare(b.target));
+
+  return {
+    totalAllowedTargets: allowedTargets.size,
+    totalUsedTargets: usedTargets.size,
+    recommendationTargets: [...recommendationTargets].sort(),
+    hintTargets: [...hintTargets].sort(),
+    unknownTargets,
+    missingHintTargets,
+    staleHintTargets,
+    unusedAllowedTargets,
+    duplicateTargets,
+  };
+}
+
+export function validateSourceProjectionSplitTargetCategories(options = {}) {
+  const summary = summarizeSourceProjectionSplitTargetCategories(options);
+  const failures = [];
+
+  for (const target of summary.unknownTargets) {
+    failures.push(`source projection split target is not allowlisted: ${target}`);
+  }
+  for (const target of summary.missingHintTargets) {
+    failures.push(`source projection split target lacks migration hints: ${target}`);
+  }
+  for (const target of summary.staleHintTargets) {
+    failures.push(`source projection migration hint target is not recommended: ${target}`);
+  }
+  for (const target of summary.unusedAllowedTargets) {
+    failures.push(`source projection split target allowlist entry is unused: ${target}`);
+  }
+  for (const item of summary.duplicateTargets) {
+    failures.push(`source projection split target reused across parent categories: ${item.target} (${item.parents.join(', ')})`);
+  }
+
+  return failures;
+}
+
 export function suggestSourceProjectionCategoryCapacityActions(summary = summarizeSourceProjectionRuleTaxonomy()) {
   const actionByCategory = new Map();
   for (const item of summary.highUtilizationCategories || []) {
@@ -368,6 +457,13 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     })
     .join('; ');
   const capacityPlanCategories = categoriesRequiringSourceProjectionCapacityPlan(summary).join(', ');
+  const splitTargetSummary = summarizeSourceProjectionSplitTargetCategories();
+  const splitTargetLine = `${splitTargetSummary.totalUsedTargets}/${splitTargetSummary.totalAllowedTargets} used`
+    + `, missingHints=${splitTargetSummary.missingHintTargets.length}`
+    + `, staleHints=${splitTargetSummary.staleHintTargets.length}`
+    + `, unknown=${splitTargetSummary.unknownTargets.length}`
+    + `, unusedAllowed=${splitTargetSummary.unusedAllowedTargets.length}`
+    + `, duplicate=${splitTargetSummary.duplicateTargets.length}`;
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
@@ -380,6 +476,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `category split migration batches: ${splitMigrationLine || 'none'}`,
     `category split migration details: ${splitMigrationDetailsLine || 'none'}`,
     `new rule capacity plan required for: ${capacityPlanCategories || 'none'}`,
+    `split target categories: ${splitTargetLine}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
   ].join('\n');
@@ -414,6 +511,8 @@ export function validateSourceProjectionRuleTaxonomy({ rules = sourceProjectionR
       failures.push(`source projection category has no owning rules: ${category}`);
     }
   }
+
+  failures.push(...validateSourceProjectionSplitTargetCategories());
 
   const summary = summarizeSourceProjectionRuleTaxonomy({ rules });
   for (const category of summary.categories) {
@@ -511,6 +610,7 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
+    'split target categories: 17/17 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
@@ -599,6 +699,33 @@ function validateSelfTests() {
   ]) {
     if (!recentSignalSplitMigrationDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy recent-signal split-migration self-test failed: ${fragment}`);
+    }
+  }
+
+  const splitTargetFailures = validateSourceProjectionSplitTargetCategories({
+    splitRecommendations: {
+      'synthetic-parent-a': ['synthetic-known-target', 'synthetic-unknown-target', 'synthetic-duplicate-target'],
+      'synthetic-parent-b': ['synthetic-duplicate-target'],
+    },
+    splitHints: {
+      'synthetic-parent-a': [
+        { target: 'synthetic-known-target', match: ['known'] },
+        { target: 'synthetic-stale-target', match: ['stale'] },
+        { target: 'synthetic-duplicate-target', match: ['duplicate'] },
+      ],
+    },
+  });
+  const splitTargetDiagnostic = splitTargetFailures.join('\n');
+  for (const fragment of [
+    'source projection split target is not allowlisted: synthetic-duplicate-target',
+    'source projection split target is not allowlisted: synthetic-stale-target',
+    'source projection split target is not allowlisted: synthetic-unknown-target',
+    'source projection split target lacks migration hints: synthetic-unknown-target',
+    'source projection migration hint target is not recommended: synthetic-stale-target',
+    'source projection split target reused across parent categories: synthetic-duplicate-target (synthetic-parent-a, synthetic-parent-b)',
+  ]) {
+    if (!splitTargetDiagnostic.includes(fragment)) {
+      failures.push(`source projection split target self-test failed: ${fragment}`);
     }
   }
 

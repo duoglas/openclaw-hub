@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-179
+- Hypothesis: EXP-178 已为 consumer-productivity 与 market-intelligence 补齐 split recommendations / migration details，但 split target 仍只是自由字符串；若后续迁移真实 category enum 前没有 allowlist、hint 覆盖、stale hint 与跨 parent 复用检查，拆分目标可能拼写漂移或出现无迁移 hint 的半成品 scaffold，导致新增日报 source projection rule 继续卡在高风险 category。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 `ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES` 作为 17 个 split target enum allowlist；新增 `summarizeSourceProjectionSplitTargetCategories` 与 `validateSourceProjectionSplitTargetCategories`，检查 unknown target、missing migration hint、stale hint、unused allowlist 与跨 parent target 复用；taxonomy summary 输出 split target coverage，并用 self-test 锁定异常诊断。
+- ICE: 8x8x8=512
+- Start date: 2026-06-19
+- End date: 2026-06-19
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 17/17 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 通过。
+- Result: pass（taxonomy CLI 已输出 17/17 split target 全覆盖，missingHints/staleHints/unknown/unusedAllowed/duplicate 均为 0；synthetic self-test 锁定 unknown、missing hint、stale hint 与 duplicate target 诊断；source projection registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 split target enum coverage guard 作为真实 category enum 迁移前的 scaffold 闸门；下一步可将高风险 category 分阶段迁移到 split target enum，并为 proposed rule scaffold 自动推荐目标 split category。）
+
 ### EXP-178
 - Hypothesis: EXP-177 后 taxonomy 已显示 consumer-productivity=4/5、market-intelligence=4/5，且两者进入 high utilization / low headroom；若 split recommendations 仍只覆盖 enterprise/cloud/policy/robotics，最近24小时新增的 ChatGPT Scheduled Tasks、Anthropic Korea 与 Amazon Content Partners 等消费/市场信号仍没有可直接执行的 category split migration 方向。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-18 17:24
+Last updated: 2026-06-19 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-179: 为 source projection taxonomy 增加 split target enum coverage guard，消费 EXP-178 “真实 category enum 迁移前需锁定 split target scaffold”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-178 已为 consumer-productivity 与 market-intelligence 补齐 split recommendations / migration details，但 split target 仍只是自由字符串；若后续迁移真实 category enum 前没有 allowlist、hint 覆盖、stale hint 与跨 parent 复用检查，拆分目标可能拼写漂移或出现无迁移 hint 的半成品 scaffold，导致新增日报 source projection rule 继续卡在高风险 category。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 17/17 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 通过。
+  - Acceptance: 1) 新增 `ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES` 锁定 17 个 split target enum；2) 新增 split target summary / validation，阻断 unknown target、missing migration hint、stale hint、unused allowlist 与跨 parent 复用；3) taxonomy summary 输出 split target coverage；4) self-test 锁定异常诊断与当前 17/17 全覆盖；5) taxonomy、registry health 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-178: 为 consumer-productivity 与 market-intelligence 增加 category split recommendations / migration details，消费 EXP-177 “cloud/consumer/market 高风险 category split migration”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-177 后 taxonomy 已显示 consumer-productivity=4/5、market-intelligence=4/5，且两者进入 high utilization / low headroom，但 split recommendations 仍只覆盖 enterprise/cloud/policy/robotics；若不为最近24小时新增的 ChatGPT Scheduled Tasks、Anthropic Korea、Amazon Content Partners 等消费/市场信号补齐迁移方向，新增日报 source projection rule 仍需要人工临场分桶。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 consumer-productivity 与 market-intelligence 的 split recommendations、migration batches 和 migration details；`pnpm build` 通过。
