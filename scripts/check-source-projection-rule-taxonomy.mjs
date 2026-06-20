@@ -375,6 +375,73 @@ function proposedRuleSplitTarget(rule) {
   return normalize(rule.splitTargetCategory || rule.splitCategory || rule.targetCategory);
 }
 
+export function summarizeSourceProjectionRuleSplitTargetCoverage({
+  rules = sourceProjectionRules(),
+} = {}) {
+  const rulesRequiringSplitTarget = rules
+    .filter((rule) => splitTargetsForCategory(normalize(rule.category)).length > 0)
+    .map((rule) => {
+      const category = normalize(rule.category);
+      const declaredTarget = proposedRuleSplitTarget(rule);
+      const allowedTargets = splitTargetsForCategory(category);
+      const recommendation = findRecommendedSplitTargetForRule(rule);
+      const isValidTarget = Boolean(declaredTarget && allowedTargets.includes(declaredTarget));
+      const matchesRecommendation = !recommendation?.target || declaredTarget === recommendation.target;
+      return {
+        name: normalize(rule.name) || '(unnamed rule)',
+        category,
+        declaredTarget: declaredTarget || null,
+        allowedTargets,
+        recommendedTarget: recommendation?.target || null,
+        matchedToken: recommendation?.matchedToken || null,
+        isValidTarget,
+        matchesRecommendation,
+      };
+    });
+  const coveredRules = rulesRequiringSplitTarget.filter((item) => item.isValidTarget && item.matchesRecommendation);
+  const missingRules = rulesRequiringSplitTarget.filter((item) => !item.declaredTarget);
+  const invalidRules = rulesRequiringSplitTarget.filter((item) => item.declaredTarget && !item.isValidTarget);
+  const mismatchedRules = rulesRequiringSplitTarget.filter((item) => item.isValidTarget && !item.matchesRecommendation);
+
+  return {
+    totalRulesRequiringSplitTarget: rulesRequiringSplitTarget.length,
+    totalCoveredRules: coveredRules.length,
+    rulesRequiringSplitTarget,
+    coveredRules,
+    missingRules,
+    invalidRules,
+    mismatchedRules,
+  };
+}
+
+export function validateSourceProjectionRuleSplitTargetCoverage({
+  rules = sourceProjectionRules(),
+} = {}) {
+  const coverage = summarizeSourceProjectionRuleSplitTargetCoverage({ rules });
+  const failures = [];
+
+  for (const item of coverage.missingRules) {
+    const recommendation = item.recommendedTarget
+      ? `recommended splitTargetCategory=${item.recommendedTarget} via "${item.matchedToken}"`
+      : `choose one splitTargetCategory: ${item.allowedTargets.join(', ')}`;
+    failures.push(`${item.name} — existing ${item.category} rule is missing splitTargetCategory; ${recommendation}`);
+  }
+  for (const item of coverage.invalidRules) {
+    failures.push(
+      `${item.name} — splitTargetCategory ${item.declaredTarget} is not valid for ${item.category}; `
+        + `expected one of: ${item.allowedTargets.join(', ')}`,
+    );
+  }
+  for (const item of coverage.mismatchedRules) {
+    failures.push(
+      `${item.name} — splitTargetCategory ${item.declaredTarget} does not match migration hint; `
+        + `recommended ${item.recommendedTarget} via "${item.matchedToken}"`,
+    );
+  }
+
+  return failures;
+}
+
 export function suggestSourceProjectionProposedRuleSplitTargets({
   currentRules = sourceProjectionRules(),
   proposedRules = [],
@@ -548,6 +615,11 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     .map(([category, targets]) => `${category} -> ${targets.join(' / ')}`)
     .sort()
     .join('; ');
+  const ruleSplitTargetCoverage = summarizeSourceProjectionRuleSplitTargetCoverage({ rules: summary.rules });
+  const ruleSplitTargetLine = `${ruleSplitTargetCoverage.totalCoveredRules}/${ruleSplitTargetCoverage.totalRulesRequiringSplitTarget} covered`
+    + `, missing=${ruleSplitTargetCoverage.missingRules.length}`
+    + `, invalid=${ruleSplitTargetCoverage.invalidRules.length}`
+    + `, mismatched=${ruleSplitTargetCoverage.mismatchedRules.length}`;
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
@@ -561,6 +633,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `category split migration details: ${splitMigrationDetailsLine || 'none'}`,
     `new rule capacity plan required for: ${capacityPlanCategories || 'none'}`,
     `split target categories: ${splitTargetLine}`,
+    `existing rule split target coverage: ${ruleSplitTargetLine}`,
     `proposed rule split target scaffold: ${splitScaffoldLine || 'none'}`,
     `largest owner share: ${largestOwner}`,
     `largest category share: ${largestCategory}`,
@@ -598,6 +671,7 @@ export function validateSourceProjectionRuleTaxonomy({ rules = sourceProjectionR
   }
 
   failures.push(...validateSourceProjectionSplitTargetCategories());
+  failures.push(...validateSourceProjectionRuleSplitTargetCoverage({ rules }));
 
   const summary = summarizeSourceProjectionRuleTaxonomy({ rules });
   for (const category of summary.categories) {
@@ -696,6 +770,7 @@ function validateSelfTests() {
     'category split migration details: none',
     'new rule capacity plan required for: none',
     'split target categories: 17/17 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'existing rule split target coverage: 0/2 covered, missing=2, invalid=0, mismatched=0',
     'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems; policy-governance -> ai-policy-standards / ai-industrial-policy / digital-regulation-compliance',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
@@ -863,6 +938,39 @@ function validateSelfTests() {
   });
   if (capacityPlanPassFailures.length > 0) {
     failures.push('source projection taxonomy capacity-plan self-test failed: capacityPlan should satisfy high-risk category guard');
+  }
+
+  const existingSplitTargetCoverageDiagnostic = validateSourceProjectionRuleSplitTargetCoverage({
+    rules: [
+      {
+        name: 'synthetic-existing-openai-partner-network-missing-target',
+        owner: 'daily-source-projection',
+        category: 'enterprise-agents',
+        terms: ['OpenAI Partner Network expands implementation partners'],
+      },
+      {
+        name: 'synthetic-existing-enterprise-invalid-target',
+        owner: 'daily-source-projection',
+        category: 'enterprise-agents',
+        splitTargetCategory: 'cloud-model-distribution',
+      },
+      {
+        name: 'synthetic-existing-amazon-nova-act-mismatched-target',
+        owner: 'daily-source-projection',
+        category: 'enterprise-agents',
+        terms: ['Nova Act'],
+        splitTargetCategory: 'enterprise-agent-platforms',
+      },
+    ],
+  }).join('\n');
+  for (const fragment of [
+    'synthetic-existing-openai-partner-network-missing-target — existing enterprise-agents rule is missing splitTargetCategory; recommended splitTargetCategory=enterprise-agent-platforms via "openai-partner-network"',
+    'synthetic-existing-enterprise-invalid-target — splitTargetCategory cloud-model-distribution is not valid for enterprise-agents; expected one of: enterprise-agent-platforms, vertical-workflow-agents, agent-enablement-programs',
+    'synthetic-existing-amazon-nova-act-mismatched-target — splitTargetCategory enterprise-agent-platforms does not match migration hint; recommended vertical-workflow-agents via "amazon-nova-act"',
+  ]) {
+    if (!existingSplitTargetCoverageDiagnostic.includes(fragment)) {
+      failures.push(`source projection existing split target coverage self-test failed: ${fragment}`);
+    }
   }
 
   const currentEnterpriseSplitRules = Array.from({ length: 8 }, (_, index) => ({

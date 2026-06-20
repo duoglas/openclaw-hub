@@ -25,6 +25,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-ai-metrology-guide',
     owner: 'daily-source-projection',
     category: 'policy-governance',
+    splitTargetCategory: 'ai-policy-standards',
     terms: ['计量体系', '计量能力', '测不准'],
     details: {
       what: 'China’s SAMR and NDRC issued an AI metrology and capability-building guide that targets measurement gaps, data scarcity, AI standards, test datasets, and metrology service infrastructure.',
@@ -36,6 +37,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'amazon-nova-act-agentic-ai',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
+    splitTargetCategory: 'vertical-workflow-agents',
     terms: ['Nova Act', '3M', 'Accenture', 'Bandsintown'],
     details: {
       what: 'Amazon described its agentic AI approach around Amazon Nova Act, AWS AI infrastructure, simulation training environments, and real business examples from 3M, Accenture, Bandsintown, and Amazon compliance teams.',
@@ -47,6 +49,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-icra-sim-to-real',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-simulation-training',
     terms: ['ICRA', 'sim-to-real'],
     details: {
       what: 'NVIDIA highlighted eight ICRA robotics papers focused on sim-to-real transfer, including multi-arm scheduling, navigation across robot forms, complex grasping, precision assembly, and vision-language-action models.',
@@ -80,6 +83,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-amazon-bedrock-models',
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
+    splitTargetCategory: 'cloud-model-distribution',
     terms: ['Amazon Bedrock', 'AWS 身份', '网络隔离'],
     details: {
       what: 'AWS made GPT-5.5, GPT-5.4, and Codex available in Amazon Bedrock with OpenAI-matched pricing and enterprise access through AWS identity, network isolation, audit, and encryption controls.',
@@ -91,6 +95,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-microsoft-agentic-windows-azure',
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
     terms: ['RTX Spark', 'DGX Station', 'Microsoft Fabric', 'Foundry'],
     details: {
       what: 'NVIDIA said its Microsoft Build / GTC Taipei updates expand the joint AI stack across RTX Spark, DGX Station for Windows, Microsoft Fabric GPU acceleration, NVIDIA open models on Foundry, and NVIDIA OpenShell security runtime support in GitHub Copilot.',
@@ -102,6 +107,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-nemoclaw-industrial-agents',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
+    splitTargetCategory: 'vertical-workflow-agents',
     terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys'],
     details: {
       what: 'NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.',
@@ -113,6 +119,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-ai-cloud-ecosystem',
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
     terms: ['AI Cloud', 'AI factory', '六大洲'],
     details: {
       what: 'NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.',
@@ -135,6 +142,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'xinhua-china-ai-education-service-robotics',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-commercial-deployment',
     terms: ['教育、文旅、养老', '服务效率'],
     details: {
       what: 'Source 5 reports a robotics deployment, AI education deployment signal involving China, Xinhua, education, culture and tourism, elderly care, and service-efficiency scenarios.',
@@ -146,6 +154,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-national-data-administration-embodied-ai',
     owner: 'daily-source-projection',
     category: 'policy-governance',
+    splitTargetCategory: 'ai-industrial-policy',
     terms: ['国家数据局', '刘烈宏', 'National Data Administration', 'AI for Science'],
     details: {
       what: 'Xinhua reported that Liu Liehong, head of China’s National Data Administration, said high-quality datasets are a critical foundation for embodied intelligence’s perception-decision-action loop and for data engineering in AI for Science.',
@@ -157,6 +166,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'chatgpt-jobs-resume-tools',
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
+    splitTargetCategory: 'career-productivity-workflows',
     terms: ['实时职位', '自由职业机会', '简历格式化'],
     details: {
       what: 'OpenAI release notes say ChatGPT can help US users find real-time jobs and freelance opportunities, and can format and download English resumes for users globally.',
@@ -168,6 +178,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-ai-industry-report-l3',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
+    splitTargetCategory: 'market-sizing-reports',
     terms: ['6000 家', '1.2 万亿元', '待确认'],
     details: {
       what: 'A secondary L3 source says China has more than 6,000 AI companies and a core AI industry scale above 1.2 trillion yuan, while the original official report link was not captured in this brief.',
@@ -179,6 +190,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-asean-ai-innovation-center',
     owner: 'daily-source-projection',
     category: 'policy-governance',
+    splitTargetCategory: 'ai-policy-standards',
     terms: ['中国—东盟人工智能产业创新中心', '东盟', '多边合作平台'],
     details: {
       what: 'China’s MIIT said the China-ASEAN AI Industry Innovation Center was established in Beijing on May 24 as a multilateral platform for technology R&D, industrial ecosystems, governance practice, and regional capability building.',
@@ -190,6 +202,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-cvpr-physical-ai-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-simulation-training',
     terms: ['GraspGen-X', 'LCDrive', 'NitroGen', 'CVPR 论文'],
     details: {
       what: 'NVIDIA Research highlighted three CVPR papers: GraspGen-X for zero-shot robotic grasping, LCDrive for lower-token autonomous-driving inference, and NitroGen for training embodied agents in virtual environments.',
@@ -201,6 +214,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'meta-business-agent-2026',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
+    splitTargetCategory: 'enterprise-agent-platforms',
     terms: ['Meta Business Agent', 'WhatsApp、Messenger、Instagram', 'Shopify、Zendesk、Shopee'],
     details: {
       what: 'Meta said it is expanding Meta Business Agent globally across WhatsApp, Messenger, Instagram, and partner systems including Shopify, Zendesk, and Shopee for Q&A, product recommendations, bookings, and lead qualification.',
@@ -223,6 +237,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'microsoft-enterprise-agent-system-2026',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
+    splitTargetCategory: 'enterprise-agent-platforms',
     terms: ['AI alone won’t change your business', 'Agent 系统', 'Azure、GitHub、Microsoft 365'],
     details: {
       what: 'Microsoft argued that enterprise AI value depends on governable agent systems rather than standalone models, tying Azure, GitHub, Microsoft 365, Security, Fabric, identity, permissions, data, audit, and human oversight into one operating layer.',
@@ -234,6 +249,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'shanghai-tech-fair-2026-hard-tech',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
+    splitTargetCategory: 'regional-ai-ecosystems',
     terms: ['第十二届上交会', '脑机接口', '长三角协同创新专区'],
     details: {
       what: 'Shanghai’s government press briefing said the 12th China Shanghai International Technology Fair will feature brain-computer interfaces, biomedicine, industrial robots, large models, new displays, intelligent connected vehicles, and Yangtze River Delta innovation zones.',
@@ -245,6 +261,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-doosan-physical-ai-factory-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-commercial-deployment',
     terms: ['斗山', 'Doosan', '电力方案和数据中心材料'],
     details: {
       what: 'NVIDIA said it is expanding cooperation with South Korea’s Doosan Group across robotics, industrial automation, AI factory infrastructure, power systems, and data-center materials.',
@@ -267,6 +284,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'aws-quick-connect-bedrock-openai-2026',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
+    splitTargetCategory: 'enterprise-agent-platforms',
     terms: ["What's Next with AWS 2026", 'Managed Agents 进入 Amazon Bedrock'],
     details: {
       what: 'AWS News Blog says What’s Next with AWS 2026 introduced Amazon Quick as a work AI assistant, expanded Amazon Connect agentic AI solutions, and put OpenAI models, Codex, and Managed Agents into limited preview on Amazon Bedrock.',
@@ -289,6 +307,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-korea-ecosystem-2026',
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
     terms: ['黄仁勋到访首尔', '韩国在机器人、物理 AI、存储制造', 'Korea ecosystem 2026'], 
     details: {
       what: 'NVIDIA CEO Jensen Huang visited Seoul and said Grace Blackwell is performing well, Vera Rubin has entered full production, and the second half of the year will be busy for AI infrastructure buildout, with Korea highlighted for robotics, physical AI, memory, and manufacturing.',
@@ -300,6 +319,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-provincial-ai-compute-plans-2026',
     owner: 'daily-source-projection',
     category: 'policy-governance',
+    splitTargetCategory: 'ai-industrial-policy',
     terms: ['各省级“十五五”规划纲要密集发布', '30个省市提及“大模型”', '所有省市均提及“人工智能”和“算力”', '北京、浙江、上海、广东被描述为第一梯队'],
     details: {
       what: 'Xinhua reported that provincial 15th Five-Year Plan outlines are being published, with all provinces and municipalities mentioning artificial intelligence and compute power, 30 mentioning large models, and Beijing, Zhejiang, Shanghai, and Guangdong described as leading clusters.',
@@ -311,6 +331,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-6g-province-ministry-pilot-2026',
     owner: 'daily-source-projection',
     category: 'policy-governance',
+    splitTargetCategory: 'ai-industrial-policy',
     terms: ['6G 创新发展部省协同试点', '2029年', '业务场景和终端产品', '低空经济'],
     details: {
       what: 'Xinhua reported that China’s Ministry of Industry and Information Technology is organizing province-ministry coordinated 6G innovation pilots, aiming to form independent 6G technical solutions, business scenarios, and terminal products by 2029.',
@@ -322,6 +343,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-cosmos-3-physical-ai-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-simulation-training',
     terms: ['Cosmos 3', '开放的物理 AI 世界基础模型', 'world foundation model'],
     details: {
       what: 'NVIDIA announced Cosmos 3 at GTC Taipei as an open physical AI world foundation model for visual reasoning, world generation, and action prediction across robotics, autonomous driving, and visual AI workflows.',
@@ -333,6 +355,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-physical-ai-agent-skills-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-simulation-training',
     terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo'],
     details: {
       what: 'NVIDIA published open-source Physical AI Agent tools and skills for Omniverse, Cosmos, Isaac, Metropolis, Alpamayo, Jetson, and related workflows covering data generation, simulation, training, evaluation, and deployment.',
@@ -366,6 +389,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-drive-hyperion-robotaxi-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
+    splitTargetCategory: 'autonomous-mobility-systems',
     terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN'],
     details: {
       what: 'NVIDIA expanded the DRIVE Hyperion robotaxi ecosystem with Uber/Autobrains in Munich, Foxconn L4-ready fleets in Taiwan, VinFast in Southeast Asia, and HUMAIN in Saudi Arabia and the Middle East.',
@@ -377,6 +401,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-chatgpt-model-picker-2026',
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
+    splitTargetCategory: 'chatgpt-control-surfaces',
     terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light'],
     details: {
       what: 'OpenAI simplified ChatGPT model selection into task-oriented options such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended across Plus and Pro users on web, iOS, and Android.',
@@ -388,6 +413,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'meta-facebook-ai-tools-2026',
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
+    splitTargetCategory: 'consumer-creative-ai',
     terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装'],
     details: {
       what: 'Meta added AI Mode search, AI image and video editing, AI outfit try-on, and avatar restyling features inside Facebook, moving generative tools directly into social search and creation flows.',
@@ -399,6 +425,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'amazon-content-partners-ai-crawler-preview-2026',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
+    splitTargetCategory: 'content-licensing-markets',
     terms: ['Amazon Content Partners', 'gated preview', 'AWS 托管额度'],
     details: {
       what: 'Amazon launched Amazon Content Partners in gated preview for independent content creators, combining AI crawler traffic management, affiliate commission boosts, advertising access, and AWS hosting credits.',
@@ -410,6 +437,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-partner-network-enterprise-ecosystem-2026',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
+    splitTargetCategory: 'enterprise-agent-platforms',
     capacityPlan: 'Consumes the final enterprise-agents budget slot because the 2026-06-16 real cron sample contains a concrete OpenAI Partner Network deployment-ecosystem signal; future enterprise agent rules should split categories or raise budget before merge.',
     terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问'],
     details: {
@@ -422,6 +450,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-humanoid-embodied-training-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-simulation-training',
     terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力'],
     details: {
       what: 'Xinhua reported that China’s MIIT and SASAC launched a 2026 humanoid robotics and embodied-intelligence real-world training initiative, targeting more than 100 high-value application scenarios and 10,000-unit deployment capability by year end.',
@@ -433,6 +462,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-app-popup-jump-regulation-2026',
     owner: 'daily-source-projection',
     category: 'policy-governance',
+    splitTargetCategory: 'digital-regulation-compliance',
     terms: ['信息窗口跳转', '摇一摇', '常态化检测监测'],
     details: {
       what: 'Xinhua reported that China’s MIIT required internet platforms and smart-terminal companies to standardize app information-window behavior and crack down on illegal pop-ups, induced clicks, and high-sensitivity shake-to-jump redirects.',
@@ -445,6 +475,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-academy-enterprise-ai-foundations-2026',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
+    splitTargetCategory: 'agent-enablement-programs',
     terms: ['AI Foundations', 'Applied AI Foundations', 'Agents and Workflows'],
     details: {
       what: 'OpenAI Academy added three enterprise AI courses — AI Foundations, Applied AI Foundations, and Agents and Workflows — to train employees on prompting, workflow design, and agent collaboration.',
@@ -456,6 +487,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-agentperf-blackwell-2026',
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
+    splitTargetCategory: 'cloud-model-distribution',
     terms: ['AgentPerf', 'GB300 NVL72', '每兆瓦并发智能体'],
     details: {
       what: 'NVIDIA said Artificial Analysis AgentPerf results show GB300 NVL72 leading agentic AI infrastructure, with up to 20x the concurrent agents per megawatt versus H200 in the cited workload.',
@@ -467,6 +499,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'anthropic-claude-corps-nonprofit-2026',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
+    splitTargetCategory: 'agent-enablement-programs',
     terms: ['Claude Corps', '1000 名早期职业人员', '2026 年 10 月'],
     details: {
       what: 'Anthropic launched Claude Corps as a 150 million USD program to train 1,000 early-career workers and place them full-time for one year with US nonprofits, with the first 100 participants planned for October 2026.',
@@ -478,6 +511,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-ai-ict-innovation-plan-2026',
     owner: 'daily-source-projection',
     category: 'policy-governance',
+    splitTargetCategory: 'ai-industrial-policy',
     terms: ['人工智能+信息通信', '1 毫秒时延圈', '2026—2028年'],
     details: {
       what: 'China’s MIIT issued an AI + information and communications implementation plan for 2026–2028, targeting more than 30 high-value scenarios and at least 75% coverage for a 1-millisecond metropolitan compute latency circle by 2028.',
@@ -490,6 +524,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'aws-agent-continuum-enterprise-agentcore-2026',
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
+    splitTargetCategory: 'cloud-model-distribution',
     capacityPlan: 'Uses the final cloud-infrastructure headroom for a fixture-backed AWS agent infrastructure launch; next AWS/cloud agent rules should migrate into the planned cloud-model-distribution or ai-infrastructure-capacity split before adding more rules.',
     terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore'],
     details: {
@@ -502,6 +537,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'anthropic-korea-seoul-office-ecosystem-2026',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
+    splitTargetCategory: 'regional-ai-ecosystems',
     terms: ['首尔办公室正式开放', 'NAVER、Nexon、LG CNS', 'Samsung SDS、Channel Corp'],
     details: {
       what: 'Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.',
@@ -513,6 +549,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-chatgpt-scheduled-tasks-pulse-2026',
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
+    splitTargetCategory: 'chatgpt-control-surfaces',
     terms: ['Scheduled Tasks', '统一 Scheduled 页面', 'Pulse 将逐步退出'],
     details: {
       what: 'OpenAI updated ChatGPT Scheduled Tasks with a unified Scheduled page for viewing, pausing, resuming, editing, and deleting tasks, faster and more reliable execution, web search, connected apps, and a gradual migration away from Pulse.',

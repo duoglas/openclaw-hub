@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-19 17:24
+Last updated: 2026-06-20 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-181: 为现有 source projection registry 写入 splitTargetCategory 并增加覆盖闸门，消费 EXP-180 “真实 rule registry 分阶段迁移到 split target enum 字段”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-180 已让 proposed rule 在新增前声明 splitTargetCategory，但 37 条已存在的高风险 category rule 仍只停留在 parent category；若不把现有 registry 显式迁移到 split target metadata，后续真实 category enum 迁移仍需要重新依赖 CLI migration details 手工对应，且可能出现漏填、填错或与 migration hint 漂移。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `existing rule split target coverage: 37/37 covered, missing=0, invalid=0, mismatched=0`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-scope` 与 `pnpm build` 通过。
+  - Acceptance: 1) 为 37 条命中 split recommendations 的现有 source projection rules 写入 `splitTargetCategory`；2) 新增 `summarizeSourceProjectionRuleSplitTargetCoverage` 与 `validateSourceProjectionRuleSplitTargetCoverage`，阻断缺失、非法或与 migration hint 不一致的 split target；3) taxonomy summary 输出 existing rule split target coverage；4) self-test 锁定 missing/invalid/mismatched 三类诊断；5) taxonomy、registry health、scope 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-180: 为 proposed source projection rule 增加 split target scaffold 推荐与校验，消费 EXP-179 “真实 category enum 迁移前可为新增规则自动推荐目标 split category”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-179 已锁定 17 个 split target enum 及 hint 覆盖，但新增 proposed rule 仍只能看到全局 split recommendations；若不在新增规则层面自动推荐/校验 `splitTargetCategory`，维护者仍可能把 OpenAI Partner Network、AWS AgentCore、ChatGPT Scheduled Tasks 等新日报规则继续写入满额 parent category，而没有声明应迁移到哪个 split target。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `proposed rule split target scaffold`，并通过 self-test 锁定高风险 proposed rule 缺 `splitTargetCategory` 时给出推荐 target、非法 target 时给出 parent 可选 target；`pnpm build` 通过。

@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-181
+- Hypothesis: EXP-180 已让 proposed rule 在新增前声明 splitTargetCategory，但 37 条已存在的高风险 category rule 仍只停留在 parent category；若不把现有 registry 显式迁移到 split target metadata，后续真实 category enum 迁移仍需要重新依赖 CLI migration details 手工对应，且可能出现漏填、填错或与 migration hint 漂移。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 37 条命中 split recommendations 的现有 source projection rules 写入 `splitTargetCategory`；新增 existing rule split target coverage summary 与 validation，阻断缺失、非法 target、以及与 migration hint 不一致的 target；taxonomy summary 输出覆盖率并用 self-test 锁定 missing/invalid/mismatched 诊断。
+- ICE: 8x8x8=512
+- Start date: 2026-06-20
+- End date: 2026-06-20
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `existing rule split target coverage: 37/37 covered, missing=0, invalid=0, mismatched=0`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-scope` 与 `pnpm build` 通过。
+- Result: pass（37 条现有 high-risk source projection rules 已写入 splitTargetCategory；taxonomy CLI 已输出 `existing rule split target coverage: 37/37 covered, missing=0, invalid=0, mismatched=0`；self-test 锁定 existing rule 缺 target、非法 target、与 migration hint 不一致三类失败诊断；taxonomy、registry health、scope 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 existing rule split target coverage guard 作为真实 category enum 迁移前的 registry 基线；下一步可把 generator / registry health 迁移为优先读取 splitTargetCategory，逐步降低 parent category 满额对新增日报 source projection 的阻塞。）
+
 ### EXP-180
 - Hypothesis: EXP-179 已锁定 17 个 split target enum 及 hint 覆盖，但新增 proposed rule 仍只能看到全局 split recommendations；若不在新增规则层面自动推荐/校验 `splitTargetCategory`，维护者仍可能把 OpenAI Partner Network、AWS AgentCore、ChatGPT Scheduled Tasks 等新日报规则继续写入满额 parent category，而没有声明应迁移到哪个 split target。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
