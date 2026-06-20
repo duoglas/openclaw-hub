@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-182
+- Hypothesis: EXP-181 已为 37 条高风险 parent category rule 写入 `splitTargetCategory`，但 registry health 仍只输出 pass/fail，维护者看不到生成器/registry 真实会按哪些 split target 承载规则；若健康检查不优先读取 split target，parent category 满额后的迁移收益仍难以验证。
+- Scope: `scripts/check-source-projection-rule-registry-health.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: registry health 新增 effective category summary，按 `splitTargetCategory || category` 聚合 source projection rules；成功路径输出 split target 优先后的有效分类分布与 parent category fallback 数量；self-test 锁定 split target 优先级、排序和 fallback 计数。
+- ICE: 8x8x8=512
+- Start date: 2026-06-20
+- End date: 2026-06-20
+- Success metric: `pnpm check:source-projection-rule-registry-health` 输出 `source projection registry effective category summary: totalRules=48`、`effective categories` 与 `parent category fallback rules: 11`；`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 通过。
+- Result: pass（registry health 已按 `splitTargetCategory || category` 输出 effective category summary；当前 48 条 rule 分布为 robotics-simulation-training=5、ai-industrial-policy=4、enterprise-agent-platforms=4 等，未迁移低风险 parent category fallback 为 11；self-test 锁定 split target 优先级、排序与 fallback 计数；registry health、taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 registry health effective category summary 作为 split target 迁移可视化基线；下一步可让生成器/展示层也读取 effective category，或为剩余 11 条低风险 parent fallback 设计是否需要 split 的专项实验。）
+
 ### EXP-181
 - Hypothesis: EXP-180 已让 proposed rule 在新增前声明 splitTargetCategory，但 37 条已存在的高风险 category rule 仍只停留在 parent category；若不把现有 registry 显式迁移到 split target metadata，后续真实 category enum 迁移仍需要重新依赖 CLI migration details 手工对应，且可能出现漏填、填错或与 migration hint 漂移。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

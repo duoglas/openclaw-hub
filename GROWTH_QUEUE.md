@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-20 11:24
+Last updated: 2026-06-20 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-182: 让 source projection registry health 优先按 splitTargetCategory 输出有效分类分布，消费 EXP-181 “registry health 迁移为优先读取 splitTargetCategory”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-181 已为 37 条高风险 parent category rule 写入 `splitTargetCategory`，但 registry health 仍只输出 pass/fail，维护者看不到生成器/registry 真实会按哪些 split target 承载规则；若健康检查不优先读取 split target，parent category 满额后的迁移收益仍难以验证。
+  - Metrics: `pnpm check:source-projection-rule-registry-health` 输出 `source projection registry effective category summary: totalRules=48`、按 `splitTargetCategory || category` 聚合的 `effective categories`，并显示 `parent category fallback rules: 11`；`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 通过。
+  - Acceptance: 1) registry health 新增 `summarizeSourceProjectionRuleRegistrySplitTargets` 与 `formatSourceProjectionRuleRegistrySplitTargetSummary`；2) 有 `splitTargetCategory` 的 rule 优先按 split target 计入有效分类，未迁移低风险 rule 才回落 parent category；3) CLI 成功路径输出有效分类分布与 fallback 数量；4) self-test 锁定 split target 优先级、排序与 fallback 计数；5) registry health、taxonomy 与 build 全部通过；质量评分 27/30。
 - [x] P1 Candidate / EXP-181: 为现有 source projection registry 写入 splitTargetCategory 并增加覆盖闸门，消费 EXP-180 “真实 rule registry 分阶段迁移到 split target enum 字段”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-180 已让 proposed rule 在新增前声明 splitTargetCategory，但 37 条已存在的高风险 category rule 仍只停留在 parent category；若不把现有 registry 显式迁移到 split target metadata，后续真实 category enum 迁移仍需要重新依赖 CLI migration details 手工对应，且可能出现漏填、填错或与 migration hint 漂移。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `existing rule split target coverage: 37/37 covered, missing=0, invalid=0, mismatched=0`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-scope` 与 `pnpm build` 通过。

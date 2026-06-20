@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { realCronFixtures } from './fixtures/daily-real-cron-fixtures.mjs';
 import { sourceProjectionRules } from './lib/source-projection-rules.mjs';
 import { formatSourceProjectionMatches } from './check-source-projection-rule-scope.mjs';
+import { ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES } from './check-source-projection-rule-taxonomy.mjs';
 
 function storyBlockFor(fixtureText, title) {
   const titleIndex = fixtureText.indexOf(title);
@@ -30,6 +31,43 @@ function ruleMatches(source, rules) {
       terms: (rule.terms || []).filter((term) => text.includes(term)),
     }))
     .filter((match) => match.terms.length > 0);
+}
+
+function effectiveRuleCategory(rule) {
+  return String(rule.splitTargetCategory || rule.category || '(missing category)').trim();
+}
+
+function sortDistributionEntries(entries) {
+  return [...entries].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+}
+
+export function summarizeSourceProjectionRuleRegistrySplitTargets({ rules = sourceProjectionRules() } = {}) {
+  const distribution = new Map();
+  const parentCategoryFallback = [];
+  const allowedSplitTargets = new Set(ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES);
+
+  for (const rule of rules) {
+    const effectiveCategory = effectiveRuleCategory(rule);
+    distribution.set(effectiveCategory, (distribution.get(effectiveCategory) || 0) + 1);
+    if (!rule.splitTargetCategory && !allowedSplitTargets.has(effectiveCategory)) {
+      parentCategoryFallback.push(rule.name || '(unnamed rule)');
+    }
+  }
+
+  return {
+    totalRules: rules.length,
+    distribution: sortDistributionEntries(distribution.entries()).map(([name, count]) => ({ name, count })),
+    parentCategoryFallback,
+  };
+}
+
+export function formatSourceProjectionRuleRegistrySplitTargetSummary(summary = summarizeSourceProjectionRuleRegistrySplitTargets()) {
+  const distributionLine = summary.distribution.map((item) => `${item.name}=${item.count}`).join(', ');
+  return [
+    `source projection registry effective category summary: totalRules=${summary.totalRules}`,
+    `effective categories: ${distributionLine || 'none'}`,
+    `parent category fallback rules: ${summary.parentCategoryFallback.length}`,
+  ].join('\n');
 }
 
 function collectRuleUsage(fixtures, rules, failures) {
@@ -183,6 +221,38 @@ function validateSelfTests() {
     );
   }
 
+  const splitTargetSummaryDiagnostic = formatSourceProjectionRuleRegistrySplitTargetSummary(summarizeSourceProjectionRuleRegistrySplitTargets({
+    rules: [
+      {
+        name: 'synthetic-enterprise-parent-rule',
+        category: 'enterprise-agents',
+      },
+      {
+        name: 'synthetic-enterprise-platform-rule',
+        category: 'enterprise-agents',
+        splitTargetCategory: 'enterprise-agent-platforms',
+      },
+      {
+        name: 'synthetic-enterprise-platform-rule-b',
+        category: 'enterprise-agents',
+        splitTargetCategory: 'enterprise-agent-platforms',
+      },
+      {
+        name: 'synthetic-frontier-rule',
+        category: 'frontier-models',
+      },
+    ],
+  }));
+  for (const fragment of [
+    'source projection registry effective category summary: totalRules=4',
+    'effective categories: enterprise-agent-platforms=2, enterprise-agents=1, frontier-models=1',
+    'parent category fallback rules: 2',
+  ]) {
+    if (!splitTargetSummaryDiagnostic.includes(fragment)) {
+      failures.push(`source projection registry split-target summary self-test failed: ${fragment}`);
+    }
+  }
+
   return failures;
 }
 
@@ -196,6 +266,7 @@ function runCli() {
   }
 
   console.log('source projection rule registry health check passed');
+  console.log(formatSourceProjectionRuleRegistrySplitTargetSummary());
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
