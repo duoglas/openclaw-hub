@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-21 11:20
+Last updated: 2026-06-21 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-184: 为 2026-06-18/21 最新日报增加 topic-specific 英文标签，消费 EXP-183 “generator label taxonomy 升级到 split target / topic-specific label”后续假设 | ICE 8x7x8=448 — commit `(this commit)`
+  - Hypothesis: EXP-183 已把 2026-06-21 source projection 做到字段级事实改写，但 generator headline label 仍出现 `model capability update`、`enterprise AI rollout` 等泛化标签；若最新日报的 Top 5 标题仍沿用实体拼接标签，首屏可检索性和用户理解会弱于 source projection detail。
+  - Metrics: `pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `daily-generator` 对 Codex Record & Replay、Alexa+ Brazil、HPE AI Factory、Anthropic Korea、WAICO 输出 topic-specific label；2) 2026-06-21 EN 日报标题/证据矩阵升级为 ChatGPT control surfaces、consumer AI localization、AI infrastructure capacity、regional AI ecosystem、AI governance coordination；3) 2026-06-18 Anthropic Korea 同步回收泛化 model capability label；4) 真实 cron EN 与双语 pair fixture 锁定新 label；5) build 通过；质量评分 27/30。
 - [x] P1 Candidate / EXP-183: 将 2026-06-21 真实 cron 样本接入 daily-real-cron fixture registry，并为 Codex Record & Replay / Alexa+ Brazil / WAICO 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-06-21）暴露 OpenAI ChatGPT/Codex Record & Replay、Amazon Alexa+ Brazil、NVIDIA/HPE AI Factory、Anthropic Korea 与中国筹建世界人工智能合作组织五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱最新日报首日索引事实密度。
   - Metrics: `pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、metadata/term narrowness、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。

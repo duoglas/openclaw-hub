@@ -12,31 +12,31 @@ AI & Tech Daily Brief
 
 ## Top 5 Stories
 
-### 1. OpenAI / ChatGPT / Codex / enterprise AI rollout
+### 1. OpenAI / Codex / ChatGPT control surfaces
 
 What happened: OpenAI updated ChatGPT Scheduled tasks, app permission controls, voice pronunciation help, chat organization, iOS upload flow, and Codex Record & Replay, which can turn a demonstrated workflow into a reusable skill.
 Why it matters: The update shows AI products moving from chat responses toward scheduled execution, permissioned app access, reusable workflows, and supervised desktop or browser automation.
 Potential impact: Users can test Codex on repeatable low-risk tasks such as issue creation, report downloads, publishing checklists, or admin-console setup while teams define permission scope, audit logs, and rollback paths.
 
-### 2. Amazon / Alexa / Early / model capability update
+### 2. Amazon / Alexa+ / consumer AI localization
 
 What happened: Amazon moved Alexa+ into Brazil Early Access, emphasizing generative AI, natural conversation, cross-device continuity, local language and cultural understanding, and expansion to additional countries.
 Why it matters: The rollout shows consumer AI assistant competition shifting from model quality alone toward localization, device integration, household services, and everyday execution surfaces.
 Potential impact: Smart speakers, TVs, home devices, and Prime membership bundles may regain importance as AI entry points, while teams should compare language quality, local service coverage, privacy controls, and subscription economics.
 
-### 3. NVIDIA / HPE / Factory / AI server capacity
+### 3. NVIDIA / HPE / AI infrastructure capacity
 
 What happened: NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.
 Why it matters: The competitive bottleneck is shifting from model announcements toward reliable token production, regional cloud capacity, sovereign AI infrastructure, and end-to-end inference economics.
 Potential impact: Enterprises may increasingly buy AI capacity as a managed production layer rather than raw GPUs, making partner geography, data residency, cost per token, and service reliability key selection criteria.
 
-### 4. Korea / Anthropic / ICT / model capability update
+### 4. Anthropic / Korea / regional AI ecosystem
 
 What happened: Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.
 Why it matters: The move frames Korea as a strategic enterprise AI market across semiconductors, cloud, gaming, consumer electronics, IT services, and AI safety research.
 Potential impact: Asian enterprise AI competition may intensify as Claude adoption expands into software development, customer support, knowledge work, and regional partner ecosystems.
 
-### 5. China / open-source model ecosystem / enterprise AI rollout / strategic partnership
+### 5. China / WAICO / AI governance coordination
 
 What happened: Chinese state media said China is preparing a World AI Cooperation Organization and plans to advance global AI governance cooperation around the July World AI Conference in Shanghai.
 Why it matters: AI governance is moving from company pledges and national regulation toward international institution-building, standards competition, and cross-border coordination mechanisms.
@@ -66,11 +66,11 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 
 ## Evidence Matrix
 
-- Evidence item 1: OpenAI / ChatGPT / Codex / enterprise AI rollout — OpenAI updated ChatGPT Scheduled tasks, app permission controls, voice pronunciation help, chat organization, iOS upload flow, and Codex Record & Replay, which can turn a demonstrated workflow into a reusable skill.
-- Evidence item 2: Amazon / Alexa / Early / model capability update — Amazon moved Alexa+ into Brazil Early Access, emphasizing generative AI, natural conversation, cross-device continuity, local language and cultural understanding, and expansion to additional countries.
-- Evidence item 3: NVIDIA / HPE / Factory / AI server capacity — NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.
-- Evidence item 4: Korea / Anthropic / ICT / model capability update — Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.
-- Evidence item 5: China / open-source model ecosystem / enterprise AI rollout / strategic partnership — Chinese state media said China is preparing a World AI Cooperation Organization and plans to advance global AI governance cooperation around the July World AI Conference in Shanghai.
+- Evidence item 1: OpenAI / Codex / ChatGPT control surfaces — OpenAI updated ChatGPT Scheduled tasks, app permission controls, voice pronunciation help, chat organization, iOS upload flow, and Codex Record & Replay, which can turn a demonstrated workflow into a reusable skill.
+- Evidence item 2: Amazon / Alexa+ / consumer AI localization — Amazon moved Alexa+ into Brazil Early Access, emphasizing generative AI, natural conversation, cross-device continuity, local language and cultural understanding, and expansion to additional countries.
+- Evidence item 3: NVIDIA / HPE / AI infrastructure capacity — NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.
+- Evidence item 4: Anthropic / Korea / regional AI ecosystem — Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.
+- Evidence item 5: China / WAICO / AI governance coordination — Chinese state media said China is preparing a World AI Cooperation Organization and plans to advance global AI governance cooperation around the July World AI Conference in Shanghai.
 
 ## Next-Step CTA
 

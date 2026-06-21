@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-184
+- Hypothesis: EXP-183 已把 2026-06-21 source projection 做到字段级事实改写，但 generator headline label 仍出现 `model capability update`、`enterprise AI rollout` 等泛化标签；若最新日报的 Top 5 标题仍沿用实体拼接标签，首屏可检索性和用户理解会弱于 source projection detail。
+- Scope: `scripts/lib/daily-generator.mjs`, `scripts/fixtures/daily-real-cron-2026-06-21.mjs`, `scripts/fixtures/daily-real-cron-2026-06-18.mjs`, `src/content/blog/en/openclaw-daily-2026-06-21.md`, `src/content/blog/en/openclaw-daily-2026-06-18.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 在 English daily generator 中新增 topic-specific label override，优先把 2026-06-21 Codex Record & Replay、Alexa+ Brazil、HPE AI Factory、Anthropic Korea、WAICO 等 latest source projection 信号映射为更窄的可检索标签，并同步回收 2026-06-18 Anthropic Korea 的泛化 label。
+- ICE: 8x7x8=448
+- Start date: 2026-06-21
+- End date: 2026-06-21
+- Success metric: `pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 通过。
+- Result: pass（2026-06-21 EN Top 5 已升级为 `OpenAI / Codex / ChatGPT control surfaces`、`Amazon / Alexa+ / consumer AI localization`、`NVIDIA / HPE / AI infrastructure capacity`、`Anthropic / Korea / regional AI ecosystem`、`China / WAICO / AI governance coordination`；2026-06-18 Anthropic Korea 也回收为 regional AI ecosystem；真实 cron fixture、双语 pair fixture 与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 topic-specific label override 作为最新 source projection 信号的首屏可检索标签基线；下一步可把 override 从硬编码 token 迁移为由 source projection rule metadata / splitTargetCategory 自动生成。）
+
 ### EXP-183
 - Hypothesis: 最近24小时新增日报（2026-06-21）暴露 OpenAI ChatGPT/Codex Record & Replay、Amazon Alexa+ Brazil、NVIDIA/HPE AI Factory、Anthropic Korea 与中国筹建世界人工智能合作组织五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱最新日报首日索引事实密度。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-21.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-06-21.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
