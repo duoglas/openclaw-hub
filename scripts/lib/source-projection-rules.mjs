@@ -120,7 +120,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'ai-infrastructure-capacity',
-    terms: ['AI Cloud', 'AI factory', '六大洲'],
+    terms: ['AI Cloud', 'AI factory', '六大洲', 'HPE AI Factory with NVIDIA'],
     details: {
       what: 'NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.',
       why: 'The competitive bottleneck is shifting from model announcements toward reliable token production, regional cloud capacity, sovereign AI infrastructure, and end-to-end inference economics.',
@@ -410,6 +410,17 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'openai-codex-record-replay-2026',
+    owner: 'daily-source-projection',
+    category: 'developer-tools',
+    terms: ['Record & Replay', '应用权限控制', 'Codex 新增'],
+    details: {
+      what: 'OpenAI updated ChatGPT Scheduled tasks, app permission controls, voice pronunciation help, chat organization, iOS upload flow, and Codex Record & Replay, which can turn a demonstrated workflow into a reusable skill.',
+      why: 'The update shows AI products moving from chat responses toward scheduled execution, permissioned app access, reusable workflows, and supervised desktop or browser automation.',
+      impact: 'Users can test Codex on repeatable low-risk tasks such as issue creation, report downloads, publishing checklists, or admin-console setup while teams define permission scope, audit logs, and rollback paths.',
+    },
+  },
+  {
     name: 'meta-facebook-ai-tools-2026',
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
@@ -419,6 +430,19 @@ export const FIELD_PROJECTION_RULES = [
       what: 'Meta added AI Mode search, AI image and video editing, AI outfit try-on, and avatar restyling features inside Facebook, moving generative tools directly into social search and creation flows.',
       why: 'The update shows consumer AI shifting from standalone chat apps into default social-product surfaces, where search, posting, editing, and identity tools can all invoke AI in the same user journey.',
       impact: 'Creators and everyday users may create more visual content with lower friction, while teams should watch privacy controls, provenance labeling, and platform-search behavior as AI answers enter Facebook workflows.',
+    },
+  },
+  {
+    name: 'amazon-alexa-plus-brazil-localization-2026',
+    owner: 'daily-source-projection',
+    category: 'consumer-productivity',
+    splitTargetCategory: 'consumer-creative-ai',
+    capacityPlan: 'Uses the remaining consumer-productivity budget slot for a fixture-backed consumer AI assistant localization signal; future consumer rules should rely on the planned chatgpt-control-surfaces / consumer-creative-ai split before adding more parent-category rules.',
+    terms: ['Alexa+ 已在巴西 Early Access 上线', '本地语言与文化理解', 'Prime 会员体系'],
+    details: {
+      what: 'Amazon moved Alexa+ into Brazil Early Access, emphasizing generative AI, natural conversation, cross-device continuity, local language and cultural understanding, and expansion to additional countries.',
+      why: 'The rollout shows consumer AI assistant competition shifting from model quality alone toward localization, device integration, household services, and everyday execution surfaces.',
+      impact: 'Smart speakers, TVs, home devices, and Prime membership bundles may regain importance as AI entry points, while teams should compare language quality, local service coverage, privacy controls, and subscription economics.',
     },
   },
   {
@@ -519,6 +543,19 @@ export const FIELD_PROJECTION_RULES = [
       impact: 'Telecom operators, equipment vendors, cloud providers, and industry-model builders may accelerate network agents, edge AI services, and low-latency smart-device deployments under clearer policy targets.',
     },
   },
+  {
+    name: 'china-world-ai-cooperation-organization-2026',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
+    splitTargetCategory: 'ai-policy-standards',
+    capacityPlan: 'Uses the remaining policy-governance budget slot for a fixture-backed international AI governance mechanism signal; future policy rules should be added after migrating into ai-policy-standards / ai-industrial-policy / digital-regulation-compliance split targets.',
+    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作'],
+    details: {
+      what: 'Chinese state media said China is preparing a World AI Cooperation Organization and plans to advance global AI governance cooperation around the July World AI Conference in Shanghai.',
+      why: 'AI governance is moving from company pledges and national regulation toward international institution-building, standards competition, and cross-border coordination mechanisms.',
+      impact: 'Chinese AI exporters, open-source model ecosystems, and standards participants should watch the organization charter, membership, projects, and links to international governance forums before treating it as an operational channel.',
+    },
+  },
 
   {
     name: 'aws-agent-continuum-enterprise-agentcore-2026',
@@ -550,7 +587,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
     splitTargetCategory: 'chatgpt-control-surfaces',
-    terms: ['Scheduled Tasks', '统一 Scheduled 页面', 'Pulse 将逐步退出'],
+    terms: ['Scheduled Tasks', 'Scheduled tasks', '统一 Scheduled 页面', 'Pulse 将逐步退出'],
     details: {
       what: 'OpenAI updated ChatGPT Scheduled Tasks with a unified Scheduled page for viewing, pausing, resuming, editing, and deleting tasks, faster and more reliable execution, web search, connected apps, and a gradual migration away from Pulse.',
       why: 'The product direction moves ChatGPT from passive chat toward scheduled execution, ongoing monitoring, and proactive reminders where reliability, limits, and privacy boundaries become adoption criteria.',

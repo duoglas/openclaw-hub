@@ -131,7 +131,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'consumer-creative-ai',
-      match: ['facebook-ai-tools', 'ai mode', '图片', '视频', '换装', 'creative'],
+      match: ['facebook-ai-tools', 'alexa-plus', 'ai mode', 'alexa', '图片', '视频', '换装', 'creative'],
     },
   ],
   'market-intelligence': [

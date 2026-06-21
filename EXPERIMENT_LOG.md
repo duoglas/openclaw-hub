@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-183
+- Hypothesis: 最近24小时新增日报（2026-06-21）暴露 OpenAI ChatGPT/Codex Record & Replay、Amazon Alexa+ Brazil、NVIDIA/HPE AI Factory、Anthropic Korea 与中国筹建世界人工智能合作组织五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱最新日报首日索引事实密度。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-21.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-06-21.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-21 真实 cron fixture；source projection registry 新增 OpenAI Codex Record & Replay、Amazon Alexa+ Brazil localization、中国世界人工智能合作组织三条字段级英文规则，并让 NVIDIA AI cloud 规则命中 HPE AI Factory；EN 2026-06-21 日报由字段级 projection 重写 story 1/2/5 并保留 CTA；taxonomy migration hint 将 Alexa+ 分入 consumer-creative-ai。
+- ICE: 9x8x8=576
+- Start date: 2026-06-21
+- End date: 2026-06-21
+- Success metric: `pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:source-projection-rule-metadata-coverage`、`pnpm check:source-projection-rule-term-narrowness`、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 通过。
+- Result: pass（2026-06-21 真实 cron fixture 已进入 registry；新增 OpenAI Codex Record & Replay、Amazon Alexa+ Brazil localization、中国世界人工智能合作组织三条字段级 projection，并复用 Anthropic Korea 与 NVIDIA AI cloud/HPE AI Factory；EN 最新日报 story 1/2/5 已从泛化 fallback 改为字段级事实改写；source projection totalRules=51，existing split target coverage=39/39；全部检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-06-21 fixture 作为周末低新增量日报的首日索引质量基线；下一步优先把 generator label taxonomy 也升级到 split target / topic-specific label，减少 Alexa+、WAICO 这类新信号仍显示通用 label 的问题。）
+
 ### EXP-182
 - Hypothesis: EXP-181 已为 37 条高风险 parent category rule 写入 `splitTargetCategory`，但 registry health 仍只输出 pass/fail，维护者看不到生成器/registry 真实会按哪些 split target 承载规则；若健康检查不优先读取 split target，parent category 满额后的迁移收益仍难以验证。
 - Scope: `scripts/check-source-projection-rule-registry-health.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

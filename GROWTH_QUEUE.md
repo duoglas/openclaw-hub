@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-20 17:20
+Last updated: 2026-06-21 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-183: 将 2026-06-21 真实 cron 样本接入 daily-real-cron fixture registry，并为 Codex Record & Replay / Alexa+ Brazil / WAICO 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-06-21）暴露 OpenAI ChatGPT/Codex Record & Replay、Amazon Alexa+ Brazil、NVIDIA/HPE AI Factory、Anthropic Korea 与中国筹建世界人工智能合作组织五条信号；若这些信号只停留在 ZH 页面和泛化 EN 页面，EN generator 会继续输出 `The source tracks...` / `buyers must check...` 模板句，削弱最新日报首日索引事实密度。
+  - Metrics: `pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、metadata/term narrowness、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-06-21.mjs`，覆盖 OpenAI ChatGPT/Codex、Alexa+ Brazil、NVIDIA/HPE AI Factory、Anthropic Korea 与 WAICO 五条信号；2) `source-projection-rules.mjs` 新增 3 条字段级英文 projection，并复用 Anthropic Korea 与 NVIDIA AI cloud 规则；3) EN 2026-06-21 日报移除 story 1/2/5 泛化 fallback 并保留 CTA；4) fixture 写入 story-level `sourceProjectionRuleMatches`、required outputs、banned fallback 与 section-boundary guardrail；5) 相关检查与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-182: 让 source projection registry health 优先按 splitTargetCategory 输出有效分类分布，消费 EXP-181 “registry health 迁移为优先读取 splitTargetCategory”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-181 已为 37 条高风险 parent category rule 写入 `splitTargetCategory`，但 registry health 仍只输出 pass/fail，维护者看不到生成器/registry 真实会按哪些 split target 承载规则；若健康检查不优先读取 split target，parent category 满额后的迁移收益仍难以验证。
   - Metrics: `pnpm check:source-projection-rule-registry-health` 输出 `source projection registry effective category summary: totalRules=48`、按 `splitTargetCategory || category` 聚合的 `effective categories`，并显示 `parent category fallback rules: 11`；`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 通过。
