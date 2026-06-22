@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-186
+- Hypothesis: EXP-185 已把 2026-06-21 与 Anthropic Korea 标签迁入 source projection metadata，但 2026-06-18 AWS Agent Continuum、ChatGPT Scheduled Tasks、中国 AI+ICT 与 NVIDIA Blackwell MLPerf 仍依赖 generator fallback 组合标签；若不继续把最新旧 fixture 的 headline label 写入 rule metadata，首屏标签基线仍会分散在 fixture expectedSignals 与 generator fallback 之间，后续 label taxonomy 改动容易造成静默漂移。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 2026-06-18 AWS Agent Continuum、ChatGPT Scheduled Tasks、NVIDIA Blackwell MLPerf source projection rules 写入 display label metadata；为中国 AI+ICT 写入条件 display label，限定科技日报/新华社版本，避免污染 2026-06-13 MIIT label；标签检查从白名单基线改为 2026-06-18 与 2026-06-21 expectedSignals 全量 metadata 校验。
+- ICE: 8x8x8=512
+- Start date: 2026-06-22
+- End date: 2026-06-22
+- Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 通过。
+- Result: pass（2026-06-18 剩余 4 条 headline label 已迁移到 source projection metadata；其中中国 AI+ICT 使用条件 `displayLabels` 锁定 2026-06-18 科技日报/新华社文本，未污染 2026-06-13 fixture；label check 现要求 2026-06-18/21 共 10 条 expectedSignals 全量由 metadata 命中；相关 fixture 与 build 全部通过；commit `08607f0`；质量评分 28/30。）
+- Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可按日期批次继续迁移 2026-06-16 或更早 fixture 的 enLabel，并为条件 label 增加重叠污染 probe。）
+
 ### EXP-185
 - Hypothesis: EXP-184 已为最新日报补齐 topic-specific label，但这些标签仍硬编码在 `daily-generator.mjs` 的 token 条件里；若后续新增日报 source projection rule 继续依赖 generator 内部条件，标签维护会和 registry metadata 漂移，最新日报首屏可检索标签容易回退为泛化实体拼接。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/lib/daily-generator.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -544,6 +544,12 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
+    displayLabels: [
+      {
+        label: 'Science and Technology Daily / Xinhua / MIIT / compute infrastructure',
+        terms: ['据新华社转载科技日报', '到 2030 年'],
+      },
+    ],
     terms: ['人工智能+信息通信', '1 毫秒时延圈', '2026—2028年'],
     details: {
       what: 'China’s MIIT issued an AI + information and communications implementation plan for 2026–2028, targeting more than 30 high-value scenarios and at least 75% coverage for a 1-millisecond metropolitan compute latency circle by 2028.',
@@ -571,6 +577,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'cloud-model-distribution',
+    displayLabel: 'AWS / Agent / Continuum / agent platform',
     capacityPlan: 'Uses the final cloud-infrastructure headroom for a fixture-backed AWS agent infrastructure launch; next AWS/cloud agent rules should migrate into the planned cloud-model-distribution or ai-infrastructure-capacity split before adding more rules.',
     terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore'],
     details: {
@@ -597,6 +604,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
     splitTargetCategory: 'chatgpt-control-surfaces',
+    displayLabel: 'OpenAI / ChatGPT / Scheduled / enterprise AI rollout',
     terms: ['Scheduled Tasks', 'Scheduled tasks', '统一 Scheduled 页面', 'Pulse 将逐步退出'],
     details: {
       what: 'OpenAI updated ChatGPT Scheduled Tasks with a unified Scheduled page for viewing, pausing, resuming, editing, and deleting tasks, faster and more reliable execution, web search, connected apps, and a gradual migration away from Pulse.',
@@ -608,6 +616,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-blackwell-mlperf-training-6-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    displayLabel: 'NVIDIA / Blackwell / MLPerf / model capability update',
     terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72'],
     details: {
       what: 'NVIDIA said Blackwell delivered the fastest training time across all seven MLPerf Training 6.0 benchmarks and completed an 8192-GPU Blackwell NVL72 large-scale training submission.',

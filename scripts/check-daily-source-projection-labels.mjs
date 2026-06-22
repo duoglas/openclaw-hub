@@ -19,19 +19,10 @@ function storySource(story) {
   return [story?.title, story?.what, story?.why, story?.impact].filter(Boolean).join(' ');
 }
 
-const METADATA_LABEL_BASELINES = new Set([
-  'OpenAI / Codex / ChatGPT control surfaces',
-  'Amazon / Alexa+ / consumer AI localization',
-  'NVIDIA / HPE / AI infrastructure capacity',
-  'Anthropic / Korea / regional AI ecosystem',
-  'China / WAICO / AI governance coordination',
-]);
-
 function assertFixtureLabels({ fixtureName, fixture, expectedSignals }) {
   const stories = extractStories(fixture);
   const failures = [];
   expectedSignals.forEach((expected, index) => {
-    if (!METADATA_LABEL_BASELINES.has(expected.enLabel)) return;
     const story = stories[index];
     const metadataLabel = projectEnglishSourceLabel(storySource(story));
     const generatedLabel = labelFor(story, index + 1);
