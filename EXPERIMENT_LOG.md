@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-185
+- Hypothesis: EXP-184 已为最新日报补齐 topic-specific label，但这些标签仍硬编码在 `daily-generator.mjs` 的 token 条件里；若后续新增日报 source projection rule 继续依赖 generator 内部条件，标签维护会和 registry metadata 漂移，最新日报首屏可检索标签容易回退为泛化实体拼接。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/lib/daily-generator.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 在 source projection registry 中新增 display label metadata，并导出 `projectEnglishSourceLabel`；daily generator 标题 label 优先读取 source projection metadata，而不是维护独立 token override；新增 label metadata 闸门并接入 CI。
+- ICE: 8x8x8=512
+- Start date: 2026-06-22
+- End date: 2026-06-22
+- Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 通过。
+- Result: pass（source projection rules 已为 OpenAI Codex Record & Replay、Alexa+ Brazil、HPE AI Factory、Anthropic Korea、WAICO 写入 display label metadata；daily generator 已移除 token-level topic label override 并优先读取 `projectEnglishSourceLabel`；新闸门锁定 2026-06-21 五条 label、2026-06-18 Anthropic Korea label 和 HPE 条件 label 不污染宽泛 NVIDIA AI Cloud；相关 fixture 与 build 全部通过；commit `296be31`；质量评分 28/30。）
+- Decision: scale（保留 source projection display label metadata 作为日报首屏标签基线；下一步可把更多旧 fixture 的 `enLabel` 逐步迁移到 rule metadata，并检查是否能由 `splitTargetCategory` 自动生成 fallback label。）
+
 ### EXP-184
 - Hypothesis: EXP-183 已把 2026-06-21 source projection 做到字段级事实改写，但 generator headline label 仍出现 `model capability update`、`enterprise AI rollout` 等泛化标签；若最新日报的 Top 5 标题仍沿用实体拼接标签，首屏可检索性和用户理解会弱于 source projection detail。
 - Scope: `scripts/lib/daily-generator.mjs`, `scripts/fixtures/daily-real-cron-2026-06-21.mjs`, `scripts/fixtures/daily-real-cron-2026-06-18.mjs`, `src/content/blog/en/openclaw-daily-2026-06-21.md`, `src/content/blog/en/openclaw-daily-2026-06-18.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -1,4 +1,4 @@
-import { projectEnglishSourceDetail } from './source-projection-rules.mjs';
+import { projectEnglishSourceDetail, projectEnglishSourceLabel } from './source-projection-rules.mjs';
 import { KEYWORD_MAP, ZH_ENTITY_MAP } from './daily-signal-maps.mjs';
 
 const BRAND_TOKENS = new Set([
@@ -101,20 +101,10 @@ function asciiEntities(source) {
   return found;
 }
 
-function topicSpecificLabelFor(source) {
-  const text = String(source || '');
-  if (text.includes('Record & Replay') && text.includes('Scheduled tasks')) return 'OpenAI / Codex / ChatGPT control surfaces';
-  if (text.includes('Alexa+') && (text.includes('Brazil') || text.includes('巴西')) && text.includes('Early Access')) return 'Amazon / Alexa+ / consumer AI localization';
-  if (text.includes('HPE AI Factory with NVIDIA') && text.includes('NVIDIA Agent Toolkit')) return 'NVIDIA / HPE / AI infrastructure capacity';
-  if (text.includes('Anthropic') && text.includes('Samsung SDS') && (text.includes('Korea') || text.includes('韩国'))) return 'Anthropic / Korea / regional AI ecosystem';
-  if (text.includes('世界人工智能合作组织') && text.includes('上海世界人工智能大会')) return 'China / WAICO / AI governance coordination';
-  return '';
-}
-
 export function labelFor(story, idx) {
   const source = [story?.title, story?.what, story?.why, story?.impact].filter(Boolean).join(' ');
-  const topicSpecificLabel = topicSpecificLabelFor(source);
-  if (topicSpecificLabel) return topicSpecificLabel;
+  const sourceProjectionLabel = projectEnglishSourceLabel(source);
+  if (sourceProjectionLabel) return sourceProjectionLabel;
   const mappedEntities = [];
   for (const [zh, en] of ZH_ENTITY_MAP) {
     if (source.includes(zh) && !mappedEntities.includes(en)) mappedEntities.push(en);

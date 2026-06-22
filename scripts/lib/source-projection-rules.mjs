@@ -120,6 +120,12 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'ai-infrastructure-capacity',
+    displayLabels: [
+      {
+        label: 'NVIDIA / HPE / AI infrastructure capacity',
+        terms: ['HPE AI Factory with NVIDIA', 'NVIDIA Agent Toolkit'],
+      },
+    ],
     terms: ['AI Cloud', 'AI factory', '六大洲', 'HPE AI Factory with NVIDIA'],
     details: {
       what: 'NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.',
@@ -413,6 +419,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-codex-record-replay-2026',
     owner: 'daily-source-projection',
     category: 'developer-tools',
+    displayLabel: 'OpenAI / Codex / ChatGPT control surfaces',
     terms: ['Record & Replay', '应用权限控制', 'Codex 新增'],
     details: {
       what: 'OpenAI updated ChatGPT Scheduled tasks, app permission controls, voice pronunciation help, chat organization, iOS upload flow, and Codex Record & Replay, which can turn a demonstrated workflow into a reusable skill.',
@@ -437,6 +444,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
     splitTargetCategory: 'consumer-creative-ai',
+    displayLabel: 'Amazon / Alexa+ / consumer AI localization',
     capacityPlan: 'Uses the remaining consumer-productivity budget slot for a fixture-backed consumer AI assistant localization signal; future consumer rules should rely on the planned chatgpt-control-surfaces / consumer-creative-ai split before adding more parent-category rules.',
     terms: ['Alexa+ 已在巴西 Early Access 上线', '本地语言与文化理解', 'Prime 会员体系'],
     details: {
@@ -548,6 +556,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'ai-policy-standards',
+    displayLabel: 'China / WAICO / AI governance coordination',
     capacityPlan: 'Uses the remaining policy-governance budget slot for a fixture-backed international AI governance mechanism signal; future policy rules should be added after migrating into ai-policy-standards / ai-industrial-policy / digital-regulation-compliance split targets.',
     terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作'],
     details: {
@@ -575,6 +584,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'market-intelligence',
     splitTargetCategory: 'regional-ai-ecosystems',
+    displayLabel: 'Anthropic / Korea / regional AI ecosystem',
     terms: ['首尔办公室正式开放', 'NAVER、Nexon、LG CNS', 'Samsung SDS、Channel Corp'],
     details: {
       what: 'Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.',
@@ -608,11 +618,31 @@ export const FIELD_PROJECTION_RULES = [
 
 ];
 
+function displayLabelForRule(rule, text) {
+  if (typeof rule.displayLabel === 'string' && rule.displayLabel.trim()) return rule.displayLabel.trim();
+  for (const candidate of rule.displayLabels || []) {
+    const label = String(candidate?.label || '').trim();
+    const terms = Array.isArray(candidate?.terms) ? candidate.terms : [];
+    if (label && terms.length > 0 && terms.every((term) => text.includes(term))) return label;
+  }
+  return '';
+}
+
 export function projectEnglishSourceDetail(source, key) {
   const text = String(source || '');
   const normalizedKey = key === 'why' || key === 'impact' ? key : 'what';
   const rule = FIELD_PROJECTION_RULES.find(({ terms }) => terms.some((term) => text.includes(term)));
   return rule?.details?.[normalizedKey] || '';
+}
+
+export function projectEnglishSourceLabel(source) {
+  const text = String(source || '');
+  for (const rule of FIELD_PROJECTION_RULES) {
+    if (!rule.terms.some((term) => text.includes(term))) continue;
+    const label = displayLabelForRule(rule, text);
+    if (label) return label;
+  }
+  return '';
 }
 
 export function sourceProjectionRules() {
