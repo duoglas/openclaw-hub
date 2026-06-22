@@ -20,7 +20,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-185: 将 daily generator topic-specific label override 迁移到 source projection rule metadata，消费 EXP-184 “label override 从硬编码 token 迁移为 source projection metadata / splitTargetCategory 自动生成”后续假设 | ICE 8x8x8=512 — commit `296be31`
+- [x] P1 Candidate / EXP-185: 将 daily generator topic-specific label override 迁移到 source projection rule metadata，消费 EXP-184 “label override 从硬编码 token 迁移为 source projection metadata / splitTargetCategory 自动生成”后续假设 | ICE 8x8x8=512 — commit `270435d`
   - Hypothesis: EXP-184 已为最新日报补齐 topic-specific label，但这些标签仍硬编码在 `daily-generator.mjs` 的 token 条件里；若后续新增日报 source projection rule 继续依赖 generator 内部条件，标签维护会和 registry metadata 漂移，最新日报首屏可检索标签容易回退为泛化实体拼接。
   - Metrics: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 全部通过。
   - Acceptance: 1) `source-projection-rules.mjs` 为 OpenAI Codex Record & Replay、Alexa+ Brazil、HPE AI Factory、Anthropic Korea、WAICO 写入 display label metadata；2) `daily-generator` 改为优先读取 `projectEnglishSourceLabel`，移除 token-level topic label override；3) 新增 `check-daily-source-projection-labels`，锁定 2026-06-21 五条 label 与 2026-06-18 Anthropic Korea label 来源于 metadata，并防止 HPE 条件 label 污染宽泛 NVIDIA AI Cloud；4) content-check CI 接入新闸门；5) 相关 fixture 与 build 通过；质量评分 28/30。

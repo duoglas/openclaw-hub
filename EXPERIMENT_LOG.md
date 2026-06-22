@@ -8,7 +8,7 @@
 - Start date: 2026-06-22
 - End date: 2026-06-22
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 通过。
-- Result: pass（source projection rules 已为 OpenAI Codex Record & Replay、Alexa+ Brazil、HPE AI Factory、Anthropic Korea、WAICO 写入 display label metadata；daily generator 已移除 token-level topic label override 并优先读取 `projectEnglishSourceLabel`；新闸门锁定 2026-06-21 五条 label、2026-06-18 Anthropic Korea label 和 HPE 条件 label 不污染宽泛 NVIDIA AI Cloud；相关 fixture 与 build 全部通过；commit `296be31`；质量评分 28/30。）
+- Result: pass（source projection rules 已为 OpenAI Codex Record & Replay、Alexa+ Brazil、HPE AI Factory、Anthropic Korea、WAICO 写入 display label metadata；daily generator 已移除 token-level topic label override 并优先读取 `projectEnglishSourceLabel`；新闸门锁定 2026-06-21 五条 label、2026-06-18 Anthropic Korea label 和 HPE 条件 label 不污染宽泛 NVIDIA AI Cloud；相关 fixture 与 build 全部通过；commit `270435d`；质量评分 28/30。）
 - Decision: scale（保留 source projection display label metadata 作为日报首屏标签基线；下一步可把更多旧 fixture 的 `enLabel` 逐步迁移到 rule metadata，并检查是否能由 `splitTargetCategory` 自动生成 fallback label。）
 
 ### EXP-184
