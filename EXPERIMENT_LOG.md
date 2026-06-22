@@ -8,7 +8,7 @@
 - Start date: 2026-06-22
 - End date: 2026-06-22
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 通过。
-- Result: pass（2026-06-18 剩余 4 条 headline label 已迁移到 source projection metadata；其中中国 AI+ICT 使用条件 `displayLabels` 锁定 2026-06-18 科技日报/新华社文本，未污染 2026-06-13 fixture；label check 现要求 2026-06-18/21 共 10 条 expectedSignals 全量由 metadata 命中；相关 fixture 与 build 全部通过；commit `08607f0`；质量评分 28/30。）
+- Result: pass（2026-06-18 剩余 4 条 headline label 已迁移到 source projection metadata；其中中国 AI+ICT 使用条件 `displayLabels` 锁定 2026-06-18 科技日报/新华社文本，未污染 2026-06-13 fixture；label check 现要求 2026-06-18/21 共 10 条 expectedSignals 全量由 metadata 命中；相关 fixture 与 build 全部通过；commit `3eea7ea`；质量评分 28/30。）
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可按日期批次继续迁移 2026-06-16 或更早 fixture 的 enLabel，并为条件 label 增加重叠污染 probe。）
 
 ### EXP-185

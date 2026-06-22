@@ -20,7 +20,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-186: 将 2026-06-18 剩余日报 headline label 迁移到 source projection metadata，消费 EXP-185 “更多旧 fixture 的 enLabel 逐步迁移到 rule metadata”后续假设 | ICE 8x8x8=512 — commit `08607f0`
+- [x] P1 Candidate / EXP-186: 将 2026-06-18 剩余日报 headline label 迁移到 source projection metadata，消费 EXP-185 “更多旧 fixture 的 enLabel 逐步迁移到 rule metadata”后续假设 | ICE 8x8x8=512 — commit `3eea7ea`
   - Hypothesis: EXP-185 已把 2026-06-21 与 Anthropic Korea 标签迁入 source projection metadata，但 2026-06-18 AWS Agent Continuum、ChatGPT Scheduled Tasks、中国 AI+ICT 与 NVIDIA Blackwell MLPerf 仍依赖 generator fallback 组合标签；若不继续把最新旧 fixture 的 headline label 写入 rule metadata，首屏标签基线仍会分散在 fixture expectedSignals 与 generator fallback 之间，后续 label taxonomy 改动容易造成静默漂移。
   - Metrics: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 全部通过。
   - Acceptance: 1) 为 AWS Agent Continuum、ChatGPT Scheduled Tasks、NVIDIA Blackwell MLPerf 写入 `displayLabel` metadata；2) 为中国 AI+ICT 写入条件 `displayLabels`，只覆盖 2026-06-18 科技日报/新华社版本，避免污染 2026-06-13 既有 MIIT label；3) `check-daily-source-projection-labels` 从 5 条基线扩展为 2026-06-18 与 2026-06-21 共 10 条 expectedSignals 全量要求 metadata label；4) 真实 cron fixture、双语 pair fixture 与 build 通过；质量评分 28/30。
