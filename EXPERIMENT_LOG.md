@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-188
+- Hypothesis: EXP-187 已把 2026-06-16 标签迁入 source projection metadata，但 2026-06-13 OpenAI Academy、NVIDIA AgentPerf Blackwell、Claude Corps、中国 AI+ICT 与中国人形机器人实景实训仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 的 headline label 基线仍分散在 generator fallback 与 expectedSignals 中，且共享 China humanoid / AI+ICT / AgentPerf rule 容易污染 2026-06-16/18 条件 label。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 2026-06-13 OpenAI Academy 与 Claude Corps source projection rules 写入 display label metadata；为 NVIDIA AgentPerf、China AI+ICT 与 China humanoid embodied training 写入条件 display label，限定 2026-06-13 特定文本，避免污染 2026-06-16/18 fixture；标签检查扩展到 2026-06-13/16/18/21 共 20 条 expectedSignals。
+- ICE: 8x8x8=512
+- Start date: 2026-06-23
+- End date: 2026-06-23
+- Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
+- Result: pass（2026-06-13 五条 headline label 已迁移到 source projection metadata；其中 NVIDIA AgentPerf、China AI+ICT 与 China humanoid embodied training 使用条件 `displayLabels` 锁定 2026-06-13 文本，未污染 2026-06-16/18 fixture；label check 现要求 2026-06-13/16/18/21 共 20 条 expectedSignals 全量由 metadata 命中；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `2fbc63d`；质量评分 28/30。）
+- Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可按日期批次继续迁移 2026-06-11 或更早 fixture 的 enLabel，并为共享 rule 的条件 label 增加更明确的 fixture-level pollution probes。）
+
 ### EXP-187
 - Hypothesis: EXP-186 已把 2026-06-18/21 标签迁入 source projection metadata，但 2026-06-16 Meta Facebook AI tools、Amazon Content Partners、OpenAI Partner Network、China humanoid embodied training 与 NVIDIA AgentPerf Blackwell 仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 的首屏标签仍会和 metadata 标签基线分裂，且共享 China humanoid / AgentPerf rule 可能污染 2026-06-11/13。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `scripts/fixtures/daily-real-cron-2026-06-16.mjs`, `src/content/blog/en/openclaw-daily-2026-06-16.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

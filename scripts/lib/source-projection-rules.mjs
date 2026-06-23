@@ -488,6 +488,10 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'robotics-simulation-training',
     displayLabels: [
       {
+        label: 'MIIT / China / L2 / robotics deployment',
+        terms: ['据新华网报道', '国资委启动 2026 年度人形机器人与具身智能实景实训专项行动'],
+      },
+      {
         label: 'MIIT / SASAC / China humanoid robotics training',
         terms: ['工信部办公厅、国务院国资委办公厅发布通知', '真实场景训练'],
       },
@@ -517,6 +521,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
     splitTargetCategory: 'agent-enablement-programs',
+    displayLabel: 'OpenAI / Academy / Foundations / agent platform',
     terms: ['AI Foundations', 'Applied AI Foundations', 'Agents and Workflows'],
     details: {
       what: 'OpenAI Academy added three enterprise AI courses — AI Foundations, Applied AI Foundations, and Agents and Workflows — to train employees on prompting, workflow design, and agent collaboration.',
@@ -530,6 +535,10 @@ export const FIELD_PROJECTION_RULES = [
     category: 'cloud-infrastructure',
     splitTargetCategory: 'cloud-model-distribution',
     displayLabels: [
+      {
+        label: 'NVIDIA / Blackwell / Artificial / compute infrastructure',
+        terms: ['Artificial Analysis', 'H200 高最多 20 倍'],
+      },
       {
         label: 'NVIDIA / AgentPerf / agent infrastructure capacity',
         terms: ['每兆瓦可运行的智能体数量显著高于上一代系统'],
@@ -547,6 +556,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
     splitTargetCategory: 'agent-enablement-programs',
+    displayLabel: 'US / Anthropic / Claude / model capability update',
     terms: ['Claude Corps', '1000 名早期职业人员', '2026 年 10 月'],
     details: {
       what: 'Anthropic launched Claude Corps as a 150 million USD program to train 1,000 early-career workers and place them full-time for one year with US nonprofits, with the first 100 participants planned for October 2026.',
@@ -560,6 +570,10 @@ export const FIELD_PROJECTION_RULES = [
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
     displayLabels: [
+      {
+        label: 'MIIT / China / A/6G / compute infrastructure',
+        terms: ['据新华网报道', '城域算力 1 毫秒时延圈覆盖率不低于 75%'],
+      },
       {
         label: 'Science and Technology Daily / Xinhua / MIIT / compute infrastructure',
         terms: ['据新华社转载科技日报', '到 2030 年'],
