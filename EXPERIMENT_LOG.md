@@ -8,7 +8,7 @@
 - Start date: 2026-06-23
 - End date: 2026-06-23
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
-- Result: pass（2026-06-16 五条 headline label 已迁移到 source projection metadata；其中 China humanoid embodied training 与 NVIDIA AgentPerf 使用条件 `displayLabels` 锁定 2026-06-16 文本，未污染 2026-06-11/13 fixture；label check 现要求 2026-06-16/18/21 共 15 条 expectedSignals 全量由 metadata 命中；EN 页面同步回写新 label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `42ad18b`；质量评分 28/30。）
+- Result: pass（2026-06-16 五条 headline label 已迁移到 source projection metadata；其中 China humanoid embodied training 与 NVIDIA AgentPerf 使用条件 `displayLabels` 锁定 2026-06-16 文本，未污染 2026-06-11/13 fixture；label check 现要求 2026-06-16/18/21 共 15 条 expectedSignals 全量由 metadata 命中；EN 页面同步回写新 label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `dfa5bb4`；质量评分 28/30。）
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可按日期批次继续迁移 2026-06-13 或更早 fixture 的 enLabel，并为共享 rule 的条件 label 增加 fixture-level pollution probes。）
 
 ### EXP-186

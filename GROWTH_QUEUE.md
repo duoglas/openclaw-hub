@@ -20,7 +20,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-187: 将 2026-06-16 日报 headline label 迁移到 source projection metadata，并锁定条件 label 不污染 2026-06-11/13 旧样本，消费 EXP-186 “继续迁移 2026-06-16 或更早 fixture 的 enLabel”后续假设 | ICE 8x8x8=512 — commit `42ad18b`
+- [x] P1 Candidate / EXP-187: 将 2026-06-16 日报 headline label 迁移到 source projection metadata，并锁定条件 label 不污染 2026-06-11/13 旧样本，消费 EXP-186 “继续迁移 2026-06-16 或更早 fixture 的 enLabel”后续假设 | ICE 8x8x8=512 — commit `dfa5bb4`
   - Hypothesis: EXP-186 已把 2026-06-18/21 标签迁入 source projection metadata，但 2026-06-16 Meta Facebook AI tools、Amazon Content Partners、OpenAI Partner Network、China humanoid embodied training 与 NVIDIA AgentPerf Blackwell 仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 的首屏标签仍会和 metadata 标签基线分裂，且共享 China humanoid / AgentPerf rule 可能污染 2026-06-11/13。
   - Metrics: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
   - Acceptance: 1) 为 Meta Facebook AI tools、Amazon Content Partners、OpenAI Partner Network 写入 `displayLabel` metadata；2) 为 China humanoid embodied training 与 NVIDIA AgentPerf 写入条件 `displayLabels`，只覆盖 2026-06-16 版本，避免污染 2026-06-11/13 既有 label；3) `check-daily-source-projection-labels` 覆盖 2026-06-16/18/21 共 15 条 expectedSignals；4) EN 2026-06-16 页面同步回写新 headline/evidence label；5) 相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 通过；质量评分 28/30。
