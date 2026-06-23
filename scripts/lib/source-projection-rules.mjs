@@ -432,6 +432,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
     splitTargetCategory: 'consumer-creative-ai',
+    displayLabel: 'Meta / Facebook / consumer creative AI',
     terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装'],
     details: {
       what: 'Meta added AI Mode search, AI image and video editing, AI outfit try-on, and avatar restyling features inside Facebook, moving generative tools directly into social search and creation flows.',
@@ -458,6 +459,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'market-intelligence',
     splitTargetCategory: 'content-licensing-markets',
+    displayLabel: 'Amazon / Content Partners / content licensing market',
     terms: ['Amazon Content Partners', 'gated preview', 'AWS 托管额度'],
     details: {
       what: 'Amazon launched Amazon Content Partners in gated preview for independent content creators, combining AI crawler traffic management, affiliate commission boosts, advertising access, and AWS hosting credits.',
@@ -470,6 +472,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
     splitTargetCategory: 'enterprise-agent-platforms',
+    displayLabel: 'OpenAI / Partner Network / AI adoption ecosystem',
     capacityPlan: 'Consumes the final enterprise-agents budget slot because the 2026-06-16 real cron sample contains a concrete OpenAI Partner Network deployment-ecosystem signal; future enterprise agent rules should split categories or raise budget before merge.',
     terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问'],
     details: {
@@ -483,6 +486,12 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-simulation-training',
+    displayLabels: [
+      {
+        label: 'MIIT / SASAC / China humanoid robotics training',
+        terms: ['工信部办公厅、国务院国资委办公厅发布通知', '真实场景训练'],
+      },
+    ],
     terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力'],
     details: {
       what: 'Xinhua reported that China’s MIIT and SASAC launched a 2026 humanoid robotics and embodied-intelligence real-world training initiative, targeting more than 100 high-value application scenarios and 10,000-unit deployment capability by year end.',
@@ -520,6 +529,12 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'cloud-model-distribution',
+    displayLabels: [
+      {
+        label: 'NVIDIA / AgentPerf / agent infrastructure capacity',
+        terms: ['每兆瓦可运行的智能体数量显著高于上一代系统'],
+      },
+    ],
     terms: ['AgentPerf', 'GB300 NVL72', '每兆瓦并发智能体'],
     details: {
       what: 'NVIDIA said Artificial Analysis AgentPerf results show GB300 NVL72 leading agentic AI infrastructure, with up to 20x the concurrent agents per megawatt versus H200 in the cited workload.',

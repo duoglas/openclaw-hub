@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-187
+- Hypothesis: EXP-186 已把 2026-06-18/21 标签迁入 source projection metadata，但 2026-06-16 Meta Facebook AI tools、Amazon Content Partners、OpenAI Partner Network、China humanoid embodied training 与 NVIDIA AgentPerf Blackwell 仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 的首屏标签仍会和 metadata 标签基线分裂，且共享 China humanoid / AgentPerf rule 可能污染 2026-06-11/13。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `scripts/fixtures/daily-real-cron-2026-06-16.mjs`, `src/content/blog/en/openclaw-daily-2026-06-16.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 2026-06-16 Meta Facebook AI tools、Amazon Content Partners、OpenAI Partner Network source projection rules 写入 display label metadata；为 China humanoid embodied training 与 NVIDIA AgentPerf 写入条件 display label，限定 2026-06-16 特定文本，避免污染 2026-06-11/13 fixture；标签检查扩展到 2026-06-16/18/21 共 15 条 expectedSignals；EN 2026-06-16 页面同步回写新 headline 与 evidence label。
+- ICE: 8x8x8=512
+- Start date: 2026-06-23
+- End date: 2026-06-23
+- Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
+- Result: pass（2026-06-16 五条 headline label 已迁移到 source projection metadata；其中 China humanoid embodied training 与 NVIDIA AgentPerf 使用条件 `displayLabels` 锁定 2026-06-16 文本，未污染 2026-06-11/13 fixture；label check 现要求 2026-06-16/18/21 共 15 条 expectedSignals 全量由 metadata 命中；EN 页面同步回写新 label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `42ad18b`；质量评分 28/30。）
+- Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可按日期批次继续迁移 2026-06-13 或更早 fixture 的 enLabel，并为共享 rule 的条件 label 增加 fixture-level pollution probes。）
+
 ### EXP-186
 - Hypothesis: EXP-185 已把 2026-06-21 与 Anthropic Korea 标签迁入 source projection metadata，但 2026-06-18 AWS Agent Continuum、ChatGPT Scheduled Tasks、中国 AI+ICT 与 NVIDIA Blackwell MLPerf 仍依赖 generator fallback 组合标签；若不继续把最新旧 fixture 的 headline label 写入 rule metadata，首屏标签基线仍会分散在 fixture expectedSignals 与 generator fallback 之间，后续 label taxonomy 改动容易造成静默漂移。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

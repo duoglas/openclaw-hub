@@ -5,6 +5,7 @@ import { extractStories, labelFor } from './lib/daily-generator.mjs';
 import { projectEnglishSourceLabel } from './lib/source-projection-rules.mjs';
 import { realCronFixture as fixture20260621, expectedSignals as expected20260621 } from './fixtures/daily-real-cron-2026-06-21.mjs';
 import { realCronFixture as fixture20260618, expectedSignals as expected20260618 } from './fixtures/daily-real-cron-2026-06-18.mjs';
+import { realCronFixture as fixture20260616, expectedSignals as expected20260616 } from './fixtures/daily-real-cron-2026-06-16.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -67,5 +68,6 @@ function assertSyntheticConditionalLabel() {
 assertNoGeneratorHardcodedOverrides();
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-21', fixture: fixture20260621, expectedSignals: expected20260621 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-18', fixture: fixture20260618, expectedSignals: expected20260618 });
+assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-16', fixture: fixture20260616, expectedSignals: expected20260616 });
 assertSyntheticConditionalLabel();
 console.log('daily source projection label check passed');
