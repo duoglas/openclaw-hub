@@ -268,6 +268,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-commercial-deployment',
+    displayLabel: 'Korea / NVIDIA / GPU / compute infrastructure',
     terms: ['斗山', 'Doosan', '电力方案和数据中心材料'],
     details: {
       what: 'NVIDIA said it is expanding cooperation with South Korea’s Doosan Group across robotics, industrial automation, AI factory infrastructure, power systems, and data-center materials.',
@@ -279,6 +280,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'anthropic-opus-agent-coding-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    displayLabel: 'Anthropic / Opus / OpenAI / agent platform',
     terms: ['Anthropic 近期升级 Opus 级模型', '长时间任务稳定性'],
     details: {
       what: 'Anthropic’s news page describes a late-May Opus-level upgrade focused on coding, agent tasks, professional work, and more stable long-running execution.',
@@ -291,6 +293,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
     splitTargetCategory: 'enterprise-agent-platforms',
+    displayLabel: 'AWS / OpenAI / News / robotics deployment',
     terms: ["What's Next with AWS 2026", 'Managed Agents 进入 Amazon Bedrock'],
     details: {
       what: 'AWS News Blog says What’s Next with AWS 2026 introduced Amazon Quick as a work AI assistant, expanded Amazon Connect agentic AI solutions, and put OpenAI models, Codex, and Managed Agents into limited preview on Amazon Bedrock.',
@@ -302,6 +305,20 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-chatgpt-memory-lockdown-2026',
     owner: 'daily-source-projection',
     category: 'product-safety',
+    displayLabels: [
+      {
+        label: 'OpenAI / Lockdown / Mode / enterprise AI rollout',
+        terms: ['OpenAI 帮助中心版本说明显示', 'Lockdown Mode 面向所有登录用户开放'],
+      },
+      {
+        label: 'OpenAI / ChatGPT / Lockdown / agent platform',
+        terms: ['OpenAI 6月4日发布说明', 'Lockdown Mode 向所有登录用户开放'],
+      },
+      {
+        label: 'US / OpenAI / ChatGPT / agent platform',
+        terms: ['OpenAI 6月4日更新 ChatGPT 版本说明', 'Plus/Pro 美国用户先用'],
+      },
+    ],
     terms: ['Lockdown Mode', 'Memory 会自动保持更新', '文件下载等高风险外部能力'],
     details: {
       what: 'OpenAI’s June 4 ChatGPT release notes say Memory can stay more up to date and reduce outdated or contradictory memories, while Lockdown Mode is now available to all logged-in users to limit browsing, deep research, agents, and file downloads.',
@@ -326,6 +343,16 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
+    displayLabels: [
+      {
+        label: 'China / compute infrastructure / AI chip supply / model capability update',
+        terms: ['31份规划', '1370次'],
+      },
+      {
+        label: 'Xinhua / China / compute infrastructure / AI chip supply',
+        terms: ['30个省市提及“大模型”', '北京、浙江、上海、广东被描述为第一梯队'],
+      },
+    ],
     terms: ['各省级“十五五”规划纲要密集发布', '30个省市提及“大模型”', '所有省市均提及“人工智能”和“算力”', '北京、浙江、上海、广东被描述为第一梯队'],
     details: {
       what: 'Xinhua reported that provincial 15th Five-Year Plan outlines are being published, with all provinces and municipalities mentioning artificial intelligence and compute power, 30 mentioning large models, and Beijing, Zhejiang, Shanghai, and Guangdong described as leading clusters.',
