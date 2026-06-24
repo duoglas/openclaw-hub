@@ -1,3 +1,14 @@
+### EXP-189
+- Hypothesis: EXP-188 已把 2026-06-13 标签迁入 source projection metadata，但 2026-06-11 DiffusionGemma、DRIVE Hyperion、ChatGPT model picker、China humanoid embodied training 与 App 跳转治理仍依赖 generator fallback 组合标签；若不继续迁移，最早真实 cron fixture 的 headline label 基线仍分散在 generator fallback 与 expectedSignals 中，且共享 China humanoid rule 容易污染 2026-06-13/16 条件 label。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 2026-06-11 Google DeepMind DiffusionGemma、NVIDIA DRIVE Hyperion、OpenAI ChatGPT model picker 与 China App popup jump regulation source projection rules 写入 display label metadata；为 China humanoid embodied training 写入 2026-06-11 条件 display label，并增加 synthetic pollution probe，确认旧 Xinhua/MIIT label 不覆盖后续 MIIT/SASAC 文本；标签检查扩展到 2026-06-11/13/16/18/21 共 25 条 expectedSignals。
+- ICE: 8x8x8=512
+- Start date: 2026-06-24
+- End date: 2026-06-24
+- Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
+- Result: pass（2026-06-11 五条 headline label 已迁移到 source projection metadata；其中 China humanoid embodied training 使用条件 `displayLabels` 锁定 2026-06-11 新华社文本，synthetic probe 确认未污染后续 MIIT/SASAC 文本；label check 现要求 2026-06-11/13/16/18/21 共 25 条 expectedSignals 全量由 metadata 命中；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-08 或更早 fixture 迁移 enLabel，并为共享 rule 的条件 label 增加 fixture-level pollution probes。）
+
 # EXPERIMENT_LOG.md
 
 ### EXP-188

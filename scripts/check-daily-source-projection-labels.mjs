@@ -7,6 +7,7 @@ import { realCronFixture as fixture20260621, expectedSignals as expected20260621
 import { realCronFixture as fixture20260618, expectedSignals as expected20260618 } from './fixtures/daily-real-cron-2026-06-18.mjs';
 import { realCronFixture as fixture20260616, expectedSignals as expected20260616 } from './fixtures/daily-real-cron-2026-06-16.mjs';
 import { realCronFixture as fixture20260613, expectedSignals as expected20260613 } from './fixtures/daily-real-cron-2026-06-13.mjs';
+import { realCronFixture as fixture20260611, expectedSignals as expected20260611 } from './fixtures/daily-real-cron-2026-06-11.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -56,13 +57,23 @@ function assertNoGeneratorHardcodedOverrides() {
 function assertSyntheticConditionalLabel() {
   const hpeSource = 'HPE AI Factory with NVIDIA adds Vera CPU and NVIDIA Agent Toolkit for private cloud AI.';
   const broadCloudSource = 'NVIDIA said partners are expanding AI Cloud capacity across six continents for training and inference.';
+  const oldHumanoidSource = '据新华社报道，工信部、国务院国资委联合启动 2026 年度人形机器人与具身智能实景实训专项行动，在真实生产生活环境中常态化部署。';
+  const newerHumanoidSource = '工信部办公厅、国务院国资委办公厅发布通知，推动人形机器人真实场景训练和万台级规模落地能力。';
   const hpeLabel = projectEnglishSourceLabel(hpeSource);
   const broadLabel = projectEnglishSourceLabel(broadCloudSource);
+  const oldHumanoidLabel = projectEnglishSourceLabel(oldHumanoidSource);
+  const newerHumanoidLabel = projectEnglishSourceLabel(newerHumanoidSource);
   if (hpeLabel !== 'NVIDIA / HPE / AI infrastructure capacity') {
     fail('conditional HPE display label did not resolve from source projection rule metadata', [`actual=${hpeLabel || '(empty)'}`]);
   }
   if (broadLabel) {
     fail('broad NVIDIA AI Cloud source received an HPE-specific label', [`actual=${broadLabel}`]);
+  }
+  if (oldHumanoidLabel !== 'Xinhua / MIIT / China / robotics deployment') {
+    fail('2026-06-11 humanoid robotics display label did not resolve from source projection metadata', [`actual=${oldHumanoidLabel || '(empty)'}`]);
+  }
+  if (newerHumanoidLabel !== 'MIIT / SASAC / China humanoid robotics training') {
+    fail('2026-06-11 humanoid robotics display label polluted newer MIIT/SASAC source text', [`actual=${newerHumanoidLabel || '(empty)'}`]);
   }
 }
 
@@ -71,5 +82,6 @@ assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-21', fixture: fixtur
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-18', fixture: fixture20260618, expectedSignals: expected20260618 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-16', fixture: fixture20260616, expectedSignals: expected20260616 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-13', fixture: fixture20260613, expectedSignals: expected20260613 });
+assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-11', fixture: fixture20260611, expectedSignals: expected20260611 });
 assertSyntheticConditionalLabel();
 console.log('daily source projection label check passed');

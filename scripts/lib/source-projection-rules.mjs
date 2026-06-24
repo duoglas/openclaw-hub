@@ -384,6 +384,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'google-deepmind-diffusiongemma-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    displayLabel: 'Google / DeepMind / DiffusionGemma / AI hardware',
     terms: ['DiffusionGemma', '扩散式文本生成', 'RTX PRO'],
     details: {
       what: 'Google DeepMind released the experimental open DiffusionGemma model, using diffusion-style text generation to create text blocks in parallel, while NVIDIA announced optimizations across RTX, RTX PRO, DGX Spark, and H100 hardware.',
@@ -396,6 +397,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'autonomous-mobility-systems',
+    displayLabel: 'NVIDIA / DRIVE / Hyperion / compute infrastructure',
     terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN'],
     details: {
       what: 'NVIDIA expanded the DRIVE Hyperion robotaxi ecosystem with Uber/Autobrains in Munich, Foxconn L4-ready fleets in Taiwan, VinFast in Southeast Asia, and HUMAIN in Saudi Arabia and the Middle East.',
@@ -408,6 +410,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
     splitTargetCategory: 'chatgpt-control-surfaces',
+    displayLabel: 'OpenAI / ChatGPT / Instant / model capability update',
     terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light'],
     details: {
       what: 'OpenAI simplified ChatGPT model selection into task-oriented options such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended across Plus and Pro users on web, iOS, and Android.',
@@ -488,6 +491,10 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'robotics-simulation-training',
     displayLabels: [
       {
+        label: 'Xinhua / MIIT / China / robotics deployment',
+        terms: ['据新华社报道', '工信部、国务院国资委联合启动 2026 年度人形机器人与具身智能实景实训专项行动'],
+      },
+      {
         label: 'MIIT / China / L2 / robotics deployment',
         terms: ['据新华网报道', '国资委启动 2026 年度人形机器人与具身智能实景实训专项行动'],
       },
@@ -508,6 +515,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'digital-regulation-compliance',
+    displayLabel: 'China / Xinhua / MIIT / enterprise AI rollout',
     terms: ['信息窗口跳转', '摇一摇', '常态化检测监测'],
     details: {
       what: 'Xinhua reported that China’s MIIT required internet platforms and smart-terminal companies to standardize app information-window behavior and crack down on illegal pop-ups, induced clicks, and high-sensitivity shake-to-jump redirects.',

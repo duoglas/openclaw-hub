@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-23 17:24
+Last updated: 2026-06-24 11:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-189: 将 2026-06-11 日报 headline label 迁移到 source projection metadata，并增加 06-11/后续 humanoid 条件 label 污染 probe，消费 EXP-188 “继续迁移 2026-06-11 或更早 fixture 的 enLabel”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-188 已把 2026-06-13 标签迁入 source projection metadata，但 2026-06-11 DiffusionGemma、DRIVE Hyperion、ChatGPT model picker、China humanoid embodied training 与 App 跳转治理仍依赖 generator fallback 组合标签；若不继续迁移，最早真实 cron fixture 的 headline label 基线仍分散在 generator fallback 与 expectedSignals 中，且共享 China humanoid rule 容易污染 2026-06-13/16 条件 label。
+  - Metrics: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 为 Google DeepMind DiffusionGemma、NVIDIA DRIVE Hyperion、OpenAI ChatGPT model picker 与 China App popup jump regulation 写入 `displayLabel` metadata；2) 为 China humanoid embodied training 写入 2026-06-11 条件 `displayLabels`，并用 synthetic probe 锁定不会覆盖后续 MIIT/SASAC 文本；3) `check-daily-source-projection-labels` 覆盖 2026-06-11/13/16/18/21 共 25 条 expectedSignals；4) 相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-188: 将 2026-06-13 日报 headline label 迁移到 source projection metadata，消费 EXP-187 “继续迁移 2026-06-13 或更早 fixture 的 enLabel”后续假设 | ICE 8x8x8=512 — commit `2fbc63d`
   - Hypothesis: EXP-187 已把 2026-06-16 标签迁入 source projection metadata，但 2026-06-13 OpenAI Academy、NVIDIA AgentPerf Blackwell、Claude Corps、中国 AI+ICT 与中国人形机器人实景实训仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 的 headline label 基线仍分散在 generator fallback 与 expectedSignals 中，且共享 China humanoid / AI+ICT / AgentPerf rule 容易污染 2026-06-16/18 条件 label。
   - Metrics: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
