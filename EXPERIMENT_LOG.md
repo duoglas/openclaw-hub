@@ -1,3 +1,14 @@
+### EXP-192
+- Hypothesis: EXP-191 已把 2026-06-06 标签迁入 source projection metadata，但 2026-06-05 OpenAI Memory/Lockdown、NVIDIA Cosmos 3、NVIDIA Physical AI Agent Skills、中国高质量数据集与 Unitree IPO 仍未被 label metadata 闸门覆盖；若不继续迁移，最早 06 月 fixture 的首屏标签基线仍分散在 generator fallback 与 expectedSignals 中，且 NVIDIA Cosmos/CVPR 相邻 physical AI 信号容易发生 display label 污染。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 2026-06-05 NVIDIA Cosmos 3、NVIDIA Physical AI Agent Skills、中国高质量数据集与 Unitree IPO source projection rules 写入 display label metadata；标签检查扩展到 2026-06-05/06/08/11/13/16/18/21 共 40 条 expectedSignals；新增 NVIDIA Cosmos/CVPR synthetic pollution probe，确认 06-05 Cosmos compute label 不覆盖 06-06 CVPR research robotics label。
+- ICE: 8x8x8=512
+- Start date: 2026-06-25
+- End date: 2026-06-25
+- Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
+- Result: pass（2026-06-05 四条 headline label 已迁移到 source projection metadata，并复用 OpenAI Memory/Lockdown 条件 label；label check 现要求 2026-06-05/06/08/11/13/16/18/21 共 40 条 expectedSignals 全量由 metadata 命中；NVIDIA Cosmos/CVPR synthetic probe 确认 06-05 Cosmos label 未污染 06-06 CVPR physical AI label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-04 或更早 fixture 迁移 enLabel，并优先为共享 OpenAI/NVIDIA/China policy rule 增加 fixture-level 条件 label 防污染检查。）
+
 ### EXP-191
 - Hypothesis: EXP-190 已把 2026-06-08 标签迁入 source projection metadata，但 2026-06-06 NVIDIA Korea、NVIDIA CVPR physical AI 与 6G 省部协同试点仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 首屏标签基线仍分散在 generator fallback 与 expectedSignals 中，且 NVIDIA Korea/Doosan 相邻韩国基础设施信号容易发生 display label 污染。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

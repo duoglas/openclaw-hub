@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-25 11:20
+Last updated: 2026-06-25 17:26
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-192: 将 2026-06-05 日报 headline label 迁移到 source projection metadata，并增加 NVIDIA Cosmos/CVPR 标签污染 probe，消费 EXP-191 “继续向 2026-06-05 或更早 fixture 迁移 enLabel”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-191 已把 2026-06-06 标签迁入 source projection metadata，但 2026-06-05 OpenAI Memory/Lockdown、NVIDIA Cosmos 3、NVIDIA Physical AI Agent Skills、中国高质量数据集与 Unitree IPO 仍未被 label metadata 闸门覆盖；若不继续迁移，最早 06 月 fixture 的首屏标签基线仍分散在 generator fallback 与 expectedSignals 中，且 NVIDIA Cosmos/CVPR 相邻 physical AI 信号容易发生 display label 污染。
+  - Metrics: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 为 2026-06-05 NVIDIA Cosmos 3、NVIDIA Physical AI Agent Skills、中国高质量数据集与 Unitree IPO source projection rules 写入 `displayLabel` metadata，并复用 OpenAI Memory/Lockdown 条件 `displayLabels`；2) `check-daily-source-projection-labels` 覆盖 2026-06-05/06/08/11/13/16/18/21 共 40 条 expectedSignals；3) 新增 NVIDIA Cosmos/CVPR synthetic probe，锁定 06-05 Cosmos label 不污染 06-06 CVPR physical AI label；4) 相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-191: 将 2026-06-06 日报 headline label 迁移到 source projection metadata，并增加 NVIDIA Korea/Doosan 条件污染 probe，消费 EXP-190 “继续向 2026-06-06 或更早 fixture 迁移 enLabel”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-190 已把 2026-06-08 标签迁入 source projection metadata，但 2026-06-06 NVIDIA Korea、NVIDIA CVPR physical AI 与 6G 省部协同试点仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 首屏标签基线仍分散在 generator fallback 与 expectedSignals 中，且 NVIDIA Korea/Doosan 相邻韩国基础设施信号容易发生 display label 污染。
   - Metrics: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。

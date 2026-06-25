@@ -10,6 +10,7 @@ import { realCronFixture as fixture20260613, expectedSignals as expected20260613
 import { realCronFixture as fixture20260611, expectedSignals as expected20260611 } from './fixtures/daily-real-cron-2026-06-11.mjs';
 import { realCronFixture as fixture20260608, expectedSignals as expected20260608 } from './fixtures/daily-real-cron-2026-06-08.mjs';
 import { realCronFixture as fixture20260606, expectedSignals as expected20260606 } from './fixtures/daily-real-cron-2026-06-06.mjs';
+import { realCronFixture as fixture20260605, expectedSignals as expected20260605 } from './fixtures/daily-real-cron-2026-06-05.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -63,12 +64,16 @@ function assertSyntheticConditionalLabel() {
   const newerHumanoidSource = '工信部办公厅、国务院国资委办公厅发布通知，推动人形机器人真实场景训练和万台级规模落地能力。';
   const nvidiaKoreaSource = 'NVIDIA CEO 黄仁勋到访首尔，称 Grace Blackwell 表现良好，Vera Rubin 已进入 full production；下半年 AI 基础设施建设会很忙，并点名韩国在机器人、物理 AI、存储制造等方向的机会。';
   const nvidiaDoosanSource = 'NVIDIA said it is expanding cooperation with South Korea’s Doosan Group across robotics, industrial automation, AI factory infrastructure, power systems, and data-center materials.';
+  const nvidiaCosmosSource = 'NVIDIA 在 GTC Taipei 发布 Cosmos 3，称其为开放的物理 AI 世界基础模型，用于机器人、自动驾驶、视觉 AI 的合成数据和策略模型开发。';
+  const nvidiaCvprSource = 'NVIDIA Research highlighted GraspGen-X, LCDrive, NitroGen and other CVPR 论文 for robotics and autonomous-driving pipelines.';
   const hpeLabel = projectEnglishSourceLabel(hpeSource);
   const broadLabel = projectEnglishSourceLabel(broadCloudSource);
   const oldHumanoidLabel = projectEnglishSourceLabel(oldHumanoidSource);
   const newerHumanoidLabel = projectEnglishSourceLabel(newerHumanoidSource);
   const nvidiaKoreaLabel = projectEnglishSourceLabel(nvidiaKoreaSource);
   const nvidiaDoosanLabel = projectEnglishSourceLabel(nvidiaDoosanSource);
+  const nvidiaCosmosLabel = projectEnglishSourceLabel(nvidiaCosmosSource);
+  const nvidiaCvprLabel = projectEnglishSourceLabel(nvidiaCvprSource);
   if (hpeLabel !== 'NVIDIA / HPE / AI infrastructure capacity') {
     fail('conditional HPE display label did not resolve from source projection rule metadata', [`actual=${hpeLabel || '(empty)'}`]);
   }
@@ -87,6 +92,12 @@ function assertSyntheticConditionalLabel() {
   if (nvidiaDoosanLabel !== 'Korea / NVIDIA / GPU / compute infrastructure') {
     fail('2026-06-06 NVIDIA Korea display label polluted 2026-06-08 Doosan source text', [`actual=${nvidiaDoosanLabel || '(empty)'}`]);
   }
+  if (nvidiaCosmosLabel !== 'NVIDIA / Cosmos / GTC / compute infrastructure') {
+    fail('2026-06-05 NVIDIA Cosmos display label did not resolve from source projection metadata', [`actual=${nvidiaCosmosLabel || '(empty)'}`]);
+  }
+  if (nvidiaCvprLabel !== 'NVIDIA / CVPR / Research / robotics deployment') {
+    fail('2026-06-05 NVIDIA Cosmos display label polluted 2026-06-06 CVPR source text', [`actual=${nvidiaCvprLabel || '(empty)'}`]);
+  }
 }
 
 assertNoGeneratorHardcodedOverrides();
@@ -97,5 +108,6 @@ assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-13', fixture: fixtur
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-11', fixture: fixture20260611, expectedSignals: expected20260611 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-08', fixture: fixture20260608, expectedSignals: expected20260608 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-06', fixture: fixture20260606, expectedSignals: expected20260606 });
+assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-05', fixture: fixture20260605, expectedSignals: expected20260605 });
 assertSyntheticConditionalLabel();
 console.log('daily source projection label check passed');

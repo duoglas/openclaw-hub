@@ -161,6 +161,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
+    displayLabel: 'Xinhua / China / Science / embodied AI',
     terms: ['国家数据局', '刘烈宏', 'National Data Administration', 'AI for Science'],
     details: {
       what: 'Xinhua reported that Liu Liehong, head of China’s National Data Administration, said high-quality datasets are a critical foundation for embodied intelligence’s perception-decision-action loop and for data engineering in AI for Science.',
@@ -380,6 +381,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-simulation-training',
+    displayLabel: 'NVIDIA / Cosmos / GTC / compute infrastructure',
     terms: ['Cosmos 3', '开放的物理 AI 世界基础模型', 'world foundation model'],
     details: {
       what: 'NVIDIA announced Cosmos 3 at GTC Taipei as an open physical AI world foundation model for visual reasoning, world generation, and action prediction across robotics, autonomous driving, and visual AI workflows.',
@@ -392,6 +394,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-simulation-training',
+    displayLabel: 'NVIDIA / Physical / Agent / robotics deployment',
     terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo'],
     details: {
       what: 'NVIDIA published open-source Physical AI Agent tools and skills for Omniverse, Cosmos, Isaac, Metropolis, Alpamayo, Jetson, and related workflows covering data generation, simulation, training, evaluation, and deployment.',
@@ -403,6 +406,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'unitree-star-market-ipo-2026',
     owner: 'daily-source-projection',
     category: 'company-finance',
+    displayLabel: 'China / Xinhua / IPO / compute infrastructure',
     terms: ['宇树科技', '科创板 IPO', '42.02亿元'],
     details: {
       what: 'Xinhua reported that Unitree Robotics’ STAR Market IPO application passed review by the Shanghai Stock Exchange listing committee, with planned fundraising of 4.202 billion yuan for robot models, robot hardware R&D, new products, and manufacturing capacity.',
