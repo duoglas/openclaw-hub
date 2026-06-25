@@ -1,3 +1,14 @@
+### EXP-191
+- Hypothesis: EXP-190 已把 2026-06-08 标签迁入 source projection metadata，但 2026-06-06 NVIDIA Korea、NVIDIA CVPR physical AI 与 6G 省部协同试点仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 首屏标签基线仍分散在 generator fallback 与 expectedSignals 中，且 NVIDIA Korea/Doosan 相邻韩国基础设施信号容易发生 display label 污染。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 2026-06-06 NVIDIA Korea ecosystem、NVIDIA CVPR physical AI 与 China 6G province-ministry pilot source projection rules 写入 display label metadata；标签检查扩展到 2026-06-06/08/11/13/16/18/21 共 35 条 expectedSignals；新增 NVIDIA Korea/Doosan synthetic pollution probe，确认 06-06 CEO compute label 不覆盖 06-08 Doosan GPU compute label。
+- ICE: 8x8x8=512
+- Start date: 2026-06-25
+- End date: 2026-06-25
+- Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
+- Result: pass（2026-06-06 三条 headline label 已迁移到 source projection metadata；label check 现要求 2026-06-06/08/11/13/16/18/21 共 35 条 expectedSignals 全量由 metadata 命中；NVIDIA Korea/Doosan synthetic probe 确认 06-06 Korea CEO label 未污染 06-08 Doosan GPU compute label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-05 或更早 fixture 迁移 enLabel，并优先为共享 OpenAI/NVIDIA/China policy rule 增加 fixture-level 条件 label 防污染检查。）
+
 ### EXP-190
 - Hypothesis: EXP-189 已把 2026-06-11 标签迁入 source projection metadata，但 2026-06-08 NVIDIA Doosan、OpenAI Memory/Lockdown、Anthropic Opus、AWS Quick/Bedrock 与 China provincial AI compute 仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 首屏标签基线仍分散在 generator fallback 与 expectedSignals 中，且 OpenAI Lockdown / China provincial 共享 rule 容易污染 2026-06-05/06-06 标签。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

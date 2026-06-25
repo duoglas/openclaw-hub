@@ -209,6 +209,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-simulation-training',
+    displayLabel: 'NVIDIA / CVPR / Research / robotics deployment',
     terms: ['GraspGen-X', 'LCDrive', 'NitroGen', 'CVPR 论文'],
     details: {
       what: 'NVIDIA Research highlighted three CVPR papers: GraspGen-X for zero-shot robotic grasping, LCDrive for lower-token autonomous-driving inference, and NitroGen for training embodied agents in virtual environments.',
@@ -331,6 +332,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'ai-infrastructure-capacity',
+    displayLabel: 'Korea / NVIDIA / CEO / compute infrastructure',
     terms: ['黄仁勋到访首尔', '韩国在机器人、物理 AI、存储制造', 'Korea ecosystem 2026'], 
     details: {
       what: 'NVIDIA CEO Jensen Huang visited Seoul and said Grace Blackwell is performing well, Vera Rubin has entered full production, and the second half of the year will be busy for AI infrastructure buildout, with Korea highlighted for robotics, physical AI, memory, and manufacturing.',
@@ -365,6 +367,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
+    displayLabel: 'Xinhua / MIIT / China / AI chip supply',
     terms: ['6G 创新发展部省协同试点', '2029年', '业务场景和终端产品', '低空经济'],
     details: {
       what: 'Xinhua reported that China’s Ministry of Industry and Information Technology is organizing province-ministry coordinated 6G innovation pilots, aiming to form independent 6G technical solutions, business scenarios, and terminal products by 2029.',

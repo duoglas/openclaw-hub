@@ -9,6 +9,7 @@ import { realCronFixture as fixture20260616, expectedSignals as expected20260616
 import { realCronFixture as fixture20260613, expectedSignals as expected20260613 } from './fixtures/daily-real-cron-2026-06-13.mjs';
 import { realCronFixture as fixture20260611, expectedSignals as expected20260611 } from './fixtures/daily-real-cron-2026-06-11.mjs';
 import { realCronFixture as fixture20260608, expectedSignals as expected20260608 } from './fixtures/daily-real-cron-2026-06-08.mjs';
+import { realCronFixture as fixture20260606, expectedSignals as expected20260606 } from './fixtures/daily-real-cron-2026-06-06.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -60,10 +61,14 @@ function assertSyntheticConditionalLabel() {
   const broadCloudSource = 'NVIDIA said partners are expanding AI Cloud capacity across six continents for training and inference.';
   const oldHumanoidSource = '据新华社报道，工信部、国务院国资委联合启动 2026 年度人形机器人与具身智能实景实训专项行动，在真实生产生活环境中常态化部署。';
   const newerHumanoidSource = '工信部办公厅、国务院国资委办公厅发布通知，推动人形机器人真实场景训练和万台级规模落地能力。';
+  const nvidiaKoreaSource = 'NVIDIA CEO 黄仁勋到访首尔，称 Grace Blackwell 表现良好，Vera Rubin 已进入 full production；下半年 AI 基础设施建设会很忙，并点名韩国在机器人、物理 AI、存储制造等方向的机会。';
+  const nvidiaDoosanSource = 'NVIDIA said it is expanding cooperation with South Korea’s Doosan Group across robotics, industrial automation, AI factory infrastructure, power systems, and data-center materials.';
   const hpeLabel = projectEnglishSourceLabel(hpeSource);
   const broadLabel = projectEnglishSourceLabel(broadCloudSource);
   const oldHumanoidLabel = projectEnglishSourceLabel(oldHumanoidSource);
   const newerHumanoidLabel = projectEnglishSourceLabel(newerHumanoidSource);
+  const nvidiaKoreaLabel = projectEnglishSourceLabel(nvidiaKoreaSource);
+  const nvidiaDoosanLabel = projectEnglishSourceLabel(nvidiaDoosanSource);
   if (hpeLabel !== 'NVIDIA / HPE / AI infrastructure capacity') {
     fail('conditional HPE display label did not resolve from source projection rule metadata', [`actual=${hpeLabel || '(empty)'}`]);
   }
@@ -76,6 +81,12 @@ function assertSyntheticConditionalLabel() {
   if (newerHumanoidLabel !== 'MIIT / SASAC / China humanoid robotics training') {
     fail('2026-06-11 humanoid robotics display label polluted newer MIIT/SASAC source text', [`actual=${newerHumanoidLabel || '(empty)'}`]);
   }
+  if (nvidiaKoreaLabel !== 'Korea / NVIDIA / CEO / compute infrastructure') {
+    fail('2026-06-06 NVIDIA Korea display label did not resolve from source projection metadata', [`actual=${nvidiaKoreaLabel || '(empty)'}`]);
+  }
+  if (nvidiaDoosanLabel !== 'Korea / NVIDIA / GPU / compute infrastructure') {
+    fail('2026-06-06 NVIDIA Korea display label polluted 2026-06-08 Doosan source text', [`actual=${nvidiaDoosanLabel || '(empty)'}`]);
+  }
 }
 
 assertNoGeneratorHardcodedOverrides();
@@ -85,5 +96,6 @@ assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-16', fixture: fixtur
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-13', fixture: fixture20260613, expectedSignals: expected20260613 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-11', fixture: fixture20260611, expectedSignals: expected20260611 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-08', fixture: fixture20260608, expectedSignals: expected20260608 });
+assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-06', fixture: fixture20260606, expectedSignals: expected20260606 });
 assertSyntheticConditionalLabel();
 console.log('daily source projection label check passed');
