@@ -17,15 +17,15 @@ export const ALLOWED_SOURCE_PROJECTION_CATEGORIES = [
 ];
 
 export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
-  'cloud-infrastructure': 6,
+  'cloud-infrastructure': 7,
   'company-finance': 5,
   'consumer-productivity': 5,
   'developer-tools': 4,
-  'enterprise-agents': 8,
+  'enterprise-agents': 9,
   'frontier-models': 6,
   'market-intelligence': 5,
   'physical-ai-robotics': 10,
-  'policy-governance': 8,
+  'policy-governance': 9,
   'product-safety': 5,
 };
 export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
@@ -85,7 +85,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   'enterprise-agents': [
     {
       target: 'enterprise-agent-platforms',
-      match: ['meta-business-agent', 'microsoft-enterprise-agent-system', 'aws-quick-connect', 'openai-partner-network'],
+      match: ['meta-business-agent', 'microsoft-enterprise-agent-system', 'aws-quick-connect', 'openai-partner-network', 'claude-tag'],
     },
     {
       target: 'vertical-workflow-agents',
@@ -103,7 +103,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'ai-industrial-policy',
-      match: ['national-data-administration', 'ai-education', 'provincial', 'province-ministry', '6g', 'asean', 'ict', '数据局', '东盟'],
+      match: ['national-data-administration', 'ai-education', 'provincial', 'province-ministry', '6g', 'asean', 'ict', 'industrial-5g', 'private-network', '数据局', '东盟'],
     },
     {
       target: 'digital-regulation-compliance',
@@ -117,7 +117,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'ai-infrastructure-capacity',
-      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure'],
+      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure', 'ec2-g7', 'opensearch'],
     },
   ],
   'consumer-productivity': [
@@ -145,7 +145,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'regional-ai-ecosystems',
-      match: ['shanghai-tech-fair', 'korea', 'seoul', 'naver', 'nexon', 'regional', 'ecosystem'],
+      match: ['shanghai-tech-fair', 'korea', 'seoul', 'naver', 'nexon', 'regional', 'ecosystem', 'raise-us'],
     },
   ],
   'physical-ai-robotics': [
@@ -805,7 +805,7 @@ function validateSelfTests() {
   }
 
   const splitPlanDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
-    rules: Array.from({ length: 8 }, (_, index) => ({
+    rules: Array.from({ length: 9 }, (_, index) => ({
       name: `synthetic-enterprise-agents-split-rule-${index + 1}`,
       owner: 'daily-source-projection',
       category: 'enterprise-agents',

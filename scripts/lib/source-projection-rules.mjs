@@ -696,6 +696,75 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
 
+  {
+    name: 'openai-gpt55-instant-decision-shopping-2026',
+    owner: 'daily-source-projection',
+    category: 'frontier-models',
+    displayLabel: 'OpenAI / GPT-5.5 Instant / decision assistance',
+    terms: ['6月24日更新 GPT-5.5 Instant', '复杂约束', '本地/购物类问题'],
+    details: {
+      what: 'OpenAI updated GPT-5.5 Instant on June 24 to better understand real user goals, multi-turn context, complex constraints, and local or shopping-style queries.',
+      why: 'The model competition signal is shifting from larger parameters alone toward assistants that can help users make decisions under constraints, compare options, and plan practical next steps.',
+      impact: 'Consumer products and assistant builders should test shopping, travel, local-life, and research-filtering workflows for recommendation stability, source grounding, and constraint handling before expanding high-stakes use.',
+    },
+  },
+  {
+    name: 'amazon-raise-us-ai-workforce-training-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    splitTargetCategory: 'regional-ai-ecosystems',
+    displayLabel: 'Amazon / RAISE US / AI workforce training',
+    capacityPlan: 'Uses the remaining market-intelligence headroom for a fixture-backed workforce and education ecosystem signal; future market rules should migrate into regional-ai-ecosystems or other split targets before adding more parent-category rules.',
+    terms: ['RAISE US', 'Future Ready 2030', 'AI 时代技能'],
+    details: {
+      what: 'Amazon joined RAISE US as a founding member on June 25, linking its AI workforce-skilling push with Future Ready 2030 and broader community training commitments.',
+      why: 'AI adoption is moving into workforce transition, where large companies, education programs, and policy-adjacent initiatives coordinate reskilling rather than treating AI as only a product rollout.',
+      impact: 'Employers, schools, and workers should expect faster demand for practical AI collaboration skills, internal training paths, and credential-like programs tied to enterprise AI deployment.',
+    },
+  },
+  {
+    name: 'nvidia-aws-ec2-g7-opensearch-vector-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
+    displayLabel: 'NVIDIA / AWS / vector retrieval infrastructure',
+    capacityPlan: 'Raises cloud-infrastructure budget by one for a latest-fixture NVIDIA/AWS production AI infrastructure signal; the rule is assigned to ai-infrastructure-capacity and should be migrated into split categories when parent-category budgets are retired.',
+    terms: ['EC2 G7', 'OpenSearch Serverless', 'NVIDIA cuVS'],
+    details: {
+      what: 'NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance.',
+      why: 'Enterprise AI bottlenecks are shifting from model access toward scalable inference, retrieval speed, operating cost, and cloud infrastructure reliability for RAG and agent systems.',
+      impact: 'RAG, enterprise search, and agent-platform teams should benchmark retrieval latency, GPU utilization, managed-service cost, and operational complexity before moving workloads to newer AWS and NVIDIA stacks.',
+    },
+  },
+  {
+    name: 'anthropic-claude-tag-slack-collaboration-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    splitTargetCategory: 'enterprise-agent-platforms',
+    displayLabel: 'Anthropic / Claude Tag / team agent workflow',
+    capacityPlan: 'Raises enterprise-agents budget by one for a latest-fixture team-collaboration agent surface; the rule is assigned to enterprise-agent-platforms and should be migrated into split categories when parent-category budgets are retired.',
+    terms: ['Claude Tag', '@Claude', 'Claude Enterprise', 'Slack'],
+    details: {
+      what: 'Anthropic launched Claude Tag as a Slack-based @Claude collaboration surface for Claude Enterprise and Team beta users, with channel context, asynchronous task handling, and authorized tool or codebase connections.',
+      why: 'AI assistants are moving from private chat boxes into shared team workflows, where permissions, memory boundaries, asynchronous execution, and auditability determine whether agents can be trusted.',
+      impact: 'Enterprises using Slack, Teams, or Feishu-style collaboration should define channel memory scope, tool permissions, data-isolation rules, and human review points before allowing AI agents to operate in shared workspaces.',
+    },
+  },
+  {
+    name: 'china-industrial-5g-private-network-pilot-2026',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
+    splitTargetCategory: 'ai-industrial-policy',
+    displayLabel: 'China / industrial 5G / AI infrastructure pilot',
+    capacityPlan: 'Raises policy-governance budget by one for a latest-fixture industrial AI infrastructure policy signal; the rule is assigned to ai-industrial-policy and should be migrated into split categories when parent-category budgets are retired.',
+    terms: ['工业 5G 独立专网试点', '原材料', '能源交通'],
+    details: {
+      what: 'China is piloting industrial 5G private networks across raw materials, equipment manufacturing, electronic information, energy, and transportation, with multiple ministries supporting enterprise-dedicated 5G networks.',
+      why: 'Industrial AI, robotics, and smart manufacturing need low-latency, reliable, and controllable network infrastructure before deployment can move from demos to production environments.',
+      impact: 'Manufacturers, telecom operators, equipment vendors, module makers, and system integrators may see faster pilots around 5G-A, industrial internet, edge AI, robotics, and factory data governance.',
+    },
+  },
+
 ];
 
 function displayLabelForRule(rule, text) {

@@ -15,5 +15,6 @@ import * as fixture20260613 from './daily-real-cron-2026-06-13.mjs';
 import * as fixture20260616 from './daily-real-cron-2026-06-16.mjs';
 import * as fixture20260618 from './daily-real-cron-2026-06-18.mjs';
 import * as fixture20260621 from './daily-real-cron-2026-06-21.mjs';
+import * as fixture20260626 from './daily-real-cron-2026-06-26.mjs';
 
-export const realCronFixtures = [fixture20260524, fixture20260527, fixture20260528, fixture20260529, fixture20260530, fixture20260531, fixture20260602, fixture20260603, fixture20260604, fixture20260605, fixture20260606, fixture20260608, fixture20260611, fixture20260613, fixture20260616, fixture20260618, fixture20260621];
+export const realCronFixtures = [fixture20260524, fixture20260527, fixture20260528, fixture20260529, fixture20260530, fixture20260531, fixture20260602, fixture20260603, fixture20260604, fixture20260605, fixture20260606, fixture20260608, fixture20260611, fixture20260613, fixture20260616, fixture20260618, fixture20260621, fixture20260626];

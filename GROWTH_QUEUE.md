@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-25 17:26
+Last updated: 2026-06-26 11:33
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-193: 将 2026-06-26 真实 cron 样本接入 daily-real-cron fixture registry，并为 GPT-5.5 Instant / RAISE US / NVIDIA AWS / Claude Tag / 工业 5G 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `d92e8fe`
+  - Hypothesis: 最近24小时新增日报（2026-06-26）暴露 OpenAI GPT-5.5 Instant 决策/购物体验、Amazon RAISE US 劳动力培训、NVIDIA + AWS 生产级 AI 基础设施、Anthropic Claude Tag Slack 团队智能体与中国工业 5G 独立专网五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与可检索 headline label 会弱于 ZH 原文。
+  - Metrics: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-06-26.mjs`，覆盖 2026-06-26 五条最新信号；2) `source-projection-rules.mjs` 新增 5 条字段级英文 projection 与 display label metadata，并为已满额 cloud/enterprise/policy category 写入 capacityPlan、同步 taxonomy budget 与 migration hint；3) EN 2026-06-26 日报由字段级 projection 重写，移除泛化 fallback；4) label check 扩展到 2026-06-26/21/18/16/13/11/08/06/05 共 45 条 expectedSignals；5) 相关 fixture、source projection、duplicate precheck 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-192: 将 2026-06-05 日报 headline label 迁移到 source projection metadata，并增加 NVIDIA Cosmos/CVPR 标签污染 probe，消费 EXP-191 “继续向 2026-06-05 或更早 fixture 迁移 enLabel”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-191 已把 2026-06-06 标签迁入 source projection metadata，但 2026-06-05 OpenAI Memory/Lockdown、NVIDIA Cosmos 3、NVIDIA Physical AI Agent Skills、中国高质量数据集与 Unitree IPO 仍未被 label metadata 闸门覆盖；若不继续迁移，最早 06 月 fixture 的首屏标签基线仍分散在 generator fallback 与 expectedSignals 中，且 NVIDIA Cosmos/CVPR 相邻 physical AI 信号容易发生 display label 污染。
   - Metrics: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。

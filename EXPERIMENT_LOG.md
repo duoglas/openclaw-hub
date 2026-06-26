@@ -6,7 +6,7 @@
 - Start date: 2026-06-25
 - End date: 2026-06-25
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
-- Result: pass（2026-06-05 四条 headline label 已迁移到 source projection metadata，并复用 OpenAI Memory/Lockdown 条件 label；label check 现要求 2026-06-05/06/08/11/13/16/18/21 共 40 条 expectedSignals 全量由 metadata 命中；NVIDIA Cosmos/CVPR synthetic probe 确认 06-05 Cosmos label 未污染 06-06 CVPR physical AI label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-05 四条 headline label 已迁移到 source projection metadata，并复用 OpenAI Memory/Lockdown 条件 label；label check 现要求 2026-06-05/06/08/11/13/16/18/21 共 40 条 expectedSignals 全量由 metadata 命中；NVIDIA Cosmos/CVPR synthetic probe 确认 06-05 Cosmos label 未污染 06-06 CVPR physical AI label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `d92e8fe`；质量评分 28/30。）
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-04 或更早 fixture 迁移 enLabel，并优先为共享 OpenAI/NVIDIA/China policy rule 增加 fixture-level 条件 label 防污染检查。）
 
 ### EXP-191
@@ -43,6 +43,17 @@
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-08 或更早 fixture 迁移 enLabel，并为共享 rule 的条件 label 增加 fixture-level pollution probes。）
 
 # EXPERIMENT_LOG.md
+
+### EXP-193
+- Hypothesis: 最近24小时新增日报（2026-06-26）暴露 OpenAI GPT-5.5 Instant 决策/购物体验、Amazon RAISE US 劳动力培训、NVIDIA + AWS 生产级 AI 基础设施、Anthropic Claude Tag Slack 团队智能体与中国工业 5G 独立专网五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与可检索 headline label 会弱于 ZH 原文。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-26.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-06-26.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-26 真实 cron fixture；source projection registry 新增 OpenAI GPT-5.5 Instant、Amazon RAISE US、NVIDIA/AWS EC2 G7 + OpenSearch、Anthropic Claude Tag、China industrial 5G private network 五条字段级英文 projection 与 display label；EN 2026-06-26 日报由字段级 projection 重写；标签检查扩展到 45 条 expectedSignals；taxonomy 为新增满额分类同步 budget、capacityPlan 与 migration hint。
+- ICE: 9x8x8=576
+- Start date: 2026-06-26
+- End date: 2026-06-26
+- Success metric: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+- Result: pass（2026-06-26 真实 cron fixture 已进入 registry；EN 最新日报 Top 5 已升级为 `OpenAI / GPT-5.5 Instant / decision assistance`、`Amazon / RAISE US / AI workforce training`、`NVIDIA / AWS / vector retrieval infrastructure`、`Anthropic / Claude Tag / team agent workflow`、`China / industrial 5G / AI infrastructure pilot`；新增五条 source projection rule 与 label metadata，scope/registry/taxonomy/metadata/term narrowness、真实 cron EN/ZH/pair、dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留最新日报 fixture 作为首日索引质量基线；下一步优先把满额 parent category 的 budget raise 收敛为真实 split category enum 迁移，降低后续新增日报 source projection 对 parent budget 的依赖。）
 
 ### EXP-188
 - Hypothesis: EXP-187 已把 2026-06-16 标签迁入 source projection metadata，但 2026-06-13 OpenAI Academy、NVIDIA AgentPerf Blackwell、Claude Corps、中国 AI+ICT 与中国人形机器人实景实训仍依赖 generator fallback 组合标签；若不继续迁移，旧 fixture 的 headline label 基线仍分散在 generator fallback 与 expectedSignals 中，且共享 China humanoid / AI+ICT / AgentPerf rule 容易污染 2026-06-16/18 条件 label。
