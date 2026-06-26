@@ -287,6 +287,22 @@ function formatEffectiveCategoryBudget(item) {
     : `${item.name}=${item.count}/${item.budget} (${item.headroom} headroom)`;
 }
 
+function lowHeadroomEffectiveCategories(effectiveSummary = summarizeSourceProjectionEffectiveCategories()) {
+  return (effectiveSummary.categories || [])
+    .filter((item) => item.headroom != null && item.headroom <= SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD)
+    .sort((a, b) => a.headroom - b.headroom || b.count - a.count || a.name.localeCompare(b.name));
+}
+
+function highUtilizationEffectiveCategories(effectiveSummary = summarizeSourceProjectionEffectiveCategories()) {
+  return (effectiveSummary.categories || [])
+    .filter((item) => (
+      item.budget != null
+      && item.budget > 0
+      && item.count / item.budget >= SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD
+    ))
+    .sort((a, b) => (b.count / b.budget) - (a.count / a.budget) || b.count - a.count || a.name.localeCompare(b.name));
+}
+
 function formatShare(value) {
   return `${Math.round(Number(value || 0) * 100)}%`;
 }
@@ -514,7 +530,7 @@ export function suggestSourceProjectionProposedRuleSplitTargets({
   proposedRules = [],
 } = {}) {
   const summary = summarizeSourceProjectionRuleTaxonomy({ rules: currentRules });
-  const highRiskCategories = new Set(categoriesRequiringSourceProjectionCapacityPlan(summary));
+  const highRiskCategories = new Set(suggestSourceProjectionCategoryCapacityActions(summary).map((item) => item.name));
 
   return proposedRules
     .filter((rule) => highRiskCategories.has(normalize(rule.category)))
@@ -569,15 +585,15 @@ export function validateSourceProjectionProposedRuleSplitTargetScaffold({
   return failures;
 }
 
-export function suggestSourceProjectionCategoryCapacityActions(summary = summarizeSourceProjectionRuleTaxonomy()) {
+function capacityActionsFromCategorySets({ highUtilizationCategories = [], lowHeadroomCategories = [], action }) {
   const actionByCategory = new Map();
-  for (const item of summary.highUtilizationCategories || []) {
+  for (const item of highUtilizationCategories || []) {
     actionByCategory.set(item.name, {
       ...item,
       reasons: [`${formatShare(item.count / item.budget)} used`],
     });
   }
-  for (const item of summary.lowHeadroomCategories || []) {
+  for (const item of lowHeadroomCategories || []) {
     const existing = actionByCategory.get(item.name) || { ...item, reasons: [] };
     existing.reasons.push(`${item.headroom} headroom`);
     actionByCategory.set(item.name, existing);
@@ -587,9 +603,25 @@ export function suggestSourceProjectionCategoryCapacityActions(summary = summari
     .sort((a, b) => a.headroom - b.headroom || (b.count / b.budget) - (a.count / a.budget) || b.count - a.count || a.name.localeCompare(b.name))
     .map((item) => ({
       ...item,
-      action: 'split category or raise budget before adding new rules',
+      action,
       reason: [...new Set(item.reasons)].join(' + '),
     }));
+}
+
+export function suggestSourceProjectionCategoryCapacityActions(summary = summarizeSourceProjectionRuleTaxonomy()) {
+  return capacityActionsFromCategorySets({
+    highUtilizationCategories: summary.highUtilizationCategories,
+    lowHeadroomCategories: summary.lowHeadroomCategories,
+    action: 'split category or raise budget before adding new rules',
+  });
+}
+
+export function suggestSourceProjectionEffectiveCategoryCapacityActions(effectiveSummary = summarizeSourceProjectionEffectiveCategories()) {
+  return capacityActionsFromCategorySets({
+    highUtilizationCategories: highUtilizationEffectiveCategories(effectiveSummary),
+    lowHeadroomCategories: lowHeadroomEffectiveCategories(effectiveSummary),
+    action: 'choose a lower-risk split target or raise effective budget before adding new rules',
+  });
 }
 
 
@@ -598,24 +630,33 @@ function hasCapacityPlan(rule) {
 }
 
 export function categoriesRequiringSourceProjectionCapacityPlan(summary = summarizeSourceProjectionRuleTaxonomy()) {
-  return suggestSourceProjectionCategoryCapacityActions(summary).map((item) => item.name);
+  return suggestSourceProjectionEffectiveCategoryCapacityActions(
+    summarizeSourceProjectionEffectiveCategories({ rules: summary.rules }),
+  ).map((item) => item.name);
+}
+
+function effectiveCategoryForProposedRule(rule) {
+  const declaredTarget = proposedRuleSplitTarget(rule);
+  if (declaredTarget) return declaredTarget;
+  const recommendation = findRecommendedSplitTargetForRule(rule);
+  return recommendation?.target || normalize(rule.category);
 }
 
 export function validateSourceProjectionRuleCategoryCapacityPlan({
   currentRules = sourceProjectionRules(),
   proposedRules = [],
 } = {}) {
-  const summary = summarizeSourceProjectionRuleTaxonomy({ rules: currentRules });
-  const actionByCategory = new Map(suggestSourceProjectionCategoryCapacityActions(summary).map((item) => [item.name, item]));
+  const effectiveSummary = summarizeSourceProjectionEffectiveCategories({ rules: currentRules });
+  const actionByCategory = new Map(suggestSourceProjectionEffectiveCategoryCapacityActions(effectiveSummary).map((item) => [item.name, item]));
   const failures = [];
 
   for (const rule of proposedRules) {
     const name = normalize(rule.name) || '(unnamed proposed rule)';
-    const category = normalize(rule.category);
-    const action = actionByCategory.get(category);
+    const effectiveCategory = effectiveCategoryForProposedRule(rule);
+    const action = actionByCategory.get(effectiveCategory);
     if (action && !hasCapacityPlan(rule)) {
       failures.push(
-        `${name} — category ${category} requires capacityPlan before adding new rules `
+        `${name} — effective category ${effectiveCategory} requires capacityPlan before adding new rules `
           + `(${action.reason}; ${action.action})`,
       );
     }
@@ -670,6 +711,10 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
       return `${batch.category}: ${targetDetails}${unmatchedDetails}`;
     })
     .join('; ');
+  const effectiveCategorySummary = summarizeSourceProjectionEffectiveCategories({ rules: summary.rules });
+  const effectiveCapacityActionLine = suggestSourceProjectionEffectiveCategoryCapacityActions(effectiveCategorySummary)
+    .map((item) => `${item.name}: ${item.action} (${item.reason})`)
+    .join('; ');
   const capacityPlanCategories = categoriesRequiringSourceProjectionCapacityPlan(summary).join(', ');
   const splitTargetSummary = summarizeSourceProjectionSplitTargetCategories();
   const splitTargetLine = `${splitTargetSummary.totalUsedTargets}/${splitTargetSummary.totalAllowedTargets} used`
@@ -687,7 +732,6 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     + `, missing=${ruleSplitTargetCoverage.missingRules.length}`
     + `, invalid=${ruleSplitTargetCoverage.invalidRules.length}`
     + `, mismatched=${ruleSplitTargetCoverage.mismatchedRules.length}`;
-  const effectiveCategorySummary = summarizeSourceProjectionEffectiveCategories({ rules: summary.rules });
   const effectiveCategoryLine = effectiveCategorySummary.categories
     .map(formatEffectiveCategoryBudget)
     .join(', ');
@@ -705,6 +749,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `low headroom categories: ${lowHeadroomLine || 'none'}`,
     `high utilization categories: ${highUtilizationLine || 'none'}`,
     `category capacity actions: ${capacityActionLine || 'none'}`,
+    `effective category capacity actions: ${effectiveCapacityActionLine || 'none'}`,
     `category split recommendations: ${splitPlanLine || 'none'}`,
     `category split migration batches: ${splitMigrationLine || 'none'}`,
     `category split migration details: ${splitMigrationDetailsLine || 'none'}`,
@@ -1025,7 +1070,7 @@ function validateSelfTests() {
     ],
   });
   const capacityPlanDiagnostic = capacityPlanFailures.join('\n');
-  if (!capacityPlanDiagnostic.includes('synthetic-new-developer-tool-rule-without-plan — category developer-tools requires capacityPlan before adding new rules (100% used + 0 headroom; split category or raise budget before adding new rules)')) {
+  if (!capacityPlanDiagnostic.includes('synthetic-new-developer-tool-rule-without-plan — effective category developer-tools requires capacityPlan before adding new rules (100% used + 0 headroom; choose a lower-risk split target or raise effective budget before adding new rules)')) {
     failures.push('source projection taxonomy capacity-plan self-test failed: missing capacityPlan diagnostic');
   }
 

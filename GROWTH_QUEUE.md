@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-195: 将 proposed rule capacity plan guard 从满额 parent category 切换到 effective category，消费 EXP-194 “新增 proposed rule capacity action 从 parent category 切换到 effective category”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-194 已证明 splitTargetCategory 能承载真实 effective category budget，但 proposed rule capacity plan 仍按 parent category 输出满额动作；若新增日报规则已经声明或可推荐到有余量 split target，仍被 parent 满额要求 capacityPlan，会继续诱导临时 parent budget raise。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category capacity actions` 与 effective `new rule capacity plan required for`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增 effective category capacity action summary；2) proposed rule capacityPlan guard 改为按 `splitTargetCategory || recommendedSplitTarget || category` 判定；3) parent category capacity actions / split scaffold 继续保留作迁移提示；4) 当前 capacity plan 清单收敛为 effective categories：ai-industrial-policy、enterprise-agent-platforms、frontier-models、robotics-simulation-training、ai-policy-standards、cloud-model-distribution、regional-ai-ecosystems；5) taxonomy、registry health 与 build 通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-194: 为 source projection taxonomy 增加 effective split category budget guard，消费 EXP-193 “满额 parent category budget raise 收敛为真实 split category enum 迁移”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-193 为 2026-06-26 最新日报新增五条 projection 后，enterprise-agents/policy-governance/cloud-infrastructure/consumer-productivity/market-intelligence 等 parent category 仍显示 100% 满额；若 taxonomy 只看 parent budget，后续新增日报仍依赖临时 raise，而不能证明 splitTargetCategory 已经承担真实容量管理。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 effective category budgets / coverage，并显示 43/56 split-backed、overBudget=0、missingBudget=0；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 全部通过。

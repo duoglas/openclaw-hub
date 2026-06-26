@@ -44,6 +44,17 @@
 
 # EXPERIMENT_LOG.md
 
+### EXP-195
+- Hypothesis: EXP-194 已证明 splitTargetCategory 能承载真实 effective category budget，但 proposed rule capacity plan 仍按 parent category 输出 `enterprise-agents/cloud-infrastructure/...` 满额动作；若新增日报规则已经声明或可推荐到有余量 split target，仍被 parent 满额要求 capacityPlan，会继续诱导临时 parent budget raise，而不是让维护者按真实 effective category 选低风险 split target。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 effective category capacity action summary，并将 proposed rule capacityPlan guard 改为按 `splitTargetCategory || recommendedSplitTarget || category` 判定风险；保留 parent category capacity actions / split scaffold 只用于迁移提示，新增规则容量计划输出改为 effective category 清单。
+- ICE: 8x8x8=512
+- Start date: 2026-06-26
+- End date: 2026-06-26
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category capacity actions` 与 effective `new rule capacity plan required for`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 通过。
+- Result: pass（taxonomy 现在同时输出 parent category 迁移提示与 effective category 容量动作；新增规则 capacityPlan guard 已按 declared/recommended split target 或低风险 parent fallback 判定，当前需计划的新增规则目标收敛为 `ai-industrial-policy / enterprise-agent-platforms / frontier-models / robotics-simulation-training / ai-policy-standards / cloud-model-distribution / regional-ai-ecosystems`，不再直接按满额 parent category 阻断；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 effective capacity plan guard 作为新增 source projection rule 的入口；下一步可为 1-headroom effective categories 自动推荐 alternate split target，进一步降低新日报 projection 的临时预算调整。）
+
 ### EXP-194
 - Hypothesis: EXP-193 为 2026-06-26 最新日报新增五条 projection 后，enterprise-agents/policy-governance/cloud-infrastructure/consumer-productivity/market-intelligence 等 parent category 仍显示 100% 满额；若 taxonomy 只看 parent budget，后续新增日报仍依赖临时 raise，而不能证明 splitTargetCategory 已经承担真实容量管理。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
