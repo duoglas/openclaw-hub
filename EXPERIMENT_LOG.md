@@ -6,7 +6,7 @@
 - Start date: 2026-06-25
 - End date: 2026-06-25
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
-- Result: pass（2026-06-05 四条 headline label 已迁移到 source projection metadata，并复用 OpenAI Memory/Lockdown 条件 label；label check 现要求 2026-06-05/06/08/11/13/16/18/21 共 40 条 expectedSignals 全量由 metadata 命中；NVIDIA Cosmos/CVPR synthetic probe 确认 06-05 Cosmos label 未污染 06-06 CVPR physical AI label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `d92e8fe`；质量评分 28/30。）
+- Result: pass（2026-06-05 四条 headline label 已迁移到 source projection metadata，并复用 OpenAI Memory/Lockdown 条件 label；label check 现要求 2026-06-05/06/08/11/13/16/18/21 共 40 条 expectedSignals 全量由 metadata 命中；NVIDIA Cosmos/CVPR synthetic probe 确认 06-05 Cosmos label 未污染 06-06 CVPR physical AI label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `1574094`；质量评分 28/30。）
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-04 或更早 fixture 迁移 enLabel，并优先为共享 OpenAI/NVIDIA/China policy rule 增加 fixture-level 条件 label 防污染检查。）
 
 ### EXP-191

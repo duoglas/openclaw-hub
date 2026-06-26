@@ -20,7 +20,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-193: 将 2026-06-26 真实 cron 样本接入 daily-real-cron fixture registry，并为 GPT-5.5 Instant / RAISE US / NVIDIA AWS / Claude Tag / 工业 5G 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `d92e8fe`
+- [x] P1 Candidate / EXP-193: 将 2026-06-26 真实 cron 样本接入 daily-real-cron fixture registry，并为 GPT-5.5 Instant / RAISE US / NVIDIA AWS / Claude Tag / 工业 5G 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `1574094`
   - Hypothesis: 最近24小时新增日报（2026-06-26）暴露 OpenAI GPT-5.5 Instant 决策/购物体验、Amazon RAISE US 劳动力培训、NVIDIA + AWS 生产级 AI 基础设施、Anthropic Claude Tag Slack 团队智能体与中国工业 5G 独立专网五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与可检索 headline label 会弱于 ZH 原文。
   - Metrics: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-06-26.mjs`，覆盖 2026-06-26 五条最新信号；2) `source-projection-rules.mjs` 新增 5 条字段级英文 projection 与 display label metadata，并为已满额 cloud/enterprise/policy category 写入 capacityPlan、同步 taxonomy budget 与 migration hint；3) EN 2026-06-26 日报由字段级 projection 重写，移除泛化 fallback；4) label check 扩展到 2026-06-26/21/18/16/13/11/08/06/05 共 45 条 expectedSignals；5) 相关 fixture、source projection、duplicate precheck 与 build 全部通过；质量评分 28/30。
