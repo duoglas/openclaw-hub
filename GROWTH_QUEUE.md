@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-26 11:33
+Last updated: 2026-06-26 11:35
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-194: 为 source projection taxonomy 增加 effective split category budget guard，消费 EXP-193 “满额 parent category budget raise 收敛为真实 split category enum 迁移”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-193 为 2026-06-26 最新日报新增五条 projection 后，enterprise-agents/policy-governance/cloud-infrastructure/consumer-productivity/market-intelligence 等 parent category 仍显示 100% 满额；若 taxonomy 只看 parent budget，后续新增日报仍依赖临时 raise，而不能证明 splitTargetCategory 已经承担真实容量管理。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 effective category budgets / coverage，并显示 43/56 split-backed、overBudget=0、missingBudget=0；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增 `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS`，覆盖 17 个 split target 与低风险 parent fallback；2) taxonomy summary 输出按 `splitTargetCategory || category` 计算的 effective category budgets 与 coverage；3) validator 阻断 effective category 缺预算或超预算，并用 cloud-model-distribution synthetic self-test 锁定 over-budget 诊断；4) 当前 56 条规则中 43 条已由 split target 承载，parent fallback 13 条，effective overBudget/missingBudget 均为 0；5) taxonomy、registry health 与 build 通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-193: 将 2026-06-26 真实 cron 样本接入 daily-real-cron fixture registry，并为 GPT-5.5 Instant / RAISE US / NVIDIA AWS / Claude Tag / 工业 5G 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `1574094`
   - Hypothesis: 最近24小时新增日报（2026-06-26）暴露 OpenAI GPT-5.5 Instant 决策/购物体验、Amazon RAISE US 劳动力培训、NVIDIA + AWS 生产级 AI 基础设施、Anthropic Claude Tag Slack 团队智能体与中国工业 5G 独立专网五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与可检索 headline label 会弱于 ZH 原文。
   - Metrics: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。

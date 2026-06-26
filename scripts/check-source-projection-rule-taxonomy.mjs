@@ -47,6 +47,29 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'robotics-simulation-training',
   'vertical-workflow-agents',
 ];
+export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
+  'agent-enablement-programs': 4,
+  'ai-infrastructure-capacity': 6,
+  'ai-industrial-policy': 6,
+  'ai-policy-standards': 4,
+  'autonomous-mobility-systems': 3,
+  'career-productivity-workflows': 3,
+  'chatgpt-control-surfaces': 4,
+  'cloud-model-distribution': 4,
+  'company-finance': 5,
+  'consumer-creative-ai': 4,
+  'content-licensing-markets': 3,
+  'developer-tools': 4,
+  'digital-regulation-compliance': 3,
+  'enterprise-agent-platforms': 6,
+  'frontier-models': 6,
+  'market-sizing-reports': 3,
+  'product-safety': 5,
+  'regional-ai-ecosystems': 4,
+  'robotics-commercial-deployment': 4,
+  'robotics-simulation-training': 6,
+  'vertical-workflow-agents': 4,
+};
 export const SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD = 1;
 export const SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD = 0.8;
 export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
@@ -218,6 +241,50 @@ export function summarizeSourceProjectionRuleTaxonomy({ rules = sourceProjection
     lowHeadroomCategories,
     highUtilizationCategories,
   };
+}
+
+export function summarizeSourceProjectionEffectiveCategories({ rules = sourceProjectionRules() } = {}) {
+  const categoryCounts = new Map();
+  let splitBackedRules = 0;
+  let parentFallbackRules = 0;
+
+  for (const rule of rules) {
+    const splitTarget = proposedRuleSplitTarget(rule);
+    const category = splitTarget || normalize(rule.category) || '(missing category)';
+    categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
+    if (splitTarget) splitBackedRules += 1;
+    else parentFallbackRules += 1;
+  }
+
+  const categories = [...categoryCounts.entries()]
+    .map(([name, count]) => {
+      const budget = SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS[name] || null;
+      return {
+        name,
+        count,
+        budget,
+        headroom: budget == null ? null : budget - count,
+      };
+    })
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
+  const overBudgetCategories = categories.filter((item) => item.budget != null && item.count > item.budget);
+  const missingBudgetCategories = categories.filter((item) => item.budget == null);
+
+  return {
+    totalRules: rules.length,
+    splitBackedRules,
+    parentFallbackRules,
+    categories,
+    overBudgetCategories,
+    missingBudgetCategories,
+  };
+}
+
+function formatEffectiveCategoryBudget(item) {
+  return item.budget == null
+    ? `${item.name}=${item.count}/unbudgeted`
+    : `${item.name}=${item.count}/${item.budget} (${item.headroom} headroom)`;
 }
 
 function formatShare(value) {
@@ -620,11 +687,21 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     + `, missing=${ruleSplitTargetCoverage.missingRules.length}`
     + `, invalid=${ruleSplitTargetCoverage.invalidRules.length}`
     + `, mismatched=${ruleSplitTargetCoverage.mismatchedRules.length}`;
+  const effectiveCategorySummary = summarizeSourceProjectionEffectiveCategories({ rules: summary.rules });
+  const effectiveCategoryLine = effectiveCategorySummary.categories
+    .map(formatEffectiveCategoryBudget)
+    .join(', ');
+  const effectiveCategoryCoverageLine = `${effectiveCategorySummary.splitBackedRules}/${effectiveCategorySummary.totalRules} split-backed`
+    + `, parentFallback=${effectiveCategorySummary.parentFallbackRules}`
+    + `, overBudget=${effectiveCategorySummary.overBudgetCategories.length}`
+    + `, missingBudget=${effectiveCategorySummary.missingBudgetCategories.length}`;
   return [
     `source projection taxonomy summary: totalRules=${summary.totalRules}`,
     `owners: ${ownerLine}`,
     `categories: ${categoryLine}`,
     `category budgets: ${categoryBudgetLine || 'n/a'}`,
+    `effective category budgets: ${effectiveCategoryLine || 'n/a'}`,
+    `effective category coverage: ${effectiveCategoryCoverageLine}`,
     `low headroom categories: ${lowHeadroomLine || 'none'}`,
     `high utilization categories: ${highUtilizationLine || 'none'}`,
     `category capacity actions: ${capacityActionLine || 'none'}`,
@@ -681,6 +758,17 @@ export function validateSourceProjectionRuleTaxonomy({ rules = sourceProjectionR
           + `(over by ${category.count - category.budget})`,
       );
     }
+  }
+
+  const effectiveCategorySummary = summarizeSourceProjectionEffectiveCategories({ rules });
+  for (const category of effectiveCategorySummary.missingBudgetCategories) {
+    failures.push(`source projection effective category lacks budget: ${category.name}`);
+  }
+  for (const category of effectiveCategorySummary.overBudgetCategories) {
+    failures.push(
+      `source projection effective category over budget: ${category.name}=${category.count}/${category.budget} `
+        + `(over by ${category.count - category.budget})`,
+    );
   }
 
   return failures;
@@ -762,6 +850,8 @@ function validateSelfTests() {
     'owners: daily-source-projection=3',
     'categories: physical-ai-robotics=2, frontier-models=1',
     'category budgets: physical-ai-robotics=2/10 (8 headroom), frontier-models=1/6 (5 headroom)',
+    'effective category budgets: physical-ai-robotics=2/unbudgeted, frontier-models=1/6 (5 headroom)',
+    'effective category coverage: 0/3 split-backed, parentFallback=3, overBudget=0, missingBudget=1',
     'low headroom categories: none',
     'high utilization categories: none',
     'category capacity actions: none',
@@ -780,6 +870,28 @@ function validateSelfTests() {
     }
   }
 
+  const effectiveCategoryFailures = validateSourceProjectionRuleTaxonomy({
+    rules: Array.from({ length: SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS['cloud-model-distribution'] + 1 }, (_, index) => ({
+      name: `synthetic-effective-cloud-model-rule-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'cloud-infrastructure',
+      splitTargetCategory: 'cloud-model-distribution',
+      terms: [`Synthetic Bedrock Effective Category ${index + 1}`],
+      details: { what: 'what', why: 'why', impact: 'impact' },
+    })).concat(ALLOWED_SOURCE_PROJECTION_CATEGORIES
+      .filter((category) => category !== 'cloud-infrastructure')
+      .map((category) => ({
+        name: `synthetic-${category}-effective-coverage-rule`,
+        owner: 'daily-source-projection',
+        category,
+        terms: [`Synthetic ${category} Effective Coverage`],
+        details: { what: 'what', why: 'why', impact: 'impact' },
+      }))),
+  }).join('\n');
+  if (!effectiveCategoryFailures.includes('source projection effective category over budget: cloud-model-distribution=5/4 (over by 1)')) {
+    failures.push('source projection taxonomy effective category budget self-test failed: cloud-model-distribution over budget diagnostic');
+  }
+
   const highUtilizationDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
     rules: Array.from({ length: 4 }, (_, index) => ({
       name: `synthetic-developer-utilization-rule-${index + 1}`,
@@ -792,6 +904,8 @@ function validateSelfTests() {
     }))),
   }));
   for (const fragment of [
+    'effective category budgets: company-finance=4/5 (1 headroom), developer-tools=4/4 (0 headroom)',
+    'effective category coverage: 0/8 split-backed, parentFallback=8, overBudget=0, missingBudget=0',
     'high utilization categories: developer-tools=4/4 (100% used, 0 headroom), company-finance=4/5 (80% used, 1 headroom)',
     'category capacity actions: developer-tools: split category or raise budget before adding new rules (100% used + 0 headroom); company-finance: split category or raise budget before adding new rules (80% used + 1 headroom)',
     'category split recommendations: none',

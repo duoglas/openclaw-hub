@@ -44,6 +44,17 @@
 
 # EXPERIMENT_LOG.md
 
+### EXP-194
+- Hypothesis: EXP-193 为 2026-06-26 最新日报新增五条 projection 后，enterprise-agents/policy-governance/cloud-infrastructure/consumer-productivity/market-intelligence 等 parent category 仍显示 100% 满额；若 taxonomy 只看 parent budget，后续新增日报仍依赖临时 raise，而不能证明 splitTargetCategory 已经承担真实容量管理。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 effective split category budget guard：按 `splitTargetCategory || category` 汇总 effective category budgets / coverage，并为 17 个 split target 与低风险 parent fallback 设置预算；taxonomy validator 阻断 effective category 缺预算或超预算，self-test 锁定 cloud-model-distribution over-budget 诊断。
+- ICE: 8x8x8=512
+- Start date: 2026-06-26
+- End date: 2026-06-26
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category budgets` 与 `effective category coverage: 43/56 split-backed, parentFallback=13, overBudget=0, missingBudget=0`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 通过。
+- Result: pass（taxonomy 已按 split target 真实承载容量：当前 56 条 source projection rule 中 43 条 split-backed、13 条低风险 parent fallback；effective category budgets 覆盖 21 个有效分类，overBudget=0、missingBudget=0；synthetic self-test 阻断 `cloud-model-distribution=5/4` 超预算；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 effective category budget guard 作为真实 category enum 迁移前的容量闸门；下一步可把新增 proposed rule capacity action 从 parent category 切换到 effective category，进一步减少 parent budget raise 依赖。）
+
 ### EXP-193
 - Hypothesis: 最近24小时新增日报（2026-06-26）暴露 OpenAI GPT-5.5 Instant 决策/购物体验、Amazon RAISE US 劳动力培训、NVIDIA + AWS 生产级 AI 基础设施、Anthropic Claude Tag Slack 团队智能体与中国工业 5G 独立专网五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与可检索 headline label 会弱于 ZH 原文。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-26.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-06-26.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
