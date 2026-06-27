@@ -44,6 +44,17 @@
 
 # EXPERIMENT_LOG.md
 
+### EXP-196
+- Hypothesis: 最近24小时新增日报（2026-06-27）暴露 ChatGPT 个人金融/听写/GPT-4.5 退场、Amazon RAISE US、NVIDIA/AWS 生产级基础设施、中国垂直行业 AI 规模化与 MWC 上海 6G/移动 AI 五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与可检索 headline label 会弱于 ZH 原文。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-27.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-06-27.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-27 真实 cron fixture；source projection registry 新增 ChatGPT finance/dictation/GPT-4.5 retirement、China vertical industry AI scale deployment、China MWC Shanghai 6G/mobile AI 三条字段级英文 projection 与 display label；复用 Amazon RAISE US 与 NVIDIA/AWS projection；EN 2026-06-27 日报由字段级 projection 重写并保留 CTA；标签检查扩展到 50 条 expectedSignals；taxonomy 同步预算、capacityPlan 与 migration hint。
+- ICE: 9x8x8=576
+- Start date: 2026-06-27
+- End date: 2026-06-27
+- Success metric: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+- Result: pass（2026-06-27 真实 cron fixture 已进入 registry；EN 最新日报 Top 5 已升级为 `OpenAI / ChatGPT / finance and dictation controls`、`Amazon / RAISE US / AI workforce training`、`NVIDIA / AWS / vector retrieval infrastructure`、`China / vertical AI / industrial deployment`、`China / 6G / mobile AI infrastructure`；新增三条 source projection rule 与 label metadata，并收窄 DiffusionGemma/6G 旧规则 terms 防止 RTX PRO 与低空经济误命中；全部检查与 build 通过；commit `cf620f5`；质量评分 28/30。）
+- Decision: scale（保留最新日报 fixture 作为首日索引质量基线；下一步优先把 2026-06-27 实战案例 Claude Tag / ChatGPT dictation 也纳入 case-level projection 或 FAQ 内链实验，提升日报长尾检索入口。）
+
 ### EXP-195
 - Hypothesis: EXP-194 已证明 splitTargetCategory 能承载真实 effective category budget，但 proposed rule capacity plan 仍按 parent category 输出 `enterprise-agents/cloud-infrastructure/...` 满额动作；若新增日报规则已经声明或可推荐到有余量 split target，仍被 parent 满额要求 capacityPlan，会继续诱导临时 parent budget raise，而不是让维护者按真实 effective category 选低风险 split target。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

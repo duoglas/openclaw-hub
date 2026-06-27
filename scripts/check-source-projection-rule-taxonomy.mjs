@@ -19,13 +19,13 @@ export const ALLOWED_SOURCE_PROJECTION_CATEGORIES = [
 export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'cloud-infrastructure': 7,
   'company-finance': 5,
-  'consumer-productivity': 5,
+  'consumer-productivity': 6,
   'developer-tools': 4,
-  'enterprise-agents': 9,
+  'enterprise-agents': 10,
   'frontier-models': 6,
   'market-intelligence': 5,
   'physical-ai-robotics': 10,
-  'policy-governance': 9,
+  'policy-governance': 10,
   'product-safety': 5,
 };
 export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
@@ -50,7 +50,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
 export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'agent-enablement-programs': 4,
   'ai-infrastructure-capacity': 6,
-  'ai-industrial-policy': 6,
+  'ai-industrial-policy': 7,
   'ai-policy-standards': 4,
   'autonomous-mobility-systems': 3,
   'career-productivity-workflows': 3,
@@ -112,7 +112,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'vertical-workflow-agents',
-      match: ['amazon-nova-act', 'nvidia-nemoclaw'],
+      match: ['amazon-nova-act', 'nvidia-nemoclaw', 'vertical-industry'],
     },
     {
       target: 'agent-enablement-programs',
@@ -126,7 +126,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'ai-industrial-policy',
-      match: ['national-data-administration', 'ai-education', 'provincial', 'province-ministry', '6g', 'asean', 'ict', 'industrial-5g', 'private-network', '数据局', '东盟'],
+      match: ['national-data-administration', 'ai-education', 'provincial', 'province-ministry', '6g', 'mwc-shanghai', 'asean', 'ict', 'industrial-5g', 'private-network', '数据局', '东盟'],
     },
     {
       target: 'digital-regulation-compliance',
@@ -150,7 +150,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'chatgpt-control-surfaces',
-      match: ['model-picker', 'scheduled-tasks', 'pulse', 'instant', 'thinking', 'scheduled'],
+      match: ['model-picker', 'scheduled-tasks', 'chatgpt-finance', 'pulse', 'instant', 'thinking', 'scheduled'],
     },
     {
       target: 'consumer-creative-ai',
@@ -964,7 +964,7 @@ function validateSelfTests() {
   }
 
   const splitPlanDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
-    rules: Array.from({ length: 9 }, (_, index) => ({
+    rules: Array.from({ length: SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS['enterprise-agents'] }, (_, index) => ({
       name: `synthetic-enterprise-agents-split-rule-${index + 1}`,
       owner: 'daily-source-projection',
       category: 'enterprise-agents',
@@ -1006,6 +1006,7 @@ function validateSelfTests() {
       { name: 'openai-chatgpt-model-picker-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
       { name: 'meta-facebook-ai-tools-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
       { name: 'openai-chatgpt-scheduled-tasks-pulse-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
+      { name: 'openai-chatgpt-finance-dictation-gpt45-retirement-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
       { name: 'china-ai-industry-report-l3', owner: 'daily-source-projection', category: 'market-intelligence' },
       { name: 'shanghai-tech-fair-2026-hard-tech', owner: 'daily-source-projection', category: 'market-intelligence' },
       { name: 'amazon-content-partners-ai-crawler-preview-2026', owner: 'daily-source-projection', category: 'market-intelligence' },
@@ -1013,9 +1014,9 @@ function validateSelfTests() {
     ],
   }));
   for (const fragment of [
-    'category split recommendations: consumer-productivity: split into career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai (80% used + 1 headroom); market-intelligence: split into market-sizing-reports / content-licensing-markets / regional-ai-ecosystems (80% used + 1 headroom)',
-    'category split migration batches: consumer-productivity: career-productivity-workflows=1, chatgpt-control-surfaces=2, consumer-creative-ai=1; market-intelligence: market-sizing-reports=1, content-licensing-markets=1, regional-ai-ecosystems=2',
-    'category split migration details: consumer-productivity: career-productivity-workflows=[chatgpt-jobs-resume-tools], chatgpt-control-surfaces=[openai-chatgpt-model-picker-2026|openai-chatgpt-scheduled-tasks-pulse-2026], consumer-creative-ai=[meta-facebook-ai-tools-2026]; market-intelligence: market-sizing-reports=[china-ai-industry-report-l3], content-licensing-markets=[amazon-content-partners-ai-crawler-preview-2026], regional-ai-ecosystems=[shanghai-tech-fair-2026-hard-tech|anthropic-korea-seoul-office-ecosystem-2026]',
+    'category split recommendations: consumer-productivity: split into career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai (83% used + 1 headroom); market-intelligence: split into market-sizing-reports / content-licensing-markets / regional-ai-ecosystems (80% used + 1 headroom)',
+    'category split migration batches: consumer-productivity: career-productivity-workflows=1, chatgpt-control-surfaces=3, consumer-creative-ai=1; market-intelligence: market-sizing-reports=1, content-licensing-markets=1, regional-ai-ecosystems=2',
+    'category split migration details: consumer-productivity: career-productivity-workflows=[chatgpt-jobs-resume-tools], chatgpt-control-surfaces=[openai-chatgpt-model-picker-2026|openai-chatgpt-scheduled-tasks-pulse-2026|openai-chatgpt-finance-dictation-gpt45-retirement-2026], consumer-creative-ai=[meta-facebook-ai-tools-2026]; market-intelligence: market-sizing-reports=[china-ai-industry-report-l3], content-licensing-markets=[amazon-content-partners-ai-crawler-preview-2026], regional-ai-ecosystems=[shanghai-tech-fair-2026-hard-tech|anthropic-korea-seoul-office-ecosystem-2026]',
   ]) {
     if (!recentSignalSplitMigrationDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy recent-signal split-migration self-test failed: ${fragment}`);

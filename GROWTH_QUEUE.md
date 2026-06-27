@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-26 11:35
+Last updated: 2026-06-27 11:31
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-196: 将 2026-06-27 真实 cron 样本接入 daily-real-cron fixture registry，并为 ChatGPT 个人金融/听写、垂直行业 AI 与 6G/MWC 上海新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `cf620f5`
+  - Hypothesis: 最近24小时新增日报（2026-06-27）暴露 ChatGPT 个人金融/听写/GPT-4.5 退场、Amazon RAISE US、NVIDIA/AWS 生产级基础设施、中国垂直行业 AI 规模化与 MWC 上海 6G/移动 AI 五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与 headline label 可检索性会弱于 ZH 原文。
+  - Metrics: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-06-27.mjs`，覆盖 2026-06-27 五条最新信号；2) `source-projection-rules.mjs` 新增 ChatGPT finance/dictation、China vertical AI deployment、China MWC 6G/mobile AI 三条字段级英文 projection 与 display label，并复用 Amazon RAISE US 与 NVIDIA/AWS 规则；3) EN 2026-06-27 日报移除 story 1/4/5 泛化 fallback 并保留 CTA；4) label check 扩展到 2026-06-27/26/21/18/16/13/11/08/06/05 共 50 条 expectedSignals；5) 相关 fixture、source projection、duplicate precheck 与 build 全部通过；质量评分 28/30。
 - [x] P1 Candidate / EXP-195: 将 proposed rule capacity plan guard 从满额 parent category 切换到 effective category，消费 EXP-194 “新增 proposed rule capacity action 从 parent category 切换到 effective category”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-194 已证明 splitTargetCategory 能承载真实 effective category budget，但 proposed rule capacity plan 仍按 parent category 输出满额动作；若新增日报规则已经声明或可推荐到有余量 split target，仍被 parent 满额要求 capacityPlan，会继续诱导临时 parent budget raise。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category capacity actions` 与 effective `new rule capacity plan required for`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 全部通过。

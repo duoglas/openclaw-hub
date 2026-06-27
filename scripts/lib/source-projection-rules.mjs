@@ -364,12 +364,26 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'china-mwc-shanghai-6g-mobile-ai-satellite-2026',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
+    splitTargetCategory: 'ai-industrial-policy',
+    displayLabel: 'China / 6G / mobile AI infrastructure',
+    capacityPlan: 'Raises policy-governance budget by one for a latest-fixture 6G/mobile-AI infrastructure signal; the rule is assigned to ai-industrial-policy and keeps 6G policy signals in the industrial infrastructure split instead of widening parent-category matching.',
+    terms: ['2026 MWC 上海', '6G 产业生态展区', '未来星座', '非地面网络通信'],
+    details: {
+      what: 'Xinhua reported that MWC Shanghai 2026 is focusing on 6G, mobile AI, embodied intelligence, satellite and non-terrestrial network communications, with first-time 6G industry ecosystem and Future Constellation satellite areas.',
+      why: 'Large-scale AI deployment increasingly depends on next-generation connectivity across edge devices, satellite links, sensing, low-altitude mobility, industrial manufacturing, and remote-service scenarios.',
+      impact: 'Telecom operators, device makers, chip vendors, satellite-network companies, and industrial AI teams may see earlier pilot windows where compute, network, terminal, and edge coordination become bundled infrastructure decisions.',
+    },
+  },
+  {
     name: 'china-6g-province-ministry-pilot-2026',
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
     displayLabel: 'Xinhua / MIIT / China / AI chip supply',
-    terms: ['6G 创新发展部省协同试点', '2029年', '业务场景和终端产品', '低空经济'],
+    terms: ['6G 创新发展部省协同试点', '2029年', '业务场景和终端产品'],
     details: {
       what: 'Xinhua reported that China’s Ministry of Industry and Information Technology is organizing province-ministry coordinated 6G innovation pilots, aiming to form independent 6G technical solutions, business scenarios, and terminal products by 2029.',
       why: '6G is being positioned alongside AI, satellite internet, wireless sensing, embodied intelligence, and the low-altitude economy rather than as a standalone telecom upgrade.',
@@ -415,11 +429,25 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'china-vertical-industry-ai-scale-deployment-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    splitTargetCategory: 'vertical-workflow-agents',
+    displayLabel: 'China / vertical AI / industrial deployment',
+    capacityPlan: 'Raises enterprise-agents budget by one for a latest-fixture vertical workflow deployment signal; the rule is assigned to vertical-workflow-agents because the story is about manufacturing, healthcare, energy, and materials workflows rather than generic model capability.',
+    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短'],
+    details: {
+      what: 'Xinhua reported that AI is moving faster into vertical industries such as manufacturing, healthcare, energy, and new materials, including examples where process-drawing analysis fell from half a day to minutes and materials R&D cycles shortened.',
+      why: 'China’s AI application agenda is shifting from general model excitement toward measurable productivity gains inside physical industries and domain workflows.',
+      impact: 'Companies with proprietary data, process redesign capability, and deployment discipline may gain more attention, while superficial AI wrappers will face a higher bar for proving operational value.',
+    },
+  },
+  {
     name: 'google-deepmind-diffusiongemma-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
     displayLabel: 'Google / DeepMind / DiffusionGemma / AI hardware',
-    terms: ['DiffusionGemma', '扩散式文本生成', 'RTX PRO'],
+    terms: ['DiffusionGemma', '扩散式文本生成'],
     details: {
       what: 'Google DeepMind released the experimental open DiffusionGemma model, using diffusion-style text generation to create text blocks in parallel, while NVIDIA announced optimizations across RTX, RTX PRO, DGX Spark, and H100 hardware.',
       why: 'The release tests whether language-model inference can move beyond token-by-token generation toward lower-latency local interaction, while still requiring quality checks before production use.',
@@ -696,6 +724,20 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
 
+  {
+    name: 'openai-chatgpt-finance-dictation-gpt45-retirement-2026',
+    owner: 'daily-source-projection',
+    category: 'consumer-productivity',
+    splitTargetCategory: 'chatgpt-control-surfaces',
+    displayLabel: 'OpenAI / ChatGPT / finance and dictation controls',
+    capacityPlan: 'Raises consumer-productivity budget by one for a latest-fixture ChatGPT control-surface update; the rule is assigned to chatgpt-control-surfaces and prevents broad GPT-5.5 matching from swallowing finance, dictation, and model-retirement details.',
+    terms: ['个人金融体验', '新版听写模型', 'GPT-4.5 从 ChatGPT 下线'],
+    details: {
+      what: 'OpenAI updated ChatGPT on June 26 with a personal finance experience for US Plus users, a new dictation model for all plans, and GPT-4.5 retirement from ChatGPT while older conversations can move to GPT-5.5.',
+      why: 'ChatGPT is becoming a personal task surface that touches sensitive finance, voice input, and model migration workflows rather than staying only a general chat tool.',
+      impact: 'Users may rely more on AI for personal information organization and spoken input, while product teams should make authorization, privacy controls, data boundaries, and model-transition notices explicit.',
+    },
+  },
   {
     name: 'openai-gpt55-instant-decision-shopping-2026',
     owner: 'daily-source-projection',
