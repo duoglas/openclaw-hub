@@ -52,7 +52,7 @@
 - Start date: 2026-06-27
 - End date: 2026-06-27
 - Success metric: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
-- Result: pass（2026-06-27 真实 cron fixture 已进入 registry；EN 最新日报 Top 5 已升级为 `OpenAI / ChatGPT / finance and dictation controls`、`Amazon / RAISE US / AI workforce training`、`NVIDIA / AWS / vector retrieval infrastructure`、`China / vertical AI / industrial deployment`、`China / 6G / mobile AI infrastructure`；新增三条 source projection rule 与 label metadata，并收窄 DiffusionGemma/6G 旧规则 terms 防止 RTX PRO 与低空经济误命中；全部检查与 build 通过；commit `cf620f5`；质量评分 28/30。）
+- Result: pass（2026-06-27 真实 cron fixture 已进入 registry；EN 最新日报 Top 5 已升级为 `OpenAI / ChatGPT / finance and dictation controls`、`Amazon / RAISE US / AI workforce training`、`NVIDIA / AWS / vector retrieval infrastructure`、`China / vertical AI / industrial deployment`、`China / 6G / mobile AI infrastructure`；新增三条 source projection rule 与 label metadata，并收窄 DiffusionGemma/6G 旧规则 terms 防止 RTX PRO 与低空经济误命中；全部检查与 build 通过；commit `24e8582`；质量评分 28/30。）
 - Decision: scale（保留最新日报 fixture 作为首日索引质量基线；下一步优先把 2026-06-27 实战案例 Claude Tag / ChatGPT dictation 也纳入 case-level projection 或 FAQ 内链实验，提升日报长尾检索入口。）
 
 ### EXP-195
