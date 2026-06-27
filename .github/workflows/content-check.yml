@@ -115,6 +115,9 @@ jobs:
       - name: Publish daily generator fixture check
         run: pnpm check:publish-daily-generator-fixture
 
+      - name: Latest daily real cron fixture freshness check
+        run: pnpm check:latest-daily-real-cron-fixture
+
       - name: Daily source projection label metadata check
         run: pnpm check:daily-source-projection-labels
 

@@ -45,6 +45,7 @@
     "check:daily-action-sections": "bash scripts/check-daily-action-sections.sh",
     "check:daily-brief-specificity": "node scripts/check-daily-brief-specificity.mjs",
     "check:publish-daily-generator-fixture": "node scripts/check-publish-daily-generator-fixture.mjs",
+    "check:latest-daily-real-cron-fixture": "node scripts/check-latest-daily-real-cron-fixture.mjs",
     "check:daily-source-projection-labels": "node scripts/check-daily-source-projection-labels.mjs",
     "check:daily-generator-real-cron-fixture": "node scripts/check-daily-generator-real-cron-fixture.mjs",
     "check:daily-zh-generator-real-cron-fixture": "node scripts/check-daily-zh-generator-real-cron-fixture.mjs",

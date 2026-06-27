@@ -1,3 +1,16 @@
+# EXPERIMENT_LOG.md
+
+### EXP-197
+- Hypothesis: EXP-196 已把 2026-06-27 最新日报接入真实 cron fixture 与 50 条 label expectedSignals；若后续内容建设任务发布新双语日报但忘记同步注册最新 real cron fixture，EN/ZH 页面仍可能在首日索引窗口内绕过 source projection 与 headline label 回归检查。
+- Scope: `scripts/check-latest-daily-real-cron-fixture.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增最新日报 real cron fixture freshness 闸门，扫描 EN/ZH 最新双语日报日期，要求 `realCronFixtures` 最新 `fixtureDate` 与之相同，并要求最新 fixture 至少有 5 条 `expectedSignals`；package script 与 content-check CI 接入该检查。
+- ICE: 8x8x8=512
+- Start date: 2026-06-27
+- End date: 2026-06-27
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
+- Result: pass（新增 freshness check 已通过：latestDaily=2026-06-27、latest real cron fixture=2026-06-27、expectedSignals=5；daily source projection label metadata check 与 build 均通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留最新日报 fixture freshness 闸门，后续每日内容建设若先发布日报但未补 fixture，会在 CI 中直接失败；下一步可把 Claude Tag / ChatGPT dictation 等 case-level signal 纳入 fixture case projection 或 FAQ 内链实验。）
+
 ### EXP-192
 - Hypothesis: EXP-191 已把 2026-06-06 标签迁入 source projection metadata，但 2026-06-05 OpenAI Memory/Lockdown、NVIDIA Cosmos 3、NVIDIA Physical AI Agent Skills、中国高质量数据集与 Unitree IPO 仍未被 label metadata 闸门覆盖；若不继续迁移，最早 06 月 fixture 的首屏标签基线仍分散在 generator fallback 与 expectedSignals 中，且 NVIDIA Cosmos/CVPR 相邻 physical AI 信号容易发生 display label 污染。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
@@ -41,8 +54,6 @@
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
 - Result: pass（2026-06-11 五条 headline label 已迁移到 source projection metadata；其中 China humanoid embodied training 使用条件 `displayLabels` 锁定 2026-06-11 新华社文本，synthetic probe 确认未污染后续 MIIT/SASAC 文本；label check 现要求 2026-06-11/13/16/18/21 共 25 条 expectedSignals 全量由 metadata 命中；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-08 或更早 fixture 迁移 enLabel，并为共享 rule 的条件 label 增加 fixture-level pollution probes。）
-
-# EXPERIMENT_LOG.md
 
 ### EXP-196
 - Hypothesis: 最近24小时新增日报（2026-06-27）暴露 ChatGPT 个人金融/听写/GPT-4.5 退场、Amazon RAISE US、NVIDIA/AWS 生产级基础设施、中国垂直行业 AI 规模化与 MWC 上海 6G/移动 AI 五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与可检索 headline label 会弱于 ZH 原文。

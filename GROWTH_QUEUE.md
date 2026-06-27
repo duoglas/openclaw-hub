@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-27 11:31
+Last updated: 2026-06-27 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-197: 为最新双语日报增加 real cron fixture freshness 闸门，消费 EXP-196 “最新日报 fixture 作为首日索引质量基线”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-196 已把 2026-06-27 最新日报接入真实 cron fixture 与 50 条 label expectedSignals；若后续内容建设任务发布新双语日报但忘记同步注册最新 real cron fixture，EN/ZH 页面仍可能在首日索引窗口内绕过 source projection 与 headline label 回归检查。
+  - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增 `scripts/check-latest-daily-real-cron-fixture.mjs`，扫描 EN/ZH 最新 `openclaw-daily-YYYY-MM-DD.md` 并要求最新日期双语存在；2) 最新日报日期必须等于 `realCronFixtures` 最新 `fixtureDate`；3) 最新 fixture 至少包含 5 条 `expectedSignals`；4) 新增 synthetic freshness self-test，锁定“最新日报缺 fixture”失败路径；5) `package.json` 与 content-check CI 接入新闸门；6) 本轮检查显示 latestDaily=2026-06-27、expectedSignals=5，质量评分 28/30。
 - [x] P1 Candidate / EXP-196: 将 2026-06-27 真实 cron 样本接入 daily-real-cron fixture registry，并为 ChatGPT 个人金融/听写、垂直行业 AI 与 6G/MWC 上海新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `24e8582`
   - Hypothesis: 最近24小时新增日报（2026-06-27）暴露 ChatGPT 个人金融/听写/GPT-4.5 退场、Amazon RAISE US、NVIDIA/AWS 生产级基础设施、中国垂直行业 AI 规模化与 MWC 上海 6G/移动 AI 五条信号；若 EN 页面继续使用泛化 `The source tracks...` fallback，最新日报首日索引事实密度与 headline label 可检索性会弱于 ZH 原文。
   - Metrics: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
