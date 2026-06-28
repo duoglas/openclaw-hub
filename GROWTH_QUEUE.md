@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-27 17:24
+Last updated: 2026-06-28 11:31
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-198: 将 2026-06-28 最新双语日报接入 real cron fixture，并为 TOP500/Green500 与 case-level FAQ 增加回归闸门，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-06-28）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS 与中国垂直 AI 信号，并新增 NVIDIA TOP500/Green500 超算基础设施信号；若不把最新日报接入 fixture registry 且不锁定 case-level FAQ 内链，EN 页面会继续出现 TOP500/vertical AI 泛化 fallback，Claude Tag 与 ChatGPT dictation 长尾入口也会分散在正文外。
+  - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-06-28.mjs`，覆盖 2026-06-28 五条最新信号；2) 新增 `nvidia-top500-green500-supercomputing-2026` 字段级 source projection 与 display label，并同步 cloud-infrastructure budget / migration hint；3) EN 2026-06-28 日报移除 TOP500 与 vertical AI 泛化 fallback；4) 新增 `check:daily-case-signal-faq-links` 并接入 content-check CI，锁定最新 ChatGPT dictation / Claude Tag FAQ 内链；5) ZH 2026-06-28 补全被截断的垂直行业 AI 内容；6) 全部相关检查与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-197: 为最新双语日报增加 real cron fixture freshness 闸门，消费 EXP-196 “最新日报 fixture 作为首日索引质量基线”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-196 已把 2026-06-27 最新日报接入真实 cron fixture 与 50 条 label expectedSignals；若后续内容建设任务发布新双语日报但忘记同步注册最新 real cron fixture，EN/ZH 页面仍可能在首日索引窗口内绕过 source projection 与 headline label 回归检查。
   - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。

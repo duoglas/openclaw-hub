@@ -118,6 +118,9 @@ jobs:
       - name: Latest daily real cron fixture freshness check
         run: pnpm check:latest-daily-real-cron-fixture
 
+      - name: Daily case signal FAQ link check
+        run: pnpm check:daily-case-signal-faq-links
+
       - name: Daily source projection label metadata check
         run: pnpm check:daily-source-projection-labels
 

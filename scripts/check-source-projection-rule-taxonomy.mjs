@@ -17,7 +17,7 @@ export const ALLOWED_SOURCE_PROJECTION_CATEGORIES = [
 ];
 
 export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
-  'cloud-infrastructure': 7,
+  'cloud-infrastructure': 8,
   'company-finance': 5,
   'consumer-productivity': 6,
   'developer-tools': 4,
@@ -140,7 +140,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'ai-infrastructure-capacity',
-      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure', 'ec2-g7', 'opensearch'],
+      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure', 'ec2-g7', 'opensearch', 'top500', 'green500', 'supercomputing'],
     },
   ],
   'consumer-productivity': [

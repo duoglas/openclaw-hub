@@ -26,9 +26,9 @@ Potential impact: Enterprises using Slack, Teams, or Feishu-style collaboration 
 
 ### 3. NVIDIA / TOP500 / Green500 / compute infrastructure
 
-What happened: The source tracks compute infrastructure, model capability update, simulation training around NVIDIA, TOP500, Green500, GPU, giving the daily brief a named actor and deployment context.
-Why it matters: NVIDIA, TOP500, Green500, GPU now matters for compute infrastructure, model capability update, simulation training because buyers must check access control, infrastructure availability, operational risk, and whether the workflow can be measured in production.
-Potential impact: Teams tracking NVIDIA, TOP500, Green500, GPU should convert this into concrete tests for rollout timing, vendor dependency, governance ownership, budget pressure, and success metrics.
+What happened: NVIDIA said more than 400 systems, or 81% of the latest TOP500 supercomputers, use NVIDIA technologies, while almost 90% of new entries are NVIDIA-based and the top eight Green500 systems run on NVIDIA GPUs.
+Why it matters: AI infrastructure competition is becoming tightly linked with supercomputing, scientific computing, and energy efficiency rather than only model endpoints or cloud access.
+Potential impact: Research, climate, materials, 6G, industrial simulation, and frontier-model teams may see more dependency on full-stack GPU, networking, CPU, and energy-efficient HPC platforms.
 
 ### 4. NVIDIA / AWS / vector retrieval infrastructure
 
@@ -39,8 +39,8 @@ Potential impact: RAG, enterprise search, and agent-platform teams should benchm
 ### 5. China / vertical AI / industrial deployment
 
 What happened: Xinhua reported that AI is moving faster into vertical industries such as manufacturing, healthcare, energy, and new materials, including examples where process-drawing analysis fell from half a day to minutes and materials R&D cycles shortened.
-Why it matters: China / vertical AI / industrial deployment signal 5 changes the evaluation path for China / vertical AI / industrial deployment, especially workflow readiness, trust controls, governance scope, operating cost, and measurable user outcomes.
-Potential impact: Teams can turn China / vertical AI / industrial deployment signal 5 into a scoped rollout test with clear integration checks, reliability targets, data-boundary review, cost limits, and user-outcome metrics.
+Why it matters: China’s AI application agenda is shifting from general model excitement toward measurable productivity gains inside physical industries and domain workflows.
+Potential impact: Companies with proprietary data, process redesign capability, and deployment discipline may gain more attention, while superficial AI wrappers will face a higher bar for proving operational value.
 
 ## Practical Cases
 
@@ -51,6 +51,16 @@ Team suggestion: Pick one repeated workflow, define the data boundary, add revie
 2. Convert signals into personal productivity experiments
 What to learn: Users do not need to adopt every new AI feature. The best first use case is a repeated task where summaries, comparisons, reminders, or draft generation save attention.
 User suggestion: Test AI on one daily routine such as reading notes, travel planning, spreadsheet cleanup, meeting preparation, or learning review before expanding to higher-risk tasks.
+
+## Case-Level FAQ
+
+### How should teams evaluate ChatGPT dictation before using it in real workflows?
+
+Treat the new ChatGPT dictation model as a voice input workflow, not just a convenience feature. Start with low-risk notes or meeting-prep drafts, define who can review transcripts, and use [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/) to decide when transcription or assistant output should fall back to a safer path.
+
+### What should an enterprise define before piloting Claude Tag in Slack?
+
+Before a Claude Tag pilot, define channel memory scope, which Slack-based conversations can be read, what authorized tools or code repositories Claude may reach, and where human review is mandatory. Pair [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/) with [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/) to turn the team agent workflow into a permissioned deployment checklist.
 
 ## Today’s Bottom Line
 
@@ -68,7 +78,7 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 
 - Evidence item 1: OpenAI / ChatGPT / finance and dictation controls — OpenAI updated ChatGPT on June 26 with a personal finance experience for US Plus users, a new dictation model for all plans, and GPT-4.5 retirement from ChatGPT while older conversations can move to GPT-5.5.
 - Evidence item 2: Anthropic / Claude Tag / team agent workflow — Anthropic launched Claude Tag as a Slack-based @Claude collaboration surface for Claude Enterprise and Team beta users, with channel context, asynchronous task handling, and authorized tool or codebase connections.
-- Evidence item 3: NVIDIA / TOP500 / Green500 / compute infrastructure — The source tracks compute infrastructure, model capability update, simulation training around NVIDIA, TOP500, Green500, GPU, giving the daily brief a named actor and deployment context.
+- Evidence item 3: NVIDIA / TOP500 / Green500 / compute infrastructure — NVIDIA said more than 400 systems, or 81% of the latest TOP500 supercomputers, use NVIDIA technologies, while almost 90% of new entries are NVIDIA-based and the top eight Green500 systems run on NVIDIA GPUs.
 - Evidence item 4: NVIDIA / AWS / vector retrieval infrastructure — NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance.
 - Evidence item 5: China / vertical AI / industrial deployment — Xinhua reported that AI is moving faster into vertical industries such as manufacturing, healthcare, energy, and new materials, including examples where process-drawing analysis fell from half a day to minutes and materials R&D cycles shortened.
 

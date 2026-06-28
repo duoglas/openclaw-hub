@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-198
+- Hypothesis: 最近24小时新增日报（2026-06-28）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS 与中国垂直 AI 信号，并新增 NVIDIA TOP500/Green500 超算基础设施信号；若不把最新日报接入 fixture registry 且不锁定 case-level FAQ 内链，EN 页面会继续出现 TOP500/vertical AI 泛化 fallback，Claude Tag 与 ChatGPT dictation 长尾入口也会分散在正文外。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-28.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/check-daily-case-signal-faq-links.mjs`, `package.json`, `.github/workflows/content-check.yml`, `src/content/blog/en/openclaw-daily-2026-06-28.md`, `src/content/blog/en/openclaw-daily-2026-06-27.md`, `src/content/blog/en/openclaw-daily-2026-06-26.md`, `src/content/blog/zh/openclaw-daily-2026-06-28.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-28 真实 cron fixture；source projection registry 新增 NVIDIA TOP500/Green500 字段级英文 projection 与 display label，并同步 cloud-infrastructure budget / migration hint；EN 最新日报移除 TOP500 与 vertical AI 泛化 fallback；新增 daily case signal FAQ link 闸门并接入 CI，锁定最新 ChatGPT dictation、ChatGPT personal finance 与 Claude Tag 的 FAQ 内链入口；ZH 最新日报补全被截断的垂直行业 AI 内容。
+- ICE: 9x8x8=576
+- Start date: 2026-06-28
+- End date: 2026-06-28
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+- Result: pass（latestDaily=2026-06-28 已由最新 real cron fixture 覆盖，expectedSignals=5；新增 TOP500/Green500 source projection 命中字段级 EN 输出；case-level FAQ link check 覆盖 5 个 ChatGPT/Claude case signals；ZH 最新日报截断内容已补全；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-06-28 fixture 与 case-level FAQ 内链闸门作为周末低新增量日报的首日索引质量基线；下一步可把 case-level FAQ check 泛化为自动读取最新 fixture 的 practical cases，减少手写日期清单。）
+
 ### EXP-197
 - Hypothesis: EXP-196 已把 2026-06-27 最新日报接入真实 cron fixture 与 50 条 label expectedSignals；若后续内容建设任务发布新双语日报但忘记同步注册最新 real cron fixture，EN/ZH 页面仍可能在首日索引窗口内绕过 source projection 与 headline label 回归检查。
 - Scope: `scripts/check-latest-daily-real-cron-fixture.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

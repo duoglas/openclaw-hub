@@ -52,6 +52,12 @@ Team suggestion: Pick one repeated workflow, define the data boundary, add revie
 What to learn: Users do not need to adopt every new AI feature. The best first use case is a repeated task where summaries, comparisons, reminders, or draft generation save attention.
 User suggestion: Test AI on one daily routine such as reading notes, travel planning, spreadsheet cleanup, meeting preparation, or learning review before expanding to higher-risk tasks.
 
+## Case-Level FAQ
+
+### What should an enterprise define before piloting Claude Tag in Slack?
+
+Before a Claude Tag pilot, define channel memory scope, which Slack-based conversations can be read, what authorized tools or code repositories Claude may reach, and where human review is mandatory. Pair [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/) with [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/) to turn the team agent workflow into a permissioned deployment checklist.
+
 ## Today’s Bottom Line
 
 - AI adoption is moving from isolated demos toward workflow integration, infrastructure decisions, and measurable operating outcomes.

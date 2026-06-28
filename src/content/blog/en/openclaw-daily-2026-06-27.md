@@ -52,6 +52,16 @@ Team suggestion: Pick one repeated workflow, define the data boundary, add revie
 What to learn: Users do not need to adopt every new AI feature. The best first use case is a repeated task where summaries, comparisons, reminders, or draft generation save attention.
 User suggestion: Test AI on one daily routine such as reading notes, travel planning, spreadsheet cleanup, meeting preparation, or learning review before expanding to higher-risk tasks.
 
+## Case-Level FAQ
+
+### How should teams evaluate ChatGPT dictation before using it in real workflows?
+
+Treat the new ChatGPT dictation model as a voice input workflow, not just a convenience feature. Start with low-risk notes or meeting-prep drafts, define who can review transcripts, and use [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/) to decide when transcription or assistant output should fall back to a safer path.
+
+### What should US Plus users check before trying ChatGPT personal finance features?
+
+For personal finance experiments, US Plus users should start by setting a clear data boundary: what can be summarized, what should never be uploaded, and which outputs require human confirmation. Use [What Is OpenClaw?](/en/blog/what-is-openclaw/) for the assistant workflow model and [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/) for guardrail thinking before expanding into sensitive data.
+
 ## Today’s Bottom Line
 
 - AI adoption is moving from isolated demos toward workflow integration, infrastructure decisions, and measurable operating outcomes.

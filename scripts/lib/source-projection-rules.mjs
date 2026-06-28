@@ -765,6 +765,20 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'nvidia-top500-green500-supercomputing-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
+    displayLabel: 'NVIDIA / TOP500 / Green500 / compute infrastructure',
+    capacityPlan: 'Raises cloud-infrastructure budget by one for a latest-fixture supercomputing infrastructure signal; the rule is assigned to ai-infrastructure-capacity and keeps TOP500/Green500 details from falling back to generic NVIDIA compute copy.',
+    terms: ['TOP500 榜单', '超过 400 台', 'Green500 能效榜前 8 名'],
+    details: {
+      what: 'NVIDIA said more than 400 systems, or 81% of the latest TOP500 supercomputers, use NVIDIA technologies, while almost 90% of new entries are NVIDIA-based and the top eight Green500 systems run on NVIDIA GPUs.',
+      why: 'AI infrastructure competition is becoming tightly linked with supercomputing, scientific computing, and energy efficiency rather than only model endpoints or cloud access.',
+      impact: 'Research, climate, materials, 6G, industrial simulation, and frontier-model teams may see more dependency on full-stack GPU, networking, CPU, and energy-efficient HPC platforms.',
+    },
+  },
+  {
     name: 'nvidia-aws-ec2-g7-opensearch-vector-2026',
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
