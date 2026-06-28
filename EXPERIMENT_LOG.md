@@ -1,5 +1,16 @@
 # EXPERIMENT_LOG.md
 
+### EXP-199
+- Hypothesis: EXP-198 已为 2026-06-28 ChatGPT dictation 与 Claude Tag 写入 case-level FAQ 内链，但最新日报 case signal 仍手写日期清单；若下次内容建设新增实战案例后检查未自动读取 latest fixture，FAQ 长尾入口可能继续漏写或漂移到旧日期。
+- Scope: `scripts/check-daily-case-signal-faq-links.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: `check-daily-case-signal-faq-links` 现在导入 `realCronFixtures`，自动选择最新 `fixtureDate`，解析最新 fixture 的 `## 实战案例` 标题，并通过 case signal catalog 推断 ChatGPT dictation、Claude Tag、ChatGPT personal finance 等需要 FAQ 文案和内链保护的长尾信号；2026-06-27/26 作为 historical baseline 保留。
+- ICE: 8x8x8=512
+- Start date: 2026-06-28
+- End date: 2026-06-28
+- Success metric: `pnpm check:daily-case-signal-faq-links` 输出 `latestFixture=2026-06-28, autoSignals=2`，并且 `pnpm build` 通过。
+- Result: pass（最新 case-level FAQ link check 已由 latest real cron fixture 自动推断 2 个 signals：ChatGPT dictation 与 Claude Tag；总计 5 个 case-level signals 有 FAQ copy 与内部链接保护；未覆盖的非泛化 practical case 会输出失败诊断；`pnpm check:daily-case-signal-faq-links` 与 `pnpm build` 均通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 latest fixture practical case auto-discovery 作为后续内容建设的 FAQ 内链入口闸门；下一步可把 caseSignalCatalog 独立成 fixture metadata 或 source projection metadata，减少脚本内 catalog 维护。）
+
 ### EXP-198
 - Hypothesis: 最近24小时新增日报（2026-06-28）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS 与中国垂直 AI 信号，并新增 NVIDIA TOP500/Green500 超算基础设施信号；若不把最新日报接入 fixture registry 且不锁定 case-level FAQ 内链，EN 页面会继续出现 TOP500/vertical AI 泛化 fallback，Claude Tag 与 ChatGPT dictation 长尾入口也会分散在正文外。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-28.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/check-daily-case-signal-faq-links.mjs`, `package.json`, `.github/workflows/content-check.yml`, `src/content/blog/en/openclaw-daily-2026-06-28.md`, `src/content/blog/en/openclaw-daily-2026-06-27.md`, `src/content/blog/en/openclaw-daily-2026-06-26.md`, `src/content/blog/zh/openclaw-daily-2026-06-28.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

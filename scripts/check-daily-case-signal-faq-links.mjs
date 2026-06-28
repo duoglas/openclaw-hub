@@ -1,24 +1,30 @@
 #!/usr/bin/env node
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { realCronFixtures } from './fixtures/daily-real-cron-fixtures.mjs';
 
-const requiredCaseSignals = [
+const caseSignalCatalog = [
   {
-    date: '2026-06-28',
-    file: 'src/content/blog/en/openclaw-daily-2026-06-28.md',
-    signals: [
-      {
-        label: 'ChatGPT dictation',
-        terms: ['ChatGPT dictation', 'dictation model', 'voice input'],
-        links: ['/en/blog/openclaw-model-fallback-strategy/'],
-      },
-      {
-        label: 'Claude Tag',
-        terms: ['Claude Tag', 'Slack-based', 'channel memory scope'],
-        links: ['/en/blog/openclaw-model-fallback-strategy/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
-      },
-    ],
+    label: 'ChatGPT dictation',
+    matchTerms: ['ChatGPT 听写', '听写升级', 'dictation'],
+    requiredTerms: ['ChatGPT dictation', 'dictation model', 'voice input'],
+    links: ['/en/blog/openclaw-model-fallback-strategy/'],
   },
+  {
+    label: 'Claude Tag',
+    matchTerms: ['Claude Tag'],
+    requiredTerms: ['Claude Tag', 'Slack-based', 'channel memory scope'],
+    links: ['/en/blog/openclaw-model-fallback-strategy/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
+  },
+  {
+    label: 'ChatGPT personal finance',
+    matchTerms: ['个人金融', 'personal finance'],
+    requiredTerms: ['personal finance', 'US Plus users', 'data boundary'],
+    links: ['/en/blog/what-is-openclaw/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
+  },
+];
+
+const historicalRequiredCaseSignals = [
   {
     date: '2026-06-27',
     file: 'src/content/blog/en/openclaw-daily-2026-06-27.md',
@@ -48,7 +54,84 @@ const requiredCaseSignals = [
   },
 ];
 
-const errors = [];
+function latestRealCronFixture(fixtures = realCronFixtures) {
+  return fixtures
+    .filter((fixture) => fixture?.fixtureDate && fixture?.realCronFixture)
+    .sort((a, b) => a.fixtureDate.localeCompare(b.fixtureDate))
+    .at(-1);
+}
+
+function parsePracticalCaseTitles(realCronFixture) {
+  const section = realCronFixture.split('## 实战案例', 2)[1]?.split(/\n##\s+/u, 1)[0] || '';
+  return [...section.matchAll(/^\s*\d+\.\s+(.+)$/gmu)].map((match) => match[1].trim());
+}
+
+function inferCaseSignalsFromPracticalCases(practicalCaseTitles) {
+  const signals = [];
+  const seen = new Set();
+
+  for (const title of practicalCaseTitles) {
+    for (const catalogItem of caseSignalCatalog) {
+      const matched = catalogItem.matchTerms.some((term) => title.toLowerCase().includes(term.toLowerCase()));
+      if (!matched || seen.has(catalogItem.label)) {
+        continue;
+      }
+      seen.add(catalogItem.label);
+      signals.push({
+        label: catalogItem.label,
+        terms: catalogItem.requiredTerms,
+        links: catalogItem.links,
+        inferredFrom: title,
+      });
+    }
+  }
+
+  return signals;
+}
+
+function buildLatestCaseSignalSpec() {
+  const latestFixture = latestRealCronFixture();
+  if (!latestFixture) {
+    return { spec: null, errors: ['no latest real cron fixture found for case-level FAQ link check'] };
+  }
+
+  const practicalCaseTitles = parsePracticalCaseTitles(latestFixture.realCronFixture);
+  const signals = inferCaseSignalsFromPracticalCases(practicalCaseTitles);
+  const errors = [];
+
+  if (practicalCaseTitles.length > 0 && signals.length === 0) {
+    errors.push(
+      `latest fixture ${latestFixture.fixtureDate}: found ${practicalCaseTitles.length} practical case(s) but none matched the case signal catalog: ${practicalCaseTitles.join(' | ')}`,
+    );
+  }
+
+  for (const title of practicalCaseTitles) {
+    const matched = signals.some((signal) => signal.inferredFrom === title);
+    const isGenericCase = /daily news|signals into personal productivity|deployment checklist|今日|结论/iu.test(title);
+    if (!matched && !isGenericCase) {
+      errors.push(`latest fixture ${latestFixture.fixtureDate}: practical case is not covered by case signal catalog: ${title}`);
+    }
+  }
+
+  return {
+    spec: {
+      date: latestFixture.fixtureDate,
+      file: `src/content/blog/en/openclaw-daily-${latestFixture.fixtureDate}.md`,
+      signals,
+      derivedFromLatestFixture: true,
+      practicalCaseTitles,
+    },
+    errors,
+  };
+}
+
+const { spec: latestCaseSignalSpec, errors: latestSpecErrors } = buildLatestCaseSignalSpec();
+const requiredCaseSignals = [
+  ...(latestCaseSignalSpec && latestCaseSignalSpec.signals.length > 0 ? [latestCaseSignalSpec] : []),
+  ...historicalRequiredCaseSignals,
+];
+
+const errors = [...latestSpecErrors];
 let checkedSignals = 0;
 
 for (const spec of requiredCaseSignals) {
@@ -88,4 +171,7 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`Daily case signal FAQ link check passed: ${checkedSignals} case-level signals have FAQ copy and internal links.`);
+const latestSummary = latestCaseSignalSpec?.signals.length
+  ? ` latestFixture=${latestCaseSignalSpec.date}, autoSignals=${latestCaseSignalSpec.signals.length}`
+  : '';
+console.log(`Daily case signal FAQ link check passed: ${checkedSignals} case-level signals have FAQ copy and internal links.${latestSummary}`);

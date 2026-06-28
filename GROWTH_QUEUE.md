@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-28 11:31
+Last updated: 2026-06-28 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-199: 将 case-level FAQ link check 改为自动读取最新 real cron fixture 的实战案例，消费 EXP-198 “case-level FAQ check 泛化为自动读取最新 fixture practical cases”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-198 已为 2026-06-28 ChatGPT dictation 与 Claude Tag 写入 case-level FAQ 内链，但最新日报 case signal 仍手写日期清单；若下次内容建设新增实战案例后检查未自动读取 latest fixture，FAQ 长尾入口可能继续漏写或漂移到旧日期。
+  - Metrics: `pnpm check:daily-case-signal-faq-links` 输出 `latestFixture=2026-06-28, autoSignals=2`，并且 `pnpm build` 通过。
+  - Acceptance: 1) `check-daily-case-signal-faq-links` 导入 `realCronFixtures` 并自动选择最新 `fixtureDate`；2) 从最新 fixture 的 `## 实战案例` 标题推断 ChatGPT dictation / Claude Tag 等 case signals；3) 保留 2026-06-27/26 historical baseline，最新日期不再硬编码；4) 对未覆盖的非泛化 practical case 输出失败诊断；5) case FAQ check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-198: 将 2026-06-28 最新双语日报接入 real cron fixture，并为 TOP500/Green500 与 case-level FAQ 增加回归闸门，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-06-28）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS 与中国垂直 AI 信号，并新增 NVIDIA TOP500/Green500 超算基础设施信号；若不把最新日报接入 fixture registry 且不锁定 case-level FAQ 内链，EN 页面会继续出现 TOP500/vertical AI 泛化 fallback，Claude Tag 与 ChatGPT dictation 长尾入口也会分散在正文外。
   - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
