@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-29 11:35
+Last updated: 2026-06-29 17:30
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-201: 将 2026-06-29 latest fixture case-level FAQ metadata 从 Practical Cases 扩展到 expectedSignals，并为 ChatGPT finance/dictation 与 Claude Tag 写入 FAQ 长尾入口，消费 EXP-200 后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-200 已把 case-level FAQ check 下沉到 fixture metadata，但 2026-06-29 最新日报只有泛化 Practical Cases，导致 ChatGPT personal finance / dictation 与 Claude Tag 这三条高价值长尾信号不会被 latest fixture 自动纳入 Case-Level FAQ。若不支持从 expectedSignals 推断 case-level FAQ metadata，低新增量日报会继续漏掉具体查询入口。
+  - Metrics: `pnpm check:daily-case-signal-faq-links` 输出 `latestFixture=2026-06-29, autoSignals=3`，并且 `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `check-daily-case-signal-faq-links` 支持 `sourceStoryMatchTerms`，可从 latest fixture `expectedSignals` 推断 case-level FAQ signals；2) 2026-06-29 fixture 写入 ChatGPT personal finance、ChatGPT dictation、Claude Tag 三条 caseLevelFaqSignals metadata；3) 2026-06-29 EN 日报新增 Case-Level FAQ，并覆盖 required terms 与内部链接；4) 未覆盖 practical case 的诊断输出 available metadata terms；5) 相关检查与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-200: 将 2026-06-29 最新日报接入 real cron fixture registry，并把 case-level FAQ signal catalog 下沉到 fixture metadata，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `5ad440f`
   - Hypothesis: 最近24小时新增日报（2026-06-29）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS、TOP500/Green500 与中国垂直 AI 五条高价值信号；若最新日报没有进入 real cron fixture registry，且 case-level FAQ check 继续依赖脚本内硬编码 catalog，首日索引质量会绕过最新 fixture，FAQ 长尾入口也会和内容 fixture 漂移。
   - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。

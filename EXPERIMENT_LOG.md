@@ -1,3 +1,14 @@
+### EXP-201
+- Hypothesis: EXP-200 已把 case-level FAQ check 下沉到 fixture metadata，但 2026-06-29 最新日报只有泛化 Practical Cases，导致 ChatGPT personal finance / dictation 与 Claude Tag 这三条高价值长尾信号不会被 latest fixture 自动纳入 Case-Level FAQ。若不支持从 expectedSignals 推断 case-level FAQ metadata，低新增量日报会继续漏掉具体查询入口。
+- Scope: `scripts/check-daily-case-signal-faq-links.mjs`, `scripts/fixtures/daily-real-cron-2026-06-29.mjs`, `src/content/blog/en/openclaw-daily-2026-06-29.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: `check-daily-case-signal-faq-links` 新增 expectedSignals 推断路径，支持 fixture metadata 使用 `sourceStoryMatchTerms` 从 latest fixture 的标题、enLabel 与 requiredTokens 识别 case-level FAQ signals；2026-06-29 fixture 写入 ChatGPT personal finance、ChatGPT dictation、Claude Tag 三条 metadata；EN 2026-06-29 日报新增 Case-Level FAQ，覆盖 Slack channel memory scope、dictation model/voice input、personal finance/data boundary 三类长尾问题与内部链接。
+- ICE: 8x8x8=512
+- Start date: 2026-06-29
+- End date: 2026-06-29
+- Success metric: `pnpm check:daily-case-signal-faq-links` 输出 `latestFixture=2026-06-29, autoSignals=3`，并且 `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
+- Result: pass（latest fixture 已从 expectedSignals 自动推断 3 个 case-level FAQ signals；2026-06-29 EN 日报新增 3 条 Case-Level FAQ，覆盖 Claude Tag、ChatGPT dictation、ChatGPT personal finance 的 required terms 与内部链接；相关检查与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 expectedSignals -> case-level FAQ metadata 推断作为低新增量日报的长尾入口闸门；下一步可把 `sourceStoryMatchTerms` 扩展到 Codex Remote 或 NVIDIA/AWS infrastructure 类可执行部署 FAQ。）
+
 ### EXP-200
 - Hypothesis: 最近24小时新增日报（2026-06-29）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS、TOP500/Green500 与中国垂直 AI 五条高价值信号；若最新日报没有进入 real cron fixture registry，且 case-level FAQ check 继续依赖脚本内硬编码 catalog，首日索引质量会绕过最新 fixture，FAQ 长尾入口也会和内容 fixture 漂移。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-29.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/fixtures/daily-real-cron-2026-06-28.mjs`, `scripts/check-daily-case-signal-faq-links.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/lib/daily-generator.mjs`, `src/content/blog/en/openclaw-daily-2026-06-29.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

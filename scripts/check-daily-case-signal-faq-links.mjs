@@ -45,6 +45,16 @@ function parsePracticalCaseTitles(realCronFixture) {
   return [...section.matchAll(/^\s*\d+\.\s+(.+)$/gmu)].map((match) => match[1].trim());
 }
 
+function signalSpecFromFixtureMetadata(fixtureSignal, inferredFrom, source) {
+  return {
+    label: fixtureSignal.label,
+    terms: fixtureSignal.requiredTerms || [],
+    links: fixtureSignal.links || [],
+    inferredFrom,
+    source,
+  };
+}
+
 function inferCaseSignalsFromPracticalCases(practicalCaseTitles, fixtureCaseLevelFaqSignals = []) {
   const signals = [];
   const seen = new Set();
@@ -57,14 +67,37 @@ function inferCaseSignalsFromPracticalCases(practicalCaseTitles, fixtureCaseLeve
         continue;
       }
       seen.add(fixtureSignal.label);
-      signals.push({
-        label: fixtureSignal.label,
-        terms: fixtureSignal.requiredTerms || [],
-        links: fixtureSignal.links || [],
-        inferredFrom: title,
-        source: 'fixture metadata',
-      });
+      signals.push(signalSpecFromFixtureMetadata(fixtureSignal, title, 'fixture practical-case metadata'));
     }
+  }
+
+  return { signals, seen };
+}
+
+function inferCaseSignalsFromExpectedSignals(expectedSignals = [], fixtureCaseLevelFaqSignals = [], seen = new Set()) {
+  const signals = [];
+
+  for (const fixtureSignal of fixtureCaseLevelFaqSignals) {
+    if (seen.has(fixtureSignal.label)) {
+      continue;
+    }
+    const matchTerms = fixtureSignal.sourceStoryMatchTerms || [];
+    if (matchTerms.length === 0) {
+      continue;
+    }
+    const matchedStory = expectedSignals.find((expectedSignal) => {
+      const haystack = [
+        expectedSignal.title,
+        expectedSignal.enLabel,
+        ...(expectedSignal.requiredTokens || []),
+      ].join(' ').toLowerCase();
+      return matchTerms.some((term) => haystack.includes(term.toLowerCase()));
+    });
+    if (!matchedStory) {
+      continue;
+    }
+    seen.add(fixtureSignal.label);
+    signals.push(signalSpecFromFixtureMetadata(fixtureSignal, matchedStory.title, 'fixture expected-signal metadata'));
   }
 
   return signals;
@@ -89,8 +122,10 @@ function validateFixtureCaseLevelFaqSignals(fixture) {
       errors.push(`latest fixture ${fixture.fixtureDate}: duplicate caseLevelFaqSignals label: ${signal.label}`);
     }
     labels.add(signal.label);
-    if (!Array.isArray(signal.practicalCaseMatchTerms) || signal.practicalCaseMatchTerms.length === 0) {
-      errors.push(`latest fixture ${fixture.fixtureDate}: ${signal.label} metadata missing practicalCaseMatchTerms`);
+    const hasPracticalCaseTerms = Array.isArray(signal.practicalCaseMatchTerms) && signal.practicalCaseMatchTerms.length > 0;
+    const hasSourceStoryTerms = Array.isArray(signal.sourceStoryMatchTerms) && signal.sourceStoryMatchTerms.length > 0;
+    if (!hasPracticalCaseTerms && !hasSourceStoryTerms) {
+      errors.push(`latest fixture ${fixture.fixtureDate}: ${signal.label} metadata missing practicalCaseMatchTerms or sourceStoryMatchTerms`);
     }
     if (!Array.isArray(signal.requiredTerms) || signal.requiredTerms.length === 0) {
       errors.push(`latest fixture ${fixture.fixtureDate}: ${signal.label} metadata missing requiredTerms`);
@@ -110,12 +145,17 @@ function buildLatestCaseSignalSpec() {
   }
 
   const practicalCaseTitles = parsePracticalCaseTitles(latestFixture.realCronFixture);
-  const errors = practicalCaseTitles.length > 0 ? validateFixtureCaseLevelFaqSignals(latestFixture) : [];
-  const signals = inferCaseSignalsFromPracticalCases(practicalCaseTitles, latestFixture.caseLevelFaqSignals);
+  const hasCaseLevelMetadata = Array.isArray(latestFixture.caseLevelFaqSignals) && latestFixture.caseLevelFaqSignals.length > 0;
+  const errors = practicalCaseTitles.length > 0 || hasCaseLevelMetadata ? validateFixtureCaseLevelFaqSignals(latestFixture) : [];
+  const inferredFromCases = inferCaseSignalsFromPracticalCases(practicalCaseTitles, latestFixture.caseLevelFaqSignals);
+  const signals = [
+    ...inferredFromCases.signals,
+    ...inferCaseSignalsFromExpectedSignals(latestFixture.expectedSignals, latestFixture.caseLevelFaqSignals, inferredFromCases.seen),
+  ];
 
   if (practicalCaseTitles.length > 0 && signals.length === 0) {
     errors.push(
-      `latest fixture ${latestFixture.fixtureDate}: found ${practicalCaseTitles.length} practical case(s) but none matched the fixture caseLevelFaqSignals metadata: ${practicalCaseTitles.join(' | ')}`,
+      `latest fixture ${latestFixture.fixtureDate}: found ${practicalCaseTitles.length} practical case(s) but none matched fixture caseLevelFaqSignals metadata. practicalCases=${practicalCaseTitles.join(' | ')} availableSignals=${(latestFixture.caseLevelFaqSignals || []).map((signal) => signal.label).join(', ') || 'none'}`,
     );
   }
 
@@ -123,7 +163,10 @@ function buildLatestCaseSignalSpec() {
     const matched = signals.some((signal) => signal.inferredFrom === title);
     const isGenericCase = /daily news|signals into personal productivity|deployment checklist|今日|结论/iu.test(title);
     if (!matched && !isGenericCase) {
-      errors.push(`latest fixture ${latestFixture.fixtureDate}: practical case is not covered by fixture caseLevelFaqSignals metadata: ${title}`);
+      const availableTerms = (latestFixture.caseLevelFaqSignals || [])
+        .map((signal) => `${signal.label}=[${[...(signal.practicalCaseMatchTerms || []), ...(signal.sourceStoryMatchTerms || [])].join('|')}]`)
+        .join('; ') || 'none';
+      errors.push(`latest fixture ${latestFixture.fixtureDate}: practical case is not covered by fixture caseLevelFaqSignals metadata: ${title}; available metadata terms: ${availableTerms}`);
     }
   }
 

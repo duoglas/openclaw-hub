@@ -144,3 +144,27 @@ export const requiredZhOutputs = [
   '来源条目 1：OpenAI 更新 ChatGPT：个人财务、听写、Codex Remote、模型退役',
   '来源条目 5：中国 AI 应用主线：从试点走向垂直行业规模化',
 ];
+
+export const caseLevelFaqSignals = [
+  {
+    label: 'ChatGPT personal finance',
+    practicalCaseMatchTerms: ['personal productivity', '个人数据', '个人财务'],
+    sourceStoryMatchTerms: ['个人财务', 'personal finance', 'US Plus users'],
+    requiredTerms: ['personal finance', 'US Plus users', 'data boundary'],
+    links: ['/en/blog/what-is-openclaw/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
+  },
+  {
+    label: 'ChatGPT dictation',
+    practicalCaseMatchTerms: ['personal productivity', '听写', 'dictation', 'voice input'],
+    sourceStoryMatchTerms: ['听写', 'dictation model', 'voice input'],
+    requiredTerms: ['ChatGPT dictation', 'dictation model', 'voice input'],
+    links: ['/en/blog/openclaw-model-fallback-strategy/'],
+  },
+  {
+    label: 'Claude Tag',
+    practicalCaseMatchTerms: ['deployment checklist', 'Claude Tag', '团队成员'],
+    sourceStoryMatchTerms: ['Claude Tag', 'Slack', 'channel context'],
+    requiredTerms: ['Claude Tag', 'Slack-based', 'channel memory scope'],
+    links: ['/en/blog/openclaw-model-fallback-strategy/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
+  },
+];
