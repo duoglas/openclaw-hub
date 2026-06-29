@@ -71,6 +71,21 @@ export const realCronFixture = `《AI、科技日报》
 - 来源条目 5：中国 AI 应用继续走向垂直行业规模化 —— 新华社 6 月 26 日报道，夏季达沃斯论坛闭幕后，AI 在工业制造、医疗、能源等垂直领域规模化落地成为热点。
 `;
 
+export const caseLevelFaqSignals = [
+  {
+    label: 'Claude Tag',
+    practicalCaseMatchTerms: ['Claude Tag'],
+    requiredTerms: ['Claude Tag', 'Slack-based', 'channel memory scope'],
+    links: ['/en/blog/openclaw-model-fallback-strategy/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
+  },
+  {
+    label: 'ChatGPT dictation',
+    practicalCaseMatchTerms: ['ChatGPT 听写', '听写升级', 'dictation'],
+    requiredTerms: ['ChatGPT dictation', 'dictation model', 'voice input'],
+    links: ['/en/blog/openclaw-model-fallback-strategy/'],
+  },
+];
+
 export const expectedSignals = [
   { title: 'OpenAI 更新 ChatGPT：个人金融、听写、模型退役同步推进', sourceProjectionRuleMatches: ['openai-chatgpt-finance-dictation-gpt45-retirement-2026'], enLabel: 'OpenAI / ChatGPT / finance and dictation controls', zhEvidence: '来源条目 1：OpenAI 更新 ChatGPT：个人金融、听写、模型退役同步推进', requiredTokens: ['个人金融体验', '语音转文字模型', 'GPT-4.5 从 ChatGPT 中退役'] },
   { title: 'Anthropic 推出 Claude Tag：AI 开始进入团队协作频道', sourceProjectionRuleMatches: ['anthropic-claude-tag-slack-collaboration-2026'], enLabel: 'Anthropic / Claude Tag / team agent workflow', zhEvidence: '来源条目 2：Anthropic 推出 Claude Tag：AI 开始进入团队协作频道', requiredTokens: ['Claude Tag', 'Slack 频道', 'Claude Enterprise'] },

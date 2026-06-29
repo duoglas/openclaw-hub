@@ -12,11 +12,11 @@ AI & Tech Daily Brief
 
 ## Top 5 Stories
 
-### 1. US / OpenAI / ChatGPT / model capability update
+### 1. OpenAI / ChatGPT / finance and dictation controls
 
-What happened: The source tracks model capability update, personal finance AI, model release management, model retirement planning around US, OpenAI, ChatGPT, Codex, giving the daily brief a named actor and deployment context. The source includes concrete timing or scale signals (GPT-4.5, GPT-5.5, May 26, May 25).
-Why it matters: US, OpenAI, ChatGPT, Codex now matters for model capability update, personal finance AI, model release management, model retirement planning because buyers must check access control, infrastructure availability, operational risk, and whether the workflow can be measured in production. The source includes concrete timing or scale signals (GPT-4.5, GPT-5.5, May 26, May 25).
-Potential impact: Teams tracking US, OpenAI, ChatGPT, Codex should convert this into concrete tests for rollout timing, vendor dependency, governance ownership, budget pressure, and success metrics. The source includes concrete timing or scale signals (GPT-4.5, GPT-5.5, May 26, May 25).
+What happened: OpenAI updated ChatGPT on June 26 with a personal finance experience for US Plus users, a new dictation model, and GPT-4.5 retirement from ChatGPT while older conversations can move to GPT-5.5; Codex Remote is now available across ChatGPT plans.
+Why it matters: ChatGPT is becoming a personal task surface that touches sensitive finance, voice input, and model migration workflows rather than staying only a general chat tool.
+Potential impact: Users may rely more on AI for personal information organization and spoken input, while product teams should make authorization, privacy controls, data boundaries, and model-transition notices explicit.
 
 ### 2. Anthropic / Claude Tag / team agent workflow
 
@@ -26,7 +26,7 @@ Potential impact: Enterprises using Slack, Teams, or Feishu-style collaboration 
 
 ### 3. NVIDIA / AWS / vector retrieval infrastructure
 
-What happened: NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance.
+What happened: NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance; NVIDIA said vector indexing can be up to 10 times faster and cost one quarter of a CPU-only path.
 Why it matters: Enterprise AI bottlenecks are shifting from model access toward scalable inference, retrieval speed, operating cost, and cloud infrastructure reliability for RAG and agent systems.
 Potential impact: RAG, enterprise search, and agent-platform teams should benchmark retrieval latency, GPU utilization, managed-service cost, and operational complexity before moving workloads to newer AWS and NVIDIA stacks.
 
@@ -39,8 +39,8 @@ Potential impact: Research, climate, materials, 6G, industrial simulation, and f
 ### 5. China / vertical AI / industrial deployment
 
 What happened: Xinhua reported that AI is moving faster into vertical industries such as manufacturing, healthcare, energy, and new materials, including examples where process-drawing analysis fell from half a day to minutes and materials R&D cycles shortened.
-Why it matters: China / vertical AI / industrial deployment signal 5 changes the evaluation path for China / vertical AI / industrial deployment, especially workflow readiness, trust controls, governance scope, operating cost, and measurable user outcomes.
-Potential impact: Teams can turn China / vertical AI / industrial deployment signal 5 into a scoped rollout test with clear integration checks, reliability targets, data-boundary review, cost limits, and user-outcome metrics.
+Why it matters: China’s AI application agenda is shifting from general model excitement toward measurable productivity gains inside physical industries and domain workflows.
+Potential impact: Companies with proprietary data, process redesign capability, and deployment discipline may gain more attention, while superficial AI wrappers will face a higher bar for proving operational value.
 
 ## Practical Cases
 
@@ -66,9 +66,9 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 
 ## Evidence Matrix
 
-- Evidence item 1: US / OpenAI / ChatGPT / model capability update — The source tracks model capability update, personal finance AI, model release management, model retirement planning around US, OpenAI, ChatGPT, Codex, giving the daily brief a named actor and deployment context. The source includes concrete timing or scale signals (GPT-4.5, GPT-5.5, May 26, May 25).
+- Evidence item 1: OpenAI / ChatGPT / finance and dictation controls — OpenAI updated ChatGPT on June 26 with a personal finance experience for US Plus users, a new dictation model, and GPT-4.5 retirement from ChatGPT while older conversations can move to GPT-5.5; Codex Remote is now available across ChatGPT plans.
 - Evidence item 2: Anthropic / Claude Tag / team agent workflow — Anthropic launched Claude Tag as a Slack-based @Claude collaboration surface for Claude Enterprise and Team beta users, with channel context, asynchronous task handling, and authorized tool or codebase connections.
-- Evidence item 3: NVIDIA / AWS / vector retrieval infrastructure — NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance.
+- Evidence item 3: NVIDIA / AWS / vector retrieval infrastructure — NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance; NVIDIA said vector indexing can be up to 10 times faster and cost one quarter of a CPU-only path.
 - Evidence item 4: NVIDIA / TOP500 / Green500 / compute infrastructure — NVIDIA said more than 400 systems, or 81% of the latest TOP500 supercomputers, use NVIDIA technologies, while almost 90% of new entries are NVIDIA-based and the top eight Green500 systems run on NVIDIA GPUs.
 - Evidence item 5: China / vertical AI / industrial deployment — Xinhua reported that AI is moving faster into vertical industries such as manufacturing, healthcare, energy, and new materials, including examples where process-drawing analysis fell from half a day to minutes and materials R&D cycles shortened.
 

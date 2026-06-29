@@ -3,27 +3,6 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { realCronFixtures } from './fixtures/daily-real-cron-fixtures.mjs';
 
-const caseSignalCatalog = [
-  {
-    label: 'ChatGPT dictation',
-    matchTerms: ['ChatGPT 听写', '听写升级', 'dictation'],
-    requiredTerms: ['ChatGPT dictation', 'dictation model', 'voice input'],
-    links: ['/en/blog/openclaw-model-fallback-strategy/'],
-  },
-  {
-    label: 'Claude Tag',
-    matchTerms: ['Claude Tag'],
-    requiredTerms: ['Claude Tag', 'Slack-based', 'channel memory scope'],
-    links: ['/en/blog/openclaw-model-fallback-strategy/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
-  },
-  {
-    label: 'ChatGPT personal finance',
-    matchTerms: ['个人金融', 'personal finance'],
-    requiredTerms: ['personal finance', 'US Plus users', 'data boundary'],
-    links: ['/en/blog/what-is-openclaw/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
-  },
-];
-
 const historicalRequiredCaseSignals = [
   {
     date: '2026-06-27',
@@ -66,27 +45,62 @@ function parsePracticalCaseTitles(realCronFixture) {
   return [...section.matchAll(/^\s*\d+\.\s+(.+)$/gmu)].map((match) => match[1].trim());
 }
 
-function inferCaseSignalsFromPracticalCases(practicalCaseTitles) {
+function inferCaseSignalsFromPracticalCases(practicalCaseTitles, fixtureCaseLevelFaqSignals = []) {
   const signals = [];
   const seen = new Set();
 
   for (const title of practicalCaseTitles) {
-    for (const catalogItem of caseSignalCatalog) {
-      const matched = catalogItem.matchTerms.some((term) => title.toLowerCase().includes(term.toLowerCase()));
-      if (!matched || seen.has(catalogItem.label)) {
+    for (const fixtureSignal of fixtureCaseLevelFaqSignals) {
+      const matchTerms = fixtureSignal.practicalCaseMatchTerms || [];
+      const matched = matchTerms.some((term) => title.toLowerCase().includes(term.toLowerCase()));
+      if (!matched || seen.has(fixtureSignal.label)) {
         continue;
       }
-      seen.add(catalogItem.label);
+      seen.add(fixtureSignal.label);
       signals.push({
-        label: catalogItem.label,
-        terms: catalogItem.requiredTerms,
-        links: catalogItem.links,
+        label: fixtureSignal.label,
+        terms: fixtureSignal.requiredTerms || [],
+        links: fixtureSignal.links || [],
         inferredFrom: title,
+        source: 'fixture metadata',
       });
     }
   }
 
   return signals;
+}
+
+function validateFixtureCaseLevelFaqSignals(fixture) {
+  const errors = [];
+  const signals = fixture.caseLevelFaqSignals || [];
+  const labels = new Set();
+
+  if (!Array.isArray(signals) || signals.length === 0) {
+    errors.push(`latest fixture ${fixture.fixtureDate}: missing caseLevelFaqSignals metadata for case-level FAQ inference`);
+    return errors;
+  }
+
+  for (const signal of signals) {
+    if (!signal?.label) {
+      errors.push(`latest fixture ${fixture.fixtureDate}: caseLevelFaqSignals entry is missing label`);
+      continue;
+    }
+    if (labels.has(signal.label)) {
+      errors.push(`latest fixture ${fixture.fixtureDate}: duplicate caseLevelFaqSignals label: ${signal.label}`);
+    }
+    labels.add(signal.label);
+    if (!Array.isArray(signal.practicalCaseMatchTerms) || signal.practicalCaseMatchTerms.length === 0) {
+      errors.push(`latest fixture ${fixture.fixtureDate}: ${signal.label} metadata missing practicalCaseMatchTerms`);
+    }
+    if (!Array.isArray(signal.requiredTerms) || signal.requiredTerms.length === 0) {
+      errors.push(`latest fixture ${fixture.fixtureDate}: ${signal.label} metadata missing requiredTerms`);
+    }
+    if (!Array.isArray(signal.links) || signal.links.length === 0) {
+      errors.push(`latest fixture ${fixture.fixtureDate}: ${signal.label} metadata missing internal links`);
+    }
+  }
+
+  return errors;
 }
 
 function buildLatestCaseSignalSpec() {
@@ -96,12 +110,12 @@ function buildLatestCaseSignalSpec() {
   }
 
   const practicalCaseTitles = parsePracticalCaseTitles(latestFixture.realCronFixture);
-  const signals = inferCaseSignalsFromPracticalCases(practicalCaseTitles);
-  const errors = [];
+  const errors = practicalCaseTitles.length > 0 ? validateFixtureCaseLevelFaqSignals(latestFixture) : [];
+  const signals = inferCaseSignalsFromPracticalCases(practicalCaseTitles, latestFixture.caseLevelFaqSignals);
 
   if (practicalCaseTitles.length > 0 && signals.length === 0) {
     errors.push(
-      `latest fixture ${latestFixture.fixtureDate}: found ${practicalCaseTitles.length} practical case(s) but none matched the case signal catalog: ${practicalCaseTitles.join(' | ')}`,
+      `latest fixture ${latestFixture.fixtureDate}: found ${practicalCaseTitles.length} practical case(s) but none matched the fixture caseLevelFaqSignals metadata: ${practicalCaseTitles.join(' | ')}`,
     );
   }
 
@@ -109,7 +123,7 @@ function buildLatestCaseSignalSpec() {
     const matched = signals.some((signal) => signal.inferredFrom === title);
     const isGenericCase = /daily news|signals into personal productivity|deployment checklist|今日|结论/iu.test(title);
     if (!matched && !isGenericCase) {
-      errors.push(`latest fixture ${latestFixture.fixtureDate}: practical case is not covered by case signal catalog: ${title}`);
+      errors.push(`latest fixture ${latestFixture.fixtureDate}: practical case is not covered by fixture caseLevelFaqSignals metadata: ${title}`);
     }
   }
 
@@ -174,4 +188,4 @@ if (errors.length > 0) {
 const latestSummary = latestCaseSignalSpec?.signals.length
   ? ` latestFixture=${latestCaseSignalSpec.date}, autoSignals=${latestCaseSignalSpec.signals.length}`
   : '';
-console.log(`Daily case signal FAQ link check passed: ${checkedSignals} case-level signals have FAQ copy and internal links.${latestSummary}`);
+console.log(`Daily case signal FAQ link check passed: ${checkedSignals} case-level signals have FAQ copy and internal links from fixture metadata.${latestSummary}`);

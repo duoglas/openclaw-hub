@@ -1,3 +1,14 @@
+### EXP-200
+- Hypothesis: 最近24小时新增日报（2026-06-29）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS、TOP500/Green500 与中国垂直 AI 五条高价值信号；若最新日报没有进入 real cron fixture registry，且 case-level FAQ check 继续依赖脚本内硬编码 catalog，首日索引质量会绕过最新 fixture，FAQ 长尾入口也会和内容 fixture 漂移。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-29.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/fixtures/daily-real-cron-2026-06-28.mjs`, `scripts/check-daily-case-signal-faq-links.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/lib/daily-generator.mjs`, `src/content/blog/en/openclaw-daily-2026-06-29.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-29 real cron fixture，覆盖 OpenAI ChatGPT/Codex Remote、Claude Tag、NVIDIA/AWS vector indexing、NVIDIA TOP500/Green500、中国垂直 AI 五条信号；EN 最新日报由字段级 projection 改写并移除泛化 fallback；source projection terms/details 扩展到 06-29 新文案；case-level FAQ link check 改为从 latest fixture `caseLevelFaqSignals` metadata 推断实践案例信号，并为 06-28 fixture 写入 Claude Tag / ChatGPT dictation metadata。
+- ICE: 9x8x8=576
+- Start date: 2026-06-29
+- End date: 2026-06-29
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+- Result: pass（latestDaily=2026-06-29 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 已命中字段级 source projection 并移除 ChatGPT / China vertical AI 泛化 fallback；case-level FAQ check 已从 fixture metadata 读取 Claude Tag 与 ChatGPT dictation signals；全部相关检查与 build 通过；commit `39a08d7`；质量评分 28/30。）
+- Decision: scale（保留 2026-06-29 fixture 作为最近 72 小时低新增量日报的首日索引质量基线；下一步可把 `caseLevelFaqSignals` metadata 迁移到 2026-06-29 或后续含 Practical Cases 的 latest fixture，并为缺 metadata 的 practical case 输出更细诊断。）
+
 # EXPERIMENT_LOG.md
 
 ### EXP-199

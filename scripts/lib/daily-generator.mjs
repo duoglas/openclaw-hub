@@ -185,7 +185,7 @@ export function detailFrom(story, key, fallback, label = '', idx = 1) {
   const sourceProjection = englishSignalSummary(story, label, idx, key);
   const safeFallback = hasCjk(fallback) ? sourceProjection : fallback;
   let value = String(story?.[key] || '').replace(/\s+/g, ' ').trim();
-  if (!value) value = safeFallback;
+  if (!value) value = sourceProjection || safeFallback;
   if (hasCjk(value)) value = sourceProjection;
   if (value.length > 460) {
     const clipped = value.slice(0, 459).replace(/\s+\S*$/, '').replace(/[，。；;,.\s]+$/g, '');

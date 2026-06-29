@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-28 17:20
+Last updated: 2026-06-29 11:35
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-200: 将 2026-06-29 最新日报接入 real cron fixture registry，并把 case-level FAQ signal catalog 下沉到 fixture metadata，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `39a08d7`
+  - Hypothesis: 最近24小时新增日报（2026-06-29）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS、TOP500/Green500 与中国垂直 AI 五条高价值信号；若最新日报没有进入 real cron fixture registry，且 case-level FAQ check 继续依赖脚本内硬编码 catalog，首日索引质量会绕过最新 fixture，FAQ 长尾入口也会和内容 fixture 漂移。
+  - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-06-29.mjs`，覆盖 2026-06-29 五条最新信号；2) EN 2026-06-29 日报移除 ChatGPT 与 China vertical AI 泛化 fallback，并补齐 Codex Remote、vector indexing cost/speed 与垂直 AI productivity details；3) source projection rules 扩展匹配 2026-06-29 文案；4) `check-daily-case-signal-faq-links` 改为读取 latest fixture `caseLevelFaqSignals` metadata，并为 2026-06-28 fixture 写入 Claude Tag / ChatGPT dictation metadata；5) 全部相关检查与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-199: 将 case-level FAQ link check 改为自动读取最新 real cron fixture 的实战案例，消费 EXP-198 “case-level FAQ check 泛化为自动读取最新 fixture practical cases”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-198 已为 2026-06-28 ChatGPT dictation 与 Claude Tag 写入 case-level FAQ 内链，但最新日报 case signal 仍手写日期清单；若下次内容建设新增实战案例后检查未自动读取 latest fixture，FAQ 长尾入口可能继续漏写或漂移到旧日期。
   - Metrics: `pnpm check:daily-case-signal-faq-links` 输出 `latestFixture=2026-06-28, autoSignals=2`，并且 `pnpm build` 通过。

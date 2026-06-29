@@ -435,7 +435,7 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'vertical-workflow-agents',
     displayLabel: 'China / vertical AI / industrial deployment',
     capacityPlan: 'Raises enterprise-agents budget by one for a latest-fixture vertical workflow deployment signal; the rule is assigned to vertical-workflow-agents because the story is about manufacturing, healthcare, energy, and materials workflows rather than generic model capability.',
-    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短'],
+    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟'],
     details: {
       what: 'Xinhua reported that AI is moving faster into vertical industries such as manufacturing, healthcare, energy, and new materials, including examples where process-drawing analysis fell from half a day to minutes and materials R&D cycles shortened.',
       why: 'China’s AI application agenda is shifting from general model excitement toward measurable productivity gains inside physical industries and domain workflows.',
@@ -731,9 +731,9 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'chatgpt-control-surfaces',
     displayLabel: 'OpenAI / ChatGPT / finance and dictation controls',
     capacityPlan: 'Raises consumer-productivity budget by one for a latest-fixture ChatGPT control-surface update; the rule is assigned to chatgpt-control-surfaces and prevents broad GPT-5.5 matching from swallowing finance, dictation, and model-retirement details.',
-    terms: ['个人金融体验', '新版听写模型', 'GPT-4.5 从 ChatGPT 下线'],
+    terms: ['个人金融体验', '新版听写模型', 'GPT-4.5 从 ChatGPT 下线', '个人财务体验', '听写模型升级', 'GPT-4.5 在 ChatGPT 中退役', 'Codex Remote'],
     details: {
-      what: 'OpenAI updated ChatGPT on June 26 with a personal finance experience for US Plus users, a new dictation model for all plans, and GPT-4.5 retirement from ChatGPT while older conversations can move to GPT-5.5.',
+      what: 'OpenAI updated ChatGPT on June 26 with a personal finance experience for US Plus users, a new dictation model, and GPT-4.5 retirement from ChatGPT while older conversations can move to GPT-5.5; Codex Remote is now available across ChatGPT plans.',
       why: 'ChatGPT is becoming a personal task surface that touches sensitive finance, voice input, and model migration workflows rather than staying only a general chat tool.',
       impact: 'Users may rely more on AI for personal information organization and spoken input, while product teams should make authorization, privacy controls, data boundaries, and model-transition notices explicit.',
     },
@@ -787,7 +787,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: 'Raises cloud-infrastructure budget by one for a latest-fixture NVIDIA/AWS production AI infrastructure signal; the rule is assigned to ai-infrastructure-capacity and should be migrated into split categories when parent-category budgets are retired.',
     terms: ['EC2 G7', 'OpenSearch Serverless', 'NVIDIA cuVS'],
     details: {
-      what: 'NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance.',
+      what: 'NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance; NVIDIA said vector indexing can be up to 10 times faster and cost one quarter of a CPU-only path.',
       why: 'Enterprise AI bottlenecks are shifting from model access toward scalable inference, retrieval speed, operating cost, and cloud infrastructure reliability for RAG and agent systems.',
       impact: 'RAG, enterprise search, and agent-platform teams should benchmark retrieval latency, GPU utilization, managed-service cost, and operational complexity before moving workloads to newer AWS and NVIDIA stacks.',
     },
