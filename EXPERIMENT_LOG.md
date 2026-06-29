@@ -6,7 +6,7 @@
 - Start date: 2026-06-29
 - End date: 2026-06-29
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
-- Result: pass（latestDaily=2026-06-29 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 已命中字段级 source projection 并移除 ChatGPT / China vertical AI 泛化 fallback；case-level FAQ check 已从 fixture metadata 读取 Claude Tag 与 ChatGPT dictation signals；全部相关检查与 build 通过；commit `39a08d7`；质量评分 28/30。）
+- Result: pass（latestDaily=2026-06-29 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 已命中字段级 source projection 并移除 ChatGPT / China vertical AI 泛化 fallback；case-level FAQ check 已从 fixture metadata 读取 Claude Tag 与 ChatGPT dictation signals；全部相关检查与 build 通过；commit `5ad440f`；质量评分 28/30。）
 - Decision: scale（保留 2026-06-29 fixture 作为最近 72 小时低新增量日报的首日索引质量基线；下一步可把 `caseLevelFaqSignals` metadata 迁移到 2026-06-29 或后续含 Practical Cases 的 latest fixture，并为缺 metadata 的 practical case 输出更细诊断。）
 
 # EXPERIMENT_LOG.md

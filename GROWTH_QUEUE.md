@@ -20,7 +20,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-200: 将 2026-06-29 最新日报接入 real cron fixture registry，并把 case-level FAQ signal catalog 下沉到 fixture metadata，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `39a08d7`
+- [x] P1 Candidate / EXP-200: 将 2026-06-29 最新日报接入 real cron fixture registry，并把 case-level FAQ signal catalog 下沉到 fixture metadata，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `5ad440f`
   - Hypothesis: 最近24小时新增日报（2026-06-29）复用了 ChatGPT finance/dictation、Claude Tag、NVIDIA/AWS、TOP500/Green500 与中国垂直 AI 五条高价值信号；若最新日报没有进入 real cron fixture registry，且 case-level FAQ check 继续依赖脚本内硬编码 catalog，首日索引质量会绕过最新 fixture，FAQ 长尾入口也会和内容 fixture 漂移。
   - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-06-29.mjs`，覆盖 2026-06-29 五条最新信号；2) EN 2026-06-29 日报移除 ChatGPT 与 China vertical AI 泛化 fallback，并补齐 Codex Remote、vector indexing cost/speed 与垂直 AI productivity details；3) source projection rules 扩展匹配 2026-06-29 文案；4) `check-daily-case-signal-faq-links` 改为读取 latest fixture `caseLevelFaqSignals` metadata，并为 2026-06-28 fixture 写入 Claude Tag / ChatGPT dictation metadata；5) 全部相关检查与 build 通过，质量评分 28/30。
