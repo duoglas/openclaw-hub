@@ -96,11 +96,47 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'ai-infrastructure-capacity',
-    terms: ['RTX Spark', 'DGX Station', 'Microsoft Fabric', 'Foundry'],
+    terms: ['RTX Spark', 'DGX Station', 'Microsoft Fabric', 'NVIDIA OpenShell'],
     details: {
       what: 'NVIDIA said its Microsoft Build / GTC Taipei updates expand the joint AI stack across RTX Spark, DGX Station for Windows, Microsoft Fabric GPU acceleration, NVIDIA open models on Foundry, and NVIDIA OpenShell security runtime support in GitHub Copilot.',
       why: 'The update turns agentic AI into a deployment stack across local Windows PCs, Azure services, Fabric data workflows, and private or hybrid enterprise environments rather than a standalone model release.',
       impact: 'Developers can evaluate Windows-local agent workflows, while enterprises compare hybrid patterns around local data, cloud compute, security sandboxes, governance controls, and rollout economics.',
+    },
+  },
+  {
+    name: 'nvidia-palantir-nemotron-secure-government-2026',
+    owner: 'daily-source-projection',
+    category: 'product-safety',
+    displayLabel: 'NVIDIA / Palantir / secure government AI',
+    terms: ['Palantir 新智能引擎', 'NVIDIA Nemotron 开放模型', '关键基础设施运营方'],
+    details: {
+      what: 'NVIDIA said Palantir’s new intelligence engine will use NVIDIA Nemotron open models for US government agencies and critical-infrastructure operators, supporting deployment in isolated, auditable, customer-owned infrastructure.',
+      why: 'The signal turns open models into a secure-sovereign deployment pattern for agencies and regulated industries that cannot send sensitive workflows into generic closed cloud endpoints.',
+      impact: 'Government, energy, transport, healthcare, and defense-adjacent teams should compare open-model control, audit logs, data residency, access boundaries, and on-premise operations before adopting AI in high-sensitivity workflows.',
+    },
+  },
+  {
+    name: 'anthropic-claude-azure-gb300-foundry-2026',
+    owner: 'daily-source-projection',
+    category: 'frontier-models',
+    displayLabel: 'Anthropic / Claude / Azure GB300 deployment',
+    terms: ['Claude 模型在 Azure', 'Microsoft Foundry', 'GB300 Blackwell Ultra'],
+    details: {
+      what: 'NVIDIA said Anthropic Claude models are now available in Microsoft Foundry on Azure infrastructure powered by NVIDIA GB300 Blackwell Ultra GPUs.',
+      why: 'Frontier models are moving deeper into cloud-native enterprise procurement, where model access, GPU capacity, governance, latency, and agent platform integration are bundled into the same deployment decision.',
+      impact: 'Enterprise AI teams can evaluate Claude as an Azure-native agent foundation while watching infrastructure availability, procurement terms, data-control boundaries, and competitive pressure on smaller model providers.',
+    },
+  },
+  {
+    name: 'china-yisuan-ark-domestic-compute-software-2026',
+    owner: 'daily-source-projection',
+    category: 'developer-tools',
+    displayLabel: 'China / Xinhua / AI for Science software stack',
+    terms: ['异算方舟', '国产异构算力', '代码转换大模型'],
+    details: {
+      what: 'Xinhua reported that Chinese research institutes and Sugon released Yisuan Ark, a full-stack software platform for domestic heterogeneous compute environments with algorithm libraries, a code-conversion large model, and automated simulation-agent capabilities.',
+      why: 'China’s AI-for-Science and engineering-compute bottleneck is not only chips; software migration, scientific toolchains, workload adaptation, and reproducible validation decide whether domestic GPUs can run production workloads.',
+      impact: 'Research, simulation, and engineering teams can test one reproducible library or workflow first, then measure conversion quality, dependency compatibility, runtime performance, and result consistency before scaling migration.',
     },
   },
   {
@@ -162,7 +198,7 @@ export const FIELD_PROJECTION_RULES = [
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
     displayLabel: 'Xinhua / China / Science / embodied AI',
-    terms: ['国家数据局', '刘烈宏', 'National Data Administration', 'AI for Science'],
+    terms: ['国家数据局', '刘烈宏', 'National Data Administration'],
     details: {
       what: 'Xinhua reported that Liu Liehong, head of China’s National Data Administration, said high-quality datasets are a critical foundation for embodied intelligence’s perception-decision-action loop and for data engineering in AI for Science.',
       why: 'China’s AI policy focus continues to broaden from large models toward datasets, sector-specific scenarios, embodied intelligence, and scientific research infrastructure.',

@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { extractStories, labelFor } from './lib/daily-generator.mjs';
 import { projectEnglishSourceLabel } from './lib/source-projection-rules.mjs';
+import { realCronFixture as fixture20260630, expectedSignals as expected20260630 } from './fixtures/daily-real-cron-2026-06-30.mjs';
 import { realCronFixture as fixture20260627, expectedSignals as expected20260627 } from './fixtures/daily-real-cron-2026-06-27.mjs';
 import { realCronFixture as fixture20260626, expectedSignals as expected20260626 } from './fixtures/daily-real-cron-2026-06-26.mjs';
 import { realCronFixture as fixture20260621, expectedSignals as expected20260621 } from './fixtures/daily-real-cron-2026-06-21.mjs';
@@ -103,6 +104,7 @@ function assertSyntheticConditionalLabel() {
 }
 
 assertNoGeneratorHardcodedOverrides();
+assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-30', fixture: fixture20260630, expectedSignals: expected20260630 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-27', fixture: fixture20260627, expectedSignals: expected20260627 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-26', fixture: fixture20260626, expectedSignals: expected20260626 });
 assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-21', fixture: fixture20260621, expectedSignals: expected20260621 });

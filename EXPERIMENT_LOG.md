@@ -1,3 +1,14 @@
+### EXP-202
+- Hypothesis: 最近24小时新增日报（2026-06-30）暴露 NVIDIA+Palantir 安全政府 AI、Claude on Azure GB300、Claude Tag、ChatGPT 个人金融/听写/Codex Remote 与中国异算方舟五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留 Palantir 泛化 fallback，首日索引会漏掉高敏行业安全部署、云原生 Claude 部署和国产计算软件迁移三类长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-30.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `src/content/blog/en/openclaw-daily-2026-06-30.md`, `src/content/blog/zh/openclaw-daily-2026-06-30.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-06-30 real cron fixture；source projection registry 新增 Palantir Nemotron secure government AI、Claude Azure GB300、Yisuan Ark 三条字段级英文 projection 与 display label，并收窄 NVIDIA/Microsoft 旧规则与 National Data Administration 旧规则 terms，避免 Foundry / AI for Science 误命中；EN 最新日报移除 Palantir 泛化 fallback，新增 5 条 Case-Level FAQ；ZH 最新日报补全异算方舟实践案例。
+- ICE: 9x8x8=576
+- Start date: 2026-06-30
+- End date: 2026-06-30
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+- Result: pass（latestDaily=2026-06-30 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 story 1/2/5 已升级为字段级 projection，Case-Level FAQ 从 latest fixture metadata 自动推断 5 个 signals；ZH 异算方舟实践案例已补全；相关检查与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-06-30 fixture 作为最新内容建设首日索引质量基线；下一步应为已满额 frontier-models / product-safety / developer-tools 等 parent fallback 设计 split target 或预算迁移实验，降低后续新增日报 projection 的容量压力。）
+
 ### EXP-201
 - Hypothesis: EXP-200 已把 case-level FAQ check 下沉到 fixture metadata，但 2026-06-29 最新日报只有泛化 Practical Cases，导致 ChatGPT personal finance / dictation 与 Claude Tag 这三条高价值长尾信号不会被 latest fixture 自动纳入 Case-Level FAQ。若不支持从 expectedSignals 推断 case-level FAQ metadata，低新增量日报会继续漏掉具体查询入口。
 - Scope: `scripts/check-daily-case-signal-faq-links.mjs`, `scripts/fixtures/daily-real-cron-2026-06-29.mjs`, `src/content/blog/en/openclaw-daily-2026-06-29.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

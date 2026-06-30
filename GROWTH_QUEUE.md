@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-29 17:30
+Last updated: 2026-06-30 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-202: 将 2026-06-30 最新双语日报接入 real cron fixture，并为 Palantir Nemotron、Claude Azure GB300、异算方舟新增字段级 source projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-06-30）暴露 NVIDIA+Palantir 安全政府 AI、Claude on Azure GB300、Claude Tag、ChatGPT 个人金融/听写/Codex Remote 与中国异算方舟五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留 Palantir 泛化 fallback，首日索引会漏掉高敏行业安全部署、云原生 Claude 部署和国产计算软件迁移三类长尾入口。
+  - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-06-30.mjs`，覆盖 2026-06-30 五条最新信号；2) `source-projection-rules.mjs` 新增 Palantir Nemotron secure government AI、Claude Azure GB300、Yisuan Ark 三条字段级英文 projection 与 display label；3) EN 2026-06-30 日报移除 Palantir 泛化 fallback，并补齐 Case-Level FAQ，覆盖 Claude Tag、ChatGPT finance/dictation、Codex Remote、Yisuan Ark 五个长尾入口；4) ZH 2026-06-30 补全被截断的异算方舟实践案例；5) 最新 case FAQ check 输出 `latestFixture=2026-06-30, autoSignals=5`，质量评分 28/30。
 - [x] P1 Candidate / EXP-201: 将 2026-06-29 latest fixture case-level FAQ metadata 从 Practical Cases 扩展到 expectedSignals，并为 ChatGPT finance/dictation 与 Claude Tag 写入 FAQ 长尾入口，消费 EXP-200 后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-200 已把 case-level FAQ check 下沉到 fixture metadata，但 2026-06-29 最新日报只有泛化 Practical Cases，导致 ChatGPT personal finance / dictation 与 Claude Tag 这三条高价值长尾信号不会被 latest fixture 自动纳入 Case-Level FAQ。若不支持从 expectedSignals 推断 case-level FAQ metadata，低新增量日报会继续漏掉具体查询入口。
   - Metrics: `pnpm check:daily-case-signal-faq-links` 输出 `latestFixture=2026-06-29, autoSignals=3`，并且 `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。

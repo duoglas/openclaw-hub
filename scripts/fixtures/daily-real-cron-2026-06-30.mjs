@@ -1,0 +1,237 @@
+export const fixtureDate = '2026-06-30';
+
+export const realCronFixture = `《AI、科技日报》  
+截至 2026-06-30 07:30
+
+## 今日要闻（5条）
+
+1. NVIDIA + Palantir：把 Nemotron 开放模型带进美国政府安全环境
+
+发生了什么：  
+NVIDIA 官方称，Palantir 新智能引擎将使用 NVIDIA Nemotron 开放模型，面向美国政府机构和关键基础设施运营方，支持在隔离、可审计、客户自有基础设施中部署。
+
+为什么重要：  
+这是“开放模型 + 主权/安全部署”的典型路线。政府、能源、交通、医疗等高敏行业不一定愿意把数据交给闭源云端模型，开放模型正在成为替代方案。
+
+可能影响：  
+企业级 AI 竞争会从“谁的模型最强”转向“谁能在安全、合规、私有环境里跑起来”。对国产算力和行业大模型也有参考价值。
+
+状态：已确认  
+主来源：NVIDIA 官方博客
+
+---
+
+2. Claude 模型在 Azure 上通过 NVIDIA GB300 Blackwell Ultra 正式可用
+
+发生了什么：  
+NVIDIA 官方称，Anthropic Claude 模型已在 Microsoft Foundry 中正式可用，运行在 Azure 上的 NVIDIA GB300 Blackwell Ultra GPU 基础设施上。
+
+为什么重要：  
+这说明头部大模型正在进一步进入企业云原生工作流。Claude 不只是聊天工具，而是被包装成 Azure 企业客户可直接调用的“智能体底座”。
+
+可能影响：  
+企业部署 AI Agent 的门槛下降。微软、NVIDIA、Anthropic 的联盟也会继续挤压中小模型服务商的生存空间。
+
+状态：已确认  
+主来源：NVIDIA 官方博客
+
+---
+
+3. Anthropic 推出 Claude Tag：AI 正在进入 Slack 团队协作场景
+
+发生了什么：  
+Anthropic 发布 Claude Tag，先从 Slack 开始。企业团队可以在频道里 @Claude，让它读取授权频道和工具上下文，异步完成任务、跟进事项，并在权限范围内积累团队记忆。
+
+为什么重要：  
+这是 AI 从“个人助手”进入“团队成员”的信号。它强调多人协作、频道记忆、异步执行和权限隔离，不再只是单人对话框。
+
+可能影响：  
+未来企业协作软件会内置更多“可被 @ 的 AI 同事”。但同时，权限、审计、数据隔离会变成采购 AI 工具的核心问题。
+
+状态：已确认  
+主来源：Anthropic 官方新闻稿
+
+---
+
+4. OpenAI 更新 ChatGPT：语音听写、个人金融、Codex Remote 等功能继续扩展
+
+发生了什么：  
+OpenAI 版本说明显示，6月下旬 ChatGPT 更新包括：改进听写模型、美国用户个人金融体验扩展到 Plus 和 Android、Codex Remote 正式可用、GPT-4.5 在 ChatGPT 中退役。
+
+为什么重要：  
+ChatGPT 的方向很清晰：从“问答产品”变成日常工作和生活入口。语音、金融、远程开发、任务管理都在被整合进同一个产品。
+
+可能影响：  
+普通用户会更频繁把 ChatGPT 用在真实事务里。开发者则需要注意 Codex Remote、插件、远程工作区带来的权限和安全边界。
+
+状态：已确认  
+主来源：OpenAI Help Center 版本说明
+
+---
+
+5. 中国发布“异算方舟”国产计算系统软件生态全栈平台
+
+发生了什么：  
+新华网报道，中国科学院计算机网络信息中心、中国科学技术大学、中国科学院力学研究所、中科曙光等联合发布“异算方舟”。平台面向国产异构算力环境，包含算法库、代码转换大模型、自动化仿真智能体等能力。
+
+为什么重要：  
+国产 AI 生态不只缺芯片，也缺软件迁移、科学计算工具链和应用适配。“异算方舟”瞄准的是国产 GPU 上科学软件能不能真正跑起来。
+
+可能影响：  
+如果落地顺利，AI for Science、工程仿真、国产 GPU 适配会更容易规模化。但目前公开信息主要来自媒体报道，产业化效果仍需后续验证。
+
+状态：已确认  
+主来源：新华网
+
+---
+
+## 实战案例（2个）
+
+1. 团队协作：Claude Tag 的价值在“频道上下文”
+
+适合场景：  
+产品、研发、运营、客服团队。
+
+怎么用：  
+把 AI 放进指定 Slack 频道，只授权它访问必要工具和数据。团队成员直接 @Claude 分派任务，比如整理需求、追踪 bug、分析指标、生成周报。
+
+关键启发：  
+AI Agent 真正有用，不是因为“更会聊天”，而是因为它能在正确权限内拿到上下文，并能异步推进任务。
+
+---
+
+2. 工程计算：异算方舟瞄准“国产 GPU 软件迁移”
+
+适合场景：  
+科学计算、工程仿真、国产算力适配团队。
+
+怎么用：  
+先选一个可复现的算法库、仿真任务或数据处理链路，验证代码转换、运行性能、依赖兼容和结果一致性，再决定是否扩大迁移范围。
+
+关键启发：  
+国产算力替代不是只买硬件，软件栈、工具链、自动化迁移和验证指标才决定能否真正投入生产。
+
+## 今日结论
+
+- 最值得关注：企业级 AI 正在加速进入核心业务流程，AI 不再只是聊天工具，而是在进入税务、法务、制造、运维、推理服务等真实生产系统。
+- 给普通用户建议：短期优先选择权限透明、可断开授权、有来源标注的 AI 产品，把它用于信息整理、学习复盘、日常文档和低风险决策辅助。
+- 给团队建议：不要只比较模型榜单，先选一个高频流程做试点，并把权限、审计、成本和人工复核写进上线标准。
+
+## 明日跟踪点
+
+- 关注今日提到的模型、平台或硬件动态是否出现产品化细节。
+- 关注企业案例是否披露真实使用场景、权限控制和成本变化。
+- 关注政策、版权、数据安全或来源标注要求是否进一步收紧。
+
+## 证据矩阵
+
+- 来源条目 1：NVIDIA + Palantir：把 Nemotron 开放模型带进美国政府安全环境 —— NVIDIA 官方称，Palantir 新智能引擎将使用 NVIDIA Nemotron 开放模型，面向美国政府机构和关键基础设施运营方，支持在隔离、可审计、客户自有基础设施中部署。
+- 来源条目 2：Claude 模型在 Azure 上通过 NVIDIA GB300 Blackwell Ultra 正式可用 —— NVIDIA 官方称，Anthropic Claude 模型已在 Microsoft Foundry 中正式可用，运行在 Azure 上的 NVIDIA GB300 Blackwell Ultra GPU 基础设施上。
+- 来源条目 3：Anthropic 推出 Claude Tag：AI 正在进入 Slack 团队协作场景 —— Anthropic 发布 Claude Tag，先从 Slack 开始。企业团队可以在频道里 @Claude，让它读取授权频道和工具上下文，异步完成任务、跟进事项，并在权限范围内积累团队记忆。
+- 来源条目 4：OpenAI 更新 ChatGPT：语音听写、个人金融、Codex Remote 等功能继续扩展 —— OpenAI 版本说明显示，6月下旬 ChatGPT 更新包括：改进听写模型、美国用户个人金融体验扩展到 Plus 和 Android、Codex Remote 正式可用、GPT-4.5 在 ChatGPT 中退役。
+- 来源条目 5：中国发布“异算方舟”国产计算系统软件生态全栈平台 —— 新华网报道，中国科学院计算机网络信息中心、中国科学技术大学、中国科学院力学研究所、中科曙光等联合发布“异算方舟”。平台面向国产异构算力环境，包含算法库、代码转换大模型、自动化仿真智能体等能力。
+`;
+
+export const expectedSignals = [
+  { title: 'NVIDIA + Palantir：把 Nemotron 开放模型带进美国政府安全环境', sourceProjectionRuleMatches: ['nvidia-palantir-nemotron-secure-government-2026'], enLabel: 'NVIDIA / Palantir / secure government AI', zhEvidence: '来源条目 1：NVIDIA + Palantir：把 Nemotron 开放模型带进美国政府安全环境', requiredTokens: ['Palantir 新智能引擎', 'NVIDIA Nemotron 开放模型', '关键基础设施运营方'] },
+  { title: 'Claude 模型在 Azure 上通过 NVIDIA GB300 Blackwell Ultra 正式可用', sourceProjectionRuleMatches: ['anthropic-claude-azure-gb300-foundry-2026'], enLabel: 'Anthropic / Claude / Azure GB300 deployment', zhEvidence: '来源条目 2：Claude 模型在 Azure 上通过 NVIDIA GB300 Blackwell Ultra 正式可用', requiredTokens: ['Anthropic Claude', 'Microsoft Foundry', 'NVIDIA GB300 Blackwell Ultra'] },
+  { title: 'Anthropic 推出 Claude Tag：AI 正在进入 Slack 团队协作场景', sourceProjectionRuleMatches: ['anthropic-claude-tag-slack-collaboration-2026'], enLabel: 'Anthropic / Claude Tag / team agent workflow', zhEvidence: '来源条目 3：Anthropic 推出 Claude Tag：AI 正在进入 Slack 团队协作场景', requiredTokens: ['Claude Tag', 'Slack', '@Claude', '团队记忆'] },
+  { title: 'OpenAI 更新 ChatGPT：语音听写、个人金融、Codex Remote 等功能继续扩展', sourceProjectionRuleMatches: ['openai-chatgpt-finance-dictation-gpt45-retirement-2026'], enLabel: 'OpenAI / ChatGPT / finance and dictation controls', zhEvidence: '来源条目 4：OpenAI 更新 ChatGPT：语音听写、个人金融、Codex Remote 等功能继续扩展', requiredTokens: ['听写模型', '个人金融体验', 'Codex Remote', 'GPT-4.5'] },
+  { title: '中国发布“异算方舟”国产计算系统软件生态全栈平台', sourceProjectionRuleMatches: ['china-yisuan-ark-domestic-compute-software-2026'], enLabel: 'China / Xinhua / AI for Science software stack', zhEvidence: '来源条目 5：中国发布“异算方舟”国产计算系统软件生态全栈平台', requiredTokens: ['异算方舟', '国产异构算力', '代码转换大模型', '自动化仿真智能体'] },
+];
+
+export const bannedFallbackPhrases = [
+  'The source tracks compute infrastructure, model capability update, enterprise AI rollout, AI security control around US, NVIDIA, Palantir, Nemotron',
+  'US, NVIDIA, Palantir, Nemotron now matters for compute infrastructure',
+  'giving the daily brief a named actor and deployment context',
+  'buyers must check access control, infrastructure availability, operational risk',
+  'today AI / technology daily not generated',
+  '今日 AI / 科技日报暂未生成',
+  '-…',
+  '...',
+];
+
+export const requiredEnglishOutputs = [
+  '### 1. NVIDIA / Palantir / secure government AI',
+  '### 2. Anthropic / Claude / Azure GB300 deployment',
+  '### 3. Anthropic / Claude Tag / team agent workflow',
+  '### 4. OpenAI / ChatGPT / finance and dictation controls',
+  '### 5. China / Xinhua / AI for Science software stack',
+  'NVIDIA said Palantir’s new intelligence engine will use NVIDIA Nemotron open models',
+  'NVIDIA said Anthropic Claude models are now available in Microsoft Foundry',
+  'Anthropic launched Claude Tag as a Slack-based @Claude collaboration surface',
+  'Codex Remote is now available across ChatGPT plans',
+  'Xinhua reported that Chinese research institutes and Sugon released Yisuan Ark',
+  'Evidence item 1: NVIDIA / Palantir / secure government AI',
+  'Evidence item 5: China / Xinhua / AI for Science software stack',
+  '## Today’s Bottom Line',
+  '## What to Watch Tomorrow',
+  '## Evidence Matrix',
+];
+
+export const requiredZhOutputs = [
+  'NVIDIA + Palantir：把 Nemotron 开放模型带进美国政府安全环境',
+  'Claude 模型在 Azure 上通过 NVIDIA GB300 Blackwell Ultra 正式可用',
+  'Anthropic 推出 Claude Tag：AI 正在进入 Slack 团队协作场景',
+  'OpenAI 更新 ChatGPT：语音听写、个人金融、Codex Remote 等功能继续扩展',
+  '中国发布“异算方舟”国产计算系统软件生态全栈平台',
+  '工程计算：异算方舟瞄准“国产 GPU 软件迁移”',
+  '## 今日结论',
+  '## 明日跟踪点',
+  '## 证据矩阵',
+  '来源条目 1：NVIDIA + Palantir：把 Nemotron 开放模型带进美国政府安全环境',
+  '来源条目 5：中国发布“异算方舟”国产计算系统软件生态全栈平台',
+];
+
+export const caseLevelFaqSignals = [
+  {
+    label: 'Claude Tag',
+    practicalCaseMatchTerms: ['Claude Tag', '频道上下文', 'team collaboration'],
+    sourceStoryMatchTerms: ['Claude Tag', 'Slack', '@Claude', 'channel context'],
+    requiredTerms: ['Claude Tag', 'Slack-based', 'channel memory scope'],
+    links: ['/en/blog/openclaw-model-fallback-strategy/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
+  },
+  {
+    label: 'ChatGPT personal finance',
+    practicalCaseMatchTerms: ['personal productivity', '个人金融', '个人财务'],
+    sourceStoryMatchTerms: ['个人金融', 'personal finance', 'Plus and Android'],
+    requiredTerms: ['personal finance', 'Plus and Android', 'data boundary'],
+    links: ['/en/blog/what-is-openclaw/', '/en/blog/openclaw-vps-deployment-complete-guide/'],
+  },
+  {
+    label: 'ChatGPT dictation',
+    practicalCaseMatchTerms: ['dictation', 'voice input', '听写'],
+    sourceStoryMatchTerms: ['听写模型', 'dictation model', 'voice input'],
+    requiredTerms: ['ChatGPT dictation', 'dictation model', 'voice input'],
+    links: ['/en/blog/openclaw-model-fallback-strategy/'],
+  },
+  {
+    label: 'Codex Remote',
+    practicalCaseMatchTerms: ['remote development', 'Codex Remote', '远程工作区'],
+    sourceStoryMatchTerms: ['Codex Remote', '远程工作区', 'remote workspace'],
+    requiredTerms: ['Codex Remote', 'remote workspace', 'permission boundary'],
+    links: ['/en/blog/openclaw-vps-deployment-complete-guide/', '/en/blog/openclaw-model-fallback-strategy/'],
+  },
+  {
+    label: 'Yisuan Ark software migration',
+    practicalCaseMatchTerms: ['异算方舟', '国产 GPU 软件迁移', 'software migration'],
+    sourceStoryMatchTerms: ['异算方舟', 'Yisuan Ark', 'code-conversion large model'],
+    requiredTerms: ['Yisuan Ark', 'software migration', 'result consistency'],
+    links: ['/en/blog/openclaw-vps-deployment-complete-guide/', '/en/blog/what-is-openclaw/'],
+  },
+];
+
+export const parserGuardrails = {
+  story1RequiredDetailTokens: ['Palantir 新智能引擎', 'NVIDIA Nemotron 开放模型', '关键基础设施运营方'],
+  story1ForbiddenDetailTokens: ['Microsoft Foundry', 'Claude Tag', 'Codex Remote', '异算方舟'],
+  story1ForbiddenEvidenceTokens: ['Microsoft Foundry', 'Claude Tag', 'Codex Remote', 'Yisuan Ark'],
+  story2RequiredDetailTokens: ['Anthropic Claude', 'Microsoft Foundry', 'NVIDIA GB300 Blackwell Ultra'],
+  story2ForbiddenDetailTokens: ['Palantir', 'Claude Tag', '个人金融', '异算方舟'],
+  story2ForbiddenEvidenceTokens: ['Palantir', 'Claude Tag', 'personal finance', 'Yisuan Ark'],
+  story3RequiredDetailTokens: ['Claude Tag', 'Slack', '@Claude'],
+  story3ForbiddenDetailTokens: ['Palantir', 'Microsoft Foundry', 'Codex Remote', '异算方舟'],
+  story4RequiredDetailTokens: ['听写模型', '个人金融体验', 'Codex Remote'],
+  story4ForbiddenDetailTokens: ['Palantir', 'Microsoft Foundry', 'Claude Tag', '异算方舟'],
+  story5RequiredDetailTokens: ['异算方舟', '国产异构算力', '代码转换大模型'],
+  story5ForbiddenDetailTokens: ['Palantir', 'Microsoft Foundry', 'Claude Tag', 'Codex Remote'],
+};
