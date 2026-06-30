@@ -15,6 +15,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'anthropic-series-h',
     owner: 'daily-source-projection',
     category: 'company-finance',
+    splitTargetCategory: 'ai-lab-private-financing',
     terms: ['Series H', 'H 轮融资'],
     details: {
       what: 'Anthropic announced a Series H round described in the source as 65 billion USD with a 965 billion USD post-money valuation, with annualized revenue cited above 47 billion USD earlier in the month.',
@@ -74,6 +75,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'anthropic-sec-ipo-s1',
     owner: 'daily-source-projection',
     category: 'company-finance',
+    splitTargetCategory: 'public-market-readiness',
     terms: ['Form S-1', '潜在 IPO', 'SEC 秘密提交'],
     details: {
       what: 'Anthropic said on June 1 that it confidentially submitted a draft Form S-1 registration statement to the US SEC for a potential IPO, with share count and pricing still undecided.',
@@ -465,6 +467,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'unitree-star-market-ipo-2026',
     owner: 'daily-source-projection',
     category: 'company-finance',
+    splitTargetCategory: 'robotics-capital-markets',
     displayLabel: 'China / Xinhua / IPO / compute infrastructure',
     terms: ['宇树科技', '科创板 IPO', '42.02亿元'],
     details: {

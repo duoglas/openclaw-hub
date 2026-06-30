@@ -2097,3 +2097,14 @@
 - Success metric: GSC 查询 CTR/点击、GA4 参与时长、社群问题一次定位准确率
 - Result: pass（中英双语教程已落库；本轮执行完成 `pnpm build` 验证并生成 EN/ZH 路由，覆盖可复制命令、3 步止血流程、长期治理建议与 3 条高相关内链。）
 - Decision: iterate（进入 7 天观测期；D+7 回填 CTR / 参与时长 / 社群一次定位准确率，再决定是否扩写 FAQ 与追加锚文本内链。）
+
+### EXP-204
+- Hypothesis: EXP-203 已把 frontier-models / product-safety / developer-tools parent fallback 迁入 split target，但 company-finance 仍保留 3 条 parent fallback；若不为 AI lab 融资、公开市场准备、机器人资本市场建立 split target，后续融资/IPO 类日报 projection 仍会依赖 parent category，降低 taxonomy 容量管理的可解释性。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 company-finance split recommendations / migration hints / effective budgets：`ai-lab-private-financing`、`public-market-readiness`、`robotics-capital-markets`；并将 `anthropic-series-h`、`anthropic-sec-ipo-s1`、`unitree-star-market-ipo-2026` 迁入对应 `splitTargetCategory`。
+- Start date: 2026-06-30
+- End date: 2026-06-30
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `effective category coverage: 63/63 split-backed, parentFallback=0`、`split target categories: 29/29 used`、`existing rule split target coverage: 63/63 covered`，且 `pnpm check:source-projection-rule-registry-health && pnpm build` 通过。
+- Result: pass（taxonomy / registry health / build 全部通过；company-finance parent fallback 从 3 收敛到 0）。
+- Decision: scale
+

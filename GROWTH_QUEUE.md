@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-30 11:20
+Last updated: 2026-06-30 17:39
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-204: 为 company-finance parent fallback 增加 split target scaffold，并将 Anthropic 融资/IPO 与 Unitree IPO 三条规则迁入 effective category，消费 EXP-203 “剩余 company-finance parent fallback 收敛”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-203 已把 frontier-models / product-safety / developer-tools parent fallback 迁入 split target，但 taxonomy 仍显示 company-finance 3 条规则作为 parent fallback；若不为融资、公开市场准备、机器人资本市场建立 split target，后续 AI lab 融资、S-1/IPO、机器人上市类日报 projection 仍会依赖 parent category。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 29/29 used`、`existing rule split target coverage: 63/63 covered`、`effective category coverage: 63/63 split-backed, parentFallback=0`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增 company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets 三个 split target、预算与 migration hints；2) 为 `anthropic-series-h`、`anthropic-sec-ipo-s1`、`unitree-star-market-ipo-2026` 写入 `splitTargetCategory`；3) effective category coverage 从 60/63 提升到 63/63，parent fallback 归零；4) proposed rule split target scaffold 输出 company-finance 三组分类；5) taxonomy、registry health 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-203: 为 frontier-models / product-safety / developer-tools parent fallback 增加 split target scaffold，并将 13 条现有规则迁入 effective category，消费 EXP-202 “已满额 parent fallback 设计 split target 或预算迁移”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-202 已把 2026-06-30 最新日报接入 fixture，但 taxonomy 仍显示 frontier-models、product-safety、developer-tools 作为 parent fallback 进入 capacity actions；若不为这些满额/低余量父类建立 split target，后续 Claude/GPT、Palantir 安全部署、Codex/Yisuan Ark 类新增日报 projection 仍会依赖 parent budget raise。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 26/26 used`、`existing rule split target coverage: 60/60 covered`、`effective category coverage: 60/63 split-backed, parentFallback=3`；`pnpm check:source-projection-rule-registry-health` 输出 `parent category fallback rules: 3`；`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture` 与 `pnpm build` 全部通过。
