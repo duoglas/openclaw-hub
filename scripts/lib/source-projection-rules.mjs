@@ -3,6 +3,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'claude-opus-4-8',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    splitTargetCategory: 'frontier-model-task-capability',
     terms: ['Claude Opus 4.8'],
     details: {
       what: 'Anthropic released Claude Opus 4.8 on May 28, positioning it as stronger than Opus 4.7 for coding, agent tasks, and professional workflows while adding effort control, Claude Code dynamic workflows, and fast mode pricing changes.',
@@ -61,6 +62,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-codex-windows-computer-use',
     owner: 'daily-source-projection',
     category: 'developer-tools',
+    splitTargetCategory: 'desktop-computer-use',
     terms: ['Windows 版 Codex', 'Computer Use', 'Codex app'],
     details: {
       what: 'OpenAI release notes say the Codex Windows app now supports Computer Use, allowing the agent to see, click, and type in Windows applications while adding remote-control, profile, performance, and stability updates.',
@@ -107,6 +109,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-palantir-nemotron-secure-government-2026',
     owner: 'daily-source-projection',
     category: 'product-safety',
+    splitTargetCategory: 'high-sensitivity-ai-deployment',
     displayLabel: 'NVIDIA / Palantir / secure government AI',
     terms: ['Palantir 新智能引擎', 'NVIDIA Nemotron 开放模型', '关键基础设施运营方'],
     details: {
@@ -119,6 +122,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'anthropic-claude-azure-gb300-foundry-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    splitTargetCategory: 'frontier-model-cloud-distribution',
     displayLabel: 'Anthropic / Claude / Azure GB300 deployment',
     terms: ['Claude 模型在 Azure', 'Microsoft Foundry', 'GB300 Blackwell Ultra'],
     details: {
@@ -131,6 +135,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-yisuan-ark-domestic-compute-software-2026',
     owner: 'daily-source-projection',
     category: 'developer-tools',
+    splitTargetCategory: 'domestic-compute-software',
     displayLabel: 'China / Xinhua / AI for Science software stack',
     terms: ['异算方舟', '国产异构算力', '代码转换大模型'],
     details: {
@@ -173,6 +178,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-chatgpt-active-sessions',
     owner: 'daily-source-projection',
     category: 'product-safety',
+    splitTargetCategory: 'model-account-security',
     terms: ['Active sessions', '活跃会话', 'Settings > Security'],
     details: {
       what: 'OpenAI said on June 2 that ChatGPT now includes Active sessions under Settings > Security > Active sessions, allowing users to review signed-in sessions and log out individual or unknown devices.',
@@ -270,6 +276,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-youth-safety-g7-2026',
     owner: 'daily-source-projection',
     category: 'product-safety',
+    splitTargetCategory: 'youth-safety-controls',
     terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制'],
     details: {
       what: 'OpenAI published a pre-G7 proposal for international youth AI safety collaboration, emphasizing age identification, default protections, annual risk assessment, parental controls, and shared research mechanisms.',
@@ -318,6 +325,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'anthropic-opus-agent-coding-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    splitTargetCategory: 'frontier-model-task-capability',
     displayLabel: 'Anthropic / Opus / OpenAI / agent platform',
     terms: ['Anthropic 近期升级 Opus 级模型', '长时间任务稳定性'],
     details: {
@@ -343,6 +351,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-chatgpt-memory-lockdown-2026',
     owner: 'daily-source-projection',
     category: 'product-safety',
+    splitTargetCategory: 'model-account-security',
     displayLabels: [
       {
         label: 'OpenAI / Lockdown / Mode / enterprise AI rollout',
@@ -482,6 +491,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'google-deepmind-diffusiongemma-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    splitTargetCategory: 'frontier-model-inference-architecture',
     displayLabel: 'Google / DeepMind / DiffusionGemma / AI hardware',
     terms: ['DiffusionGemma', '扩散式文本生成'],
     details: {
@@ -520,6 +530,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-codex-record-replay-2026',
     owner: 'daily-source-projection',
     category: 'developer-tools',
+    splitTargetCategory: 'code-agent-runtime',
     displayLabel: 'OpenAI / Codex / ChatGPT control surfaces',
     terms: ['Record & Replay', '应用权限控制', 'Codex 新增'],
     details: {
@@ -751,6 +762,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-blackwell-mlperf-training-6-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    splitTargetCategory: 'frontier-model-inference-architecture',
     displayLabel: 'NVIDIA / Blackwell / MLPerf / model capability update',
     terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72'],
     details: {
@@ -778,6 +790,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'openai-gpt55-instant-decision-shopping-2026',
     owner: 'daily-source-projection',
     category: 'frontier-models',
+    splitTargetCategory: 'frontier-model-task-capability',
     displayLabel: 'OpenAI / GPT-5.5 Instant / decision assistance',
     terms: ['6月24日更新 GPT-5.5 Instant', '复杂约束', '本地/购物类问题'],
     details: {

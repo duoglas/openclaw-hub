@@ -36,14 +36,23 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'autonomous-mobility-systems',
   'career-productivity-workflows',
   'chatgpt-control-surfaces',
+  'code-agent-runtime',
   'cloud-model-distribution',
   'consumer-creative-ai',
   'content-licensing-markets',
+  'desktop-computer-use',
   'digital-regulation-compliance',
+  'domestic-compute-software',
   'enterprise-agent-platforms',
+  'frontier-model-cloud-distribution',
+  'frontier-model-inference-architecture',
+  'frontier-model-task-capability',
+  'high-sensitivity-ai-deployment',
   'market-sizing-reports',
+  'model-account-security',
   'regional-ai-ecosystems',
   'robotics-commercial-deployment',
+  'youth-safety-controls',
   'robotics-simulation-training',
   'vertical-workflow-agents',
 ];
@@ -55,18 +64,27 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'autonomous-mobility-systems': 3,
   'career-productivity-workflows': 3,
   'chatgpt-control-surfaces': 4,
+  'code-agent-runtime': 3,
   'cloud-model-distribution': 4,
   'company-finance': 5,
   'consumer-creative-ai': 4,
   'content-licensing-markets': 3,
+  'desktop-computer-use': 2,
   'developer-tools': 4,
   'digital-regulation-compliance': 3,
+  'domestic-compute-software': 2,
   'enterprise-agent-platforms': 6,
   'frontier-models': 6,
+  'frontier-model-cloud-distribution': 2,
+  'frontier-model-inference-architecture': 2,
+  'frontier-model-task-capability': 3,
+  'high-sensitivity-ai-deployment': 2,
   'market-sizing-reports': 3,
+  'model-account-security': 3,
   'product-safety': 5,
   'regional-ai-ecosystems': 4,
   'robotics-commercial-deployment': 4,
+  'youth-safety-controls': 2,
   'robotics-simulation-training': 6,
   'vertical-workflow-agents': 4,
 };
@@ -87,6 +105,16 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
     'vertical-workflow-agents',
     'agent-enablement-programs',
   ],
+  'frontier-models': [
+    'frontier-model-task-capability',
+    'frontier-model-cloud-distribution',
+    'frontier-model-inference-architecture',
+  ],
+  'developer-tools': [
+    'code-agent-runtime',
+    'desktop-computer-use',
+    'domestic-compute-software',
+  ],
   'physical-ai-robotics': [
     'robotics-simulation-training',
     'robotics-commercial-deployment',
@@ -101,6 +129,11 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
     'ai-policy-standards',
     'ai-industrial-policy',
     'digital-regulation-compliance',
+  ],
+  'product-safety': [
+    'high-sensitivity-ai-deployment',
+    'model-account-security',
+    'youth-safety-controls',
   ],
 };
 
@@ -117,6 +150,34 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     {
       target: 'agent-enablement-programs',
       match: ['openai-academy', 'anthropic-claude-corps'],
+    },
+  ],
+  'frontier-models': [
+    {
+      target: 'frontier-model-task-capability',
+      match: ['claude-opus', 'opus-agent', 'gpt55-instant', 'decision-shopping'],
+    },
+    {
+      target: 'frontier-model-cloud-distribution',
+      match: ['azure-gb300', 'foundry', 'claude-azure'],
+    },
+    {
+      target: 'frontier-model-inference-architecture',
+      match: ['diffusiongemma', 'mlperf', 'blackwell', 'training-6'],
+    },
+  ],
+  'developer-tools': [
+    {
+      target: 'code-agent-runtime',
+      match: ['codex-record-replay', 'record-replay'],
+    },
+    {
+      target: 'desktop-computer-use',
+      match: ['windows-computer-use', 'computer-use'],
+    },
+    {
+      target: 'domestic-compute-software',
+      match: ['yisuan-ark', 'domestic-compute', '异算方舟'],
     },
   ],
   'policy-governance': [
@@ -183,6 +244,20 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     {
       target: 'autonomous-mobility-systems',
       match: ['drive-hyperion', 'robotaxi', 'autonomous'],
+    },
+  ],
+  'product-safety': [
+    {
+      target: 'high-sensitivity-ai-deployment',
+      match: ['palantir', 'nemotron', 'secure-government'],
+    },
+    {
+      target: 'model-account-security',
+      match: ['active-sessions', 'memory-lockdown', 'lockdown'],
+    },
+    {
+      target: 'youth-safety-controls',
+      match: ['youth-safety', 'g7', 'age', 'parental'],
     },
   ],
 };
@@ -904,9 +979,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 17/17 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
-    'existing rule split target coverage: 0/2 covered, missing=2, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems; policy-governance -> ai-policy-standards / ai-industrial-policy / digital-regulation-compliance',
+    'split target categories: 26/26 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems; policy-governance -> ai-policy-standards / ai-industrial-policy / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
@@ -953,9 +1028,9 @@ function validateSelfTests() {
     'effective category coverage: 0/8 split-backed, parentFallback=8, overBudget=0, missingBudget=0',
     'high utilization categories: developer-tools=4/4 (100% used, 0 headroom), company-finance=4/5 (80% used, 1 headroom)',
     'category capacity actions: developer-tools: split category or raise budget before adding new rules (100% used + 0 headroom); company-finance: split category or raise budget before adding new rules (80% used + 1 headroom)',
-    'category split recommendations: none',
-    'category split migration batches: none',
-    'category split migration details: none',
+    'category split recommendations: developer-tools: split into code-agent-runtime / desktop-computer-use / domestic-compute-software (100% used + 0 headroom)',
+    'category split migration batches: developer-tools: , unmatched=4',
+    'category split migration details: developer-tools: , unmatched=[synthetic-developer-utilization-rule-1|synthetic-developer-utilization-rule-2|synthetic-developer-utilization-rule-3|synthetic-developer-utilization-rule-4]',
     'new rule capacity plan required for: developer-tools, company-finance',
   ]) {
     if (!highUtilizationDiagnostic.includes(fragment)) {

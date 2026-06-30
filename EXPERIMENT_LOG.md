@@ -1,3 +1,14 @@
+### EXP-203
+- Hypothesis: EXP-202 已把 2026-06-30 最新日报接入 fixture，但 taxonomy 仍显示 frontier-models、product-safety、developer-tools 作为 parent fallback 进入 capacity actions；若不为这些满额/低余量父类建立 split target，后续 Claude/GPT、Palantir 安全部署、Codex/Yisuan Ark 类新增日报 projection 仍会依赖 parent budget raise。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 frontier-models 增加 frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture，product-safety 增加 high-sensitivity-ai-deployment / model-account-security / youth-safety-controls，developer-tools 增加 code-agent-runtime / desktop-computer-use / domestic-compute-software；同步 allowlist、effective budgets、migration hints 与 self-test；为 13 条现有 parent fallback rules 写入 splitTargetCategory。
+- ICE: 8x8x8=512
+- Start date: 2026-06-30
+- End date: 2026-06-30
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 26/26 used`、`existing rule split target coverage: 60/60 covered`、`effective category coverage: 60/63 split-backed, parentFallback=3`；`pnpm check:source-projection-rule-registry-health` 输出 `parent category fallback rules: 3`；`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture` 与 `pnpm build` 全部通过。
+- Result: pass（frontier-models/product-safety/developer-tools 三个高风险 parent category 已建立 9 个 split target；13 条现有规则已迁入 effective category；taxonomy 显示 26/26 split target used、60/60 covered、parentFallback=3；registry health、daily label、latest fixture 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留三组新增 split target 作为后续 Claude/GPT、AI 安全部署、Codex/国产计算软件 projection 的新增入口；下一步可为 company-finance 3 条 parent fallback 设计融资/IPO/收入质量 split target，把 effective parentFallback 降到 0。）
+
 ### EXP-202
 - Hypothesis: 最近24小时新增日报（2026-06-30）暴露 NVIDIA+Palantir 安全政府 AI、Claude on Azure GB300、Claude Tag、ChatGPT 个人金融/听写/Codex Remote 与中国异算方舟五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留 Palantir 泛化 fallback，首日索引会漏掉高敏行业安全部署、云原生 Claude 部署和国产计算软件迁移三类长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-30.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `src/content/blog/en/openclaw-daily-2026-06-30.md`, `src/content/blog/zh/openclaw-daily-2026-06-30.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
