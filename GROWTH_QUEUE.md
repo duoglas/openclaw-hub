@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-01 11:38
+Last updated: 2026-07-01 17:27
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,7 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-205: 将 2026-07-01 最新双语日报接入 real cron fixture，并为 Claude Science、BioNeMo、AI for Science 与 AWS FDE/Secret Cloud 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+- [x] P1 Candidate / EXP-206: 为 low-headroom effective category 增加 sibling alternate target 诊断，消费 EXP-205 “已满额 effective category 从临时 budget raise 收敛为更细 split target 或预算治理”后续假设 | ICE 8x8x8=512 — commit `60c9ca7`
+  - Hypothesis: EXP-205 后 latest fixture 已把 2026-07-01 新信号接入 source projection，但 taxonomy 的 effective category capacity actions 仍只说 choose lower-risk split target；若不直接输出同 parent 下仍有 2+ headroom 的 sibling target，新增日报 rule 仍容易走临时 budget raise，而不是分流到 career-productivity-workflows、digital-regulation-compliance、robotics-commercial-deployment 等更低风险目标。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category alternate targets`，当前为 ai-industrial-policy、robotics-simulation-training、chatgpt-control-surfaces、regional-ai-ecosystems、desktop-computer-use、domestic-compute-software 等拥挤 split target 给出 sibling headroom；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `suggestSourceProjectionEffectiveCategoryAlternateTargets`，按 split parent 查找 sibling target 并只推荐 headroom > 1 的目标；2) taxonomy summary 新增 `effective category alternate targets` 行，把 capacity action 从“需要 plan”升级为“可转向哪些 split target”；3) self-test 锁定 chatgpt-control-surfaces 可推荐 consumer-productivity 下的 consumer-creative-ai 与 career-productivity-workflows；4) taxonomy 与 build 通过，质量评分 28/30。
+- [x] P1 Candidate / EXP-205: 将 2026-07-01 最新双语日报接入 real cron fixture，并为 Claude Science、BioNeMo、AI for Science 与 AWS FDE/Secret Cloud 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `3b964fa`
   - Hypothesis: 最近24小时新增日报（2026-07-01）暴露 Claude Science 科研工作台、NVIDIA BioNeMo Agent Toolkit、NVIDIA AI for Science HPC 软件栈、AWS Forward Deployed AI Engineering 与 AWS Summit D.C. 公共部门/机密云五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉科研 agent、科学计算工具链、企业 FDE 落地和高安全政企云四类长尾入口。
   - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-01.mjs`，覆盖 2026-07-01 五条最新信号并补齐 story 分隔 guardrail；2) `source-projection-rules.mjs` 新增 Claude Science、BioNeMo Agent Toolkit、AI for Science、AWS FDE、AWS Secret Cloud 五条字段级英文 projection 与 display label；3) EN/ZH 2026-07-01 日报移除泛化 fallback 并升级 description、Top 5 与 Evidence Matrix；4) latest case FAQ check 从 fixture metadata 自动推断 Claude Science 与 AWS FDE 两个 signals；5) 最新 fixture freshness、label、scope、taxonomy、case FAQ 与 build 全部通过，质量评分 28/30。

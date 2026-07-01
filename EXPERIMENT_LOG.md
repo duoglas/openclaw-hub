@@ -1,3 +1,14 @@
+### EXP-206
+- Hypothesis: EXP-205 后 latest fixture 已把 2026-07-01 科研 agent、AI for Science 与 AWS FDE/Secret Cloud 新信号接入 source projection，但 taxonomy 的 effective category capacity actions 仍只输出 “choose a lower-risk split target or raise effective budget”；若不把同 parent 下仍有余量的 sibling target 直接列出，维护者仍可能对 0/1 headroom effective category 继续临时 raise budget，而不是把新增规则分流到更低风险 split target。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 `suggestSourceProjectionEffectiveCategoryAlternateTargets`，对命中 effective category capacity action 的 split target 查找同 parent sibling，并只推荐 headroom > 1 的 alternate target；taxonomy summary 新增 `effective category alternate targets` 行；self-test 锁定 chatgpt-control-surfaces 拥挤时可推荐 consumer-creative-ai 与 career-productivity-workflows。
+- ICE: 8x8x8=512
+- Start date: 2026-07-01
+- End date: 2026-07-01
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category alternate targets`，并且 `pnpm build` 通过。
+- Result: pass（taxonomy 现在为拥挤 effective category 输出 sibling alternate target：如 ai-industrial-policy -> digital-regulation-compliance，robotics-simulation-training -> autonomous-mobility-systems / robotics-commercial-deployment，chatgpt-control-surfaces -> career-productivity-workflows / consumer-creative-ai，regional-ai-ecosystems -> content-licensing-markets / market-sizing-reports，developer-tools 下 desktop/domestic -> code-agent-runtime；taxonomy check 与 build 全部通过；commit `60c9ca7`；质量评分 28/30。）
+- Decision: scale（保留 alternate target 诊断作为新增 source projection rule 的预算治理入口；下一步可把该建议接入 proposed rule capacityPlan failure 文案，让新增规则缺 plan 时直接显示可替代 split target。）
+
 ### EXP-205
 - Hypothesis: 最近24小时新增日报（2026-07-01）暴露 Claude Science 科研工作台、NVIDIA BioNeMo Agent Toolkit、NVIDIA AI for Science HPC 软件栈、AWS Forward Deployed AI Engineering 与 AWS Summit D.C. 公共部门/机密云五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉科研 agent、科学计算工具链、企业 FDE 落地和高安全政企云四类长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-01.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-07-01.md`, `src/content/blog/zh/openclaw-daily-2026-07-01.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
@@ -6,7 +17,7 @@
 - Start date: 2026-07-01
 - End date: 2026-07-01
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:daily-fixture-source-dedup`、`pnpm check:daily-parser-guardrail-coverage`、`pnpm check:daily-brief-specificity`、`pnpm check:daily-cta`、`pnpm check:daily-action-sections`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
-- Result: pass（latestDaily=2026-07-01 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 与 Evidence Matrix 已命中字段级 projection，latest case FAQ 自动推断 Claude Science 与 AWS FDE 两个 signals；scope 检查经 story 分隔修复后通过，registry health 显示 totalRules=68、parent category fallback=0，taxonomy 显示 effective category coverage=68/68 split-backed；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（latestDaily=2026-07-01 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 与 Evidence Matrix 已命中字段级 projection，latest case FAQ 自动推断 Claude Science 与 AWS FDE 两个 signals；scope 检查经 story 分隔修复后通过，registry health 显示 totalRules=68、parent category fallback=0，taxonomy 显示 effective category coverage=68/68 split-backed；全部相关检查与 build 通过；commit `3b964fa`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-01 fixture 作为科研 agent、HPC 科学计算和政企高安全 AI 部署的首日索引质量基线；下一步优先把已满额 effective category 的新增容量从临时 budget raise 收敛为更细 split target 或预算治理实验。）
 
 ### EXP-203

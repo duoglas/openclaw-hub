@@ -724,6 +724,43 @@ export function suggestSourceProjectionEffectiveCategoryCapacityActions(effectiv
   });
 }
 
+function parentCategoryForSplitTarget(splitTargetCategory) {
+  return Object.entries(SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS)
+    .find(([, targets]) => targets.includes(splitTargetCategory))?.[0] || null;
+}
+
+export function suggestSourceProjectionEffectiveCategoryAlternateTargets(
+  effectiveSummary = summarizeSourceProjectionEffectiveCategories(),
+) {
+  const effectiveCategoryByName = new Map((effectiveSummary.categories || []).map((item) => [item.name, item]));
+  return suggestSourceProjectionEffectiveCategoryCapacityActions(effectiveSummary)
+    .map((action) => {
+      const parentCategory = parentCategoryForSplitTarget(action.name);
+      const siblingTargets = parentCategory ? SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS[parentCategory] || [] : [];
+      const alternatives = siblingTargets
+        .filter((target) => target !== action.name)
+        .map((target) => {
+          const current = effectiveCategoryByName.get(target);
+          const budget = current?.budget ?? SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS[target] ?? null;
+          const count = current?.count ?? 0;
+          return {
+            name: target,
+            count,
+            budget,
+            headroom: budget == null ? null : budget - count,
+          };
+        })
+        .filter((target) => target.headroom != null && target.headroom > SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD)
+        .sort((a, b) => b.headroom - a.headroom || a.count - b.count || a.name.localeCompare(b.name));
+
+      return {
+        ...action,
+        parentCategory,
+        alternatives,
+      };
+    })
+    .filter((item) => item.alternatives.length > 0);
+}
 
 function hasCapacityPlan(rule) {
   return Boolean(normalize(rule.capacityPlan) || normalize(rule.capacityJustification));
@@ -815,6 +852,14 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
   const effectiveCapacityActionLine = suggestSourceProjectionEffectiveCategoryCapacityActions(effectiveCategorySummary)
     .map((item) => `${item.name}: ${item.action} (${item.reason})`)
     .join('; ');
+  const effectiveAlternateTargetLine = suggestSourceProjectionEffectiveCategoryAlternateTargets(effectiveCategorySummary)
+    .map((item) => {
+      const alternatives = item.alternatives
+        .map((target) => `${target.name}=${target.count}/${target.budget} (${target.headroom} headroom)`)
+        .join(' / ');
+      return `${item.name}: ${item.parentCategory} -> ${alternatives}`;
+    })
+    .join('; ');
   const capacityPlanCategories = categoriesRequiringSourceProjectionCapacityPlan(summary).join(', ');
   const splitTargetSummary = summarizeSourceProjectionSplitTargetCategories();
   const splitTargetLine = `${splitTargetSummary.totalUsedTargets}/${splitTargetSummary.totalAllowedTargets} used`
@@ -850,6 +895,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     `high utilization categories: ${highUtilizationLine || 'none'}`,
     `category capacity actions: ${capacityActionLine || 'none'}`,
     `effective category capacity actions: ${effectiveCapacityActionLine || 'none'}`,
+    `effective category alternate targets: ${effectiveAlternateTargetLine || 'none'}`,
     `category split recommendations: ${splitPlanLine || 'none'}`,
     `category split migration batches: ${splitMigrationLine || 'none'}`,
     `category split migration details: ${splitMigrationDetailsLine || 'none'}`,
@@ -1203,6 +1249,18 @@ function validateSelfTests() {
   });
   if (capacityPlanPassFailures.length > 0) {
     failures.push('source projection taxonomy capacity-plan self-test failed: capacityPlan should satisfy high-risk category guard');
+  }
+
+  const alternateTargetDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
+    rules: Array.from({ length: 3 }, (_, index) => ({
+      name: `synthetic-chatgpt-control-surface-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'consumer-productivity',
+      splitTargetCategory: 'chatgpt-control-surfaces',
+    })),
+  }));
+  if (!alternateTargetDiagnostic.includes('effective category alternate targets: chatgpt-control-surfaces: consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)')) {
+    failures.push('source projection taxonomy alternate-target self-test failed: chatgpt-control-surfaces sibling target recommendations');
   }
 
   const existingSplitTargetCoverageDiagnostic = validateSourceProjectionRuleSplitTargetCoverage({
