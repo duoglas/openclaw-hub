@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-06-30 17:39
+Last updated: 2026-07-01 11:38
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-205: 将 2026-07-01 最新双语日报接入 real cron fixture，并为 Claude Science、BioNeMo、AI for Science 与 AWS FDE/Secret Cloud 新增字段级 source projection，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-01）暴露 Claude Science 科研工作台、NVIDIA BioNeMo Agent Toolkit、NVIDIA AI for Science HPC 软件栈、AWS Forward Deployed AI Engineering 与 AWS Summit D.C. 公共部门/机密云五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉科研 agent、科学计算工具链、企业 FDE 落地和高安全政企云四类长尾入口。
+  - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-01.mjs`，覆盖 2026-07-01 五条最新信号并补齐 story 分隔 guardrail；2) `source-projection-rules.mjs` 新增 Claude Science、BioNeMo Agent Toolkit、AI for Science、AWS FDE、AWS Secret Cloud 五条字段级英文 projection 与 display label；3) EN/ZH 2026-07-01 日报移除泛化 fallback 并升级 description、Top 5 与 Evidence Matrix；4) latest case FAQ check 从 fixture metadata 自动推断 Claude Science 与 AWS FDE 两个 signals；5) 最新 fixture freshness、label、scope、taxonomy、case FAQ 与 build 全部通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-204: 为 company-finance parent fallback 增加 split target scaffold，并将 Anthropic 融资/IPO 与 Unitree IPO 三条规则迁入 effective category，消费 EXP-203 “剩余 company-finance parent fallback 收敛”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-203 已把 frontier-models / product-safety / developer-tools parent fallback 迁入 split target，但 taxonomy 仍显示 company-finance 3 条规则作为 parent fallback；若不为融资、公开市场准备、机器人资本市场建立 split target，后续 AI lab 融资、S-1/IPO、机器人上市类日报 projection 仍会依赖 parent category。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 29/29 used`、`existing rule split target coverage: 63/63 covered`、`effective category coverage: 63/63 split-backed, parentFallback=0`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 全部通过。

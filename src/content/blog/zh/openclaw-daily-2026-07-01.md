@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-07-01）"
-description: "2026-07-01 早间版；注：本次中国官方/权威来源检索未拿到可直抓证据页；中国动态不强行写成事实，列入“待确认/明日跟踪”。"
+description: "2026-07-01 早间版；Anthropic 发布 Claude Science beta，面向 Pro、Max、Team、Enterprise 用户，支持 macOS/Linux，可接入科研数据库、Jupyter/R/HPC/SSH、GPU 计算，并生成可审计科研产物。"
 pubDate: 2026-07-01
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

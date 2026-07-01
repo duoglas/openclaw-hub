@@ -873,6 +873,76 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
 
+  {
+    name: 'anthropic-claude-science-research-workbench-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    splitTargetCategory: 'vertical-workflow-agents',
+    displayLabel: 'Anthropic / Claude Science / research agent workflow',
+    capacityPlan: 'Raises vertical-workflow-agents capacity for the 2026-07-01 latest-fixture research-workflow signal; the rule stays within enterprise-agents split targets and prevents generic latest daily fallback.',
+    terms: ['Claude Science beta', 'Jupyter/R/HPC/SSH', '可审计科研产物'],
+    details: {
+      what: 'Anthropic released Claude Science beta for Pro, Max, Team, and Enterprise users, with macOS/Linux support, research databases, Jupyter/R/HPC/SSH access, GPU compute, and auditable research artifacts.',
+      why: 'The signal moves AI from chat and coding assistance into the scientific workflow itself, where literature review, data analysis, charts, manuscripts, compute scheduling, and reproducibility all need governed agent support.',
+      impact: 'Life-science, drug-discovery, omics, and research teams can pilot AI agents on evidence organization and draft generation while requiring expert review, citation checks, reproducible outputs, and audit trails.',
+    },
+  },
+  {
+    name: 'nvidia-bionemo-agent-toolkit-claude-science-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    splitTargetCategory: 'agent-enablement-programs',
+    displayLabel: 'NVIDIA / BioNeMo / scientific agent toolkit',
+    terms: ['BioNeMo Agent Toolkit', 'Evo 2', 'BioNeMo NIM'],
+    details: {
+      what: 'NVIDIA said BioNeMo Agent Toolkit is available as a Claude Science resource, exposing Evo 2, Boltz-2, OpenFold3, Parabricks, RAPIDS-singlecell, nvMolKit, BioNeMo NIM, and related scientific tools.',
+      why: 'Scientific agents are becoming tool-using systems that combine frontier models with domain models, GPU libraries, and validated workflows rather than relying only on general-purpose language reasoning.',
+      impact: 'Pharma, biotech, and research organizations should evaluate the combined stack of model access, domain tools, GPU acceleration, workflow validation, and result reproducibility before production use.',
+    },
+  },
+  {
+    name: 'nvidia-ai-for-science-isc-software-stack-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
+    displayLabel: 'NVIDIA / AI for Science / HPC software stack',
+    capacityPlan: 'Raises ai-infrastructure-capacity for a 2026-07-01 AI-for-Science HPC software-stack signal that extends GPU-native infrastructure beyond model serving.',
+    terms: ['ISC', 'DAQIRI', 'ALCHEMI NIM', 'cuPhoton'],
+    details: {
+      what: 'NVIDIA described an AI for Science software stack around DAQIRI, ALCHEMI NIM, cuPhoton, materials simulation, chemistry, astronomy data processing, and dark-matter research workloads.',
+      why: 'AI infrastructure is expanding from training and inference into experimental data acquisition, simulation, and analysis pipelines where HPC, AI, and instruments converge.',
+      impact: 'Research institutions and industrial R&D teams should plan for GPU-native workflows, data pipelines, validation metrics, and infrastructure budgets that connect simulation, experiments, and AI analysis.',
+    },
+  },
+  {
+    name: 'aws-forward-deployed-ai-engineering-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    splitTargetCategory: 'vertical-workflow-agents',
+    displayLabel: 'AWS / FDE / enterprise agent deployment',
+    capacityPlan: 'Raises vertical-workflow-agents for the 2026-07-01 AWS FDE production-agent deployment signal; the rule keeps the latest daily in field-level projection instead of parent-category fallback.',
+    terms: ['10 亿美元', 'Forward Deployed Engineering', 'agentic AI 系统'],
+    details: {
+      what: 'AWS committed 1 billion USD to a Forward Deployed Engineering organization that embeds AI engineers with customer teams to co-build and deploy agentic AI systems in days.',
+      why: 'Cloud competition is shifting from selling models and compute toward helping customers turn AI into governed production workflows with knowledge graphs, runbooks, architecture documents, and internal champions.',
+      impact: 'Enterprises beyond proof-of-concept should select a concrete workflow, define business metrics, permissions, security controls, reusable process assets, and human escalation paths before scaling agentic AI.',
+    },
+  },
+  {
+    name: 'aws-summit-dc-public-sector-secret-cloud-2026',
+    owner: 'daily-source-projection',
+    category: 'product-safety',
+    splitTargetCategory: 'high-sensitivity-ai-deployment',
+    displayLabel: 'AWS / public sector / secret cloud AI',
+    capacityPlan: 'Raises high-sensitivity-ai-deployment for a 2026-07-01 public-sector and secret-cloud AI deployment signal with compliance, isolation, and sovereignty requirements.',
+    terms: ['Secret Cloud for Industry', '情报机构云迁移激励', '公共部门'],
+    details: {
+      what: 'AWS Summit D.C. highlighted public-sector AI and cloud investments, including Secret Cloud for Industry, intelligence-community cloud migration incentives, FDE, energy research, and UK government AI scaling.',
+      why: 'AI is moving into government, defense, energy, intelligence, and other high-security environments where compliance, isolation, sovereignty, and classified-data handling determine adoption.',
+      impact: 'Public-sector and regulated-industry teams should compare AI infrastructure on accreditation, data boundaries, audit logs, incident response, sovereign operations, and mission-specific deployment support.',
+    },
+  },
+
 ];
 
 function displayLabelForRule(rule, text) {

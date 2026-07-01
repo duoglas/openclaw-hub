@@ -17,11 +17,11 @@ export const ALLOWED_SOURCE_PROJECTION_CATEGORIES = [
 ];
 
 export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
-  'cloud-infrastructure': 8,
+  'cloud-infrastructure': 9,
   'company-finance': 5,
   'consumer-productivity': 6,
   'developer-tools': 4,
-  'enterprise-agents': 10,
+  'enterprise-agents': 13,
   'frontier-models': 6,
   'market-intelligence': 5,
   'physical-ai-robotics': 10,
@@ -61,7 +61,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
 ];
 export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'agent-enablement-programs': 4,
-  'ai-infrastructure-capacity': 6,
+  'ai-infrastructure-capacity': 7,
   'ai-industrial-policy': 7,
   'ai-policy-standards': 4,
   'autonomous-mobility-systems': 3,
@@ -82,7 +82,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'frontier-model-cloud-distribution': 2,
   'frontier-model-inference-architecture': 2,
   'frontier-model-task-capability': 3,
-  'high-sensitivity-ai-deployment': 2,
+  'high-sensitivity-ai-deployment': 3,
   'market-sizing-reports': 3,
   'model-account-security': 3,
   'public-market-readiness': 2,
@@ -92,7 +92,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'robotics-capital-markets': 2,
   'youth-safety-controls': 2,
   'robotics-simulation-training': 6,
-  'vertical-workflow-agents': 4,
+  'vertical-workflow-agents': 6,
 };
 export const SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD = 1;
 export const SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD = 0.8;
@@ -170,11 +170,11 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'vertical-workflow-agents',
-      match: ['amazon-nova-act', 'nvidia-nemoclaw', 'vertical-industry'],
+      match: ['amazon-nova-act', 'nvidia-nemoclaw', 'vertical-industry', 'claude-science-research', 'forward-deployed-ai-engineering'],
     },
     {
       target: 'agent-enablement-programs',
-      match: ['openai-academy', 'anthropic-claude-corps'],
+      match: ['openai-academy', 'anthropic-claude-corps', 'bionemo-agent-toolkit'],
     },
   ],
   'frontier-models': [
@@ -226,7 +226,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'ai-infrastructure-capacity',
-      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure', 'ec2-g7', 'opensearch', 'top500', 'green500', 'supercomputing'],
+      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure', 'ec2-g7', 'opensearch', 'top500', 'green500', 'supercomputing', 'ai-for-science', 'hpc-software'],
     },
   ],
   'consumer-productivity': [
@@ -274,7 +274,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   'product-safety': [
     {
       target: 'high-sensitivity-ai-deployment',
-      match: ['palantir', 'nemotron', 'secure-government'],
+      match: ['palantir', 'nemotron', 'secure-government', 'secret-cloud', 'public-sector'],
     },
     {
       target: 'model-account-security',
@@ -1089,14 +1089,19 @@ function validateSelfTests() {
     { name: 'anthropic-claude-corps-nonprofit-2026', owner: 'daily-source-projection', category: 'enterprise-agents' },
     { name: 'synthetic-unmapped-enterprise-agent', owner: 'daily-source-projection', category: 'enterprise-agents' },
     { name: 'openai-partner-network-enterprise-ecosystem-2026', owner: 'daily-source-projection', category: 'enterprise-agents' },
+    ...Array.from({ length: SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS['enterprise-agents'] - 8 }, (_, index) => ({
+      name: `synthetic-extra-enterprise-agent-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'enterprise-agents',
+    })),
   ];
   const splitMigrationDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
     rules: splitMigrationRules,
   }));
-  if (!splitMigrationDiagnostic.includes('category split migration batches: enterprise-agents: enterprise-agent-platforms=3, vertical-workflow-agents=2, agent-enablement-programs=2, unmatched=1')) {
+  if (!splitMigrationDiagnostic.includes('category split migration batches: enterprise-agents: enterprise-agent-platforms=3, vertical-workflow-agents=2, agent-enablement-programs=2, unmatched=6')) {
     failures.push('source projection taxonomy split-migration self-test failed: enterprise-agents migration batch counts');
   }
-  if (!splitMigrationDiagnostic.includes('category split migration details: enterprise-agents: enterprise-agent-platforms=[meta-business-agent-2026|microsoft-enterprise-agent-system-2026|openai-partner-network-enterprise-ecosystem-2026], vertical-workflow-agents=[amazon-nova-act-agentic-ai|nvidia-nemoclaw-industrial-agents], agent-enablement-programs=[openai-academy-enterprise-ai-foundations-2026|anthropic-claude-corps-nonprofit-2026], unmatched=[synthetic-unmapped-enterprise-agent]')) {
+  if (!splitMigrationDiagnostic.includes('category split migration details: enterprise-agents: enterprise-agent-platforms=[meta-business-agent-2026|microsoft-enterprise-agent-system-2026|openai-partner-network-enterprise-ecosystem-2026], vertical-workflow-agents=[amazon-nova-act-agentic-ai|nvidia-nemoclaw-industrial-agents], agent-enablement-programs=[openai-academy-enterprise-ai-foundations-2026|anthropic-claude-corps-nonprofit-2026], unmatched=[synthetic-unmapped-enterprise-agent|synthetic-extra-enterprise-agent-1|synthetic-extra-enterprise-agent-2|synthetic-extra-enterprise-agent-3|synthetic-extra-enterprise-agent-4|synthetic-extra-enterprise-agent-5]')) {
     failures.push('source projection taxonomy split-migration self-test failed: enterprise-agents migration rule details');
   }
 
@@ -1233,7 +1238,7 @@ function validateSelfTests() {
     }
   }
 
-  const currentEnterpriseSplitRules = Array.from({ length: 8 }, (_, index) => ({
+  const currentEnterpriseSplitRules = Array.from({ length: SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS['enterprise-agents'] }, (_, index) => ({
     name: `synthetic-enterprise-current-${index + 1}`,
     owner: 'daily-source-projection',
     category: 'enterprise-agents',

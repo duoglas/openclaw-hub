@@ -1,3 +1,14 @@
+### EXP-205
+- Hypothesis: 最近24小时新增日报（2026-07-01）暴露 Claude Science 科研工作台、NVIDIA BioNeMo Agent Toolkit、NVIDIA AI for Science HPC 软件栈、AWS Forward Deployed AI Engineering 与 AWS Summit D.C. 公共部门/机密云五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉科研 agent、科学计算工具链、企业 FDE 落地和高安全政企云四类长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-01.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-07-01.md`, `src/content/blog/zh/openclaw-daily-2026-07-01.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-01 real cron fixture，覆盖 Claude Science、BioNeMo Agent Toolkit、AI for Science、AWS FDE 与 AWS Summit D.C. Secret Cloud 五条信号；source projection registry 新增五条字段级英文 projection 与 display label，并为 enterprise/cloud/product-safety split target 同步容量预算、migration hints 与 capacityPlan；EN/ZH 最新日报升级为字段级事实描述，移除泛化 fallback；fixture 写入 caseLevelFaqSignals，使 latest case FAQ check 自动推断 Claude Science 与 AWS FDE 两个长尾入口。
+- ICE: 9x8x8=576
+- Start date: 2026-07-01
+- End date: 2026-07-01
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:daily-fixture-source-dedup`、`pnpm check:daily-parser-guardrail-coverage`、`pnpm check:daily-brief-specificity`、`pnpm check:daily-cta`、`pnpm check:daily-action-sections`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
+- Result: pass（latestDaily=2026-07-01 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 与 Evidence Matrix 已命中字段级 projection，latest case FAQ 自动推断 Claude Science 与 AWS FDE 两个 signals；scope 检查经 story 分隔修复后通过，registry health 显示 totalRules=68、parent category fallback=0，taxonomy 显示 effective category coverage=68/68 split-backed；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-01 fixture 作为科研 agent、HPC 科学计算和政企高安全 AI 部署的首日索引质量基线；下一步优先把已满额 effective category 的新增容量从临时 budget raise 收敛为更细 split target 或预算治理实验。）
+
 ### EXP-203
 - Hypothesis: EXP-202 已把 2026-06-30 最新日报接入 fixture，但 taxonomy 仍显示 frontier-models、product-safety、developer-tools 作为 parent fallback 进入 capacity actions；若不为这些满额/低余量父类建立 split target，后续 Claude/GPT、Palantir 安全部署、Codex/Yisuan Ark 类新增日报 projection 仍会依赖 parent budget raise。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
