@@ -762,8 +762,49 @@ export function suggestSourceProjectionEffectiveCategoryAlternateTargets(
     .filter((item) => item.alternatives.length > 0);
 }
 
+function normalizeCapacityPlanField(value) {
+  if (Array.isArray(value)) return value.map(normalize).filter(Boolean).join(' / ');
+  return normalize(value);
+}
+
+function structuredCapacityPlan(rule) {
+  const capacityPlan = rule?.capacityPlan;
+  if (!capacityPlan || typeof capacityPlan !== 'object' || Array.isArray(capacityPlan)) return null;
+  return {
+    selectedSplitTarget: normalizeCapacityPlanField(capacityPlan.selectedSplitTarget),
+    whyNotAlternatives: normalizeCapacityPlanField(capacityPlan.whyNotAlternatives),
+    budgetImpact: normalizeCapacityPlanField(capacityPlan.budgetImpact),
+  };
+}
+
 function hasCapacityPlan(rule) {
+  const plan = structuredCapacityPlan(rule);
+  if (plan) return true;
   return Boolean(normalize(rule.capacityPlan) || normalize(rule.capacityJustification));
+}
+
+function validateCapacityPlanTemplate({ rule, effectiveCategory, alternateTargetRecommendation }) {
+  const plan = structuredCapacityPlan(rule);
+  if (!plan) {
+    return [
+      `capacityPlan must use structured fields: selectedSplitTarget, whyNotAlternatives, budgetImpact for effective category ${effectiveCategory}`,
+    ];
+  }
+
+  const missing = [];
+  if (!plan.selectedSplitTarget) missing.push('selectedSplitTarget');
+  if (!plan.whyNotAlternatives) missing.push('whyNotAlternatives');
+  if (!plan.budgetImpact) missing.push('budgetImpact');
+
+  const failures = missing.length > 0
+    ? [`capacityPlan missing structured fields: ${missing.join(', ')}`]
+    : [];
+
+  if (alternateTargetRecommendation && !plan.whyNotAlternatives.includes('alternate')) {
+    failures.push('capacityPlan whyNotAlternatives must explain rejected alternate split targets');
+  }
+
+  return failures;
 }
 
 function formatAlternateTargetRecommendation(item) {
@@ -804,15 +845,28 @@ export function validateSourceProjectionRuleCategoryCapacityPlan({
     const name = normalize(rule.name) || '(unnamed proposed rule)';
     const effectiveCategory = effectiveCategoryForProposedRule(rule);
     const action = actionByCategory.get(effectiveCategory);
-    if (action && !hasCapacityPlan(rule)) {
-      const alternateTargetRecommendation = formatAlternateTargetRecommendation(alternateTargetByCategory.get(effectiveCategory));
-      const alternateTargetLine = alternateTargetRecommendation
-        ? `; available alternate split targets: ${alternateTargetRecommendation}`
-        : '';
+    if (!action) continue;
+
+    const alternateTargetRecommendation = formatAlternateTargetRecommendation(alternateTargetByCategory.get(effectiveCategory));
+    const alternateTargetLine = alternateTargetRecommendation
+      ? `; available alternate split targets: ${alternateTargetRecommendation}`
+      : '';
+
+    if (!hasCapacityPlan(rule)) {
       failures.push(
         `${name} — effective category ${effectiveCategory} requires capacityPlan before adding new rules `
           + `(${action.reason}; ${action.action}${alternateTargetLine})`,
       );
+      continue;
+    }
+
+    const templateFailures = validateCapacityPlanTemplate({
+      rule,
+      effectiveCategory,
+      alternateTargetRecommendation,
+    });
+    for (const failure of templateFailures) {
+      failures.push(`${name} — ${failure}${alternateTargetLine}`);
     }
   }
 
@@ -1275,12 +1329,67 @@ function validateSelfTests() {
         name: 'synthetic-new-developer-tool-rule-with-plan',
         owner: 'daily-source-projection',
         category: 'developer-tools',
-        capacityPlan: 'Split developer-tools into desktop-automation before adding this rule.',
+        capacityPlan: {
+          selectedSplitTarget: 'developer-tools',
+          whyNotAlternatives: 'No lower-risk alternate split targets exist for this synthetic parent fallback case.',
+          budgetImpact: 'Uses the final developer-tools headroom after explicit review.',
+        },
       },
     ],
   });
   if (capacityPlanPassFailures.length > 0) {
     failures.push('source projection taxonomy capacity-plan self-test failed: capacityPlan should satisfy high-risk category guard');
+  }
+
+  const capacityPlanTemplateFailures = validateSourceProjectionRuleCategoryCapacityPlan({
+    currentRules: Array.from({ length: 3 }, (_, index) => ({
+      name: `synthetic-chatgpt-control-surface-template-current-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'consumer-productivity',
+      splitTargetCategory: 'chatgpt-control-surfaces',
+    })),
+    proposedRules: [
+      {
+        name: 'synthetic-new-chatgpt-control-rule-with-unstructured-plan',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        terms: ['scheduled tasks and ChatGPT finance control surfaces'],
+        capacityPlan: 'Raise budget for this rule.',
+      },
+    ],
+  }).join('\n');
+  for (const fragment of [
+    'capacityPlan must use structured fields: selectedSplitTarget, whyNotAlternatives, budgetImpact',
+    'available alternate split targets: consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)',
+  ]) {
+    if (!capacityPlanTemplateFailures.includes(fragment)) {
+      failures.push(`source projection taxonomy capacity-plan template self-test failed: ${fragment}`);
+    }
+  }
+
+  const capacityPlanTemplatePassFailures = validateSourceProjectionRuleCategoryCapacityPlan({
+    currentRules: Array.from({ length: 3 }, (_, index) => ({
+      name: `synthetic-chatgpt-control-surface-template-pass-current-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'consumer-productivity',
+      splitTargetCategory: 'chatgpt-control-surfaces',
+    })),
+    proposedRules: [
+      {
+        name: 'synthetic-new-chatgpt-control-rule-with-structured-plan',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        terms: ['scheduled tasks and ChatGPT finance control surfaces'],
+        capacityPlan: {
+          selectedSplitTarget: 'chatgpt-control-surfaces',
+          whyNotAlternatives: 'Rejected alternate split targets because this rule is specifically about ChatGPT control surfaces, not creative AI or career workflows.',
+          budgetImpact: 'Consumes the final chatgpt-control-surfaces slot and requires follow-up split migration before another rule is added.',
+        },
+      },
+    ],
+  });
+  if (capacityPlanTemplatePassFailures.length > 0) {
+    failures.push('source projection taxonomy capacity-plan template self-test failed: structured plan should pass');
   }
 
   const alternateTargetDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({

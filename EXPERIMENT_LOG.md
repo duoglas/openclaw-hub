@@ -1,3 +1,14 @@
+### EXP-208
+- Hypothesis: EXP-207 已把 alternate split targets 接入 capacityPlan 失败诊断，但 proposed rule 仍可用一句纯文本 capacityPlan 通过；若不要求 selected split target、why not alternatives 与 budget impact 三个字段，维护者仍可能用模糊“raise budget”绕过低风险分流。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 structured capacityPlan parser，并让 proposed rule capacity guard 在命中拥挤 effective category 时要求 `selectedSplitTarget`、`whyNotAlternatives`、`budgetImpact`；legacy string plan 会失败并提示结构化字段，同时保留 EXP-207 的 available alternate split targets 诊断；有 alternate targets 时，`whyNotAlternatives` 必须解释 rejected alternate split targets。
+- ICE: 8x8x8=512
+- Start date: 2026-07-02
+- End date: 2026-07-02
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 的 capacity-plan template self-test 锁定 unstructured fail / structured pass，并且 `pnpm build` 通过。
+- Result: pass（proposed rule capacityPlan 现在必须使用结构化字段 selectedSplitTarget、whyNotAlternatives、budgetImpact；self-test 锁定 unstructured string plan 失败并继续输出 consumer-productivity 的 alternate split targets，structured ChatGPT control-surface plan 通过；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 structured capacityPlan 作为新增 source projection rule 的预算治理入口；下一步可把实际 source projection rule registry 中的历史 string capacityPlan 分批迁移为结构化字段，降低未来 enum / budget 审计成本。）
+
 ### EXP-207
 - Hypothesis: EXP-206 已在 taxonomy summary 输出 sibling alternate targets，但新增 proposed rule 缺 capacityPlan 时的失败文案仍只说选择低风险 split target 或 raise effective budget；若不把具体 sibling target 直接写进失败诊断，维护者仍需要手动回看 summary，容易继续临时扩容而不是把新增规则分流到 consumer-creative-ai、career-productivity-workflows 等低风险目标。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

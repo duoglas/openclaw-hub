@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-02 11:20
+Last updated: 2026-07-02 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-208: 将 proposed rule capacityPlan 升级为结构化模板，消费 EXP-207 “capacityPlan 模板从纯文本升级为结构化字段”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-207 已把 alternate split targets 接入 capacityPlan 失败诊断，但 proposed rule 仍可用一句纯文本 capacityPlan 通过；若不要求 selected split target、why not alternatives 与 budget impact 三个字段，维护者仍可能用模糊“raise budget”绕过低风险分流。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 的 self-test 阻断 unstructured capacityPlan，并锁定 alternate target 诊断；`pnpm build` 通过。
+  - Acceptance: 1) 新增 structured capacityPlan parser，要求 `selectedSplitTarget`、`whyNotAlternatives`、`budgetImpact`；2) legacy string plan 在需要 capacityPlan 的 proposed rule 上失败并提示结构化字段；3) 有 alternate targets 时要求 whyNotAlternatives 明确解释 rejected alternate split targets；4) self-test 覆盖 unstructured fail 与 structured pass；5) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-207: 将 effective category alternate target 接入 proposed rule capacityPlan 失败诊断，消费 EXP-206 “把建议接入 proposed rule capacityPlan failure 文案”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-206 已在 taxonomy summary 输出 sibling alternate targets，但新增 proposed rule 缺 capacityPlan 时的失败文案仍只说选择低风险 split target 或 raise budget；若不把具体 sibling target 写进失败诊断，维护者仍需要手动回看 summary，容易继续临时扩容而不是分流。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 的 capacity-plan self-test 锁定 `available alternate split targets` 诊断；`pnpm build` 通过。
