@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-01 17:27
+Last updated: 2026-07-02 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-207: 将 effective category alternate target 接入 proposed rule capacityPlan 失败诊断，消费 EXP-206 “把建议接入 proposed rule capacityPlan failure 文案”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-206 已在 taxonomy summary 输出 sibling alternate targets，但新增 proposed rule 缺 capacityPlan 时的失败文案仍只说选择低风险 split target 或 raise budget；若不把具体 sibling target 写进失败诊断，维护者仍需要手动回看 summary，容易继续临时扩容而不是分流。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 的 capacity-plan self-test 锁定 `available alternate split targets` 诊断；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `formatAlternateTargetRecommendation` 复用 taxonomy summary 的 alternate target 格式；2) `validateSourceProjectionRuleCategoryCapacityPlan` 在命中拥挤 effective category 且缺 capacityPlan 时，追加同 parent 可用 alternate split targets；3) self-test 锁定 chatgpt-control-surfaces 的 proposed rule 失败文案包含 consumer-creative-ai 与 career-productivity-workflows；4) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-206: 为 low-headroom effective category 增加 sibling alternate target 诊断，消费 EXP-205 “已满额 effective category 从临时 budget raise 收敛为更细 split target 或预算治理”后续假设 | ICE 8x8x8=512 — commit `60c9ca7`
   - Hypothesis: EXP-205 后 latest fixture 已把 2026-07-01 新信号接入 source projection，但 taxonomy 的 effective category capacity actions 仍只说 choose lower-risk split target；若不直接输出同 parent 下仍有 2+ headroom 的 sibling target，新增日报 rule 仍容易走临时 budget raise，而不是分流到 career-productivity-workflows、digital-regulation-compliance、robotics-commercial-deployment 等更低风险目标。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category alternate targets`，当前为 ai-industrial-policy、robotics-simulation-training、chatgpt-control-surfaces、regional-ai-ecosystems、desktop-computer-use、domestic-compute-software 等拥挤 split target 给出 sibling headroom；`pnpm build` 通过。

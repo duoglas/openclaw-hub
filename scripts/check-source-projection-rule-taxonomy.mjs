@@ -766,6 +766,16 @@ function hasCapacityPlan(rule) {
   return Boolean(normalize(rule.capacityPlan) || normalize(rule.capacityJustification));
 }
 
+function formatAlternateTargetRecommendation(item) {
+  if (!item || !item.parentCategory || !Array.isArray(item.alternatives) || item.alternatives.length === 0) {
+    return '';
+  }
+  const alternatives = item.alternatives
+    .map((target) => `${target.name}=${target.count}/${target.budget} (${target.headroom} headroom)`)
+    .join(' / ');
+  return `${item.parentCategory} -> ${alternatives}`;
+}
+
 export function categoriesRequiringSourceProjectionCapacityPlan(summary = summarizeSourceProjectionRuleTaxonomy()) {
   return suggestSourceProjectionEffectiveCategoryCapacityActions(
     summarizeSourceProjectionEffectiveCategories({ rules: summary.rules }),
@@ -785,6 +795,9 @@ export function validateSourceProjectionRuleCategoryCapacityPlan({
 } = {}) {
   const effectiveSummary = summarizeSourceProjectionEffectiveCategories({ rules: currentRules });
   const actionByCategory = new Map(suggestSourceProjectionEffectiveCategoryCapacityActions(effectiveSummary).map((item) => [item.name, item]));
+  const alternateTargetByCategory = new Map(
+    suggestSourceProjectionEffectiveCategoryAlternateTargets(effectiveSummary).map((item) => [item.name, item]),
+  );
   const failures = [];
 
   for (const rule of proposedRules) {
@@ -792,9 +805,13 @@ export function validateSourceProjectionRuleCategoryCapacityPlan({
     const effectiveCategory = effectiveCategoryForProposedRule(rule);
     const action = actionByCategory.get(effectiveCategory);
     if (action && !hasCapacityPlan(rule)) {
+      const alternateTargetRecommendation = formatAlternateTargetRecommendation(alternateTargetByCategory.get(effectiveCategory));
+      const alternateTargetLine = alternateTargetRecommendation
+        ? `; available alternate split targets: ${alternateTargetRecommendation}`
+        : '';
       failures.push(
         `${name} — effective category ${effectiveCategory} requires capacityPlan before adding new rules `
-          + `(${action.reason}; ${action.action})`,
+          + `(${action.reason}; ${action.action}${alternateTargetLine})`,
       );
     }
   }
@@ -853,12 +870,7 @@ export function formatSourceProjectionRuleTaxonomySummary(summary = summarizeSou
     .map((item) => `${item.name}: ${item.action} (${item.reason})`)
     .join('; ');
   const effectiveAlternateTargetLine = suggestSourceProjectionEffectiveCategoryAlternateTargets(effectiveCategorySummary)
-    .map((item) => {
-      const alternatives = item.alternatives
-        .map((target) => `${target.name}=${target.count}/${target.budget} (${target.headroom} headroom)`)
-        .join(' / ');
-      return `${item.name}: ${item.parentCategory} -> ${alternatives}`;
-    })
+    .map((item) => `${item.name}: ${formatAlternateTargetRecommendation(item)}`)
     .join('; ');
   const capacityPlanCategories = categoriesRequiringSourceProjectionCapacityPlan(summary).join(', ');
   const splitTargetSummary = summarizeSourceProjectionSplitTargetCategories();
@@ -1224,6 +1236,26 @@ function validateSelfTests() {
   const capacityPlanDiagnostic = capacityPlanFailures.join('\n');
   if (!capacityPlanDiagnostic.includes('synthetic-new-developer-tool-rule-without-plan — effective category developer-tools requires capacityPlan before adding new rules (100% used + 0 headroom; choose a lower-risk split target or raise effective budget before adding new rules)')) {
     failures.push('source projection taxonomy capacity-plan self-test failed: missing capacityPlan diagnostic');
+  }
+
+  const capacityPlanAlternateTargetFailures = validateSourceProjectionRuleCategoryCapacityPlan({
+    currentRules: Array.from({ length: 3 }, (_, index) => ({
+      name: `synthetic-chatgpt-control-surface-current-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'consumer-productivity',
+      splitTargetCategory: 'chatgpt-control-surfaces',
+    })),
+    proposedRules: [
+      {
+        name: 'synthetic-new-chatgpt-control-rule-without-plan',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        terms: ['scheduled tasks and ChatGPT finance control surfaces'],
+      },
+    ],
+  }).join('\n');
+  if (!capacityPlanAlternateTargetFailures.includes('available alternate split targets: consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)')) {
+    failures.push('source projection taxonomy capacity-plan self-test failed: missing alternate target diagnostic');
   }
 
   const capacityPlanPassFailures = validateSourceProjectionRuleCategoryCapacityPlan({

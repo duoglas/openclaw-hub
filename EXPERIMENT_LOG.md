@@ -1,3 +1,14 @@
+### EXP-207
+- Hypothesis: EXP-206 已在 taxonomy summary 输出 sibling alternate targets，但新增 proposed rule 缺 capacityPlan 时的失败文案仍只说选择低风险 split target 或 raise effective budget；若不把具体 sibling target 直接写进失败诊断，维护者仍需要手动回看 summary，容易继续临时扩容而不是把新增规则分流到 consumer-creative-ai、career-productivity-workflows 等低风险目标。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 `formatAlternateTargetRecommendation`，并让 `validateSourceProjectionRuleCategoryCapacityPlan` 复用 EXP-206 的 `suggestSourceProjectionEffectiveCategoryAlternateTargets`；当 proposed rule 命中拥挤 effective category 且缺 capacityPlan 时，失败诊断追加 `available alternate split targets`，直接列出同 parent 下仍有 headroom 的 sibling target。
+- ICE: 8x8x8=512
+- Start date: 2026-07-02
+- End date: 2026-07-02
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 的 capacity-plan self-test 锁定 alternate target 失败文案，并且 `pnpm build` 通过。
+- Result: pass（proposed rule capacityPlan 失败诊断现在会在可分流时直接输出 sibling alternate targets；self-test 锁定 chatgpt-control-surfaces 缺 plan 时提示 `consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)`；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 alternate target 失败文案作为新增 source projection rule 的执行入口；下一步可把 capacityPlan 模板从纯文本升级为结构化字段，要求声明 selected split target、why not alternatives 与预算影响。）
+
 ### EXP-206
 - Hypothesis: EXP-205 后 latest fixture 已把 2026-07-01 科研 agent、AI for Science 与 AWS FDE/Secret Cloud 新信号接入 source projection，但 taxonomy 的 effective category capacity actions 仍只输出 “choose a lower-risk split target or raise effective budget”；若不把同 parent 下仍有余量的 sibling target 直接列出，维护者仍可能对 0/1 headroom effective category 继续临时 raise budget，而不是把新增规则分流到更低风险 split target。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
