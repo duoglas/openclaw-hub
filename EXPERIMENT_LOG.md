@@ -1,3 +1,14 @@
+### EXP-210
+- Hypothesis: EXP-209 已把历史 capacityPlan 迁移成结构化字段，但 taxonomy 只检查 `selectedSplitTarget`、`whyNotAlternatives`、`budgetImpact` 是否存在；若 `selectedSplitTarget` 可与 `splitTargetCategory || category` 不一致，后续预算治理会在 rule 实际承载分类与计划声明之间漂移，降低 split target 审计可信度。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: `validateCapacityPlanTemplate` 新增 selected target alignment 校验，要求 structured `capacityPlan.selectedSplitTarget` 必须等于 effective category；该模板由 proposed rule capacity guard 与 existing rule capacityPlan template guard 共用。新增 synthetic self-test，锁定 existing rule `splitTargetCategory=chatgpt-control-surfaces` 但 plan 选择 `consumer-creative-ai` 时会失败。
+- ICE: 8x8x8=512
+- Start date: 2026-07-03
+- End date: 2026-07-03
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 mismatched selectedSplitTarget，并且 `pnpm build` 通过。
+- Result: pass（capacityPlan 现在不仅要求结构化字段，还要求 selectedSplitTarget 与 rule 的 effective category 一致；synthetic self-test 锁定 mismatch 诊断；当前 16 条结构化 capacityPlan 全部与 splitTargetCategory 对齐；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 selectedSplitTarget alignment 作为 source projection 预算治理一致性闸门；下一步可要求 `budgetImpact` 明确包含 headroom / budget raise 数字，避免容量影响仍停留在自然语言描述。）
+
 ### EXP-209
 - Hypothesis: EXP-208 已要求新增 proposed rule 使用结构化 capacityPlan，但 registry 中 16 条历史规则仍保留 string capacityPlan；若不迁移并加现有规则闸门，后续 enum / budget 审计仍会混用 legacy 文本，降低 selected split target、rejected alternatives 与 budget impact 的可机器检查性。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

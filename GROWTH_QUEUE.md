@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-03 11:20
+Last updated: 2026-07-03 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-210: 校验 structured capacityPlan.selectedSplitTarget 必须等于 effective category，消费 EXP-209 “capacityPlan.selectedSplitTarget 与 splitTargetCategory 一致性校验”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-209 已把历史 capacityPlan 迁移成结构化字段，但 taxonomy 只检查字段存在；若 `selectedSplitTarget` 可与 `splitTargetCategory || category` 不一致，后续预算治理会在 rule 实际承载分类与计划声明之间漂移，降低 split target 审计可信度。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 mismatched selectedSplitTarget，并且 `pnpm build` 通过。
+  - Acceptance: 1) `validateCapacityPlanTemplate` 校验 `selectedSplitTarget` 等于 effective category；2) existing rule 与 proposed rule 共用该一致性闸门；3) synthetic self-test 锁定 `chatgpt-control-surfaces` rule 声明 `consumer-creative-ai` 会失败；4) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-209: 将历史 source projection capacityPlan 迁移为结构化字段，并新增现有规则模板闸门，消费 EXP-208 “历史 string capacityPlan 分批迁移”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-208 已要求新增 proposed rule 使用结构化 capacityPlan，但 registry 中 16 条历史规则仍保留 string capacityPlan；若不迁移并加现有规则闸门，后续 enum / budget 审计仍会混用 legacy 文本，降低 split target、替代路径和预算影响的可机器检查性。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 existing rule unstructured capacityPlan；`grep -R "capacityPlan: '" scripts/lib/source-projection-rules.mjs` 无残留；`pnpm build` 通过。

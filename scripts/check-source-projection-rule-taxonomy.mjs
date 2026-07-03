@@ -800,6 +800,12 @@ function validateCapacityPlanTemplate({ rule, effectiveCategory, alternateTarget
     ? [`capacityPlan missing structured fields: ${missing.join(', ')}`]
     : [];
 
+  if (plan.selectedSplitTarget && plan.selectedSplitTarget !== effectiveCategory) {
+    failures.push(
+      `capacityPlan selectedSplitTarget must match effective category ${effectiveCategory}; got ${plan.selectedSplitTarget}`,
+    );
+  }
+
   if (alternateTargetRecommendation && !plan.whyNotAlternatives.includes('alternate')) {
     failures.push('capacityPlan whyNotAlternatives must explain rejected alternate split targets');
   }
@@ -1428,6 +1434,29 @@ function validateSelfTests() {
   }).join('\n');
   if (!existingCapacityPlanTemplateFailures.includes('synthetic-existing-rule-with-unstructured-capacity-plan — existing rule capacityPlan must use structured fields: selectedSplitTarget, whyNotAlternatives, budgetImpact')) {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: unstructured existing plan should fail');
+  }
+
+  const selectedSplitTargetAlignmentFailures = validateSourceProjectionRuleTaxonomy({
+    rules: ALLOWED_SOURCE_PROJECTION_CATEGORIES.map((category) => ({
+      name: `synthetic-${category}-selected-target-coverage-rule`,
+      owner: 'daily-source-projection',
+      category,
+    })).concat([
+      {
+        name: 'synthetic-existing-rule-with-mismatched-selected-target',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        splitTargetCategory: 'chatgpt-control-surfaces',
+        capacityPlan: {
+          selectedSplitTarget: 'consumer-creative-ai',
+          whyNotAlternatives: 'Rejected alternate split targets for this synthetic mismatch case.',
+          budgetImpact: 'Synthetic mismatch should fail before this plan can be used.',
+        },
+      },
+    ]),
+  }).join('\n');
+  if (!selectedSplitTargetAlignmentFailures.includes('synthetic-existing-rule-with-mismatched-selected-target — existing rule capacityPlan selectedSplitTarget must match effective category chatgpt-control-surfaces; got consumer-creative-ai')) {
+    failures.push('source projection taxonomy existing capacity-plan self-test failed: selectedSplitTarget mismatch should fail');
   }
 
   const alternateTargetDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
