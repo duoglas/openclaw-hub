@@ -416,7 +416,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
     displayLabel: 'China / 6G / mobile AI infrastructure',
-    capacityPlan: 'Raises policy-governance budget by one for a latest-fixture 6G/mobile-AI infrastructure signal; the rule is assigned to ai-industrial-policy and keeps 6G policy signals in the industrial infrastructure split instead of widening parent-category matching.',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-industrial-policy',
+      whyNotAlternatives: 'Rejected alternate split targets because this story is specifically about China 6G, satellite, non-terrestrial network, and mobile-AI infrastructure policy rather than AI standards or digital compliance.',
+      budgetImpact: 'Raises the ai-industrial-policy effective budget by one for a latest-fixture 6G/mobile-AI infrastructure signal while keeping parent policy-governance matching narrow.',
+    },
     terms: ['2026 MWC 上海', '6G 产业生态展区', '未来星座', '非地面网络通信'],
     details: {
       what: 'Xinhua reported that MWC Shanghai 2026 is focusing on 6G, mobile AI, embodied intelligence, satellite and non-terrestrial network communications, with first-time 6G industry ecosystem and Future Constellation satellite areas.',
@@ -482,7 +486,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'vertical-workflow-agents',
     displayLabel: 'China / vertical AI / industrial deployment',
-    capacityPlan: 'Raises enterprise-agents budget by one for a latest-fixture vertical workflow deployment signal; the rule is assigned to vertical-workflow-agents because the story is about manufacturing, healthcare, energy, and materials workflows rather than generic model capability.',
+    capacityPlan: {
+      selectedSplitTarget: 'vertical-workflow-agents',
+      whyNotAlternatives: 'Rejected alternate split targets because the signal is about manufacturing, healthcare, energy, and materials workflows rather than enterprise agent platforms or enablement programs.',
+      budgetImpact: 'Raises vertical-workflow-agents capacity for a latest-fixture vertical workflow deployment signal without widening generic enterprise-agents matching.',
+    },
     terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟'],
     details: {
       what: 'Xinhua reported that AI is moving faster into vertical industries such as manufacturing, healthcare, energy, and new materials, including examples where process-drawing analysis fell from half a day to minutes and materials R&D cycles shortened.',
@@ -561,7 +569,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'consumer-productivity',
     splitTargetCategory: 'consumer-creative-ai',
     displayLabel: 'Amazon / Alexa+ / consumer AI localization',
-    capacityPlan: 'Uses the remaining consumer-productivity budget slot for a fixture-backed consumer AI assistant localization signal; future consumer rules should rely on the planned chatgpt-control-surfaces / consumer-creative-ai split before adding more parent-category rules.',
+    capacityPlan: {
+      selectedSplitTarget: 'consumer-creative-ai',
+      whyNotAlternatives: 'Rejected alternate split targets because Alexa+ Brazil is a localized consumer assistant and household creative surface, not a ChatGPT control surface or career productivity workflow.',
+      budgetImpact: 'Uses the consumer-creative-ai split target for a fixture-backed consumer AI assistant localization signal and avoids adding another parent consumer-productivity fallback.',
+    },
     terms: ['Alexa+ 已在巴西 Early Access 上线', '本地语言与文化理解', 'Prime 会员体系'],
     details: {
       what: 'Amazon moved Alexa+ into Brazil Early Access, emphasizing generative AI, natural conversation, cross-device continuity, local language and cultural understanding, and expansion to additional countries.',
@@ -588,7 +600,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'enterprise-agent-platforms',
     displayLabel: 'OpenAI / Partner Network / AI adoption ecosystem',
-    capacityPlan: 'Consumes the final enterprise-agents budget slot because the 2026-06-16 real cron sample contains a concrete OpenAI Partner Network deployment-ecosystem signal; future enterprise agent rules should split categories or raise budget before merge.',
+    capacityPlan: {
+      selectedSplitTarget: 'enterprise-agent-platforms',
+      whyNotAlternatives: 'Rejected alternate split targets because OpenAI Partner Network is an enterprise deployment ecosystem and platform channel, not a vertical workflow or training-only enablement program.',
+      budgetImpact: 'Consumes the enterprise-agent-platforms capacity slot for the 2026-06-16 real cron deployment-ecosystem signal and requires split migration before another platform rule is added.',
+    },
     terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问'],
     details: {
       what: 'OpenAI introduced Partner Network with a planned 150 million USD investment in the partner ecosystem and a goal of training 300,000 certified consultants by the end of 2026.',
@@ -712,7 +728,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'policy-governance',
     splitTargetCategory: 'ai-policy-standards',
     displayLabel: 'China / WAICO / AI governance coordination',
-    capacityPlan: 'Uses the remaining policy-governance budget slot for a fixture-backed international AI governance mechanism signal; future policy rules should be added after migrating into ai-policy-standards / ai-industrial-policy / digital-regulation-compliance split targets.',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-policy-standards',
+      whyNotAlternatives: 'Rejected alternate split targets because WAICO is an international governance and standards-coordination signal, not industrial infrastructure policy or app-level digital compliance.',
+      budgetImpact: 'Uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
+    },
     terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作'],
     details: {
       what: 'Chinese state media said China is preparing a World AI Cooperation Organization and plans to advance global AI governance cooperation around the July World AI Conference in Shanghai.',
@@ -727,7 +747,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'cloud-infrastructure',
     splitTargetCategory: 'cloud-model-distribution',
     displayLabel: 'AWS / Agent / Continuum / agent platform',
-    capacityPlan: 'Uses the final cloud-infrastructure headroom for a fixture-backed AWS agent infrastructure launch; next AWS/cloud agent rules should migrate into the planned cloud-model-distribution or ai-infrastructure-capacity split before adding more rules.',
+    capacityPlan: {
+      selectedSplitTarget: 'cloud-model-distribution',
+      whyNotAlternatives: 'Rejected alternate split targets because AWS Continuum and Bedrock AgentCore are cloud model and agent distribution infrastructure, not raw AI infrastructure capacity.',
+      budgetImpact: 'Uses cloud-model-distribution capacity for a fixture-backed AWS agent infrastructure launch and keeps future AWS/cloud additions behind split-target review.',
+    },
     terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore'],
     details: {
       what: 'AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.',
@@ -781,7 +805,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'consumer-productivity',
     splitTargetCategory: 'chatgpt-control-surfaces',
     displayLabel: 'OpenAI / ChatGPT / finance and dictation controls',
-    capacityPlan: 'Raises consumer-productivity budget by one for a latest-fixture ChatGPT control-surface update; the rule is assigned to chatgpt-control-surfaces and prevents broad GPT-5.5 matching from swallowing finance, dictation, and model-retirement details.',
+    capacityPlan: {
+      selectedSplitTarget: 'chatgpt-control-surfaces',
+      whyNotAlternatives: 'Rejected alternate split targets because the rule covers ChatGPT finance, dictation, Codex Remote, and model-retirement controls rather than creative AI or career workflows.',
+      budgetImpact: 'Raises chatgpt-control-surfaces capacity by one for a latest-fixture ChatGPT control-surface update and prevents broad GPT-5.5 matching from swallowing field-level details.',
+    },
     terms: ['个人金融体验', '新版听写模型', 'GPT-4.5 从 ChatGPT 下线', '个人财务体验', '听写模型升级', 'GPT-4.5 在 ChatGPT 中退役', 'Codex Remote'],
     details: {
       what: 'OpenAI updated ChatGPT on June 26 with a personal finance experience for US Plus users, a new dictation model, and GPT-4.5 retirement from ChatGPT while older conversations can move to GPT-5.5; Codex Remote is now available across ChatGPT plans.',
@@ -808,7 +836,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'market-intelligence',
     splitTargetCategory: 'regional-ai-ecosystems',
     displayLabel: 'Amazon / RAISE US / AI workforce training',
-    capacityPlan: 'Uses the remaining market-intelligence headroom for a fixture-backed workforce and education ecosystem signal; future market rules should migrate into regional-ai-ecosystems or other split targets before adding more parent-category rules.',
+    capacityPlan: {
+      selectedSplitTarget: 'regional-ai-ecosystems',
+      whyNotAlternatives: 'Rejected alternate split targets because RAISE US is a workforce and education ecosystem signal, not a market-sizing report or content-licensing market signal.',
+      budgetImpact: 'Uses regional-ai-ecosystems capacity for a fixture-backed workforce and education ecosystem signal while avoiding another parent market-intelligence fallback.',
+    },
     terms: ['RAISE US', 'Future Ready 2030', 'AI 时代技能'],
     details: {
       what: 'Amazon joined RAISE US as a founding member on June 25, linking its AI workforce-skilling push with Future Ready 2030 and broader community training commitments.',
@@ -822,7 +854,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'cloud-infrastructure',
     splitTargetCategory: 'ai-infrastructure-capacity',
     displayLabel: 'NVIDIA / TOP500 / Green500 / compute infrastructure',
-    capacityPlan: 'Raises cloud-infrastructure budget by one for a latest-fixture supercomputing infrastructure signal; the rule is assigned to ai-infrastructure-capacity and keeps TOP500/Green500 details from falling back to generic NVIDIA compute copy.',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-infrastructure-capacity',
+      whyNotAlternatives: 'Rejected alternate split targets because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not cloud model distribution.',
+      budgetImpact: 'Raises ai-infrastructure-capacity by one for a latest-fixture supercomputing infrastructure signal and keeps TOP500/Green500 details out of generic NVIDIA compute copy.',
+    },
     terms: ['TOP500 榜单', '超过 400 台', 'Green500 能效榜前 8 名'],
     details: {
       what: 'NVIDIA said more than 400 systems, or 81% of the latest TOP500 supercomputers, use NVIDIA technologies, while almost 90% of new entries are NVIDIA-based and the top eight Green500 systems run on NVIDIA GPUs.',
@@ -836,7 +872,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'cloud-infrastructure',
     splitTargetCategory: 'ai-infrastructure-capacity',
     displayLabel: 'NVIDIA / AWS / vector retrieval infrastructure',
-    capacityPlan: 'Raises cloud-infrastructure budget by one for a latest-fixture NVIDIA/AWS production AI infrastructure signal; the rule is assigned to ai-infrastructure-capacity and should be migrated into split categories when parent-category budgets are retired.',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-infrastructure-capacity',
+      whyNotAlternatives: 'Rejected alternate split targets because EC2 G7, OpenSearch Serverless vector search, and cuVS are production AI infrastructure capacity signals rather than cloud model distribution.',
+      budgetImpact: 'Raises ai-infrastructure-capacity by one for a latest-fixture NVIDIA/AWS production infrastructure signal and keeps parent cloud-infrastructure matching narrow.',
+    },
     terms: ['EC2 G7', 'OpenSearch Serverless', 'NVIDIA cuVS'],
     details: {
       what: 'NVIDIA described deeper AWS production AI deployment work across EC2 G7, OpenSearch Serverless vector search accelerated by NVIDIA cuVS, and GB300 training performance; NVIDIA said vector indexing can be up to 10 times faster and cost one quarter of a CPU-only path.',
@@ -850,7 +890,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'enterprise-agent-platforms',
     displayLabel: 'Anthropic / Claude Tag / team agent workflow',
-    capacityPlan: 'Raises enterprise-agents budget by one for a latest-fixture team-collaboration agent surface; the rule is assigned to enterprise-agent-platforms and should be migrated into split categories when parent-category budgets are retired.',
+    capacityPlan: {
+      selectedSplitTarget: 'enterprise-agent-platforms',
+      whyNotAlternatives: 'Rejected alternate split targets because Claude Tag is a shared team-collaboration agent platform surface, not a vertical workflow or enablement program.',
+      budgetImpact: 'Raises enterprise-agent-platforms capacity by one for a latest-fixture team-collaboration agent surface while keeping parent enterprise-agents matching narrow.',
+    },
     terms: ['Claude Tag', '@Claude', 'Claude Enterprise', 'Slack'],
     details: {
       what: 'Anthropic launched Claude Tag as a Slack-based @Claude collaboration surface for Claude Enterprise and Team beta users, with channel context, asynchronous task handling, and authorized tool or codebase connections.',
@@ -864,7 +908,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
     displayLabel: 'China / industrial 5G / AI infrastructure pilot',
-    capacityPlan: 'Raises policy-governance budget by one for a latest-fixture industrial AI infrastructure policy signal; the rule is assigned to ai-industrial-policy and should be migrated into split categories when parent-category budgets are retired.',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-industrial-policy',
+      whyNotAlternatives: 'Rejected alternate split targets because industrial 5G private networks are industrial AI infrastructure policy, not standards coordination or app-level digital compliance.',
+      budgetImpact: 'Raises ai-industrial-policy capacity by one for a latest-fixture industrial AI infrastructure policy signal while keeping parent policy-governance matching narrow.',
+    },
     terms: ['工业 5G 独立专网试点', '原材料', '能源交通'],
     details: {
       what: 'China is piloting industrial 5G private networks across raw materials, equipment manufacturing, electronic information, energy, and transportation, with multiple ministries supporting enterprise-dedicated 5G networks.',
@@ -879,7 +927,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'vertical-workflow-agents',
     displayLabel: 'Anthropic / Claude Science / research agent workflow',
-    capacityPlan: 'Raises vertical-workflow-agents capacity for the 2026-07-01 latest-fixture research-workflow signal; the rule stays within enterprise-agents split targets and prevents generic latest daily fallback.',
+    capacityPlan: {
+      selectedSplitTarget: 'vertical-workflow-agents',
+      whyNotAlternatives: 'Rejected alternate split targets because Claude Science is a research workflow workbench, not a generic enterprise agent platform or enablement program.',
+      budgetImpact: 'Raises vertical-workflow-agents capacity for the 2026-07-01 latest-fixture research-workflow signal and prevents generic latest daily fallback.',
+    },
     terms: ['Claude Science beta', 'Jupyter/R/HPC/SSH', '可审计科研产物'],
     details: {
       what: 'Anthropic released Claude Science beta for Pro, Max, Team, and Enterprise users, with macOS/Linux support, research databases, Jupyter/R/HPC/SSH access, GPU compute, and auditable research artifacts.',
@@ -906,7 +958,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'cloud-infrastructure',
     splitTargetCategory: 'ai-infrastructure-capacity',
     displayLabel: 'NVIDIA / AI for Science / HPC software stack',
-    capacityPlan: 'Raises ai-infrastructure-capacity for a 2026-07-01 AI-for-Science HPC software-stack signal that extends GPU-native infrastructure beyond model serving.',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-infrastructure-capacity',
+      whyNotAlternatives: 'Rejected alternate split targets because AI for Science HPC software is GPU-native infrastructure capacity, not cloud model distribution.',
+      budgetImpact: 'Raises ai-infrastructure-capacity for a 2026-07-01 AI-for-Science HPC software-stack signal that extends GPU-native infrastructure beyond model serving.',
+    },
     terms: ['ISC', 'DAQIRI', 'ALCHEMI NIM', 'cuPhoton'],
     details: {
       what: 'NVIDIA described an AI for Science software stack around DAQIRI, ALCHEMI NIM, cuPhoton, materials simulation, chemistry, astronomy data processing, and dark-matter research workloads.',
@@ -920,7 +976,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'vertical-workflow-agents',
     displayLabel: 'AWS / FDE / enterprise agent deployment',
-    capacityPlan: 'Raises vertical-workflow-agents for the 2026-07-01 AWS FDE production-agent deployment signal; the rule keeps the latest daily in field-level projection instead of parent-category fallback.',
+    capacityPlan: {
+      selectedSplitTarget: 'vertical-workflow-agents',
+      whyNotAlternatives: 'Rejected alternate split targets because AWS FDE embeds engineers into customer production workflows, not a generic enterprise agent platform or enablement-only program.',
+      budgetImpact: 'Raises vertical-workflow-agents for the 2026-07-01 AWS FDE production-agent deployment signal and keeps the latest daily in field-level projection.',
+    },
     terms: ['10 亿美元', 'Forward Deployed Engineering', 'agentic AI 系统'],
     details: {
       what: 'AWS committed 1 billion USD to a Forward Deployed Engineering organization that embeds AI engineers with customer teams to co-build and deploy agentic AI systems in days.',
@@ -934,7 +994,11 @@ export const FIELD_PROJECTION_RULES = [
     category: 'product-safety',
     splitTargetCategory: 'high-sensitivity-ai-deployment',
     displayLabel: 'AWS / public sector / secret cloud AI',
-    capacityPlan: 'Raises high-sensitivity-ai-deployment for a 2026-07-01 public-sector and secret-cloud AI deployment signal with compliance, isolation, and sovereignty requirements.',
+    capacityPlan: {
+      selectedSplitTarget: 'high-sensitivity-ai-deployment',
+      whyNotAlternatives: 'Rejected alternate split targets because AWS Secret Cloud and public-sector AI are high-sensitivity deployment signals, not model account security or youth safety controls.',
+      budgetImpact: 'Raises high-sensitivity-ai-deployment for a 2026-07-01 public-sector and secret-cloud AI deployment signal with compliance, isolation, and sovereignty requirements.',
+    },
     terms: ['Secret Cloud for Industry', '情报机构云迁移激励', '公共部门'],
     details: {
       what: 'AWS Summit D.C. highlighted public-sector AI and cloud investments, including Secret Cloud for Industry, intelligence-community cloud migration incentives, FDE, energy research, and UK government AI scaling.',

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-02 17:20
+Last updated: 2026-07-03 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-209: 将历史 source projection capacityPlan 迁移为结构化字段，并新增现有规则模板闸门，消费 EXP-208 “历史 string capacityPlan 分批迁移”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-208 已要求新增 proposed rule 使用结构化 capacityPlan，但 registry 中 16 条历史规则仍保留 string capacityPlan；若不迁移并加现有规则闸门，后续 enum / budget 审计仍会混用 legacy 文本，降低 split target、替代路径和预算影响的可机器检查性。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 existing rule unstructured capacityPlan；`grep -R "capacityPlan: '" scripts/lib/source-projection-rules.mjs` 无残留；`pnpm build` 通过。
+  - Acceptance: 1) 将 16 条历史 `capacityPlan` 迁移为 `selectedSplitTarget`、`whyNotAlternatives`、`budgetImpact` 三字段；2) taxonomy 校验覆盖 existing rule capacityPlan 模板，不只覆盖 proposed rule；3) synthetic self-test 锁定 existing rule legacy string plan 会失败；4) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-208: 将 proposed rule capacityPlan 升级为结构化模板，消费 EXP-207 “capacityPlan 模板从纯文本升级为结构化字段”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-207 已把 alternate split targets 接入 capacityPlan 失败诊断，但 proposed rule 仍可用一句纯文本 capacityPlan 通过；若不要求 selected split target、why not alternatives 与 budget impact 三个字段，维护者仍可能用模糊“raise budget”绕过低风险分流。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 的 self-test 阻断 unstructured capacityPlan，并锁定 alternate target 诊断；`pnpm build` 通过。

@@ -807,6 +807,24 @@ function validateCapacityPlanTemplate({ rule, effectiveCategory, alternateTarget
   return failures;
 }
 
+function validateExistingCapacityPlanTemplates(rules = sourceProjectionRules()) {
+  const failures = [];
+  for (const rule of rules) {
+    if (!Object.hasOwn(rule, 'capacityPlan') && !Object.hasOwn(rule, 'capacityJustification')) continue;
+    const name = normalize(rule.name) || '(unnamed rule)';
+    const effectiveCategory = normalize(rule.splitTargetCategory) || normalize(rule.category) || '(unknown category)';
+    const templateFailures = validateCapacityPlanTemplate({
+      rule,
+      effectiveCategory,
+      alternateTargetRecommendation: false,
+    });
+    for (const failure of templateFailures) {
+      failures.push(`${name} — existing rule ${failure}`);
+    }
+  }
+  return failures;
+}
+
 function formatAlternateTargetRecommendation(item) {
   if (!item || !item.parentCategory || !Array.isArray(item.alternatives) || item.alternatives.length === 0) {
     return '';
@@ -1006,6 +1024,7 @@ export function validateSourceProjectionRuleTaxonomy({ rules = sourceProjectionR
 
   failures.push(...validateSourceProjectionSplitTargetCategories());
   failures.push(...validateSourceProjectionRuleSplitTargetCoverage({ rules }));
+  failures.push(...validateExistingCapacityPlanTemplates(rules));
 
   const summary = summarizeSourceProjectionRuleTaxonomy({ rules });
   for (const category of summary.categories) {
@@ -1390,6 +1409,25 @@ function validateSelfTests() {
   });
   if (capacityPlanTemplatePassFailures.length > 0) {
     failures.push('source projection taxonomy capacity-plan template self-test failed: structured plan should pass');
+  }
+
+  const existingCapacityPlanTemplateFailures = validateSourceProjectionRuleTaxonomy({
+    rules: ALLOWED_SOURCE_PROJECTION_CATEGORIES.map((category) => ({
+      name: `synthetic-${category}-existing-capacity-coverage-rule`,
+      owner: 'daily-source-projection',
+      category,
+    })).concat([
+      {
+        name: 'synthetic-existing-rule-with-unstructured-capacity-plan',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        splitTargetCategory: 'chatgpt-control-surfaces',
+        capacityPlan: 'Raise budget for this existing rule.',
+      },
+    ]),
+  }).join('\n');
+  if (!existingCapacityPlanTemplateFailures.includes('synthetic-existing-rule-with-unstructured-capacity-plan — existing rule capacityPlan must use structured fields: selectedSplitTarget, whyNotAlternatives, budgetImpact')) {
+    failures.push('source projection taxonomy existing capacity-plan self-test failed: unstructured existing plan should fail');
   }
 
   const alternateTargetDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({

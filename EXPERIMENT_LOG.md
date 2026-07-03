@@ -1,3 +1,14 @@
+### EXP-209
+- Hypothesis: EXP-208 已要求新增 proposed rule 使用结构化 capacityPlan，但 registry 中 16 条历史规则仍保留 string capacityPlan；若不迁移并加现有规则闸门，后续 enum / budget 审计仍会混用 legacy 文本，降低 selected split target、rejected alternatives 与 budget impact 的可机器检查性。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 16 条历史 source projection rule 的 `capacityPlan` 从 legacy string 迁移为结构化对象，逐条声明 `selectedSplitTarget`、`whyNotAlternatives` 与 `budgetImpact`；taxonomy 校验新增 `validateExistingCapacityPlanTemplates`，让现有规则也复用 EXP-208 的结构化模板要求，并新增 synthetic self-test 锁定 existing rule legacy string plan 失败路径。
+- ICE: 8x8x8=512
+- Start date: 2026-07-03
+- End date: 2026-07-03
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 existing rule unstructured capacityPlan；`grep -R "capacityPlan: '" scripts/lib/source-projection-rules.mjs` 无残留；`pnpm build` 通过。
+- Result: pass（16 条历史 capacityPlan 已迁移为结构化字段；taxonomy check 新增 existing rule 模板闸门与 self-test，legacy string plan 会失败；source projection registry 无 `capacityPlan: '...'` 残留；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 structured capacityPlan 作为所有 source projection rule 的统一预算治理格式；下一步可把 `capacityPlan.selectedSplitTarget` 与 `splitTargetCategory` 做一致性校验，并要求 budgetImpact 明确 headroom / budget raise 数字。）
+
 ### EXP-208
 - Hypothesis: EXP-207 已把 alternate split targets 接入 capacityPlan 失败诊断，但 proposed rule 仍可用一句纯文本 capacityPlan 通过；若不要求 selected split target、why not alternatives 与 budget impact 三个字段，维护者仍可能用模糊“raise budget”绕过低风险分流。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
