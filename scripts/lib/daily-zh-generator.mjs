@@ -75,6 +75,23 @@ export function extractZhStories(sourceText) {
   return stories.slice(0, 5);
 }
 
+function fitZhDescription(value, maxLength = 130) {
+  let text = String(value || '').replace(/\s+/g, ' ').trim().replace(/[；;，,。.]+$/g, '');
+  if (!text) return '今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。';
+  if (!/[。！？]$/.test(text)) text += '。';
+  if (text.length <= maxLength) return text;
+
+  const clipped = text.slice(0, maxLength - 1);
+  const sentenceEnd = Math.max(clipped.lastIndexOf('。'), clipped.lastIndexOf('！'), clipped.lastIndexOf('？'));
+  const clauseEnd = Math.max(clipped.lastIndexOf('；'), clipped.lastIndexOf('，'));
+  const boundary = sentenceEnd >= 45 ? sentenceEnd + 1 : clauseEnd >= 55 ? clauseEnd : -1;
+  let fitted = (boundary > 0 ? clipped.slice(0, boundary) : clipped)
+    .replace(/[；;，,。.\s]+$/g, '');
+  if (!/[。！？]$/.test(fitted)) fitted += '。';
+  if (fitted.length > maxLength) fitted = `${fitted.slice(0, maxLength - 1).replace(/[；;，,。.\s]+$/g, '')}。`;
+  return fitted;
+}
+
 function trimDetail(value, fallback) {
   let detail = String(value || fallback || '').replace(/\s+/g, ' ').trim();
   if (detail.length > 220) {
@@ -122,8 +139,7 @@ export function buildZhDescription(sourceText) {
     joined = `${(sentenceEnd >= 60 ? clipped.slice(0, sentenceEnd + 1) : clipped).replace(/[；;，,。.]+$/g, '')}。`;
   }
   joined = joined.replace(/(API|Claude Code|GPT-4\.5|GPT-5\.5)\s*。$/g, '$1 暂无进一步细节。');
-  if (!/[。！？]$/.test(joined)) joined += '。';
-  return joined.replace(/"/g, '');
+  return fitZhDescription(joined, 130).replace(/"/g, '');
 }
 
 export function generateZhDailyBody(sourceText, date) {

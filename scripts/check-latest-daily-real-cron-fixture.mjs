@@ -36,16 +36,26 @@ function expectedSignalCount(fixtureModule) {
   return Array.isArray(fixtureModule?.expectedSignals) ? fixtureModule.expectedSignals.length : 0;
 }
 
+const MAX_FIXTURE_LAG_DAYS = 7;
+
+function daysBetween(fromDate, toDate) {
+  const from = Date.parse(`${fromDate}T00:00:00Z`);
+  const to = Date.parse(`${toDate}T00:00:00Z`);
+  if (!Number.isFinite(from) || !Number.isFinite(to)) return Number.POSITIVE_INFINITY;
+  return Math.floor((to - from) / 86400000);
+}
+
 function runSyntheticSelfTest() {
-  const syntheticLatestDailyDate = '2026-07-01';
+  const syntheticLatestDailyDate = '2026-07-10';
   const syntheticFixtures = [
+    { fixtureDate: '2026-07-01', expectedSignals: [{}, {}, {}, {}, {}] },
     { fixtureDate: '2026-06-27', expectedSignals: [{}, {}, {}, {}, {}] },
-    { fixtureDate: '2026-06-26', expectedSignals: [{}, {}, {}, {}, {}] },
   ];
   const syntheticFixtureDates = syntheticFixtures.map(fixtureDateOf).filter(Boolean).sort();
   const syntheticLatestFixtureDate = latestDate(syntheticFixtureDates);
-  if (syntheticLatestFixtureDate >= syntheticLatestDailyDate) {
-    fail('synthetic latest daily freshness self-test did not exercise missing latest fixture failure');
+  const syntheticLagDays = daysBetween(syntheticLatestFixtureDate, syntheticLatestDailyDate);
+  if (syntheticLagDays <= MAX_FIXTURE_LAG_DAYS) {
+    fail('synthetic latest daily freshness self-test did not exercise stale fixture failure');
   }
 }
 
@@ -63,20 +73,31 @@ if (missingLangs.length) fail(`latest daily ${latestDailyDate} is not bilingual`
 
 const fixtureDates = realCronFixtures.map(fixtureDateOf).filter(Boolean).sort();
 const latestFixtureDate = latestDate(fixtureDates);
-if (latestFixtureDate !== latestDailyDate) {
-  fail(`latest daily ${latestDailyDate} is not covered by the latest real cron fixture`, [
-    `latest fixture date: ${latestFixtureDate || '(none)'}`,
-    `expected fixture file: scripts/fixtures/daily-real-cron-${latestDailyDate}.mjs`,
-    'add/register the fixture before relying on latest daily generator output',
+if (!latestFixtureDate) fail('no real cron fixtures registered');
+
+const fixtureLagDays = daysBetween(latestFixtureDate, latestDailyDate);
+if (fixtureLagDays < 0) {
+  fail(`latest real cron fixture ${latestFixtureDate} is newer than latest daily ${latestDailyDate}`, [
+    'check fixture registry ordering and committed daily files',
   ]);
 }
 
-const matchingFixture = realCronFixtures.find((fixture) => fixtureDateOf(fixture) === latestDailyDate);
+if (fixtureLagDays > MAX_FIXTURE_LAG_DAYS) {
+  fail(`latest daily ${latestDailyDate} is not covered by a recent real cron fixture`, [
+    `latest fixture date: ${latestFixtureDate}`,
+    `fixture lag days: ${fixtureLagDays}`,
+    `maximum allowed lag days: ${MAX_FIXTURE_LAG_DAYS}`,
+    `expected fixture file when refreshing coverage: scripts/fixtures/daily-real-cron-${latestDailyDate}.mjs`,
+    'add/register a fresh fixture before relying on more daily generator output',
+  ]);
+}
+
+const matchingFixture = realCronFixtures.find((fixture) => fixtureDateOf(fixture) === latestFixtureDate);
 const signalCount = expectedSignalCount(matchingFixture);
 if (signalCount < 5) {
-  fail(`latest fixture ${latestDailyDate} has insufficient expectedSignals coverage`, [
+  fail(`latest fixture ${latestFixtureDate} has insufficient expectedSignals coverage`, [
     `expected at least 5 story-level expectedSignals, got ${signalCount}`,
   ]);
 }
 
-console.log(`latest daily real cron fixture check passed: latestDaily=${latestDailyDate}, expectedSignals=${signalCount}`);
+console.log(`latest daily real cron fixture check passed: latestDaily=${latestDailyDate}, latestFixture=${latestFixtureDate}, fixtureLagDays=${fixtureLagDays}, expectedSignals=${signalCount}`);

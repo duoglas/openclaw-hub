@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-20）"
-description: "OpenAI 6月18日发布 ChatGPT 应用更新，新增 60+ 语言发音指导、世界杯对话式查询、连接应用权限控制；Codex 新增 Record & Replay，可把一次演示流程变成可复用技能；AI 从“回答问题”继续走向“会记住流程、复用流程、执行任务”。"
+description: "OpenAI 6月18日发布 ChatGPT 应用更新，新增 60+ 语言发音指导、世界杯对话式查询、连接应用权限控制；Codex 新增 Record & Replay，可把一次演示流程变成可复用技能。"
 pubDate: 2026-06-20
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

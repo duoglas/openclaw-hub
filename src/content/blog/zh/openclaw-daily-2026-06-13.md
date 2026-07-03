@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-13）"
-description: "OpenAI Academy 新增 AI Foundations、Applied AI Foundations、Agents and Workflows 三门课程，面向企业员工训练提示、流程化工作、智能体协作；AI 竞争开始从“谁有模型”转向“谁能把 AI 变成组织能力”。OpenAI 把培训、部署、企业采用绑在一起。"
+description: "OpenAI Academy 新增 AI Foundations、Applied AI Foundations、Agents and Workflows 三门课程，面向企业员工训练提示、流程化工作、智能体协作。"
 pubDate: 2026-06-13
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

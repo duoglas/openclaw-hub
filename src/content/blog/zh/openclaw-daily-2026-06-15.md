@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-15）"
-description: "截至 2026-06-15 07:30（北京时间）；Anthropic 称，美国政府以国家安全权限发出出口管制指令，要求暂停所有外国国民访问 Claude Fable 5 和 Mythos 5；为合规，Anthropic 已对所有客户禁用这两个模型。其他 Anthropic 模型不受影响。"
+description: "截至 2026-06-15 07:30（北京时间）；Anthropic 称，美国政府以国家安全权限发出出口管制指令，要求暂停所有外国国民访问 Claude Fable 5 和 Mythos 5；为合规，Anthropic 已对所有客户禁用这两个模型。"
 pubDate: 2026-06-15
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

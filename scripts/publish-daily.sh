@@ -10,8 +10,43 @@ CRON_ID="fdc137d1-c50d-4686-9b1d-c6c923890cf8" # daily-ai-tech
 
 # Skip if today's post already exists on origin/main
 git fetch origin main --quiet || true
+
+# The CI content gate requires WEEKLY_REVIEW.md to match the current
+# Asia/Shanghai week. Daily publishing is the most frequent automation path,
+# so refresh the weekly artifact here before any early exit. This prevents the
+# recurring Monday/week-rollover failure where daily content is pushed while the
+# weekly review file is still from an older week.
+refresh_weekly_review_if_needed() {
+  local log_file="/tmp/openclaw-hub-weekly-review-check.log"
+
+  if pnpm check:weekly-review >"$log_file" 2>&1; then
+    cat "$log_file"
+    return 0
+  fi
+
+  cat "$log_file"
+  echo "Refreshing stale weekly SEO review..."
+  pnpm weekly:seo
+  pnpm check:weekly-review
+}
+
+commit_weekly_review_if_changed() {
+  if [ -z "$(git status --porcelain -- WEEKLY_REVIEW.md reports/seo-weekly)" ]; then
+    return 0
+  fi
+
+  local week_line
+  week_line=$(grep -m1 '^- Week:' WEEKLY_REVIEW.md | sed 's/^- Week: //')
+  git add WEEKLY_REVIEW.md reports/seo-weekly
+  git commit -m "chore: refresh weekly review (${week_line})" || true
+  git push origin main
+}
+
+refresh_weekly_review_if_needed
+
 if git ls-tree -r --name-only origin/main | grep -q "^${EN_FILE}$" \
   && git ls-tree -r --name-only origin/main | grep -q "^${ZH_FILE}$"; then
+  commit_weekly_review_if_changed
   echo "Already published ${SLUG}"
   exit 0
 fi
@@ -140,7 +175,7 @@ for check in "${DAILY_QUALITY_CHECKS[@]}"; do
   pnpm "${check}"
 done
 
-git add "$EN_FILE" "$ZH_FILE" scripts/publish-daily.sh scripts/lib/daily-generator.mjs scripts/lib/daily-zh-generator.mjs
+git add "$EN_FILE" "$ZH_FILE" WEEKLY_REVIEW.md reports/seo-weekly scripts/publish-daily.sh scripts/lib/daily-generator.mjs scripts/lib/daily-zh-generator.mjs
 git commit -m "content: sync daily site post with Telegram AI/tech brief (${DATE})" || true
 git push origin main
 

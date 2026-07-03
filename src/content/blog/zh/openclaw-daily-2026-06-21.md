@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-21）"
-description: "2026-06-21 早报｜截至 07:30（北京时间）；OpenAI 版本说明显示，ChatGPT 在 6 月 17-18 日更新了 Scheduled tasks、应用权限控制、语音发音辅助、聊天组织、iOS 上传体验；Codex 新增 Record & Replay，可把一次演示流程转成可复用技能。"
+description: "2026-06-21 早报｜截至 07:30（北京时间）；OpenAI 版本说明显示，ChatGPT 在 6 月 17-18 日更新了 Scheduled tasks、应用权限控制、语音发音辅助、聊天组织、iOS 上传体验。"
 pubDate: 2026-06-21
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

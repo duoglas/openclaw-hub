@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-23）"
-description: "NVIDIA 发布/介绍 DAQIRI、ALCHEMI NIM、cuPhoton 等面向科学计算的软件与微服务，覆盖材料模拟、天文数据处理、暗物质相关实验等场景；AI 不只是聊天和办公，正在进入高性能科研工作流。NVIDIA 把 GPU、CUDA-X、NIM 微服务继续往科研基础设施里推。"
+description: "NVIDIA 发布/介绍 DAQIRI、ALCHEMI NIM、cuPhoton 等面向科学计算的软件与微服务，覆盖材料模拟、天文数据处理、暗物质相关实验等场景；AI 不只是聊天和办公，正在进入高性能科研工作流。"
 pubDate: 2026-06-23
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-27）"
-description: "OpenAI 6月26日发布 ChatGPT 更新：美国 Plus 用户可使用个人金融体验；全计划上线新版听写模型；GPT-4.5 从 ChatGPT 下线，旧对话可转 GPT-5.5 继续；ChatGPT 正从“聊天工具”继续向“个人事务入口”扩展，语音和金融是高频、敏感场景。"
+description: "OpenAI 6月26日发布 ChatGPT 更新：美国 Plus 用户可使用个人金融体验；全计划上线新版听写模型；GPT-4.5 从 ChatGPT 下线，旧对话可转 GPT-5.5 继续；ChatGPT 正从“聊天工具”继续向“个人事务入口”扩展。"
 pubDate: 2026-06-27
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

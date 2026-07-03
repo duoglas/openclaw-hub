@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-06-10）"
-description: "Anthropic 6月9日发布 Claude Fable 5，并面向少数网络防御和关键基础设施机构推出 Mythos 5。官方称 Fable 5 是其最强通用模型，Mythos 5 是同一底层模型、在部分安全限制上放宽，用于可信访问场景；模型竞争继续从“聊天能力”转向长周期编码、科研、网络安全和专业知识工作。"
+description: "Anthropic 6月9日发布 Claude Fable 5，并面向少数网络防御和关键基础设施机构推出 Mythos 5。"
 pubDate: 2026-06-10
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

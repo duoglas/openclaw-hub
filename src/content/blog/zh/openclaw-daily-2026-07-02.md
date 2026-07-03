@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-07-02）"
-description: "Anthropic 宣布 Sonnet 5 上线，定位为更强的“智能体型 Sonnet”，强调代码、工具调用、浏览器/终端任务和多步执行能力；API 首发价为每百万输入 token 2 美元、输出 10 美元，8 月 31 日后回到 3/15 美元；中端模型继续逼近高端模型能力，AI Agent 的成本门槛会下降。"
+description: "Anthropic 宣布 Sonnet 5 上线，定位为更强的“智能体型 Sonnet”，强调代码、工具调用、浏览器/终端任务和多步执行能力；API 首发价为每百万输入 token 2 美元、输出 10 美元，8 月 31 日后回到 3/15 美元。"
 pubDate: 2026-07-02
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
