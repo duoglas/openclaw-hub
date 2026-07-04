@@ -110,6 +110,17 @@
 
 # EXPERIMENT_LOG.md
 
+### EXP-211
+- Hypothesis: EXP-210 已校验 selectedSplitTarget 与 effective category 对齐，但 budgetImpact 仍可用纯自然语言描述“uses capacity / raises capacity”；若不要求数值容量 delta、预算或 headroom，后续预算治理仍难以区分真实扩容、消耗最后 slot 与无扩容复用。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 `hasQuantifiedBudgetImpact`，让 shared `validateCapacityPlanTemplate` 要求 `capacityPlan.budgetImpact` 包含数值 capacity delta、预算或 headroom；existing rule 与 proposed rule 共用该闸门。将 16 条历史 structured capacityPlan 的 budgetImpact 补为 `capacity delta +1` 或 `capacity delta 0`，并新增 synthetic self-test 锁定 unquantified existing budgetImpact 会失败。
+- ICE: 8x8x8=512
+- Start date: 2026-07-04
+- End date: 2026-07-04
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 unquantified budgetImpact；`pnpm build` 通过。
+- Result: pass（capacityPlan.budgetImpact 现在必须包含数值 capacity delta、预算或 headroom；16 条历史 structured capacityPlan 已补齐 `capacity delta +1/0`；synthetic self-test 锁定 `Uses remaining capacity after review.` 会失败；taxonomy check 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 quantifiable budgetImpact 作为 source projection 容量治理闸门；下一步可把 capacity delta 与 effective category budget/headroom 自动比对，避免 `+1/0` 声明和实际预算变化漂移。）
+
 ### EXP-199
 - Hypothesis: EXP-198 已为 2026-06-28 ChatGPT dictation 与 Claude Tag 写入 case-level FAQ 内链，但最新日报 case signal 仍手写日期清单；若下次内容建设新增实战案例后检查未自动读取 latest fixture，FAQ 长尾入口可能继续漏写或漂移到旧日期。
 - Scope: `scripts/check-daily-case-signal-faq-links.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

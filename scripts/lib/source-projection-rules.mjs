@@ -419,7 +419,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-industrial-policy',
       whyNotAlternatives: 'Rejected alternate split targets because this story is specifically about China 6G, satellite, non-terrestrial network, and mobile-AI infrastructure policy rather than AI standards or digital compliance.',
-      budgetImpact: 'Raises the ai-industrial-policy effective budget by one for a latest-fixture 6G/mobile-AI infrastructure signal while keeping parent policy-governance matching narrow.',
+      budgetImpact: 'capacity delta +1; raises the ai-industrial-policy effective budget by 1 for a latest-fixture 6G/mobile-AI infrastructure signal while keeping parent policy-governance matching narrow.',
     },
     terms: ['2026 MWC 上海', '6G 产业生态展区', '未来星座', '非地面网络通信'],
     details: {
@@ -489,7 +489,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
       whyNotAlternatives: 'Rejected alternate split targets because the signal is about manufacturing, healthcare, energy, and materials workflows rather than enterprise agent platforms or enablement programs.',
-      budgetImpact: 'Raises vertical-workflow-agents capacity for a latest-fixture vertical workflow deployment signal without widening generic enterprise-agents matching.',
+      budgetImpact: 'capacity delta +1; raises vertical-workflow-agents capacity for a latest-fixture vertical workflow deployment signal without widening generic enterprise-agents matching.',
     },
     terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟'],
     details: {
@@ -572,7 +572,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'consumer-creative-ai',
       whyNotAlternatives: 'Rejected alternate split targets because Alexa+ Brazil is a localized consumer assistant and household creative surface, not a ChatGPT control surface or career productivity workflow.',
-      budgetImpact: 'Uses the consumer-creative-ai split target for a fixture-backed consumer AI assistant localization signal and avoids adding another parent consumer-productivity fallback.',
+      budgetImpact: 'capacity delta 0; uses the consumer-creative-ai split target for a fixture-backed consumer AI assistant localization signal and avoids adding another parent consumer-productivity fallback.',
     },
     terms: ['Alexa+ 已在巴西 Early Access 上线', '本地语言与文化理解', 'Prime 会员体系'],
     details: {
@@ -603,7 +603,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'enterprise-agent-platforms',
       whyNotAlternatives: 'Rejected alternate split targets because OpenAI Partner Network is an enterprise deployment ecosystem and platform channel, not a vertical workflow or training-only enablement program.',
-      budgetImpact: 'Consumes the enterprise-agent-platforms capacity slot for the 2026-06-16 real cron deployment-ecosystem signal and requires split migration before another platform rule is added.',
+      budgetImpact: 'capacity delta 0; consumes the enterprise-agent-platforms capacity slot for the 2026-06-16 real cron deployment-ecosystem signal and requires split migration before another platform rule is added.',
     },
     terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问'],
     details: {
@@ -731,7 +731,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-policy-standards',
       whyNotAlternatives: 'Rejected alternate split targets because WAICO is an international governance and standards-coordination signal, not industrial infrastructure policy or app-level digital compliance.',
-      budgetImpact: 'Uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
+      budgetImpact: 'capacity delta 0; uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
     },
     terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作'],
     details: {
@@ -750,7 +750,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'cloud-model-distribution',
       whyNotAlternatives: 'Rejected alternate split targets because AWS Continuum and Bedrock AgentCore are cloud model and agent distribution infrastructure, not raw AI infrastructure capacity.',
-      budgetImpact: 'Uses cloud-model-distribution capacity for a fixture-backed AWS agent infrastructure launch and keeps future AWS/cloud additions behind split-target review.',
+      budgetImpact: 'capacity delta 0; uses cloud-model-distribution capacity for a fixture-backed AWS agent infrastructure launch and keeps future AWS/cloud additions behind split-target review.',
     },
     terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore'],
     details: {
@@ -808,7 +808,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'chatgpt-control-surfaces',
       whyNotAlternatives: 'Rejected alternate split targets because the rule covers ChatGPT finance, dictation, Codex Remote, and model-retirement controls rather than creative AI or career workflows.',
-      budgetImpact: 'Raises chatgpt-control-surfaces capacity by one for a latest-fixture ChatGPT control-surface update and prevents broad GPT-5.5 matching from swallowing field-level details.',
+      budgetImpact: 'capacity delta +1; raises chatgpt-control-surfaces capacity by 1 for a latest-fixture ChatGPT control-surface update and prevents broad GPT-5.5 matching from swallowing field-level details.',
     },
     terms: ['个人金融体验', '新版听写模型', 'GPT-4.5 从 ChatGPT 下线', '个人财务体验', '听写模型升级', 'GPT-4.5 在 ChatGPT 中退役', 'Codex Remote'],
     details: {
@@ -839,7 +839,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'regional-ai-ecosystems',
       whyNotAlternatives: 'Rejected alternate split targets because RAISE US is a workforce and education ecosystem signal, not a market-sizing report or content-licensing market signal.',
-      budgetImpact: 'Uses regional-ai-ecosystems capacity for a fixture-backed workforce and education ecosystem signal while avoiding another parent market-intelligence fallback.',
+      budgetImpact: 'capacity delta 0; uses regional-ai-ecosystems capacity for a fixture-backed workforce and education ecosystem signal while avoiding another parent market-intelligence fallback.',
     },
     terms: ['RAISE US', 'Future Ready 2030', 'AI 时代技能'],
     details: {
@@ -857,7 +857,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-infrastructure-capacity',
       whyNotAlternatives: 'Rejected alternate split targets because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not cloud model distribution.',
-      budgetImpact: 'Raises ai-infrastructure-capacity by one for a latest-fixture supercomputing infrastructure signal and keeps TOP500/Green500 details out of generic NVIDIA compute copy.',
+      budgetImpact: 'capacity delta +1; raises ai-infrastructure-capacity by 1 for a latest-fixture supercomputing infrastructure signal and keeps TOP500/Green500 details out of generic NVIDIA compute copy.',
     },
     terms: ['TOP500 榜单', '超过 400 台', 'Green500 能效榜前 8 名'],
     details: {
@@ -875,7 +875,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-infrastructure-capacity',
       whyNotAlternatives: 'Rejected alternate split targets because EC2 G7, OpenSearch Serverless vector search, and cuVS are production AI infrastructure capacity signals rather than cloud model distribution.',
-      budgetImpact: 'Raises ai-infrastructure-capacity by one for a latest-fixture NVIDIA/AWS production infrastructure signal and keeps parent cloud-infrastructure matching narrow.',
+      budgetImpact: 'capacity delta +1; raises ai-infrastructure-capacity by 1 for a latest-fixture NVIDIA/AWS production infrastructure signal and keeps parent cloud-infrastructure matching narrow.',
     },
     terms: ['EC2 G7', 'OpenSearch Serverless', 'NVIDIA cuVS'],
     details: {
@@ -893,7 +893,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'enterprise-agent-platforms',
       whyNotAlternatives: 'Rejected alternate split targets because Claude Tag is a shared team-collaboration agent platform surface, not a vertical workflow or enablement program.',
-      budgetImpact: 'Raises enterprise-agent-platforms capacity by one for a latest-fixture team-collaboration agent surface while keeping parent enterprise-agents matching narrow.',
+      budgetImpact: 'capacity delta +1; raises enterprise-agent-platforms capacity by 1 for a latest-fixture team-collaboration agent surface while keeping parent enterprise-agents matching narrow.',
     },
     terms: ['Claude Tag', '@Claude', 'Claude Enterprise', 'Slack'],
     details: {
@@ -911,7 +911,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-industrial-policy',
       whyNotAlternatives: 'Rejected alternate split targets because industrial 5G private networks are industrial AI infrastructure policy, not standards coordination or app-level digital compliance.',
-      budgetImpact: 'Raises ai-industrial-policy capacity by one for a latest-fixture industrial AI infrastructure policy signal while keeping parent policy-governance matching narrow.',
+      budgetImpact: 'capacity delta +1; raises ai-industrial-policy capacity by 1 for a latest-fixture industrial AI infrastructure policy signal while keeping parent policy-governance matching narrow.',
     },
     terms: ['工业 5G 独立专网试点', '原材料', '能源交通'],
     details: {
@@ -930,7 +930,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
       whyNotAlternatives: 'Rejected alternate split targets because Claude Science is a research workflow workbench, not a generic enterprise agent platform or enablement program.',
-      budgetImpact: 'Raises vertical-workflow-agents capacity for the 2026-07-01 latest-fixture research-workflow signal and prevents generic latest daily fallback.',
+      budgetImpact: 'capacity delta +1; raises vertical-workflow-agents capacity for the 2026-07-01 latest-fixture research-workflow signal and prevents generic latest daily fallback.',
     },
     terms: ['Claude Science beta', 'Jupyter/R/HPC/SSH', '可审计科研产物'],
     details: {
@@ -961,7 +961,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-infrastructure-capacity',
       whyNotAlternatives: 'Rejected alternate split targets because AI for Science HPC software is GPU-native infrastructure capacity, not cloud model distribution.',
-      budgetImpact: 'Raises ai-infrastructure-capacity for a 2026-07-01 AI-for-Science HPC software-stack signal that extends GPU-native infrastructure beyond model serving.',
+      budgetImpact: 'capacity delta +1; raises ai-infrastructure-capacity for a 2026-07-01 AI-for-Science HPC software-stack signal that extends GPU-native infrastructure beyond model serving.',
     },
     terms: ['ISC', 'DAQIRI', 'ALCHEMI NIM', 'cuPhoton'],
     details: {
@@ -979,7 +979,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
       whyNotAlternatives: 'Rejected alternate split targets because AWS FDE embeds engineers into customer production workflows, not a generic enterprise agent platform or enablement-only program.',
-      budgetImpact: 'Raises vertical-workflow-agents for the 2026-07-01 AWS FDE production-agent deployment signal and keeps the latest daily in field-level projection.',
+      budgetImpact: 'capacity delta +1; raises vertical-workflow-agents for the 2026-07-01 AWS FDE production-agent deployment signal and keeps the latest daily in field-level projection.',
     },
     terms: ['10 亿美元', 'Forward Deployed Engineering', 'agentic AI 系统'],
     details: {
@@ -997,7 +997,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'high-sensitivity-ai-deployment',
       whyNotAlternatives: 'Rejected alternate split targets because AWS Secret Cloud and public-sector AI are high-sensitivity deployment signals, not model account security or youth safety controls.',
-      budgetImpact: 'Raises high-sensitivity-ai-deployment for a 2026-07-01 public-sector and secret-cloud AI deployment signal with compliance, isolation, and sovereignty requirements.',
+      budgetImpact: 'capacity delta +1; raises high-sensitivity-ai-deployment for a 2026-07-01 public-sector and secret-cloud AI deployment signal with compliance, isolation, and sovereignty requirements.',
     },
     terms: ['Secret Cloud for Industry', '情报机构云迁移激励', '公共部门'],
     details: {

@@ -783,6 +783,10 @@ function hasCapacityPlan(rule) {
   return Boolean(normalize(rule.capacityPlan) || normalize(rule.capacityJustification));
 }
 
+function hasQuantifiedBudgetImpact(value) {
+  return /(?:capacity delta\s*[+-]?\d+|[+-]\d+|\b\d+\s*\/\s*\d+\b|\b\d+\s+(?:headroom|slot|slots|budget|capacity|rule|rules)\b)/i.test(value);
+}
+
 function validateCapacityPlanTemplate({ rule, effectiveCategory, alternateTargetRecommendation }) {
   const plan = structuredCapacityPlan(rule);
   if (!plan) {
@@ -808,6 +812,10 @@ function validateCapacityPlanTemplate({ rule, effectiveCategory, alternateTarget
 
   if (alternateTargetRecommendation && !plan.whyNotAlternatives.includes('alternate')) {
     failures.push('capacityPlan whyNotAlternatives must explain rejected alternate split targets');
+  }
+
+  if (plan.budgetImpact && !hasQuantifiedBudgetImpact(plan.budgetImpact)) {
+    failures.push('capacityPlan budgetImpact must include a numeric capacity delta, budget, or headroom value');
   }
 
   return failures;
@@ -1357,7 +1365,7 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'developer-tools',
           whyNotAlternatives: 'No lower-risk alternate split targets exist for this synthetic parent fallback case.',
-          budgetImpact: 'Uses the final developer-tools headroom after explicit review.',
+          budgetImpact: 'capacity delta 0; uses the final developer-tools headroom after explicit review.',
         },
       },
     ],
@@ -1408,7 +1416,7 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'chatgpt-control-surfaces',
           whyNotAlternatives: 'Rejected alternate split targets because this rule is specifically about ChatGPT control surfaces, not creative AI or career workflows.',
-          budgetImpact: 'Consumes the final chatgpt-control-surfaces slot and requires follow-up split migration before another rule is added.',
+          budgetImpact: 'capacity delta 0; consumes the final chatgpt-control-surfaces slot and requires follow-up split migration before another rule is added.',
         },
       },
     ],
@@ -1450,13 +1458,37 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'consumer-creative-ai',
           whyNotAlternatives: 'Rejected alternate split targets for this synthetic mismatch case.',
-          budgetImpact: 'Synthetic mismatch should fail before this plan can be used.',
+          budgetImpact: 'capacity delta 0; synthetic mismatch should fail before this plan can be used.',
         },
       },
     ]),
   }).join('\n');
   if (!selectedSplitTargetAlignmentFailures.includes('synthetic-existing-rule-with-mismatched-selected-target — existing rule capacityPlan selectedSplitTarget must match effective category chatgpt-control-surfaces; got consumer-creative-ai')) {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: selectedSplitTarget mismatch should fail');
+  }
+
+
+  const budgetImpactQuantificationFailures = validateSourceProjectionRuleTaxonomy({
+    rules: ALLOWED_SOURCE_PROJECTION_CATEGORIES.map((category) => ({
+      name: `synthetic-${category}-budget-impact-coverage-rule`,
+      owner: 'daily-source-projection',
+      category,
+    })).concat([
+      {
+        name: 'synthetic-existing-rule-with-unquantified-budget-impact',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        splitTargetCategory: 'chatgpt-control-surfaces',
+        capacityPlan: {
+          selectedSplitTarget: 'chatgpt-control-surfaces',
+          whyNotAlternatives: 'Rejected alternate split targets for this synthetic budget-impact case.',
+          budgetImpact: 'Uses remaining capacity after review.',
+        },
+      },
+    ]),
+  }).join('\n');
+  if (!budgetImpactQuantificationFailures.includes('synthetic-existing-rule-with-unquantified-budget-impact — existing rule capacityPlan budgetImpact must include a numeric capacity delta, budget, or headroom value')) {
+    failures.push('source projection taxonomy existing capacity-plan self-test failed: unquantified budgetImpact should fail');
   }
 
   const alternateTargetDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({

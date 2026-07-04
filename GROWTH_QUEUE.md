@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-03 17:20
+Last updated: 2026-07-04 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-211: 要求 structured capacityPlan.budgetImpact 写入可机器检查的数值容量影响，消费 EXP-210 “budgetImpact 明确包含 headroom / budget raise 数字”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-210 已校验 selectedSplitTarget 与 effective category 对齐，但 budgetImpact 仍可用纯自然语言描述“uses capacity / raises capacity”；若不要求数值容量 delta、预算或 headroom，后续预算治理仍难以区分真实扩容、消耗最后 slot 与无扩容复用。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 unquantified budgetImpact；所有现有 structured capacityPlan 写入 `capacity delta +1/0`；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `hasQuantifiedBudgetImpact` 并接入 shared capacityPlan template；2) existing rule 与 proposed rule 共用 budgetImpact 数值闸门；3) synthetic self-test 锁定 existing rule `budgetImpact: Uses remaining capacity after review.` 会失败；4) 16 条历史 structured capacityPlan 全部写入数值 capacity delta；5) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-210: 校验 structured capacityPlan.selectedSplitTarget 必须等于 effective category，消费 EXP-209 “capacityPlan.selectedSplitTarget 与 splitTargetCategory 一致性校验”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-209 已把历史 capacityPlan 迁移成结构化字段，但 taxonomy 只检查字段存在；若 `selectedSplitTarget` 可与 `splitTargetCategory || category` 不一致，后续预算治理会在 rule 实际承载分类与计划声明之间漂移，降低 split target 审计可信度。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 mismatched selectedSplitTarget，并且 `pnpm build` 通过。
