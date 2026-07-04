@@ -787,7 +787,61 @@ function hasQuantifiedBudgetImpact(value) {
   return /(?:capacity delta\s*[+-]?\d+|[+-]\d+|\b\d+\s*\/\s*\d+\b|\b\d+\s+(?:headroom|slot|slots|budget|capacity|rule|rules)\b)/i.test(value);
 }
 
-function validateCapacityPlanTemplate({ rule, effectiveCategory, alternateTargetRecommendation }) {
+function parseCapacityDelta(value) {
+  const match = String(value || '').match(/capacity delta\s*([+-]?\d+)/i);
+  return match ? Number.parseInt(match[1], 10) : null;
+}
+
+function budgetImpactClaimsRaise(value) {
+  return /\b(?:raise|raises|raised|raising|increase|increases|increased|expands?|expanded)\b/i.test(value)
+    && /\b(?:budget|capacity|headroom|slot|slots)\b/i.test(value);
+}
+
+function validateCapacityPlanBudgetImpactConsistency({
+  budgetImpact,
+  effectiveCategory,
+  effectiveCategoryItem = null,
+  proposedAction = null,
+} = {}) {
+  const delta = parseCapacityDelta(budgetImpact);
+  if (delta == null) return [];
+
+  const failures = [];
+  if (delta === 0 && budgetImpactClaimsRaise(budgetImpact)) {
+    failures.push('capacityPlan budgetImpact claims capacity raise but declares capacity delta 0');
+  }
+
+  const categoryBudget = effectiveCategoryItem?.budget ?? null;
+  const categoryHeadroom = effectiveCategoryItem?.headroom ?? proposedAction?.headroom ?? null;
+  if (categoryBudget == null || categoryHeadroom == null) return failures;
+
+  if (proposedAction) {
+    const requiredDelta = Math.max(0, 1 - categoryHeadroom);
+    if (delta < requiredDelta) {
+      failures.push(
+        `capacityPlan budgetImpact capacity delta ${delta} is below required delta ${requiredDelta} for effective category ${effectiveCategory} `
+          + `(${proposedAction.reason})`,
+      );
+    }
+    return failures;
+  }
+
+  if (delta > 0 && categoryHeadroom > SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD) {
+    failures.push(
+      `capacityPlan budgetImpact declares capacity delta +${delta} but effective category ${effectiveCategory} still has ${categoryHeadroom} headroom`,
+    );
+  }
+
+  return failures;
+}
+
+function validateCapacityPlanTemplate({
+  rule,
+  effectiveCategory,
+  alternateTargetRecommendation,
+  effectiveCategoryItem = null,
+  proposedAction = null,
+}) {
   const plan = structuredCapacityPlan(rule);
   if (!plan) {
     return [
@@ -818,11 +872,23 @@ function validateCapacityPlanTemplate({ rule, effectiveCategory, alternateTarget
     failures.push('capacityPlan budgetImpact must include a numeric capacity delta, budget, or headroom value');
   }
 
+  if (plan.budgetImpact) {
+    failures.push(...validateCapacityPlanBudgetImpactConsistency({
+      budgetImpact: plan.budgetImpact,
+      effectiveCategory,
+      effectiveCategoryItem,
+      proposedAction,
+    }));
+  }
+
   return failures;
 }
 
 function validateExistingCapacityPlanTemplates(rules = sourceProjectionRules()) {
   const failures = [];
+  const effectiveCategoryByName = new Map(
+    summarizeSourceProjectionEffectiveCategories({ rules }).categories.map((item) => [item.name, item]),
+  );
   for (const rule of rules) {
     if (!Object.hasOwn(rule, 'capacityPlan') && !Object.hasOwn(rule, 'capacityJustification')) continue;
     const name = normalize(rule.name) || '(unnamed rule)';
@@ -831,6 +897,7 @@ function validateExistingCapacityPlanTemplates(rules = sourceProjectionRules()) 
       rule,
       effectiveCategory,
       alternateTargetRecommendation: false,
+      effectiveCategoryItem: effectiveCategoryByName.get(effectiveCategory) || null,
     });
     for (const failure of templateFailures) {
       failures.push(`${name} — existing rule ${failure}`);
@@ -896,6 +963,8 @@ export function validateSourceProjectionRuleCategoryCapacityPlan({
       rule,
       effectiveCategory,
       alternateTargetRecommendation,
+      effectiveCategoryItem: effectiveSummary.categories.find((item) => item.name === effectiveCategory) || null,
+      proposedAction: action,
     });
     for (const failure of templateFailures) {
       failures.push(`${name} — ${failure}${alternateTargetLine}`);
@@ -1365,7 +1434,7 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'developer-tools',
           whyNotAlternatives: 'No lower-risk alternate split targets exist for this synthetic parent fallback case.',
-          budgetImpact: 'capacity delta 0; uses the final developer-tools headroom after explicit review.',
+          budgetImpact: 'capacity delta +1; raises developer-tools capacity for this synthetic parent fallback case after explicit review.',
         },
       },
     ],
@@ -1489,6 +1558,54 @@ function validateSelfTests() {
   }).join('\n');
   if (!budgetImpactQuantificationFailures.includes('synthetic-existing-rule-with-unquantified-budget-impact — existing rule capacityPlan budgetImpact must include a numeric capacity delta, budget, or headroom value')) {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: unquantified budgetImpact should fail');
+  }
+
+  const budgetImpactDeltaConsistencyFailures = validateSourceProjectionRuleTaxonomy({
+    rules: ALLOWED_SOURCE_PROJECTION_CATEGORIES.map((category) => ({
+      name: `synthetic-${category}-budget-delta-consistency-coverage-rule`,
+      owner: 'daily-source-projection',
+      category,
+    })).concat([
+      {
+        name: 'synthetic-existing-rule-with-roomy-capacity-delta-raise',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        splitTargetCategory: 'consumer-creative-ai',
+        capacityPlan: {
+          selectedSplitTarget: 'consumer-creative-ai',
+          whyNotAlternatives: 'Rejected alternate split targets for this synthetic budget delta consistency case.',
+          budgetImpact: 'capacity delta +1; raises consumer-creative-ai capacity even though the category still has spare headroom.',
+        },
+      },
+    ]),
+  }).join('\n');
+  if (!budgetImpactDeltaConsistencyFailures.includes('synthetic-existing-rule-with-roomy-capacity-delta-raise — existing rule capacityPlan budgetImpact declares capacity delta +1 but effective category consumer-creative-ai still has 3 headroom')) {
+    failures.push('source projection taxonomy existing capacity-plan self-test failed: roomy capacity delta raise should fail');
+  }
+
+  const proposedBudgetImpactDeltaFailures = validateSourceProjectionRuleCategoryCapacityPlan({
+    currentRules: Array.from({ length: 4 }, (_, index) => ({
+      name: `synthetic-chatgpt-control-surface-delta-current-${index + 1}`,
+      owner: 'daily-source-projection',
+      category: 'consumer-productivity',
+      splitTargetCategory: 'chatgpt-control-surfaces',
+    })),
+    proposedRules: [
+      {
+        name: 'synthetic-new-chatgpt-control-rule-with-understated-delta',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        terms: ['scheduled tasks and ChatGPT finance control surfaces'],
+        capacityPlan: {
+          selectedSplitTarget: 'chatgpt-control-surfaces',
+          whyNotAlternatives: 'Rejected alternate split targets because this synthetic rule remains a ChatGPT control surface.',
+          budgetImpact: 'capacity delta 0; claims to reuse capacity despite no remaining headroom.',
+        },
+      },
+    ],
+  }).join('\n');
+  if (!proposedBudgetImpactDeltaFailures.includes('synthetic-new-chatgpt-control-rule-with-understated-delta — capacityPlan budgetImpact capacity delta 0 is below required delta 1 for effective category chatgpt-control-surfaces')) {
+    failures.push('source projection taxonomy proposed capacity-plan self-test failed: understated capacity delta should fail');
   }
 
   const alternateTargetDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({

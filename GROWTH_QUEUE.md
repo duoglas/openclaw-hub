@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-04 11:20
+Last updated: 2026-07-04 17:28
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-212: 校验 capacityPlan.budgetImpact 的 capacity delta 与 effective category headroom 一致，消费 EXP-211 “capacity delta 与 effective category budget/headroom 自动比对”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-211 已要求 budgetImpact 写入数值 capacity delta / budget / headroom，但数值仍可能与真实 effective category 使用率漂移；若 `capacity delta +1/0` 不和当前 headroom、满额新增规则所需扩容量比对，维护者仍能在有余量分类里声明扩容，或在满额分类新增规则时声明零扩容。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 roomy category `capacity delta +1` 与 full proposed rule `capacity delta 0`；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `parseCapacityDelta` 与 `validateCapacityPlanBudgetImpactConsistency`；2) existing rule capacityPlan 读取 effective category budget/headroom，阻断有 >1 headroom 仍声明 `+1` 扩容；3) proposed rule capacityPlan 按当前 headroom 计算 required delta，阻断满额新增却声明 `0`；4) self-test 覆盖 roomy raise 与 understated proposed delta；5) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-211: 要求 structured capacityPlan.budgetImpact 写入可机器检查的数值容量影响，消费 EXP-210 “budgetImpact 明确包含 headroom / budget raise 数字”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-210 已校验 selectedSplitTarget 与 effective category 对齐，但 budgetImpact 仍可用纯自然语言描述“uses capacity / raises capacity”；若不要求数值容量 delta、预算或 headroom，后续预算治理仍难以区分真实扩容、消耗最后 slot 与无扩容复用。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 unquantified budgetImpact；所有现有 structured capacityPlan 写入 `capacity delta +1/0`；`pnpm build` 通过。

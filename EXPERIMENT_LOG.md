@@ -110,6 +110,17 @@
 
 # EXPERIMENT_LOG.md
 
+### EXP-212
+- Hypothesis: EXP-211 已要求 budgetImpact 写入数值 capacity delta / budget / headroom，但数值仍可能与真实 effective category 使用率漂移；若 `capacity delta +1/0` 不和当前 headroom、满额新增规则所需扩容量比对，维护者仍能在有余量分类里声明扩容，或在满额分类新增规则时声明零扩容。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 `parseCapacityDelta`、`budgetImpactClaimsRaise` 与 `validateCapacityPlanBudgetImpactConsistency`，让 shared capacityPlan template 校验同时读取 effective category budget/headroom；existing rule 阻断有 >1 headroom 仍声明 `capacity delta +N`，proposed rule 按当前 headroom 计算 required delta 并阻断满额新增规则声明 `capacity delta 0`。
+- ICE: 8x8x8=512
+- Start date: 2026-07-04
+- End date: 2026-07-04
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 roomy category `capacity delta +1` 与 full proposed rule `capacity delta 0`；`pnpm build` 通过。
+- Result: pass（capacityPlan.budgetImpact 现在会和 effective category headroom 自动比对；synthetic self-test 锁定 consumer-creative-ai 仍有 3 headroom 却声明 `+1` 会失败、chatgpt-control-surfaces 已满额却声明 proposed `0` 会失败；taxonomy check 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 capacity delta/headroom 一致性作为 source projection 容量治理闸门；下一步可把 capacityPlan 的 rejected alternatives 与 effective alternate target 列表自动比对，避免 whyNotAlternatives 漏提可分流目标。）
+
 ### EXP-211
 - Hypothesis: EXP-210 已校验 selectedSplitTarget 与 effective category 对齐，但 budgetImpact 仍可用纯自然语言描述“uses capacity / raises capacity”；若不要求数值容量 delta、预算或 headroom，后续预算治理仍难以区分真实扩容、消耗最后 slot 与无扩容复用。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
