@@ -771,14 +771,32 @@ function normalizeCapacityPlanTargetList(value) {
   return Array.isArray(value) ? value.map(normalize).filter(Boolean) : null;
 }
 
+function structuredBudgetImpact(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const capacityDelta = Number.isInteger(value.capacityDelta) ? value.capacityDelta : null;
+  const categoryBudget = Number.isInteger(value.categoryBudget) ? value.categoryBudget : null;
+  const categoryHeadroom = Number.isInteger(value.categoryHeadroom) ? value.categoryHeadroom : null;
+  const rationale = normalizeCapacityPlanField(value.rationale);
+  const summary = [
+    capacityDelta == null ? '' : `capacity delta ${capacityDelta >= 0 ? '+' : ''}${capacityDelta}`,
+    categoryBudget == null ? '' : `budget ${categoryBudget}`,
+    categoryHeadroom == null ? '' : `headroom ${categoryHeadroom}`,
+    rationale,
+  ].filter(Boolean).join('; ');
+  return { capacityDelta, categoryBudget, categoryHeadroom, rationale, summary };
+}
+
 function structuredCapacityPlan(rule) {
   const capacityPlan = rule?.capacityPlan;
   if (!capacityPlan || typeof capacityPlan !== 'object' || Array.isArray(capacityPlan)) return null;
+  const budgetImpact = structuredBudgetImpact(capacityPlan.budgetImpact);
   return {
     selectedSplitTarget: normalizeCapacityPlanField(capacityPlan.selectedSplitTarget),
     whyNotAlternatives: normalizeCapacityPlanField(capacityPlan.whyNotAlternatives),
     rejectedAlternateTargets: normalizeCapacityPlanTargetList(capacityPlan.rejectedAlternateTargets),
-    budgetImpact: normalizeCapacityPlanField(capacityPlan.budgetImpact),
+    budgetImpact,
+    hasBudgetImpactField: Object.hasOwn(capacityPlan, 'budgetImpact'),
+    budgetImpactSummary: budgetImpact?.summary || normalizeCapacityPlanField(capacityPlan.budgetImpact),
   };
 }
 
@@ -789,10 +807,16 @@ function hasCapacityPlan(rule) {
 }
 
 function hasQuantifiedBudgetImpact(value) {
+  if (value && typeof value === 'object') {
+    return Number.isInteger(value.capacityDelta)
+      && Number.isInteger(value.categoryBudget)
+      && Number.isInteger(value.categoryHeadroom);
+  }
   return /(?:capacity delta\s*[+-]?\d+|[+-]\d+|\b\d+\s*\/\s*\d+\b|\b\d+\s+(?:headroom|slot|slots|budget|capacity|rule|rules)\b)/i.test(value);
 }
 
 function parseCapacityDelta(value) {
+  if (value && typeof value === 'object' && Number.isInteger(value.capacityDelta)) return value.capacityDelta;
   const match = String(value || '').match(/capacity delta\s*([+-]?\d+)/i);
   return match ? Number.parseInt(match[1], 10) : null;
 }
@@ -896,7 +920,7 @@ function validateCapacityPlanTemplate({
   const missing = [];
   if (!plan.selectedSplitTarget) missing.push('selectedSplitTarget');
   if (!plan.whyNotAlternatives) missing.push('whyNotAlternatives');
-  if (!plan.budgetImpact) missing.push('budgetImpact');
+  if (!plan.hasBudgetImpactField) missing.push('budgetImpact');
 
   const failures = missing.length > 0
     ? [`capacityPlan missing structured fields: ${missing.join(', ')}`]
@@ -924,8 +948,12 @@ function validateCapacityPlanTemplate({
     alternateTargetRecommendation,
   }));
 
+  if (plan.budgetImpactSummary && !plan.budgetImpact) {
+    failures.push('capacityPlan budgetImpact must use structured fields: capacityDelta, categoryBudget, categoryHeadroom, rationale');
+  }
+
   if (plan.budgetImpact && !hasQuantifiedBudgetImpact(plan.budgetImpact)) {
-    failures.push('capacityPlan budgetImpact must include a numeric capacity delta, budget, or headroom value');
+    failures.push('capacityPlan budgetImpact must include numeric capacityDelta, categoryBudget, and categoryHeadroom values');
   }
 
   if (plan.budgetImpact) {
@@ -1495,7 +1523,17 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'developer-tools',
           whyNotAlternatives: 'No lower-risk alternate split targets exist for this synthetic parent fallback case.',
-          budgetImpact: 'capacity delta +1; raises developer-tools capacity for this synthetic parent fallback case after explicit review.',
+          budgetImpact: {
+
+            capacityDelta: 1,
+
+            categoryBudget: 4,
+
+            categoryHeadroom: 1,
+
+            rationale: 'capacity delta +1; raises developer-tools capacity for this synthetic parent fallback case after explicit review.',
+
+          },
         },
       },
     ],
@@ -1547,7 +1585,17 @@ function validateSelfTests() {
           selectedSplitTarget: 'chatgpt-control-surfaces',
           whyNotAlternatives: 'Rejected alternate split targets because this rule is specifically about ChatGPT control surfaces, not consumer-creative-ai or career-productivity-workflows.',
           rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai'],
-          budgetImpact: 'capacity delta 0; consumes the final chatgpt-control-surfaces slot and requires follow-up split migration before another rule is added.',
+          budgetImpact: {
+
+            capacityDelta: 0,
+
+            categoryBudget: 4,
+
+            categoryHeadroom: 1,
+
+            rationale: 'capacity delta 0; consumes the final chatgpt-control-surfaces slot and requires follow-up split migration before another rule is added.',
+
+          },
         },
       },
     ],
@@ -1589,7 +1637,17 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'consumer-creative-ai',
           whyNotAlternatives: 'Rejected alternate split targets for this synthetic mismatch case.',
-          budgetImpact: 'capacity delta 0; synthetic mismatch should fail before this plan can be used.',
+          budgetImpact: {
+
+            capacityDelta: 0,
+
+            categoryBudget: 4,
+
+            categoryHeadroom: 1,
+
+            rationale: 'capacity delta 0; synthetic mismatch should fail before this plan can be used.',
+
+          },
         },
       },
     ]),
@@ -1597,7 +1655,6 @@ function validateSelfTests() {
   if (!selectedSplitTargetAlignmentFailures.includes('synthetic-existing-rule-with-mismatched-selected-target — existing rule capacityPlan selectedSplitTarget must match effective category chatgpt-control-surfaces; got consumer-creative-ai')) {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: selectedSplitTarget mismatch should fail');
   }
-
 
   const budgetImpactQuantificationFailures = validateSourceProjectionRuleTaxonomy({
     rules: ALLOWED_SOURCE_PROJECTION_CATEGORIES.map((category) => ({
@@ -1613,12 +1670,14 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'chatgpt-control-surfaces',
           whyNotAlternatives: 'Rejected alternate split targets for this synthetic budget-impact case.',
-          budgetImpact: 'Uses remaining capacity after review.',
+          budgetImpact: {
+            rationale: 'Uses remaining capacity after review.',
+          },
         },
       },
     ]),
   }).join('\n');
-  if (!budgetImpactQuantificationFailures.includes('synthetic-existing-rule-with-unquantified-budget-impact — existing rule capacityPlan budgetImpact must include a numeric capacity delta, budget, or headroom value')) {
+  if (!budgetImpactQuantificationFailures.includes('synthetic-existing-rule-with-unquantified-budget-impact — existing rule capacityPlan budgetImpact must include numeric capacityDelta, categoryBudget, and categoryHeadroom values')) {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: unquantified budgetImpact should fail');
   }
 
@@ -1636,7 +1695,17 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'consumer-creative-ai',
           whyNotAlternatives: 'Rejected alternate split targets for this synthetic budget delta consistency case.',
-          budgetImpact: 'capacity delta +1; raises consumer-creative-ai capacity even though the category still has spare headroom.',
+          budgetImpact: {
+
+            capacityDelta: 1,
+
+            categoryBudget: 4,
+
+            categoryHeadroom: 1,
+
+            rationale: 'capacity delta +1; raises consumer-creative-ai capacity even though the category still has spare headroom.',
+
+          },
         },
       },
     ]),
@@ -1661,7 +1730,17 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'chatgpt-control-surfaces',
           whyNotAlternatives: 'Rejected alternate split targets because this synthetic rule remains a ChatGPT control surface.',
-          budgetImpact: 'capacity delta 0; claims to reuse capacity despite no remaining headroom.',
+          budgetImpact: {
+
+            capacityDelta: 0,
+
+            categoryBudget: 4,
+
+            categoryHeadroom: 1,
+
+            rationale: 'capacity delta 0; claims to reuse capacity despite no remaining headroom.',
+
+          },
         },
       },
     ],
@@ -1680,7 +1759,17 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'chatgpt-control-surfaces',
           whyNotAlternatives: 'Rejected alternate split targets because this synthetic rule mentions alternate targets but omits the available target ids.',
-          budgetImpact: 'capacity delta 0; synthetic rejected-alternatives coverage should fail before this plan can be used.',
+          budgetImpact: {
+
+            capacityDelta: 0,
+
+            categoryBudget: 4,
+
+            categoryHeadroom: 1,
+
+            rationale: 'capacity delta 0; synthetic rejected-alternatives coverage should fail before this plan can be used.',
+
+          },
         },
       },
     ]),
@@ -1699,7 +1788,17 @@ function validateSelfTests() {
         capacityPlan: {
           selectedSplitTarget: 'chatgpt-control-surfaces',
           whyNotAlternatives: 'Rejected alternate split targets because this synthetic rule names career-productivity-workflows and consumer-creative-ai in text only.',
-          budgetImpact: 'capacity delta 0; synthetic rejectedAlternateTargets coverage should fail before this plan can be used.',
+          budgetImpact: {
+
+            capacityDelta: 0,
+
+            categoryBudget: 4,
+
+            categoryHeadroom: 1,
+
+            rationale: 'capacity delta 0; synthetic rejectedAlternateTargets coverage should fail before this plan can be used.',
+
+          },
         },
       },
     ]),
@@ -1719,7 +1818,17 @@ function validateSelfTests() {
           selectedSplitTarget: 'chatgpt-control-surfaces',
           whyNotAlternatives: 'Rejected alternate split targets because this synthetic rule names career-productivity-workflows and consumer-creative-ai.',
           rejectedAlternateTargets: ['career-productivity-workflows', 'legacy-consumer-target'],
-          budgetImpact: 'capacity delta 0; synthetic stale rejectedAlternateTargets coverage should fail before this plan can be used.',
+          budgetImpact: {
+
+            capacityDelta: 0,
+
+            categoryBudget: 4,
+
+            categoryHeadroom: 1,
+
+            rationale: 'capacity delta 0; synthetic stale rejectedAlternateTargets coverage should fail before this plan can be used.',
+
+          },
         },
       },
     ]),

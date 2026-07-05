@@ -1,3 +1,14 @@
+### EXP-215
+- Hypothesis: EXP-214 已把 `rejectedAlternateTargets` 结构化，但 `budgetImpact` 仍依赖自由文本里的 `capacity delta`、预算与 headroom 数字；若拆为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`，source projection 容量治理可从正则解析升级为字段级审计，减少数字遗漏、文本误读和 stale 预算漂移。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 structured `budgetImpact` parser，要求 capacityPlan 的预算影响字段包含 `capacityDelta`、`categoryBudget`、`categoryHeadroom` 与 rationale；16 条历史 capacityPlan 已从文本迁移为结构化对象；taxonomy self-test 更新为覆盖缺数值字段、roomy capacity raise 与 proposed rule understated delta。
+- ICE: 8x8x8=512
+- Start date: 2026-07-05
+- End date: 2026-07-05
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断非结构化/缺数值 `budgetImpact`；`pnpm build` 通过。
+- Result: pass（capacityPlan budgetImpact 已升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`；16 条历史规则迁移完成；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 structured budgetImpact 作为 source projection 容量治理字段；下一步可校验 `categoryBudget/categoryHeadroom` 与实时 effective category summary 完全一致，阻断 stale capacity snapshot。）
+
 ### EXP-214
 - Hypothesis: EXP-213 已要求 `whyNotAlternatives` 文本点名 effective alternate target ID，但文本包含式校验仍易受措辞、排序和 stale target 影响；若增加 `rejectedAlternateTargets` 数组并与实时 alternate target list 做缺失/过期比对，容量治理可从文本审计升级为结构化审计。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

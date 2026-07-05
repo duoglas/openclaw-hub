@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-05 11:44
+Last updated: 2026-07-05 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-215: 将 structured capacityPlan.budgetImpact 从文本升级为对象字段，消费 EXP-214 “budgetImpact 拆为结构化 capacityDelta/budget/headroom”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-214 已把 rejected alternatives 升级为结构化数组，但 `budgetImpact` 仍依赖文本解析 `capacity delta`、budget 与 headroom；若将其升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}` 对象并加入模板闸门，容量治理可减少正则误读和 stale 数字漂移。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断非结构化或缺少数值字段的 budgetImpact；16 条历史 capacityPlan 写入结构化容量影响；`pnpm build` 通过。
+  - Acceptance: 1) structured capacityPlan 解析结构化 `budgetImpact` 对象；2) 模板要求 `capacityDelta`、`categoryBudget`、`categoryHeadroom` 三个数值字段；3) 16 条历史 capacityPlan 迁移；4) self-test 覆盖 unquantified/missing numeric fields、roomy raise 与 understated proposed delta；5) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-214: 将 capacityPlan rejected alternatives 结构化为 rejectedAlternateTargets 数组，消费 EXP-213 “whyNotAlternatives 从自由文本进一步结构化”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-213 已要求 `whyNotAlternatives` 文本点名 effective alternate target ID，但文本包含式校验仍易受措辞、排序和 stale target 影响；若增加 `rejectedAlternateTargets` 数组并与实时 alternate target list 做缺失/过期比对，容量治理可从文本审计升级为结构化审计。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断缺少 `rejectedAlternateTargets` 数组、漏列 `consumer-creative-ai`、或包含 `legacy-consumer-target` 的 capacityPlan；`pnpm build` 通过。
