@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-05 11:29
+Last updated: 2026-07-05 11:44
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-214: 将 capacityPlan rejected alternatives 结构化为 rejectedAlternateTargets 数组，消费 EXP-213 “whyNotAlternatives 从自由文本进一步结构化”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-213 已要求 `whyNotAlternatives` 文本点名 effective alternate target ID，但文本包含式校验仍易受措辞、排序和 stale target 影响；若增加 `rejectedAlternateTargets` 数组并与实时 alternate target list 做缺失/过期比对，容量治理可从文本审计升级为结构化审计。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断缺少 `rejectedAlternateTargets` 数组、漏列 `consumer-creative-ai`、或包含 `legacy-consumer-target` 的 capacityPlan；`pnpm build` 通过。
+  - Acceptance: 1) structured capacityPlan 解析 `rejectedAlternateTargets`；2) existing/proposed shared template 对有 alternate target 的 capacityPlan 要求数组覆盖；3) 5 条历史 capacityPlan 写入结构化 rejected target IDs；4) self-test 覆盖 missing array、missing target 与 stale target；5) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-213: 校验 capacityPlan.whyNotAlternatives 必须点名 effective alternate target，消费 EXP-212 “rejected alternatives 与 effective alternate target 列表自动比对”后续假设 | ICE 8x8x8=512 — commit `5324150`
   - Hypothesis: EXP-212 已把 `budgetImpact` 的 capacity delta 与 effective headroom 自动比对，但 `whyNotAlternatives` 仍可能只写“creative AI / career workflows / digital compliance”这类自然语言；若不要求它点名当前可分流的 effective alternate target ID，维护者仍可能漏提真实可用 sibling split target，导致容量治理回到人工判断。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断缺少 `career-productivity-workflows` / `consumer-creative-ai` 等可分流 target ID 的 rejected-alternatives 文案；`pnpm build` 通过。

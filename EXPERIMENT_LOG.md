@@ -1,3 +1,14 @@
+### EXP-214
+- Hypothesis: EXP-213 已要求 `whyNotAlternatives` 文本点名 effective alternate target ID，但文本包含式校验仍易受措辞、排序和 stale target 影响；若增加 `rejectedAlternateTargets` 数组并与实时 alternate target list 做缺失/过期比对，容量治理可从文本审计升级为结构化审计。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: structured capacityPlan 新增 `rejectedAlternateTargets` 数组解析，并在 shared template 中对存在 effective alternate target 的规则校验数组覆盖；缺数组、漏列可用 target、或包含非推荐/stale target 均失败。同步为 ai-industrial-policy、ai-policy-standards、chatgpt-control-surfaces、regional-ai-ecosystems 等历史 capacityPlan 写入结构化 rejected target IDs。
+- ICE: 8x8x8=512
+- Start date: 2026-07-05
+- End date: 2026-07-05
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断缺少 `rejectedAlternateTargets` 数组、漏列 `consumer-creative-ai`、或包含 `legacy-consumer-target` 的 capacityPlan；`pnpm build` 通过。
+- Result: pass（capacityPlan rejected alternatives 已从自由文本升级为结构化 `rejectedAlternateTargets` 数组；synthetic self-test 锁定缺数组、漏列 current alternate target 与 stale target 三类失败；5 条历史 capacityPlan 已写入可机器比对的 rejected target IDs；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 rejectedAlternateTargets 作为 source projection 容量治理的结构化审计字段；下一步可把 `budgetImpact` 也拆为 `{capacityDelta, budget, headroom}` 结构，减少数字文本解析。）
+
 ### EXP-210
 - Hypothesis: EXP-209 已把历史 capacityPlan 迁移成结构化字段，但 taxonomy 只检查 `selectedSplitTarget`、`whyNotAlternatives`、`budgetImpact` 是否存在；若 `selectedSplitTarget` 可与 `splitTargetCategory || category` 不一致，后续预算治理会在 rule 实际承载分类与计划声明之间漂移，降低 split target 审计可信度。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

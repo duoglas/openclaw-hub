@@ -419,6 +419,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-industrial-policy',
       whyNotAlternatives: 'Rejected alternate split targets because this story is specifically about China 6G, satellite, non-terrestrial network, and mobile-AI infrastructure policy rather than ai-policy-standards or digital-regulation-compliance.',
+      rejectedAlternateTargets: ['digital-regulation-compliance'],
       budgetImpact: 'capacity delta +1; raises the ai-industrial-policy effective budget by 1 for a latest-fixture 6G/mobile-AI infrastructure signal while keeping parent policy-governance matching narrow.',
     },
     terms: ['2026 MWC 上海', '6G 产业生态展区', '未来星座', '非地面网络通信'],
@@ -731,6 +732,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-policy-standards',
       whyNotAlternatives: 'Rejected alternate split targets because WAICO is an international governance and standards-coordination signal, not ai-industrial-policy or digital-regulation-compliance.',
+      rejectedAlternateTargets: ['digital-regulation-compliance'],
       budgetImpact: 'capacity delta 0; uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
     },
     terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作'],
@@ -808,6 +810,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'chatgpt-control-surfaces',
       whyNotAlternatives: 'Rejected alternate split targets because the rule covers ChatGPT finance, dictation, Codex Remote, and model-retirement controls rather than consumer-creative-ai or career-productivity-workflows.',
+      rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai'],
       budgetImpact: 'capacity delta +1; raises chatgpt-control-surfaces capacity by 1 for a latest-fixture ChatGPT control-surface update and prevents broad GPT-5.5 matching from swallowing field-level details.',
     },
     terms: ['个人金融体验', '新版听写模型', 'GPT-4.5 从 ChatGPT 下线', '个人财务体验', '听写模型升级', 'GPT-4.5 在 ChatGPT 中退役', 'Codex Remote'],
@@ -839,6 +842,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'regional-ai-ecosystems',
       whyNotAlternatives: 'Rejected alternate split targets because RAISE US is a workforce and education ecosystem signal, not market-sizing-reports or content-licensing-markets.',
+      rejectedAlternateTargets: ['content-licensing-markets', 'market-sizing-reports'],
       budgetImpact: 'capacity delta 0; uses regional-ai-ecosystems capacity for a fixture-backed workforce and education ecosystem signal while avoiding another parent market-intelligence fallback.',
     },
     terms: ['RAISE US', 'Future Ready 2030', 'AI 时代技能'],
@@ -911,6 +915,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-industrial-policy',
       whyNotAlternatives: 'Rejected alternate split targets because industrial 5G private networks are industrial AI infrastructure policy, not ai-policy-standards or digital-regulation-compliance.',
+      rejectedAlternateTargets: ['digital-regulation-compliance'],
       budgetImpact: 'capacity delta +1; raises ai-industrial-policy capacity by 1 for a latest-fixture industrial AI infrastructure policy signal while keeping parent policy-governance matching narrow.',
     },
     terms: ['工业 5G 独立专网试点', '原材料', '能源交通'],
