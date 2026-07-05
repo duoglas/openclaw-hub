@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-04 17:28
+Last updated: 2026-07-05 11:29
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-213: 校验 capacityPlan.whyNotAlternatives 必须点名 effective alternate target，消费 EXP-212 “rejected alternatives 与 effective alternate target 列表自动比对”后续假设 | ICE 8x8x8=512 — commit `5324150`
+  - Hypothesis: EXP-212 已把 `budgetImpact` 的 capacity delta 与 effective headroom 自动比对，但 `whyNotAlternatives` 仍可能只写“creative AI / career workflows / digital compliance”这类自然语言；若不要求它点名当前可分流的 effective alternate target ID，维护者仍可能漏提真实可用 sibling split target，导致容量治理回到人工判断。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断缺少 `career-productivity-workflows` / `consumer-creative-ai` 等可分流 target ID 的 rejected-alternatives 文案；`pnpm build` 通过。
+  - Acceptance: 1) 新增 `validateCapacityPlanRejectedAlternatives`，按 effective alternate target list 校验 `whyNotAlternatives`；2) existing rule 与 proposed rule capacityPlan 共用该闸门；3) 5 条历史 capacityPlan 改为显式点名 sibling target ID；4) synthetic self-test 锁定 incomplete rejected alternatives 会失败；5) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-212: 校验 capacityPlan.budgetImpact 的 capacity delta 与 effective category headroom 一致，消费 EXP-211 “capacity delta 与 effective category budget/headroom 自动比对”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-211 已要求 budgetImpact 写入数值 capacity delta / budget / headroom，但数值仍可能与真实 effective category 使用率漂移；若 `capacity delta +1/0` 不和当前 headroom、满额新增规则所需扩容量比对，维护者仍能在有余量分类里声明扩容，或在满额分类新增规则时声明零扩容。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 roomy category `capacity delta +1` 与 full proposed rule `capacity delta 0`；`pnpm build` 通过。

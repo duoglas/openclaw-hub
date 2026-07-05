@@ -835,6 +835,21 @@ function validateCapacityPlanBudgetImpactConsistency({
   return failures;
 }
 
+function validateCapacityPlanRejectedAlternatives({ whyNotAlternatives, alternateTargetRecommendation } = {}) {
+  if (!alternateTargetRecommendation || !Array.isArray(alternateTargetRecommendation.alternatives) || alternateTargetRecommendation.alternatives.length === 0) {
+    return [];
+  }
+
+  const rejectedAlternatives = normalize(whyNotAlternatives);
+  const missingTargets = alternateTargetRecommendation.alternatives
+    .map((target) => target.name)
+    .filter((targetName) => !rejectedAlternatives.includes(normalize(targetName)));
+
+  return missingTargets.length > 0
+    ? [`capacityPlan whyNotAlternatives must name available alternate split targets: ${missingTargets.join(', ')}`]
+    : [];
+}
+
 function validateCapacityPlanTemplate({
   rule,
   effectiveCategory,
@@ -868,6 +883,13 @@ function validateCapacityPlanTemplate({
     failures.push('capacityPlan whyNotAlternatives must explain rejected alternate split targets');
   }
 
+  if (plan.whyNotAlternatives) {
+    failures.push(...validateCapacityPlanRejectedAlternatives({
+      whyNotAlternatives: plan.whyNotAlternatives,
+      alternateTargetRecommendation,
+    }));
+  }
+
   if (plan.budgetImpact && !hasQuantifiedBudgetImpact(plan.budgetImpact)) {
     failures.push('capacityPlan budgetImpact must include a numeric capacity delta, budget, or headroom value');
   }
@@ -886,8 +908,12 @@ function validateCapacityPlanTemplate({
 
 function validateExistingCapacityPlanTemplates(rules = sourceProjectionRules()) {
   const failures = [];
+  const effectiveSummary = summarizeSourceProjectionEffectiveCategories({ rules });
   const effectiveCategoryByName = new Map(
-    summarizeSourceProjectionEffectiveCategories({ rules }).categories.map((item) => [item.name, item]),
+    effectiveSummary.categories.map((item) => [item.name, item]),
+  );
+  const alternateTargetByCategory = new Map(
+    suggestSourceProjectionEffectiveCategoryAlternateTargets(effectiveSummary).map((item) => [item.name, item]),
   );
   for (const rule of rules) {
     if (!Object.hasOwn(rule, 'capacityPlan') && !Object.hasOwn(rule, 'capacityJustification')) continue;
@@ -896,7 +922,7 @@ function validateExistingCapacityPlanTemplates(rules = sourceProjectionRules()) 
     const templateFailures = validateCapacityPlanTemplate({
       rule,
       effectiveCategory,
-      alternateTargetRecommendation: false,
+      alternateTargetRecommendation: alternateTargetByCategory.get(effectiveCategory) || null,
       effectiveCategoryItem: effectiveCategoryByName.get(effectiveCategory) || null,
     });
     for (const failure of templateFailures) {
@@ -946,9 +972,10 @@ export function validateSourceProjectionRuleCategoryCapacityPlan({
     const action = actionByCategory.get(effectiveCategory);
     if (!action) continue;
 
-    const alternateTargetRecommendation = formatAlternateTargetRecommendation(alternateTargetByCategory.get(effectiveCategory));
-    const alternateTargetLine = alternateTargetRecommendation
-      ? `; available alternate split targets: ${alternateTargetRecommendation}`
+    const alternateTargetRecommendation = alternateTargetByCategory.get(effectiveCategory) || null;
+    const alternateTargetDiagnostic = formatAlternateTargetRecommendation(alternateTargetRecommendation);
+    const alternateTargetLine = alternateTargetDiagnostic
+      ? `; available alternate split targets: ${alternateTargetDiagnostic}`
       : '';
 
     if (!hasCapacityPlan(rule)) {
@@ -1484,7 +1511,7 @@ function validateSelfTests() {
         terms: ['scheduled tasks and ChatGPT finance control surfaces'],
         capacityPlan: {
           selectedSplitTarget: 'chatgpt-control-surfaces',
-          whyNotAlternatives: 'Rejected alternate split targets because this rule is specifically about ChatGPT control surfaces, not creative AI or career workflows.',
+          whyNotAlternatives: 'Rejected alternate split targets because this rule is specifically about ChatGPT control surfaces, not consumer-creative-ai or career-productivity-workflows.',
           budgetImpact: 'capacity delta 0; consumes the final chatgpt-control-surfaces slot and requires follow-up split migration before another rule is added.',
         },
       },
@@ -1606,6 +1633,25 @@ function validateSelfTests() {
   }).join('\n');
   if (!proposedBudgetImpactDeltaFailures.includes('synthetic-new-chatgpt-control-rule-with-understated-delta — capacityPlan budgetImpact capacity delta 0 is below required delta 1 for effective category chatgpt-control-surfaces')) {
     failures.push('source projection taxonomy proposed capacity-plan self-test failed: understated capacity delta should fail');
+  }
+
+  const rejectedAlternativesCoverageFailures = validateSourceProjectionRuleTaxonomy({
+    rules: sourceProjectionRules().concat([
+      {
+        name: 'synthetic-existing-rule-with-incomplete-rejected-alternatives',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        splitTargetCategory: 'chatgpt-control-surfaces',
+        capacityPlan: {
+          selectedSplitTarget: 'chatgpt-control-surfaces',
+          whyNotAlternatives: 'Rejected alternate split targets because this synthetic rule mentions alternate targets but omits the available target ids.',
+          budgetImpact: 'capacity delta 0; synthetic rejected-alternatives coverage should fail before this plan can be used.',
+        },
+      },
+    ]),
+  }).join('\n');
+  if (!rejectedAlternativesCoverageFailures.includes('synthetic-existing-rule-with-incomplete-rejected-alternatives — existing rule capacityPlan whyNotAlternatives must name available alternate split targets: career-productivity-workflows, consumer-creative-ai')) {
+    failures.push('source projection taxonomy existing capacity-plan self-test failed: rejected alternate target coverage should fail');
   }
 
   const alternateTargetDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({

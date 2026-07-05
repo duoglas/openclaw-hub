@@ -6,7 +6,7 @@
 - Start date: 2026-07-03
 - End date: 2026-07-03
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 mismatched selectedSplitTarget，并且 `pnpm build` 通过。
-- Result: pass（capacityPlan 现在不仅要求结构化字段，还要求 selectedSplitTarget 与 rule 的 effective category 一致；synthetic self-test 锁定 mismatch 诊断；当前 16 条结构化 capacityPlan 全部与 splitTargetCategory 对齐；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（capacityPlan 现在不仅要求结构化字段，还要求 selectedSplitTarget 与 rule 的 effective category 一致；synthetic self-test 锁定 mismatch 诊断；当前 16 条结构化 capacityPlan 全部与 splitTargetCategory 对齐；taxonomy check 与 build 全部通过；commit `5324150`；质量评分 28/30。）
 - Decision: scale（保留 selectedSplitTarget alignment 作为 source projection 预算治理一致性闸门；下一步可要求 `budgetImpact` 明确包含 headroom / budget raise 数字，避免容量影响仍停留在自然语言描述。）
 
 ### EXP-209
@@ -109,6 +109,17 @@
 - Decision: scale（保留 2026-06-29 fixture 作为最近 72 小时低新增量日报的首日索引质量基线；下一步可把 `caseLevelFaqSignals` metadata 迁移到 2026-06-29 或后续含 Practical Cases 的 latest fixture，并为缺 metadata 的 practical case 输出更细诊断。）
 
 # EXPERIMENT_LOG.md
+
+### EXP-213
+- Hypothesis: EXP-212 已把 `budgetImpact` 的 capacity delta 与 effective headroom 自动比对，但 `whyNotAlternatives` 仍可能只写“creative AI / career workflows / digital compliance”这类自然语言；若不要求它点名当前可分流的 effective alternate target ID，维护者仍可能漏提真实可用 sibling split target，导致容量治理回到人工判断。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 `validateCapacityPlanRejectedAlternatives`，把 `suggestSourceProjectionEffectiveCategoryAlternateTargets` 的 sibling target 列表接入 shared capacityPlan template；existing rule 与 proposed rule 均会校验 `whyNotAlternatives` 是否显式包含可用 alternate target ID。同步修正 5 条历史 capacityPlan 文案，点名 `digital-regulation-compliance`、`consumer-creative-ai`、`career-productivity-workflows`、`content-licensing-markets`、`market-sizing-reports` 等真实可分流目标。
+- ICE: 8x8x8=512
+- Start date: 2026-07-05
+- End date: 2026-07-05
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断缺少 effective alternate target ID 的 rejected-alternatives 文案；`pnpm build` 通过。
+- Result: pass（capacityPlan.whyNotAlternatives 现在必须和 effective alternate target list 自动对齐；synthetic self-test 锁定 ChatGPT control-surface plan 漏写 `career-productivity-workflows` / `consumer-creative-ai` 会失败；5 条历史 capacityPlan 已改为显式点名可分流 target ID；taxonomy check 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 rejected-alternatives target ID 覆盖作为 source projection 容量治理闸门；下一步可把 capacityPlan 的 whyNotAlternatives 从自由文本进一步结构化为 rejectedAlternateTargets 数组，降低文本包含式校验的脆弱性。）
 
 ### EXP-212
 - Hypothesis: EXP-211 已要求 budgetImpact 写入数值 capacity delta / budget / headroom，但数值仍可能与真实 effective category 使用率漂移；若 `capacity delta +1/0` 不和当前 headroom、满额新增规则所需扩容量比对，维护者仍能在有余量分类里声明扩容，或在满额分类新增规则时声明零扩容。
