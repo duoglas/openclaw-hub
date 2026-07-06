@@ -6,7 +6,7 @@
 - Start date: 2026-07-06
 - End date: 2026-07-06
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 stale `categoryBudget/categoryHeadroom`；`pnpm build` 通过。
-- Result: pass（structured budgetImpact 现在同时校验 capacity delta 与实时 effective category budget/headroom；stale budget/headroom self-test 已覆盖；当前 16 条历史 capacityPlan 快照均与实时 effective summary 一致；taxonomy check 与 build 全部通过；commit `ff6d3c2`；质量评分 28/30。）
+- Result: pass（structured budgetImpact 现在同时校验 capacity delta 与实时 effective category budget/headroom；stale budget/headroom self-test 已覆盖；当前 16 条历史 capacityPlan 快照均与实时 effective summary 一致；taxonomy check 与 build 全部通过；commit `ecfc171`；质量评分 28/30。）
 - Decision: scale（保留 budget/headroom 实时一致性闸门；下一步可将 capacityPlan 的 rationale 增加 required evidence terms，减少“结构化字段正确但解释泛化”的治理盲区。）
 
 ### EXP-215

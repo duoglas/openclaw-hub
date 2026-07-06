@@ -20,7 +20,7 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-216: 校验 structured capacityPlan.budgetImpact 的 categoryBudget/categoryHeadroom 必须与实时 effective category summary 一致，消费 EXP-215 “阻断 stale capacity snapshot”后续假设 | ICE 8x8x8=512 — commit `ff6d3c2`
+- [x] P1 Candidate / EXP-216: 校验 structured capacityPlan.budgetImpact 的 categoryBudget/categoryHeadroom 必须与实时 effective category summary 一致，消费 EXP-215 “阻断 stale capacity snapshot”后续假设 | ICE 8x8x8=512 — commit `ecfc171`
   - Hypothesis: EXP-215 已将 budgetImpact 升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`，但 categoryBudget/categoryHeadroom 仍可能成为手写快照；若不与实时 effective category summary 比对，新增/迁移规则后 stale budget/headroom 数字会继续误导容量治理。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 stale `categoryBudget` 与 stale `categoryHeadroom`；`pnpm build` 通过。
   - Acceptance: 1) `validateCapacityPlanBudgetImpactConsistency` 对 structured budgetImpact 比对实时 effective category budget/headroom；2) existing rule 与 proposed rule capacityPlan 共用该闸门；3) synthetic self-test 锁定 stale budget 与 stale headroom 两类失败；4) 当前 16 条历史 capacityPlan 快照均与实时 effective summary 一致；5) taxonomy check 与 build 通过，质量评分 28/30。
