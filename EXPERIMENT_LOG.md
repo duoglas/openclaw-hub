@@ -1,3 +1,14 @@
+### EXP-216
+- Hypothesis: EXP-215 已将 `budgetImpact` 升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`，但 `categoryBudget/categoryHeadroom` 仍可能成为手写快照；若不与实时 effective category summary 比对，新增或迁移 source projection rule 后 stale budget/headroom 数字会继续误导容量治理。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: `validateCapacityPlanBudgetImpactConsistency` 新增 structured `budgetImpact.categoryBudget` 与 `categoryHeadroom` 的实时比对，existing rule 与 proposed rule capacityPlan 共用；新增 stale snapshot synthetic self-test，分别锁定 stale budget 与 stale headroom 失败诊断。
+- ICE: 8x8x8=512
+- Start date: 2026-07-06
+- End date: 2026-07-06
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 stale `categoryBudget/categoryHeadroom`；`pnpm build` 通过。
+- Result: pass（structured budgetImpact 现在同时校验 capacity delta 与实时 effective category budget/headroom；stale budget/headroom self-test 已覆盖；当前 16 条历史 capacityPlan 快照均与实时 effective summary 一致；taxonomy check 与 build 全部通过；commit `ff6d3c2`；质量评分 28/30。）
+- Decision: scale（保留 budget/headroom 实时一致性闸门；下一步可将 capacityPlan 的 rationale 增加 required evidence terms，减少“结构化字段正确但解释泛化”的治理盲区。）
+
 ### EXP-215
 - Hypothesis: EXP-214 已把 `rejectedAlternateTargets` 结构化，但 `budgetImpact` 仍依赖自由文本里的 `capacity delta`、预算与 headroom 数字；若拆为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`，source projection 容量治理可从正则解析升级为字段级审计，减少数字遗漏、文本误读和 stale 预算漂移。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

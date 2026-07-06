@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-05 17:24
+Last updated: 2026-07-06 11:23
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-216: 校验 structured capacityPlan.budgetImpact 的 categoryBudget/categoryHeadroom 必须与实时 effective category summary 一致，消费 EXP-215 “阻断 stale capacity snapshot”后续假设 | ICE 8x8x8=512 — commit `ff6d3c2`
+  - Hypothesis: EXP-215 已将 budgetImpact 升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`，但 categoryBudget/categoryHeadroom 仍可能成为手写快照；若不与实时 effective category summary 比对，新增/迁移规则后 stale budget/headroom 数字会继续误导容量治理。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 stale `categoryBudget` 与 stale `categoryHeadroom`；`pnpm build` 通过。
+  - Acceptance: 1) `validateCapacityPlanBudgetImpactConsistency` 对 structured budgetImpact 比对实时 effective category budget/headroom；2) existing rule 与 proposed rule capacityPlan 共用该闸门；3) synthetic self-test 锁定 stale budget 与 stale headroom 两类失败；4) 当前 16 条历史 capacityPlan 快照均与实时 effective summary 一致；5) taxonomy check 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-215: 将 structured capacityPlan.budgetImpact 从文本升级为对象字段，消费 EXP-214 “budgetImpact 拆为结构化 capacityDelta/budget/headroom”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-214 已把 rejected alternatives 升级为结构化数组，但 `budgetImpact` 仍依赖文本解析 `capacity delta`、budget 与 headroom；若将其升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}` 对象并加入模板闸门，容量治理可减少正则误读和 stale 数字漂移。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断非结构化或缺少数值字段的 budgetImpact；16 条历史 capacityPlan 写入结构化容量影响；`pnpm build` 通过。

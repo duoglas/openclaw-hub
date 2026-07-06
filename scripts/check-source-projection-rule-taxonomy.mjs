@@ -844,6 +844,19 @@ function validateCapacityPlanBudgetImpactConsistency({
   const categoryHeadroom = effectiveCategoryItem?.headroom ?? proposedAction?.headroom ?? null;
   if (categoryBudget == null || categoryHeadroom == null) return failures;
 
+  if (budgetImpact && typeof budgetImpact === 'object') {
+    if (Number.isInteger(budgetImpact.categoryBudget) && budgetImpact.categoryBudget !== categoryBudget) {
+      failures.push(
+        `capacityPlan budgetImpact categoryBudget ${budgetImpact.categoryBudget} is stale for effective category ${effectiveCategory}; expected ${categoryBudget}`,
+      );
+    }
+    if (Number.isInteger(budgetImpact.categoryHeadroom) && budgetImpact.categoryHeadroom !== categoryHeadroom) {
+      failures.push(
+        `capacityPlan budgetImpact categoryHeadroom ${budgetImpact.categoryHeadroom} is stale for effective category ${effectiveCategory}; expected ${categoryHeadroom}`,
+      );
+    }
+  }
+
   if (proposedAction) {
     const requiredDelta = Math.max(0, 1 - categoryHeadroom);
     if (delta < requiredDelta) {
@@ -1529,9 +1542,9 @@ function validateSelfTests() {
 
             categoryBudget: 4,
 
-            categoryHeadroom: 1,
+            categoryHeadroom: 0,
 
-            rationale: 'capacity delta +1; raises developer-tools capacity for this synthetic parent fallback case after explicit review.',
+            rationale: 'capacity delta +1; raises developer-tools capacity for this synthetic parent fallback case after explicit review.'
 
           },
         },
@@ -1714,7 +1727,43 @@ function validateSelfTests() {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: roomy capacity delta raise should fail');
   }
 
+  const staleBudgetImpactSnapshotFailures = validateSourceProjectionRuleTaxonomy({
+    rules: sourceProjectionRules().concat([
+      {
+        name: 'synthetic-existing-rule-with-stale-budget-impact-snapshot',
+        owner: 'daily-source-projection',
+        category: 'consumer-productivity',
+        splitTargetCategory: 'chatgpt-control-surfaces',
+        capacityPlan: {
+          selectedSplitTarget: 'chatgpt-control-surfaces',
+          whyNotAlternatives: 'Rejected alternate split targets because this synthetic rule names career-productivity-workflows and consumer-creative-ai.',
+          rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai'],
+          budgetImpact: {
+
+            capacityDelta: 0,
+
+            categoryBudget: 5,
+
+            categoryHeadroom: 2,
+
+            rationale: 'capacity delta 0; stale synthetic budget/headroom snapshot should fail before this plan can be used.',
+
+          },
+        },
+      },
+    ]),
+  }).join('\n');
+  for (const fragment of [
+    'synthetic-existing-rule-with-stale-budget-impact-snapshot — existing rule capacityPlan budgetImpact categoryBudget 5 is stale for effective category chatgpt-control-surfaces; expected 4',
+    'synthetic-existing-rule-with-stale-budget-impact-snapshot — existing rule capacityPlan budgetImpact categoryHeadroom 2 is stale for effective category chatgpt-control-surfaces; expected 0',
+  ]) {
+    if (!staleBudgetImpactSnapshotFailures.includes(fragment)) {
+      failures.push(`source projection taxonomy existing capacity-plan self-test failed: ${fragment}`);
+    }
+  }
+
   const proposedBudgetImpactDeltaFailures = validateSourceProjectionRuleCategoryCapacityPlan({
+
     currentRules: Array.from({ length: 4 }, (_, index) => ({
       name: `synthetic-chatgpt-control-surface-delta-current-${index + 1}`,
       owner: 'daily-source-projection',
