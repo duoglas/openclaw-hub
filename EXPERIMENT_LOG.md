@@ -1,3 +1,14 @@
+### EXP-217
+- Hypothesis: 最近24小时 2026-07-06 日报发布链路曾把 `Apply Patch failed` / cron failure 摘要写入 ZH frontmatter description 和正文占位；若 publish 阶段继续允许失败 summary fallback，首日索引会收录错误日志而不是真实 AI/科技信号，损害 daily SEO 与内容可信度。
+- Scope: `scripts/publish-daily.sh`, `scripts/lib/daily-zh-generator.mjs`, `src/content/blog/en/openclaw-daily-2026-07-06.md`, `src/content/blog/zh/openclaw-daily-2026-07-06.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: `publish-daily.sh` 过滤非 ok 或含 failure marker 的 cron summary，并在无可用摘要时退出失败；ZH description builder 拒绝失败日志输入并使用安全 fallback；2026-07-06 双语日报回写真实 NVIDIA 算力商业模式、美国 AI 供应链、AWS Bedrock/Claude Fable、安全评分框架与中国大模型安全测评信号。
+- ICE: 8x8x8=512
+- Start date: 2026-07-06
+- End date: 2026-07-06
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture` 与 `pnpm build` 通过；2026-07-06 ZH 页面不再包含 `Apply Patch failed` 或占位证据矩阵。
+- Result: pass（publish 阶段已 fail fast，ZH description 不再吸收失败 cron 日志；2026-07-06 双语页面已替换为真实同日 AI/科技信号；latest fixture freshness、ZH generator fixture 与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留失败摘要过滤作为日报发布底线；下一步可将最新 2026-07-06 日报接入 real cron fixture registry，并为 NVIDIA 算力商业模式 / AWS Claude Fable / LLM safety assessment 增加字段级 source projection。）
+
 ### EXP-216
 - Hypothesis: EXP-215 已将 `budgetImpact` 升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`，但 `categoryBudget/categoryHeadroom` 仍可能成为手写快照；若不与实时 effective category summary 比对，新增或迁移 source projection rule 后 stale budget/headroom 数字会继续误导容量治理。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

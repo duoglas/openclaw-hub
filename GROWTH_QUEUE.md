@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-217: 阻断失败 cron 摘要污染日报发布，并修复 2026-07-06 ZH 占位内容，消费最近24小时内容建设失败摘要假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: 最近24小时 2026-07-06 日报发布链路曾把 `Apply Patch failed` / cron failure 摘要写入 ZH frontmatter description 和正文占位；若 publish 阶段继续允许失败 summary fallback，首日索引会收录错误日志而不是真实 AI/科技信号，损害 daily SEO 与内容可信度。
+  - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture` 与 `pnpm build` 通过；2026-07-06 ZH 页面不再包含失败标记或占位证据矩阵。
+  - Acceptance: 1) `publish-daily.sh` 只接受 `finished + status=ok` 且无 failure markers 的 daily-ai-tech summary，找不到可用摘要时 fail fast；2) ZH description builder 拒绝 `Apply Patch failed` / cron failure 原文并回落安全描述；3) 2026-07-06 ZH 日报回写真实 NVIDIA/AWS/Anthropic/中国大模型安全信号与证据矩阵；4) EN 2026-07-06 从旧泛化 OpenAI/Claude/Gemini 占位更新到同日真实信号；5) latest fixture freshness、ZH generator fixture 与 build 通过，质量评分 27/30。
 - [x] P1 Candidate / EXP-216: 校验 structured capacityPlan.budgetImpact 的 categoryBudget/categoryHeadroom 必须与实时 effective category summary 一致，消费 EXP-215 “阻断 stale capacity snapshot”后续假设 | ICE 8x8x8=512 — commit `ecfc171`
   - Hypothesis: EXP-215 已将 budgetImpact 升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`，但 categoryBudget/categoryHeadroom 仍可能成为手写快照；若不与实时 effective category summary 比对，新增/迁移规则后 stale budget/headroom 数字会继续误导容量治理。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 阻断 stale `categoryBudget` 与 stale `categoryHeadroom`；`pnpm build` 通过。

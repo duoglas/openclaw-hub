@@ -61,7 +61,14 @@ if start < 0:
     sys.exit(1)
 data = json.loads(out[start:])
 today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d')
-entries = [e for e in data.get('entries', []) if e.get('action')=='finished' and e.get('summary')]
+def usable(e):
+    if e.get('action') != 'finished' or e.get('status') != 'ok' or not e.get('summary'):
+        return False
+    summary = str(e.get('summary') or '')
+    failure_markers = ('Apply Patch failed', 'Cron job', 'failed:', '⚠️')
+    return not any(marker in summary for marker in failure_markers)
+
+entries = [e for e in data.get('entries', []) if usable(e)]
 summary = None
 for e in entries:
     d = datetime.datetime.fromtimestamp(e.get('runAtMs',0)/1000, datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d')
@@ -71,7 +78,8 @@ for e in entries:
 if summary is None and entries:
     summary = entries[0]['summary']
 if not summary:
-    summary = "今日 AI / 科技日报暂未生成，稍后将自动更新。"
+    sys.stderr.write('No usable successful daily-ai-tech cron summary found; refusing to publish fallback placeholder.\n')
+    sys.exit(2)
 print(summary)
 PY
 )

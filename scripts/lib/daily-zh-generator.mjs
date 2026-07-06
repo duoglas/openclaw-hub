@@ -76,9 +76,11 @@ export function extractZhStories(sourceText) {
 }
 
 function fitZhDescription(value, maxLength = 130) {
+  const fallback = '今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。';
   let text = String(value || '').replace(/\s+/g, ' ').trim().replace(/[；;，,。.]+$/g, '');
-  if (!text) return '今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。';
+  if (!text || /Apply Patch failed|Cron job|failed:|⚠️/.test(text)) return fallback;
   if (!/[。！？]$/.test(text)) text += '。';
+  if (text.length < 25) return fallback;
   if (text.length <= maxLength) return text;
 
   const clipped = text.slice(0, maxLength - 1);
@@ -106,7 +108,12 @@ function trimDetail(value, fallback) {
 }
 
 export function buildZhDescription(sourceText) {
-  const lines = String(sourceText || '')
+  const rawSource = String(sourceText || '');
+  if (/Apply Patch failed|Cron job|failed:|⚠️/.test(rawSource)) {
+    return fitZhDescription('', 130).replace(/"/g, '');
+  }
+
+  const lines = rawSource
     .replace(/\r/g, '\n')
     .split('\n')
     .map((line) => normalize(line))
