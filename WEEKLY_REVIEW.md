@@ -1,9 +1,9 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: 2026-06-29 to 2026-07-05
+- Week: 2026-07-06 to 2026-07-12
 - Owner: hub-growth-worker
-- Reviewed at: 2026-07-03 11:10 (Asia/Shanghai)
+- Reviewed at: 2026-07-06 08:45 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
@@ -15,9 +15,9 @@
 - Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.
 - High-bounce-risk pages (proxy): Source from weekly report Section 7 (high impressions + low CTR proxy queue) and execute top 2 retro actions.
 - New pages indexed: Verify newly published URLs in Search Console; if data unavailable, create one indexing check task in Action Plan.
-- Published posts (auto): 10
-- Updated posts (git-tracked): 10
-- Technical SEO commits (git-tracked): 9
+- Published posts (auto): 0
+- Updated posts (git-tracked): 0
+- Technical SEO commits (git-tracked): 0
 
 ### Orient (diagnosis)
 - Why did winners win?
@@ -36,7 +36,7 @@
   - status: done
 
 - [ ] 当前缺少可计算的高展现低CTR query 数据，先完成 7 天 GSC query 回填后再生成标题改写清单。
-  - owner: hub-growth-worker | due: 2026-07-05
+  - owner: hub-growth-worker | due: 2026-07-12
 
 ## Postmortem
 - What was low-value busy work this week?

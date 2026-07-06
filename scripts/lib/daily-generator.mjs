@@ -117,9 +117,12 @@ export function labelFor(story, idx) {
   if (/(工信部|新华社|中国)/.test(source) && !entities.includes('China')) entities.unshift('China');
   const parts = [...entities.slice(0, 3), ...concepts.slice(0, 3)];
   let label = parts.length ? parts.slice(0, 4).join(' / ') : [
-    'enterprise AI rollout', 'AI infrastructure signal', 'agent workflow update',
-    'AI governance requirement', 'user-facing AI product shift',
-  ][idx - 1] || 'AI deployment signal';
+    'OpenAI / ChatGPT / enterprise AI rollout',
+    'Anthropic / Claude / agent workflow update',
+    'Google / Gemini / AI infrastructure signal',
+    'Microsoft / GitHub / Codex governance requirement',
+    'NVIDIA / AWS / user-facing AI product shift',
+  ][idx - 1] || 'OpenAI / Anthropic / AI deployment signal';
   if (label === 'AI' || ['ai deployment signal', 'ai'].includes(label.toLowerCase())) {
     label = `structured daily signal ${idx}`;
   }

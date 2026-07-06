@@ -144,7 +144,9 @@ export function buildZhDescription(sourceText) {
 
 export function generateZhDailyBody(sourceText, date) {
   let body = String(sourceText || '').replace(/\r/g, '\n').trim();
-  if (!body) body = '今日 AI / 科技日报暂未生成，稍后将自动更新。';
+  if (!body || !/[\u4e00-\u9fff]/.test(body)) {
+    body = '今日 AI / 科技日报暂未生成完整上游摘要，本页先保留结构化发布占位，重点跟踪 OpenAI、Anthropic、Google、Microsoft、NVIDIA 与 AWS 相关的模型、基础设施和治理信号。';
+  }
 
   const stories = extractZhStories(body);
   const conclusion = `## 今日结论\n\n- 最值得关注：企业级 AI 正在加速进入核心业务流程，AI 不再只是聊天工具，而是在进入税务、法务、制造、运维、推理服务等真实生产系统。\n- 给普通用户建议：短期优先选择权限透明、可断开授权、有来源标注的 AI 产品，把它用于信息整理、学习复盘、日常文档和低风险决策辅助。\n- 给团队建议：不要只比较模型榜单，先选一个高频流程做试点，并把权限、审计、成本和人工复核写进上线标准。`;
