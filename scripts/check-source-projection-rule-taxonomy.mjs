@@ -26,7 +26,7 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'market-intelligence': 5,
   'physical-ai-robotics': 10,
   'policy-governance': 10,
-  'product-safety': 5,
+  'product-safety': 6,
 };
 export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'agent-enablement-programs',
@@ -84,7 +84,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'frontier-model-task-capability': 3,
   'high-sensitivity-ai-deployment': 3,
   'market-sizing-reports': 3,
-  'model-account-security': 3,
+  'model-account-security': 4,
   'public-market-readiness': 2,
   'product-safety': 5,
   'regional-ai-ecosystems': 4,
@@ -264,7 +264,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'robotics-commercial-deployment',
-      match: ['doosan', 'unitree', 'service-robotics', 'ipo', 'factory'],
+      match: ['doosan', 'unitree', 'service-robotics', 'ipo', 'factory', 'open-models-robotics-research', 'robotics-valley', 'consumer-deployment'],
     },
     {
       target: 'autonomous-mobility-systems',
@@ -278,7 +278,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'model-account-security',
-      match: ['active-sessions', 'memory-lockdown', 'lockdown'],
+      match: ['active-sessions', 'memory-lockdown', 'lockdown', 'fable-jailbreak', 'jailbreak'],
     },
     {
       target: 'youth-safety-controls',

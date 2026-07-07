@@ -165,15 +165,19 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'ai-infrastructure-capacity',
     displayLabels: [
       {
+        label: 'NVIDIA / sovereign AI / national AI infrastructure',
+        terms: ['本地 AI 能力', '本地算力', 'AI 工厂'],
+      },
+      {
         label: 'NVIDIA / HPE / AI infrastructure capacity',
         terms: ['HPE AI Factory with NVIDIA', 'NVIDIA Agent Toolkit'],
       },
     ],
-    terms: ['AI Cloud', 'AI factory', '六大洲', 'HPE AI Factory with NVIDIA'],
+    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA'],
     details: {
-      what: 'NVIDIA said partners are expanding AI factories and AI clouds across six continents for training, inference, agents, physical AI, and sovereign AI workloads.',
-      why: 'The competitive bottleneck is shifting from model announcements toward reliable token production, regional cloud capacity, sovereign AI infrastructure, and end-to-end inference economics.',
-      impact: 'Enterprises may increasingly buy AI capacity as a managed production layer rather than raw GPUs, making partner geography, data residency, cost per token, and service reliability key selection criteria.',
+      what: 'NVIDIA said sovereign AI infrastructure is expanding around local compute, local data, foundation models, talent systems, AI factories, and regional AI cloud capacity for training, inference, agents, and physical AI workloads.',
+      why: 'The competitive bottleneck is shifting from model announcements toward reliable token production, data residency, regional cloud capacity, sovereign AI infrastructure, and end-to-end inference economics.',
+      impact: 'Enterprises may increasingly buy AI capacity as a managed production layer rather than raw GPUs, making partner geography, local data controls, cost per token, service reliability, and regional compliance key selection criteria.',
     },
   },
   {
@@ -1089,6 +1093,66 @@ export const FIELD_PROJECTION_RULES = [
       what: 'AWS Summit D.C. highlighted public-sector AI and cloud investments, including Secret Cloud for Industry, intelligence-community cloud migration incentives, FDE, energy research, and UK government AI scaling.',
       why: 'AI is moving into government, defense, energy, intelligence, and other high-security environments where compliance, isolation, sovereignty, and classified-data handling determine adoption.',
       impact: 'Public-sector and regulated-industry teams should compare AI infrastructure on accreditation, data boundaries, audit logs, incident response, sovereign operations, and mission-specific deployment support.',
+    },
+  },
+  {
+    name: 'nvidia-icml-open-models-robotics-research-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-simulation-training',
+    displayLabel: 'NVIDIA / ICML / open model research infrastructure',
+    capacityPlan: {
+      selectedSplitTarget: 'robotics-simulation-training',
+      whyNotAlternatives: 'Rejected alternate split targets because the ICML open-model signal centers on Cosmos/GR00T research infrastructure and reproducible simulation training, not autonomous-mobility-systems.',
+      rejectedAlternateTargets: ['autonomous-mobility-systems'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 6,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta 0; consumes the final robotics-simulation-training slot for a 2026-07-07 NVIDIA ICML open-model research infrastructure signal without raising effective budget.',
+      },
+    },
+    terms: ['ICML 2026', '约 2000 篇论文引用 NVIDIA GPU', '145 篇引用 Nemotron'],
+    details: {
+      what: 'NVIDIA said ICML 2026 accepted 74 NVIDIA papers, about 2,000 accepted papers cited NVIDIA GPUs, and 145 cited Nemotron, while Cosmos, GR00T, BioNeMo, and related open models are being used across robotics, autonomous driving, and life-science workflows.',
+      why: 'AI research infrastructure is shifting from single-model releases toward open models, datasets, tooling, and inference stacks that make robotics, drug discovery, autonomous driving, and scientific workflows more reproducible.',
+      impact: 'Research and robotics teams should track which open models, datasets, benchmarks, and GPU dependencies are reproducible enough for downstream experiments before committing to a deployment stack.',
+    },
+  },
+  {
+    name: 'anthropic-fable-jailbreak-severity-framework-2026',
+    owner: 'daily-source-projection',
+    category: 'product-safety',
+    splitTargetCategory: 'model-account-security',
+    displayLabel: 'Anthropic / Claude Fable / jailbreak severity framework',
+    capacityPlan: {
+      selectedSplitTarget: 'model-account-security',
+      whyNotAlternatives: 'Rejected alternate split targets because Claude Fable availability and jailbreak severity scoring are model safety and abuse-control signals, not high-sensitivity deployment or youth safety controls.',
+      budgetImpact: {
+        capacityDelta: 1,
+        categoryBudget: 4,
+        categoryHeadroom: 1,
+        rationale: 'capacity delta +1; raises model-account-security for a 2026-07-07 Claude Fable and jailbreak severity framework signal while keeping product-safety matching narrow.',
+      },
+    },
+    terms: ['Fable 5 于 7 月 1 日全球回归', 'jailbreak 严重度评分框架'],
+    details: {
+      what: 'Anthropic said Claude Fable 5 returned globally on July 1 and highlighted an industry jailbreak severity scoring framework with partners including Amazon, Microsoft, and Google.',
+      why: 'Model safety is moving toward more comparable severity scoring, where jailbreak risk, abuse controls, enterprise review, and deployment eligibility can be evaluated with a shared language instead of vendor-specific claims.',
+      impact: 'Security, compliance, and AI platform teams should ask vendors how jailbreak severity is scored, logged, mitigated, and mapped to launch gates before approving sensitive model deployments.',
+    },
+  },
+  {
+    name: 'xinhua-shenzhen-robotics-consumer-deployment-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
+    splitTargetCategory: 'robotics-commercial-deployment',
+    displayLabel: 'Xinhua / Shenzhen / consumer robotics deployment',
+    terms: ['深圳南山区“机器人谷”', '极壳科技', '2426 亿元'],
+    details: {
+      what: 'Xinhua reported that Shenzhen Nanshan Robotics Valley is forming a robotics cluster, with consumer exoskeleton company Jikex Technology reaching users in more than 70 countries and Shenzhen robotics output reaching 242.6 billion yuan in 2025.',
+      why: 'Robotics commercialization is expanding from industrial lines into elder care, outdoor work, rehabilitation, and consumer-assistive scenarios where supply-chain depth and real deployment contexts matter.',
+      impact: 'Robotics teams should evaluate focused assistive products, channel access, safety validation, after-sales support, and scenario-specific outcomes before betting on general-purpose humanoid robots.',
     },
   },
 

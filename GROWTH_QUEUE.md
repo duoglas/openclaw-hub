@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-06 11:23
+Last updated: 2026-07-07 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-218: 将 2026-07-07 最新双语日报接入 real cron fixture，并为 NVIDIA ICML 开放模型、Anthropic jailbreak 评分与深圳消费机器人新增字段级 source projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-07）暴露 NVIDIA ICML 开放模型研究基础设施、主权 AI / 国家 AI 基础设施、AWS Bedrock 安全发布、Anthropic Claude Fable 5 + jailbreak 严重度评分框架、深圳机器人消费级部署五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉开放模型科研栈、主权 AI、模型安全评分和消费机器人四类长尾入口。
+  - Metrics: `pnpm check:latest-daily-real-cron-fixture`、真实 cron EN/ZH/pair、source projection label/case FAQ、source projection scope/registry health/taxonomy、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-07.mjs`，覆盖 2026-07-07 五条最新信号；2) `source-projection-rules.mjs` 新增 NVIDIA ICML open models、Anthropic Fable/jailbreak severity、Xinhua Shenzhen robotics 三条字段级英文 projection，并为 sovereign AI 补充条件 label；3) EN 2026-07-07 日报移除 NVIDIA/robotics 泛化 fallback，补齐 Case-Level FAQ；4) latest fixture freshness 显示 latestFixture=2026-07-07、expectedSignals=5；5) 全部相关检查与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-217: 阻断失败 cron 摘要污染日报发布，并修复 2026-07-06 ZH 占位内容，消费最近24小时内容建设失败摘要假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: 最近24小时 2026-07-06 日报发布链路曾把 `Apply Patch failed` / cron failure 摘要写入 ZH frontmatter description 和正文占位；若 publish 阶段继续允许失败 summary fallback，首日索引会收录错误日志而不是真实 AI/科技信号，损害 daily SEO 与内容可信度。
   - Metrics: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture` 与 `pnpm build` 通过；2026-07-06 ZH 页面不再包含失败标记或占位证据矩阵。

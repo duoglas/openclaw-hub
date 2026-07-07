@@ -1,3 +1,14 @@
+### EXP-218
+- Hypothesis: 最近24小时新增日报（2026-07-07）暴露 NVIDIA ICML 开放模型研究基础设施、主权 AI / 国家 AI 基础设施、AWS Bedrock 安全发布、Anthropic Claude Fable 5 + jailbreak 严重度评分框架、深圳机器人消费级部署五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉开放模型科研栈、主权 AI、模型安全评分和消费机器人四类长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-07.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-07-07.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-07 real cron fixture，覆盖 NVIDIA ICML / sovereign AI / AWS Bedrock / Anthropic jailbreak severity / Shenzhen robotics 五条信号；source projection registry 新增 NVIDIA ICML open models、Anthropic Fable jailbreak severity、Xinhua Shenzhen consumer robotics 三条字段级英文 projection，并为 sovereign AI 补充条件 label；EN 2026-07-07 日报改为字段级事实输出，新增 ChatGPT model selector 与 Shenzhen exoskeleton Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-07
+- End date: 2026-07-07
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:daily-fixture-source-dedup`、`pnpm check:daily-parser-guardrail-coverage`、`pnpm check:daily-brief-specificity`、`pnpm check:daily-cta`、`pnpm check:daily-action-sections`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
+- Result: pass（latestDaily=2026-07-07 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 与 Evidence Matrix 已命中字段级 projection，Case-Level FAQ 自动推断 ChatGPT model selector 与 Shenzhen consumer robotics 两个 signals；source projection taxonomy 显示 totalRules=71、effective category coverage=71/71 split-backed；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-07 fixture 作为开放模型研究基础设施、主权 AI、模型安全评分与消费级机器人部署的首日索引质量基线；下一步可将 physical-ai-robotics 已满额 split target 继续拆分为 exoskeleton / humanoid / simulation 子目标，降低后续机器人日报 projection 的容量压力。）
+
 ### EXP-217
 - Hypothesis: 最近24小时 2026-07-06 日报发布链路曾把 `Apply Patch failed` / cron failure 摘要写入 ZH frontmatter description 和正文占位；若 publish 阶段继续允许失败 summary fallback，首日索引会收录错误日志而不是真实 AI/科技信号，损害 daily SEO 与内容可信度。
 - Scope: `scripts/publish-daily.sh`, `scripts/lib/daily-zh-generator.mjs`, `src/content/blog/en/openclaw-daily-2026-07-06.md`, `src/content/blog/zh/openclaw-daily-2026-07-06.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
