@@ -641,7 +641,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'china-humanoid-embodied-training-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
-    splitTargetCategory: 'robotics-simulation-training',
+    splitTargetCategory: 'humanoid-embodied-training',
     displayLabels: [
       {
         label: 'Xinhua / MIIT / China / robotics deployment',
@@ -1099,17 +1099,17 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-icml-open-models-robotics-research-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
-    splitTargetCategory: 'robotics-simulation-training',
+    splitTargetCategory: 'robotics-open-model-research',
     displayLabel: 'NVIDIA / ICML / open model research infrastructure',
     capacityPlan: {
-      selectedSplitTarget: 'robotics-simulation-training',
-      whyNotAlternatives: 'Rejected alternate split targets because the ICML open-model signal centers on Cosmos/GR00T research infrastructure and reproducible simulation training, not autonomous-mobility-systems.',
-      rejectedAlternateTargets: ['autonomous-mobility-systems'],
+      selectedSplitTarget: 'robotics-open-model-research',
+      whyNotAlternatives: 'Rejected alternate split targets robotics-simulation-training, robotics-commercial-deployment, and autonomous-mobility-systems because the ICML open-model signal centers on Cosmos/GR00T research infrastructure and reproducible open model tooling, not simulation-training regression, factory deployment, or autonomous mobility programs.',
+      rejectedAlternateTargets: ['robotics-simulation-training', 'robotics-commercial-deployment', 'autonomous-mobility-systems'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 6,
-        categoryHeadroom: 0,
-        rationale: 'capacity delta 0; consumes the final robotics-simulation-training slot for a 2026-07-07 NVIDIA ICML open-model research infrastructure signal without raising effective budget.',
+        categoryBudget: 2,
+        categoryHeadroom: 1,
+        rationale: 'capacity delta 0; uses one robotics-open-model-research slot for a 2026-07-07 NVIDIA ICML open-model research infrastructure signal without raising effective budget.',
       },
     },
     terms: ['ICML 2026', '约 2000 篇论文引用 NVIDIA GPU', '145 篇引用 Nemotron'],
@@ -1146,7 +1146,7 @@ export const FIELD_PROJECTION_RULES = [
     name: 'xinhua-shenzhen-robotics-consumer-deployment-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
-    splitTargetCategory: 'robotics-commercial-deployment',
+    splitTargetCategory: 'assistive-exoskeleton-robotics',
     displayLabel: 'Xinhua / Shenzhen / consumer robotics deployment',
     terms: ['深圳南山区“机器人谷”', '极壳科技', '2426 亿元'],
     details: {

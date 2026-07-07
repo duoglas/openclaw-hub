@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-07 11:20
+Last updated: 2026-07-07 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-219: 为 physical-ai-robotics 增加 assistive exoskeleton / humanoid training / open-model research 三个 split target，消费 EXP-218 “机器人分类继续拆分”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-218 已把 2026-07-07 NVIDIA ICML 开放模型与深圳消费机器人信号接入 source projection，但 physical-ai-robotics 的 effective split target 仍把开放模型研究、实景实训、商业部署和消费外骨骼挤在少数桶里；若不拆出 open-model research、humanoid field training 与 assistive exoskeleton 子目标，后续机器人日报 projection 会继续触发满额容量计划而不是低风险分流。
+  - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 32/32 used`、`effective category coverage: 71/71 split-backed, parentFallback=0, overBudget=0, missingBudget=0`；registry health、daily source projection labels、latest daily real cron fixture 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES`、effective budgets、split recommendations 与 migration hints 新增 assistive-exoskeleton-robotics、humanoid-embodied-training、robotics-open-model-research；2) 深圳消费机器人、China humanoid embodied training、NVIDIA ICML open models 三条现有规则迁入新 effective category；3) ICML structured capacityPlan 同步新 selectedSplitTarget、categoryBudget/categoryHeadroom 与 rejectedAlternateTargets；4) taxonomy self-test scaffold 更新到 32/32 used；5) taxonomy、registry health、daily label、latest fixture 与 build 通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-218: 将 2026-07-07 最新双语日报接入 real cron fixture，并为 NVIDIA ICML 开放模型、Anthropic jailbreak 评分与深圳消费机器人新增字段级 source projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-07）暴露 NVIDIA ICML 开放模型研究基础设施、主权 AI / 国家 AI 基础设施、AWS Bedrock 安全发布、Anthropic Claude Fable 5 + jailbreak 严重度评分框架、深圳机器人消费级部署五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉开放模型科研栈、主权 AI、模型安全评分和消费机器人四类长尾入口。
   - Metrics: `pnpm check:latest-daily-real-cron-fixture`、真实 cron EN/ZH/pair、source projection label/case FAQ、source projection scope/registry health/taxonomy、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。

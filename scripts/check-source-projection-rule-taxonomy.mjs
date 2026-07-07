@@ -55,6 +55,9 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'regional-ai-ecosystems',
   'robotics-commercial-deployment',
   'robotics-capital-markets',
+  'assistive-exoskeleton-robotics',
+  'humanoid-embodied-training',
+  'robotics-open-model-research',
   'youth-safety-controls',
   'robotics-simulation-training',
   'vertical-workflow-agents',
@@ -90,6 +93,9 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'regional-ai-ecosystems': 4,
   'robotics-commercial-deployment': 4,
   'robotics-capital-markets': 2,
+  'assistive-exoskeleton-robotics': 2,
+  'humanoid-embodied-training': 2,
+  'robotics-open-model-research': 2,
   'youth-safety-controls': 2,
   'robotics-simulation-training': 6,
   'vertical-workflow-agents': 6,
@@ -130,6 +136,9 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
     'robotics-simulation-training',
     'robotics-commercial-deployment',
     'autonomous-mobility-systems',
+    'assistive-exoskeleton-robotics',
+    'humanoid-embodied-training',
+    'robotics-open-model-research',
   ],
   'market-intelligence': [
     'market-sizing-reports',
@@ -259,16 +268,28 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   ],
   'physical-ai-robotics': [
     {
+      target: 'robotics-open-model-research',
+      match: ['icml', 'open-models-robotics-research', 'gr00t', 'nemotron', 'open model'],
+    },
+    {
       target: 'robotics-simulation-training',
-      match: ['sim-to-real', 'cvpr', 'cosmos', 'agent-skills', 'embodied-training', '实景实训'],
+      match: ['sim-to-real', 'cvpr', 'cosmos', 'agent-skills'],
     },
     {
       target: 'robotics-commercial-deployment',
-      match: ['doosan', 'unitree', 'service-robotics', 'ipo', 'factory', 'open-models-robotics-research', 'robotics-valley', 'consumer-deployment'],
+      match: ['doosan', 'unitree', 'service-robotics', 'ipo', 'factory'],
     },
     {
       target: 'autonomous-mobility-systems',
       match: ['drive-hyperion', 'robotaxi', 'autonomous'],
+    },
+    {
+      target: 'assistive-exoskeleton-robotics',
+      match: ['exoskeleton', 'jikex', '极壳科技', 'consumer-deployment', 'robotics-valley'],
+    },
+    {
+      target: 'humanoid-embodied-training',
+      match: ['humanoid', 'embodied-training', '实景实训'],
     },
   ],
   'product-safety': [
@@ -1320,9 +1341,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 29/29 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 32/32 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems; policy-governance -> ai-policy-standards / ai-industrial-policy / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {

@@ -1,3 +1,14 @@
+### EXP-219
+- Hypothesis: EXP-218 已把 2026-07-07 NVIDIA ICML 开放模型与深圳消费机器人信号接入 source projection，但 physical-ai-robotics 的 effective split target 仍把开放模型研究、实景实训、商业部署和消费外骨骼挤在少数桶里；若不拆出 open-model research、humanoid field training 与 assistive exoskeleton 子目标，后续机器人日报 projection 会继续触发满额容量计划而不是低风险分流。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 physical-ai-robotics 新增 `assistive-exoskeleton-robotics`、`humanoid-embodied-training`、`robotics-open-model-research` 三个 split target、有效预算与 migration hints；将 `china-humanoid-embodied-training-2026`、`nvidia-icml-open-models-robotics-research-2026`、`xinhua-shenzhen-robotics-consumer-deployment-2026` 分别迁入新 effective category，并更新 ICML rule 的 structured capacityPlan 快照与 rejected alternate targets。
+- ICE: 8x8x8=512
+- Start date: 2026-07-07
+- End date: 2026-07-07
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 32/32 used`、`effective category coverage: 71/71 split-backed, parentFallback=0, overBudget=0, missingBudget=0`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture` 与 `pnpm build` 全部通过。
+- Result: pass（physical-ai-robotics 已从 3 个 split target 扩展到 6 个，新增 assistive exoskeleton、humanoid embodied training、robotics open-model research 三条低风险分流入口；robotics-simulation-training 从 6/6 回落到 4/6，robotics-commercial-deployment 从 3/4 回落到 2/4；taxonomy、registry health、daily label、latest fixture 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留三条新机器人 split target 作为后续 ICML/GR00T/Cosmos、实景实训与消费外骨骼日报 projection 的容量治理入口；下一步可为 effective category capacity actions 增加 parent-level sub-split health score，优先提示仍只有 1 headroom 的新子目标。）
+
 ### EXP-218
 - Hypothesis: 最近24小时新增日报（2026-07-07）暴露 NVIDIA ICML 开放模型研究基础设施、主权 AI / 国家 AI 基础设施、AWS Bedrock 安全发布、Anthropic Claude Fable 5 + jailbreak 严重度评分框架、深圳机器人消费级部署五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉开放模型科研栈、主权 AI、模型安全评分和消费机器人四类长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-07.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-07-07.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
