@@ -17,13 +17,13 @@ export const ALLOWED_SOURCE_PROJECTION_CATEGORIES = [
 ];
 
 export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
-  'cloud-infrastructure': 9,
+  'cloud-infrastructure': 10,
   'company-finance': 5,
   'consumer-productivity': 6,
   'developer-tools': 4,
   'enterprise-agents': 13,
   'frontier-models': 6,
-  'market-intelligence': 5,
+  'market-intelligence': 6,
   'physical-ai-robotics': 10,
   'policy-governance': 10,
   'product-safety': 6,
@@ -64,7 +64,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
 ];
 export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'agent-enablement-programs': 4,
-  'ai-infrastructure-capacity': 7,
+  'ai-infrastructure-capacity': 8,
   'ai-industrial-policy': 7,
   'ai-policy-standards': 4,
   'autonomous-mobility-systems': 3,
@@ -1456,9 +1456,9 @@ function validateSelfTests() {
     ],
   }));
   for (const fragment of [
-    'category split recommendations: consumer-productivity: split into career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai (83% used + 1 headroom); market-intelligence: split into market-sizing-reports / content-licensing-markets / regional-ai-ecosystems (80% used + 1 headroom)',
-    'category split migration batches: consumer-productivity: career-productivity-workflows=1, chatgpt-control-surfaces=3, consumer-creative-ai=1; market-intelligence: market-sizing-reports=1, content-licensing-markets=1, regional-ai-ecosystems=2',
-    'category split migration details: consumer-productivity: career-productivity-workflows=[chatgpt-jobs-resume-tools], chatgpt-control-surfaces=[openai-chatgpt-model-picker-2026|openai-chatgpt-scheduled-tasks-pulse-2026|openai-chatgpt-finance-dictation-gpt45-retirement-2026], consumer-creative-ai=[meta-facebook-ai-tools-2026]; market-intelligence: market-sizing-reports=[china-ai-industry-report-l3], content-licensing-markets=[amazon-content-partners-ai-crawler-preview-2026], regional-ai-ecosystems=[shanghai-tech-fair-2026-hard-tech|anthropic-korea-seoul-office-ecosystem-2026]',
+    'category split recommendations: consumer-productivity: split into career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai (83% used + 1 headroom)',
+    'category split migration batches: consumer-productivity: career-productivity-workflows=1, chatgpt-control-surfaces=3, consumer-creative-ai=1',
+    'category split migration details: consumer-productivity: career-productivity-workflows=[chatgpt-jobs-resume-tools], chatgpt-control-surfaces=[openai-chatgpt-model-picker-2026|openai-chatgpt-scheduled-tasks-pulse-2026|openai-chatgpt-finance-dictation-gpt45-retirement-2026], consumer-creative-ai=[meta-facebook-ai-tools-2026]',
   ]) {
     if (!recentSignalSplitMigrationDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy recent-signal split-migration self-test failed: ${fragment}`);

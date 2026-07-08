@@ -570,12 +570,21 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
     splitTargetCategory: 'consumer-creative-ai',
-    displayLabel: 'Meta / Facebook / consumer creative AI',
-    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装'],
+    displayLabels: [
+      {
+        label: 'Meta / Facebook / consumer creative AI',
+        terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装'],
+      },
+      {
+        label: 'Xinhua / AI fiction / creative quality limits',
+        terms: ['AI 生成小说角色', '保守和封闭式结局'],
+      },
+    ],
+    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装', 'AI 生成小说角色', '保守和封闭式结局', '复杂性和神秘感'],
     details: {
-      what: 'Meta added AI Mode search, AI image and video editing, AI outfit try-on, and avatar restyling features inside Facebook, moving generative tools directly into social search and creation flows.',
-      why: 'The update shows consumer AI shifting from standalone chat apps into default social-product surfaces, where search, posting, editing, and identity tools can all invoke AI in the same user journey.',
-      impact: 'Creators and everyday users may create more visual content with lower friction, while teams should watch privacy controls, provenance labeling, and platform-search behavior as AI answers enter Facebook workflows.',
+      what: 'Consumer creative AI is moving into both social-product tools and writing workflows; Xinhua also cited research finding that AI-generated fiction characters can be more conservative and closed-ended, with less complexity and mystery than human-written stories.',
+      why: 'The signal separates fluent generation from creative depth: AI tools can lower creation friction, but durable creative quality still depends on voice, conflict design, ambiguity, provenance, and human editorial judgment.',
+      impact: 'Creators and teams should use AI for search, outlines, image/video drafts, rewrites, and variation testing while keeping human control over privacy, provenance labeling, character arcs, unresolved tension, and final aesthetic decisions.',
     },
   },
   {
@@ -586,7 +595,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Amazon / Alexa+ / consumer AI localization',
     capacityPlan: {
       selectedSplitTarget: 'consumer-creative-ai',
-      whyNotAlternatives: 'Rejected alternate split targets because Alexa+ Brazil is a localized consumer assistant and household creative surface, not a ChatGPT control surface or career productivity workflow.',
+      whyNotAlternatives: 'Rejected alternate split targets because Alexa+ Brazil is a localized consumer assistant and household creative surface, not career-productivity-workflows.',
+      rejectedAlternateTargets: ['career-productivity-workflows'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 4,
@@ -655,12 +665,16 @@ export const FIELD_PROJECTION_RULES = [
         label: 'MIIT / SASAC / China humanoid robotics training',
         terms: ['工信部办公厅、国务院国资委办公厅发布通知', '真实场景训练'],
       },
+      {
+        label: 'Xinhua / Hangzhou / robot training certification',
+        terms: ['杭州机器人学校', '技能证书'],
+      },
     ],
-    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力'],
+    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书'],
     details: {
-      what: 'Xinhua reported that China’s MIIT and SASAC launched a 2026 humanoid robotics and embodied-intelligence real-world training initiative, targeting more than 100 high-value application scenarios and 10,000-unit deployment capability by year end.',
-      why: 'China’s humanoid robotics push is shifting from demonstration videos toward real production and service environments, where scenario data, standardized training spaces, and engineering validation determine commercialization.',
-      impact: 'Industrial, warehousing, healthcare, emergency-response, catering, retail, inspection, and elder-care pilots may become earlier deployment grounds for humanoid and embodied-intelligence systems.',
+      what: 'Xinhua reported that China’s embodied-intelligence push is moving into real-world training infrastructure, including Hangzhou Robot School training industrial, service, security, and entertainment robots for practical work conditions and skill certification.',
+      why: 'China’s robotics push is shifting from demonstration videos toward real production and service environments, where scenario data, interference handling, standardized training spaces, and third-party validation determine commercialization.',
+      impact: 'Industrial, service, security, elder-care, entertainment, and procurement teams should evaluate where robots were trained, how failure cases are captured, and whether capability grades or certificates map to real operating risk.',
     },
   },
   {
@@ -880,8 +894,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Amazon / RAISE US / AI workforce training',
     capacityPlan: {
       selectedSplitTarget: 'regional-ai-ecosystems',
-      whyNotAlternatives: 'Rejected alternate split targets because RAISE US is a workforce and education ecosystem signal, not market-sizing-reports or content-licensing-markets.',
-      rejectedAlternateTargets: ['content-licensing-markets', 'market-sizing-reports'],
+      whyNotAlternatives: 'Rejected alternate split targets because RAISE US is a workforce and education ecosystem signal, not content-licensing-markets.',
+      rejectedAlternateTargets: ['content-licensing-markets'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 4,
@@ -907,7 +921,7 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not cloud model distribution.',
       budgetImpact: {
         capacityDelta: 1,
-        categoryBudget: 7,
+        categoryBudget: 8,
         categoryHeadroom: 1,
         rationale: 'capacity delta +1; raises ai-infrastructure-capacity by 1 for a latest-fixture supercomputing infrastructure signal and keeps TOP500/Green500 details out of generic NVIDIA compute copy.',
       },
@@ -930,7 +944,7 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets because EC2 G7, OpenSearch Serverless vector search, and cuVS are production AI infrastructure capacity signals rather than cloud model distribution.',
       budgetImpact: {
         capacityDelta: 1,
-        categoryBudget: 7,
+        categoryBudget: 8,
         categoryHeadroom: 1,
         rationale: 'capacity delta +1; raises ai-infrastructure-capacity by 1 for a latest-fixture NVIDIA/AWS production infrastructure signal and keeps parent cloud-infrastructure matching narrow.',
       },
@@ -1037,7 +1051,7 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets because AI for Science HPC software is GPU-native infrastructure capacity, not cloud model distribution.',
       budgetImpact: {
         capacityDelta: 1,
-        categoryBudget: 7,
+        categoryBudget: 8,
         categoryHeadroom: 1,
         rationale: 'capacity delta +1; raises ai-infrastructure-capacity for a 2026-07-01 AI-for-Science HPC software-stack signal that extends GPU-native infrastructure beyond model serving.',
       },
@@ -1147,12 +1161,69 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'assistive-exoskeleton-robotics',
-    displayLabel: 'Xinhua / Shenzhen / consumer robotics deployment',
-    terms: ['深圳南山区“机器人谷”', '极壳科技', '2426 亿元'],
+    displayLabels: [
+      {
+        label: 'Xinhua / Shenzhen / consumer robotics deployment',
+        terms: ['深圳南山区“机器人谷”', '极壳科技', '2426 亿元'],
+      },
+      {
+        label: 'Xinhua / Greater Bay Area / AI hard-tech commercialization',
+        terms: ['大湾区', '消费级外骨骼', '低空物流'],
+      },
+    ],
+    terms: ['深圳南山区“机器人谷”', '极壳科技', '2426 亿元', '大湾区', '消费级外骨骼', '低空物流'],
     details: {
-      what: 'Xinhua reported that Shenzhen Nanshan Robotics Valley is forming a robotics cluster, with consumer exoskeleton company Jikex Technology reaching users in more than 70 countries and Shenzhen robotics output reaching 242.6 billion yuan in 2025.',
-      why: 'Robotics commercialization is expanding from industrial lines into elder care, outdoor work, rehabilitation, and consumer-assistive scenarios where supply-chain depth and real deployment contexts matter.',
-      impact: 'Robotics teams should evaluate focused assistive products, channel access, safety validation, after-sales support, and scenario-specific outcomes before betting on general-purpose humanoid robots.',
+      what: 'Xinhua reported that Shenzhen and the Greater Bay Area are moving AI hard-tech projects from labs into commercialization, including consumer exoskeletons, embodied robots, brain-computer interfaces, AI design, low-altitude logistics, and AI data-center materials.',
+      why: 'Robotics and AI hardware commercialization is expanding from industrial lines into elder care, outdoor work, rehabilitation, logistics, medical devices, and consumer-assistive scenarios where supply-chain depth and real deployment contexts matter.',
+      impact: 'Robotics and hard-tech teams should evaluate focused assistive products, channel access, safety validation, materials supply, after-sales support, and scenario-specific outcomes before betting on general-purpose humanoid robots.',
+    },
+  },
+  {
+    name: 'nvidia-vera-agentic-cpu-infrastructure-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
+    displayLabel: 'NVIDIA / Vera CPU / agentic AI infrastructure',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-infrastructure-capacity',
+      whyNotAlternatives: 'Rejected alternate split targets because Vera CPU is an AI infrastructure capacity and latency signal, not cloud model distribution.',
+      rejectedAlternateTargets: ['cloud-model-distribution'],
+      budgetImpact: {
+        capacityDelta: 1,
+        categoryBudget: 8,
+        categoryHeadroom: 1,
+        rationale: 'capacity delta +1; raises ai-infrastructure-capacity for a 2026-07-08 NVIDIA Vera CPU agentic infrastructure signal while keeping cloud-infrastructure matching narrow.',
+      },
+    },
+    terms: ['高单线程性能 + 大规模并发'],
+    details: {
+      what: 'NVIDIA said agentic AI workloads spend substantial time on CPU-side tasks such as tool calls, code execution, data processing, validation, KV-cache handling, and result analysis, and positioned Vera CPU for high single-thread performance plus large-scale concurrency.',
+      why: 'Agent infrastructure is moving from a GPU-only purchasing story toward full-system latency: CPU performance, memory bandwidth, tool execution, sandbox startup, database queries, and feedback-loop speed now shape production agent quality.',
+      impact: 'AI platform teams should benchmark agent workflows end to end, including tool-call latency, code sandbox startup, database access, CPU concurrency, GPU utilization, and cost per completed task rather than only model throughput.',
+    },
+  },
+  {
+    name: 'xinhua-ai-memory-price-consumer-electronics-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    splitTargetCategory: 'market-sizing-reports',
+    displayLabel: 'Xinhua / AI memory demand / consumer electronics cost pressure',
+    capacityPlan: {
+      selectedSplitTarget: 'market-sizing-reports',
+      whyNotAlternatives: 'Rejected alternate split targets because HBM, DRAM, and NAND price pressure is a market-sizing and supply-chain cost signal, not content-licensing-markets.',
+      rejectedAlternateTargets: ['content-licensing-markets'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 1,
+        rationale: 'capacity delta 0; uses existing market-sizing-reports headroom for a 2026-07-08 memory supply and consumer electronics cost signal.',
+      },
+    },
+    terms: ['HBM', 'DRAM/NAND', '消费电子产业链面临成本重构'],
+    details: {
+      what: 'Xinhua reported that AI infrastructure expansion is pushing up high-end memory demand such as HBM, squeezing consumer DRAM and NAND supply and forcing cost restructuring across the consumer-electronics supply chain.',
+      why: 'AI infrastructure demand is now spilling into everyday devices: memory allocation, storage supply, and component pricing can affect PCs, tablets, phones, and game consoles even for users who are not buying AI servers.',
+      impact: 'Consumers and device makers should watch memory and storage configurations, bill-of-materials pressure, and low-spec price increases, while buyers may prefer sufficient RAM and storage before price pressure spreads further.',
     },
   },
 

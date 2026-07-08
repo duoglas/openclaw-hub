@@ -101,7 +101,7 @@ function asciiEntities(source) {
   return found;
 }
 
-const CHECK_RECOGNIZED_ENTITIES = /\b(NVIDIA|OpenAI|Anthropic|Claude|KPMG|Amazon|AWS|Codex|ChatGPT|Google|Microsoft|Meta|Apple|Baidu|Alibaba|Tencent|Huawei|China Mobile|Gemini|DeepSeek|Mistral|Perplexity|xAI|GTC|COMPUTEX|Vera|Rubin|Jetson|Alexa|China|Chinese|Europe|EU|United States|US|Japan|Korea|France)\b/;
+const CHECK_RECOGNIZED_ENTITIES = /\b(NVIDIA|OpenAI|Anthropic|Claude|KPMG|Amazon|AWS|Codex|ChatGPT|Google|Microsoft|Meta|Apple|Baidu|Alibaba|Tencent|Huawei|China Mobile|Gemini|DeepSeek|Mistral|Perplexity|xAI|GTC|COMPUTEX|Vera|Rubin|Jetson|Alexa|China|Chinese|Europe|EU|United States|US|Japan|Korea|France|Xinhua|Alipay|WeChat Pay|JD\.com|SAMR|NDRC|Science and Technology Daily)\b/;
 const FALLBACK_RECOGNIZED_ENTITIES = ['NVIDIA', 'China', 'AWS', 'Anthropic', 'US'];
 
 function withRecognizedEntity(label, idx) {
