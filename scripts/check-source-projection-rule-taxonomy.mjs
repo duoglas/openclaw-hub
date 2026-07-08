@@ -19,7 +19,7 @@ export const ALLOWED_SOURCE_PROJECTION_CATEGORIES = [
 export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'cloud-infrastructure': 10,
   'company-finance': 5,
-  'consumer-productivity': 6,
+  'consumer-productivity': 7,
   'developer-tools': 4,
   'enterprise-agents': 13,
   'frontier-models': 6,
@@ -74,7 +74,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'code-agent-runtime': 3,
   'cloud-model-distribution': 4,
   'company-finance': 5,
-  'consumer-creative-ai': 4,
+  'consumer-creative-ai': 5,
   'content-licensing-markets': 3,
   'desktop-computer-use': 2,
   'developer-tools': 4,
@@ -249,7 +249,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'consumer-creative-ai',
-      match: ['facebook-ai-tools', 'alexa-plus', 'ai mode', 'alexa', '图片', '视频', '换装', 'creative'],
+      match: ['facebook-ai-tools', 'xinhua-ai-fiction', 'fiction-character', 'alexa-plus', 'ai mode', 'alexa', '图片', '视频', '换装', 'creative', '小说角色'],
     },
   ],
   'market-intelligence': [
@@ -1447,6 +1447,7 @@ function validateSelfTests() {
       { name: 'chatgpt-jobs-resume-tools', owner: 'daily-source-projection', category: 'consumer-productivity' },
       { name: 'openai-chatgpt-model-picker-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
       { name: 'meta-facebook-ai-tools-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
+      { name: 'xinhua-ai-fiction-character-conservatism-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
       { name: 'openai-chatgpt-scheduled-tasks-pulse-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
       { name: 'openai-chatgpt-finance-dictation-gpt45-retirement-2026', owner: 'daily-source-projection', category: 'consumer-productivity' },
       { name: 'china-ai-industry-report-l3', owner: 'daily-source-projection', category: 'market-intelligence' },
@@ -1456,9 +1457,9 @@ function validateSelfTests() {
     ],
   }));
   for (const fragment of [
-    'category split recommendations: consumer-productivity: split into career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai (83% used + 1 headroom)',
-    'category split migration batches: consumer-productivity: career-productivity-workflows=1, chatgpt-control-surfaces=3, consumer-creative-ai=1',
-    'category split migration details: consumer-productivity: career-productivity-workflows=[chatgpt-jobs-resume-tools], chatgpt-control-surfaces=[openai-chatgpt-model-picker-2026|openai-chatgpt-scheduled-tasks-pulse-2026|openai-chatgpt-finance-dictation-gpt45-retirement-2026], consumer-creative-ai=[meta-facebook-ai-tools-2026]',
+    'category split recommendations: consumer-productivity: split into career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai (86% used + 1 headroom)',
+    'category split migration batches: consumer-productivity: career-productivity-workflows=1, chatgpt-control-surfaces=3, consumer-creative-ai=2',
+    'category split migration details: consumer-productivity: career-productivity-workflows=[chatgpt-jobs-resume-tools], chatgpt-control-surfaces=[openai-chatgpt-model-picker-2026|openai-chatgpt-scheduled-tasks-pulse-2026|openai-chatgpt-finance-dictation-gpt45-retirement-2026], consumer-creative-ai=[meta-facebook-ai-tools-2026|xinhua-ai-fiction-character-conservatism-2026]',
   ]) {
     if (!recentSignalSplitMigrationDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy recent-signal split-migration self-test failed: ${fragment}`);
@@ -1533,7 +1534,7 @@ function validateSelfTests() {
       },
     ],
   }).join('\n');
-  if (!capacityPlanAlternateTargetFailures.includes('available alternate split targets: consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)')) {
+  if (!capacityPlanAlternateTargetFailures.includes('available alternate split targets: consumer-productivity -> consumer-creative-ai=0/5 (5 headroom) / career-productivity-workflows=0/3 (3 headroom)')) {
     failures.push('source projection taxonomy capacity-plan self-test failed: missing alternate target diagnostic');
   }
 
@@ -1595,7 +1596,7 @@ function validateSelfTests() {
   }).join('\n');
   for (const fragment of [
     'capacityPlan must use structured fields: selectedSplitTarget, whyNotAlternatives, budgetImpact',
-    'available alternate split targets: consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)',
+    'available alternate split targets: consumer-productivity -> consumer-creative-ai=0/5 (5 headroom) / career-productivity-workflows=0/3 (3 headroom)',
   ]) {
     if (!capacityPlanTemplateFailures.includes(fragment)) {
       failures.push(`source projection taxonomy capacity-plan template self-test failed: ${fragment}`);
@@ -1675,9 +1676,9 @@ function validateSelfTests() {
 
             capacityDelta: 0,
 
-            categoryBudget: 4,
+            categoryBudget: 5,
 
-            categoryHeadroom: 1,
+            categoryHeadroom: 4,
 
             rationale: 'capacity delta 0; synthetic mismatch should fail before this plan can be used.',
 
@@ -1733,9 +1734,9 @@ function validateSelfTests() {
 
             capacityDelta: 1,
 
-            categoryBudget: 4,
+            categoryBudget: 5,
 
-            categoryHeadroom: 1,
+            categoryHeadroom: 4,
 
             rationale: 'capacity delta +1; raises consumer-creative-ai capacity even though the category still has spare headroom.',
 
@@ -1744,7 +1745,7 @@ function validateSelfTests() {
       },
     ]),
   }).join('\n');
-  if (!budgetImpactDeltaConsistencyFailures.includes('synthetic-existing-rule-with-roomy-capacity-delta-raise — existing rule capacityPlan budgetImpact declares capacity delta +1 but effective category consumer-creative-ai still has 3 headroom')) {
+  if (!budgetImpactDeltaConsistencyFailures.includes('synthetic-existing-rule-with-roomy-capacity-delta-raise — existing rule capacityPlan budgetImpact declares capacity delta +1 but effective category consumer-creative-ai still has 4 headroom')) {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: roomy capacity delta raise should fail');
   }
 
@@ -1804,9 +1805,9 @@ function validateSelfTests() {
 
             capacityDelta: 0,
 
-            categoryBudget: 4,
+            categoryBudget: 5,
 
-            categoryHeadroom: 1,
+            categoryHeadroom: 4,
 
             rationale: 'capacity delta 0; claims to reuse capacity despite no remaining headroom.',
 
@@ -1833,9 +1834,9 @@ function validateSelfTests() {
 
             capacityDelta: 0,
 
-            categoryBudget: 4,
+            categoryBudget: 5,
 
-            categoryHeadroom: 1,
+            categoryHeadroom: 4,
 
             rationale: 'capacity delta 0; synthetic rejected-alternatives coverage should fail before this plan can be used.',
 
@@ -1862,9 +1863,9 @@ function validateSelfTests() {
 
             capacityDelta: 0,
 
-            categoryBudget: 4,
+            categoryBudget: 5,
 
-            categoryHeadroom: 1,
+            categoryHeadroom: 4,
 
             rationale: 'capacity delta 0; synthetic rejectedAlternateTargets coverage should fail before this plan can be used.',
 
@@ -1892,9 +1893,9 @@ function validateSelfTests() {
 
             capacityDelta: 0,
 
-            categoryBudget: 4,
+            categoryBudget: 5,
 
-            categoryHeadroom: 1,
+            categoryHeadroom: 4,
 
             rationale: 'capacity delta 0; synthetic stale rejectedAlternateTargets coverage should fail before this plan can be used.',
 
@@ -1920,7 +1921,7 @@ function validateSelfTests() {
       splitTargetCategory: 'chatgpt-control-surfaces',
     })),
   }));
-  if (!alternateTargetDiagnostic.includes('effective category alternate targets: chatgpt-control-surfaces: consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)')) {
+  if (!alternateTargetDiagnostic.includes('effective category alternate targets: chatgpt-control-surfaces: consumer-productivity -> consumer-creative-ai=0/5 (5 headroom) / career-productivity-workflows=0/3 (3 headroom)')) {
     failures.push('source projection taxonomy alternate-target self-test failed: chatgpt-control-surfaces sibling target recommendations');
   }
 

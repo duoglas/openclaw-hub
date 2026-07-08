@@ -1,3 +1,14 @@
+### EXP-220
+- Hypothesis: 2026-07-08 最新日报已接入 real cron fixture，但第 5 条 Xinhua AI fiction 信号被临时挂到 Meta creative AI rule，且 `脑机接口` 宽词会让大湾区硬科技条目误投到上海上交会；若不拆出 Xinhua fiction 字段级 rule 并收窄 Shanghai rule，最新 EN 页面会出现 source-detail 漂移，Case-Level FAQ 与 specificity 闸门也无法锁住首日索引质量。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/check-daily-brief-specificity.mjs`, `src/content/blog/en/openclaw-daily-2026-07-08.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 `xinhua-ai-fiction-character-conservatism-2026` 字段级 source projection，并将 Meta creative AI rule 回收为 Meta 专用；上海上交会 rule 移除 `脑机接口` 宽词，避免大湾区硬科技 source 被旧上海 rule 抢先命中；2026-07-08 EN 日报修正 story 4/5 与 Evidence Matrix，补齐 robot training certification 与 Vera CPU Case-Level FAQ；taxonomy parent/effective budget、migration hint 与 latest specificity entity registry 同步更新。
+- ICE: 8x8x8=512
+- Start date: 2026-07-08
+- End date: 2026-07-08
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、EN/ZH generator、daily source projection labels、case-level FAQ、source projection scope/registry health/taxonomy/term narrowness、fixture dedup、parser guardrail、latest specificity、daily CTA/action sections、duplicate slug 与 `pnpm build` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 存在 2026-06-02/11/13/16 历史 cross-language token 基线失败，非本轮新增。
+- Result: pass（2026-07-08 第 5 条已绑定独立 Xinhua fiction rule；Meta rule 不再承载 Xinhua fiction；大湾区硬科技 story 不再被上海上交会宽词污染；latest EN 页面补齐 2 个 Case-Level FAQ；taxonomy 显示 totalRules=74、effective category coverage=74/74 split-backed、parentFallback=0、overBudget=0、missingBudget=0；build 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 Xinhua AI fiction 独立 rule 与收窄后的 Shanghai hard-tech rule；下一步优先修复 daily bilingual pair fixture 的历史 cross-language token 基线，恢复全量内容质量闸门。）
+
 ### EXP-219
 - Hypothesis: EXP-218 已把 2026-07-07 NVIDIA ICML 开放模型与深圳消费机器人信号接入 source projection，但 physical-ai-robotics 的 effective split target 仍把开放模型研究、实景实训、商业部署和消费外骨骼挤在少数桶里；若不拆出 open-model research、humanoid field training 与 assistive exoskeleton 子目标，后续机器人日报 projection 会继续触发满额容量计划而不是低风险分流。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

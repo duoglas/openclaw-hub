@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-07 17:20
+Last updated: 2026-07-08 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-220: 拆分 2026-07-08 AI fiction source projection，并收窄上海上交会宽词，消费最近24小时内容建设新增日报假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: 2026-07-08 最新日报已接入 real cron fixture，但第 5 条 Xinhua AI fiction 信号被临时挂到 Meta creative AI rule，且 `脑机接口` 宽词会让大湾区硬科技条目误投到上海上交会；若不拆出 Xinhua fiction 字段级 rule 并收窄 Shanghai rule，最新 EN 页面会出现 source-detail 漂移，Case-Level FAQ 与 specificity 闸门也无法锁住首日索引质量。
+  - Metrics: latest fixture、EN/ZH generator、daily source projection labels、case-level FAQ、source projection scope/registry/taxonomy/term narrowness、fixture dedup、parser guardrail、latest specificity、daily CTA/action sections、duplicate slug 与 `pnpm build` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 仍因 2026-06-02/11/13/16 历史 cross-language token 基线失败，非本轮新增回归。
+  - Acceptance: 1) 新增 `xinhua-ai-fiction-character-conservatism-2026` 字段级 projection，2026-07-08 fixture 第 5 条绑定独立 rule；2) `meta-facebook-ai-tools-2026` 回收为 Meta 专用 creative AI rule；3) 上海上交会 rule 移除 `脑机接口` 宽词，避免大湾区硬科技误命中；4) 2026-07-08 EN 页面修正 story 4/5 source detail，并新增 robot training 与 Vera CPU Case-Level FAQ；5) taxonomy budget/migration hint 与 latest specificity entity registry 同步更新，质量评分 27/30。
 - [x] P1 Candidate / EXP-219: 为 physical-ai-robotics 增加 assistive exoskeleton / humanoid training / open-model research 三个 split target，消费 EXP-218 “机器人分类继续拆分”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-218 已把 2026-07-07 NVIDIA ICML 开放模型与深圳消费机器人信号接入 source projection，但 physical-ai-robotics 的 effective split target 仍把开放模型研究、实景实训、商业部署和消费外骨骼挤在少数桶里；若不拆出 open-model research、humanoid field training 与 assistive exoskeleton 子目标，后续机器人日报 projection 会继续触发满额容量计划而不是低风险分流。
   - Metrics: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 32/32 used`、`effective category coverage: 71/71 split-backed, parentFallback=0, overBudget=0, missingBudget=0`；registry health、daily source projection labels、latest daily real cron fixture 与 `pnpm build` 全部通过。
@@ -618,65 +622,3 @@ Manager: main session
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-04/` 与 `/zh/blog/openclaw-daily-2026-04-04/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
 
 ## Done
-- [x] P1 Candidate A / EXP-147: 将 2026-06-03 真实 cron 样本接入 daily-real-cron fixture registry，补齐 NVIDIA/Microsoft、NemoClaw、ChatGPT Active sessions 与国家数据局字段级英文 projection，并修复 ZH 证据矩阵句尾截断，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
-  - Hypothesis: 最近24小时新增日报（2026-06-03）已经暴露 NVIDIA/Microsoft Windows-Azure agentic stack、NemoClaw 工业 Agent、OpenAI Active sessions 与国家数据局具身智能数据集信号；若这些字段级 projection 只停留在手工 EN 页面而不进入 source projection registry 与真实 cron fixture，后续发布仍可能回退到 Source reports / evaluation path 模板，且 ZH 证据矩阵会继续把长 NVIDIA OpenShell 明细截断成 `GitHub Copilot 中的 N。`。把 2026-06-03 样本纳入 registry、补齐字段级英文规则并修复 ZH 句尾截断，可减少最新日报首日索引窗口内的低事实密度与截断回归。
-  - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-  - Acceptance: 1) 新增 `scripts/fixtures/daily-real-cron-2026-06-03.mjs` 并注册进 `daily-real-cron-fixtures.mjs`，覆盖 NVIDIA/Microsoft Windows-Azure stack、NemoClaw industrial agents、NVIDIA AI Cloud、ChatGPT Active sessions、国家数据局/具身智能/AI for Science；2) `source-projection-rules.mjs` 新增 4 条字段级英文 projection，并收窄国家数据局 rule term，避免污染 2026-06-02 L3 中国 AI 产业报告；3) `check-publish-daily-generator-fixture.mjs` 要求新增 projection rule signals，阻断规则缺失；4) `daily-zh-generator.mjs` 的证据矩阵 detail 截断改为更长句界截断，并修复 2026-06-03 ZH 页面 `GitHub Copilot 中的 N。` 与宇树案例省略号；5) 真实 cron fixture、双语 pair、latest specificity、日报/索引卫生闸门与 build 全部通过；质量评分 28/30。
-- [x] P1 Candidate A / EXP-138: 将 2026-05-29 真实 cron 样本接入 daily-real-cron fixture registry，并强化 EN source projection 的字段级事实信号、ZH 截断 guardrail 与 latest specificity 泛化句阻断，优先消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
-  - Hypothesis: EXP-137 已用 generator 回收 2026-05-29 EN 日报，但若 2026-05-29 当日真实样本不进入 fixture registry，GPT-5.5 退役日期、Claude Opus 4.8、Anthropic 融资、NVIDIA sim-to-real 与中国 AI 权属裁判规则这类字段级事实信号仍可能在后续发布中被压扁成 `teams should verify workflow fit` 泛化句或 ZH `Claude Code 动。` 截断残句；把该样本纳入 EN/ZH/pair 回归并强化 generator/check，可减少最新日报首日索引窗口内低事实密度与截断回归。
-  - Metrics: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-  - Acceptance: 1) 新增 `scripts/fixtures/daily-real-cron-2026-05-29.mjs`，覆盖 OpenAI GPT-5.5 Instant / GPT-4.5 退役、Claude Opus 4.8、Anthropic 650亿美元融资、NVIDIA ICRA sim-to-real、中国法院 AI生成物/数据权属规则，并注册进 `daily-real-cron-fixtures.mjs`；2) EN generator 扩展 GPT/Opus/ICRA/API/Codex 等实体、版本退役/编码/融资/权属/司法主题映射和 timing/scale facts，避免 `Source N centers on ... teams should verify workflow fit` 泛化句；3) ZH generator 放宽正文与 description 截断长度并阻断 `API 。` / `Claude Code 动。` 类半句；4) fixture dedup 与 latest specificity 闸门覆盖 2026-05-29 和新泛化句；5) 2026-05-29 EN/ZH 最新日报已用修复后的 generator 重新生成并通过最新质量闸门；质量评分 28/30。
-- [x] P1 Candidate A / EXP-102: 将 2026-04-29 英文日报正文从中英混排回补为完整英文版本（含 Top 5、2个案例、结论与次日跟踪）并保持强相关 CTA，完成四闸门+build+推送闭环，优先消费最近24小时内容建设延续假设 | ICE 9x8x8=576 — commit `6ba6301`
-  - Hypothesis: 最近24小时新增日报若英文页仍保留中文框架或混排，会削弱英文检索匹配与可读性；当日回补为完整英文叙事可提升索引窗口期覆盖与首日导流质量。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；`/en/blog/openclaw-daily-2026-04-29/` 标题与正文结构为完整英文且 CTA 保持 3 条强相关内链。
-  - Acceptance: 1) EN `openclaw-daily-2026-04-29.md` 标题、正文结构与分段文案统一为英文；2) 保留既有核心事实与“2案例+结论+明日跟踪点”；3) CTA 维持 3 条强相关内链不回退；4) 本地四闸门 + build 全部通过。
-- [x] P1 Candidate A / EXP-092: 修复 2026-04-23 双语日报正文截断（补全实战案例2 + 今日结论），保持可检索摘要与强相关 CTA，完成 build 闭环 | ICE 9x8x8=576 — commit `(this commit)`
-  - Hypothesis: 对最近24小时新增日报中出现正文截断（“全能 …”）的双语页面做当日补全，可恢复页面信息完整度与可读性，避免摘要/正文语义断裂对检索匹配与导流转化造成损失。
-  - Metrics: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-04-23/` 不再存在截断句，且补全“实战案例2+今日结论+跟踪点”。
-  - Acceptance: 1) 补全 EN/ZH `openclaw-daily-2026-04-23.md` 截断正文；2) 保持既有 description 与 3 条强相关 CTA 不回退；3) 本地检查与构建全部通过。
-- [x] P1 Candidate A / EXP-057: 强化 2026-04-01 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时内容建设任务新增的实验假设 | ICE 8x7x8=448 — commit `79140a4`
-  - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
-  - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
-  - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-01/` 与 `/zh/blog/openclaw-daily-2026-04-01/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
-
-- [x] P1 Candidate A / EXP-056: 强化 2026-03-25 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时内容建设任务新增的实验假设 | ICE 8x7x8=448 — commit `(this commit)`
-  - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
-  - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
-  - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-25/` 与 `/zh/blog/openclaw-daily-2026-03-25/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
-
-- [x] P1 Candidate A / EXP-055: 强化 2026-03-21 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时内容建设任务新增的实验假设 | ICE 8x7x8=448 — commit `(this commit)`
-  - Hypothesis: 对最近24小时新发布但仍保留占位摘要/泛 CTA 的日报页，补强可检索摘要与强相关 CTA 内链，可提升日报页搜索匹配度、站内继续阅读率，以及向 OpenClaw 核心指南的导流效率。
-  - Metrics: `pnpm build` 通过；EN/ZH 目标页均含具体 description 与 3 条强相关内链；后续观察日报页 CTR、站内下一跳与相关指南页导流点击。
-  - Acceptance: 1) `/en/blog/openclaw-daily-2026-03-21/` 与 `/zh/blog/openclaw-daily-2026-03-21/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
-
-- [x] P1 Candidate A / EXP-054: 在 EN/ZH 首页 hero 下新增创作者 CTA（发布 Skill + 安全指南），并在全站 footer 增加发布入口，验证“内容读者→生态贡献者”转化链路 | ICE 8x6x6=288 — commit `84a458c`
-  - Hypothesis: 仅靠页脚/导航很难激活创作者；把发布入口提升到首页 hero 下，可提升发布页点击率，并让内容型流量转化为 Skill 发布者。
-  - Metrics (CFWA Events): `home_creator_cta_render`, `home_creator_cta_click`; 关键比率 creator_ctr=click/render，publish_share=publish_click/all_creator_click.
-  - Acceptance: 1) `/en/` 与 `/zh/` hero 下可见 creator CTA；2) footer 出现 publish + guide 入口；3) growth 事件命名稳定且不上传敏感文本；4) `pnpm build` 通过。
-
-- [x] P1 Candidate A / EXP-053: 在首页 CTA 增加“Telegram 一键加入 + 复制问题模板”转化位点（并用 CFWA 事件记录 click/join/issue_template_copy），提升 CTA 后续支持链路转化与问题收敛质量 | ICE 8x6x7=336 — commit `7499b13`
-  - Hypothesis: 对第一次运行失败的用户，“加入社群 + 复制最小证据模板”比纯文档跳转更能降低放弃率，并提高后续求助消息质量，从而提升留存与二次访问。
-  - Metrics (CFWA Events): `home_cta_tg_click`, `home_cta_tg_open`, `home_cta_issue_template_copy`; (Ratios) tg_click_rate=click/pageview, template_copy_rate=copy/click.
-  - Acceptance: 1) `/`, `/en/`, `/zh/` 首屏 CTA 出现 Telegram 按钮 + “Copy issue template”; 2) CFWA Events 面板 24h 内可见事件 >0; 3) 不上传用户日志文本；4) `pnpm build` 通过。
-
-- [x] P1 Candidate A / EXP-052: 将首页 CTA 埋点从“console + window.dispatchEvent”升级为“Cloudflare Web Analytics 自定义事件”最小闭环（view/click/copy/verify）并写入 EXPERIMENT_LOG 观测方法 | ICE 8x7x6=336 — commit `fb9bcf7`
-  - Hypothesis: 只有把事件真正落到可观测平台（无需自建后端）才能快速验证 EXP-050/051 的转化链路假设；最小事件闭环会显著降低后续实验的测量成本。
-  - Metrics: CF Web Analytics 中 event count（home_cta_view/click_install/click_what/copy_install/verify_start/verify_echo）；事件触发率（events/pageviews）。
-  - Acceptance: 1）上线后 24h 内能在 CFWA 面板看到事件（至少 view + click 各>0）；2）不引入隐私风险（不上传命令输出文本）；3）pnpm build 通过。
-
-- [x] P1 Candidate A / EXP-051: 在 /en /zh / 根首页首屏 CTA 增加“命令行复制按钮 + 5s 自回显验证”微交互（复制 install + `openclaw gateway status`/`openclaw doctor`），提升 CTA 点击后真实执行率与回访率 | ICE 7x6x6=252 — commit `dedf78c`
-- [x] P1 Candidate A / EXP-050: 在首页与 /en /zh 增加“Get started / Install OpenClaw”首屏 CTA（含 3-step quickstart）并埋点（CTA 点击/滚动/下一跳），用于提升首页→核心指南转化 | ICE 9x8x7=504 — commit `6b4bf94`
-
-- [x] P1 Candidate A / EXP-049: 发布“OpenClaw `web_search` 500：工具同名冲突与参数约束修复”中英双语教程，覆盖 web_search 500 / tool schema conflict 高意图检索，并补齐 3 条高相关内链 | ICE 8x7x8=448 — commit `8032e37`
-- [x] P1 Candidate A / EXP-048: 强化 2026-03-12 双语 AI/Tech Daily 的搜索摘要与转化内链（重写 EN/ZH description，并把 CTA 升级为指向 What Is OpenClaw / VPS guide / model fallback 的强相关内链），消费最近24小时新增内容建设任务 | ICE 8x7x8=448 — commit `665f16f`
-- [x] P2 Candidate B / EXP-047: 为“Skill 安装后不生效”双语教程补齐 FAQ schema（>=3 Q&A），提升富结果命中与高意图检索点击质量 | ICE 7x7x6=294 — commit `b4b401e`
-- [x] P1 Candidate A / EXP-045: 发布中英双语 FAQ《`openclaw doctor --fix` vs `--repair` 安全修复》，覆盖 doctor/fix/repair/force 高意图检索并补齐4条高相关内链 | ICE 8x8x8=512 — commit `c8a07c6`
-- [x] P1 Candidate A / EXP-044: 发布中英双语 FAQ《`openclaw channels status --probe` 5 分钟定位在线不回复》，覆盖渠道探针高意图检索并补齐3条高相关内链 | ICE 9x8x8=576 — commit `(this commit)`
-- [x] P3 Candidate C / EXP-041: 在 weekly:seo 输出“schema 风险周均值/峰值/覆盖率”聚合列（基于已集成日快照字段）| ICE 6x7x6=252 — commit `240b179`
-- [x] P1 Candidate A / EXP-042: 发布中英双语 FAQ《`openclaw status` vs `openclaw gateway status` 区分与5分钟排障流》，覆盖“在线不回复”高意图检索并补齐3条高相关内链 | ICE 8x8x8=512 — commit `2c330e1`
-- [x] P2 Candidate B: 为 daily:seo 增加快照数据完整性提示（GSC + Schema 字段是否填写），减少无效周报输入 | ICE 7x7x8=392 — commit `7ffd09a`
-- [x] P1 Candidate A: 在 daily:seo 集成 schema 风险自动采集（调用 website-schema 闸门并写入 Snapshot 字段），打通周报 Section 11 数据来源 | ICE 8x8x7=448 — commit `3d718dc`
-- [x] P2 Candidate C: 在 weekly:seo 增加 schema 风险趋势统计占位（近7天）| ICE 5x6x5=150 — commit `351550a`
-- [x] P2 Candidate B: 为 check:website-schema 增加失败样例 Top10 输出，缩短排障路径 | ICE 6x7x7=294 — commit `84c6485`
-- [x] P1 Candidate A: 强化 WebSite JSON-LD 闸门（严格校验 publisher.logo 嵌套字段 + URL/语言一致性 + JSON 解析容错），并保留 rg 不可用时 grep -RIn 回退 | ICE 8x8x7=448 — commit `f4634a7`
-- [x] (older history omitted)

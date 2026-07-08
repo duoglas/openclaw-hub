@@ -62,7 +62,7 @@ const genericPhrasePatterns = [
 ];
 
 const genericStoryTitlePattern = /^###\s+\d+\.\s*(AI|Technology|Tech|Source brief|Same-day brief|Concrete AI development)\s*$/gim;
-const namedEntitySource = '\\b(NVIDIA|OpenAI|Anthropic|Claude|KPMG|Amazon|AWS|Codex|ChatGPT|Google|Microsoft|Meta|Apple|Baidu|Alibaba|Tencent|Huawei|China Mobile|Gemini|DeepSeek|Mistral|Perplexity|xAI|GTC|COMPUTEX|Vera|Rubin|Jetson|Alexa|China|Chinese|Europe|EU|United States|US|Japan|Korea|France)\\b';
+const namedEntitySource = '\\b(NVIDIA|OpenAI|Anthropic|Claude|KPMG|Amazon|AWS|Codex|ChatGPT|Google|Microsoft|Meta|Apple|Baidu|Alibaba|Tencent|Huawei|China Mobile|Gemini|DeepSeek|Mistral|Perplexity|xAI|GTC|COMPUTEX|Vera|Rubin|Jetson|Alexa|Xinhua|Hangzhou|HBM|DRAM|NAND|Greater Bay Area|Shenzhen|University of North Carolina|UNC|China|Chinese|Europe|EU|United States|US|Japan|Korea|France)\\b';
 const namedEntityPattern = new RegExp(namedEntitySource);
 const namedEntityGlobalPattern = new RegExp(namedEntitySource, 'g');
 

@@ -32,15 +32,15 @@ Potential impact: Consumers and device makers should watch memory and storage co
 
 ### 4. Xinhua / Greater Bay Area / AI hard-tech commercialization
 
-What happened: Shanghai’s government press briefing said the 12th China Shanghai International Technology Fair will feature brain-computer interfaces, biomedicine, industrial robots, large models, new displays, intelligent connected vehicles, and Yangtze River Delta innovation zones.
-Why it matters: The fair is a useful China hard-tech signal because it connects AI, robotics, brain-computer interfaces, technology transfer, regional industrial policy, and commercialization channels rather than only model releases.
-Potential impact: Brain-computer interface vendors, industrial robotics teams, AI technology-transfer services, and Yangtze River Delta innovation programs may receive more policy, capital, and partnership attention.
+What happened: Xinhua reported that the Greater Bay Area is moving AI hard-tech projects from labs into commercialization, including consumer exoskeletons, embodied robots, brain-computer interfaces, AI design, low-altitude logistics, and AI data-center materials.
+Why it matters: Robotics and AI hardware commercialization is expanding from industrial lines into elder care, outdoor work, rehabilitation, logistics, medical devices, and consumer-assistive scenarios where supply-chain depth and real deployment contexts matter.
+Potential impact: Robotics and hard-tech teams should evaluate focused assistive products, channel access, safety validation, materials supply, after-sales support, and scenario-specific outcomes before betting on general-purpose humanoid robots.
 
 ### 5. Xinhua / AI fiction / creative quality limits
 
-What happened: Consumer creative AI is moving into both social-product tools and writing workflows; Xinhua also cited research finding that AI-generated fiction characters can be more conservative and closed-ended, with less complexity and mystery than human-written stories.
-Why it matters: The signal separates fluent generation from creative depth: AI tools can lower creation friction, but durable creative quality still depends on voice, conflict design, ambiguity, provenance, and human editorial judgment.
-Potential impact: Creators and teams should use AI for search, outlines, image/video drafts, rewrites, and variation testing while keeping human control over privacy, provenance labeling, character arcs, unresolved tension, and final aesthetic decisions.
+What happened: Xinhua cited University of North Carolina at Chapel Hill research finding that AI-generated fiction characters tend to be more conservative and closed-ended, with less complexity and mystery than human-written characters.
+Why it matters: The signal separates fluent generation from durable creative quality: models can produce readable drafts, but unresolved tension, ambiguity, character depth, and aesthetic judgment still require human editorial control.
+Potential impact: Writers, editors, and AI writing-tool teams should use models for outlines, drafts, rewrites, and variation testing while reserving conflict design, character arcs, ambiguity, and final voice for human review.
 
 ## Practical Cases
 
@@ -51,6 +51,16 @@ Team suggestion: Pick one repeated workflow, define the data boundary, add revie
 2. Convert signals into personal productivity experiments
 What to learn: Users do not need to adopt every new AI feature. The best first use case is a repeated task where summaries, comparisons, reminders, or draft generation save attention.
 User suggestion: Test AI on one daily routine such as reading notes, travel planning, spreadsheet cleanup, meeting preparation, or learning review before expanding to higher-risk tasks.
+
+## Case-Level FAQ
+
+### How should teams evaluate robot training certification from the Hangzhou robot school signal?
+
+Treat robot training certification as a proxy for real-world data quality, third-party validation, and operating-risk evidence. Before deployment, compare where the robot was trained, which failure cases were captured, and whether the certificate maps to the scenario you will actually run. For a lightweight operating model, start with [What Is OpenClaw?](/en/blog/what-is-openclaw/) and turn the certification signal into a repeatable review checklist, then map deployment steps with [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/).
+
+### Why does NVIDIA Vera CPU change agentic CPU infrastructure planning?
+
+Vera CPU highlights that agent workflow latency is not only a model problem: tool-call latency, code sandbox startup, database access, CPU concurrency, memory bandwidth, and result validation all shape the user experience. Teams deploying agents should benchmark the full loop, then add fallback and reliability controls with [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/).
 
 ## Today’s Bottom Line
 
@@ -69,8 +79,8 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 - Evidence item 1: NVIDIA / Vera CPU / agentic AI infrastructure — NVIDIA said agentic AI workloads spend substantial time on CPU-side tasks such as tool calls, code execution, data processing, validation, KV-cache handling, and result analysis, and positioned Vera CPU for high single-thread performance plus large-scale concurrency.
 - Evidence item 2: Xinhua / Hangzhou / robot training certification — Xinhua reported that China’s embodied-intelligence push is moving into real-world training infrastructure, including Hangzhou Robot School training industrial, service, security, and entertainment robots for practical work conditions and skill certification.
 - Evidence item 3: Xinhua / AI memory demand / consumer electronics cost pressure — Xinhua reported that AI infrastructure expansion is pushing up high-end memory demand such as HBM, squeezing consumer DRAM and NAND supply and forcing cost restructuring across the consumer-electronics supply chain.
-- Evidence item 4: Xinhua / Greater Bay Area / AI hard-tech commercialization — Shanghai’s government press briefing said the 12th China Shanghai International Technology Fair will feature brain-computer interfaces, biomedicine, industrial robots, large models, new displays, intelligent connected vehicles, and Yangtze River Delta innovation zones.
-- Evidence item 5: Xinhua / AI fiction / creative quality limits — Consumer creative AI is moving into both social-product tools and writing workflows; Xinhua also cited research finding that AI-generated fiction characters can be more conservative and closed-ended, with less complexity and mystery than human-written stories.
+- Evidence item 4: Xinhua / Greater Bay Area / AI hard-tech commercialization — Xinhua reported that the Greater Bay Area is moving AI hard-tech projects from labs into commercialization, including consumer exoskeletons, embodied robots, brain-computer interfaces, AI design, low-altitude logistics, and AI data-center materials.
+- Evidence item 5: Xinhua / AI fiction / creative quality limits — Xinhua cited University of North Carolina at Chapel Hill research finding that AI-generated fiction characters tend to be more conservative and closed-ended, with less complexity and mystery than human-written characters.
 
 ## Next-Step CTA
 

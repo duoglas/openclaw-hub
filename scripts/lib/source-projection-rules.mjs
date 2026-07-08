@@ -307,7 +307,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'market-intelligence',
     splitTargetCategory: 'regional-ai-ecosystems',
-    terms: ['第十二届上交会', '脑机接口', '长三角协同创新专区'],
+    terms: ['第十二届上交会', '长三角协同创新专区'],
     details: {
       what: 'Shanghai’s government press briefing said the 12th China Shanghai International Technology Fair will feature brain-computer interfaces, biomedicine, industrial robots, large models, new displays, intelligent connected vehicles, and Yangtze River Delta innovation zones.',
       why: 'The fair is a useful China hard-tech signal because it connects AI, robotics, brain-computer interfaces, technology transfer, regional industrial policy, and commercialization channels rather than only model releases.',
@@ -570,21 +570,25 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
     splitTargetCategory: 'consumer-creative-ai',
-    displayLabels: [
-      {
-        label: 'Meta / Facebook / consumer creative AI',
-        terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装'],
-      },
-      {
-        label: 'Xinhua / AI fiction / creative quality limits',
-        terms: ['AI 生成小说角色', '保守和封闭式结局'],
-      },
-    ],
-    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装', 'AI 生成小说角色', '保守和封闭式结局', '复杂性和神秘感'],
+    displayLabel: 'Meta / Facebook / consumer creative AI',
+    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装'],
     details: {
-      what: 'Consumer creative AI is moving into both social-product tools and writing workflows; Xinhua also cited research finding that AI-generated fiction characters can be more conservative and closed-ended, with less complexity and mystery than human-written stories.',
-      why: 'The signal separates fluent generation from creative depth: AI tools can lower creation friction, but durable creative quality still depends on voice, conflict design, ambiguity, provenance, and human editorial judgment.',
-      impact: 'Creators and teams should use AI for search, outlines, image/video drafts, rewrites, and variation testing while keeping human control over privacy, provenance labeling, character arcs, unresolved tension, and final aesthetic decisions.',
+      what: 'Meta is expanding consumer creative AI surfaces across Facebook search, image/video editing, and AI try-on workflows, turning discovery and lightweight generation into everyday social-product features.',
+      why: 'Consumer AI adoption increasingly depends on low-friction creative surfaces embedded in existing feeds, commerce journeys, and sharing loops rather than standalone chat interfaces.',
+      impact: 'Creators and product teams should compare convenience, provenance labeling, privacy controls, and editing quality before relying on embedded social AI tools for repeatable publishing workflows.',
+    },
+  },
+  {
+    name: 'xinhua-ai-fiction-character-conservatism-2026',
+    owner: 'daily-source-projection',
+    category: 'consumer-productivity',
+    splitTargetCategory: 'consumer-creative-ai',
+    displayLabel: 'Xinhua / AI fiction / creative quality limits',
+    terms: ['AI 生成小说角色', '保守和封闭式结局', '复杂性和神秘感'],
+    details: {
+      what: 'Xinhua cited University of North Carolina at Chapel Hill research finding that AI-generated fiction characters tend to be more conservative and closed-ended, with less complexity and mystery than human-written characters.',
+      why: 'The signal separates fluent generation from durable creative quality: models can produce readable drafts, but unresolved tension, ambiguity, character depth, and aesthetic judgment still require human editorial control.',
+      impact: 'Writers, editors, and AI writing-tool teams should use models for outlines, drafts, rewrites, and variation testing while reserving conflict design, character arcs, ambiguity, and final voice for human review.',
     },
   },
   {
@@ -599,7 +603,7 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['career-productivity-workflows'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 4,
+        categoryBudget: 5,
         categoryHeadroom: 2,
         rationale: 'capacity delta 0; uses the consumer-creative-ai split target for a fixture-backed consumer AI assistant localization signal and avoids adding another parent consumer-productivity fallback.',
       },
