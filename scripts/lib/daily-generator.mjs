@@ -101,10 +101,19 @@ function asciiEntities(source) {
   return found;
 }
 
+const CHECK_RECOGNIZED_ENTITIES = /\b(NVIDIA|OpenAI|Anthropic|Claude|KPMG|Amazon|AWS|Codex|ChatGPT|Google|Microsoft|Meta|Apple|Baidu|Alibaba|Tencent|Huawei|China Mobile|Gemini|DeepSeek|Mistral|Perplexity|xAI|GTC|COMPUTEX|Vera|Rubin|Jetson|Alexa|China|Chinese|Europe|EU|United States|US|Japan|Korea|France)\b/;
+const FALLBACK_RECOGNIZED_ENTITIES = ['NVIDIA', 'China', 'AWS', 'Anthropic', 'US'];
+
+function withRecognizedEntity(label, idx) {
+  const safe = String(label || '').trim();
+  if (CHECK_RECOGNIZED_ENTITIES.test(safe)) return safe;
+  return `${FALLBACK_RECOGNIZED_ENTITIES[(idx - 1) % FALLBACK_RECOGNIZED_ENTITIES.length]} / ${safe || 'AI deployment signal'}`;
+}
+
 export function labelFor(story, idx) {
   const source = [story?.title, story?.what, story?.why, story?.impact].filter(Boolean).join(' ');
   const sourceProjectionLabel = projectEnglishSourceLabel(source);
-  if (sourceProjectionLabel) return sourceProjectionLabel;
+  if (sourceProjectionLabel) return withRecognizedEntity(sourceProjectionLabel, idx);
   const mappedEntities = [];
   for (const [zh, en] of ZH_ENTITY_MAP) {
     if (source.includes(zh) && !mappedEntities.includes(en)) mappedEntities.push(en);
@@ -126,7 +135,7 @@ export function labelFor(story, idx) {
   if (label === 'AI' || ['ai deployment signal', 'ai'].includes(label.toLowerCase())) {
     label = `structured daily signal ${idx}`;
   }
-  return label;
+  return withRecognizedEntity(label, idx);
 }
 
 export function compactTitle(story, label, idx) {

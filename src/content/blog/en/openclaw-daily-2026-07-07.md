@@ -36,7 +36,7 @@ What happened: Anthropic said Claude Fable 5 returned globally on July 1 and hig
 Why it matters: Model safety is moving toward more comparable severity scoring, where jailbreak risk, abuse controls, enterprise review, and deployment eligibility can be evaluated with a shared language instead of vendor-specific claims.
 Potential impact: Security, compliance, and AI platform teams should ask vendors how jailbreak severity is scored, logged, mitigated, and mapped to launch gates before approving sensitive model deployments.
 
-### 5. Xinhua / Shenzhen / consumer robotics deployment
+### 5. China / Xinhua / Shenzhen / consumer robotics deployment
 
 What happened: Xinhua reported that Shenzhen Nanshan Robotics Valley is forming a robotics cluster, with consumer exoskeleton company Jikex Technology reaching users in more than 70 countries and Shenzhen robotics output reaching 242.6 billion yuan in 2025.
 Why it matters: Robotics commercialization is expanding from industrial lines into elder care, outdoor work, rehabilitation, and consumer-assistive scenarios where supply-chain depth and real deployment contexts matter.
@@ -70,7 +70,7 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 - Evidence item 2: NVIDIA / sovereign AI / national AI infrastructure — NVIDIA said sovereign AI infrastructure is expanding around local compute, local data, foundation models, talent systems, AI factories, and regional AI cloud capacity for training, inference, agents, and physical AI workloads.
 - Evidence item 3: AWS / Amazon / Bedrock / model capability update — AWS made GPT-5.5, GPT-5.4, and Codex available in Amazon Bedrock with OpenAI-matched pricing and enterprise access through AWS identity, network isolation, audit, and encryption controls.
 - Evidence item 4: Anthropic / Claude Fable / jailbreak severity framework — Anthropic said Claude Fable 5 returned globally on July 1 and highlighted an industry jailbreak severity scoring framework with partners including Amazon, Microsoft, and Google.
-- Evidence item 5: Xinhua / Shenzhen / consumer robotics deployment — Xinhua reported that Shenzhen Nanshan Robotics Valley is forming a robotics cluster, with consumer exoskeleton company Jikex Technology reaching users in more than 70 countries and Shenzhen robotics output reaching 242.6 billion yuan in 2025.
+- Evidence item 5: China / Xinhua / Shenzhen / consumer robotics deployment — Xinhua reported that Shenzhen Nanshan Robotics Valley is forming a robotics cluster, with consumer exoskeleton company Jikex Technology reaching users in more than 70 countries and Shenzhen robotics output reaching 242.6 billion yuan in 2025.
 
 ## Case-Level FAQ
 
