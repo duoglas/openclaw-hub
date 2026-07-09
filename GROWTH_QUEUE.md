@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-08 17:20
+Last updated: 2026-07-09 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-221: 将 2026-07-09 最新双语日报接入 real cron fixture，并为 GPT-Live 语音、安全卡、SWE-Bench Pro、Nemotron Deep Agents 与机器人营收修复字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-09）暴露 GPT-Live 全双工语音、GPT-Live System Card 实时语音安全、SWE-Bench Pro 质量审计、NVIDIA Nemotron 3 Ultra + LangChain Deep Agents 和工信部机器人产业营收五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉语音 AI、安全采购、代码 Agent 评测、开放 Agent 栈和中国机器人产业规模五类长尾入口。
+  - Metrics: latest fixture freshness、daily source projection labels、EN/ZH generator、case-level FAQ、latest specificity、source projection registry health/taxonomy 与 `pnpm build` 通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-09.mjs`，覆盖 2026-07-09 五条最新信号；2) source projection metadata 扩展 GPT-Live、System Card、SWE-Bench Pro、Nemotron 3 Ultra/LangChain 与 MIIT robot revenue 的字段级 label/detail；3) EN 2026-07-09 日报移除 GPT/Live/SWE/MIIT 泛化 fallback，补齐 Case-Level FAQ；4) latest fixture freshness 从允许 7 天滞后收紧为必须覆盖最新双语日报；5) 质量评分 28/30。
 - [x] P1 Candidate / EXP-220: 拆分 2026-07-08 AI fiction source projection，并收窄上海上交会宽词，消费最近24小时内容建设新增日报假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: 2026-07-08 最新日报已接入 real cron fixture，但第 5 条 Xinhua AI fiction 信号被临时挂到 Meta creative AI rule，且 `脑机接口` 宽词会让大湾区硬科技条目误投到上海上交会；若不拆出 Xinhua fiction 字段级 rule 并收窄 Shanghai rule，最新 EN 页面会出现 source-detail 漂移，Case-Level FAQ 与 specificity 闸门也无法锁住首日索引质量。
   - Metrics: latest fixture、EN/ZH generator、daily source projection labels、case-level FAQ、source projection scope/registry/taxonomy/term narrowness、fixture dedup、parser guardrail、latest specificity、daily CTA/action sections、duplicate slug 与 `pnpm build` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 仍因 2026-06-02/11/13/16 历史 cross-language token 基线失败，非本轮新增回归。
@@ -622,3 +626,7 @@ Manager: main session
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-04/` 与 `/zh/blog/openclaw-daily-2026-04-04/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
 
 ## Done
+- [x] P1 Candidate / EXP-221: 将 2026-07-09 最新双语日报接入 real cron fixture，并为 GPT-Live 语音、安全卡、SWE-Bench Pro、Nemotron Deep Agents 与机器人营收修复字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-09）暴露 GPT-Live 全双工语音、GPT-Live System Card 实时语音安全、SWE-Bench Pro 质量审计、NVIDIA Nemotron 3 Ultra + LangChain Deep Agents 和工信部机器人产业营收五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉语音 AI、安全采购、代码 Agent 评测、开放 Agent 栈和中国机器人产业规模五类长尾入口。
+  - Metrics: latest fixture freshness、daily source projection labels、EN/ZH generator、case-level FAQ、latest specificity、source projection registry health/taxonomy 与 `pnpm build` 通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-09.mjs`，覆盖 2026-07-09 五条最新信号；2) source projection metadata 扩展 GPT-Live、System Card、SWE-Bench Pro、Nemotron 3 Ultra/LangChain 与 MIIT robot revenue 的字段级 label/detail；3) EN 2026-07-09 日报移除 GPT/Live/SWE/MIIT 泛化 fallback，补齐 Case-Level FAQ；4) latest fixture freshness 从允许 7 天滞后收紧为必须覆盖最新双语日报；5) 质量评分 28/30。

@@ -151,7 +151,13 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
     splitTargetCategory: 'vertical-workflow-agents',
-    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys'],
+    displayLabels: [
+      {
+        label: 'NVIDIA / Nemotron 3 Ultra / LangChain Deep Agents',
+        terms: ['Nemotron 3 Ultra', 'LangChain'],
+      },
+    ],
+    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents'],
     details: {
       what: 'NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.',
       why: 'AI agents are moving beyond chat, writing, and coding into CAD operations, mesh generation, simulation setup, debugging, and report production.',
@@ -283,11 +289,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'product-safety',
     splitTargetCategory: 'youth-safety-controls',
-    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制'],
+    displayLabels: [
+      {
+        label: 'OpenAI / GPT-Live System Card / voice safety controls',
+        terms: ['GPT‑Live System Card', '实时安全检测'],
+      },
+    ],
+    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话'],
     details: {
-      what: 'OpenAI published a pre-G7 proposal for international youth AI safety collaboration, emphasizing age identification, default protections, annual risk assessment, parental controls, and shared research mechanisms.',
-      why: 'AI safety scrutiny is expanding from model capability and misuse toward who uses the product, how minors are protected, and which responsibilities belong to providers, schools, parents, and regulators.',
-      impact: 'Education, companion, and social AI products should expect stronger requirements around age assurance, teen defaults, parental controls, risk reporting, and child-safety evaluation before broad rollout.',
+      what: 'OpenAI published safety documentation for GPT-Live voice interactions, including in-stream safety detection, interruption and guidance handling, escalation prompts, session termination for severe risks, and coverage for self-harm, emotional dependence, scams, and voice impersonation.',
+      why: 'Voice AI creates stronger real-time influence than text chat, so safety controls must operate during the conversation rather than only filtering a finished transcript.',
+      impact: 'Enterprises adopting voice AI should require system-card evidence, live monitoring, abuse escalation, impersonation controls, and reviewable logs before deploying assistants in support, tutoring, companion, vehicle, or wearable contexts.',
     },
   },
   {
@@ -673,12 +685,16 @@ export const FIELD_PROJECTION_RULES = [
         label: 'Xinhua / Hangzhou / robot training certification',
         terms: ['杭州机器人学校', '技能证书'],
       },
+      {
+        label: 'MIIT / China / robot industry revenue',
+        terms: ['世界机器人大会', '规上机器人企业'],
+      },
     ],
-    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书'],
+    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书', '世界机器人大会', '规上机器人企业', '营收超900亿元'],
     details: {
-      what: 'Xinhua reported that China’s embodied-intelligence push is moving into real-world training infrastructure, including Hangzhou Robot School training industrial, service, security, and entertainment robots for practical work conditions and skill certification.',
-      why: 'China’s robotics push is shifting from demonstration videos toward real production and service environments, where scenario data, interference handling, standardized training spaces, and third-party validation determine commercialization.',
-      impact: 'Industrial, service, security, elder-care, entertainment, and procurement teams should evaluate where robots were trained, how failure cases are captured, and whether capability grades or certificates map to real operating risk.',
+      what: 'MIIT said the 2026 World Robot Conference will run in Beijing from August 19 to 23 with more than 300 exhibitors, over 2,000 exhibits, and more than 150 debut products, while China’s above-scale robotics companies generated more than 90 billion yuan in January-May revenue, up 26.9% year over year.',
+      why: 'China’s robotics market is moving from demonstrations toward industrial scale, exhibition density, product launches, and embodied-intelligence deployment capacity.',
+      impact: 'Manufacturing, service-robot, humanoid, component, and smart-factory teams should watch whether robot revenue growth turns into repeatable deployments, validated capability grades, supply-chain depth, and procurement-ready service models.',
     },
   },
   {

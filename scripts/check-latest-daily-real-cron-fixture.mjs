@@ -36,7 +36,7 @@ function expectedSignalCount(fixtureModule) {
   return Array.isArray(fixtureModule?.expectedSignals) ? fixtureModule.expectedSignals.length : 0;
 }
 
-const MAX_FIXTURE_LAG_DAYS = 7;
+const MAX_FIXTURE_LAG_DAYS = 0;
 
 function daysBetween(fromDate, toDate) {
   const from = Date.parse(`${fromDate}T00:00:00Z`);
@@ -48,8 +48,8 @@ function daysBetween(fromDate, toDate) {
 function runSyntheticSelfTest() {
   const syntheticLatestDailyDate = '2026-07-10';
   const syntheticFixtures = [
+    { fixtureDate: '2026-07-09', expectedSignals: [{}, {}, {}, {}, {}] },
     { fixtureDate: '2026-07-01', expectedSignals: [{}, {}, {}, {}, {}] },
-    { fixtureDate: '2026-06-27', expectedSignals: [{}, {}, {}, {}, {}] },
   ];
   const syntheticFixtureDates = syntheticFixtures.map(fixtureDateOf).filter(Boolean).sort();
   const syntheticLatestFixtureDate = latestDate(syntheticFixtureDates);

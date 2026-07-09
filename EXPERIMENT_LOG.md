@@ -1,3 +1,14 @@
+### EXP-221
+- Hypothesis: 最近24小时新增日报（2026-07-09）暴露 GPT-Live 全双工语音、GPT-Live System Card 实时语音安全、SWE-Bench Pro 质量审计、NVIDIA Nemotron 3 Ultra + LangChain Deep Agents 和工信部机器人产业营收五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉语音 AI、安全采购、代码 Agent 评测、开放 Agent 栈和中国机器人产业规模五类长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-09.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-latest-daily-real-cron-fixture.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `src/content/blog/en/openclaw-daily-2026-07-09.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-09 real cron fixture；source projection metadata 扩展 GPT-Live full-duplex voice、GPT-Live System Card safety、SWE-Bench Pro benchmark reliability、Nemotron 3 Ultra / LangChain Deep Agents 与 MIIT robot revenue；EN 最新日报从泛化 fallback 改为字段级事实输出，并新增 GPT-Live 与 SWE-Bench Pro Case-Level FAQ；latest fixture freshness 从允许 7 天 lag 收紧为必须覆盖最新双语日报，label check 自动覆盖 07-09 fixture。
+- ICE: 9x8x8=576
+- Start date: 2026-07-09
+- End date: 2026-07-09
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels`、EN/ZH generator、case-level FAQ、latest specificity、source projection registry health/taxonomy 与 `pnpm build` 通过。
+- Result: pass（latestDaily=2026-07-09 已由同日 real cron fixture 覆盖；EN 最新日报 story 1/2/3/5 已移除泛化 fallback 并补齐 GPT-Live / SWE-Bench Pro FAQ；latest fixture freshness 不再允许 stale lag；相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-09 fixture 作为语音 AI、安全卡、代码 Agent 评测、开放 Agent 栈和机器人产业规模的首日索引质量基线；下一步可把 daily-source-projection-labels 改为读取所有 latest fixtures，减少手工 import 漂移。）
+
 ### EXP-220
 - Hypothesis: 2026-07-08 最新日报已接入 real cron fixture，但第 5 条 Xinhua AI fiction 信号被临时挂到 Meta creative AI rule，且 `脑机接口` 宽词会让大湾区硬科技条目误投到上海上交会；若不拆出 Xinhua fiction 字段级 rule 并收窄 Shanghai rule，最新 EN 页面会出现 source-detail 漂移，Case-Level FAQ 与 specificity 闸门也无法锁住首日索引质量。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/check-daily-brief-specificity.mjs`, `src/content/blog/en/openclaw-daily-2026-07-08.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
