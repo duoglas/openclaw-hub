@@ -88,6 +88,12 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'cloud-model-distribution',
+    displayLabels: [
+      {
+        label: 'AWS / Amazon / Bedrock / model capability update',
+        terms: ['前沿模型上云', '企业级安全'],
+      },
+    ],
     terms: ['Amazon Bedrock', 'AWS 身份', '网络隔离'],
     details: {
       what: 'AWS made GPT-5.5, GPT-5.4, and Codex available in Amazon Bedrock with OpenAI-matched pricing and enterprise access through AWS identity, network isolation, audit, and encryption controls.',
@@ -570,7 +576,13 @@ export const FIELD_PROJECTION_RULES = [
     category: 'developer-tools',
     splitTargetCategory: 'code-agent-runtime',
     displayLabel: 'OpenAI / Codex / ChatGPT control surfaces',
-    terms: ['Record & Replay', '应用权限控制', 'Codex 新增'],
+    displayLabels: [
+      {
+        label: 'OpenAI / SWE-Bench Pro / benchmark reliability',
+        terms: ['SWE‑Bench Pro', '公开 731 个任务'],
+      },
+    ],
+    terms: ['Record & Replay', '应用权限控制', 'Codex 新增', 'SWE‑Bench Pro', '公开 731 个任务', '34.1% 有问题'],
     details: {
       what: 'OpenAI updated ChatGPT Scheduled tasks, app permission controls, voice pronunciation help, chat organization, iOS upload flow, and Codex Record & Replay, which can turn a demonstrated workflow into a reusable skill.',
       why: 'The update shows AI products moving from chat responses toward scheduled execution, permissioned app access, reusable workflows, and supervised desktop or browser automation.',
@@ -694,7 +706,7 @@ export const FIELD_PROJECTION_RULES = [
     details: {
       what: 'MIIT said the 2026 World Robot Conference will run in Beijing from August 19 to 23 with more than 300 exhibitors, over 2,000 exhibits, and more than 150 debut products, while China’s above-scale robotics companies generated more than 90 billion yuan in January-May revenue, up 26.9% year over year.',
       why: 'China’s robotics market is moving from demonstrations toward industrial scale, exhibition density, product launches, and embodied-intelligence deployment capacity.',
-      impact: 'Manufacturing, service-robot, humanoid, component, and smart-factory teams should watch whether robot revenue growth turns into repeatable deployments, validated capability grades, supply-chain depth, and procurement-ready service models.',
+      impact: 'Manufacturing, service-robot, humanoid, component, and smart manufacturing teams should watch whether robot revenue growth turns into repeatable deployments, validated capability grades, supply-chain depth, and procurement-ready service models.',
     },
   },
   {
@@ -899,7 +911,13 @@ export const FIELD_PROJECTION_RULES = [
     category: 'frontier-models',
     splitTargetCategory: 'frontier-model-task-capability',
     displayLabel: 'OpenAI / GPT-5.5 Instant / decision assistance',
-    terms: ['6月24日更新 GPT-5.5 Instant', '复杂约束', '本地/购物类问题'],
+    displayLabels: [
+      {
+        label: 'OpenAI / GPT-Live / full-duplex voice AI',
+        terms: ['GPT‑Live', '边听边说'],
+      },
+    ],
+    terms: ['6月24日更新 GPT-5.5 Instant', '复杂约束', '本地/购物类问题', 'GPT‑Live', '边听边说', '后台委托 GPT‑5.5'],
     details: {
       what: 'OpenAI updated GPT-5.5 Instant on June 24 to better understand real user goals, multi-turn context, complex constraints, and local or shopping-style queries.',
       why: 'The model competition signal is shifting from larger parameters alone toward assistants that can help users make decisions under constraints, compare options, and plan practical next steps.',
@@ -1250,12 +1268,12 @@ export const FIELD_PROJECTION_RULES = [
 ];
 
 function displayLabelForRule(rule, text) {
-  if (typeof rule.displayLabel === 'string' && rule.displayLabel.trim()) return rule.displayLabel.trim();
   for (const candidate of rule.displayLabels || []) {
     const label = String(candidate?.label || '').trim();
     const terms = Array.isArray(candidate?.terms) ? candidate.terms : [];
     if (label && terms.length > 0 && terms.every((term) => text.includes(term))) return label;
   }
+  if (typeof rule.displayLabel === 'string' && rule.displayLabel.trim()) return rule.displayLabel.trim();
   return '';
 }
 

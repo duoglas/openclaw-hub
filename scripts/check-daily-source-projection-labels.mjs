@@ -3,19 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { extractStories, labelFor } from './lib/daily-generator.mjs';
 import { projectEnglishSourceLabel } from './lib/source-projection-rules.mjs';
-import { realCronFixture as fixture20260709, expectedSignals as expected20260709 } from './fixtures/daily-real-cron-2026-07-09.mjs';
-import { realCronFixture as fixture20260701, expectedSignals as expected20260701 } from './fixtures/daily-real-cron-2026-07-01.mjs';
-import { realCronFixture as fixture20260630, expectedSignals as expected20260630 } from './fixtures/daily-real-cron-2026-06-30.mjs';
-import { realCronFixture as fixture20260627, expectedSignals as expected20260627 } from './fixtures/daily-real-cron-2026-06-27.mjs';
-import { realCronFixture as fixture20260626, expectedSignals as expected20260626 } from './fixtures/daily-real-cron-2026-06-26.mjs';
-import { realCronFixture as fixture20260621, expectedSignals as expected20260621 } from './fixtures/daily-real-cron-2026-06-21.mjs';
-import { realCronFixture as fixture20260618, expectedSignals as expected20260618 } from './fixtures/daily-real-cron-2026-06-18.mjs';
-import { realCronFixture as fixture20260616, expectedSignals as expected20260616 } from './fixtures/daily-real-cron-2026-06-16.mjs';
-import { realCronFixture as fixture20260613, expectedSignals as expected20260613 } from './fixtures/daily-real-cron-2026-06-13.mjs';
-import { realCronFixture as fixture20260611, expectedSignals as expected20260611 } from './fixtures/daily-real-cron-2026-06-11.mjs';
-import { realCronFixture as fixture20260608, expectedSignals as expected20260608 } from './fixtures/daily-real-cron-2026-06-08.mjs';
-import { realCronFixture as fixture20260606, expectedSignals as expected20260606 } from './fixtures/daily-real-cron-2026-06-06.mjs';
-import { realCronFixture as fixture20260605, expectedSignals as expected20260605 } from './fixtures/daily-real-cron-2026-06-05.mjs';
+import { realCronFixtures } from './fixtures/daily-real-cron-fixtures.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -45,6 +33,32 @@ function assertFixtureLabels({ fixtureName, fixture, expectedSignals }) {
     }
   });
   if (failures.length) fail('fixture labels drifted from source projection metadata', failures);
+}
+
+
+function fixtureDateFor(fixtureModule) {
+  return fixtureModule.fixtureDate || fixtureModule.realCronFixture?.match?.(/\n(\d{4}-\d{2}-\d{2})\s/)?.[1] || 'unknown-date';
+}
+
+function labelReadyFixtures() {
+  return realCronFixtures
+    .filter((fixtureModule) => Array.isArray(fixtureModule.expectedSignals) && fixtureDateFor(fixtureModule) >= '2026-06-05')
+    .map((fixtureModule) => ({
+      fixtureName: `daily-real-cron-${fixtureDateFor(fixtureModule)}`,
+      fixture: fixtureModule.realCronFixture,
+      expectedSignals: fixtureModule.expectedSignals,
+    }));
+}
+
+function assertRegistryDrivenFixtureCoverage(fixtures) {
+  const fixtureDates = fixtures.map(({ fixtureName }) => fixtureName.replace('daily-real-cron-', ''));
+  const missingRecentFixtures = ['2026-07-07', '2026-07-08', '2026-07-09'].filter((date) => !fixtureDates.includes(date));
+  if (missingRecentFixtures.length) {
+    fail('daily source projection label check is not driven by all recent registry fixtures', missingRecentFixtures);
+  }
+  if (fixtures.length < 17) {
+    fail('daily source projection label check covers too few label-ready fixtures', [`actual=${fixtures.length}`, 'expected>=17']);
+  }
 }
 
 function assertNoGeneratorHardcodedOverrides() {
@@ -106,18 +120,8 @@ function assertSyntheticConditionalLabel() {
 }
 
 assertNoGeneratorHardcodedOverrides();
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-07-09', fixture: fixture20260709, expectedSignals: expected20260709 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-07-01', fixture: fixture20260701, expectedSignals: expected20260701 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-30', fixture: fixture20260630, expectedSignals: expected20260630 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-27', fixture: fixture20260627, expectedSignals: expected20260627 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-26', fixture: fixture20260626, expectedSignals: expected20260626 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-21', fixture: fixture20260621, expectedSignals: expected20260621 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-18', fixture: fixture20260618, expectedSignals: expected20260618 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-16', fixture: fixture20260616, expectedSignals: expected20260616 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-13', fixture: fixture20260613, expectedSignals: expected20260613 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-11', fixture: fixture20260611, expectedSignals: expected20260611 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-08', fixture: fixture20260608, expectedSignals: expected20260608 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-06', fixture: fixture20260606, expectedSignals: expected20260606 });
-assertFixtureLabels({ fixtureName: 'daily-real-cron-2026-06-05', fixture: fixture20260605, expectedSignals: expected20260605 });
+const fixtures = labelReadyFixtures();
+assertRegistryDrivenFixtureCoverage(fixtures);
+for (const fixture of fixtures) assertFixtureLabels(fixture);
 assertSyntheticConditionalLabel();
-console.log('daily source projection label check passed');
+console.log(`daily source projection label check passed: fixtures=${fixtures.length}, expectedSignals=${fixtures.reduce((sum, fixture) => sum + fixture.expectedSignals.length, 0)}`);

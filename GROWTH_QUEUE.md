@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-09 11:20
+Last updated: 2026-07-09 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-222: 将 daily-source-projection-labels 改为读取 registry 中全部 label-ready real cron fixtures，并补齐 07-07/07-09 条件标签回归，消费 EXP-221 “减少手工 import 漂移”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-221 已把 2026-07-09 最新日报接入 fixture，但 label check 仍手写 import 清单并漏掉 2026-07-07/07-08/06-28/06-29 等已注册 fixture；若不改为从 `realCronFixtures` 自动发现 label-ready 样本，新增日报可能通过 latest freshness 却绕过 headline label metadata 回归，导致首屏标签和 source projection metadata 静默漂移。
+  - Metrics: `pnpm check:daily-source-projection-labels` 输出 `fixtures=17, expectedSignals=85`；source projection registry health/taxonomy、latest fixture freshness 与 `pnpm build` 通过。
+  - Acceptance: 1) `check-daily-source-projection-labels` 删除逐个 fixture import，改为从 `realCronFixtures` 自动筛选 2026-06-05 起 label-ready fixtures；2) 覆盖 2026-07-07、2026-07-08、2026-07-09 最近 fixture，阻断手工清单漏检；3) 为 07-09 GPT-Live、SWE-Bench Pro 与 07-07 Bedrock 安全发布补齐条件 display label；4) 条件 label 优先于默认 label，避免 GPT-5.5 / Codex / Bedrock 旧语义吞掉最新字段级标签；5) taxonomy 中 humanoid rule 的 smart-factory 文案改为 smart manufacturing，避免 migration hint 被 `factory` 宽词误判；6) 质量评分 28/30。
 - [x] P1 Candidate / EXP-221: 将 2026-07-09 最新双语日报接入 real cron fixture，并为 GPT-Live 语音、安全卡、SWE-Bench Pro、Nemotron Deep Agents 与机器人营收修复字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-09）暴露 GPT-Live 全双工语音、GPT-Live System Card 实时语音安全、SWE-Bench Pro 质量审计、NVIDIA Nemotron 3 Ultra + LangChain Deep Agents 和工信部机器人产业营收五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉语音 AI、安全采购、代码 Agent 评测、开放 Agent 栈和中国机器人产业规模五类长尾入口。
   - Metrics: latest fixture freshness、daily source projection labels、EN/ZH generator、case-level FAQ、latest specificity、source projection registry health/taxonomy 与 `pnpm build` 通过。

@@ -1,3 +1,14 @@
+### EXP-222
+- Hypothesis: EXP-221 已把 2026-07-09 最新日报接入 fixture，但 label check 仍手写 import 清单并漏掉 2026-07-07/07-08/06-28/06-29 等已注册 fixture；若不改为从 `realCronFixtures` 自动发现 label-ready 样本，新增日报可能通过 latest freshness 却绕过 headline label metadata 回归，导致首屏标签和 source projection metadata 静默漂移。
+- Scope: `scripts/check-daily-source-projection-labels.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: `check-daily-source-projection-labels` 改为从 `realCronFixtures` 自动筛选 2026-06-05 起 label-ready fixtures，覆盖 17 个 fixture / 85 条 expectedSignals，并显式保护 2026-07-07、2026-07-08、2026-07-09 不再被手工 import 清单漏掉；source projection display label 解析改为条件标签优先，补齐 07-09 GPT-Live full-duplex voice、07-09 SWE-Bench Pro benchmark reliability、07-07 Bedrock secure model release 三个条件标签；同时将 humanoid robotics impact 文案里的 smart-factory 改为 smart manufacturing，避免 taxonomy migration hint 被 `factory` 宽词误判到 commercial deployment。
+- ICE: 8x8x8=512
+- Start date: 2026-07-09
+- End date: 2026-07-09
+- Success metric: `pnpm check:daily-source-projection-labels` 输出 `fixtures=17, expectedSignals=85`，并且 source projection registry health/taxonomy、latest fixture freshness 与 `pnpm build` 通过。
+- Result: pass（label check 已由 registry 自动发现 17 个 label-ready fixtures / 85 条 expectedSignals；补齐 GPT-Live、SWE-Bench Pro、Bedrock 三个条件标签；registry health、taxonomy、latest fixture freshness 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 registry-driven label fixture coverage，下一步可把 2026-05-24 至 2026-06-04 的早期 fixture 也迁入 source projection metadata，最终移除日期 cutoff。）
+
 ### EXP-221
 - Hypothesis: 最近24小时新增日报（2026-07-09）暴露 GPT-Live 全双工语音、GPT-Live System Card 实时语音安全、SWE-Bench Pro 质量审计、NVIDIA Nemotron 3 Ultra + LangChain Deep Agents 和工信部机器人产业营收五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉语音 AI、安全采购、代码 Agent 评测、开放 Agent 栈和中国机器人产业规模五类长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-09.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-latest-daily-real-cron-fixture.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `src/content/blog/en/openclaw-daily-2026-07-09.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
