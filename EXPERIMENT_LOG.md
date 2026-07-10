@@ -1,3 +1,14 @@
+### EXP-224
+- Hypothesis: EXP-223 已把 2026-07-10 最新日报接入 real cron fixture，但 `pnpm check:daily-bilingual-generator-pair-fixture` 仍因 06-02/03/04/05/11/13/16 历史 cross-language token 使用英文转写而失败；若不把 token baseline 对齐到双语生成器实际保留的具体事实，全量双语质量闸门会持续失效，最新日报只能依赖局部 EN/ZH、label 与 specificity 检查。
+- Scope: `scripts/fixtures/daily-real-cron-2026-06-02.mjs`, `scripts/fixtures/daily-real-cron-2026-06-03.mjs`, `scripts/fixtures/daily-real-cron-2026-06-04.mjs`, `scripts/fixtures/daily-real-cron-2026-06-05.mjs`, `scripts/fixtures/daily-real-cron-2026-06-11.mjs`, `scripts/fixtures/daily-real-cron-2026-06-13.mjs`, `scripts/fixtures/daily-real-cron-2026-06-16.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将历史 fixture 的 `requiredTokens` 从生成器不会稳定输出的英文转写，改为中英双语页面实际保留的同一具体事实：06-02 “六大洲”；06-03/06-05 “国家数据局/具身智能”；06-04 “青少年 AI 安全/家长控制/脑机接口/工业机器人/长三角”；06-11/06-13/06-16 “百个以上高价值/万台级/国资委/国务院国资委”；06-16 “AI 图片”。
+- ICE: 8x8x8=512
+- Start date: 2026-07-10
+- End date: 2026-07-10
+- Success metric: `pnpm check:daily-bilingual-generator-pair-fixture`、EN/ZH generator real cron fixture、case-level FAQ、daily source projection labels、latest daily real cron fixture 与 `pnpm build` 全部通过。
+- Result: pass（daily bilingual pair fixture 已从 13 个历史 missing token 失败恢复为通过；daily EN/ZH generator、case FAQ、source projection labels、latest fixture 与 build 均通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（恢复全量双语内容质量闸门，后续最新日报接入可重新把 bilingual pair fixture 作为必须通过项；下一步可把 requiredTokens 升级为显式 token alias groups，避免未来中英转写再次造成历史基线漂移。）
+
 ### EXP-223
 - Hypothesis: 最近24小时新增日报（2026-07-10）暴露 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents、Claude Fable jailbreak severity、China science self-reliance policy、AI memory pressure 与 Honor humanoid robotics landing window 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉开放 Agent 栈、模型安全评分、科技自立政策、AI 存储成本和人形机器人落地窗口五类长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-10.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-10.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

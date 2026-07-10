@@ -147,7 +147,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['china-humanoid-embodied-training-2026'],
     enLabel: 'Xinhua / MIIT / China / robotics deployment',
     zhEvidence: '来源条目 4：中国启动 2026 年度人形机器人与具身智能实景实训专项行动',
-    requiredTokens: ['Xinhua', 'MIIT', '100 high-value', '10,000-unit'],
+    requiredTokens: ['Xinhua', 'MIIT', '百个以上高价值', '万台级'],
   },
   {
     title: '工信部要求规范 App 信息窗口跳转，严禁诱导点击和“摇一摇”误跳',

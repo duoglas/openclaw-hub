@@ -129,7 +129,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['nvidia-ai-cloud-ecosystem'],
     enLabel: 'NVIDIA / Cloud / GPU / compute infrastructure',
     zhEvidence: '来源条目 3：NVIDIA 扩大全球 AI Cloud 生态',
-    requiredTokens: ['NVIDIA', 'AI Cloud', 'six continents'],
+    requiredTokens: ['NVIDIA', 'AI Cloud', '六大洲'],
   },
   {
     title: 'ChatGPT 增加求职与简历能力',

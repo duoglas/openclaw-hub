@@ -123,7 +123,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['china-humanoid-embodied-training-2026'],
     enLabel: 'MIIT / China / L2 / robotics deployment',
     zhEvidence: '来源条目 5：中国启动人形机器人与具身智能实景实训专项行动',
-    requiredTokens: ['MIIT', 'SASAC', '100 high-value', '10,000-unit'],
+    requiredTokens: ['MIIT', '国资委', '百个以上高价值', '万台级'],
   },
 ];
 

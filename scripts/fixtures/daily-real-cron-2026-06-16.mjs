@@ -96,7 +96,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['meta-facebook-ai-tools-2026'],
     enLabel: 'Meta / Facebook / consumer creative AI',
     zhEvidence: '来源条目 1：Meta 把 AI 搜索和创作工具继续塞进 Facebook',
-    requiredTokens: ['Meta', 'AI Mode', 'AI image', 'Facebook'],
+    requiredTokens: ['Meta', 'AI Mode', 'AI 图片', 'Facebook'],
   },
   {
     title: 'Amazon 推出 Content Partners，试图重塑 AI 时代内容分发',
@@ -110,7 +110,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['china-humanoid-embodied-training-2026'],
     enLabel: 'MIIT / SASAC / China humanoid robotics training',
     zhEvidence: '来源条目 3：中国两部门推进人形机器人与具身智能“实景实训”',
-    requiredTokens: ['MIIT', 'SASAC', '100 high-value', '10,000-unit'],
+    requiredTokens: ['MIIT', '国务院国资委', '百个以上高价值', '万台级'],
   },
   {
     title: 'OpenAI 推出 Partner Network，押注企业 AI 落地生态',

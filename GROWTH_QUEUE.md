@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-10 11:38
+Last updated: 2026-07-10 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-224: 修复 daily bilingual pair fixture 的历史 cross-language token 基线，将 06-02/03/04/05/11/13/16 真实 cron fixture 的必检 token 对齐到生成器实际保留的中英具体事实，消费 EXP-223 后续“恢复全量闸门”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-223 已把 2026-07-10 最新日报接入 fixture，但 `pnpm check:daily-bilingual-generator-pair-fixture` 仍因 06-02/03/04/05/11/13/16 历史 cross-language token 使用英文转写而失败；若不把 token baseline 对齐到双语生成器实际保留的具体事实，全量双语质量闸门会持续失效，最新日报只能依赖局部检查。
+  - Metrics: `pnpm check:daily-bilingual-generator-pair-fixture` 从 13 个历史 missing token 失败恢复为通过；daily EN/ZH generator、case FAQ、source projection label、latest fixture 与 `pnpm build` 通过。
+  - Acceptance: 1) 06-02 NVIDIA AI Cloud 将 six continents 对齐为“六大洲”；2) 06-03/06-05 国家数据局 token 对齐为“国家数据局/具身智能”；3) 06-04 youth safety、parental controls 与上海硬科技 token 对齐中文保留事实；4) 06-11/06-13/06-16 人形机器人专项行动 token 对齐“百个以上高价值/万台级/国资委”；5) 双语 pair fixture、相关日报检查与 build 全部通过，质量评分 28/30。
 - [x] P1 Candidate / EXP-223: 将 2026-07-10 最新双语日报接入 real cron fixture，并为 science self-reliance、Claude Fable jailbreak severity 与 humanoid robotics landing window 补齐字段级 projection / FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-10）暴露 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents、Claude Fable jailbreak severity、China science self-reliance policy、AI memory pressure 与 Honor humanoid robotics landing window 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉开放 Agent 栈、模型安全评分、科技自立政策、AI 存储成本和人形机器人落地窗口五类长尾入口。
   - Metrics: latest fixture freshness、EN/ZH generator、daily source projection labels、case-level FAQ、source projection registry health/taxonomy、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 通过；bilingual pair fixture 仍有历史 cross-language token 基线失败，非本轮新增。

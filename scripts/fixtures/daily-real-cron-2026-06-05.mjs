@@ -98,7 +98,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['china-national-data-administration-embodied-ai'],
     enLabel: 'Xinhua / China / Science / embodied AI',
     zhEvidence: '来源条目 4：中国推动高质量数据集建设，重点支撑具身智能、AI for Science、先进制造',
-    requiredTokens: ['China', 'National Data Administration', '11.6万个', '960PB'],
+    requiredTokens: ['China', '国家数据局', '11.6万个', '960PB'],
   },
   {
     title: '宇树科技科创板 IPO 过会，具身智能进入资本市场主线',

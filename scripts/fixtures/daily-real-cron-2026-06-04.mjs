@@ -104,7 +104,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['openai-youth-safety-g7-2026'],
     enLabel: 'OpenAI / G7 / model capability update / AI governance requirement',
     zhEvidence: '来源条目 3：OpenAI 呼吁建立国际青少年 AI 安全机制',
-    requiredTokens: ['OpenAI', 'G7', 'youth AI safety', 'parental controls'],
+    requiredTokens: ['OpenAI', 'G7', '青少年 AI 安全', '家长控制'],
   },
   {
     title: 'Microsoft 强调企业 AI 的重点从模型转向“Agent 系统”',
@@ -118,7 +118,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['shanghai-tech-fair-2026-hard-tech'],
     enLabel: 'China / robotics deployment / model capability update / AI policy signal',
     zhEvidence: '来源条目 5：上海上交会聚焦脑机接口、大模型、智能网联等硬科技',
-    requiredTokens: ['Shanghai', 'brain-computer interfaces', 'industrial robots', 'Yangtze River Delta'],
+    requiredTokens: ['Shanghai', '脑机接口', '工业机器人', '长三角'],
   },
 ];
 

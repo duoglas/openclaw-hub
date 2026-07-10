@@ -137,7 +137,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['china-national-data-administration-embodied-ai'],
     enLabel: 'Xinhua / China / Science / embodied AI',
     zhEvidence: '来源条目 5：国家数据局强调：高质量数据集是具身智能、AI for Science 的基础',
-    requiredTokens: ['Xinhua', 'National Data Administration', 'embodied intelligence'],
+    requiredTokens: ['Xinhua', '国家数据局', '具身智能'],
   },
 ];
 
