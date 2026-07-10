@@ -108,7 +108,6 @@ export const requiredEnglishOutputs = [
   'MIIT said the 2026 World Robot Conference will run in Beijing from August 19 to 23',
   'Evidence item 1: OpenAI / GPT-Live / full-duplex voice AI',
   'Evidence item 5: MIIT / China / robot industry revenue',
-  '## Case-Level FAQ',
   'GPT-Live voice AI',
   'SWE-Bench Pro',
   '## Today’s Bottom Line',

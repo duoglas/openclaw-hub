@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-09 17:24
+Last updated: 2026-07-10 11:38
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-223: 将 2026-07-10 最新双语日报接入 real cron fixture，并为 science self-reliance、Claude Fable jailbreak severity 与 humanoid robotics landing window 补齐字段级 projection / FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-10）暴露 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents、Claude Fable jailbreak severity、China science self-reliance policy、AI memory pressure 与 Honor humanoid robotics landing window 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉开放 Agent 栈、模型安全评分、科技自立政策、AI 存储成本和人形机器人落地窗口五类长尾入口。
+  - Metrics: latest fixture freshness、EN/ZH generator、daily source projection labels、case-level FAQ、source projection registry health/taxonomy、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 通过；bilingual pair fixture 仍有历史 cross-language token 基线失败，非本轮新增。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-10.mjs`，覆盖 2026-07-10 五条最新信号；2) science self-reliance 与 humanoid robotics landing window 条件 label / detail 写入 source projection metadata，并补齐 Claude Fable 5 恢复全球访问匹配；3) EN 2026-07-10 日报移除 Anthropic / Xinhua / robotics 泛化 fallback，补齐 description、Top 5、Evidence Matrix；4) Case-Level FAQ 自动覆盖 enterprise Agent stack 与 humanoid robotics landing window；5) daily label check 输出 `fixtures=18, expectedSignals=90`，质量评分 27/30。
 - [x] P1 Candidate / EXP-222: 将 daily-source-projection-labels 改为读取 registry 中全部 label-ready real cron fixtures，并补齐 07-07/07-09 条件标签回归，消费 EXP-221 “减少手工 import 漂移”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-221 已把 2026-07-09 最新日报接入 fixture，但 label check 仍手写 import 清单并漏掉 2026-07-07/07-08/06-28/06-29 等已注册 fixture；若不改为从 `realCronFixtures` 自动发现 label-ready 样本，新增日报可能通过 latest freshness 却绕过 headline label metadata 回归，导致首屏标签和 source projection metadata 静默漂移。
   - Metrics: `pnpm check:daily-source-projection-labels` 输出 `fixtures=17, expectedSignals=85`；source projection registry health/taxonomy、latest fixture freshness 与 `pnpm build` 通过。

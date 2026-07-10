@@ -221,12 +221,21 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
-    displayLabel: 'Xinhua / China / Science / embodied AI',
-    terms: ['国家数据局', '刘烈宏', 'National Data Administration'],
+    displayLabels: [
+      {
+        label: 'Xinhua / China / Science / embodied AI',
+        terms: ['国家数据局', '刘烈宏'],
+      },
+      {
+        label: 'Xinhua / China / science self-reliance policy',
+        terms: ['国家科学技术奖励大会', '两院院士大会', '中国科协第十一次全国代表大会'],
+      },
+    ],
+    terms: ['国家数据局', '刘烈宏', 'National Data Administration', '国家科学技术奖励大会', '两院院士大会', '中国科协第十一次全国代表大会', '科技自立自强'],
     details: {
-      what: 'Xinhua reported that Liu Liehong, head of China’s National Data Administration, said high-quality datasets are a critical foundation for embodied intelligence’s perception-decision-action loop and for data engineering in AI for Science.',
-      why: 'China’s AI policy focus continues to broaden from large models toward datasets, sector-specific scenarios, embodied intelligence, and scientific research infrastructure.',
-      impact: 'Industrial manufacturing, transportation, culture and tourism, and research organizations may invest more in dataset construction, data governance, annotation, synthetic data, and privacy-preserving data platforms.',
+      what: 'Xinhua reported China’s national science and technology awards conference, the academies conference, and the China Association for Science and Technology congress, with policy emphasis on original breakthroughs in artificial intelligence, quantum technology, life sciences, and related frontier fields.',
+      why: 'China’s AI policy focus continues to broaden from large models toward high-level science self-reliance, industrial innovation, datasets, embodied intelligence, and scientific research infrastructure.',
+      impact: 'AI, robotics, advanced manufacturing, life-science, and research organizations may see sustained policy and industrial-resource support, while teams should watch which programs turn into funding, procurement, or deployment criteria.',
     },
   },
   {
@@ -701,12 +710,16 @@ export const FIELD_PROJECTION_RULES = [
         label: 'MIIT / China / robot industry revenue',
         terms: ['世界机器人大会', '规上机器人企业'],
       },
+      {
+        label: 'Xinhua / Honor / humanoid robotics landing window',
+        terms: ['荣耀终端机器人首席技术架构师严斌', '人形机器人技术落地的重要时期'],
+      },
     ],
-    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书', '世界机器人大会', '规上机器人企业', '营收超900亿元'],
+    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书', '世界机器人大会', '规上机器人企业', '营收超900亿元', '荣耀终端机器人首席技术架构师严斌', '人形机器人技术落地的重要时期'],
     details: {
-      what: 'MIIT said the 2026 World Robot Conference will run in Beijing from August 19 to 23 with more than 300 exhibitors, over 2,000 exhibits, and more than 150 debut products, while China’s above-scale robotics companies generated more than 90 billion yuan in January-May revenue, up 26.9% year over year.',
-      why: 'China’s robotics market is moving from demonstrations toward industrial scale, exhibition density, product launches, and embodied-intelligence deployment capacity.',
-      impact: 'Manufacturing, service-robot, humanoid, component, and smart manufacturing teams should watch whether robot revenue growth turns into repeatable deployments, validated capability grades, supply-chain depth, and procurement-ready service models.',
+      what: 'MIIT said the 2026 World Robot Conference will run in Beijing from August 19 to 23 with more than 300 exhibitors, over 2,000 exhibits, and more than 150 debut products; Xinhuanet also reported Honor robotics architect Yan Bin’s view that the next few years will be an important landing window for humanoid robotics technology.',
+      why: 'China’s robotics market is moving from demonstrations toward industrial scale, exhibition density, product launches, embodied-intelligence deployment capacity, and real production or service scenarios.',
+      impact: 'Manufacturing, service-robot, humanoid, component, and smart manufacturing teams should watch whether robot revenue growth and landing-window claims turn into repeatable deployments, validated capability grades, supply-chain depth, procurement-ready service models, and safety evidence.',
     },
   },
   {
@@ -1187,7 +1200,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta +1; raises model-account-security for a 2026-07-07 Claude Fable and jailbreak severity framework signal while keeping product-safety matching narrow.',
       },
     },
-    terms: ['Fable 5 于 7 月 1 日全球回归', 'jailbreak 严重度评分框架'],
+    terms: ['Fable 5 于 7 月 1 日全球回归', 'Fable 5 已恢复全球访问', 'jailbreak 严重度评分框架'],
     details: {
       what: 'Anthropic said Claude Fable 5 returned globally on July 1 and highlighted an industry jailbreak severity scoring framework with partners including Amazon, Microsoft, and Google.',
       why: 'Model safety is moving toward more comparable severity scoring, where jailbreak risk, abuse controls, enterprise review, and deployment eligibility can be evaluated with a shared language instead of vendor-specific claims.',

@@ -1,3 +1,14 @@
+### EXP-223
+- Hypothesis: 最近24小时新增日报（2026-07-10）暴露 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents、Claude Fable jailbreak severity、China science self-reliance policy、AI memory pressure 与 Honor humanoid robotics landing window 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉开放 Agent 栈、模型安全评分、科技自立政策、AI 存储成本和人形机器人落地窗口五类长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-10.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-10.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-10 real cron fixture，覆盖五条最新信号；扩展 science self-reliance 与 humanoid robotics landing window 条件 display label / terms / detail，并补齐 Claude Fable 5 恢复全球访问匹配；EN 2026-07-10 日报移除 Anthropic / Xinhua / robotics 三处泛化 fallback，重写 description、Top 5 与 Evidence Matrix，并新增 enterprise Agent stack 与 humanoid robotics landing window Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-10
+- End date: 2026-07-10
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、EN/ZH generator、daily source projection labels、case-level FAQ、source projection registry health/taxonomy、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 仍因 2026-06-02/03/04/05/11/13/16 历史 cross-language token 基线失败，非本轮新增回归。
+- Result: pass（latestDaily=2026-07-10 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 18 个 fixtures / 90 条 expectedSignals；case-level FAQ 从 07-10 fixture 自动推断 enterprise Agent stack 与 humanoid robotics landing window 两个 signals；registry health、taxonomy、fixture dedup、parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 build 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 2026-07-10 fixture 作为开放 Agent 栈、模型安全评分、科技自立政策、AI 存储成本和人形机器人落地窗口的首日索引质量基线；下一步优先修复 daily bilingual pair fixture 的历史 cross-language token 基线，恢复全量闸门。）
+
 ### EXP-222
 - Hypothesis: EXP-221 已把 2026-07-09 最新日报接入 fixture，但 label check 仍手写 import 清单并漏掉 2026-07-07/07-08/06-28/06-29 等已注册 fixture；若不改为从 `realCronFixtures` 自动发现 label-ready 样本，新增日报可能通过 latest freshness 却绕过 headline label metadata 回归，导致首屏标签和 source projection metadata 静默漂移。
 - Scope: `scripts/check-daily-source-projection-labels.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
