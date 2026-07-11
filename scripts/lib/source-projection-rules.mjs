@@ -209,7 +209,13 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-commercial-deployment',
-    terms: ['教育、文旅、养老', '服务效率'],
+    displayLabels: [
+      {
+        label: 'Alibaba Cloud / Qwen / China AI hardware ecosystem',
+        terms: ['15 万家', 'Qwen', 'AI 眼镜'],
+      },
+    ],
+    terms: ['教育、文旅、养老', '服务效率', '15 万家', 'Qwen', 'AI 眼镜', '无人机'],
     details: {
       what: 'Source 5 reports a robotics deployment, AI education deployment signal involving China, Xinhua, education, culture and tourism, elderly care, and service-efficiency scenarios.',
       why: 'The item shows AI adoption expanding from model and platform news into public-service and local-industry use cases where deployment quality, responsibility boundaries, and offline service outcomes matter.',
@@ -567,12 +573,31 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'alibaba-qoder-agentic-coding-platform-2026',
+    owner: 'daily-source-projection',
+    category: 'developer-tools',
+    splitTargetCategory: 'code-agent-runtime',
+    displayLabel: 'Alibaba Cloud / Qoder / agentic coding platform',
+    terms: ['Qoder', '代码库理解', 'Quest Mode'],
+    details: {
+      what: 'Alibaba Cloud introduced Qoder as an agentic coding platform for real software engineering, emphasizing repository understanding, long-term memory, task decomposition, execution transparency, and Quest Mode asynchronous delegation.',
+      why: 'AI coding is moving from autocomplete into specification-driven agents that understand project context, break down tasks, execute asynchronously, and leave traces for engineering review.',
+      impact: 'Development teams can pilot Qoder on low-risk repository tasks while requiring clear specs, scoped directories, task logs, tests, human review, and rollback paths before broader adoption.',
+    },
+  },
+  {
     name: 'openai-chatgpt-model-picker-2026',
     owner: 'daily-source-projection',
     category: 'consumer-productivity',
     splitTargetCategory: 'chatgpt-control-surfaces',
     displayLabel: 'OpenAI / ChatGPT / Instant / model capability update',
-    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light'],
+    displayLabels: [
+      {
+        label: 'OpenAI / GPT-5.6 / Sol-Terra-Luna agent platform',
+        terms: ['GPT-5.6', 'Sol', 'Terra', 'Luna'],
+      },
+    ],
+    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'ultra 多智能体并行工作模式'],
     details: {
       what: 'OpenAI simplified ChatGPT model selection into task-oriented options such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended across Plus and Pro users on web, iOS, and Android.',
       why: 'The product shift hides complex model names behind speed and reasoning-strength choices, showing AI interfaces moving from model branding toward task-experience tiers.',
@@ -604,7 +629,13 @@ export const FIELD_PROJECTION_RULES = [
     category: 'consumer-productivity',
     splitTargetCategory: 'consumer-creative-ai',
     displayLabel: 'Meta / Facebook / consumer creative AI',
-    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装'],
+    displayLabels: [
+      {
+        label: 'Meta / Muse Image / Instagram reference rollback',
+        terms: ['Muse Image', 'Instagram Stories', '不合适'],
+      },
+    ],
+    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装', 'Muse Image', 'Instagram Stories', '不合适'],
     details: {
       what: 'Meta is expanding consumer creative AI surfaces across Facebook search, image/video editing, and AI try-on workflows, turning discovery and lightweight generation into everyday social-product features.',
       why: 'Consumer AI adoption increasingly depends on low-friction creative surfaces embedded in existing feeds, commerce journeys, and sharing loops rather than standalone chat interfaces.',
@@ -930,7 +961,7 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['GPT‑Live', '边听边说'],
       },
     ],
-    terms: ['6月24日更新 GPT-5.5 Instant', '复杂约束', '本地/购物类问题', 'GPT‑Live', '边听边说', '后台委托 GPT‑5.5'],
+    terms: ['6月24日更新 GPT-5.5 Instant', '复杂约束', '本地/购物类问题', '边听边说', '后台委托 GPT‑5.5'],
     details: {
       what: 'OpenAI updated GPT-5.5 Instant on June 24 to better understand real user goals, multi-turn context, complex constraints, and local or shopping-style queries.',
       why: 'The model competition signal is shifting from larger parameters alone toward assistants that can help users make decisions under constraints, compare options, and plan practical next steps.',

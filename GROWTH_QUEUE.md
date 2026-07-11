@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-10 17:22
+Last updated: 2026-07-11 11:28
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-225: 将 2026-07-11 最新双语日报接入 real cron fixture，并为 GPT-5.6、Muse Image、Qoder 与 Qwen 硬件生态补齐字段级 projection / FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-11）暴露 OpenAI GPT-5.6 Sol/Terra/Luna + ultra 多智能体模式、Meta Muse Image 隐私回滚、NVIDIA Nemotron + LangChain、阿里云 Qoder agentic coding 与 Qwen 中国 AI 硬件生态五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉模型/Agent、社交生成式 AI 隐私、代码 Agent 与 Physical AI 硬件生态长尾入口。
+  - Metrics: latest fixture freshness、EN/ZH generator、bilingual pair fixture、daily source projection labels、case-level FAQ、source projection scope/registry health/taxonomy/term narrowness、fixture dedup、parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-11.mjs`，覆盖 2026-07-11 五条最新信号；2) source projection metadata 扩展 GPT-5.6、Muse Image、Qoder 与 Qwen 硬件生态字段级 label/terms，并收窄 Qoder / GPT-Live 匹配避免历史 fixture 污染；3) EN 2026-07-11 日报移除 OpenAI/Meta/Alibaba 泛化 fallback，新增 Qoder 与 Qwen Case-Level FAQ；4) ZH 2026-07-11 修复截断的实战案例；5) 质量评分 28/30。
 - [x] P1 Candidate / EXP-224: 修复 daily bilingual pair fixture 的历史 cross-language token 基线，将 06-02/03/04/05/11/13/16 真实 cron fixture 的必检 token 对齐到生成器实际保留的中英具体事实，消费 EXP-223 后续“恢复全量闸门”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-223 已把 2026-07-10 最新日报接入 fixture，但 `pnpm check:daily-bilingual-generator-pair-fixture` 仍因 06-02/03/04/05/11/13/16 历史 cross-language token 使用英文转写而失败；若不把 token baseline 对齐到双语生成器实际保留的具体事实，全量双语质量闸门会持续失效，最新日报只能依赖局部检查。
   - Metrics: `pnpm check:daily-bilingual-generator-pair-fixture` 从 13 个历史 missing token 失败恢复为通过；daily EN/ZH generator、case FAQ、source projection label、latest fixture 与 `pnpm build` 通过。

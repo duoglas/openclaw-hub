@@ -1,3 +1,14 @@
+### EXP-225
+- Hypothesis: 最近24小时新增日报（2026-07-11）暴露 OpenAI GPT-5.6 Sol/Terra/Luna + ultra 多智能体模式、Meta Muse Image 隐私回滚、NVIDIA Nemotron + LangChain、阿里云 Qoder agentic coding 与 Qwen 中国 AI 硬件生态五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉模型/Agent、社交生成式 AI 隐私、代码 Agent 与 Physical AI 硬件生态长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-11.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-11.md`, `src/content/blog/zh/openclaw-daily-2026-07-11.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-11 real cron fixture，覆盖 GPT-5.6、Muse Image、Nemotron + LangChain、Qoder、Qwen hardware ecosystem 五条信号；复用/扩展 OpenAI model picker、Meta creative AI、Qwen hardware 与 Qoder source projection metadata，避免新增 parent budget 压力；EN 最新日报改为字段级事实输出并补齐 Qoder / Qwen Case-Level FAQ；ZH 最新日报修复截断的实战案例；同时收窄 Qoder `长期记忆` 与 GPT-Live 宽词，避免历史 fixture scope 污染。
+- ICE: 9x8x8=576
+- Start date: 2026-07-11
+- End date: 2026-07-11
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy/term narrowness、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（latestDaily=2026-07-11 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 19 个 fixtures / 95 条 expectedSignals；case-level FAQ 从 07-11 fixture 自动推断 Qoder agentic coding platform 与 Qwen AI hardware ecosystem 两个 signals；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-11 fixture 作为 GPT-5.6、Muse Image 隐私边界、Qoder 代码 Agent 与 Qwen 硬件生态的首日索引质量基线；下一步可将 OpenAI GPT-5.6 / Meta Muse 从复用 rule 升级为条件 detail projection，进一步减少字段级 detail 复用。）
+
 ### EXP-224
 - Hypothesis: EXP-223 已把 2026-07-10 最新日报接入 real cron fixture，但 `pnpm check:daily-bilingual-generator-pair-fixture` 仍因 06-02/03/04/05/11/13/16 历史 cross-language token 使用英文转写而失败；若不把 token baseline 对齐到双语生成器实际保留的具体事实，全量双语质量闸门会持续失效，最新日报只能依赖局部 EN/ZH、label 与 specificity 检查。
 - Scope: `scripts/fixtures/daily-real-cron-2026-06-02.mjs`, `scripts/fixtures/daily-real-cron-2026-06-03.mjs`, `scripts/fixtures/daily-real-cron-2026-06-04.mjs`, `scripts/fixtures/daily-real-cron-2026-06-05.mjs`, `scripts/fixtures/daily-real-cron-2026-06-11.mjs`, `scripts/fixtures/daily-real-cron-2026-06-13.mjs`, `scripts/fixtures/daily-real-cron-2026-06-16.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
