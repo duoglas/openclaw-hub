@@ -26,9 +26,9 @@ Potential impact: Creators and platform teams should test image-generation quali
 
 ### 3. NVIDIA / Nemotron 3 Ultra / LangChain Deep Agents
 
-What happened: NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.
-Why it matters: AI agents are moving beyond chat, writing, and coding into CAD operations, mesh generation, simulation setup, debugging, and report production.
-Potential impact: Industrial AI adoption may depend less on raw model capability and more on safe runtimes, tool permissions, deterministic workflow integration, audit logs, and domain-specific validation.
+What happened: NVIDIA said Nemotron 3 Ultra reached leading open-model performance in the LangChain Deep Agents harness, with lower inference cost for enterprise tasks through runtime, tool-description, middleware, and execution-framework optimization rather than model retraining.
+Why it matters: Enterprise agent competition is shifting from only model size toward the full stack: model choice, tool wiring, runtime controls, safety sandboxing, evaluation, and cost per completed task.
+Potential impact: Teams can compare open agent stacks against closed systems on auditability, private deployment, permission boundaries, evaluation traces, and operational cost before using agents in high-risk workflows.
 
 ### 4. Alibaba Cloud / Qoder / agentic coding platform
 
@@ -78,7 +78,7 @@ Treat the Qwen AI hardware ecosystem as a deployment prompt, not an automatic gr
 
 - Evidence item 1: OpenAI / GPT-5.6 / Sol-Terra-Luna agent platform — OpenAI announced GPT-5.6 with Sol as the flagship model, Terra as the balanced daily model, Luna as the lower-cost option, and an ultra multi-agent parallel work mode for complex tasks.
 - Evidence item 2: Meta / Muse Image / Instagram reference rollback — Meta launched Muse Image across Meta AI, Instagram Stories, WhatsApp, and related surfaces, then removed the public Instagram-account reference feature after user feedback called it inappropriate.
-- Evidence item 3: NVIDIA / Nemotron 3 Ultra / LangChain Deep Agents — NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.
+- Evidence item 3: NVIDIA / Nemotron 3 Ultra / LangChain Deep Agents — NVIDIA said Nemotron 3 Ultra reached leading open-model performance in the LangChain Deep Agents harness, with lower inference cost for enterprise tasks through runtime, tool-description, middleware, and execution-framework optimization rather than model retraining.
 - Evidence item 4: Alibaba Cloud / Qoder / agentic coding platform — Alibaba Cloud introduced Qoder as an agentic coding platform for real software engineering, emphasizing repository understanding, long-term memory, task decomposition, execution transparency, and Quest Mode asynchronous delegation.
 - Evidence item 5: Alibaba Cloud / Qwen / China AI hardware ecosystem — Alibaba Cloud said more than 150,000 Chinese smart-hardware manufacturers have connected to Qwen across robots, phones, education devices, robot vacuums, AI glasses, drones, and other device categories.
 

@@ -1,3 +1,14 @@
+### EXP-226
+- Hypothesis: EXP-225 已把 2026-07-11 最新日报接入 real cron fixture，但 OpenAI GPT-5.6、Meta Muse Image 与 NVIDIA Nemotron + LangChain 仍复用旧 rule 的默认 details；若不增加条件 detail projection，最新 EN 页面会在首日索引中出现标题命中但正文细节漂移，尤其 Nemotron + LangChain 会误写 Cadence / Dassault / NemoClaw 工业代理内容。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-11.mjs`, `src/content/blog/en/openclaw-daily-2026-07-11.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: `projectEnglishSourceDetail` 增加 `detailVariants` 优先匹配逻辑；为 GPT-5.6 Sol/Terra/Luna、Muse Image Instagram reference rollback、Nemotron 3 Ultra + LangChain Deep Agents 写入字段级条件详情；同步修正 2026-07-11 EN 页面 story 3 和 Evidence Matrix，并在 07-11 fixture 中加入旧 NemoClaw / Cadence / CAD 详情泄漏禁用项与新 evidence 必检输出。
+- ICE: 8x8x8=512
+- Start date: 2026-07-11
+- End date: 2026-07-11
+- Success metric: `pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 全部通过。
+- Result: pass（07-11 generator 输出已使用 Nemotron 3 Ultra + LangChain Deep Agents harness 字段级详情，旧 Cadence / Dassault / NemoClaw / CAD 工业代理详情被 fixture banned phrase 阻断；source projection label、registry health、taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 `detailVariants` 作为复用 rule 的字段级详情收敛机制；下一步可把早期复用 rule 中仍依赖默认 detail 的 latest fixture 逐步迁移，尤其是同一 rule 同时承载 product update 与 policy / benchmark signal 的条目。）
+
 ### EXP-225
 - Hypothesis: 最近24小时新增日报（2026-07-11）暴露 OpenAI GPT-5.6 Sol/Terra/Luna + ultra 多智能体模式、Meta Muse Image 隐私回滚、NVIDIA Nemotron + LangChain、阿里云 Qoder agentic coding 与 Qwen 中国 AI 硬件生态五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉模型/Agent、社交生成式 AI 隐私、代码 Agent 与 Physical AI 硬件生态长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-11.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-11.md`, `src/content/blog/zh/openclaw-daily-2026-07-11.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

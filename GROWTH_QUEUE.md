@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-11 11:28
+Last updated: 2026-07-11 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-226: 为 2026-07-11 最新日报增加 source projection 条件详情，并修复 Nemotron + LangChain story 误用 NemoClaw 工业代理详情，消费 EXP-225 “GPT-5.6 / Meta Muse 条件 detail projection”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-225 已把 2026-07-11 最新日报接入 real cron fixture，但 OpenAI GPT-5.6、Meta Muse Image 与 NVIDIA Nemotron + LangChain 仍复用旧 rule 的默认 details；若不增加条件 detail projection，最新 EN 页面会在首日索引中出现标题命中但正文细节漂移，尤其 Nemotron + LangChain 会误写 Cadence / Dassault / NemoClaw 工业代理内容。
+  - Metrics: 07-11 fixture 禁止 NemoClaw / Cadence / CAD 旧详情泄漏，并要求 Evidence item 3 输出 Nemotron 3 Ultra + LangChain Deep Agents harness；daily generator、daily source projection labels、source projection registry health、taxonomy 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `projectEnglishSourceDetail` 支持 rule-level `detailVariants`，按字段级 terms 优先输出条件详情；2) 为 OpenAI GPT-5.6、Meta Muse Image 与 NVIDIA Nemotron + LangChain 写入条件详情；3) 修正 2026-07-11 EN 页面 story 3 与 Evidence Matrix；4) 07-11 fixture 增加旧工业代理详情 banned phrase 与新 evidence required output；5) 质量评分 28/30。
 - [x] P1 Candidate / EXP-225: 将 2026-07-11 最新双语日报接入 real cron fixture，并为 GPT-5.6、Muse Image、Qoder 与 Qwen 硬件生态补齐字段级 projection / FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-11）暴露 OpenAI GPT-5.6 Sol/Terra/Luna + ultra 多智能体模式、Meta Muse Image 隐私回滚、NVIDIA Nemotron + LangChain、阿里云 Qoder agentic coding 与 Qwen 中国 AI 硬件生态五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉模型/Agent、社交生成式 AI 隐私、代码 Agent 与 Physical AI 硬件生态长尾入口。
   - Metrics: latest fixture freshness、EN/ZH generator、bilingual pair fixture、daily source projection labels、case-level FAQ、source projection scope/registry health/taxonomy/term narrowness、fixture dedup、parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。

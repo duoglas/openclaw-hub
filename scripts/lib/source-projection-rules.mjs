@@ -164,6 +164,16 @@ export const FIELD_PROJECTION_RULES = [
       },
     ],
     terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents'],
+    detailVariants: [
+      {
+        terms: ['Nemotron 3 Ultra', 'LangChain Deep Agents'],
+        details: {
+          what: 'NVIDIA said Nemotron 3 Ultra reached leading open-model performance in the LangChain Deep Agents harness, with lower inference cost for enterprise tasks through runtime, tool-description, middleware, and execution-framework optimization rather than model retraining.',
+          why: 'Enterprise agent competition is shifting from only model size toward the full stack: model choice, tool wiring, runtime controls, safety sandboxing, evaluation, and cost per completed task.',
+          impact: 'Teams can compare open agent stacks against closed systems on auditability, private deployment, permission boundaries, evaluation traces, and operational cost before using agents in high-risk workflows.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.',
       why: 'AI agents are moving beyond chat, writing, and coding into CAD operations, mesh generation, simulation setup, debugging, and report production.',
@@ -598,6 +608,16 @@ export const FIELD_PROJECTION_RULES = [
       },
     ],
     terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'ultra 多智能体并行工作模式'],
+    detailVariants: [
+      {
+        terms: ['GPT-5.6', 'Sol', 'Terra', 'Luna'],
+        details: {
+          what: 'OpenAI announced GPT-5.6 with Sol as the flagship model, Terra as the balanced daily model, Luna as the lower-cost option, and an ultra multi-agent parallel work mode for complex tasks.',
+          why: 'The release frames frontier-model progress around lower cost, stronger agent execution, and professional workflow fit rather than benchmark quality alone.',
+          impact: 'Developer, office, data-analysis, and security teams can pilot bounded agent workflows while measuring task completion, cost per run, permission scope, and review quality before scaling.',
+        },
+      },
+    ],
     details: {
       what: 'OpenAI simplified ChatGPT model selection into task-oriented options such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended across Plus and Pro users on web, iOS, and Android.',
       why: 'The product shift hides complex model names behind speed and reasoning-strength choices, showing AI interfaces moving from model branding toward task-experience tiers.',
@@ -636,6 +656,16 @@ export const FIELD_PROJECTION_RULES = [
       },
     ],
     terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装', 'Muse Image', 'Instagram Stories', '不合适'],
+    detailVariants: [
+      {
+        terms: ['Muse Image', 'Instagram Stories', '不合适'],
+        details: {
+          what: 'Meta launched Muse Image across Meta AI, Instagram Stories, WhatsApp, and related surfaces, then removed the public Instagram-account reference feature after user feedback called it inappropriate.',
+          why: 'The rollback shows that generative-image features inside social products must handle consent, likeness, provenance, and default permissions as product requirements, not only model capability.',
+          impact: 'Creators and platform teams should test image-generation quality together with account-reference controls, opt-out paths, labeling, and abuse reporting before expanding social AI defaults.',
+        },
+      },
+    ],
     details: {
       what: 'Meta is expanding consumer creative AI surfaces across Facebook search, image/video editing, and AI try-on workflows, turning discovery and lightweight generation into everyday social-product features.',
       why: 'Consumer AI adoption increasingly depends on low-friction creative surfaces embedded in existing feeds, commerce journeys, and sharing loops rather than standalone chat interfaces.',
@@ -1321,11 +1351,21 @@ function displayLabelForRule(rule, text) {
   return '';
 }
 
+function detailsForRule(rule, text) {
+  if (!rule) return {};
+  for (const candidate of rule.detailVariants || []) {
+    const terms = Array.isArray(candidate?.terms) ? candidate.terms : [];
+    if (terms.length > 0 && terms.every((term) => text.includes(term))) return candidate.details || rule.details || {};
+  }
+  return rule.details || {};
+}
+
 export function projectEnglishSourceDetail(source, key) {
   const text = String(source || '');
   const normalizedKey = key === 'why' || key === 'impact' ? key : 'what';
   const rule = FIELD_PROJECTION_RULES.find(({ terms }) => terms.some((term) => text.includes(term)));
-  return rule?.details?.[normalizedKey] || '';
+  const details = detailsForRule(rule, text);
+  return details?.[normalizedKey] || '';
 }
 
 export function projectEnglishSourceLabel(source) {
