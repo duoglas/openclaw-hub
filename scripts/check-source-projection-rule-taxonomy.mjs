@@ -33,6 +33,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'ai-infrastructure-capacity',
   'ai-industrial-policy',
   'ai-policy-standards',
+  'aerospace-compute-infrastructure',
   'autonomous-mobility-systems',
   'career-productivity-workflows',
   'ai-lab-private-financing',
@@ -67,6 +68,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'ai-infrastructure-capacity': 8,
   'ai-industrial-policy': 7,
   'ai-policy-standards': 4,
+  'aerospace-compute-infrastructure': 2,
   'autonomous-mobility-systems': 3,
   'career-productivity-workflows': 3,
   'ai-lab-private-financing': 2,
@@ -148,6 +150,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   'policy-governance': [
     'ai-policy-standards',
     'ai-industrial-policy',
+    'aerospace-compute-infrastructure',
     'digital-regulation-compliance',
   ],
   'product-safety': [
@@ -222,6 +225,10 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     {
       target: 'ai-industrial-policy',
       match: ['national-data-administration', 'ai-education', 'provincial', 'province-ministry', '6g', 'mwc-shanghai', 'asean', 'ict', 'industrial-5g', 'private-network', '数据局', '东盟'],
+    },
+    {
+      target: 'aerospace-compute-infrastructure',
+      match: ['space-computing', 'commercial-space', 'long-march', 'reusable-rocket', '太空计算', '商业航天', '长征十号乙'],
     },
     {
       target: 'digital-regulation-compliance',
@@ -1341,9 +1348,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 32/32 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 33/33 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {

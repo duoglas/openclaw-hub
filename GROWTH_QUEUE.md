@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-12 11:27
+Last updated: 2026-07-12 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-228: 为 policy-governance 新增 aerospace-compute-infrastructure split target，并将 2026-07-12 AI 太空计算 / 长征十号乙信号从 ai-industrial-policy 分流，消费 EXP-227 后续容量治理假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-227 已把 AI 与太空计算挑战赛、长征十号乙可回收火箭接入最新 fixture，但该规则仍占用 ai-industrial-policy 最后 slot；若不拆出 aerospace-compute-infrastructure，后续商业航天、遥感 AI、卫星计算与可复用发射信号会继续挤占工业政策分类，新增 projection 需要临时扩容。
+  - Metrics: source projection taxonomy 输出 `split target categories: 33/33 used`、`ai-industrial-policy=6/7 (1 headroom)`、`aerospace-compute-infrastructure=1/2 (1 headroom)`；registry health、daily source projection labels、latest daily fixture 与 `pnpm build` 通过。
+  - Acceptance: 1) policy-governance split scaffold 新增 aerospace-compute-infrastructure、effective budget 与 migration hint；2) `xinhua-space-computing-commercial-space-2026` 迁入新 split target；3) MWC 6G 与工业 5G 两条 ai-industrial-policy capacityPlan stale headroom 同步更新；4) taxonomy self-test 从 32/32 更新到 33/33；5) 质量评分 28/30。
 - [x] P1 Candidate / EXP-227: 将 2026-07-12 最新双语日报接入 real cron fixture，并为 Hugging Face LeRobot、Vera CPU、AI 太空计算与长征十号乙修复字段级 projection / FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-12）暴露 NVIDIA Nemotron + LangChain、NVIDIA + Hugging Face LeRobot、Vera CPU agentic infrastructure、中国 AI 与太空计算挑战赛、长征十号乙可回收火箭五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉开放机器人生态、Agent CPU 瓶颈、AI 太空计算和可回收发射基础设施四类长尾入口。
   - Metrics: latest fixture freshness、EN/ZH generator、bilingual pair fixture、daily source projection labels、case-level FAQ、source projection scope/registry health/taxonomy/term narrowness、fixture dedup、parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。

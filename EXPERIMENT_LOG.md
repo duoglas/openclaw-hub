@@ -1,3 +1,14 @@
+### EXP-228
+- Hypothesis: EXP-227 已把 2026-07-12 AI 与太空计算挑战赛、长征十号乙可回收火箭接入 latest real cron fixture，但 `xinhua-space-computing-commercial-space-2026` 仍占用 `ai-industrial-policy` 最后 slot；若不拆出 `aerospace-compute-infrastructure`，后续商业航天、遥感 AI、卫星计算和可复用发射信号会继续挤占工业政策分类，新增 source projection 需要临时扩容或误投到 digital regulation。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: policy-governance 新增 `aerospace-compute-infrastructure` split target、effective budget 与 migration hint；将 `xinhua-space-computing-commercial-space-2026` 从 `ai-industrial-policy` 迁入新 split target；同步更新 MWC 6G 与工业 5G capacityPlan 的实时 headroom，使 `ai-industrial-policy` 从 7/7 回落到 6/7，新增 aerospace split 为 1/2。
+- ICE: 8x8x8=512
+- Start date: 2026-07-12
+- End date: 2026-07-12
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 33/33 used`、`ai-industrial-policy=6/7 (1 headroom)`、`aerospace-compute-infrastructure=1/2 (1 headroom)`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture` 与 `pnpm build` 全部通过。
+- Result: pass（policy-governance scaffold 已新增 aerospace-compute-infrastructure；2026-07-12 AI-space / Long March 10B rule 已从 ai-industrial-policy 分流；taxonomy 显示 split target categories 33/33 used、effective coverage 76/76 split-backed、ai-industrial-policy=6/7、aerospace-compute-infrastructure=1/2；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 aerospace-compute-infrastructure 作为后续商业航天、卫星 AI、遥感计算、可复用发射类日报 projection 的低风险容量入口；下一步可继续把 market-intelligence / developer-tools 的 unmatched 规则迁入 split target，减少 taxonomy 诊断噪声。）
+
 ### EXP-227
 - Hypothesis: 最近24小时新增日报（2026-07-12）暴露 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents、NVIDIA + Hugging Face LeRobot、Vera CPU agentic infrastructure、中国 AI 与太空计算挑战赛、长征十号乙可回收火箭五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉开放机器人生态、Agent CPU 瓶颈、AI 太空计算和可回收发射基础设施四类长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-12.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-07-12.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
