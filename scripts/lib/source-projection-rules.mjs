@@ -470,7 +470,7 @@ export const FIELD_PROJECTION_RULES = [
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 7,
-        categoryHeadroom: 1,
+        categoryHeadroom: 0,
         rationale: 'capacity delta +1; raises the ai-industrial-policy effective budget by 1 for a latest-fixture 6G/mobile-AI infrastructure signal while keeping parent policy-governance matching narrow.',
       },
     },
@@ -500,7 +500,23 @@ export const FIELD_PROJECTION_RULES = [
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-simulation-training',
     displayLabel: 'NVIDIA / Cosmos / GTC / compute infrastructure',
+    displayLabels: [
+      {
+        label: 'NVIDIA / Hugging Face / LeRobot robotics ecosystem',
+        terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
+      },
+    ],
     terms: ['Cosmos 3', '开放的物理 AI 世界基础模型', 'world foundation model'],
+    detailVariants: [
+      {
+        terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
+        details: {
+          what: 'NVIDIA connected Isaac GR00T 1.7 and Isaac Teleop to Hugging Face LeRobot and said Cosmos 3 will be added, making robotics models, teleoperation, data, simulation, training, and deployment workflows easier to share through an open ecosystem.',
+          why: 'Robotics development is adopting the open-source AI playbook: reusable models, datasets, simulation assets, and training pipelines can shorten the path from research demos to reproducible engineering tests.',
+          impact: 'Smaller robotics teams can prototype faster, but they still need to validate safety, sensor coverage, real-world data quality, deployment tooling, and dependence on NVIDIA compute and software before scaling.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA announced Cosmos 3 at GTC Taipei as an open physical AI world foundation model for visual reasoning, world generation, and action prediction across robotics, autonomous driving, and visual AI workflows.',
       why: 'The AI race is extending from chat and coding into systems that understand and simulate the physical world, making synthetic data, simulation, and policy training core infrastructure for robotics and autonomous systems.',
@@ -511,9 +527,25 @@ export const FIELD_PROJECTION_RULES = [
     name: 'nvidia-physical-ai-agent-skills-2026',
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
-    splitTargetCategory: 'robotics-simulation-training',
+    splitTargetCategory: 'robotics-open-model-research',
     displayLabel: 'NVIDIA / Physical / Agent / robotics deployment',
-    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo'],
+    displayLabels: [
+      {
+        label: 'NVIDIA / Hugging Face / LeRobot robotics ecosystem',
+        terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
+      },
+    ],
+    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop'],
+    detailVariants: [
+      {
+        terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
+        details: {
+          what: 'NVIDIA connected Isaac GR00T 1.7 and Isaac Teleop to Hugging Face LeRobot and said Cosmos 3 will be added, making robotics models, teleoperation, data, simulation, training, and deployment workflows easier to share through an open ecosystem.',
+          why: 'Robotics development is adopting the open-source AI playbook: reusable models, datasets, simulation assets, and training pipelines can shorten the path from research demos to reproducible engineering tests.',
+          impact: 'Smaller robotics teams can prototype faster, but they still need to validate safety, sensor coverage, real-world data quality, deployment tooling, and dependence on NVIDIA compute and software before scaling.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA published open-source Physical AI Agent tools and skills for Omniverse, Cosmos, Isaac, Metropolis, Alpamayo, Jetson, and related workflows covering data generation, simulation, training, evaluation, and deployment.',
       why: 'The update expands coding-agent patterns into real-world engineering loops where robotics, autonomous vehicles, and industrial digital twins need repeatable agent workflows instead of one-off scripts.',
@@ -1104,7 +1136,7 @@ export const FIELD_PROJECTION_RULES = [
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 7,
-        categoryHeadroom: 1,
+        categoryHeadroom: 0,
         rationale: 'capacity delta +1; raises ai-industrial-policy capacity by 1 for a latest-fixture industrial AI infrastructure policy signal while keeping parent policy-governance matching narrow.',
       },
     },
@@ -1234,7 +1266,7 @@ export const FIELD_PROJECTION_RULES = [
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
-        categoryHeadroom: 1,
+        categoryHeadroom: 0,
         rationale: 'capacity delta 0; uses one robotics-open-model-research slot for a 2026-07-07 NVIDIA ICML open-model research infrastructure signal without raising effective budget.',
       },
     },
@@ -1307,7 +1339,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta +1; raises ai-infrastructure-capacity for a 2026-07-08 NVIDIA Vera CPU agentic infrastructure signal while keeping cloud-infrastructure matching narrow.',
       },
     },
-    terms: ['高单线程性能 + 大规模并发'],
+    terms: ['高单线程性能 + 大规模并发', '高单线程性能、可规模化', 'Vera 这类', '工具调用、代码执行、数据处理和结果分析'],
     details: {
       what: 'NVIDIA said agentic AI workloads spend substantial time on CPU-side tasks such as tool calls, code execution, data processing, validation, KV-cache handling, and result analysis, and positioned Vera CPU for high single-thread performance plus large-scale concurrency.',
       why: 'Agent infrastructure is moving from a GPU-only purchasing story toward full-system latency: CPU performance, memory bandwidth, tool execution, sandbox startup, database queries, and feedback-loop speed now shape production agent quality.',
@@ -1336,6 +1368,58 @@ export const FIELD_PROJECTION_RULES = [
       what: 'Xinhua reported that AI infrastructure expansion is pushing up high-end memory demand such as HBM, squeezing consumer DRAM and NAND supply and forcing cost restructuring across the consumer-electronics supply chain.',
       why: 'AI infrastructure demand is now spilling into everyday devices: memory allocation, storage supply, and component pricing can affect PCs, tablets, phones, and game consoles even for users who are not buying AI servers.',
       impact: 'Consumers and device makers should watch memory and storage configurations, bill-of-materials pressure, and low-spec price increases, while buyers may prefer sufficient RAM and storage before price pressure spreads further.',
+    },
+  },
+
+  {
+    name: 'xinhua-space-computing-commercial-space-2026',
+    owner: 'daily-source-projection',
+    category: 'policy-governance',
+    splitTargetCategory: 'ai-industrial-policy',
+    displayLabels: [
+      {
+        label: 'Xinhua / AI and space computing challenge / China gold medals',
+        terms: ['AI 与太空计算挑战赛', '三项金奖'],
+      },
+      {
+        label: 'Xinhua / Long March 10B / reusable rocket recovery',
+        terms: ['长征十号乙', '一级可控回收'],
+      },
+    ],
+    capacityPlan: {
+      selectedSplitTarget: 'ai-industrial-policy',
+      whyNotAlternatives: 'Rejected alternate split targets because the signal is about China AI plus space infrastructure and launch capability, not standards compliance or the digital-regulation-compliance split target.',
+      rejectedAlternateTargets: ['digital-regulation-compliance'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 7,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta 0; uses remaining ai-industrial-policy headroom for a 2026-07-12 China AI-space and reusable launch infrastructure signal while keeping policy-governance matching narrow.',
+      },
+    },
+    terms: ['AI 与太空计算挑战赛', '太空计算主题国际赛事', '长征十号乙', '一级可控回收', '海南商业航天发射场'],
+    detailVariants: [
+      {
+        terms: ['AI 与太空计算挑战赛', '三项金奖'],
+        details: {
+          what: 'Xinhua reported that the first international AI and space computing challenge announced results in Geneva, with Chinese research teams winning gold medals in three tracks covering space-computing and remote-sensing scenarios.',
+          why: 'AI is moving from ground data centers into space infrastructure, where remote sensing, food security, water quality, urban heat analysis, and sustainable-development workloads need onboard or near-space computation.',
+          impact: 'China’s AI and aerospace teams may gain more engineering validation opportunities across satellite data processing, remote-sensing models, space-ground coordination, and sustainability applications.',
+        },
+      },
+      {
+        terms: ['长征十号乙', '一级可控回收'],
+        details: {
+          what: 'Xinhua reported that China launched Long March 10B from the Hainan commercial space launch site and recovered the first-stage booster through controlled vertical landing on an offshore platform.',
+          why: 'Reusable rockets are a key lever for lowering launch cost, increasing launch cadence, and supporting larger satellite, remote-sensing, and space-computing infrastructure plans.',
+          impact: 'China’s commercial space and low-earth-orbit satellite ecosystem could gain lower-cost, higher-frequency launch capacity, improving the economics of AI-enabled sensing, communications, and space-data services.',
+        },
+      },
+    ],
+    details: {
+      what: 'Xinhua reported new China space-infrastructure progress tied to AI, space computing, reusable launch capability, and commercial aerospace deployment.',
+      why: 'AI infrastructure is expanding beyond data centers into satellite, remote-sensing, communication, and launch systems where compute, sensing, and transportation costs shape deployment speed.',
+      impact: 'AI, aerospace, telecom, and remote-sensing teams should track whether reusable launch and space-computing milestones translate into lower-cost data services and more frequent deployment windows.',
     },
   },
 

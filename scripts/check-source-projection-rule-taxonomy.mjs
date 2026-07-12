@@ -25,7 +25,7 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'frontier-models': 6,
   'market-intelligence': 6,
   'physical-ai-robotics': 10,
-  'policy-governance': 10,
+  'policy-governance': 11,
   'product-safety': 6,
 };
 export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [

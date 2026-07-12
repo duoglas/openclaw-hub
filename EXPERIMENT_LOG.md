@@ -1,3 +1,14 @@
+### EXP-227
+- Hypothesis: 最近24小时新增日报（2026-07-12）暴露 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents、NVIDIA + Hugging Face LeRobot、Vera CPU agentic infrastructure、中国 AI 与太空计算挑战赛、长征十号乙可回收火箭五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉开放机器人生态、Agent CPU 瓶颈、AI 太空计算和可回收发射基础设施四类长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-12.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-07-12.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-12 real cron fixture；为 LeRobot / Isaac GR00T、Vera CPU、AI 与太空计算挑战赛、长征十号乙可回收火箭补齐字段级 source projection label/detail；将 NVIDIA physical AI agent skills 迁入 robotics-open-model-research，并同步 stale capacityPlan headroom；EN 最新日报移除 story 3/4/5 泛化 fallback，补齐 ChatGPT task-based model picker 与 enterprise agent engineering harness 两个 Case-Level FAQ 和 CTA。
+- ICE: 9x8x8=576
+- Start date: 2026-07-12
+- End date: 2026-07-12
+- Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy/term narrowness、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（latestDaily=2026-07-12 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 20 个 fixtures / 100 条 expectedSignals；case-level FAQ 从 07-12 fixture 自动推断 ChatGPT task-based model picker 与 enterprise agent engineering harness 两个 signals；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-12 fixture 作为开放机器人生态、Agent CPU 基础设施、AI 太空计算与可回收发射能力的首日索引质量基线；下一步可把 policy-governance 中 AI/space infrastructure 从 ai-industrial-policy 继续拆分为 aerospace-compute-infrastructure，避免 ai-industrial-policy 满额后继续临时扩容。）
+
 ### EXP-226
 - Hypothesis: EXP-225 已把 2026-07-11 最新日报接入 real cron fixture，但 OpenAI GPT-5.6、Meta Muse Image 与 NVIDIA Nemotron + LangChain 仍复用旧 rule 的默认 details；若不增加条件 detail projection，最新 EN 页面会在首日索引中出现标题命中但正文细节漂移，尤其 Nemotron + LangChain 会误写 Cadence / Dassault / NemoClaw 工业代理内容。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-11.mjs`, `src/content/blog/en/openclaw-daily-2026-07-11.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

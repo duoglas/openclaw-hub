@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-11 17:22
+Last updated: 2026-07-12 11:27
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-227: 将 2026-07-12 最新双语日报接入 real cron fixture，并为 Hugging Face LeRobot、Vera CPU、AI 太空计算与长征十号乙修复字段级 projection / FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-12）暴露 NVIDIA Nemotron + LangChain、NVIDIA + Hugging Face LeRobot、Vera CPU agentic infrastructure、中国 AI 与太空计算挑战赛、长征十号乙可回收火箭五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉开放机器人生态、Agent CPU 瓶颈、AI 太空计算和可回收发射基础设施四类长尾入口。
+  - Metrics: latest fixture freshness、EN/ZH generator、bilingual pair fixture、daily source projection labels、case-level FAQ、source projection scope/registry health/taxonomy/term narrowness、fixture dedup、parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-12.mjs`，覆盖 2026-07-12 五条最新信号；2) 为 LeRobot / Isaac GR00T、Vera CPU、AI 与太空计算挑战赛、长征十号乙写入字段级 label/detail projection；3) EN 2026-07-12 日报移除 Xinhua / Vera 泛化 fallback，补齐 Case-Level FAQ 与 CTA；4) latest fixture freshness 显示 latestDaily=2026-07-12、expectedSignals=5，label check 覆盖 20 fixtures / 100 signals；5) 质量评分 28/30。
 - [x] P1 Candidate / EXP-226: 为 2026-07-11 最新日报增加 source projection 条件详情，并修复 Nemotron + LangChain story 误用 NemoClaw 工业代理详情，消费 EXP-225 “GPT-5.6 / Meta Muse 条件 detail projection”后续假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-225 已把 2026-07-11 最新日报接入 real cron fixture，但 OpenAI GPT-5.6、Meta Muse Image 与 NVIDIA Nemotron + LangChain 仍复用旧 rule 的默认 details；若不增加条件 detail projection，最新 EN 页面会在首日索引中出现标题命中但正文细节漂移，尤其 Nemotron + LangChain 会误写 Cadence / Dassault / NemoClaw 工业代理内容。
   - Metrics: 07-11 fixture 禁止 NemoClaw / Cadence / CAD 旧详情泄漏，并要求 Evidence item 3 输出 Nemotron 3 Ultra + LangChain Deep Agents harness；daily generator、daily source projection labels、source projection registry health、taxonomy 与 `pnpm build` 全部通过。
