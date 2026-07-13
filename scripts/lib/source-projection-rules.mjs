@@ -1164,7 +1164,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta +1; raises vertical-workflow-agents capacity for the 2026-07-01 latest-fixture research-workflow signal and prevents generic latest daily fallback.',
       },
     },
-    terms: ['Claude Science beta', 'Jupyter/R/HPC/SSH', '可审计科研产物'],
+    terms: ['Claude Science beta', 'Claude Science 已可用', 'Jupyter/R/HPC/SSH', 'AI workbench', '可审计科研产物', '可审计产物', '计算资源'],
     details: {
       what: 'Anthropic released Claude Science beta for Pro, Max, Team, and Enterprise users, with macOS/Linux support, research databases, Jupyter/R/HPC/SSH access, GPU compute, and auditable research artifacts.',
       why: 'The signal moves AI from chat and coding assistance into the scientific workflow itself, where literature review, data analysis, charts, manuscripts, compute scheduling, and reproducibility all need governed agent support.',
@@ -1383,7 +1383,7 @@ export const FIELD_PROJECTION_RULES = [
       },
       {
         label: 'Xinhua / Long March 10B / reusable rocket recovery',
-        terms: ['长征十号乙', '一级可控回收'],
+        terms: ['长征十号乙', '一子级垂直返回'],
       },
     ],
     capacityPlan: {
@@ -1397,7 +1397,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses a dedicated aerospace-compute-infrastructure slot for a 2026-07-12 China AI-space and reusable launch infrastructure signal while reducing ai-industrial-policy saturation.',
       },
     },
-    terms: ['AI 与太空计算挑战赛', '太空计算主题国际赛事', '长征十号乙', '一级可控回收', '海南商业航天发射场'],
+    terms: ['AI 与太空计算挑战赛', '太空计算主题国际赛事', '长征十号乙', '一级可控回收', '一子级垂直返回', '海南商业航天发射场'],
     detailVariants: [
       {
         terms: ['AI 与太空计算挑战赛', '三项金奖'],
@@ -1408,7 +1408,7 @@ export const FIELD_PROJECTION_RULES = [
         },
       },
       {
-        terms: ['长征十号乙', '一级可控回收'],
+        terms: ['长征十号乙', '一子级垂直返回'],
         details: {
           what: 'Xinhua reported that China launched Long March 10B from the Hainan commercial space launch site and recovered the first-stage booster through controlled vertical landing on an offshore platform.',
           why: 'Reusable rockets are a key lever for lowering launch cost, increasing launch cadence, and supporting larger satellite, remote-sensing, and space-computing infrastructure plans.',

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-12 17:20
+Last updated: 2026-07-13 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-229: 将 2026-07-13 最新双语日报接入 real cron fixture，并修复 Claude Science 与 Long March 10B 字段级 projection / FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-13）暴露 NVIDIA Nemotron + LangChain、NVIDIA + Hugging Face LeRobot、Anthropic Claude Science、Claude Fable jailbreak severity 与长征十号乙可回收火箭五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 Claude Science / Xinhua 泛化 fallback，首日索引会漏掉科研 AI workbench、安全评分和可回收发射基础设施长尾入口。
+  - Metrics: latest fixture freshness、EN/ZH generator、bilingual pair fixture、daily source projection labels、case-level FAQ、source projection registry health/taxonomy/term narrowness、fixture dedup、parser guardrail、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-13.mjs`，覆盖 2026-07-13 五条最新信号；2) Claude Science projection terms 支持 `Claude Science 已可用 / AI workbench / 可审计产物 / 计算资源`；3) Long March 10B display/detail projection 支持 `一子级垂直返回` 字段级表述；4) EN 2026-07-13 日报移除 Claude Science 与 Xinhua 泛化 fallback，补齐 Case-Level FAQ；5) 质量评分 28/30。
 - [x] P1 Candidate / EXP-228: 为 policy-governance 新增 aerospace-compute-infrastructure split target，并将 2026-07-12 AI 太空计算 / 长征十号乙信号从 ai-industrial-policy 分流，消费 EXP-227 后续容量治理假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-227 已把 AI 与太空计算挑战赛、长征十号乙可回收火箭接入最新 fixture，但该规则仍占用 ai-industrial-policy 最后 slot；若不拆出 aerospace-compute-infrastructure，后续商业航天、遥感 AI、卫星计算与可复用发射信号会继续挤占工业政策分类，新增 projection 需要临时扩容。
   - Metrics: source projection taxonomy 输出 `split target categories: 33/33 used`、`ai-industrial-policy=6/7 (1 headroom)`、`aerospace-compute-infrastructure=1/2 (1 headroom)`；registry health、daily source projection labels、latest daily fixture 与 `pnpm build` 通过。

@@ -1,3 +1,14 @@
+### EXP-229
+- Hypothesis: 最近24小时新增日报（2026-07-13）暴露 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents、NVIDIA + Hugging Face LeRobot、Anthropic Claude Science、Claude Fable jailbreak severity 与长征十号乙可回收火箭五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 Claude Science / Xinhua 泛化 fallback，首日索引会漏掉科研 AI workbench、安全评分和可回收发射基础设施长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-13.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-13.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-13 real cron fixture；为 Claude Science 扩展 `Claude Science 已可用 / AI workbench / 可审计产物 / 计算资源` 匹配词，避免 latest EN 生成器回退到泛化 Anthropic / Claude / Science 文案；为 Long March 10B projection 增加 `一子级垂直返回` 条件 label/detail 匹配；回写 2026-07-13 EN 页面 description、story 3/5、Evidence Matrix 与 Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-13
+- End date: 2026-07-13
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-13, latestFixture=2026-07-13, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=21, expectedSignals=105`；daily EN/ZH/pair、case FAQ、source projection registry health/taxonomy/term narrowness、fixture dedup/parser guardrail、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-13 最新双语日报已由同日 real cron fixture 覆盖；Claude Science 与 Long March 10B 字段级 projection 已阻断泛化 fallback；case-level FAQ 从 07-13 fixture 自动推断 ChatGPT task-based model picker 与 enterprise agent engineering harness 两个 signals；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-13 fixture 作为科研 AI workbench、agent engineering harness、模型安全 severity 与可回收发射基础设施的首日索引质量基线；下一步可继续把重复出现的 Claude Science / aerospace detailVariants 扩展为更细条件 projection，减少最新日报复用 rule 时的正文漂移。）
+
 ### EXP-228
 - Hypothesis: EXP-227 已把 2026-07-12 AI 与太空计算挑战赛、长征十号乙可回收火箭接入 latest real cron fixture，但 `xinhua-space-computing-commercial-space-2026` 仍占用 `ai-industrial-policy` 最后 slot；若不拆出 `aerospace-compute-infrastructure`，后续商业航天、遥感 AI、卫星计算和可复用发射信号会继续挤占工业政策分类，新增 source projection 需要临时扩容或误投到 digital regulation。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
