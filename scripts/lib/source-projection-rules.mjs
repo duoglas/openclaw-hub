@@ -173,6 +173,14 @@ export const FIELD_PROJECTION_RULES = [
           impact: 'Teams can compare open agent stacks against closed systems on auditability, private deployment, permission boundaries, evaluation traces, and operational cost before using agents in high-risk workflows.',
         },
       },
+      {
+        terms: ['Nemotron 3 Ultra', 'Deep Agents harness'],
+        details: {
+          what: 'NVIDIA said LangChain tuned the Deep Agents harness for NVIDIA Nemotron 3 Ultra, producing leading open-model enterprise-agent performance at lower inference cost.',
+          why: 'Enterprise agent competition is shifting from only model size toward the full stack: model choice, tool wiring, runtime controls, memory, safety execution, evaluation, and cost per completed task.',
+          impact: 'Teams can compare open agent stacks against closed systems on auditability, private deployment, permission boundaries, evaluation traces, and operational cost before using agents in high-risk workflows.',
+        },
+      },
     ],
     details: {
       what: 'NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.',
@@ -271,7 +279,23 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'market-intelligence',
     splitTargetCategory: 'market-sizing-reports',
-    terms: ['6000 家', '1.2 万亿元', '待确认'],
+    displayLabels: [
+      {
+        label: 'China / WAIC / AI product launch pipeline',
+        terms: ['WAIC', '超 300 款', '1100 余家'],
+      },
+    ],
+    terms: ['6000 家', '1.2 万亿元', '待确认', 'WAIC', '10 万平方米', '1100 余家', '超 300 款', '2025 年已破万亿元'],
+    detailVariants: [
+      {
+        terms: ['WAIC', '超 300 款', '1100 余家'],
+        details: {
+          what: 'Xinhua reported that WAIC will exceed 100,000 square meters of exhibition space, host more than 1,100 exhibitors, debut more than 300 AI products, and highlight China’s AI-related industry scale above one trillion yuan in 2025 with expected 2026 growth above 30%.',
+          why: 'China’s AI market is shifting from isolated model launches toward concentrated application deployment, industry-chain competition, compute, embodied AI, agents, chips, and robotics.',
+          impact: 'Teams tracking China AI should watch the next week of model, AI phone, embodied-intelligence, humanoid-robot, near-memory compute, manufacturing, government, and industrial AI announcements for deployable products rather than only AIGC demos.',
+        },
+      },
+    ],
     details: {
       what: 'A secondary L3 source says China has more than 6,000 AI companies and a core AI industry scale above 1.2 trillion yuan, while the original official report link was not captured in this brief.',
       why: 'The signal is useful for tracking China AI industrial scale, regional clusters, embodied AI, compute policy, and industrial-park momentum, but it needs source confirmation before being treated as a hard benchmark.',
@@ -638,13 +662,17 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / GPT-5.6 / Sol-Terra-Luna agent platform',
         terms: ['GPT-5.6', 'Sol', 'Terra', 'Luna'],
       },
+      {
+        label: 'OpenAI / GPT-5.6 / Sol-Terra-Luna agent platform',
+        terms: ['GPT‑5.6', 'Sol', 'Terra', 'Luna'],
+      },
     ],
-    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'ultra 多智能体并行工作模式'],
+    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'GPT‑5.6', 'Sol 主打编码', 'ultra 工作模式', 'ultra 多智能体并行工作模式'],
     detailVariants: [
       {
-        terms: ['GPT-5.6', 'Sol', 'Terra', 'Luna'],
+        terms: ['Sol', 'Terra', 'Luna'],
         details: {
-          what: 'OpenAI announced GPT-5.6 with Sol as the flagship model, Terra as the balanced daily model, Luna as the lower-cost option, and an ultra multi-agent parallel work mode for complex tasks.',
+          what: 'OpenAI announced the GPT‑5.6 series as generally available, with Sol as the flagship model, Terra as the balanced model, Luna as the lower-cost option, and a higher-intensity ultra work mode for coding, science, cybersecurity, knowledge work, and multi-agent collaboration.',
           why: 'The release frames frontier-model progress around lower cost, stronger agent execution, and professional workflow fit rather than benchmark quality alone.',
           impact: 'Developer, office, data-analysis, and security teams can pilot bounded agent workflows while measuring task completion, cost per run, permission scope, and review quality before scaling.',
         },
@@ -905,6 +933,12 @@ export const FIELD_PROJECTION_RULES = [
     category: 'policy-governance',
     splitTargetCategory: 'ai-policy-standards',
     displayLabel: 'China / WAICO / AI governance coordination',
+    displayLabels: [
+      {
+        label: 'China / WAIC / AI governance conference',
+        terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
+      },
+    ],
     capacityPlan: {
       selectedSplitTarget: 'ai-policy-standards',
       whyNotAlternatives: 'Rejected alternate split targets because WAICO is an international governance and standards-coordination signal, not ai-industrial-policy or digital-regulation-compliance.',
@@ -916,7 +950,17 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
       },
     },
-    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作'],
+    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理'],
+    detailVariants: [
+      {
+        terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
+        details: {
+          what: 'Xinhua reported that the 2026 World Artificial Intelligence Conference and High-Level Meeting on Global AI Governance will be held in Shanghai from July 17 to 20 under the theme “Intelligent Partners, Creating the Future Together.”',
+          why: 'The event places AI technology, industrial cooperation, safety, and global governance in the same policy arena rather than treating WAIC as only an exhibition.',
+          impact: 'AI companies, standards teams, and policy watchers should monitor opening remarks, governance initiatives, partnership announcements, and whether safety or provenance requirements become operational expectations.',
+        },
+      },
+    ],
     details: {
       what: 'Chinese state media said China is preparing a World AI Cooperation Organization and plans to advance global AI governance cooperation around the July World AI Conference in Shanghai.',
       why: 'AI governance is moving from company pledges and national regulation toward international institution-building, standards competition, and cross-border coordination mechanisms.',
@@ -1023,7 +1067,17 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['GPT‑Live', '边听边说'],
       },
     ],
-    terms: ['6月24日更新 GPT-5.5 Instant', '复杂约束', '本地/购物类问题', '边听边说', '后台委托 GPT‑5.5'],
+    terms: ['6月24日更新 GPT-5.5 Instant', '复杂约束', '本地/购物类问题', 'GPT‑Live', 'full-duplex', '边听边说', '后台前沿模型', '后台委托 GPT‑5.5'],
+    detailVariants: [
+      {
+        terms: ['GPT‑Live', 'full-duplex', '边听边说'],
+        details: {
+          what: 'OpenAI released GPT‑Live with a full-duplex voice architecture that can listen and speak at the same time, handle interruptions, pauses, and natural turn-taking, and delegate complex tasks to frontier models in the background.',
+          why: 'Voice AI is moving from push-to-talk exchanges toward real-time collaboration, which makes assistants more useful for mobile, accessibility, customer-service, sales, training, and hands-free workflows.',
+          impact: 'Users can test GPT-Live on commuting queries, language practice, spoken search, and note organization while teams validate latency, interruption handling, transcript quality, escalation paths, and high-risk advice guardrails.',
+        },
+      },
+    ],
     details: {
       what: 'OpenAI updated GPT-5.5 Instant on June 24 to better understand real user goals, multi-turn context, complex constraints, and local or shopping-style queries.',
       why: 'The model competition signal is shifting from larger parameters alone toward assistants that can help users make decisions under constraints, compare options, and plan practical next steps.',
@@ -1165,6 +1219,16 @@ export const FIELD_PROJECTION_RULES = [
       },
     },
     terms: ['Claude Science beta', 'Claude Science 已可用', 'Jupyter/R/HPC/SSH', 'AI workbench', '可审计科研产物', '可审计产物', '计算资源'],
+    detailVariants: [
+      {
+        terms: ['Claude Science 已可用', 'AI workbench', '可审计产物', '计算资源'],
+        details: {
+          what: 'Anthropic said Claude Science is available as an AI workbench for scientists, integrating research tools, auditable artifacts, and access to compute resources.',
+          why: 'The signal moves AI from chat and coding assistance into the scientific workflow itself, where literature review, data analysis, charts, manuscripts, compute scheduling, and reproducibility all need governed agent support.',
+          impact: 'Research teams can pilot AI workbenches on experiment notes, data analysis, literature review, and reproducible outputs while treating auditability, data permissions, and compute access as launch requirements.',
+        },
+      },
+    ],
     details: {
       what: 'Anthropic released Claude Science beta for Pro, Max, Team, and Enterprise users, with macOS/Linux support, research databases, Jupyter/R/HPC/SSH access, GPU compute, and auditable research artifacts.',
       why: 'The signal moves AI from chat and coding assistance into the scientific workflow itself, where literature review, data analysis, charts, manuscripts, compute scheduling, and reproducibility all need governed agent support.',

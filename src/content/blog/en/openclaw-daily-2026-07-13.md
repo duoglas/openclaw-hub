@@ -28,7 +28,7 @@ Potential impact: Smaller robotics teams can prototype faster, but they still ne
 
 What happened: Anthropic said Claude Science is available as an AI workbench for scientists, integrating research tools, auditable artifacts, and access to compute resources.
 Why it matters: The signal moves AI from chat and coding assistance into the scientific workflow itself, where literature review, data analysis, charts, manuscripts, compute scheduling, and reproducibility all need governed agent support.
-Potential impact: Life-science, drug-discovery, omics, and research teams can pilot AI agents on evidence organization and draft generation while requiring expert review, citation checks, reproducible outputs, and audit trails.
+Potential impact: Research teams can pilot AI workbenches on experiment notes, data analysis, literature review, and reproducible outputs while treating auditability, data permissions, and compute access as launch requirements.
 
 ### 4. Anthropic / Claude Fable / jailbreak severity framework
 

@@ -117,6 +117,7 @@ export const requiredEnglishOutputs = [
   '### 4. Anthropic / Claude Fable / jailbreak severity framework',
   '### 5. Xinhua / Long March 10B / reusable rocket recovery',
   'Evidence item 3: Anthropic / Claude Science / research agent workflow',
+  'Research teams can pilot AI workbenches on experiment notes, data analysis, literature review, and reproducible outputs while treating auditability, data permissions, and compute access as launch requirements.',
   'Evidence item 4: Anthropic / Claude Fable / jailbreak severity framework',
   'Evidence item 5: Xinhua / Long March 10B / reusable rocket recovery',
   '## Today’s Bottom Line',

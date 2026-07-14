@@ -33,6 +33,19 @@ function ruleMatches(source, rules) {
     .filter((match) => match.terms.length > 0);
 }
 
+function detailVariantMatchesFixture(variant, fixtures) {
+  const terms = Array.isArray(variant?.terms) ? variant.terms : [];
+  if (terms.length === 0) return false;
+
+  return fixtures.some((fixture) => {
+    for (const signal of fixture.expectedSignals || []) {
+      const block = storyBlockFor(fixture.realCronFixture, signal.title);
+      if (block && terms.every((term) => block.includes(term))) return true;
+    }
+    return false;
+  });
+}
+
 function effectiveRuleCategory(rule) {
   return String(rule.splitTargetCategory || rule.category || '(missing category)').trim();
 }
@@ -133,6 +146,32 @@ export function validateSourceProjectionRuleRegistryHealth({ rules = sourceProje
         detailOwners.set(ownerKey, rule.name);
       }
     }
+
+    for (const [index, variant] of (rule.detailVariants || []).entries()) {
+      const variantLabel = `${rule.name}.detailVariants[${index}]`;
+      if (!Array.isArray(variant?.terms) || variant.terms.length === 0) {
+        failures.push(`${variantLabel} — detail variant must declare at least one matching term`);
+      }
+
+      for (const term of variant?.terms || []) {
+        if (!term || typeof term !== 'string') {
+          failures.push(`${variantLabel} — detail variant contains an empty/non-string term`);
+        }
+      }
+
+      for (const key of ['what', 'why', 'impact']) {
+        const detail = variant?.details?.[key];
+        if (!detail || typeof detail !== 'string') {
+          failures.push(`${variantLabel} — missing ${key} detail`);
+          continue;
+        }
+
+      }
+
+      if (!detailVariantMatchesFixture(variant, fixtures)) {
+        failures.push(`${variantLabel} — unused detail variant; no real cron fixture story block matches all declared terms`);
+      }
+    }
   }
 
   const usage = collectRuleUsage(fixtures, rules, failures);
@@ -204,6 +243,38 @@ function validateSelfTests() {
     'synthetic-duplicate-rule-b — duplicate impact detail already used by synthetic-duplicate-rule-a',
   ];
 
+  const detailVariantProbeFailures = validateSourceProjectionRuleRegistryHealth({
+    fixtures: [
+      {
+        fixtureDate: 'synthetic-source-projection-registry-health-detail-variant',
+        realCronFixture: `# Synthetic source projection detail variant fixture\n\n## Top 5\n\n### Synthetic variant story\n发生了什么：Variant Anchor Token appears here, while the second required probe is absent.\n为什么重要：The check must ensure variant details are complete and fixture-backed.\n影响：Unused variants should not silently pass.\n\n---\n`,
+        expectedSignals: [{ title: 'Synthetic variant story' }],
+      },
+    ],
+    rules: [
+      {
+        name: 'synthetic-detail-variant-rule',
+        terms: ['Variant Anchor Token'],
+        details: fullSyntheticDetails,
+        detailVariants: [
+          {
+            terms: ['Variant Anchor Token', 'Missing Variant Token'],
+            details: {
+              what: 'Synthetic detail variant what for registry health checks.',
+              why: 'Synthetic detail variant why for registry health checks.',
+            },
+          },
+        ],
+      },
+    ],
+  });
+
+  const detailVariantDiagnostic = detailVariantProbeFailures.join('\n');
+  const detailVariantRequiredFragments = [
+    'synthetic-detail-variant-rule.detailVariants[0] — missing impact detail',
+    'synthetic-detail-variant-rule.detailVariants[0] — unused detail variant; no real cron fixture story block matches all declared terms',
+  ];
+
   const failures = [];
   if (unusedProbeFailures.length !== 1 || unusedRequiredFragments.some((fragment) => !unusedDiagnostic.includes(fragment))) {
     failures.push(
@@ -218,6 +289,14 @@ function validateSelfTests() {
       'source projection registry duplicate-detail self-test failed:',
       duplicateDiagnostic || '(no failure emitted)',
       `required fragments: ${duplicateRequiredFragments.join(' | ')}`
+    );
+  }
+
+  if (detailVariantProbeFailures.length !== 2 || detailVariantRequiredFragments.some((fragment) => !detailVariantDiagnostic.includes(fragment))) {
+    failures.push(
+      'source projection registry detail-variant self-test failed:',
+      detailVariantDiagnostic || '(no failure emitted)',
+      `required fragments: ${detailVariantRequiredFragments.join(' | ')}`
     );
   }
 

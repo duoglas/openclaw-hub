@@ -1,3 +1,25 @@
+### EXP-231
+- Hypothesis: 最近24小时新增日报（2026-07-14）暴露 OpenAI GPT‑5.6 Sol/Terra/Luna + ultra 工作模式、OpenAI GPT‑Live full-duplex 语音、2026 WAIC 全球治理会议、WAIC 300+ AI 产品首发与 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Instant、Xinhua 泛化 policy/hardware fallback 或旧 Cadence/Dassault/NemoClaw 详情，首日索引会漏掉模型 Agent 平台、实时语音 AI、AI 治理会议、中国 AI 应用规模和开放企业智能体栈长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-14.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-14.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-14 real cron fixture；为 GPT‑5.6、GPT‑Live、WAIC governance conference、WAIC product launch pipeline 与 Nemotron 3 Ultra / Deep Agents harness 写入字段级 label/detailVariants；同步重写 2026-07-14 EN 页面，移除 GPT-5.5 Instant、Xinhua 泛化 fallback 与旧 NemoClaw 工业代理详情，并保留 Next-Step CTA。
+- ICE: 9x8x8=576
+- Start date: 2026-07-14
+- End date: 2026-07-14
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-14, latestFixture=2026-07-14, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=22, expectedSignals=110`；registry health、daily generator、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-14 最新双语日报已由同日 real cron fixture 覆盖；GPT-5.6、GPT-Live、WAIC governance、WAIC product launch 与 Nemotron 3 Ultra 均输出字段级 projection；latest EN 页面移除泛化 fallback 与旧工业代理详情；commit `ab6dae0`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-14 fixture 作为模型 Agent 平台、full-duplex 语音、WAIC 治理与中国 AI 产品首发规模的首日索引质量基线；下一步可继续把 WAIC 后续大会发布拆成更细 AI hardware / embodied AI / policy governance projection。）
+
+### EXP-230
+- Hypothesis: EXP-229 已把 2026-07-13 Claude Science 与 Long March 10B 字段级 projection 接入 latest real cron fixture，但 `detailVariants` 仍缺少 registry 级完整性与 fixture 覆盖闸门；若 variant 缺少 what/why/impact 或没有任何真实 cron story block 命中，最新日报可能重新漂移到泛化科研 AI、旧 beta/HPC 详情或未覆盖的复用 rule。
+- Scope: `scripts/check-source-projection-rule-registry-health.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-13.mjs`, `src/content/blog/en/openclaw-daily-2026-07-13.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: source projection registry health 新增 detailVariant 完整性校验，要求每个 variant 有非空 terms 与 what/why/impact，并且至少被一个 real cron fixture story block 覆盖；新增 synthetic self-test 锁定缺 impact 与 unused variant；Claude Science 新增 2026-07-13 `Claude Science 已可用 / AI workbench / 可审计产物 / 计算资源` 条件详情，并同步 EN 页面和 fixture 必检输出。
+- ICE: 8x8x8=512
+- Start date: 2026-07-13
+- End date: 2026-07-13
+- Success metric: `pnpm check:source-projection-rule-registry-health` 通过并输出 `totalRules=76`、`parent category fallback rules: 0`；`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
+- Result: pass（detailVariants 现在有 fixture-backed 完整性闸门；Claude Science 07-13 generator 输出已收敛为 AI workbench、auditable artifacts、compute resources 与 auditability / permissions / compute-access 字段级详情；latestDaily=2026-07-13、fixtures=21 / expectedSignals=105、duplicate slug precheck 与 build 均通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 detailVariant 完整性与 fixture 覆盖闸门作为复用 rule 的 registry 级防漂移机制；下一步可把 displayLabels 与 detailVariants 做可选联动校验，确保多标签 rule 的每个高价值 label 都有对应字段级 detail。）
+
 ### EXP-229
 - Hypothesis: 最近24小时新增日报（2026-07-13）暴露 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents、NVIDIA + Hugging Face LeRobot、Anthropic Claude Science、Claude Fable jailbreak severity 与长征十号乙可回收火箭五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 Claude Science / Xinhua 泛化 fallback，首日索引会漏掉科研 AI workbench、安全评分和可回收发射基础设施长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-13.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-13.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
