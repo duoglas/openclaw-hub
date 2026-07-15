@@ -14,9 +14,9 @@ AI & Tech Daily Brief
 
 ### 1. AWS / Agent / Continuum / agent platform
 
-What happened: AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.
-Why it matters: The update shows cloud competition moving from model APIs toward enterprise agent infrastructure where knowledge access, secure execution, DevOps automation, auditability, and rollback become platform features.
-Potential impact: Enterprises can pilot agents in code, security, data, and operations workflows, but should require scoped permissions, review logs, rollback paths, and measurable reliability before allowing autonomous execution.
+What happened: AWS used its Summit New York 2026 agent stack to position AWS Continuum for vulnerability handling, AWS Context for enterprise knowledge-graph retrieval, and Bedrock AgentCore for governed agent runtime deployment alongside Amazon Quick, Kiro, AWS DevOps Agent, and AWS Transform.
+Why it matters: The 2026 signal is narrower than a generic agent-platform launch: AWS is packaging security triage, company-context grounding, developer workflow automation, and managed runtime controls as one enterprise adoption path.
+Potential impact: Teams evaluating AWS agents should test a full loop across scoped code access, vulnerability validation, context retrieval, human approval, review logs, rollback, and runtime isolation before letting agents modify production workflows.
 
 ### 2. OpenAI / GPT-5.6 / Bedrock enterprise distribution
 
@@ -74,7 +74,7 @@ It is a repeatable process for private benchmarks, post-training decisions, audi
 
 ## Evidence Matrix
 
-- Evidence item 1: AWS / Agent / Continuum / agent platform — AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.
+- Evidence item 1: AWS / Agent / Continuum / agent platform — AWS used its Summit New York 2026 agent stack to position AWS Continuum for vulnerability handling, AWS Context for enterprise knowledge-graph retrieval, and Bedrock AgentCore for governed agent runtime deployment alongside Amazon Quick, Kiro, AWS DevOps Agent, and AWS Transform.
 - Evidence item 2: OpenAI / GPT-5.6 / Bedrock enterprise distribution — Amazon said OpenAI GPT-5.6 Sol, Terra, and Luna are generally available on Amazon Bedrock with enterprise security controls, in-region processing, prompt caching, and up to 90% cached-input discounts.
 - Evidence item 3: NVIDIA / Nemotron Labs / open model ownership — NVIDIA Nemotron Labs argued that enterprise advantage comes from owning the AI lifecycle around open models, including private evaluation, post-training, cost optimization, and industry customization for domains such as healthcare, legal, and enterprise search.
 - Evidence item 4: NVIDIA / Blackwell / performance-per-watt AI infrastructure — NVIDIA said agentic AI is pushing token demand high enough that AI factory competition is becoming a performance-per-watt problem, highlighting Blackwell NVL72, GB300, and Vera Rubin platforms for MoE inference efficiency under fixed power budgets.

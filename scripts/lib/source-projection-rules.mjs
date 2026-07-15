@@ -1035,6 +1035,16 @@ export const FIELD_PROJECTION_RULES = [
       },
     },
     terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore'],
+    detailVariants: [
+      {
+        terms: ['安全漏洞', 'AWS Context', 'Bedrock AgentCore'],
+        details: {
+          what: 'AWS used its Summit New York 2026 agent stack to position AWS Continuum for vulnerability handling, AWS Context for enterprise knowledge-graph retrieval, and Bedrock AgentCore for governed agent runtime deployment alongside Amazon Quick, Kiro, AWS DevOps Agent, and AWS Transform.',
+          why: 'The 2026 signal is narrower than a generic agent-platform launch: AWS is packaging security triage, company-context grounding, developer workflow automation, and managed runtime controls as one enterprise adoption path.',
+          impact: 'Teams evaluating AWS agents should test a full loop across scoped code access, vulnerability validation, context retrieval, human approval, review logs, rollback, and runtime isolation before letting agents modify production workflows.',
+        },
+      },
+    ],
     details: {
       what: 'AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.',
       why: 'The update shows cloud competition moving from model APIs toward enterprise agent infrastructure where knowledge access, secure execution, DevOps automation, auditability, and rollback become platform features.',

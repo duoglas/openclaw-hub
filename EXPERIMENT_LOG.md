@@ -1,3 +1,14 @@
+### EXP-233
+- Hypothesis: EXP-232 已把 2026-07-15 AWS 企业 Agent 栈接入 latest real cron fixture，但 AWS rule 仍使用泛化 New York summit agent-platform detail；若不按 `安全漏洞 / AWS Context / Bedrock AgentCore` 增加条件 detailVariant，最新 EN 页面会把 AWS Continuum 的漏洞闭环、AWS Context 的企业知识图谱和 Bedrock AgentCore 的受治理运行时落地价值压平为普通 agent 平台更新。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-15.mjs`, `src/content/blog/en/openclaw-daily-2026-07-15.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 `aws-agent-continuum-enterprise-agentcore-2026` 增加 fixture-backed 条件 detailVariant，匹配 `安全漏洞 / AWS Context / Bedrock AgentCore` 的 07-15 story；将 07-15 EN story 1 与 Evidence Matrix 改写为 AWS Continuum vulnerability handling、AWS Context enterprise knowledge-graph retrieval、Bedrock AgentCore governed runtime deployment；同步 parser guardrail 保留中文源 token 锁定。
+- ICE: 8x8x8=512
+- Start date: 2026-07-15
+- End date: 2026-07-15
+- Success metric: `pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
+- Result: pass（AWS Continuum / Context / Bedrock AgentCore 已从泛化 agent-platform detail 收敛为安全漏洞闭环、企业知识图谱检索与受治理 agent runtime 字段级详情；新增 detailVariant 被真实 cron fixture 覆盖；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 AWS enterprise-agent 条件详情作为云上 Agent 平台首日索引质量基线；下一步可把 Bedrock AgentCore 的 runtime isolation / permission boundary 与 AWS Context 的 enterprise knowledge graph 拆成独立 source projection split target。）
+
 ### EXP-232
 - Hypothesis: 最近24小时新增日报（2026-07-15）暴露 AWS Continuum / Context / Bedrock AgentCore 企业 Agent 栈、OpenAI GPT-5.6 Sol/Terra/Luna on Amazon Bedrock、NVIDIA Nemotron Labs 开放模型 ownership、Blackwell / GB300 / Vera Rubin 每瓦性能与 WAIC 看点速览五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Bedrock、Nemotron 泛化 fallback、MLPerf 旧详情或 WAICO/L3 泛化详情，首日索引会漏掉企业 Agent 平台、云上 OpenAI 分发、开放模型私有评测、AI 工厂能效和 WAIC 官方预告长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-15.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-15.md`, `src/content/blog/zh/openclaw-daily-2026-07-15.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

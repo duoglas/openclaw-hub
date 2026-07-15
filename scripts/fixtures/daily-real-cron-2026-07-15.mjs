@@ -77,6 +77,9 @@ export const requiredEnglishOutputs = [
   '### 4. NVIDIA / Blackwell / performance-per-watt AI infrastructure',
   '### 5. China / WAIC / official preview watchpoint',
   'Evidence item 1: AWS / Agent / Continuum / agent platform',
+  'AWS Continuum for vulnerability handling',
+  'AWS Context for enterprise knowledge-graph retrieval',
+  'Bedrock AgentCore for governed agent runtime deployment',
   'Evidence item 2: OpenAI / GPT-5.6 / Bedrock enterprise distribution',
   'Evidence item 3: NVIDIA / Nemotron Labs / open model ownership',
   'Evidence item 4: NVIDIA / Blackwell / performance-per-watt AI infrastructure',
@@ -118,7 +121,7 @@ export const caseLevelFaqSignals = [
 ];
 
 export const parserGuardrails = {
-  story1RequiredDetailTokens: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore'],
+  story1RequiredDetailTokens: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore', '安全漏洞', '企业数据上下文'],
   story1ForbiddenDetailTokens: ['GPT-5.6', 'Nemotron Labs', '每瓦性能'],
   story2RequiredDetailTokens: ['GPT-5.6 Sol', 'Terra', 'Luna', 'Prompt 缓存'],
   story2ForbiddenDetailTokens: ['GPT-5.5', 'Codex available', 'MLPerf'],

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-15 11:32
+Last updated: 2026-07-15 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-233: 为 AWS Continuum / Context / Bedrock AgentCore 增加 fixture-backed 条件详情，消费 EXP-232 后续“AWS AgentCore / Context 安全工作流细分”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-232 已把 2026-07-15 AWS 企业 Agent 栈接入 latest real cron fixture，但 AWS rule 仍使用泛化 New York summit agent-platform detail；若不按 `安全漏洞 / AWS Context / Bedrock AgentCore` 增加条件 detailVariant，最新 EN 页面会把 AWS Continuum 的漏洞闭环、AWS Context 的企业知识图谱和 Bedrock AgentCore 的受治理运行时落地价值压平为普通 agent 平台更新。
+  - Metrics: source projection registry health 确认新增 detailVariant 被真实 cron fixture 覆盖；07-15 EN 页面 story/evidence 输出 vulnerability handling、enterprise knowledge-graph retrieval、governed agent runtime deployment；daily generator、latest fixture、daily source labels 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `aws-agent-continuum-enterprise-agentcore-2026` 新增 fixture-backed detailVariant；2) 2026-07-15 fixture parser guardrail 锁定 AWS Continuum / Context / AgentCore 与中文源 token；3) 2026-07-15 EN 页面改为安全闭环、知识图谱检索、受治理运行时字段级详情；4) 质量评分 28/30。
 - [x] P1 Candidate / EXP-232: 将 2026-07-15 最新双语日报接入 real cron fixture，并修复 AWS Continuum、Bedrock GPT-5.6、Nemotron Labs、Blackwell 每瓦性能与 WAIC 看点字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-15）暴露 AWS Continuum / Context / Bedrock AgentCore 企业 Agent 栈、OpenAI GPT-5.6 Sol/Terra/Luna on Amazon Bedrock、NVIDIA Nemotron Labs 开放模型 ownership、Blackwell / GB300 / Vera Rubin 每瓦性能与 WAIC 看点速览五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Bedrock、Nemotron 泛化 fallback、MLPerf 旧详情或 WAICO/L3 泛化详情，首日索引会漏掉企业 Agent 平台、云上 OpenAI 分发、开放模型私有评测、AI 工厂能效和 WAIC 官方预告长尾入口。
   - Metrics: latest fixture freshness、daily EN/ZH generator、bilingual pair fixture、daily source projection labels、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过；latest fixture 显示 latestDaily=2026-07-15、expectedSignals=5，label check 覆盖 23 fixtures / 115 signals。
