@@ -90,11 +90,25 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'cloud-model-distribution',
     displayLabels: [
       {
+        label: 'OpenAI / GPT-5.6 / Bedrock enterprise distribution',
+        terms: ['GPT-5.6 Sol', 'Terra', 'Luna', 'Prompt 缓存'],
+      },
+      {
         label: 'AWS / Amazon / Bedrock / model capability update',
         terms: ['前沿模型上云', '企业级安全'],
       },
     ],
-    terms: ['Amazon Bedrock', 'AWS 身份', '网络隔离'],
+    terms: ['Amazon Bedrock', 'AWS 身份', '网络隔离', 'GPT-5.6 Sol', 'Prompt 缓存'],
+    detailVariants: [
+      {
+        terms: ['GPT-5.6 Sol', 'Terra', 'Luna', 'Prompt 缓存'],
+        details: {
+          what: 'Amazon said OpenAI GPT-5.6 Sol, Terra, and Luna are generally available on Amazon Bedrock with enterprise security controls, in-region processing, prompt caching, and up to 90% cached-input discounts.',
+          why: 'OpenAI distribution is moving deeper into managed cloud procurement, where model access, regional data boundaries, identity controls, logging, pricing, and caching economics become one adoption decision.',
+          impact: 'Enterprise AI teams can compare GPT-5.6 against Anthropic, Meta, Mistral, and other Bedrock models while measuring latency, audit logs, data residency, cached-token savings, and governance fit.',
+        },
+      },
+    ],
     details: {
       what: 'AWS made GPT-5.5, GPT-5.4, and Codex available in Amazon Bedrock with OpenAI-matched pricing and enterprise access through AWS identity, network isolation, audit, and encryption controls.',
       why: 'OpenAI distribution is moving deeper into cloud procurement channels, turning model choice into a managed-cloud governance decision rather than a standalone API integration.',
@@ -159,12 +173,24 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'vertical-workflow-agents',
     displayLabels: [
       {
+        label: 'NVIDIA / Nemotron Labs / open model ownership',
+        terms: ['Nemotron Labs', '私有评测', '后训练'],
+      },
+      {
         label: 'NVIDIA / Nemotron 3 Ultra / LangChain Deep Agents',
         terms: ['Nemotron 3 Ultra', 'LangChain'],
       },
     ],
-    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents'],
+    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '私有评测', '后训练'],
     detailVariants: [
+      {
+        terms: ['Nemotron Labs', '私有评测', '后训练'],
+        details: {
+          what: 'NVIDIA Nemotron Labs argued that enterprise advantage comes from owning the AI lifecycle around open models, including private evaluation, post-training, cost optimization, and industry customization for domains such as healthcare, legal, and enterprise search.',
+          why: 'Enterprise AI adoption is shifting from picking one general model toward controlled, auditable, tunable systems where data boundaries, evaluation sets, adaptation loops, and deployment cost are strategic assets.',
+          impact: 'Teams can compare open and closed models on private benchmarks, fine-tuning or post-training needs, auditability, domain fit, and total inference cost before committing to regulated or proprietary workflows.',
+        },
+      },
       {
         terms: ['Nemotron 3 Ultra', 'LangChain Deep Agents'],
         details: {
@@ -281,12 +307,24 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'market-sizing-reports',
     displayLabels: [
       {
+        label: 'China / WAIC / official preview watchpoint',
+        terms: ['看点速览', '图片/视觉内容'],
+      },
+      {
         label: 'China / WAIC / AI product launch pipeline',
         terms: ['WAIC', '超 300 款', '1100 余家'],
       },
     ],
-    terms: ['6000 家', '1.2 万亿元', '待确认', 'WAIC', '10 万平方米', '1100 余家', '超 300 款', '2025 年已破万亿元'],
+    terms: ['6000 家', '1.2 万亿元', '待确认', 'WAIC', '10 万平方米', '1100 余家', '超 300 款', '2025 年已破万亿元', '看点速览', '图片/视觉内容'],
     detailVariants: [
+      {
+        terms: ['看点速览', '图片/视觉内容'],
+        details: {
+          what: 'Xinhua published a 2026 World Artificial Intelligence Conference preview page; the title, date, and source are confirmed, but most detailed highlights are embedded in visual content that was not fully extracted in this brief.',
+          why: 'WAIC remains a key window for China AI policy, model launches, robotics, intelligent devices, industrial applications, and governance messaging, but image-heavy source pages require cautious extraction.',
+          impact: 'Teams should track the official agenda, exhibitor updates, product launches, and governance statements before turning this preview into hard claims about specific WAIC announcements.',
+        },
+      },
       {
         terms: ['WAIC', '超 300 款', '1100 余家'],
         details: {
@@ -659,6 +697,10 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'OpenAI / ChatGPT / Instant / model capability update',
     displayLabels: [
       {
+        label: 'OpenAI / GPT-5.6 / Bedrock enterprise distribution',
+        terms: ['GPT-5.6 Sol', 'Terra', 'Luna', 'Prompt 缓存'],
+      },
+      {
         label: 'OpenAI / GPT-5.6 / Sol-Terra-Luna agent platform',
         terms: ['GPT-5.6', 'Sol', 'Terra', 'Luna'],
       },
@@ -669,6 +711,14 @@ export const FIELD_PROJECTION_RULES = [
     ],
     terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'GPT‑5.6', 'Sol 主打编码', 'ultra 工作模式', 'ultra 多智能体并行工作模式'],
     detailVariants: [
+      {
+        terms: ['GPT-5.6 Sol', 'Amazon Bedrock', 'Prompt 缓存'],
+        details: {
+          what: 'Amazon said OpenAI GPT-5.6 Sol, Terra, and Luna are generally available on Amazon Bedrock with enterprise security controls, in-region processing, prompt caching, and up to 90% cached-input discounts.',
+          why: 'OpenAI distribution is moving deeper into managed cloud procurement, where model access, regional data boundaries, identity controls, logging, pricing, and caching economics become one adoption decision.',
+          impact: 'Enterprise AI teams can compare GPT-5.6 against Anthropic, Meta, Mistral, and other Bedrock models while measuring latency, audit logs, data residency, cached-token savings, and governance fit.',
+        },
+      },
       {
         terms: ['Sol', 'Terra', 'Luna'],
         details: {
@@ -1022,8 +1072,24 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'frontier-models',
     splitTargetCategory: 'frontier-model-inference-architecture',
+    displayLabels: [
+      {
+        label: 'NVIDIA / Blackwell / performance-per-watt AI infrastructure',
+        terms: ['每瓦性能', 'GB300', 'Vera Rubin'],
+      },
+    ],
     displayLabel: 'NVIDIA / Blackwell / MLPerf / model capability update',
-    terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72'],
+    terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72', '每瓦性能'],
+    detailVariants: [
+      {
+        terms: ['每瓦性能', 'GB300', 'Vera Rubin'],
+        details: {
+          what: 'NVIDIA said agentic AI is pushing token demand high enough that AI factory competition is becoming a performance-per-watt problem, highlighting Blackwell NVL72, GB300, and Vera Rubin platforms for MoE inference efficiency under fixed power budgets.',
+          why: 'AI economics increasingly depend on electricity, data-center capacity, cooling, inference throughput, caching, and model-routing efficiency rather than only GPU purchase price or benchmark wins.',
+          impact: 'Cloud providers and model teams may prioritize power-efficient inference stacks, smaller-model routing, cache design, and token-cost optimization, while users may see faster or cheaper tiers alongside premium capability segmentation.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA said Blackwell delivered the fastest training time across all seven MLPerf Training 6.0 benchmarks and completed an 8192-GPU Blackwell NVL72 large-scale training submission.',
       why: 'Frontier model progress still depends on training infrastructure, where MoE workloads, low-precision training, and large-scale interconnect reliability shape model iteration speed and training economics.',

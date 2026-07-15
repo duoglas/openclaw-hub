@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-14 17:20
+Last updated: 2026-07-15 11:32
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-232: 将 2026-07-15 最新双语日报接入 real cron fixture，并修复 AWS Continuum、Bedrock GPT-5.6、Nemotron Labs、Blackwell 每瓦性能与 WAIC 看点字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-15）暴露 AWS Continuum / Context / Bedrock AgentCore 企业 Agent 栈、OpenAI GPT-5.6 Sol/Terra/Luna on Amazon Bedrock、NVIDIA Nemotron Labs 开放模型 ownership、Blackwell / GB300 / Vera Rubin 每瓦性能与 WAIC 看点速览五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Bedrock、Nemotron 泛化 fallback、MLPerf 旧详情或 WAICO/L3 泛化详情，首日索引会漏掉企业 Agent 平台、云上 OpenAI 分发、开放模型私有评测、AI 工厂能效和 WAIC 官方预告长尾入口。
+  - Metrics: latest fixture freshness、daily EN/ZH generator、bilingual pair fixture、daily source projection labels、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过；latest fixture 显示 latestDaily=2026-07-15、expectedSignals=5，label check 覆盖 23 fixtures / 115 signals。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-15.mjs`；2) 为 Bedrock GPT-5.6、Nemotron Labs ownership、Blackwell 每瓦性能与 WAIC 看点速览补齐字段级 label/detailVariants；3) EN/ZH 2026-07-15 页面移除泛化 fallback 和截断实战案例；4) Case-Level FAQ 覆盖 AWS Continuum security agent workflow 与 open model ownership evaluation loop；5) 质量评分 28/30。
 - [x] P1 Candidate / EXP-231: 将 2026-07-14 最新双语日报接入 real cron fixture，并修复 GPT-5.6、GPT-Live、WAIC 与 Nemotron 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `ab6dae0`
   - Hypothesis: 最近24小时新增日报（2026-07-14）暴露 GPT-5.6 Sol/Terra/Luna、GPT-Live full-duplex 语音、WAIC 全球治理会议、WAIC 300+ AI 产品首发与 Nemotron 3 Ultra + LangChain 企业智能体五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉模型 Agent 平台、实时语音 AI、AI 治理会议与中国 AI 应用规模长尾入口。
   - Metrics: latest fixture freshness、daily EN generator、daily source projection labels、source projection registry health、duplicate slug 与 `pnpm build` 全部通过；07-14 EN 页面不再输出 GPT-5.5 Instant、Xinhua 泛化 policy/hardware fallback 或旧 Cadence/Dassault/NemoClaw 工业代理详情。

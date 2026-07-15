@@ -1,3 +1,14 @@
+### EXP-232
+- Hypothesis: 最近24小时新增日报（2026-07-15）暴露 AWS Continuum / Context / Bedrock AgentCore 企业 Agent 栈、OpenAI GPT-5.6 Sol/Terra/Luna on Amazon Bedrock、NVIDIA Nemotron Labs 开放模型 ownership、Blackwell / GB300 / Vera Rubin 每瓦性能与 WAIC 看点速览五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Bedrock、Nemotron 泛化 fallback、MLPerf 旧详情或 WAICO/L3 泛化详情，首日索引会漏掉企业 Agent 平台、云上 OpenAI 分发、开放模型私有评测、AI 工厂能效和 WAIC 官方预告长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-15.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-15.md`, `src/content/blog/zh/openclaw-daily-2026-07-15.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-15 real cron fixture；为 Bedrock GPT-5.6 增加条件 label/detailVariants；复用 NVIDIA Nemotron / LangChain rule 扩展 Nemotron Labs open-model ownership 条件详情；为 Blackwell 每瓦性能和 WAIC 看点速览补齐字段级 projection；同步重写 EN/ZH 2026-07-15 页面，移除 GPT-5.5 Bedrock、Nemotron 泛化 fallback、MLPerf 旧详情、WAICO/L3 泛化详情与 ZH 实战案例截断。
+- ICE: 9x8x8=576
+- Start date: 2026-07-15
+- End date: 2026-07-15
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-15, latestFixture=2026-07-15, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=23, expectedSignals=115`；daily EN/ZH/pair、case FAQ、registry health、taxonomy 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-15 最新双语日报已由同日 real cron fixture 覆盖；AWS Continuum、Bedrock GPT-5.6、Nemotron Labs open-model ownership、Blackwell performance-per-watt 与 WAIC official preview 均输出字段级 projection；EN/ZH 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-15 fixture 作为企业 Agent 平台、云上 OpenAI 分发、开放模型私有评测、AI 工厂能效和 WAIC 官方看点的首日索引质量基线；下一步可继续把 AWS AgentCore / Context 的安全工作流拆成更细 agent runtime / enterprise knowledge projection。）
+
 ### EXP-231
 - Hypothesis: 最近24小时新增日报（2026-07-14）暴露 OpenAI GPT‑5.6 Sol/Terra/Luna + ultra 工作模式、OpenAI GPT‑Live full-duplex 语音、2026 WAIC 全球治理会议、WAIC 300+ AI 产品首发与 NVIDIA Nemotron 3 Ultra + LangChain Deep Agents 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Instant、Xinhua 泛化 policy/hardware fallback 或旧 Cadence/Dassault/NemoClaw 详情，首日索引会漏掉模型 Agent 平台、实时语音 AI、AI 治理会议、中国 AI 应用规模和开放企业智能体栈长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-14.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-14.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
