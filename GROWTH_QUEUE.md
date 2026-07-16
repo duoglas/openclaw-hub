@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-235: 将 2026-07-16 最新 real cron fixture 接入 daily registry，并为 Jetson Thor / NVIDIA Japan healthcare / Nemotron Labs / Claude Science 阻断泛化 fallback，消费 EXP-234 后续“最新日报 fixture-backed specificity guardrail”假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-16）暴露 NVIDIA Jetson Thor edge robotics modules、NVIDIA Japan healthcare AI deployment、Nemotron Labs open model ownership、Claude Science research workflow 与 ChatGPT task-based model picker；若最新日报不进入 real cron fixture 且 source projection 继续回落到 Jetson/Thor/AI hardware、BioNeMo/CT 或 Claude Fable 等泛化/错配标签，首日索引会漏掉边缘机器人模组、医疗 AI 部署、开放模型 ownership 与科研工作台长尾入口。
+  - Metrics: latest fixture freshness、daily source projection labels、EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug precheck 与 `pnpm build` 全部通过；latest fixture 显示 latestDaily=2026-07-16、latestFixture=2026-07-16、expectedSignals=5，label check 覆盖 24 fixtures / 120 signals。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-16.mjs`，覆盖 2026-07-16 五条最新信号；2) 为 Jetson Thor edge modules 与 NVIDIA Japan healthcare AI deployment 补齐字段级 display label/detailVariants；3) 收窄 Claude Science 与 BioNeMo 条件匹配，避免 07-16 与 07-07 历史 fixture 互相污染；4) EN/ZH 2026-07-16 页面移除泛化 fallback 并补齐 Case-Level FAQ；5) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-234: 为 AWS AgentCore / Context 增加 cloud-agent-runtime-infrastructure split target，并将 AWS Continuum 从 cloud-model-distribution 分流，消费 EXP-233 后续“AgentCore runtime / Context knowledge graph 拆分”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-233 已把 AWS Continuum / Context / Bedrock AgentCore 收敛为字段级详情，但仍占用 cloud-model-distribution；若不拆出 cloud-agent-runtime-infrastructure，后续 Bedrock AgentCore runtime isolation、AWS Context enterprise knowledge graph 与纯模型上架信号会继续挤在同一 split target，降低容量诊断清晰度。
   - Metrics: source projection taxonomy 显示 split target categories 34/34 used、cloud-agent-runtime-infrastructure=1/1、cloud-model-distribution=2/4；registry health、daily source projection labels、daily generator 与 `pnpm build` 全部通过。

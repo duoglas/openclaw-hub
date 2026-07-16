@@ -1,3 +1,14 @@
+### EXP-235
+- Hypothesis: 最近24小时新增日报（2026-07-16）暴露 NVIDIA Jetson Thor edge robotics modules、NVIDIA Japan healthcare AI deployment、Nemotron Labs open model ownership、Claude Science research workflow 与 ChatGPT task-based model picker；若最新日报不进入 real cron fixture 且 source projection 继续回落到 Jetson/Thor/AI hardware、BioNeMo/CT 或 Claude Fable 等泛化/错配标签，首日索引会漏掉边缘机器人模组、医疗 AI 部署、开放模型 ownership 与科研工作台长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-16.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-16.md`, `src/content/blog/zh/openclaw-daily-2026-07-16.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-16 real cron fixture；为 Jetson Thor edge robotics modules 与 NVIDIA Japan healthcare AI / CT / robotics deployment 增加字段级 display label 与 detailVariants；收窄 BioNeMo、Claude Science 条件匹配，避免历史 ICML/BioNeMo 与 Fable jailbreak fixture 被 07-16 最新 story 污染；同步重写 EN/ZH 2026-07-16 日报，补齐 Top 5、Practical Cases、Case-Level FAQ、Evidence Matrix 与 CTA。
+- ICE: 9x8x8=576
+- Start date: 2026-07-16
+- End date: 2026-07-16
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-16, latestFixture=2026-07-16, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=24, expectedSignals=120`；daily EN/ZH generator、bilingual pair fixture、case FAQ、registry health、taxonomy、duplicate slug precheck 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-16 最新双语日报已由同日 real cron fixture 覆盖；Jetson Thor、NVIDIA Japan healthcare AI、Nemotron Labs、Claude Science 与 ChatGPT Instant 均输出字段级 projection；EN/ZH 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-16 fixture 作为边缘机器人模组、医疗 AI 产品化、开放模型 ownership、科研 agent workflow 与模型能力选择界面的首日索引质量基线；下一步可继续把医疗 AI deployment 与 edge robotics modules 拆出更细 capacity plan，降低已满额 physical-ai-robotics / enterprise-agents 分类压力。）
+
 ### EXP-234
 - Hypothesis: EXP-233 已把 AWS Continuum / Context / Bedrock AgentCore 收敛为字段级详情，但仍占用 cloud-model-distribution；若不拆出 cloud-agent-runtime-infrastructure，后续 Bedrock AgentCore runtime isolation、AWS Context enterprise knowledge graph 与纯模型上架信号会继续挤在同一 split target，降低容量诊断清晰度。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-06-18.mjs`, `scripts/fixtures/daily-real-cron-2026-07-15.mjs`, `src/content/blog/en/openclaw-daily-2026-06-18.md`, `src/content/blog/en/openclaw-daily-2026-06-19.md`, `src/content/blog/en/openclaw-daily-2026-07-15.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

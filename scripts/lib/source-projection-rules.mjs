@@ -593,12 +593,24 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / Physical / Agent / robotics deployment',
     displayLabels: [
       {
+        label: 'NVIDIA / Jetson Thor / edge robotics AI modules',
+        terms: ['Jetson / IGX T3000', 'Jetson T2000', '865 FP4 TFLOPS'],
+      },
+      {
         label: 'NVIDIA / Hugging Face / LeRobot robotics ecosystem',
         terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
       },
     ],
-    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop'],
+    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop', 'Jetson / IGX T3000', 'Jetson T2000', '865 FP4 TFLOPS', '400 FP4 TFLOPS'],
     detailVariants: [
+      {
+        terms: ['Jetson / IGX T3000', 'Jetson T2000', '865 FP4 TFLOPS'],
+        details: {
+          what: 'NVIDIA introduced Thor-based Jetson / IGX T3000 and Jetson T2000 modules for humanoid robots, industrial robots, visual AI agents, and autonomous mobile robots, with T3000 at 865 FP4 TFLOPS and T2000 at 400 FP4 TFLOPS.',
+          why: 'Physical AI deployment is moving more inference from cloud services into edge modules that can run multimodal models, world models, robot policies, and safety loops close to sensors and actuators.',
+          impact: 'Robotics and industrial AI teams can benchmark local inference cost, power draw, latency, thermal limits, sensor integration, and fallback behavior before replacing cloud-dependent robot workflows.',
+        },
+      },
       {
         terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
         details: {
@@ -1297,10 +1309,10 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta +1; raises vertical-workflow-agents capacity for the 2026-07-01 latest-fixture research-workflow signal and prevents generic latest daily fallback.',
       },
     },
-    terms: ['Claude Science beta', 'Claude Science 已可用', 'Jupyter/R/HPC/SSH', 'AI workbench', '可审计科研产物', '可审计产物', '计算资源'],
+    terms: ['Claude Science beta', 'Claude Science 已可用', 'Claude Science 已推出', 'Jupyter/R/HPC/SSH', 'AI workbench', '可审计科研产物', '可审计产物', '计算资源'],
     detailVariants: [
       {
-        terms: ['Claude Science 已可用', 'AI workbench', '可审计产物', '计算资源'],
+        terms: ['Claude Science 已推出'],
         details: {
           what: 'Anthropic said Claude Science is available as an AI workbench for scientists, integrating research tools, auditable artifacts, and access to compute resources.',
           why: 'The signal moves AI from chat and coding assistance into the scientific workflow itself, where literature review, data analysis, charts, manuscripts, compute scheduling, and reproducibility all need governed agent support.',
@@ -1320,7 +1332,23 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'agent-enablement-programs',
     displayLabel: 'NVIDIA / BioNeMo / scientific agent toolkit',
-    terms: ['BioNeMo Agent Toolkit', 'Evo 2', 'BioNeMo NIM'],
+    displayLabels: [
+      {
+        label: 'NVIDIA Japan / healthcare AI / CT and robotics deployment',
+        terms: ['Canon', 'Fujifilm', 'Kawasaki Heavy Industries', 'CT 系统'],
+      },
+    ],
+    terms: ['BioNeMo Agent Toolkit', 'Evo 2', 'BioNeMo NIM', 'Canon', 'Fujifilm', 'Kawasaki Heavy Industries', 'CT 系统', '手术辅助'],
+    detailVariants: [
+      {
+        terms: ['Canon', 'Fujifilm', 'Kawasaki Heavy Industries', 'CT 系统'],
+        details: {
+          what: 'NVIDIA described Japanese healthcare and life-science partners using BioNeMo, RAPIDS, and Boltz for drug discovery, Canon and Fujifilm shipping NVIDIA-accelerated CT systems, and Kawasaki Heavy Industries advancing hospital robotics and surgical-assistance workflows.',
+          why: 'Healthcare AI is shifting from isolated algorithms into full product and workflow stacks that combine accelerated imaging, life-science models, robotics, validation, and hospital deployment constraints.',
+          impact: 'Medical-device, pharma, and hospital robotics teams should evaluate GPU acceleration, clinical workflow fit, regulatory evidence, integration cost, and human-in-the-loop safeguards before scaling AI deployments.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA said BioNeMo Agent Toolkit is available as a Claude Science resource, exposing Evo 2, Boltz-2, OpenFold3, Parabricks, RAPIDS-singlecell, nvMolKit, BioNeMo NIM, and related scientific tools.',
       why: 'Scientific agents are becoming tool-using systems that combine frontier models with domain models, GPU libraries, and validated workflows rather than relying only on general-purpose language reasoning.',
