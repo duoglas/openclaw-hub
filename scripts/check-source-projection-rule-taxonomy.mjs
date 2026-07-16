@@ -40,6 +40,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'chatgpt-control-surfaces',
   'code-agent-runtime',
   'cloud-model-distribution',
+  'cloud-agent-runtime-infrastructure',
   'consumer-creative-ai',
   'content-licensing-markets',
   'desktop-computer-use',
@@ -75,6 +76,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'chatgpt-control-surfaces': 4,
   'code-agent-runtime': 3,
   'cloud-model-distribution': 4,
+  'cloud-agent-runtime-infrastructure': 1,
   'company-finance': 5,
   'consumer-creative-ai': 5,
   'content-licensing-markets': 3,
@@ -112,6 +114,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   ],
   'cloud-infrastructure': [
     'cloud-model-distribution',
+    'cloud-agent-runtime-infrastructure',
     'ai-infrastructure-capacity',
   ],
   'consumer-productivity': [
@@ -237,8 +240,12 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   ],
   'cloud-infrastructure': [
     {
+      target: 'cloud-agent-runtime-infrastructure',
+      match: ['agentcore', 'continuum', 'aws-context', 'aws-agent-continuum', 'managed-agent-runtime'],
+    },
+    {
       target: 'cloud-model-distribution',
-      match: ['bedrock', 'openai-amazon', 'agentperf', 'agentcore', 'continuum'],
+      match: ['bedrock', 'openai-amazon', 'agentperf'],
     },
     {
       target: 'ai-infrastructure-capacity',
@@ -1348,9 +1355,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 33/33 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 34/34 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / content-licensing-markets / regional-ai-ecosystems; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {

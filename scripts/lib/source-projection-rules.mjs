@@ -1022,16 +1022,17 @@ export const FIELD_PROJECTION_RULES = [
     name: 'aws-agent-continuum-enterprise-agentcore-2026',
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
-    splitTargetCategory: 'cloud-model-distribution',
-    displayLabel: 'AWS / Agent / Continuum / agent platform',
+    splitTargetCategory: 'cloud-agent-runtime-infrastructure',
+    displayLabel: 'AWS / AgentCore / managed agent runtime',
     capacityPlan: {
-      selectedSplitTarget: 'cloud-model-distribution',
-      whyNotAlternatives: 'Rejected alternate split targets because AWS Continuum and Bedrock AgentCore are cloud model and agent distribution infrastructure, not raw AI infrastructure capacity.',
+      selectedSplitTarget: 'cloud-agent-runtime-infrastructure',
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because AWS Continuum, AWS Context, and Bedrock AgentCore are managed cloud agent runtime infrastructure, not pure model distribution.',
+      rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 4,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses cloud-model-distribution capacity for a fixture-backed AWS agent infrastructure launch and keeps future AWS/cloud additions behind split-target review.',
+        categoryBudget: 1,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta 0; uses cloud-agent-runtime-infrastructure capacity for a fixture-backed AWS AgentCore runtime and Context grounding signal while preserving cloud-model-distribution for pure model availability updates.',
       },
     },
     terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore'],
@@ -1192,7 +1193,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / TOP500 / Green500 / compute infrastructure',
     capacityPlan: {
       selectedSplitTarget: 'ai-infrastructure-capacity',
-      whyNotAlternatives: 'Rejected alternate split targets because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not cloud model distribution.',
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not model distribution.',
+      rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 8,
@@ -1215,7 +1217,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / AWS / vector retrieval infrastructure',
     capacityPlan: {
       selectedSplitTarget: 'ai-infrastructure-capacity',
-      whyNotAlternatives: 'Rejected alternate split targets because EC2 G7, OpenSearch Serverless vector search, and cuVS are production AI infrastructure capacity signals rather than cloud model distribution.',
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because EC2 G7, OpenSearch Serverless vector search, and cuVS are production AI infrastructure capacity signals rather than model distribution.',
+      rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 8,
@@ -1332,7 +1335,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / AI for Science / HPC software stack',
     capacityPlan: {
       selectedSplitTarget: 'ai-infrastructure-capacity',
-      whyNotAlternatives: 'Rejected alternate split targets because AI for Science HPC software is GPU-native infrastructure capacity, not cloud model distribution.',
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because AI for Science HPC software is GPU-native infrastructure capacity, not model distribution.',
+      rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 8,
@@ -1470,7 +1474,7 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / Vera CPU / agentic AI infrastructure',
     capacityPlan: {
       selectedSplitTarget: 'ai-infrastructure-capacity',
-      whyNotAlternatives: 'Rejected alternate split targets because Vera CPU is an AI infrastructure capacity and latency signal, not cloud model distribution.',
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because Vera CPU is an AI infrastructure capacity and latency signal, not model distribution.',
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 1,

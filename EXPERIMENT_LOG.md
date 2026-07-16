@@ -1,3 +1,14 @@
+### EXP-234
+- Hypothesis: EXP-233 已把 AWS Continuum / Context / Bedrock AgentCore 收敛为字段级详情，但仍占用 cloud-model-distribution；若不拆出 cloud-agent-runtime-infrastructure，后续 Bedrock AgentCore runtime isolation、AWS Context enterprise knowledge graph 与纯模型上架信号会继续挤在同一 split target，降低容量诊断清晰度。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-06-18.mjs`, `scripts/fixtures/daily-real-cron-2026-07-15.mjs`, `src/content/blog/en/openclaw-daily-2026-06-18.md`, `src/content/blog/en/openclaw-daily-2026-06-19.md`, `src/content/blog/en/openclaw-daily-2026-07-15.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: cloud-infrastructure 新增 `cloud-agent-runtime-infrastructure` split target、预算、migration hint 与 scaffold self-test；`aws-agent-continuum-enterprise-agentcore-2026` 从 `cloud-model-distribution` 迁入新 runtime split target，并把 AWS 历史/latest fixture 和 EN 页面 label 改为 `AWS / AgentCore / managed agent runtime`；同步为 NVIDIA TOP500、EC2 G7/OpenSearch、AI for Science 与 Vera CPU capacityPlan 补齐 `cloud-model-distribution` rejected alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-07-16
+- End date: 2026-07-16
+- Success metric: `pnpm check:source-projection-rule-taxonomy`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture` 与 `pnpm build` 全部通过；taxonomy 输出 `split target categories: 34/34 used`、`cloud-agent-runtime-infrastructure=1/1`、`cloud-model-distribution=2/4`。
+- Result: pass（AWS Continuum / Context / Bedrock AgentCore 已从 cloud-model-distribution 分流到 cloud-agent-runtime-infrastructure，纯模型分发 split target 恢复 2 个 headroom；相关 taxonomy、registry、label、daily generator 与 build 通过；commit `(this commit)`；质量评分 27/30。注意：`pnpm check:latest-daily-real-cron-fixture` 当前因 2026-07-16 日报尚未注册 fixture 失败，非本轮 split target 变更引入。）
+- Decision: scale（保留 cloud-agent-runtime-infrastructure 作为 AWS AgentCore runtime isolation、AWS Context enterprise knowledge graph、managed agent runtime 类信号的独立容量入口；下一步优先把 2026-07-16 最新日报接入 real cron fixture 并修复 Jetson Thor / NVIDIA Japan healthcare / Nemotron Labs 字段级 projection。）
+
 ### EXP-233
 - Hypothesis: EXP-232 已把 2026-07-15 AWS 企业 Agent 栈接入 latest real cron fixture，但 AWS rule 仍使用泛化 New York summit agent-platform detail；若不按 `安全漏洞 / AWS Context / Bedrock AgentCore` 增加条件 detailVariant，最新 EN 页面会把 AWS Continuum 的漏洞闭环、AWS Context 的企业知识图谱和 Bedrock AgentCore 的受治理运行时落地价值压平为普通 agent 平台更新。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-15.mjs`, `src/content/blog/en/openclaw-daily-2026-07-15.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

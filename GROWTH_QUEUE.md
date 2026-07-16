@@ -20,6 +20,10 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-234: 为 AWS AgentCore / Context 增加 cloud-agent-runtime-infrastructure split target，并将 AWS Continuum 从 cloud-model-distribution 分流，消费 EXP-233 后续“AgentCore runtime / Context knowledge graph 拆分”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-233 已把 AWS Continuum / Context / Bedrock AgentCore 收敛为字段级详情，但仍占用 cloud-model-distribution；若不拆出 cloud-agent-runtime-infrastructure，后续 Bedrock AgentCore runtime isolation、AWS Context enterprise knowledge graph 与纯模型上架信号会继续挤在同一 split target，降低容量诊断清晰度。
+  - Metrics: source projection taxonomy 显示 split target categories 34/34 used、cloud-agent-runtime-infrastructure=1/1、cloud-model-distribution=2/4；registry health、daily source projection labels、daily generator 与 `pnpm build` 全部通过。
+  - Acceptance: 1) cloud-infrastructure split scaffold 新增 cloud-agent-runtime-infrastructure；2) `aws-agent-continuum-enterprise-agentcore-2026` 迁入 managed agent runtime split target；3) AWS historical/latest fixture 与 EN 页面 label 改为 AgentCore managed runtime；4) NVIDIA infrastructure capacityPlan 补充 cloud-model-distribution rejected alternate；5) 质量评分 27/30。
 - [x] P1 Candidate / EXP-233: 为 AWS Continuum / Context / Bedrock AgentCore 增加 fixture-backed 条件详情，消费 EXP-232 后续“AWS AgentCore / Context 安全工作流细分”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-232 已把 2026-07-15 AWS 企业 Agent 栈接入 latest real cron fixture，但 AWS rule 仍使用泛化 New York summit agent-platform detail；若不按 `安全漏洞 / AWS Context / Bedrock AgentCore` 增加条件 detailVariant，最新 EN 页面会把 AWS Continuum 的漏洞闭环、AWS Context 的企业知识图谱和 Bedrock AgentCore 的受治理运行时落地价值压平为普通 agent 平台更新。
   - Metrics: source projection registry health 确认新增 detailVariant 被真实 cron fixture 覆盖；07-15 EN 页面 story/evidence 输出 vulnerability handling、enterprise knowledge-graph retrieval、governed agent runtime deployment；daily generator、latest fixture、daily source labels 与 `pnpm build` 全部通过。
@@ -674,6 +678,10 @@ Manager: main session
   - Acceptance: 1) `/en/blog/openclaw-daily-2026-04-04/` 与 `/zh/blog/openclaw-daily-2026-04-04/` frontmatter description 去占位化；2) CTA 替换为 OpenClaw 核心指南/部署/模型回退相关内链；3) `pnpm build` 通过。
 
 ## Done
+- [x] P1 Candidate / EXP-234: 为 AWS AgentCore / Context 增加 cloud-agent-runtime-infrastructure split target，并将 AWS Continuum 从 cloud-model-distribution 分流，消费 EXP-233 后续“AgentCore runtime / Context knowledge graph 拆分”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-233 已把 AWS Continuum / Context / Bedrock AgentCore 收敛为字段级详情，但仍占用 cloud-model-distribution；若不拆出 cloud-agent-runtime-infrastructure，后续 Bedrock AgentCore runtime isolation、AWS Context enterprise knowledge graph 与纯模型上架信号会继续挤在同一 split target，降低容量诊断清晰度。
+  - Metrics: source projection taxonomy 显示 split target categories 34/34 used、cloud-agent-runtime-infrastructure=1/1、cloud-model-distribution=2/4；registry health、daily source projection labels、daily generator 与 `pnpm build` 全部通过。
+  - Acceptance: 1) cloud-infrastructure split scaffold 新增 cloud-agent-runtime-infrastructure；2) `aws-agent-continuum-enterprise-agentcore-2026` 迁入 managed agent runtime split target；3) AWS historical/latest fixture 与 EN 页面 label 改为 AgentCore managed runtime；4) NVIDIA infrastructure capacityPlan 补充 cloud-model-distribution rejected alternate；5) 质量评分 27/30。
 - [x] P1 Candidate / EXP-231: 将 2026-07-14 最新双语日报接入 real cron fixture，并修复 GPT-5.6、GPT-Live、WAIC 与 Nemotron 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-14）暴露 GPT-5.6 Sol/Terra/Luna、GPT-Live full-duplex 语音、WAIC 全球治理会议、WAIC 300+ AI 产品首发与 Nemotron 3 Ultra + LangChain 企业智能体五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉模型 Agent 平台、实时语音 AI、AI 治理会议与中国 AI 应用规模长尾入口。
   - Metrics: latest fixture freshness、daily EN generator、daily source projection labels、source projection registry health、duplicate slug 与 `pnpm build` 全部通过；07-14 EN 页面不再输出 GPT-5.5 Instant、Xinhua 泛化 policy/hardware fallback 或旧 Cadence/Dassault/NemoClaw 工业代理详情。

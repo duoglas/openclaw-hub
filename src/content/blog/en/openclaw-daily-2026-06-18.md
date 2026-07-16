@@ -12,7 +12,7 @@ AI & Tech Daily Brief
 
 ## Top 5 Stories
 
-### 1. AWS / Agent / Continuum / agent platform
+### 1. AWS / AgentCore / managed agent runtime
 
 What happened: AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.
 Why it matters: The update shows cloud competition moving from model APIs toward enterprise agent infrastructure where knowledge access, secure execution, DevOps automation, auditability, and rollback become platform features.
@@ -66,7 +66,7 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 
 ## Evidence Matrix
 
-- Evidence item 1: AWS / Agent / Continuum / agent platform — AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.
+- Evidence item 1: AWS / AgentCore / managed agent runtime — AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.
 - Evidence item 2: Anthropic / Korea / regional AI ecosystem — Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.
 - Evidence item 3: OpenAI / ChatGPT / Scheduled / enterprise AI rollout — OpenAI updated ChatGPT Scheduled Tasks with a unified Scheduled page for viewing, pausing, resuming, editing, and deleting tasks, faster and more reliable execution, web search, connected apps, and a gradual migration away from Pulse.
 - Evidence item 4: Science and Technology Daily / Xinhua / MIIT / compute infrastructure — China’s MIIT issued an AI + information and communications implementation plan for 2026–2028, targeting more than 30 high-value scenarios and at least 75% coverage for a 1-millisecond metropolitan compute latency circle by 2028.

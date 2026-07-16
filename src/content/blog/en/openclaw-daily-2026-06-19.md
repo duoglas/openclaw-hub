@@ -12,7 +12,7 @@ AI & Tech Daily Brief
 
 ## Top 5 Stories
 
-### 1. AWS / Agent / Continuum / agent platform
+### 1. AWS / AgentCore / managed agent runtime
 
 What happened: AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.
 Why it matters: The update shows cloud competition moving from model APIs toward enterprise agent infrastructure where knowledge access, secure execution, DevOps automation, auditability, and rollback become platform features.
@@ -66,7 +66,7 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 
 ## Evidence Matrix
 
-- Evidence item 1: AWS / Agent / Continuum / agent platform — AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.
+- Evidence item 1: AWS / AgentCore / managed agent runtime — AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.
 - Evidence item 2: OpenAI / ChatGPT / Scheduled / model capability update — The source tracks model capability update, model release management around OpenAI, ChatGPT, Scheduled, Android, giving the daily brief a named actor and deployment context.
 - Evidence item 3: Korea / Anthropic / ICT / model capability update — Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.
 - Evidence item 4: China / WAIC / open-source model ecosystem / enterprise AI rollout — The source tracks open-source model ecosystem, enterprise AI rollout, strategic partnership, AI standards infrastructure around China, WAIC, giving the daily brief a named actor and deployment context.

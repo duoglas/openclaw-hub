@@ -50,7 +50,7 @@ AWS Context 强调用企业知识图谱让 Agent 找到正确上下文；NVIDIA 
 `;
 
 export const expectedSignals = [
-  { title: 'AWS 发布一组企业 AI Agent 新能力', sourceProjectionRuleMatches: ['aws-agent-continuum-enterprise-agentcore-2026'], enLabel: 'AWS / Agent / Continuum / agent platform', zhEvidence: '来源条目 1：AWS 发布一组企业 AI Agent 新能力', requiredTokens: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore', '安全漏洞'] },
+  { title: 'AWS 发布一组企业 AI Agent 新能力', sourceProjectionRuleMatches: ['aws-agent-continuum-enterprise-agentcore-2026'], enLabel: 'AWS / AgentCore / managed agent runtime', zhEvidence: '来源条目 1：AWS 发布一组企业 AI Agent 新能力', requiredTokens: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore', '安全漏洞'] },
   { title: 'OpenAI GPT-5.6 系列已在 Amazon Bedrock 上 GA', sourceProjectionRuleMatches: ['openai-amazon-bedrock-models'], enLabel: 'OpenAI / GPT-5.6 / Bedrock enterprise distribution', zhEvidence: '来源条目 2：OpenAI GPT-5.6 系列已在 Amazon Bedrock 上 GA', requiredTokens: ['GPT-5.6 Sol', 'Terra', 'Luna', 'Prompt 缓存', '90% 折扣'] },
   { title: 'NVIDIA 强调开放模型是企业“拥有 AI”的关键路径', sourceProjectionRuleMatches: ['nvidia-nemoclaw-industrial-agents'], enLabel: 'NVIDIA / Nemotron Labs / open model ownership', zhEvidence: '来源条目 3：NVIDIA 强调开放模型是企业“拥有 AI”的关键路径', requiredTokens: ['Nemotron Labs', '开放模型', '私有评测', '后训练'] },
   { title: 'NVIDIA：AI 基础设施竞争进入“每瓦性能”阶段', sourceProjectionRuleMatches: ['nvidia-blackwell-mlperf-training-6-2026'], enLabel: 'NVIDIA / Blackwell / performance-per-watt AI infrastructure', zhEvidence: '来源条目 4：NVIDIA：AI 基础设施竞争进入“每瓦性能”阶段', requiredTokens: ['每瓦性能', 'Blackwell NVL72', 'GB300', 'Vera Rubin'] },
@@ -71,12 +71,12 @@ export const bannedFallbackPhrases = [
 ];
 
 export const requiredEnglishOutputs = [
-  '### 1. AWS / Agent / Continuum / agent platform',
+  '### 1. AWS / AgentCore / managed agent runtime',
   '### 2. OpenAI / GPT-5.6 / Bedrock enterprise distribution',
   '### 3. NVIDIA / Nemotron Labs / open model ownership',
   '### 4. NVIDIA / Blackwell / performance-per-watt AI infrastructure',
   '### 5. China / WAIC / official preview watchpoint',
-  'Evidence item 1: AWS / Agent / Continuum / agent platform',
+  'Evidence item 1: AWS / AgentCore / managed agent runtime',
   'AWS Continuum for vulnerability handling',
   'AWS Context for enterprise knowledge-graph retrieval',
   'Bedrock AgentCore for governed agent runtime deployment',
