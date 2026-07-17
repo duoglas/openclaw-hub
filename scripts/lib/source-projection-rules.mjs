@@ -317,6 +317,19 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'china-ai-commercialization-roi-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    splitTargetCategory: 'ai-commercialization-roi',
+    displayLabel: 'China / WorkBuddy / AI commercialization ROI',
+    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试'],
+    details: {
+      what: 'Chinese media coverage points to Doubao, WorkBuddy, and other AI products testing paid plans while office, logistics, consumer electronics, and humanoid-robotics workflows adopt AI more directly.',
+      why: 'China AI competition is shifting from model launches toward paid users, embedded workflows, measurable productivity, and enterprise ROI as model capability becomes less differentiated.',
+      impact: 'Users should expect more subscriptions, usage pricing, and embedded AI features, while enterprise buyers compare workflow fit, data security, deployment cost, and measurable productivity rather than parameter counts.',
+    },
+  },
+  {
     name: 'china-ai-industry-report-l3',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
@@ -330,12 +343,8 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / WAIC / AI product launch pipeline',
         terms: ['WAIC', '超 300 款', '1100 余家'],
       },
-      {
-        label: 'China / WorkBuddy / AI commercialization ROI',
-        terms: ['豆包', 'WorkBuddy', 'ROI'],
-      },
     ],
-    terms: ['6000 家', '1.2 万亿元', 'WAIC', '10 万平方米', '1100 余家', '超 300 款', '2025 年已破万亿元', '看点速览', '图片/视觉内容', '豆包', 'WorkBuddy', 'ROI'],
+    terms: ['6000 家', '1.2 万亿元', 'WAIC', '10 万平方米', '1100 余家', '超 300 款', '2025 年已破万亿元', '看点速览', '图片/视觉内容'],
     detailVariants: [
       {
         terms: ['看点速览', '图片/视觉内容'],
@@ -351,14 +360,6 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua reported that WAIC will exceed 100,000 square meters of exhibition space, host more than 1,100 exhibitors, debut more than 300 AI products, and highlight China’s AI-related industry scale above one trillion yuan in 2025 with expected 2026 growth above 30%.',
           why: 'China’s AI market is shifting from isolated model launches toward concentrated application deployment, industry-chain competition, compute, embodied AI, agents, chips, and robotics.',
           impact: 'Teams tracking China AI should watch the next week of model, AI phone, embodied-intelligence, humanoid-robot, near-memory compute, manufacturing, government, and industrial AI announcements for deployable products rather than only AIGC demos.',
-        },
-      },
-      {
-        terms: ['豆包', 'WorkBuddy', 'ROI'],
-        details: {
-          what: 'Chinese media coverage points to Doubao, WorkBuddy, and other AI products testing paid plans while office, logistics, consumer electronics, and humanoid-robotics workflows adopt AI more directly.',
-          why: 'China AI competition is shifting from model launches toward paid users, embedded workflows, measurable productivity, and enterprise ROI as model capability becomes less differentiated.',
-          impact: 'Users should expect more subscriptions, usage pricing, and embedded AI features, while enterprise buyers compare workflow fit, data security, deployment cost, and measurable productivity rather than parameter counts.',
         },
       },
     ],

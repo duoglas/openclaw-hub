@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-17 11:28
+Last updated: 2026-07-17 17:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-237: 将 WorkBuddy / 豆包商业化 ROI 从 China market-sizing 报告中拆出独立 ai-commercialization-roi split target，消费 EXP-236 后续“market-sizing-reports 宽词继续拆细”假设 | ICE 8x8x8=512 — commit `5b475bb`
+  - Hypothesis: EXP-236 已把 2026-07-17 WorkBuddy / 豆包商业化信号接入字段级 projection，但仍复用 `china-ai-industry-report-l3` 与 `market-sizing-reports`；若不拆出独立商业化 ROI split target，后续 paid-plan、ROI、企业采用类信号会继续和 WAIC / 产业规模报告混在同一规则，增加宽词污染与容量诊断噪声。
+  - Metrics: 新增 `ai-commercialization-roi` split target，WorkBuddy / 豆包独立规则输出字段级 label/detail；market-sizing-reports 回收为 WAIC / 产业规模报告；taxonomy 显示 split target categories 35/35 used、ai-commercialization-roi=1/2、market-sizing-reports=2/3；registry health、daily source projection labels、latest fixture、daily generator 与 `pnpm build` 全部通过。
+  - Acceptance: 1) market-intelligence split scaffold 新增 ai-commercialization-roi、预算与 migration hint；2) 新增 `china-ai-commercialization-roi-2026` 独立 rule，匹配 WorkBuddy / 豆包 / 付费计划 / 商业化测试；3) `china-ai-industry-report-l3` 移除 WorkBuddy/ROI 宽词与 detailVariant，只保留 WAIC / 产业规模；4) 修复 ROI 宽词误命中 06-08 AWS/OpenAI story 的 label 漂移；5) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-236: 将 2026-07-17 最新双语日报接入 real cron fixture，并修复 Anthropic Canada、AWS Compute ML、Together AI 与 WorkBuddy 商业化字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-17）暴露 Anthropic Canada 1000 万加元研究生态、Jetson Thor T3000/T2000 边缘机器人模块、AWS Compute and ML Services 负责人更替、Together AI 8 亿美元融资与中国 WorkBuddy / 豆包商业化信号；若最新日报不进入 real cron fixture 且 EN 页面保留 Anthropic/AWS/China L3 泛化 fallback，首日索引会漏掉加拿大 AI 研究生态、端侧机器人、云 AI 基础设施组织调整、开放模型推理基础设施融资和中国 AI ROI 长尾入口。
   - Metrics: latest fixture freshness、daily source projection labels、daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug precheck 与 `pnpm build` 全部通过；latest fixture 显示 latestDaily=2026-07-17、latestFixture=2026-07-17、expectedSignals=5，label check 覆盖 25 fixtures / 125 signals。

@@ -1,3 +1,14 @@
+### EXP-237
+- Hypothesis: EXP-236 已把 2026-07-17 WorkBuddy / 豆包商业化信号接入字段级 projection，但仍复用 `china-ai-industry-report-l3` 与 `market-sizing-reports`；若不拆出独立商业化 ROI split target，后续 paid-plan、ROI、企业采用类信号会继续和 WAIC / 产业规模报告混在同一规则，增加宽词污染与容量诊断噪声。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: market-intelligence 新增 `ai-commercialization-roi` split target、effective budget、migration hint 与 scaffold self-test；新增 `china-ai-commercialization-roi-2026` 独立 source projection rule；从 `china-ai-industry-report-l3` 移除 WorkBuddy / ROI label、terms 与 detailVariant，使 market-sizing-reports 回收为 WAIC / 产业规模报告；同时将商业化规则 terms 从 `ROI` 宽词收窄为 WorkBuddy / 豆包 / 付费计划 / 商业化测试，避免 06-08 AWS/OpenAI story label 漂移。
+- ICE: 8x8x8=512
+- Start date: 2026-07-17
+- End date: 2026-07-17
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 35/35 used`、`ai-commercialization-roi=1/2`、`market-sizing-reports=2/3`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture` 与 `pnpm build` 全部通过。
+- Result: pass（WorkBuddy / 豆包商业化 ROI 已从 China market-sizing L3 规则拆出独立 ai-commercialization-roi split target；market-sizing-reports 回收为 WAIC / 产业规模报告；ROI 宽词误命中 06-08 AWS/OpenAI story 的 label 漂移已修复；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 ai-commercialization-roi 作为中国 AI 付费计划、企业 ROI 与商业化采用信号的独立容量入口；下一步可继续把 regional-ai-ecosystems 中 Anthropic Canada / Korea office / Raise workforce training 拆成 regional research、office expansion 与 workforce enablement 子目标。）
+
 ### EXP-236
 - Hypothesis: 最近24小时新增日报（2026-07-17）暴露 Anthropic Canada 1000 万加元研究生态、Jetson Thor T3000/T2000 边缘机器人模块、AWS Compute and ML Services 负责人更替、Together AI 8 亿美元融资与中国 WorkBuddy / 豆包商业化信号；若最新日报不进入 real cron fixture 且 EN 页面保留 Anthropic/AWS/China L3 泛化 fallback，首日索引会漏掉加拿大 AI 研究生态、端侧机器人、云 AI 基础设施组织调整、开放模型推理基础设施融资和中国 AI ROI 长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-17.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-17.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
