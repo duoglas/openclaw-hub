@@ -1,3 +1,14 @@
+### EXP-236
+- Hypothesis: 最近24小时新增日报（2026-07-17）暴露 Anthropic Canada 1000 万加元研究生态、Jetson Thor T3000/T2000 边缘机器人模块、AWS Compute and ML Services 负责人更替、Together AI 8 亿美元融资与中国 WorkBuddy / 豆包商业化信号；若最新日报不进入 real cron fixture 且 EN 页面保留 Anthropic/AWS/China L3 泛化 fallback，首日索引会漏掉加拿大 AI 研究生态、端侧机器人、云 AI 基础设施组织调整、开放模型推理基础设施融资和中国 AI ROI 长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-17.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-17.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-17 real cron fixture；为 Anthropic Canada research ecosystem、AWS Compute and ML Services AI infrastructure leadership、Together AI open-model inference funding 与 China WorkBuddy AI commercialization ROI 增加字段级 display label 与 detailVariants；复用并收窄 Jetson Thor 条件 label；移除 `收费` 宽词造成的 07-15 Blackwell -> China L3 detail fallback 污染；同步重写 EN 2026-07-17 日报，补齐 Case-Level FAQ、Evidence Matrix 与 CTA。
+- ICE: 9x8x8=576
+- Start date: 2026-07-17
+- End date: 2026-07-17
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-17, latestFixture=2026-07-17, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=25, expectedSignals=125`；daily EN/ZH generator、bilingual pair fixture、case FAQ、registry health、taxonomy、duplicate slug precheck 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-17 最新双语日报已由同日 real cron fixture 覆盖；Anthropic Canada、Jetson Thor、AWS Compute/ML leadership、Together AI financing 与 WorkBuddy commercialization 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-17 fixture 作为加拿大 AI 研究生态、端侧机器人模块、云 AI 基础设施组织变化、开放模型推理基础设施融资和中国 AI 商业化 ROI 的首日索引质量基线；下一步可把 regional-ai-ecosystems 与 market-sizing-reports 的宽词继续拆细，降低未来待确认媒体摘要污染风险。）
+
 ### EXP-235
 - Hypothesis: 最近24小时新增日报（2026-07-16）暴露 NVIDIA Jetson Thor edge robotics modules、NVIDIA Japan healthcare AI deployment、Nemotron Labs open model ownership、Claude Science research workflow 与 ChatGPT task-based model picker；若最新日报不进入 real cron fixture 且 source projection 继续回落到 Jetson/Thor/AI hardware、BioNeMo/CT 或 Claude Fable 等泛化/错配标签，首日索引会漏掉边缘机器人模组、医疗 AI 部署、开放模型 ownership 与科研工作台长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-16.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-16.md`, `src/content/blog/zh/openclaw-daily-2026-07-16.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

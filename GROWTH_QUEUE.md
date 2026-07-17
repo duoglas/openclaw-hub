@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-15 17:24
+Last updated: 2026-07-17 11:28
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-236: 将 2026-07-17 最新双语日报接入 real cron fixture，并修复 Anthropic Canada、AWS Compute ML、Together AI 与 WorkBuddy 商业化字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-17）暴露 Anthropic Canada 1000 万加元研究生态、Jetson Thor T3000/T2000 边缘机器人模块、AWS Compute and ML Services 负责人更替、Together AI 8 亿美元融资与中国 WorkBuddy / 豆包商业化信号；若最新日报不进入 real cron fixture 且 EN 页面保留 Anthropic/AWS/China L3 泛化 fallback，首日索引会漏掉加拿大 AI 研究生态、端侧机器人、云 AI 基础设施组织调整、开放模型推理基础设施融资和中国 AI ROI 长尾入口。
+  - Metrics: latest fixture freshness、daily source projection labels、daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug precheck 与 `pnpm build` 全部通过；latest fixture 显示 latestDaily=2026-07-17、latestFixture=2026-07-17、expectedSignals=5，label check 覆盖 25 fixtures / 125 signals。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-17.mjs`，覆盖 2026-07-17 五条最新信号；2) 为 Anthropic Canada、AWS Compute and ML Services、Together AI open-model inference funding、China WorkBuddy AI commercialization ROI 补齐字段级 display label/detailVariants；3) 收窄 `收费` 宽词，避免 2026-07-15 Blackwell 每瓦性能被 China L3 fallback 污染；4) EN 2026-07-17 页面移除泛化 fallback 并补齐 Case-Level FAQ；5) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-235: 将 2026-07-16 最新 real cron fixture 接入 daily registry，并为 Jetson Thor / NVIDIA Japan healthcare / Nemotron Labs / Claude Science 阻断泛化 fallback，消费 EXP-234 后续“最新日报 fixture-backed specificity guardrail”假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-16）暴露 NVIDIA Jetson Thor edge robotics modules、NVIDIA Japan healthcare AI deployment、Nemotron Labs open model ownership、Claude Science research workflow 与 ChatGPT task-based model picker；若最新日报不进入 real cron fixture 且 source projection 继续回落到 Jetson/Thor/AI hardware、BioNeMo/CT 或 Claude Fable 等泛化/错配标签，首日索引会漏掉边缘机器人模组、医疗 AI 部署、开放模型 ownership 与科研工作台长尾入口。
   - Metrics: latest fixture freshness、daily source projection labels、EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug precheck 与 `pnpm build` 全部通过；latest fixture 显示 latestDaily=2026-07-16、latestFixture=2026-07-16、expectedSignals=5，label check 覆盖 24 fixtures / 120 signals。
