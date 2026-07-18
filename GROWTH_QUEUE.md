@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-239: 将 2026-07-18 最新双语日报接入 real cron fixture，并修复 Kimi K3、NVIDIA 后训练、WAIC 产业/人才/算力议程与 MIIT 中小企业 AI 赋能字段级 projection，消费 EXP-238 后续“补齐 2026-07-18 latest real cron fixture”假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: EXP-238 已建议优先恢复 2026-07-18 latest real cron fixture freshness；若 07-18 最新日报不进入 fixture 且 EN 页面保留 Kimi / Xinhua / MIIT 泛化 fallback，首日索引会漏掉 Kimi K3 长上下文开放模型、NVIDIA agentic AI 后训练基础设施、WAIC 产业/人才/算力议程和中小企业 AI 赋能长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-07-18、latestFixture=2026-07-18、expectedSignals=5；daily source projection labels 覆盖 26 fixtures / 130 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-18.mjs`；2) 为 Kimi K3、NVIDIA post-training、WAIC 172 场会议与 MIIT SME digital AI enablement 补齐字段级 label/detailVariants；3) EN 2026-07-18 页面移除泛化 fallback 并补齐 Case-Level FAQ；4) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-238: 将 regional-ai-ecosystems 拆成加拿大研究生态、韩国办公室扩张与劳动力 AI enablement 子目标，消费 EXP-237 后续“regional-ai-ecosystems 宽词继续拆细”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-237 已把中国商业化 ROI 从 market-sizing-reports 拆出，但 regional-ai-ecosystems 仍同时承载 Anthropic Canada 研究资助、Anthropic Korea 办公室/客户生态、Amazon RAISE US 劳动力培训与上海硬科技；若不继续拆分，后续区域研究、办公室扩张、技能培训与城市硬科技信号会继续挤在同一 split target，增加容量诊断噪声和宽词误分流。
   - Metrics: 新增 `regional-research-ecosystems`、`regional-office-expansion`、`workforce-ai-enablement` 三个 split target；taxonomy 显示 split target categories 38/38 used、regional-ai-ecosystems=1/4、regional-research-ecosystems=1/2、regional-office-expansion=1/2、workforce-ai-enablement=1/2；registry health、daily source projection labels、source projection scope targeted update 与 `pnpm build` 通过。

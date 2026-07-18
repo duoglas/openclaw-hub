@@ -193,11 +193,15 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Nemotron Labs', '私有评测', '后训练'],
       },
       {
+        label: 'NVIDIA / post-training / agentic AI infrastructure',
+        terms: ['后训练', 'NeMo RL', 'intelligence per dollar'],
+      },
+      {
         label: 'NVIDIA / Nemotron 3 Ultra / LangChain Deep Agents',
         terms: ['Nemotron 3 Ultra', 'LangChain'],
       },
     ],
-    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '私有评测', '后训练'],
+    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '私有评测', '后训练', 'NeMo RL', 'Vera Rubin', 'intelligence per dollar'],
     detailVariants: [
       {
         terms: ['Nemotron Labs', '私有评测', '后训练'],
@@ -205,6 +209,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA Nemotron Labs argued that enterprise advantage comes from owning the AI lifecycle around open models, including private evaluation, post-training, cost optimization, and industry customization for domains such as healthcare, legal, and enterprise search.',
           why: 'Enterprise AI adoption is shifting from picking one general model toward controlled, auditable, tunable systems where data boundaries, evaluation sets, adaptation loops, and deployment cost are strategic assets.',
           impact: 'Teams can compare open and closed models on private benchmarks, fine-tuning or post-training needs, auditability, domain fit, and total inference cost before committing to regulated or proprietary workflows.',
+        },
+      },
+      {
+        terms: ['后训练', 'NeMo RL', 'intelligence per dollar'],
+        details: {
+          what: 'NVIDIA argued that agentic AI requires continuous post-training rather than a one-time train-and-serve cycle, linking Nemotron, NeMo RL, Vera Rubin, and intelligence-per-dollar optimization into the agent infrastructure stack.',
+          why: 'Production agents encounter new tools, business rules, edge cases, and evaluation targets after launch, so reinforcement learning, eval loops, sandboxes, and train-inference feedback become infrastructure requirements.',
+          impact: 'Enterprises building agents should budget for ongoing evaluation, supervised adaptation, rollback tests, and cost-per-successful-task tracking instead of treating model selection as a one-off procurement decision.',
         },
       },
       {
@@ -343,8 +355,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / WAIC / AI product launch pipeline',
         terms: ['WAIC', '超 300 款', '1100 余家'],
       },
+      {
+        label: 'China / WAIC / industry talent compute agenda',
+        terms: ['172 场会议'],
+      },
     ],
-    terms: ['6000 家', '1.2 万亿元', 'WAIC', '10 万平方米', '1100 余家', '超 300 款', '2025 年已破万亿元', '看点速览', '图片/视觉内容'],
+    terms: ['6000 家', '1.2 万亿元', 'WAIC', '10 万平方米', '1100 余家', '超 300 款', '2025 年已破万亿元', '看点速览', '图片/视觉内容', '172 场会议'],
     detailVariants: [
       {
         terms: ['看点速览', '图片/视觉内容'],
@@ -360,6 +376,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua reported that WAIC will exceed 100,000 square meters of exhibition space, host more than 1,100 exhibitors, debut more than 300 AI products, and highlight China’s AI-related industry scale above one trillion yuan in 2025 with expected 2026 growth above 30%.',
           why: 'China’s AI market is shifting from isolated model launches toward concentrated application deployment, industry-chain competition, compute, embodied AI, agents, chips, and robotics.',
           impact: 'Teams tracking China AI should watch the next week of model, AI phone, embodied-intelligence, humanoid-robot, near-memory compute, manufacturing, government, and industrial AI announcements for deployable products rather than only AIGC demos.',
+        },
+      },
+      {
+        terms: ['172 场会议'],
+        details: {
+          what: 'Xinhua reported that WAIC 2026 opened in Shanghai with about 172 meetings, forums, and events, where industry development, talent ecosystems, and compute were among the most frequent themes.',
+          why: 'China’s AI agenda is shifting from model launches alone toward industrial deployment, AI-skilled talent supply, compute cost, and application readiness across sectors.',
+          impact: 'Industrial, finance, transport, education, and compute-infrastructure teams should watch which WAIC themes turn into product launches, procurement programs, talent pipelines, or domestic compute deployments.',
         },
       },
     ],
@@ -678,6 +702,12 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'vertical-workflow-agents',
     displayLabel: 'China / vertical AI / industrial deployment',
+    displayLabels: [
+      {
+        label: 'China / MIIT / SME digital AI enablement',
+        terms: ['中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理'],
+      },
+    ],
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
       whyNotAlternatives: 'Rejected alternate split targets because the signal is about manufacturing, healthcare, energy, and materials workflows rather than enterprise agent platforms or enablement programs.',
@@ -688,7 +718,17 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta +1; raises vertical-workflow-agents capacity for a latest-fixture vertical workflow deployment signal without widening generic enterprise-agents matching.',
       },
     },
-    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟'],
+    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟', '中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理'],
+    detailVariants: [
+      {
+        terms: ['中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理'],
+        details: {
+          what: 'Xinhua reported that China’s MIIT will keep promoting SME digital and intelligent transformation, optimize the market ecosystem, develop small, fast, lightweight, and accurate products, and deepen AI use in R&D, manufacturing, and operations management.',
+          why: 'SMEs are a large real-world AI adoption market but often lack budget, talent, and systems-integration capacity, so packaged tools and lightweight industry templates matter more than model size.',
+          impact: 'Vendors should prove direct cost reduction, deployment simplicity, data security, and workflow fit, while SME owners can prioritize low-risk tools that improve design, production, logistics, documents, or management routines.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua reported that AI is moving faster into vertical industries such as manufacturing, healthcare, energy, and new materials, including examples where process-drawing analysis fell from half a day to minutes and materials R&D cycles shortened.',
       why: 'China’s AI application agenda is shifting from general model excitement toward measurable productivity gains inside physical industries and domain workflows.',
@@ -727,7 +767,23 @@ export const FIELD_PROJECTION_RULES = [
     category: 'developer-tools',
     splitTargetCategory: 'code-agent-runtime',
     displayLabel: 'Alibaba Cloud / Qoder / agentic coding platform',
-    terms: ['Qoder', '代码库理解', 'Quest Mode'],
+    displayLabels: [
+      {
+        label: 'China / Kimi K3 / long-context open model',
+        terms: ['Kimi K3', '2.8T', '100 万 token'],
+      },
+    ],
+    terms: ['Qoder', '代码库理解', 'Quest Mode', 'Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', '百万 token', 'Kimi Code'],
+    detailVariants: [
+      {
+        terms: ['Kimi K3', '2.8T', '100 万 token'],
+        details: {
+          what: 'Moonshot / Kimi released Kimi K3 as a 2.8T-parameter native multimodal model with a 1 million token context window, available through Kimi.com, Kimi Work, Kimi Code, and API access while full weights are planned before July 27, 2026.',
+          why: 'China’s model competition is moving toward very large open-model ecosystems, long-context coding, research workflows, and agent engineering rather than only chatbot quality.',
+          impact: 'Teams can test Kimi K3 on long documents, repository analysis, research replication, and interactive reports while watching whether the promised full-weight release creates a durable developer ecosystem.',
+        },
+      },
+    ],
     details: {
       what: 'Alibaba Cloud introduced Qoder as an agentic coding platform for real software engineering, emphasizing repository understanding, long-term memory, task decomposition, execution transparency, and Quest Mode asynchronous delegation.',
       why: 'AI coding is moving from autocomplete into specification-driven agents that understand project context, break down tasks, execute asynchronously, and leave traces for engineering review.',
@@ -1033,6 +1089,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / WAIC / AI governance conference',
         terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
       },
+      {
+        label: 'China / WAIC / industry talent compute agenda',
+        terms: ['172 场会议'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'ai-policy-standards',
@@ -1045,7 +1105,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
       },
     },
-    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理'],
+    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理', '172 场会议'],
     detailVariants: [
       {
         terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
@@ -1053,6 +1113,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua reported that the 2026 World Artificial Intelligence Conference and High-Level Meeting on Global AI Governance will be held in Shanghai from July 17 to 20 under the theme “Intelligent Partners, Creating the Future Together.”',
           why: 'The event places AI technology, industrial cooperation, safety, and global governance in the same policy arena rather than treating WAIC as only an exhibition.',
           impact: 'AI companies, standards teams, and policy watchers should monitor opening remarks, governance initiatives, partnership announcements, and whether safety or provenance requirements become operational expectations.',
+        },
+      },
+      {
+        terms: ['172 场会议'],
+        details: {
+          what: 'Xinhua reported that WAIC 2026 opened in Shanghai with about 172 meetings, forums, and events, where industry development, talent ecosystems, and compute were among the most frequent themes.',
+          why: 'China’s AI agenda is shifting from model launches alone toward industrial deployment, AI-skilled talent supply, compute cost, and application readiness across sectors.',
+          impact: 'Industrial, finance, transport, education, and compute-infrastructure teams should watch which WAIC themes turn into product launches, procurement programs, talent pipelines, or domestic compute deployments.',
         },
       },
     ],

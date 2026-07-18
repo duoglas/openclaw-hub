@@ -1,3 +1,14 @@
+### EXP-239
+- Hypothesis: EXP-238 已建议优先补齐 2026-07-18 latest real cron fixture；若 07-18 最新日报不进入 real cron fixture 且 EN 页面保留 Kimi / NVIDIA / WAIC / MIIT 泛化 fallback，首日索引会漏掉 Kimi K3 长上下文开放模型、NVIDIA agentic AI 后训练基础设施、WAIC 产业/人才/算力议程和中小企业 AI 赋能长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-18.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-18.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-18 real cron fixture；复用 existing source projection rules 增加 Kimi K3 long-context open model、NVIDIA post-training / NeMo RL / intelligence-per-dollar、WAIC 172 场会议产业/人才/算力议程、MIIT 中小企业“小快轻准”AI 赋能字段级 display label 与 detailVariants；同步重写 EN 2026-07-18 页面，移除 Kimi / MIIT 泛化 fallback，并新增 Kimi long-context research workflow 与 Agent post-training evaluation loop 的 Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-18
+- End date: 2026-07-18
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-18, latestFixture=2026-07-18, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=26, expectedSignals=130`；daily EN/ZH generator、bilingual pair fixture、case FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-18 最新双语日报已由同日 real cron fixture 覆盖；Kimi K3、NVIDIA post-training、WAIC industry/talent/compute agenda 与 MIIT SME AI enablement 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-18 fixture 作为长上下文开放模型、agent 后训练基础设施、中国 AI 产业/人才/算力议程和中小企业 AI 赋能的首日索引质量基线；下一步可把 Kimi/K3 从 Qoder 复用 rule 拆成独立 China open-model long-context split target，降低 developer-tools unmatched 诊断噪声。）
+
 ### EXP-238
 - Hypothesis: EXP-237 已把中国商业化 ROI 从 market-sizing-reports 拆出，但 regional-ai-ecosystems 仍同时承载 Anthropic Canada 研究资助、Anthropic Korea 办公室/客户生态、Amazon RAISE US 劳动力培训与上海硬科技；若不继续拆分，后续区域研究、办公室扩张、技能培训与城市硬科技信号会继续挤在同一 split target，增加容量诊断噪声和宽词误分流。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-17.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
