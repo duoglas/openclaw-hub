@@ -45,11 +45,11 @@ export const realCronFixture = `《AI、科技日报》
 `;
 
 export const expectedSignals = [
-  { title: 'Anthropic 向加拿大 AI 研究投入 1000 万加元', sourceProjectionRuleMatches: ['anthropic-korea-seoul-office-ecosystem-2026'], enLabel: 'Anthropic / Canada / AI research ecosystem', zhEvidence: '来源条目 1：Anthropic 向加拿大 AI 研究投入 1000 万加元', requiredTokens: ['1000 万加元', 'Amii', 'Mila', 'Vector Institute', 'AI 安全', '医疗', '机器人'] },
+  { title: 'Anthropic 向加拿大 AI 研究投入 1000 万加元', sourceProjectionRuleMatches: ['anthropic-canada-ai-research-ecosystem-2026'], enLabel: 'Anthropic / Canada / AI research ecosystem', zhEvidence: '来源条目 1：Anthropic 向加拿大 AI 研究投入 1000 万加元', requiredTokens: ['1000 万加元', 'Amii', 'Mila', 'Vector Institute', 'AI 安全', '医疗', '机器人'] },
   { title: 'NVIDIA 发布 Jetson T3000、T2000，继续押注边缘 AI 和机器人', sourceProjectionRuleMatches: ['nvidia-physical-ai-agent-skills-2026'], enLabel: 'NVIDIA / Jetson Thor / edge robotics AI modules', zhEvidence: '来源条目 2：NVIDIA 发布 Jetson T3000、T2000，继续押注边缘 AI 和机器人', requiredTokens: ['Thor 架构', 'T3000', 'T2000', '865 FP4 TFLOPS', '400 FP4 TFLOPS'] },
   { title: 'AWS 计算与机器学习业务将更换负责人', sourceProjectionRuleMatches: ['aws-agent-continuum-enterprise-agentcore-2026'], enLabel: 'AWS / Compute and ML Services / AI infrastructure leadership', zhEvidence: '来源条目 3：AWS 计算与机器学习业务将更换负责人', requiredTokens: ['Dave Treadwell', 'AWS Compute and ML Services', 'Dave Brown', 'AI 算力服务'] },
   { title: 'Together AI 完成 8 亿美元融资，英伟达参与投资', sourceProjectionRuleMatches: ['anthropic-series-h'], enLabel: 'Together AI / NVIDIA / open model inference funding', zhEvidence: '来源条目 4：Together AI 完成 8 亿美元融资，英伟达参与投资', requiredTokens: ['Together AI', '8 亿美元', 'NVIDIA', 'Aramco Ventures', '推理基础设施'] },
-  { title: '中国 AI 行业继续从模型竞赛转向商业化和场景落地', sourceProjectionRuleMatches: ['china-ai-industry-report-l3'], enLabel: 'China / WorkBuddy / AI commercialization ROI', zhEvidence: '来源条目 5：中国 AI 行业继续从模型竞赛转向商业化和场景落地', requiredTokens: ['豆包', 'WorkBuddy', '收费', 'ROI', '数据安全'] },
+  { title: '中国 AI 行业继续从模型竞赛转向商业化和场景落地', sourceProjectionRuleMatches: ['china-ai-commercialization-roi-2026'], enLabel: 'China / WorkBuddy / AI commercialization ROI', zhEvidence: '来源条目 5：中国 AI 行业继续从模型竞赛转向商业化和场景落地', requiredTokens: ['豆包', 'WorkBuddy', '收费', 'ROI', '数据安全'] },
 ];
 
 export const bannedFallbackPhrases = [

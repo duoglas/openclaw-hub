@@ -1,3 +1,14 @@
+### EXP-238
+- Hypothesis: EXP-237 已把中国商业化 ROI 从 market-sizing-reports 拆出，但 regional-ai-ecosystems 仍同时承载 Anthropic Canada 研究资助、Anthropic Korea 办公室/客户生态、Amazon RAISE US 劳动力培训与上海硬科技；若不继续拆分，后续区域研究、办公室扩张、技能培训与城市硬科技信号会继续挤在同一 split target，增加容量诊断噪声和宽词误分流。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-17.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: market-intelligence scaffold 新增 `regional-research-ecosystems`、`regional-office-expansion`、`workforce-ai-enablement` 三个 split target、effective budget 与 migration hints；Anthropic Canada 从 Korea 复用 rule 拆出独立研究生态 projection；Anthropic Korea 迁入 office expansion；Amazon RAISE US 迁入 workforce enablement，并同步更新 structured capacityPlan 与 07-17 fixture 的 expected rule match。
+- ICE: 8x8x8=512
+- Start date: 2026-07-18
+- End date: 2026-07-18
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 38/38 used`，并显示 `regional-ai-ecosystems=1/4`、`regional-research-ecosystems=1/2`、`regional-office-expansion=1/2`、`workforce-ai-enablement=1/2`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
+- Result: pass（regional-ai-ecosystems 已从 3/4 回落到 1/4；Anthropic Canada、Anthropic Korea 与 Amazon RAISE US 已分别迁入 research / office / workforce 三个子目标；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 research / office / workforce 三个 regional 子目标作为后续区域 AI 生态信号的低风险容量入口；下一步优先补齐 2026-07-18 latest real cron fixture，恢复 latest fixture freshness 闸门。）
+
 ### EXP-237
 - Hypothesis: EXP-236 已把 2026-07-17 WorkBuddy / 豆包商业化信号接入字段级 projection，但仍复用 `china-ai-industry-report-l3` 与 `market-sizing-reports`；若不拆出独立商业化 ROI split target，后续 paid-plan、ROI、企业采用类信号会继续和 WAIC / 产业规模报告混在同一规则，增加宽词污染与容量诊断噪声。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

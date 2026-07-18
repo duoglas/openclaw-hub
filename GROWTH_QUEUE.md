@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-238: 将 regional-ai-ecosystems 拆成加拿大研究生态、韩国办公室扩张与劳动力 AI enablement 子目标，消费 EXP-237 后续“regional-ai-ecosystems 宽词继续拆细”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-237 已把中国商业化 ROI 从 market-sizing-reports 拆出，但 regional-ai-ecosystems 仍同时承载 Anthropic Canada 研究资助、Anthropic Korea 办公室/客户生态、Amazon RAISE US 劳动力培训与上海硬科技；若不继续拆分，后续区域研究、办公室扩张、技能培训与城市硬科技信号会继续挤在同一 split target，增加容量诊断噪声和宽词误分流。
+  - Metrics: 新增 `regional-research-ecosystems`、`regional-office-expansion`、`workforce-ai-enablement` 三个 split target；taxonomy 显示 split target categories 38/38 used、regional-ai-ecosystems=1/4、regional-research-ecosystems=1/2、regional-office-expansion=1/2、workforce-ai-enablement=1/2；registry health、daily source projection labels、source projection scope targeted update 与 `pnpm build` 通过。
+  - Acceptance: 1) Anthropic Canada 从 Anthropic Korea 复用 rule 中拆出独立 `anthropic-canada-ai-research-ecosystem-2026`；2) Anthropic Korea 迁入 regional-office-expansion；3) Amazon RAISE US 迁入 workforce-ai-enablement 并更新 structured capacityPlan；4) market-intelligence scaffold / migration hints / self-test 更新到 38 个 split target；5) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-237: 将 WorkBuddy / 豆包商业化 ROI 从 China market-sizing 报告中拆出独立 ai-commercialization-roi split target，消费 EXP-236 后续“market-sizing-reports 宽词继续拆细”假设 | ICE 8x8x8=512 — commit `5b475bb`
   - Hypothesis: EXP-236 已把 2026-07-17 WorkBuddy / 豆包商业化信号接入字段级 projection，但仍复用 `china-ai-industry-report-l3` 与 `market-sizing-reports`；若不拆出独立商业化 ROI split target，后续 paid-plan、ROI、企业采用类信号会继续和 WAIC / 产业规模报告混在同一规则，增加宽词污染与容量诊断噪声。
   - Metrics: 新增 `ai-commercialization-roi` split target，WorkBuddy / 豆包独立规则输出字段级 label/detail；market-sizing-reports 回收为 WAIC / 产业规模报告；taxonomy 显示 split target categories 35/35 used、ai-commercialization-roi=1/2、market-sizing-reports=2/3；registry health、daily source projection labels、latest fixture、daily generator 与 `pnpm build` 全部通过。

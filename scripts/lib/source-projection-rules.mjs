@@ -1112,28 +1112,25 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'anthropic-canada-ai-research-ecosystem-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    splitTargetCategory: 'regional-research-ecosystems',
+    displayLabel: 'Anthropic / Canada / AI research ecosystem',
+    terms: ['1000 万加元', 'Amii', 'Mila', 'Vector Institute'],
+    details: {
+      what: 'Anthropic committed 10 million CAD to Canadian AI research institutions and partnerships with Amii, Mila, and the Vector Institute across AI safety, healthcare, robotics, multi-agent systems, and low-resource languages.',
+      why: 'Frontier AI competition is expanding beyond model releases into research ecosystems, talent pipelines, applied safety work, healthcare pilots, robotics collaboration, and regional industry partnerships.',
+      impact: 'Research and healthcare teams can pilot Claude-style workflows only with clinical review, data permissions, audit logs, and measurable research outputs rather than treating grants as immediate production readiness.',
+    },
+  },
+  {
     name: 'anthropic-korea-seoul-office-ecosystem-2026',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
-    splitTargetCategory: 'regional-ai-ecosystems',
+    splitTargetCategory: 'regional-office-expansion',
     displayLabel: 'Anthropic / Korea / regional AI ecosystem',
-    displayLabels: [
-      {
-        label: 'Anthropic / Canada / AI research ecosystem',
-        terms: ['1000 万加元', 'Amii', 'Mila', 'Vector Institute'],
-      },
-    ],
-    terms: ['首尔办公室正式开放', 'NAVER、Nexon、LG CNS', 'Samsung SDS、Channel Corp', '1000 万加元', 'Amii', 'Mila', 'Vector Institute'],
-    detailVariants: [
-      {
-        terms: ['1000 万加元', 'Amii', 'Mila', 'Vector Institute'],
-        details: {
-          what: 'Anthropic committed 10 million CAD to Canadian AI research institutions and partnerships with Amii, Mila, and the Vector Institute across AI safety, healthcare, robotics, multi-agent systems, and low-resource languages.',
-          why: 'Frontier AI competition is expanding beyond model releases into research ecosystems, talent pipelines, applied safety work, healthcare pilots, robotics collaboration, and regional industry partnerships.',
-          impact: 'Research and healthcare teams can pilot Claude-style workflows only with clinical review, data permissions, audit logs, and measurable research outputs rather than treating grants as immediate production readiness.',
-        },
-      },
-    ],
+    terms: ['首尔办公室正式开放', 'NAVER、Nexon、LG CNS', 'Samsung SDS、Channel Corp'],
     details: {
       what: 'Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.',
       why: 'The move frames Korea as a strategic enterprise AI market across semiconductors, cloud, gaming, consumer electronics, IT services, and AI safety research.',
@@ -1240,17 +1237,17 @@ export const FIELD_PROJECTION_RULES = [
     name: 'amazon-raise-us-ai-workforce-training-2026',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
-    splitTargetCategory: 'regional-ai-ecosystems',
+    splitTargetCategory: 'workforce-ai-enablement',
     displayLabel: 'Amazon / RAISE US / AI workforce training',
     capacityPlan: {
-      selectedSplitTarget: 'regional-ai-ecosystems',
-      whyNotAlternatives: 'Rejected alternate split targets because RAISE US is a workforce and education ecosystem signal, not content-licensing-markets.',
-      rejectedAlternateTargets: ['content-licensing-markets'],
+      selectedSplitTarget: 'workforce-ai-enablement',
+      whyNotAlternatives: 'Rejected alternate split targets content-licensing-markets and regional-ai-ecosystems because RAISE US is a workforce and education enablement signal, not media licensing or a generic regional market ecosystem.',
+      rejectedAlternateTargets: ['content-licensing-markets', 'regional-ai-ecosystems'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 4,
+        categoryBudget: 2,
         categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses regional-ai-ecosystems capacity for a fixture-backed workforce and education ecosystem signal while avoiding another parent market-intelligence fallback.',
+        rationale: 'capacity delta 0; uses workforce-ai-enablement capacity for a fixture-backed workforce and education ecosystem signal while preserving regional-ai-ecosystems for location-specific industry clusters.',
       },
     },
     terms: ['RAISE US', 'Future Ready 2030', 'AI 时代技能'],
@@ -1589,8 +1586,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Xinhua / AI memory demand / consumer electronics cost pressure',
     capacityPlan: {
       selectedSplitTarget: 'market-sizing-reports',
-      whyNotAlternatives: 'Rejected alternate split targets because HBM, DRAM, and NAND price pressure is a market-sizing and supply-chain cost signal, not content-licensing-markets.',
-      rejectedAlternateTargets: ['content-licensing-markets'],
+      whyNotAlternatives: 'Rejected alternate split targets content-licensing-markets and regional-ai-ecosystems because HBM, DRAM, and NAND price pressure is a market-sizing and supply-chain cost signal, not media licensing or regional ecosystem expansion.',
+      rejectedAlternateTargets: ['content-licensing-markets', 'regional-ai-ecosystems'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 3,
