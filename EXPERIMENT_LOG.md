@@ -1,3 +1,14 @@
+### EXP-240
+- Hypothesis: 最近24小时新增日报（2026-07-19）暴露 WAIC 全球治理主席声明 / 世界人工智能合作组织、NVIDIA intelligence-per-dollar 后训练成本框架、Jetson / IGX T3000 与 Jetson T2000 端侧机器人模块、Claude Fable 5 访问恢复与 jailbreak severity framework、ChatGPT Instant/Medium/High 模型选择器；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC L3、Qoder/NemoClaw、Jetson/Claude 泛化 fallback，首日索引会漏掉 AI 治理协作、agent 后训练成本、端侧机器人算力、模型安全发布门禁和任务型模型选择长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-19.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-19.md`, `src/content/blog/zh/openclaw-daily-2026-07-19.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-19 real cron fixture；让 WAIC governance story 命中 `china-world-ai-cooperation-organization-2026` 而非 `china-ai-industry-report-l3` 宽词 fallback；同步重写 EN/ZH 2026-07-19 页面，输出 WAIC governance、NVIDIA post-training、Jetson Thor edge modules、Claude Fable jailbreak severity 与 ChatGPT task-based picker 字段级详情；补齐 ChatGPT task-based model picker 与 Agent post-training cost loop Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-19
+- End date: 2026-07-19
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-19, latestFixture=2026-07-19, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=27, expectedSignals=135`；daily EN/ZH generator、bilingual pair fixture、case FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-19 最新双语日报已由同日 real cron fixture 覆盖；WAIC governance、NVIDIA post-training、Jetson Thor modules、Claude Fable safety framework 与 ChatGPT model picker 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；ZH 页面移除重复截断证据矩阵；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-19 fixture 作为 AI governance coordination、agent 后训练成本、端侧机器人模块、模型安全发布门禁和任务型模型选择器的首日索引质量基线；下一步可继续将 WAIC governance 与 WAIC industry/talent/compute agenda 拆成更细治理/产业双轨 projection，避免大会期间宽词互相污染。）
+
 ### EXP-239
 - Hypothesis: EXP-238 已建议优先补齐 2026-07-18 latest real cron fixture；若 07-18 最新日报不进入 real cron fixture 且 EN 页面保留 Kimi / NVIDIA / WAIC / MIIT 泛化 fallback，首日索引会漏掉 Kimi K3 长上下文开放模型、NVIDIA agentic AI 后训练基础设施、WAIC 产业/人才/算力议程和中小企业 AI 赋能长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-18.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-18.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

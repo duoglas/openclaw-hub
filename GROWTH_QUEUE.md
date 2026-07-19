@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-17 17:24
+Last updated: 2026-07-19 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-240: 将 2026-07-19 最新双语日报接入 real cron fixture，并修复 WAIC 治理、NVIDIA 后训练、Jetson Thor、Claude Fable 与 ChatGPT 模型选择器字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-19）暴露 WAIC 全球治理主席声明 / 世界人工智能合作组织、NVIDIA intelligence-per-dollar 后训练成本框架、Jetson / IGX T3000 与 Jetson T2000 端侧机器人模块、Claude Fable 5 访问恢复与 jailbreak severity framework、ChatGPT Instant/Medium/High 模型选择器；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC L3、Qoder/NemoClaw、Jetson/Claude 泛化 fallback，首日索引会漏掉 AI 治理协作、agent 后训练成本、端侧机器人算力、模型安全发布门禁和任务型模型选择长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-07-19、latestFixture=2026-07-19、expectedSignals=5；daily source projection labels 覆盖 27 fixtures / 135 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-19.mjs`；2) 收窄 `china-ai-industry-report-l3` 的 `WAIC` 宽词，避免 WAIC governance story 回落到二级 L3 市场规模 fallback；3) EN/ZH 2026-07-19 页面移除 Qoder/NemoClaw、Jetson/Claude 泛化 fallback 与 ZH 重复截断证据矩阵；4) 新增 ChatGPT task-based model picker 与 Agent post-training cost loop Case-Level FAQ；5) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-239: 将 2026-07-18 最新双语日报接入 real cron fixture，并修复 Kimi K3、NVIDIA 后训练、WAIC 产业/人才/算力议程与 MIIT 中小企业 AI 赋能字段级 projection，消费 EXP-238 后续“补齐 2026-07-18 latest real cron fixture”假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: EXP-238 已建议优先恢复 2026-07-18 latest real cron fixture freshness；若 07-18 最新日报不进入 fixture 且 EN 页面保留 Kimi / Xinhua / MIIT 泛化 fallback，首日索引会漏掉 Kimi K3 长上下文开放模型、NVIDIA agentic AI 后训练基础设施、WAIC 产业/人才/算力议程和中小企业 AI 赋能长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-07-18、latestFixture=2026-07-18、expectedSignals=5；daily source projection labels 覆盖 26 fixtures / 130 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
