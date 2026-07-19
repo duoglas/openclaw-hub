@@ -85,6 +85,8 @@ function assertSyntheticConditionalLabel() {
   const nvidiaDoosanSource = 'NVIDIA said it is expanding cooperation with South Korea’s Doosan Group across robotics, industrial automation, AI factory infrastructure, power systems, and data-center materials.';
   const nvidiaCosmosSource = 'NVIDIA 在 GTC Taipei 发布 Cosmos 3，称其为开放的物理 AI 世界基础模型，用于机器人、自动驾驶、视觉 AI 的合成数据和策略模型开发。';
   const nvidiaCvprSource = 'NVIDIA Research highlighted GraspGen-X, LCDrive, NitroGen and other CVPR 论文 for robotics and autonomous-driving pipelines.';
+  const waicGovernanceSource = '新华社报道，2026 世界人工智能大会将于 7 月 17-20 日在上海举行，主题为智能伙伴 共创未来，并配套全球治理高级别会议。';
+  const waicIndustrySource = '新华社报道，WAIC 2026 开幕，约 172 场会议、论坛及活动中，产业发展、人才生态、算力是出现最多的主题。';
   const hpeLabel = projectEnglishSourceLabel(hpeSource);
   const broadLabel = projectEnglishSourceLabel(broadCloudSource);
   const oldHumanoidLabel = projectEnglishSourceLabel(oldHumanoidSource);
@@ -93,6 +95,8 @@ function assertSyntheticConditionalLabel() {
   const nvidiaDoosanLabel = projectEnglishSourceLabel(nvidiaDoosanSource);
   const nvidiaCosmosLabel = projectEnglishSourceLabel(nvidiaCosmosSource);
   const nvidiaCvprLabel = projectEnglishSourceLabel(nvidiaCvprSource);
+  const waicGovernanceLabel = projectEnglishSourceLabel(waicGovernanceSource);
+  const waicIndustryLabel = projectEnglishSourceLabel(waicIndustrySource);
   if (hpeLabel !== 'NVIDIA / HPE / AI infrastructure capacity') {
     fail('conditional HPE display label did not resolve from source projection rule metadata', [`actual=${hpeLabel || '(empty)'}`]);
   }
@@ -116,6 +120,12 @@ function assertSyntheticConditionalLabel() {
   }
   if (nvidiaCvprLabel !== 'NVIDIA / CVPR / Research / robotics deployment') {
     fail('2026-06-05 NVIDIA Cosmos display label polluted 2026-06-06 CVPR source text', [`actual=${nvidiaCvprLabel || '(empty)'}`]);
+  }
+  if (waicGovernanceLabel !== 'China / WAIC / AI governance conference') {
+    fail('WAIC governance source did not resolve to the governance projection label', [`actual=${waicGovernanceLabel || '(empty)'}`]);
+  }
+  if (waicIndustryLabel !== 'China / WAIC / industry talent compute agenda') {
+    fail('WAIC industry agenda source did not stay on the market-intelligence projection label', [`actual=${waicIndustryLabel || '(empty)'}`]);
   }
 }
 

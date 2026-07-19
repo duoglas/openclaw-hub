@@ -1089,10 +1089,6 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / WAIC / AI governance conference',
         terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
       },
-      {
-        label: 'China / WAIC / industry talent compute agenda',
-        terms: ['172 场会议'],
-      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'ai-policy-standards',
@@ -1105,7 +1101,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
       },
     },
-    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理', '172 场会议'],
+    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理'],
     detailVariants: [
       {
         terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
@@ -1113,14 +1109,6 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua reported that the 2026 World Artificial Intelligence Conference and High-Level Meeting on Global AI Governance will be held in Shanghai from July 17 to 20 under the theme “Intelligent Partners, Creating the Future Together.”',
           why: 'The event places AI technology, industrial cooperation, safety, and global governance in the same policy arena rather than treating WAIC as only an exhibition.',
           impact: 'AI companies, standards teams, and policy watchers should monitor opening remarks, governance initiatives, partnership announcements, and whether safety or provenance requirements become operational expectations.',
-        },
-      },
-      {
-        terms: ['172 场会议'],
-        details: {
-          what: 'Xinhua reported that WAIC 2026 opened in Shanghai with about 172 meetings, forums, and events, where industry development, talent ecosystems, and compute were among the most frequent themes.',
-          why: 'China’s AI agenda is shifting from model launches alone toward industrial deployment, AI-skilled talent supply, compute cost, and application readiness across sectors.',
-          impact: 'Industrial, finance, transport, education, and compute-infrastructure teams should watch which WAIC themes turn into product launches, procurement programs, talent pipelines, or domestic compute deployments.',
         },
       },
     ],

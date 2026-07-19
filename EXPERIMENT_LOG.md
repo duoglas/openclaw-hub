@@ -1,3 +1,14 @@
+### EXP-241
+- Hypothesis: EXP-240 已建议继续将 WAIC governance 与 WAIC industry/talent/compute agenda 拆成更细治理/产业双轨 projection；若 `china-world-ai-cooperation-organization-2026` 继续复用 `172 场会议` 产业议程 label/detail，WAIC 大会期间全球治理协调、世界人工智能合作组织与产业/人才/算力 market-intelligence 信号会在 source projection 层交叉污染。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 从 `china-world-ai-cooperation-organization-2026` 移除 `172 场会议` displayLabel、terms 与 detailVariant，让 governance rule 只承载 WAIC governance conference / WAICO 协调；保留 `china-ai-industry-report-l3` 中 WAIC product launch 与 industry talent compute agenda 的 market-intelligence detail；并在 daily source projection label check 增加 WAIC governance vs industry 双轨 synthetic regression。
+- ICE: 8x8x8=512
+- Start date: 2026-07-19
+- End date: 2026-07-19
+- Success metric: `pnpm check:daily-source-projection-labels` 输出 `fixtures=27, expectedSignals=135`，并验证 WAIC governance source 输出 `China / WAIC / AI governance conference`、WAIC 172 场会议 agenda source 输出 `China / WAIC / industry talent compute agenda`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 全部通过。
+- Result: pass（WAIC governance rule 已不再匹配产业/人才/算力 agenda；WAIC 172 场会议 agenda 保留在 market-intelligence projection；新增 synthetic regression 阻断两条 WAIC projection 再次互相污染；commit `be7bc35`；质量评分 28/30。）
+- Decision: scale（保留 WAIC governance / industry 双轨 label guardrail；下一步可把 `china-ai-industry-report-l3` 中 WAIC product launch pipeline 与 172 场会议 agenda 拆成独立 WAIC product-launch / WAIC agenda split target，减少 market-sizing-reports 内部复用。）
+
 ### EXP-240
 - Hypothesis: 最近24小时新增日报（2026-07-19）暴露 WAIC 全球治理主席声明 / 世界人工智能合作组织、NVIDIA intelligence-per-dollar 后训练成本框架、Jetson / IGX T3000 与 Jetson T2000 端侧机器人模块、Claude Fable 5 访问恢复与 jailbreak severity framework、ChatGPT Instant/Medium/High 模型选择器；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC L3、Qoder/NemoClaw、Jetson/Claude 泛化 fallback，首日索引会漏掉 AI 治理协作、agent 后训练成本、端侧机器人算力、模型安全发布门禁和任务型模型选择长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-19.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-19.md`, `src/content/blog/zh/openclaw-daily-2026-07-19.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

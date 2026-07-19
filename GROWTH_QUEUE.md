@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-19 11:25
+Last updated: 2026-07-19 17:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-241: 将 WAIC 全球治理与产业/人才/算力议程 projection 拆回双轨，消费 EXP-240 后续“WAIC governance 与 industry agenda 拆细”假设 | ICE 8x8x8=512 — commit `be7bc35`
+  - Hypothesis: EXP-240 已恢复 2026-07-19 WAIC governance fixture，但 `china-world-ai-cooperation-organization-2026` 仍复用 `172 场会议` 产业/人才/算力 agenda label/detail；若不移除治理 rule 的产业议程匹配，WAIC 大会期间 governance coordination 与 market-intelligence agenda 会继续交叉污染，增加 label/detail 漂移风险。
+  - Metrics: `pnpm check:daily-source-projection-labels` 输出 fixtures=27 / expectedSignals=135，并新增 synthetic guardrail：WAIC governance source 只输出 `China / WAIC / AI governance conference`，WAIC 172 场会议 agenda 只输出 `China / WAIC / industry talent compute agenda`；registry health、taxonomy 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 从 `china-world-ai-cooperation-organization-2026` 移除 `172 场会议` displayLabel、terms 与 detailVariant；2) 保留 `china-ai-industry-report-l3` 对 172 场会议 / 产业发展 / 人才生态 / 算力的 market-intelligence detail；3) `check-daily-source-projection-labels` 增加 WAIC governance vs industry synthetic regression；4) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-240: 将 2026-07-19 最新双语日报接入 real cron fixture，并修复 WAIC 治理、NVIDIA 后训练、Jetson Thor、Claude Fable 与 ChatGPT 模型选择器字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-19）暴露 WAIC 全球治理主席声明 / 世界人工智能合作组织、NVIDIA intelligence-per-dollar 后训练成本框架、Jetson / IGX T3000 与 Jetson T2000 端侧机器人模块、Claude Fable 5 访问恢复与 jailbreak severity framework、ChatGPT Instant/Medium/High 模型选择器；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC L3、Qoder/NemoClaw、Jetson/Claude 泛化 fallback，首日索引会漏掉 AI 治理协作、agent 后训练成本、端侧机器人算力、模型安全发布门禁和任务型模型选择长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-07-19、latestFixture=2026-07-19、expectedSignals=5；daily source projection labels 覆盖 27 fixtures / 135 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
