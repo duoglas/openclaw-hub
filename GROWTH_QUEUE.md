@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-242: 将 WAIC product launch pipeline 与 industry/talent/compute agenda 从 China market-sizing L3 拆出独立 split targets，消费 EXP-241 后续“WAIC product-launch / agenda split target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-241 已阻断 WAIC governance 与 industry agenda 互相污染，但 `china-ai-industry-report-l3` 仍同时承载 official preview、300+ product launch pipeline 与 172 场会议 agenda；若不拆出独立 WAIC product-launch / industry-agenda split targets，market-sizing-reports 内部仍会混用规模报告、产品首发和大会日程主题，削弱容量诊断与字段级 projection 可维护性。
+  - Metrics: 新增 `waic-product-launch-pipeline` 与 `waic-industry-agenda` 两个 market-intelligence split target；`china-ai-industry-report-l3` 回收为 L3 market-sizing / official preview watchpoint；07-14 product launch 与 07-18 agenda fixtures 改为独立规则；registry health、taxonomy、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) product launch pipeline 与 172 场会议 agenda 不再由 `china-ai-industry-report-l3` 承载；2) 两条 WAIC 独立规则输出原字段级 label/detail；3) market-intelligence scaffold / migration hints / self-test 更新到 40 个 split target；4) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-241: 将 WAIC 全球治理与产业/人才/算力议程 projection 拆回双轨，消费 EXP-240 后续“WAIC governance 与 industry agenda 拆细”假设 | ICE 8x8x8=512 — commit `be7bc35`
   - Hypothesis: EXP-240 已恢复 2026-07-19 WAIC governance fixture，但 `china-world-ai-cooperation-organization-2026` 仍复用 `172 场会议` 产业/人才/算力 agenda label/detail；若不移除治理 rule 的产业议程匹配，WAIC 大会期间 governance coordination 与 market-intelligence agenda 会继续交叉污染，增加 label/detail 漂移风险。
   - Metrics: `pnpm check:daily-source-projection-labels` 输出 fixtures=27 / expectedSignals=135，并新增 synthetic guardrail：WAIC governance source 只输出 `China / WAIC / AI governance conference`，WAIC 172 场会议 agenda 只输出 `China / WAIC / industry talent compute agenda`；registry health、taxonomy 与 `pnpm build` 全部通过。

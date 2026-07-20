@@ -342,6 +342,32 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'china-waic-product-launch-pipeline-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    splitTargetCategory: 'waic-product-launch-pipeline',
+    displayLabel: 'China / WAIC / AI product launch pipeline',
+    terms: ['超 300 款', '1100 余家'],
+    details: {
+      what: 'Xinhua reported that WAIC will exceed 100,000 square meters of exhibition space, host more than 1,100 exhibitors, debut more than 300 AI products, and highlight China’s AI-related industry scale above one trillion yuan in 2025 with expected 2026 growth above 30%.',
+      why: 'China’s AI market is shifting from isolated model launches toward concentrated application deployment, industry-chain competition, compute, embodied AI, agents, chips, and robotics.',
+      impact: 'Teams tracking China AI should watch the next week of model, AI phone, embodied-intelligence, humanoid-robot, near-memory compute, manufacturing, government, and industrial AI announcements for deployable products rather than only AIGC demos.',
+    },
+  },
+  {
+    name: 'china-waic-industry-talent-compute-agenda-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    splitTargetCategory: 'waic-industry-agenda',
+    displayLabel: 'China / WAIC / industry talent compute agenda',
+    terms: ['172 场会议'],
+    details: {
+      what: 'Xinhua reported that WAIC 2026 opened in Shanghai with about 172 meetings, forums, and events, where industry development, talent ecosystems, and compute were among the most frequent themes.',
+      why: 'China’s AI agenda is shifting from model launches alone toward industrial deployment, AI-skilled talent supply, compute cost, and application readiness across sectors.',
+      impact: 'Industrial, finance, transport, education, and compute-infrastructure teams should watch which WAIC themes turn into product launches, procurement programs, talent pipelines, or domestic compute deployments.',
+    },
+  },
+  {
     name: 'china-ai-industry-report-l3',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
@@ -351,16 +377,8 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / WAIC / official preview watchpoint',
         terms: ['看点速览', '图片/视觉内容'],
       },
-      {
-        label: 'China / WAIC / AI product launch pipeline',
-        terms: ['WAIC', '超 300 款', '1100 余家'],
-      },
-      {
-        label: 'China / WAIC / industry talent compute agenda',
-        terms: ['172 场会议'],
-      },
     ],
-    terms: ['6000 家', '1.2 万亿元', '10 万平方米', '1100 余家', '超 300 款', '2025 年已破万亿元', '看点速览', '图片/视觉内容', '172 场会议'],
+    terms: ['6000 家', '1.2 万亿元', '看点速览', '图片/视觉内容'],
     detailVariants: [
       {
         terms: ['看点速览', '图片/视觉内容'],
@@ -368,22 +386,6 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua published a 2026 World Artificial Intelligence Conference preview page; the title, date, and source are confirmed, but most detailed highlights are embedded in visual content that was not fully extracted in this brief.',
           why: 'WAIC remains a key window for China AI policy, model launches, robotics, intelligent devices, industrial applications, and governance messaging, but image-heavy source pages require cautious extraction.',
           impact: 'Teams should track the official agenda, exhibitor updates, product launches, and governance statements before turning this preview into hard claims about specific WAIC announcements.',
-        },
-      },
-      {
-        terms: ['WAIC', '超 300 款', '1100 余家'],
-        details: {
-          what: 'Xinhua reported that WAIC will exceed 100,000 square meters of exhibition space, host more than 1,100 exhibitors, debut more than 300 AI products, and highlight China’s AI-related industry scale above one trillion yuan in 2025 with expected 2026 growth above 30%.',
-          why: 'China’s AI market is shifting from isolated model launches toward concentrated application deployment, industry-chain competition, compute, embodied AI, agents, chips, and robotics.',
-          impact: 'Teams tracking China AI should watch the next week of model, AI phone, embodied-intelligence, humanoid-robot, near-memory compute, manufacturing, government, and industrial AI announcements for deployable products rather than only AIGC demos.',
-        },
-      },
-      {
-        terms: ['172 场会议'],
-        details: {
-          what: 'Xinhua reported that WAIC 2026 opened in Shanghai with about 172 meetings, forums, and events, where industry development, talent ecosystems, and compute were among the most frequent themes.',
-          why: 'China’s AI agenda is shifting from model launches alone toward industrial deployment, AI-skilled talent supply, compute cost, and application readiness across sectors.',
-          impact: 'Industrial, finance, transport, education, and compute-infrastructure teams should watch which WAIC themes turn into product launches, procurement programs, talent pipelines, or domestic compute deployments.',
         },
       },
     ],

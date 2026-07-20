@@ -1,3 +1,14 @@
+### EXP-242
+- Hypothesis: EXP-241 已建议继续把 `china-ai-industry-report-l3` 中 WAIC product launch pipeline 与 172 场会议 agenda 拆成独立 WAIC product-launch / WAIC agenda split target；若继续由 market-sizing-reports 复用承载，WAIC 大会期间产品首发、产业/人才/算力议程与 L3 规模报告会继续混在同一容量桶，增加 source projection 规则漂移和诊断噪声。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-14.mjs`, `scripts/fixtures/daily-real-cron-2026-07-18.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: market-intelligence scaffold 新增 `waic-product-launch-pipeline` 与 `waic-industry-agenda` split targets、预算与 migration hints；新增 `china-waic-product-launch-pipeline-2026` 与 `china-waic-industry-talent-compute-agenda-2026` 两条独立 source projection rules；从 `china-ai-industry-report-l3` 移除 300+ product launch 与 172 场会议 agenda label/terms/detailVariants，使其只保留 L3 market-sizing 与 WAIC official preview watchpoint。
+- ICE: 8x8x8=512
+- Start date: 2026-07-20
+- End date: 2026-07-20
+- Success metric: `pnpm check:source-projection-rule-registry-health` 显示 `waic-product-launch-pipeline=1`、`waic-industry-agenda=1`；`pnpm check:source-projection-rule-taxonomy` 显示 `split target categories: 40/40 used`；`pnpm check:daily-source-projection-labels` 保持 `fixtures=27, expectedSignals=135`；`pnpm build` 通过。
+- Result: pass（WAIC product launch pipeline 与 industry/talent/compute agenda 已从 `china-ai-industry-report-l3` 拆出独立 split targets；07-14 / 07-18 fixtures 已改为独立规则；L3 规则回收为 market-sizing / official preview；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 WAIC product / agenda / governance 三轨 projection；下一步可为 market-intelligence 中仍 unmatched 的 memory price / consumer electronics cost 新增 supply-chain cost split target，进一步清理 market-intelligence taxonomy 诊断噪声。）
+
 ### EXP-241
 - Hypothesis: EXP-240 已建议继续将 WAIC governance 与 WAIC industry/talent/compute agenda 拆成更细治理/产业双轨 projection；若 `china-world-ai-cooperation-organization-2026` 继续复用 `172 场会议` 产业议程 label/detail，WAIC 大会期间全球治理协调、世界人工智能合作组织与产业/人才/算力 market-intelligence 信号会在 source projection 层交叉污染。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-daily-source-projection-labels.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

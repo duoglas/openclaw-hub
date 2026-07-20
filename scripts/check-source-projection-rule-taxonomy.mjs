@@ -23,7 +23,7 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'developer-tools': 4,
   'enterprise-agents': 13,
   'frontier-models': 6,
-  'market-intelligence': 8,
+  'market-intelligence': 10,
   'physical-ai-robotics': 10,
   'policy-governance': 11,
   'product-safety': 6,
@@ -53,6 +53,8 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'high-sensitivity-ai-deployment',
   'ai-commercialization-roi',
   'market-sizing-reports',
+  'waic-product-launch-pipeline',
+  'waic-industry-agenda',
   'model-account-security',
   'public-market-readiness',
   'regional-ai-ecosystems',
@@ -96,6 +98,8 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'high-sensitivity-ai-deployment': 3,
   'ai-commercialization-roi': 2,
   'market-sizing-reports': 3,
+  'waic-product-launch-pipeline': 2,
+  'waic-industry-agenda': 2,
   'model-account-security': 4,
   'public-market-readiness': 2,
   'product-safety': 5,
@@ -155,6 +159,8 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   ],
   'market-intelligence': [
     'market-sizing-reports',
+    'waic-product-launch-pipeline',
+    'waic-industry-agenda',
     'ai-commercialization-roi',
     'content-licensing-markets',
     'regional-ai-ecosystems',
@@ -286,6 +292,14 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     {
       target: 'market-sizing-reports',
       match: ['industry-report', '6000', '1.2', 'market scale', '产业规模'],
+    },
+    {
+      target: 'waic-product-launch-pipeline',
+      match: ['waic-product-launch', 'product-launch-pipeline', '超 300 款', '1100 余家', '10 万平方米'],
+    },
+    {
+      target: 'waic-industry-agenda',
+      match: ['waic-industry-agenda', '172 场会议', '产业发展', '人才生态', '算力'],
     },
     {
       target: 'content-licensing-markets',
@@ -1383,9 +1397,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 38/38 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 40/40 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
