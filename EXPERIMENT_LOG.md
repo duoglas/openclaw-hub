@@ -1,3 +1,14 @@
+### EXP-244
+- Hypothesis: EXP-243 已建议把 supply-chain-cost-pressure 与 high-sensitivity-ai-deployment 继续拆出 token-economics / agent-runtime-safety split target；若 WAIC token-cost optimization 继续占用硬件供应链成本桶、WAIC agent safety evaluation 继续占用高敏行业部署桶，后续模型路由、缓存计费、算电协同、运行期审计和风险监测信号会继续触发满额容量诊断而不是低风险分流。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: market-intelligence scaffold 新增 `token-economics-optimization` split target、预算与 migration hint；product-safety scaffold 新增 `agent-runtime-safety` split target、预算与 migration hint；将 `china-waic-token-cost-optimization-2026` 从 `supply-chain-cost-pressure` 迁入 token economics，将 `china-waic-agent-safety-evaluation-2026` 从 `high-sensitivity-ai-deployment` 迁入 runtime safety，并同步相关 capacityPlan headroom。
+- ICE: 8x8x8=512
+- Start date: 2026-07-21
+- End date: 2026-07-21
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 43/43 used`，并显示 `supply-chain-cost-pressure=1/2`、`token-economics-optimization=1/2`、`high-sensitivity-ai-deployment=2/3`、`agent-runtime-safety=1/2`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
+- Result: pass（WAIC token-cost optimization 已迁入 token-economics-optimization；WAIC agent safety evaluation 已迁入 agent-runtime-safety；硬件供应链成本桶与高敏部署桶各释放 1 个 headroom；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 token economics 与 agent runtime safety 作为后续模型路由、缓存计费、算电协同、运行期审计和风险监测信号的独立容量入口；下一步可把 developer-tools unmatched 的 Qoder / Kimi 复用规则拆成 China code-agent runtime / open-model long-context 子目标。）
+
 ### EXP-243
 - Hypothesis: 最近24小时新增日报（2026-07-20/2026-07-21）暴露 WAICO governance coordination、WAIC agent governance boundaries、NVIDIA post-training、Gemini Interactions API、Apple/Broadcom US chip supply chain、NVIDIA LeRobot/Vera CPU/Claude Azure GB300、WAIC token-cost optimization 与 WAIC agent safety evaluation；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC/TPU/L2 泛化 fallback，首日索引会漏掉 agent runtime、token cost、runtime audit 与 chip supply-chain 长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-20.mjs`, `scripts/fixtures/daily-real-cron-2026-07-21.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-07-20.md`, `src/content/blog/en/openclaw-daily-2026-07-21.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

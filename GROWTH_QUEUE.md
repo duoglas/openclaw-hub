@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-21 11:20
+Last updated: 2026-07-21 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-244: 将 WAIC token-cost 与 agent runtime safety 从满额宽桶拆出独立 split targets，消费 EXP-243 后续“token-economics / agent-runtime-safety split target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-243 已把 2026-07-21 WAIC 词元降本与智能体安全接入字段级 projection，但 token-cost 仍占用 supply-chain-cost-pressure 最后 slot，agent safety 仍占用 high-sensitivity-ai-deployment 最后 slot；若不拆出 token-economics-optimization 与 agent-runtime-safety，后续模型路由 / 缓存计费 / 运行期审计信号会继续挤占硬件供应链成本与高敏行业部署容量。
+  - Metrics: market-intelligence scaffold 新增 `token-economics-optimization`，product-safety scaffold 新增 `agent-runtime-safety`；taxonomy 显示 split target categories 43/43 used，supply-chain-cost-pressure=1/2、token-economics-optimization=1/2、high-sensitivity-ai-deployment=2/3、agent-runtime-safety=1/2；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) WAIC token-cost rule 迁入 `token-economics-optimization`；2) WAIC agent safety rule 迁入 `agent-runtime-safety`；3) migration hints / budgets / scaffold self-test 更新到 43 个 split target；4) stale capacityPlan headroom 同步；5) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-243: 将 2026-07-20/07-21 最新双语日报接入 real cron fixture，并修复 WAIC agent governance、Gemini Interactions API、Apple/Broadcom、WAIC 词元降本与智能体安全字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-20/2026-07-21）暴露 WAICO governance coordination、WAIC agent governance boundaries、NVIDIA post-training、Gemini Interactions API、Apple/Broadcom US chip supply chain、NVIDIA LeRobot/Vera CPU/Claude Azure GB300、WAIC token-cost optimization 与 WAIC agent safety evaluation；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC/TPU/L2 泛化 fallback，首日索引会漏掉 agent runtime、token cost、runtime audit 与 chip supply-chain 长尾入口。
   - Metrics: latest fixture freshness 覆盖 latestDaily=2026-07-21 / latestFixture=2026-07-21；daily source projection labels 预计覆盖 29 fixtures / 145 expectedSignals；source projection registry health/taxonomy、daily EN/ZH generator、bilingual pair fixture、case-level FAQ 与 `pnpm build` 通过。

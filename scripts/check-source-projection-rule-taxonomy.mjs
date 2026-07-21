@@ -51,9 +51,11 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'frontier-model-inference-architecture',
   'frontier-model-task-capability',
   'high-sensitivity-ai-deployment',
+  'agent-runtime-safety',
   'ai-commercialization-roi',
   'market-sizing-reports',
   'supply-chain-cost-pressure',
+  'token-economics-optimization',
   'waic-product-launch-pipeline',
   'waic-industry-agenda',
   'model-account-security',
@@ -97,9 +99,11 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'frontier-model-inference-architecture': 2,
   'frontier-model-task-capability': 3,
   'high-sensitivity-ai-deployment': 3,
+  'agent-runtime-safety': 2,
   'ai-commercialization-roi': 2,
   'market-sizing-reports': 3,
   'supply-chain-cost-pressure': 2,
+  'token-economics-optimization': 2,
   'waic-product-launch-pipeline': 2,
   'waic-industry-agenda': 2,
   'model-account-security': 4,
@@ -162,6 +166,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   'market-intelligence': [
     'market-sizing-reports',
     'supply-chain-cost-pressure',
+    'token-economics-optimization',
     'waic-product-launch-pipeline',
     'waic-industry-agenda',
     'ai-commercialization-roi',
@@ -179,6 +184,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   ],
   'product-safety': [
     'high-sensitivity-ai-deployment',
+    'agent-runtime-safety',
     'model-account-security',
     'youth-safety-controls',
   ],
@@ -298,7 +304,11 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'supply-chain-cost-pressure',
-      match: ['memory-price', 'hbm', 'dram', 'nand', 'consumer-electronics-cost', 'storage-chip', 'cost pressure', '存储芯片', '消费电子产业链', '成本重构', 'token-cost', 'model-routing', 'cache-token', '词元降本', '缓存计费', '模型路由'],
+      match: ['memory-price', 'hbm', 'dram', 'nand', 'consumer-electronics-cost', 'storage-chip', 'cost pressure', '存储芯片', '消费电子产业链', '成本重构'],
+    },
+    {
+      target: 'token-economics-optimization',
+      match: ['token-cost', 'model-routing', 'cache-token', '词元降本', '缓存计费', '模型路由', '算电协同', '降低 token 成本'],
     },
     {
       target: 'waic-product-launch-pipeline',
@@ -358,7 +368,11 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   'product-safety': [
     {
       target: 'high-sensitivity-ai-deployment',
-      match: ['palantir', 'nemotron', 'secure-government', 'secret-cloud', 'public-sector', 'agent-safety', 'runtime-audit', 'risk-monitoring', '智能体安全', '运行期审计', '风险监测'],
+      match: ['palantir', 'nemotron', 'secure-government', 'secret-cloud', 'public-sector'],
+    },
+    {
+      target: 'agent-runtime-safety',
+      match: ['agent-safety', 'runtime-audit', 'risk-monitoring', '智能体安全', '运行期审计', '风险监测', 'AI 会做什么', '实时响应'],
     },
     {
       target: 'model-account-security',
@@ -1404,9 +1418,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 41/41 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 43/43 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / token-economics-optimization / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / agent-runtime-safety / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
