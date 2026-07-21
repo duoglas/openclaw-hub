@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-19 17:25
+Last updated: 2026-07-21 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-243: 将 2026-07-20/07-21 最新双语日报接入 real cron fixture，并修复 WAIC agent governance、Gemini Interactions API、Apple/Broadcom、WAIC 词元降本与智能体安全字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-20/2026-07-21）暴露 WAICO governance coordination、WAIC agent governance boundaries、NVIDIA post-training、Gemini Interactions API、Apple/Broadcom US chip supply chain、NVIDIA LeRobot/Vera CPU/Claude Azure GB300、WAIC token-cost optimization 与 WAIC agent safety evaluation；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC/TPU/L2 泛化 fallback，首日索引会漏掉 agent runtime、token cost、runtime audit 与 chip supply-chain 长尾入口。
+  - Metrics: latest fixture freshness 覆盖 latestDaily=2026-07-21 / latestFixture=2026-07-21；daily source projection labels 预计覆盖 29 fixtures / 145 expectedSignals；source projection registry health/taxonomy、daily EN/ZH generator、bilingual pair fixture、case-level FAQ 与 `pnpm build` 通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-20.mjs` 与 `scripts/fixtures/daily-real-cron-2026-07-21.mjs`；2) 为 WAIC agent governance、NVIDIA post-training、Gemini Interactions API、Apple/Broadcom、WAIC token-cost optimization 与 WAIC agent safety evaluation 写入字段级 label/detail projection；3) EN 2026-07-20/07-21 页面移除泛化 fallback 并补齐 Case-Level FAQ；4) taxonomy 将 token cost 与 agent safety 分流到 supply-chain-cost-pressure / high-sensitivity-ai-deployment；5) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-242: 将 WAIC product launch pipeline 与 industry/talent/compute agenda 从 China market-sizing L3 拆出独立 split targets，消费 EXP-241 后续“WAIC product-launch / agenda split target”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-241 已阻断 WAIC governance 与 industry agenda 互相污染，但 `china-ai-industry-report-l3` 仍同时承载 official preview、300+ product launch pipeline 与 172 场会议 agenda；若不拆出独立 WAIC product-launch / industry-agenda split targets，market-sizing-reports 内部仍会混用规模报告、产品首发和大会日程主题，削弱容量诊断与字段级 projection 可维护性。
   - Metrics: 新增 `waic-product-launch-pipeline` 与 `waic-industry-agenda` 两个 market-intelligence split target；`china-ai-industry-report-l3` 回收为 L3 market-sizing / official preview watchpoint；07-14 product launch 与 07-18 agenda fixtures 改为独立规则；registry health、taxonomy、daily source labels 与 `pnpm build` 通过。

@@ -183,6 +183,30 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'nvidia-agentic-post-training-infrastructure-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
+    displayLabel: 'NVIDIA / post-training / agentic AI infrastructure',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-infrastructure-capacity',
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because NVIDIA post-training and intelligence-per-dollar optimization are AI infrastructure capacity signals, not model distribution.',
+      rejectedAlternateTargets: ['cloud-model-distribution'],
+      budgetImpact: {
+        capacityDelta: 1,
+        categoryBudget: 9,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta +1; raises ai-infrastructure-capacity for a 2026-07-20 NVIDIA post-training infrastructure signal while keeping the older NemoClaw industrial-agent rule separate.',
+      },
+    },
+    terms: ['持续后训练', 'intelligence per dollar', '生产反馈循环', 'NeMo RL'],
+    details: {
+      what: 'NVIDIA argued that agentic AI requires continuous post-training rather than a one-time train-and-serve cycle, linking Nemotron, NeMo RL, Vera Rubin, and intelligence-per-dollar optimization into the agent infrastructure stack.',
+      why: 'Enterprise agent quality now depends on repeated feedback loops, reinforcement learning, tool-environment updates, and cost-aware infrastructure rather than only pretraining scale.',
+      impact: 'AI platform teams should budget for ongoing post-training jobs, production feedback capture, evaluation loops, GPU/network capacity, and cost-per-successful-task metrics before scaling autonomous agents.',
+    },
+  },
+  {
     name: 'nvidia-nemoclaw-industrial-agents',
     owner: 'daily-source-projection',
     category: 'enterprise-agents',
@@ -947,7 +971,7 @@ export const FIELD_PROJECTION_RULES = [
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 6,
-        categoryHeadroom: 1,
+        categoryHeadroom: 0,
         rationale: 'capacity delta 0; consumes the enterprise-agent-platforms capacity slot for the 2026-06-16 real cron deployment-ecosystem signal and requires split migration before another platform rule is added.',
       },
     },
@@ -1091,6 +1115,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / WAIC / AI governance conference',
         terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
       },
+      {
+        label: 'China / WAIC / agent governance boundaries',
+        terms: ['智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'ai-policy-standards',
@@ -1103,7 +1131,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
       },
     },
-    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理'],
+    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理', '智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制'],
     detailVariants: [
       {
         terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
@@ -1111,6 +1139,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua reported that the 2026 World Artificial Intelligence Conference and High-Level Meeting on Global AI Governance will be held in Shanghai from July 17 to 20 under the theme “Intelligent Partners, Creating the Future Together.”',
           why: 'The event places AI technology, industrial cooperation, safety, and global governance in the same policy arena rather than treating WAIC as only an exhibition.',
           impact: 'AI companies, standards teams, and policy watchers should monitor opening remarks, governance initiatives, partnership announcements, and whether safety or provenance requirements become operational expectations.',
+        },
+      },
+      {
+        terms: ['智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制'],
+        details: {
+          what: 'The WAIC chair statement framed AI agents as a new form of AI product and service, calling for clear decision authority, behavior boundaries, traceability, risk prompts, and stronger built-in safety.',
+          why: 'Governance attention is moving from generated content alone toward AI systems that can plan, call tools, and take actions on behalf of users or organizations.',
+          impact: 'Agent builders should prepare permission scopes, operation logs, human confirmation gates, risk notices, and auditable behavior traces before expanding autonomous workflows.',
         },
       },
     ],
@@ -1167,6 +1203,54 @@ export const FIELD_PROJECTION_RULES = [
       what: 'AWS introduced AWS Continuum, AWS Context, Amazon Quick, Kiro, AWS DevOps Agent, AWS Transform, and Bedrock AgentCore at its New York summit for enterprise agents across security, data retrieval, development, and workflow automation.',
       why: 'The update shows cloud competition moving from model APIs toward enterprise agent infrastructure where knowledge access, secure execution, DevOps automation, auditability, and rollback become platform features.',
       impact: 'Enterprises can pilot agents in code, security, data, and operations workflows, but should require scoped permissions, review logs, rollback paths, and measurable reliability before allowing autonomous execution.',
+    },
+  },
+  {
+    name: 'google-gemini-interactions-api-agent-runtime-2026',
+    owner: 'daily-source-projection',
+    category: 'enterprise-agents',
+    splitTargetCategory: 'enterprise-agent-platforms',
+    displayLabel: 'Google / Gemini Interactions API / agent-first runtime',
+    capacityPlan: {
+      selectedSplitTarget: 'enterprise-agent-platforms',
+      whyNotAlternatives: 'Rejected alternate split targets vertical-workflow-agents and agent-enablement-programs because Gemini Interactions API is a cross-workflow agent runtime surface, not a single vertical workflow or training program.',
+      rejectedAlternateTargets: ['vertical-workflow-agents', 'agent-enablement-programs'],
+      budgetImpact: {
+        capacityDelta: 1,
+        categoryBudget: 6,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta +1; uses the final enterprise-agent-platforms slot for a 2026-07-20 Gemini Interactions API agent runtime signal while raising parent enterprise-agents budget by 1.',
+      },
+    },
+    terms: ['Interactions API', 'Gemini 模型和智能体的主要接口', '服务端状态', '后台执行', 'Managed Agents', 'Deep Research 升级'],
+    details: {
+      what: 'Google positioned the Interactions API as the main interface for Gemini models and agents, with server-side state, background execution, tool composition, Managed Agents, remote execution, and Deep Research upgrades.',
+      why: 'Model APIs are shifting from one-shot prompt completion toward persistent agent runtimes that manage state, tools, long-running jobs, and recoverable execution.',
+      impact: 'Developers should design around task IDs, state recovery, tool permissions, sandbox boundaries, and progress polling instead of assuming every AI workflow fits a single synchronous chat request.',
+    },
+  },
+  {
+    name: 'apple-broadcom-us-chip-supply-chain-2026',
+    owner: 'daily-source-projection',
+    category: 'cloud-infrastructure',
+    splitTargetCategory: 'ai-infrastructure-capacity',
+    displayLabel: 'Apple / Broadcom / US chip supply chain',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-infrastructure-capacity',
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because Apple and Broadcom are expanding domestic chip supply, not distributing a model.',
+      rejectedAlternateTargets: ['cloud-model-distribution'],
+      budgetImpact: {
+        capacityDelta: 1,
+        categoryBudget: 9,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta +1; uses the final ai-infrastructure-capacity slot for a 2026-07-20 Apple/Broadcom chip supply-chain signal while raising parent cloud-infrastructure budget by 1.',
+      },
+    },
+    terms: ['Broadcom', '超过 300 亿美元', '超过 150 亿颗美国制造芯片', '定制硅组件', '无线连接技术'],
+    details: {
+      what: 'Apple expanded its multiyear Broadcom commitment, saying the partnership will involve more than 30 billion USD and more than 15 billion US-made chips across custom silicon components and wireless connectivity technology.',
+      why: 'AI-capable devices and services depend on long-horizon chip, connectivity, and domestic manufacturing capacity rather than only frontier model releases.',
+      impact: 'Device teams and supply-chain planners should watch custom silicon availability, wireless component sourcing, manufacturing locality, and how edge-AI features depend on sustained chip supply agreements.',
     },
   },
   {
@@ -1299,8 +1383,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Amazon / RAISE US / AI workforce training',
     capacityPlan: {
       selectedSplitTarget: 'workforce-ai-enablement',
-      whyNotAlternatives: 'Rejected alternate split targets content-licensing-markets and regional-ai-ecosystems because RAISE US is a workforce and education enablement signal, not media licensing or a generic regional market ecosystem.',
-      rejectedAlternateTargets: ['content-licensing-markets', 'regional-ai-ecosystems'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, and regional-ai-ecosystems because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, or generic regional market ecosystem.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -1327,8 +1411,8 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 1,
-        categoryBudget: 8,
-        categoryHeadroom: 1,
+        categoryBudget: 9,
+        categoryHeadroom: 0,
         rationale: 'capacity delta +1; raises ai-infrastructure-capacity by 1 for a latest-fixture supercomputing infrastructure signal and keeps TOP500/Green500 details out of generic NVIDIA compute copy.',
       },
     },
@@ -1351,8 +1435,8 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 1,
-        categoryBudget: 8,
-        categoryHeadroom: 1,
+        categoryBudget: 9,
+        categoryHeadroom: 0,
         rationale: 'capacity delta +1; raises ai-infrastructure-capacity by 1 for a latest-fixture NVIDIA/AWS production infrastructure signal and keeps parent cloud-infrastructure matching narrow.',
       },
     },
@@ -1375,7 +1459,7 @@ export const FIELD_PROJECTION_RULES = [
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 6,
-        categoryHeadroom: 1,
+        categoryHeadroom: 0,
         rationale: 'capacity delta +1; raises enterprise-agent-platforms capacity by 1 for a latest-fixture team-collaboration agent surface while keeping parent enterprise-agents matching narrow.',
       },
     },
@@ -1485,8 +1569,8 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 1,
-        categoryBudget: 8,
-        categoryHeadroom: 1,
+        categoryBudget: 9,
+        categoryHeadroom: 0,
         rationale: 'capacity delta +1; raises ai-infrastructure-capacity for a 2026-07-01 AI-for-Science HPC software-stack signal that extends GPU-native infrastructure beyond model serving.',
       },
     },
@@ -1532,7 +1616,7 @@ export const FIELD_PROJECTION_RULES = [
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 3,
-        categoryHeadroom: 1,
+        categoryHeadroom: 0,
         rationale: 'capacity delta +1; raises high-sensitivity-ai-deployment for a 2026-07-01 public-sector and secret-cloud AI deployment signal with compliance, isolation, and sovereignty requirements.',
       },
     },
@@ -1624,8 +1708,8 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 1,
-        categoryBudget: 8,
-        categoryHeadroom: 1,
+        categoryBudget: 9,
+        categoryHeadroom: 0,
         rationale: 'capacity delta +1; raises ai-infrastructure-capacity for a 2026-07-08 NVIDIA Vera CPU agentic infrastructure signal while keeping cloud-infrastructure matching narrow.',
       },
     },
@@ -1636,21 +1720,71 @@ export const FIELD_PROJECTION_RULES = [
       impact: 'AI platform teams should benchmark agent workflows end to end, including tool-call latency, code sandbox startup, database access, CPU concurrency, GPU utilization, and cost per completed task rather than only model throughput.',
     },
   },
+
+  {
+    name: 'china-waic-token-cost-optimization-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    splitTargetCategory: 'supply-chain-cost-pressure',
+    displayLabel: 'China / WAIC / token cost optimization',
+    capacityPlan: {
+      selectedSplitTarget: 'supply-chain-cost-pressure',
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, and regional-ai-ecosystems because WAIC token-cost reduction, cache pricing, and model routing are AI supply-chain cost-pressure signals, not market-size, media licensing, or regional ecosystem signals.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 2,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta 0; consumes the final supply-chain-cost-pressure slot for a 2026-07-21 WAIC token-cost optimization signal while keeping it out of generic market sizing.',
+      },
+    },
+    terms: ['词元降本', '缓存 token 免费', '智能模型路由', '算电协同', 'TPU', '降低 token 成本'],
+    details: {
+      what: 'Xinhua reported that WAIC 2026 participants are trying to reduce token costs across chips, compute-power coordination, large models, cache pricing, free cached tokens, and intelligent model routing.',
+      why: 'AI commercialization is shifting from whether models work to whether enterprises can run them cheaply and reliably at scale, making cost per task, cache reuse, and routing strategy core infrastructure questions.',
+      impact: 'Enterprise AI teams should benchmark model routing, cached-token policy, lightweight-model fallback, compute scheduling, and budget guardrails instead of selecting vendors only by leaderboard scores.',
+    },
+  },
+  {
+    name: 'china-waic-agent-safety-evaluation-2026',
+    owner: 'daily-source-projection',
+    category: 'product-safety',
+    splitTargetCategory: 'high-sensitivity-ai-deployment',
+    displayLabel: 'China / WAIC / agent safety evaluation',
+    capacityPlan: {
+      selectedSplitTarget: 'high-sensitivity-ai-deployment',
+      whyNotAlternatives: 'Rejected alternate split targets model-account-security and youth-safety-controls because WAIC agent safety covers runtime audit, risk monitoring, and response controls for tool-using AI systems, not account takeover or youth controls.',
+      rejectedAlternateTargets: ['model-account-security', 'youth-safety-controls'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta 0; consumes the final high-sensitivity-ai-deployment slot for a 2026-07-21 WAIC agent safety and runtime-audit signal.',
+      },
+    },
+    terms: ['智能体安全', '前沿 AI 风险监测平台', '测评基准', '运行期审计', '实时响应', 'AI 会做什么'],
+    details: {
+      what: 'Xinhua reported that WAIC 2026 experts are treating agent safety as a priority, moving from what models say toward what AI systems can do, with risk-monitoring platforms, evaluation benchmarks, runtime audit, and response capability.',
+      why: 'Agents can call tools, access systems, and execute tasks, so safety failures become permission, workflow, and real-world action failures rather than only hallucinated answers.',
+      impact: 'Enterprises deploying agents should require identity checks, scoped permissions, behavior logs, runtime anomaly monitoring, incident response, and human confirmation for sensitive actions.',
+    },
+  },
+
   {
     name: 'xinhua-ai-memory-price-consumer-electronics-2026',
     owner: 'daily-source-projection',
     category: 'market-intelligence',
-    splitTargetCategory: 'market-sizing-reports',
+    splitTargetCategory: 'supply-chain-cost-pressure',
     displayLabel: 'Xinhua / AI memory demand / consumer electronics cost pressure',
     capacityPlan: {
-      selectedSplitTarget: 'market-sizing-reports',
-      whyNotAlternatives: 'Rejected alternate split targets content-licensing-markets and regional-ai-ecosystems because HBM, DRAM, and NAND price pressure is a market-sizing and supply-chain cost signal, not media licensing or regional ecosystem expansion.',
-      rejectedAlternateTargets: ['content-licensing-markets', 'regional-ai-ecosystems'],
+      selectedSplitTarget: 'supply-chain-cost-pressure',
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, and regional-ai-ecosystems because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, or regional ecosystem expansion.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 3,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses existing market-sizing-reports headroom for a 2026-07-08 memory supply and consumer electronics cost signal.',
+        categoryBudget: 2,
+        categoryHeadroom: 0,
+        rationale: 'capacity delta 0; uses supply-chain-cost-pressure headroom for a 2026-07-08 memory supply and consumer electronics cost signal.',
       },
     },
     terms: ['HBM', 'DRAM/NAND', '消费电子产业链面临成本重构'],

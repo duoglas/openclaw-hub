@@ -1,3 +1,14 @@
+### EXP-243
+- Hypothesis: 最近24小时新增日报（2026-07-20/2026-07-21）暴露 WAICO governance coordination、WAIC agent governance boundaries、NVIDIA post-training、Gemini Interactions API、Apple/Broadcom US chip supply chain、NVIDIA LeRobot/Vera CPU/Claude Azure GB300、WAIC token-cost optimization 与 WAIC agent safety evaluation；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC/TPU/L2 泛化 fallback，首日索引会漏掉 agent runtime、token cost、runtime audit 与 chip supply-chain 长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-20.mjs`, `scripts/fixtures/daily-real-cron-2026-07-21.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-07-20.md`, `src/content/blog/en/openclaw-daily-2026-07-21.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-20/07-21 real cron fixtures；补齐 WAIC agent governance boundaries、NVIDIA post-training infrastructure、Gemini Interactions API agent runtime、Apple/Broadcom US chip supply chain、WAIC token-cost optimization 与 WAIC agent safety evaluation 字段级 projection；将 07-21 token cost / safety 信号分流到 supply-chain-cost-pressure 与 high-sensitivity-ai-deployment，并更新 taxonomy budgets / migration hints；同步重写 07-20/07-21 EN 页面，移除 WAIC/TPU/L2 泛化 fallback 并补齐 Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-21
+- End date: 2026-07-21
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-21 / latestFixture=2026-07-21 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 29 fixtures / 145 expectedSignals；source projection registry health/taxonomy、daily EN/ZH generator、bilingual pair fixture、case-level FAQ 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-20/07-21 最新双语日报已由同日 real cron fixtures 覆盖；WAIC governance/agent safety、Gemini agent runtime、NVIDIA post-training/Vera CPU、Claude Azure GB300、Apple/Broadcom 与 WAIC token-cost signals 均输出字段级 projection；EN 页面移除泛化 fallback；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 latest fixture freshness 与 token-cost / agent-safety projection 作为首日索引质量基线；下一步可把 supply-chain-cost-pressure 与 high-sensitivity-ai-deployment 继续拆出 token-economics / agent-runtime-safety split target，避免满额后继续临时扩容。）
+
 ### EXP-242
 - Hypothesis: EXP-241 已建议继续把 `china-ai-industry-report-l3` 中 WAIC product launch pipeline 与 172 场会议 agenda 拆成独立 WAIC product-launch / WAIC agenda split target；若继续由 market-sizing-reports 复用承载，WAIC 大会期间产品首发、产业/人才/算力议程与 L3 规模报告会继续混在同一容量桶，增加 source projection 规则漂移和诊断噪声。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-2026-07-14.mjs`, `scripts/fixtures/daily-real-cron-2026-07-18.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

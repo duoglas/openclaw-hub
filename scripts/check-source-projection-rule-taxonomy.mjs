@@ -17,16 +17,16 @@ export const ALLOWED_SOURCE_PROJECTION_CATEGORIES = [
 ];
 
 export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
-  'cloud-infrastructure': 10,
+  'cloud-infrastructure': 12,
   'company-finance': 5,
   'consumer-productivity': 7,
   'developer-tools': 4,
-  'enterprise-agents': 13,
+  'enterprise-agents': 14,
   'frontier-models': 6,
-  'market-intelligence': 10,
+  'market-intelligence': 11,
   'physical-ai-robotics': 10,
   'policy-governance': 11,
-  'product-safety': 6,
+  'product-safety': 7,
 };
 export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'agent-enablement-programs',
@@ -53,6 +53,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'high-sensitivity-ai-deployment',
   'ai-commercialization-roi',
   'market-sizing-reports',
+  'supply-chain-cost-pressure',
   'waic-product-launch-pipeline',
   'waic-industry-agenda',
   'model-account-security',
@@ -72,7 +73,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
 ];
 export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'agent-enablement-programs': 4,
-  'ai-infrastructure-capacity': 8,
+  'ai-infrastructure-capacity': 9,
   'ai-industrial-policy': 7,
   'ai-policy-standards': 4,
   'aerospace-compute-infrastructure': 2,
@@ -98,6 +99,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'high-sensitivity-ai-deployment': 3,
   'ai-commercialization-roi': 2,
   'market-sizing-reports': 3,
+  'supply-chain-cost-pressure': 2,
   'waic-product-launch-pipeline': 2,
   'waic-industry-agenda': 2,
   'model-account-security': 4,
@@ -159,6 +161,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   ],
   'market-intelligence': [
     'market-sizing-reports',
+    'supply-chain-cost-pressure',
     'waic-product-launch-pipeline',
     'waic-industry-agenda',
     'ai-commercialization-roi',
@@ -199,7 +202,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   'enterprise-agents': [
     {
       target: 'enterprise-agent-platforms',
-      match: ['meta-business-agent', 'microsoft-enterprise-agent-system', 'aws-quick-connect', 'openai-partner-network', 'claude-tag'],
+      match: ['meta-business-agent', 'microsoft-enterprise-agent-system', 'aws-quick-connect', 'openai-partner-network', 'claude-tag', 'interactions-api', 'managed-agents', 'gemini-interactions'],
     },
     {
       target: 'vertical-workflow-agents',
@@ -267,7 +270,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     },
     {
       target: 'ai-infrastructure-capacity',
-      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure', 'ec2-g7', 'opensearch', 'top500', 'green500', 'supercomputing', 'ai-for-science', 'hpc-software'],
+      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure', 'ec2-g7', 'opensearch', 'top500', 'green500', 'supercomputing', 'ai-for-science', 'hpc-software', 'post-training', 'intelligence-per-dollar'],
     },
   ],
   'consumer-productivity': [
@@ -292,6 +295,10 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
     {
       target: 'market-sizing-reports',
       match: ['industry-report', '6000', '1.2', 'market scale', '产业规模'],
+    },
+    {
+      target: 'supply-chain-cost-pressure',
+      match: ['memory-price', 'hbm', 'dram', 'nand', 'consumer-electronics-cost', 'storage-chip', 'cost pressure', '存储芯片', '消费电子产业链', '成本重构', 'token-cost', 'model-routing', 'cache-token', '词元降本', '缓存计费', '模型路由'],
     },
     {
       target: 'waic-product-launch-pipeline',
@@ -351,7 +358,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   'product-safety': [
     {
       target: 'high-sensitivity-ai-deployment',
-      match: ['palantir', 'nemotron', 'secure-government', 'secret-cloud', 'public-sector'],
+      match: ['palantir', 'nemotron', 'secure-government', 'secret-cloud', 'public-sector', 'agent-safety', 'runtime-audit', 'risk-monitoring', '智能体安全', '运行期审计', '风险监测'],
     },
     {
       target: 'model-account-security',
@@ -1397,9 +1404,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 40/40 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 41/41 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
@@ -1491,10 +1498,10 @@ function validateSelfTests() {
   const splitMigrationDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
     rules: splitMigrationRules,
   }));
-  if (!splitMigrationDiagnostic.includes('category split migration batches: enterprise-agents: enterprise-agent-platforms=3, vertical-workflow-agents=2, agent-enablement-programs=2, unmatched=6')) {
+  if (!splitMigrationDiagnostic.includes('category split migration batches: enterprise-agents: enterprise-agent-platforms=3, vertical-workflow-agents=2, agent-enablement-programs=2, unmatched=7')) {
     failures.push('source projection taxonomy split-migration self-test failed: enterprise-agents migration batch counts');
   }
-  if (!splitMigrationDiagnostic.includes('category split migration details: enterprise-agents: enterprise-agent-platforms=[meta-business-agent-2026|microsoft-enterprise-agent-system-2026|openai-partner-network-enterprise-ecosystem-2026], vertical-workflow-agents=[amazon-nova-act-agentic-ai|nvidia-nemoclaw-industrial-agents], agent-enablement-programs=[openai-academy-enterprise-ai-foundations-2026|anthropic-claude-corps-nonprofit-2026], unmatched=[synthetic-unmapped-enterprise-agent|synthetic-extra-enterprise-agent-1|synthetic-extra-enterprise-agent-2|synthetic-extra-enterprise-agent-3|synthetic-extra-enterprise-agent-4|synthetic-extra-enterprise-agent-5]')) {
+  if (!splitMigrationDiagnostic.includes('category split migration details: enterprise-agents: enterprise-agent-platforms=[meta-business-agent-2026|microsoft-enterprise-agent-system-2026|openai-partner-network-enterprise-ecosystem-2026], vertical-workflow-agents=[amazon-nova-act-agentic-ai|nvidia-nemoclaw-industrial-agents], agent-enablement-programs=[openai-academy-enterprise-ai-foundations-2026|anthropic-claude-corps-nonprofit-2026], unmatched=[synthetic-unmapped-enterprise-agent|synthetic-extra-enterprise-agent-1|synthetic-extra-enterprise-agent-2|synthetic-extra-enterprise-agent-3|synthetic-extra-enterprise-agent-4|synthetic-extra-enterprise-agent-5|synthetic-extra-enterprise-agent-6]')) {
     failures.push('source projection taxonomy split-migration self-test failed: enterprise-agents migration rule details');
   }
 
