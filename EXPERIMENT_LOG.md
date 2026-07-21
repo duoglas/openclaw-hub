@@ -1,3 +1,14 @@
+### EXP-245
+- Hypothesis: Qoder agentic coding 与 Kimi K3 百万 token 开放模型复用 `alibaba-qoder-agentic-coding-platform-2026`，使 developer-tools 保留 unmatched 且 Kimi 的模型归属失真；若拆成 China code-agent runtime 与 open-model long-context 独立规则，可降低 taxonomy 噪声并为后续中国代码 Agent / 长上下文开放模型信号预留容量。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/fixtures/daily-real-cron-2026-07-18.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Qoder rule 收窄为代码库理解、Quest Mode 与异步任务委托，并迁入 `china-code-agent-runtime`；新增 `moonshot-kimi-k3-long-context-open-model-2026`，承载 Kimi K3 2.8T / 百万 token / Kimi Code 字段级 projection，并迁入 `open-model-long-context`；同步更新 split recommendations、budgets、migration hints 与 07-18 fixture。
+- ICE: 8x8x8=512
+- Start date: 2026-07-21
+- End date: 2026-07-21
+- Success metric: developer-tools unmatched=0；split target categories 45/45 used；registry health、daily source projection labels、taxonomy 与 `pnpm build` 全部通过。
+- Result: pass（Qoder 与 Kimi K3 已拆成独立规则和 split targets；developer-tools unmatched 收敛为 0；45/45 split targets used；taxonomy、registry health、daily labels、双语生成、Case-Level FAQ 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 China code-agent runtime 与 open-model long-context 作为后续 Qoder / Kimi / 国产代码 Agent / 百万 token 开放模型信号的独立容量入口。）
+
 ### EXP-244
 - Hypothesis: EXP-243 已建议把 supply-chain-cost-pressure 与 high-sensitivity-ai-deployment 继续拆出 token-economics / agent-runtime-safety split target；若 WAIC token-cost optimization 继续占用硬件供应链成本桶、WAIC agent safety evaluation 继续占用高敏行业部署桶，后续模型路由、缓存计费、算电协同、运行期审计和风险监测信号会继续触发满额容量诊断而不是低风险分流。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

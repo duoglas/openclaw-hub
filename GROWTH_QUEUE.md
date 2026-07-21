@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-245: 将 Qoder 与 Kimi K3 从复用 developer-tools rule 拆成 China code-agent runtime / open-model long-context 独立 split targets，消除 developer-tools unmatched 诊断噪声 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: Qoder 代码 Agent 与 Kimi K3 百万 token 开放模型复用同一 developer-tools rule，导致 Qoder 在 taxonomy 中 unmatched、Kimi 被错误归入开发工具；拆分后可让代码 Agent runtime 与长上下文开放模型分别获得可解释的容量和字段级归属。
+  - Metrics: developer-tools unmatched 从 1 降为 0；新增 `china-code-agent-runtime` 与 `open-model-long-context`；source projection taxonomy / registry health / daily labels 与 `pnpm build` 通过。
+  - Acceptance: 1) Qoder 规则迁入 `china-code-agent-runtime`；2) 新增独立 Kimi K3 rule 并迁入 `open-model-long-context`；3) 07-18 fixture 改为匹配 Kimi 独立 rule；4) taxonomy 45/45 split targets used、parentFallback=0、unmatched=0；5) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-244: 将 WAIC token-cost 与 agent runtime safety 从满额宽桶拆出独立 split targets，消费 EXP-243 后续“token-economics / agent-runtime-safety split target”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-243 已把 2026-07-21 WAIC 词元降本与智能体安全接入字段级 projection，但 token-cost 仍占用 supply-chain-cost-pressure 最后 slot，agent safety 仍占用 high-sensitivity-ai-deployment 最后 slot；若不拆出 token-economics-optimization 与 agent-runtime-safety，后续模型路由 / 缓存计费 / 运行期审计信号会继续挤占硬件供应链成本与高敏行业部署容量。
   - Metrics: market-intelligence scaffold 新增 `token-economics-optimization`，product-safety scaffold 新增 `agent-runtime-safety`；taxonomy 显示 split target categories 43/43 used，supply-chain-cost-pressure=1/2、token-economics-optimization=1/2、high-sensitivity-ai-deployment=2/3、agent-runtime-safety=1/2；registry health、daily source labels 与 `pnpm build` 通过。

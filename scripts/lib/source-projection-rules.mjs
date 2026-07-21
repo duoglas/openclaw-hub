@@ -791,29 +791,48 @@ export const FIELD_PROJECTION_RULES = [
     name: 'alibaba-qoder-agentic-coding-platform-2026',
     owner: 'daily-source-projection',
     category: 'developer-tools',
-    splitTargetCategory: 'code-agent-runtime',
+    splitTargetCategory: 'china-code-agent-runtime',
     displayLabel: 'Alibaba Cloud / Qoder / agentic coding platform',
-    displayLabels: [
-      {
-        label: 'China / Kimi K3 / long-context open model',
-        terms: ['Kimi K3', '2.8T', '100 万 token'],
+    capacityPlan: {
+      selectedSplitTarget: 'china-code-agent-runtime',
+      whyNotAlternatives: 'Rejected alternate split target code-agent-runtime because Qoder is a China-specific repository-scale coding agent platform rather than the generic code-agent runtime bucket.',
+      rejectedAlternateTargets: ['code-agent-runtime'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 2,
+        categoryHeadroom: 1,
+        rationale: 'capacity delta 0; migrates the existing Qoder signal out of the unmatched developer-tools bucket into a dedicated China code-agent runtime target.',
       },
-    ],
-    terms: ['Qoder', '代码库理解', 'Quest Mode', 'Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', '百万 token', 'Kimi Code'],
-    detailVariants: [
-      {
-        terms: ['Kimi K3', '2.8T', '100 万 token'],
-        details: {
-          what: 'Moonshot / Kimi released Kimi K3 as a 2.8T-parameter native multimodal model with a 1 million token context window, available through Kimi.com, Kimi Work, Kimi Code, and API access while full weights are planned before July 27, 2026.',
-          why: 'China’s model competition is moving toward very large open-model ecosystems, long-context coding, research workflows, and agent engineering rather than only chatbot quality.',
-          impact: 'Teams can test Kimi K3 on long documents, repository analysis, research replication, and interactive reports while watching whether the promised full-weight release creates a durable developer ecosystem.',
-        },
-      },
-    ],
+    },
+    terms: ['Qoder', '代码库理解', 'Quest Mode', '异步任务委托'],
     details: {
       what: 'Alibaba Cloud introduced Qoder as an agentic coding platform for real software engineering, emphasizing repository understanding, long-term memory, task decomposition, execution transparency, and Quest Mode asynchronous delegation.',
-      why: 'AI coding is moving from autocomplete into specification-driven agents that understand project context, break down tasks, execute asynchronously, and leave traces for engineering review.',
+      why: 'Coding assistants are moving from autocomplete toward repository-scale agents that can plan, execute, preserve task context, and hand work back for review.',
       impact: 'Development teams can pilot Qoder on low-risk repository tasks while requiring clear specs, scoped directories, task logs, tests, human review, and rollback paths before broader adoption.',
+    },
+  },
+  {
+    name: 'moonshot-kimi-k3-long-context-open-model-2026',
+    owner: 'daily-source-projection',
+    category: 'frontier-models',
+    splitTargetCategory: 'open-model-long-context',
+    displayLabel: 'China / Kimi K3 / long-context open model',
+    capacityPlan: {
+      selectedSplitTarget: 'open-model-long-context',
+      whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability and code-agent-runtime because Kimi K3 is an open-model and million-token context signal spanning research and coding, not a single task benchmark or coding-agent runtime.',
+      rejectedAlternateTargets: ['frontier-model-task-capability'],
+      budgetImpact: {
+        capacityDelta: 1,
+        categoryBudget: 2,
+        categoryHeadroom: 1,
+        rationale: 'capacity delta +1; extracts Kimi K3 from the reused Qoder developer-tools rule into a dedicated open-model long-context target.',
+      },
+    },
+    terms: ['Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', '百万 token', 'Kimi Code'],
+    details: {
+      what: 'Moonshot / Kimi released Kimi K3 as a 2.8T-parameter native multimodal model with a 1 million token context window, available through Kimi.com, Kimi Work, Kimi Code, and API access while full weights are planned before July 27, 2026.',
+      why: 'China’s model competition is moving toward very large open-model ecosystems, long-context coding, research workflows, and agent engineering rather than only chatbot quality.',
+      impact: 'Teams can test Kimi K3 on long documents, repository analysis, research replication, and interactive reports while watching whether the promised full-weight release creates a durable developer ecosystem.',
     },
   },
   {
