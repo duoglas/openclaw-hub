@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-246: 将满额 `ai-infrastructure-capacity` 拆成云端训练运行时、端侧/混合算力、HPC/AI for Science 三类容量，避免九条异质信号挤在同一宽桶 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: 云端 AI factory / 后训练 / EC2 runtime、RTX/DGX/芯片供应链、TOP500/AI for Science 的采购与增长路径不同；拆分后可释放容量并让后续基础设施内容按买家意图归档。
+  - Metrics: `ai-infrastructure-capacity=9/9` 被替换为 `cloud-training-runtime-infrastructure=5/6`、`edge-hybrid-compute-infrastructure=2/3`、`hpc-science-compute-infrastructure=2/3`；split target categories 47/47 used；parentFallback=0、unmatched=0。
+  - Acceptance: 1) 九条规则全部迁移且字段 projection 不变；2) 三个新 target 均有 migration hints 与预算；3) taxonomy / registry health / daily labels / 双语 fixture / build 全通过；4) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-245: 将 Qoder 与 Kimi K3 从复用 developer-tools rule 拆成 China code-agent runtime / open-model long-context 独立 split targets，消除 developer-tools unmatched 诊断噪声 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: Qoder 代码 Agent 与 Kimi K3 百万 token 开放模型复用同一 developer-tools rule，导致 Qoder 在 taxonomy 中 unmatched、Kimi 被错误归入开发工具；拆分后可让代码 Agent runtime 与长上下文开放模型分别获得可解释的容量和字段级归属。
   - Metrics: developer-tools unmatched 从 1 降为 0；新增 `china-code-agent-runtime` 与 `open-model-long-context`；source projection taxonomy / registry health / daily labels 与 `pnpm build` 通过。

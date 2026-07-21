@@ -30,7 +30,9 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
 };
 export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'agent-enablement-programs',
-  'ai-infrastructure-capacity',
+  'cloud-training-runtime-infrastructure',
+  'edge-hybrid-compute-infrastructure',
+  'hpc-science-compute-infrastructure',
   'ai-industrial-policy',
   'ai-policy-standards',
   'aerospace-compute-infrastructure',
@@ -77,7 +79,9 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
 ];
 export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'agent-enablement-programs': 4,
-  'ai-infrastructure-capacity': 9,
+  'cloud-training-runtime-infrastructure': 6,
+  'edge-hybrid-compute-infrastructure': 3,
+  'hpc-science-compute-infrastructure': 3,
   'ai-industrial-policy': 7,
   'ai-policy-standards': 4,
   'aerospace-compute-infrastructure': 2,
@@ -137,7 +141,9 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   'cloud-infrastructure': [
     'cloud-model-distribution',
     'cloud-agent-runtime-infrastructure',
-    'ai-infrastructure-capacity',
+    'cloud-training-runtime-infrastructure',
+    'edge-hybrid-compute-infrastructure',
+    'hpc-science-compute-infrastructure',
   ],
   'consumer-productivity': [
     'career-productivity-workflows',
@@ -289,8 +295,16 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
       match: ['bedrock', 'openai-amazon', 'agentperf'],
     },
     {
-      target: 'ai-infrastructure-capacity',
-      match: ['ai-cloud', 'korea', 'blackwell', 'azure', 'microsoft', 'infrastructure', 'ec2-g7', 'opensearch', 'top500', 'green500', 'supercomputing', 'ai-for-science', 'hpc-software', 'post-training', 'intelligence-per-dollar'],
+      target: 'cloud-training-runtime-infrastructure',
+      match: ['nvidia-ai-cloud', 'nvidia-korea', 'ec2-g7', 'opensearch-vector', 'nvidia-vera-agentic-cpu', 'post-training-infrastructure', 'intelligence-per-dollar'],
+    },
+    {
+      target: 'edge-hybrid-compute-infrastructure',
+      match: ['nvidia-microsoft-agentic-windows-azure', 'apple-broadcom', 'rtx-spark', 'dgx-station', 'us-chip-supply-chain'],
+    },
+    {
+      target: 'hpc-science-compute-infrastructure',
+      match: ['top500', 'green500', 'supercomputing', 'ai-for-science-isc', 'hpc-software'],
     },
   ],
   'consumer-productivity': [
@@ -1432,9 +1446,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 45/45 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 47/47 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / ai-infrastructure-capacity; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> china-code-agent-runtime / code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture / open-model-long-context; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / token-economics-optimization / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / agent-runtime-safety / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / cloud-training-runtime-infrastructure / edge-hybrid-compute-infrastructure / hpc-science-compute-infrastructure; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> china-code-agent-runtime / code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture / open-model-long-context; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / token-economics-optimization / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / agent-runtime-safety / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {

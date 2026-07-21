@@ -1,3 +1,14 @@
+### EXP-246
+- Hypothesis: `ai-infrastructure-capacity` 已满额且混合了云端训练运行时、端侧/混合算力、芯片供应链、TOP500 与 AI for Science；若按采购意图拆成三个有效容量桶，可释放 headroom，并让后续基础设施日报获得稳定、可解释的字段归属。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 9 条 `ai-infrastructure-capacity` 规则迁入 `cloud-training-runtime-infrastructure`（5）、`edge-hybrid-compute-infrastructure`（2）、`hpc-science-compute-infrastructure`（2）；替换旧 target 的 allowed list、budgets、recommendations、migration hints 与 self-test 期望。
+- ICE: 8x8x8=512
+- Start date: 2026-07-21
+- End date: 2026-07-21
+- Success metric: 三个新 target 分别保留至少 1 个 headroom；47/47 split targets used；taxonomy、registry health、daily labels、双语 fixtures、Case-Level FAQ 与 build 全部通过。
+- Result: pass（九条基础设施规则已按采购意图迁入三个独立 target；`cloud-training-runtime-infrastructure=5/6`、`edge-hybrid-compute-infrastructure=2/3`、`hpc-science-compute-infrastructure=2/3`；47/47 split targets used，parentFallback=0、unmatched=0；taxonomy、registry health、daily labels、双语 fixtures、Case-Level FAQ 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（后续云端训练/运行时、端侧/混合算力和 HPC/AI for Science 信号分别进入独立容量，不再恢复宽泛 `ai-infrastructure-capacity`。）
+
 ### EXP-245
 - Hypothesis: Qoder agentic coding 与 Kimi K3 百万 token 开放模型复用 `alibaba-qoder-agentic-coding-platform-2026`，使 developer-tools 保留 unmatched 且 Kimi 的模型归属失真；若拆成 China code-agent runtime 与 open-model long-context 独立规则，可降低 taxonomy 噪声并为后续中国代码 Agent / 长上下文开放模型信号预留容量。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/fixtures/daily-real-cron-2026-07-18.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
