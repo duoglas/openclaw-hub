@@ -2,16 +2,35 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
+function tagRouteSlug(tag: string) {
+  return tag
+    .trim()
+    .toLowerCase()
+    .normalize('NFKC')
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-');
+}
+
 export async function getStaticPaths() {
+  const tagRouteSlug = (tag: string) => tag
+    .trim()
+    .toLowerCase()
+    .normalize('NFKC')
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-');
   const posts = (await getCollection('blog')).filter(p => p.data.lang === 'en');
-  const tags = new Set<string>();
-  posts.forEach((p) => p.data.tags?.forEach((t) => tags.add(t)));
-  return Array.from(tags).map((tag) => ({ params: { tag } }));
+  const tags = new Map<string, string>();
+  posts.forEach((p) => p.data.tags?.forEach((t) => {
+    const slug = tagRouteSlug(t);
+    if (!tags.has(slug)) tags.set(slug, t);
+  }));
+  return Array.from(tags.entries()).map(([tag, displayTag]) => ({ params: { tag }, props: { displayTag } }));
 }
 
 const { tag } = Astro.params;
+const { displayTag = tag } = Astro.props;
 const posts = (await getCollection('blog'))
-  .filter((p) => p.data.lang === 'en' && p.data.tags?.includes(tag || ''))
+  .filter((p) => p.data.lang === 'en' && p.data.tags?.some((entry) => tagRouteSlug(entry) === tag))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const siteUrl = Astro.url.origin;
@@ -19,7 +38,7 @@ const listUrl = Astro.url.href;
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: `Tag: ${tag}`,
+  name: `Tag: ${displayTag}`,
   url: listUrl,
   inLanguage: 'en',
   mainEntity: {
@@ -56,7 +75,7 @@ const breadcrumbSchema = {
     {
       '@type': 'ListItem',
       position: 3,
-      name: `Tag: ${tag}`,
+      name: `Tag: ${displayTag}`,
       item: listUrl,
     },
   ],
@@ -68,15 +87,15 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: `What is covered under the ${tag} tag?`,
+      name: `What is covered under the ${displayTag} tag?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: `This page groups OpenClaw posts tagged ${tag}, including practical setup guides, troubleshooting notes, and implementation tips.`,
+        text: `This page groups OpenClaw posts tagged ${displayTag}, including practical setup guides, troubleshooting notes, and implementation tips.`,
       },
     },
     {
       '@type': 'Question',
-      name: `How should I read posts in this ${tag} collection?`,
+      name: `How should I read posts in this ${displayTag} collection?`,
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Start from the newest troubleshooting article if you are fixing an issue now, then open deeper guide posts for architecture and best practices.',
@@ -84,7 +103,7 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: `How often is the ${tag} tag page updated?`,
+      name: `How often is the ${displayTag} tag page updated?`,
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'This list updates automatically when new English blog posts include this tag, so it stays current with recently published fixes and tutorials.',
@@ -94,11 +113,11 @@ const faqSchema = {
 };
 ---
 
-<BaseLayout title={`Tag: ${tag}`} description={`Posts tagged ${tag}`} lang="en">
+<BaseLayout title={`Tag: ${displayTag}`} description={`Posts tagged ${displayTag}`} lang="en">
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  <h1>Tag: {tag}</h1>
+  <h1>Tag: {displayTag}</h1>
   {posts.length === 0 ? <p>No posts yet.</p> : posts.map(post => {
     const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
     return (
@@ -114,7 +133,7 @@ const faqSchema = {
   <section class="card" style="margin-top:1rem;">
     <h2 style="margin-top:0;">FAQ</h2>
     <h3>What is covered under this tag?</h3>
-    <p>OpenClaw guides and troubleshooting posts related to <strong>{tag}</strong>.</p>
+    <p>OpenClaw guides and troubleshooting posts related to <strong>{displayTag}</strong>.</p>
     <h3>Where should I start?</h3>
     <p>Start with the newest issue-focused post, then continue with deeper setup tutorials.</p>
     <h3>How often is this page updated?</h3>

@@ -1,3 +1,14 @@
+## EXP-248 — Tag archive URL-safe slug guardrail
+- Hypothesis: `fetch failed`、`409 conflict` 等 troubleshooting 标签当前会生成含空格 tag archive URL；若 tag archive 改为规范化 URL-safe slug，并在构建产物层增加检查，可提升站点地图、内链与长尾聚合页的索引稳定性。
+- Scope: `src/pages/en/blog/tag/[tag].astro`, `src/pages/zh/blog/tag/[tag].astro`, `src/layouts/BlogPost.astro`, `scripts/check-tag-route-slugs.mjs`, `package.json`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: EN/ZH tag archive getStaticPaths 改为输出 normalized slug，页面保留原始标签展示；文章页 tag 内链改为 slugified URL；新增 `check:tag-route-slugs`，同时校验 frontmatter tag 到 URL-safe route 的映射和 dist 中对应 `index.html` 存在。
+- ICE: 8x8x8=512
+- Start date: 2026-07-22
+- End date: 2026-07-22
+- Success metric: `pnpm build` 成功；`pnpm check:tag-route-slugs` 输出 `390 files map to 299 URL-safe tag archive routes`；tag canonical aliases 与 duplicate slug/id checks 均通过；dist tag 目录无空格 / `%20` route。
+- Result: pass（tag archive 不再用原始空格标签作为 URL；`fetch failed` / `409 conflict` 归档页收敛为 `fetch-failed` / `409-conflict`；构建与三项 tag/slug 闸门全部通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（将 `check:tag-route-slugs` 纳入后续 tag/SEO 质量检查，下一步可继续把 tag route slug helper 抽成共享模块，减少 Astro getStaticPaths 与页面运行时的重复实现。）
+
 ### EXP-247
 - Hypothesis: 最近24小时新增日报（2026-07-22）暴露 OpenAI GPT-5.6 Sol/Terra/Luna on Bedrock、Claude Fable/Mythos export-control safety availability、Claude Fable on Amazon Bedrock、AWS FDE 10 亿美元部署组织与 NVIDIA GB300 performance-per-watt 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Bedrock、Claude/Fable 泛化和 AgentPerf fallback，首日索引会漏掉云上模型组合治理、模型安全访问恢复、Bedrock Claude 部署和 AI factory 能耗效率长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-22.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-22.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

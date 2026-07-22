@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-22 11:32
+Last updated: 2026-07-22 17:26
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-248: 将 tag archive 路由从原始标签改为规范化 URL-safe slug，并增加 tag-route-slugs 闸门，消费 EXP-247 后续“收敛 build 阶段 URL/duplicate 警告”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: 当前 tag archive 直接使用原始标签生成路由，`fetch failed`、`409 conflict` 等含空格标签会生成带空格的归档 URL；若不规范化为 `fetch-failed` / `409-conflict` 并加构建后闸门，站点地图和内链会持续暴露不稳定 tag URL，削弱 troubleshooting 长尾聚合页的索引质量。
+  - Metrics: `pnpm build` 成功生成 699 pages；`pnpm check:tag-route-slugs` 显示 390 files / 299 URL-safe tag archive routes；`pnpm check:tag-canonical-aliases` 与 `pnpm check:duplicate-slug-id` 通过；`find dist/en/blog/tag dist/zh/blog/tag ... grep ' |%20|_'` 无输出。
+  - Acceptance: 1) EN/ZH tag pages 的 `getStaticPaths` 输出规范化 slug，并保留原始 display label；2) BlogPost tag 内链改为 slugified URL；3) 新增 `check:tag-route-slugs` 阻断含空格/非规范 tag archive URL 与构建产物缺失；4) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-247: 将 2026-07-22 最新双语日报接入 real cron fixture，并修复 Bedrock GPT-5.6、Claude Fable 安全/Bedrock 与 NVIDIA 每瓦性能字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-22）暴露 OpenAI GPT-5.6 Sol/Terra/Luna on Bedrock、Claude Fable/Mythos export-control safety availability、Claude Fable on Amazon Bedrock、AWS FDE 10 亿美元部署组织与 NVIDIA GB300 performance-per-watt 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Bedrock、Claude/Fable 泛化和 AgentPerf fallback，首日索引会漏掉云上模型组合治理、模型安全访问恢复、Bedrock Claude 部署和 AI factory 能耗效率长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-07-22 / latestFixture=2026-07-22 / expectedSignals=5；daily source projection labels 覆盖 30 fixtures / 150 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。

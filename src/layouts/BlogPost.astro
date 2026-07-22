@@ -17,6 +17,12 @@ type Props = CollectionEntry<'blog'>['data'] & {
 const { title, description, pubDate, updatedDate, heroImage, tags, lang = 'en', slug, prevDaily, nextDaily, relatedPosts = [], faq = [] } = Astro.props;
 const visibleTags = tags.slice(0, 5);
 const hiddenTagCount = Math.max(tags.length - visibleTags.length, 0);
+const tagRouteSlug = (tag: string) => tag
+  .trim()
+  .toLowerCase()
+  .normalize('NFKC')
+  .replace(/[\s_]+/g, '-')
+  .replace(/-+/g, '-');
 
 const isZh = lang === 'zh';
 const dateLocale = isZh ? 'zh-CN' : 'en-US';
@@ -120,7 +126,7 @@ const faqSchema = faq.length > 0 ? {
     </div>
     {visibleTags.length > 0 && (
       <div class="tags" aria-label={isZh ? '文章标签' : 'Article tags'}>
-        {visibleTags.map(tag => <a href={`/${lang}/blog/tag/${encodeURIComponent(tag)}/`}><span class="tag">{tag}</span></a>)}
+        {visibleTags.map(tag => <a href={`/${lang}/blog/tag/${tagRouteSlug(tag)}/`}><span class="tag">{tag}</span></a>)}
         {hiddenTagCount > 0 && <span class="tag tag--more">+{hiddenTagCount}</span>}
       </div>
     )}

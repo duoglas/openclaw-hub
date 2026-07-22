@@ -2,16 +2,35 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
+function tagRouteSlug(tag: string) {
+  return tag
+    .trim()
+    .toLowerCase()
+    .normalize('NFKC')
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-');
+}
+
 export async function getStaticPaths() {
+  const tagRouteSlug = (tag: string) => tag
+    .trim()
+    .toLowerCase()
+    .normalize('NFKC')
+    .replace(/[\s_]+/g, '-')
+    .replace(/-+/g, '-');
   const posts = (await getCollection('blog')).filter(p => p.data.lang === 'zh');
-  const tags = new Set<string>();
-  posts.forEach((p) => p.data.tags?.forEach((t) => tags.add(t)));
-  return Array.from(tags).map((tag) => ({ params: { tag } }));
+  const tags = new Map<string, string>();
+  posts.forEach((p) => p.data.tags?.forEach((t) => {
+    const slug = tagRouteSlug(t);
+    if (!tags.has(slug)) tags.set(slug, t);
+  }));
+  return Array.from(tags.entries()).map(([tag, sourceTag]) => ({ params: { tag }, props: { sourceTag } }));
 }
 
 const { tag } = Astro.params;
+const { sourceTag = tag } = Astro.props;
 const posts = (await getCollection('blog'))
-  .filter((p) => p.data.lang === 'zh' && p.data.tags?.includes(tag || ''))
+  .filter((p) => p.data.lang === 'zh' && p.data.tags?.some((entry) => tagRouteSlug(entry) === tag))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const tagLabels: Record<string, string> = {
@@ -26,7 +45,7 @@ const tagLabels: Record<string, string> = {
   'automation': '自动化',
   'tutorial': '教程',
 };
-const displayTag = tagLabels[tag || ''] || tag;
+const displayTag = tagLabels[tag || ''] || sourceTag || tag;
 
 const siteUrl = Astro.url.origin;
 const listUrl = Astro.url.href;
