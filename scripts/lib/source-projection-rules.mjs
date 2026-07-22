@@ -107,17 +107,25 @@ export const FIELD_PROJECTION_RULES = [
     displayLabels: [
       {
         label: 'OpenAI / GPT-5.6 / Bedrock enterprise distribution',
-        terms: ['GPT-5.6 Sol', 'Terra', 'Luna', 'Prompt 缓存'],
+        terms: ['OpenAI GPT-5.6 系列', 'Amazon Bedrock'],
       },
       {
         label: 'AWS / Amazon / Bedrock / model capability update',
         terms: ['前沿模型上云', '企业级安全'],
       },
     ],
-    terms: ['Amazon Bedrock', 'AWS 身份', '网络隔离', 'GPT-5.6 Sol', 'Prompt 缓存'],
+    terms: ['AWS 身份', '网络隔离', 'GPT-5.6 Sol', 'OpenAI GPT-5.6 系列', 'Prompt 缓存', '90% 缓存输入折扣', '区域内数据处理', '扩大与 OpenAI 合作', 'OpenAI 模型、Codex、Managed Agents'],
     detailVariants: [
       {
-        terms: ['GPT-5.6 Sol', 'Terra', 'Luna', 'Prompt 缓存'],
+        terms: ['OpenAI GPT-5.6 系列', 'Amazon Bedrock'],
+        details: {
+          what: 'Amazon said OpenAI GPT-5.6 Sol, Terra, and Luna are generally available on Amazon Bedrock with enterprise security controls, in-region processing, prompt caching, and up to 90% cached-input discounts.',
+          why: 'OpenAI distribution is moving deeper into managed cloud procurement, where model access, regional data boundaries, identity controls, logging, pricing, and caching economics become one adoption decision.',
+          impact: 'Enterprise AI teams can compare GPT-5.6 against Anthropic, Meta, Mistral, and other Bedrock models while measuring latency, audit logs, data residency, cached-token savings, and governance fit.',
+        },
+      },
+      {
+        terms: ['GPT-5.6 Sol', 'Terra', 'Luna'],
         details: {
           what: 'Amazon said OpenAI GPT-5.6 Sol, Terra, and Luna are generally available on Amazon Bedrock with enterprise security controls, in-region processing, prompt caching, and up to 90% cached-input discounts.',
           why: 'OpenAI distribution is moving deeper into managed cloud procurement, where model access, regional data boundaries, identity controls, logging, pricing, and caching economics become one adoption decision.',
@@ -1081,7 +1089,7 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['每兆瓦可运行的智能体数量显著高于上一代系统'],
       },
     ],
-    terms: ['AgentPerf', 'GB300 NVL72', '每兆瓦并发智能体'],
+    terms: ['AgentPerf', '每兆瓦并发智能体', '每兆瓦可运行的智能体数量显著高于上一代系统'],
     details: {
       what: 'NVIDIA said Artificial Analysis AgentPerf results show GB300 NVL72 leading agentic AI infrastructure, with up to 20x the concurrent agents per megawatt versus H200 in the cited workload.',
       why: 'Agent infrastructure is being evaluated on multi-step concurrency, tool-use chains, latency, and power efficiency rather than only single-request inference speed.',
@@ -1319,12 +1327,24 @@ export const FIELD_PROJECTION_RULES = [
     displayLabels: [
       {
         label: 'NVIDIA / Blackwell / performance-per-watt AI infrastructure',
+        terms: ['performance per watt', 'GB300 NVL72'],
+      },
+      {
+        label: 'NVIDIA / Blackwell / performance-per-watt AI infrastructure',
         terms: ['每瓦性能', 'GB300', 'Vera Rubin'],
       },
     ],
     displayLabel: 'NVIDIA / Blackwell / MLPerf / model capability update',
     terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72', '每瓦性能'],
     detailVariants: [
+      {
+        terms: ['performance per watt', 'GB300 NVL72'],
+        details: {
+          what: 'NVIDIA said AI factory competition is becoming a performance-per-watt problem, with GB300 NVL72 improving energy efficiency on DeepSeek V4 Pro, GLM5.1, Kimi K2.6, and other inference workloads versus Hopper systems.',
+          why: 'Large-model inference cost is increasingly constrained by power, data-center capacity, interconnects, and token throughput rather than only peak accelerator performance.',
+          impact: 'Model providers and enterprise AI teams should compare infrastructure by energy budget, MoE inference efficiency, long-context agent cost, latency, and token economics before scaling production traffic.',
+        },
+      },
       {
         terms: ['每瓦性能', 'GB300', 'Vera Rubin'],
         details: {
@@ -1686,7 +1706,35 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta +1; raises model-account-security for a 2026-07-07 Claude Fable and jailbreak severity framework signal while keeping product-safety matching narrow.',
       },
     },
-    terms: ['Fable 5 于 7 月 1 日全球回归', 'Fable 5 已恢复全球访问', 'jailbreak 严重度评分框架'],
+    terms: ['Fable 5 于 7 月 1 日全球回归', 'Fable 5 已恢复全球访问', 'Claude Fable 5 和 Mythos 5', '美国出口管制', '网络安全分类器', 'jailbreak 严重度评分框架', 'Claude Fable 5 已重新可在 Amazon Bedrock', 'Claude Platform on AWS', '复杂编码、知识工作、视觉任务'],
+    displayLabels: [
+      {
+        label: 'Anthropic / Claude Fable / export-control safety availability',
+        terms: ['Claude Fable 5 和 Mythos 5', '美国出口管制', '网络安全分类器'],
+      },
+      {
+        label: 'Anthropic / Claude Fable / Bedrock enterprise distribution',
+        terms: ['Claude Fable 5 已重新可在 Amazon Bedrock', 'Claude Platform on AWS'],
+      },
+    ],
+    detailVariants: [
+      {
+        terms: ['Claude Fable 5 和 Mythos 5', '美国出口管制', '网络安全分类器'],
+        details: {
+          what: 'Anthropic said Claude Fable 5 and Mythos 5 were previously paused under US export-control constraints, then Fable 5 returned to global availability on July 1 while Anthropic strengthened cybersecurity classifiers and jailbreak severity evaluation with Amazon, Microsoft, Google, and other partners.',
+          why: 'Frontier-model access is becoming a joint capability, safety, regulation, and availability decision rather than only a model-quality comparison.',
+          impact: 'Enterprise AI teams should prepare multi-model fallback, region-aware access checks, defensive-use wording for security workflows, and launch gates tied to abuse classification and jailbreak-severity review.',
+        },
+      },
+      {
+        terms: ['Claude Fable 5 已重新可在 Amazon Bedrock', 'Claude Platform on AWS', '复杂编码、知识工作、视觉任务'],
+        details: {
+          what: 'Amazon confirmed Claude Fable 5 is available again in Amazon Bedrock for complex coding, knowledge work, visual tasks, and Claude Platform on AWS deployments.',
+          why: 'Cloud marketplaces are becoming the recovery and governance layer for frontier-model distribution when direct access changes because of safety or regulatory constraints.',
+          impact: 'Teams that depend on Claude can resume Bedrock deployments while validating fallback models, IAM scope, audit logs, data boundaries, and stricter safety filtering for sensitive workflows.',
+        },
+      },
+    ],
     details: {
       what: 'Anthropic said Claude Fable 5 returned globally on July 1 and highlighted an industry jailbreak severity scoring framework with partners including Amazon, Microsoft, and Google.',
       why: 'Model safety is moving toward more comparable severity scoring, where jailbreak risk, abuse controls, enterprise review, and deployment eligibility can be evaluated with a shared language instead of vendor-specific claims.',

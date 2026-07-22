@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-21 17:20
+Last updated: 2026-07-22 11:32
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+- [x] P1 Candidate / EXP-247: 将 2026-07-22 最新双语日报接入 real cron fixture，并修复 Bedrock GPT-5.6、Claude Fable 安全/Bedrock 与 NVIDIA 每瓦性能字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-22）暴露 OpenAI GPT-5.6 Sol/Terra/Luna on Bedrock、Claude Fable/Mythos export-control safety availability、Claude Fable on Amazon Bedrock、AWS FDE 10 亿美元部署组织与 NVIDIA GB300 performance-per-watt 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Bedrock、Claude/Fable 泛化和 AgentPerf fallback，首日索引会漏掉云上模型组合治理、模型安全访问恢复、Bedrock Claude 部署和 AI factory 能耗效率长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-07-22 / latestFixture=2026-07-22 / expectedSignals=5；daily source projection labels 覆盖 30 fixtures / 150 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-22.mjs`；2) 为 Bedrock GPT-5.6、Claude Fable export-control safety、Claude Fable Bedrock 和 NVIDIA performance-per-watt 补齐字段级 label/detailVariants；3) EN 2026-07-22 页面移除 GPT-5.5 / Claude 泛化 / AgentPerf fallback 并补齐 Case-Level FAQ；4) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-246: 将满额 `ai-infrastructure-capacity` 拆成云端训练运行时、端侧/混合算力、HPC/AI for Science 三类容量，避免九条异质信号挤在同一宽桶 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: 云端 AI factory / 后训练 / EC2 runtime、RTX/DGX/芯片供应链、TOP500/AI for Science 的采购与增长路径不同；拆分后可释放容量并让后续基础设施内容按买家意图归档。
   - Metrics: `ai-infrastructure-capacity=9/9` 被替换为 `cloud-training-runtime-infrastructure=5/6`、`edge-hybrid-compute-infrastructure=2/3`、`hpc-science-compute-infrastructure=2/3`；split target categories 47/47 used；parentFallback=0、unmatched=0。

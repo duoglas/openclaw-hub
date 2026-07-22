@@ -1,3 +1,14 @@
+### EXP-247
+- Hypothesis: 最近24小时新增日报（2026-07-22）暴露 OpenAI GPT-5.6 Sol/Terra/Luna on Bedrock、Claude Fable/Mythos export-control safety availability、Claude Fable on Amazon Bedrock、AWS FDE 10 亿美元部署组织与 NVIDIA GB300 performance-per-watt 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 GPT-5.5 Bedrock、Claude/Fable 泛化和 AgentPerf fallback，首日索引会漏掉云上模型组合治理、模型安全访问恢复、Bedrock Claude 部署和 AI factory 能耗效率长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-22.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-22.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-22 real cron fixture；为 Bedrock GPT-5.6、Claude Fable export-control safety、Claude Fable Bedrock 和 NVIDIA performance-per-watt 增加字段级 display label/detailVariants；重写 2026-07-22 EN 日报 Top 5 / Evidence Matrix，移除 GPT-5.5 Bedrock、Claude 泛化、AgentPerf fallback，并补齐 Bedrock model portfolio 与 Claude safety fallback Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-22
+- End date: 2026-07-22
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-22 / latestFixture=2026-07-22 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 30 fixtures / 150 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-22 最新双语日报已由同日 real cron fixture 覆盖；Bedrock GPT-5.6、Claude Fable safety availability、Claude Fable Bedrock、AWS FDE 与 NVIDIA performance-per-watt 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-22 fixture 作为模型云分发治理、Claude 安全访问恢复、Bedrock fallback 与 AI factory 能效效率的首日索引基线；下一步可继续收敛 build 阶段 duplicate id warning，避免 daily collection 警告长期存在。）
+
 ### EXP-246
 - Hypothesis: `ai-infrastructure-capacity` 已满额且混合了云端训练运行时、端侧/混合算力、芯片供应链、TOP500 与 AI for Science；若按采购意图拆成三个有效容量桶，可释放 headroom，并让后续基础设施日报获得稳定、可解释的字段归属。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
