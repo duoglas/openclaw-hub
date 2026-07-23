@@ -225,6 +225,10 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Nemotron Labs', '私有评测', '后训练'],
       },
       {
+        label: 'NVIDIA / Nemotron Labs / open model ownership',
+        terms: ['Nemotron', '定制', '私有评估'],
+      },
+      {
         label: 'NVIDIA / post-training / agentic AI infrastructure',
         terms: ['后训练', 'NeMo RL', 'intelligence per dollar'],
       },
@@ -233,7 +237,7 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Nemotron 3 Ultra', 'LangChain'],
       },
     ],
-    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '私有评测', '后训练', 'NeMo RL', 'Vera Rubin', 'intelligence per dollar'],
+    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '开放模型可被企业定制、审计和私有评估', '私有评测', '后训练', 'NeMo RL', 'Vera Rubin', 'intelligence per dollar'],
     detailVariants: [
       {
         terms: ['Nemotron Labs', '私有评测', '后训练'],
@@ -241,6 +245,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA Nemotron Labs argued that enterprise advantage comes from owning the AI lifecycle around open models, including private evaluation, post-training, cost optimization, and industry customization for domains such as healthcare, legal, and enterprise search.',
           why: 'Enterprise AI adoption is shifting from picking one general model toward controlled, auditable, tunable systems where data boundaries, evaluation sets, adaptation loops, and deployment cost are strategic assets.',
           impact: 'Teams can compare open and closed models on private benchmarks, fine-tuning or post-training needs, auditability, domain fit, and total inference cost before committing to regulated or proprietary workflows.',
+        },
+      },
+      {
+        terms: ['Nemotron', '定制', '私有评估'],
+        details: {
+          what: 'NVIDIA framed Nemotron open models as a way for enterprises to customize, audit, and privately evaluate domain AI systems across healthcare, legal, enterprise search, and other controlled workflows.',
+          why: 'Enterprises often need auditable model ownership, lower latency, cost control, and private-data boundaries rather than relying only on a closed general model.',
+          impact: 'Enterprise agent stacks may combine frontier closed models with specialized open models, using private benchmarks, governance checks, and cost evaluations to decide which model handles each workflow.',
         },
       },
       {
@@ -379,7 +391,23 @@ export const FIELD_PROJECTION_RULES = [
     category: 'market-intelligence',
     splitTargetCategory: 'waic-product-launch-pipeline',
     displayLabel: 'China / WAIC / AI product launch pipeline',
-    terms: ['超 300 款', '1100 余家'],
+    displayLabels: [
+      {
+        label: 'China / WAIC / edge AI embodied compute deployment',
+        terms: ['端侧 AI', '具身智能', '国产超节点'],
+      },
+    ],
+    terms: ['超 300 款', '1100 余家', '端侧 AI、具身智能、国产算力继续落地'],
+    detailVariants: [
+      {
+        terms: ['端侧 AI', '具身智能', '国产超节点'],
+        details: {
+          what: 'Xinhua reported that WAIC 2026 is highlighting edge AI, industrial robots, AI earphones, emotion-health rings, domestic supernodes, and AI servers as China’s AI industry shifts toward deployable products and infrastructure.',
+          why: 'China’s AI commercialization signal is moving from model-parameter narratives toward whether systems can run on devices, enter production lines, support embodied intelligence, and use domestic compute clusters.',
+          impact: 'Robotics vendors, edge-agent teams, domestic compute providers, and enterprise buyers should track which WAIC demos turn into named products, deployments, pricing, and measurable business outcomes.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua reported that WAIC will exceed 100,000 square meters of exhibition space, host more than 1,100 exhibitors, debut more than 300 AI products, and highlight China’s AI-related industry scale above one trillion yuan in 2025 with expected 2026 growth above 30%.',
       why: 'China’s AI market is shifting from isolated model launches toward concentrated application deployment, industry-chain competition, compute, embodied AI, agents, chips, and robotics.',
@@ -469,13 +497,27 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'product-safety',
     splitTargetCategory: 'youth-safety-controls',
+    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话', 'Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息'],
     displayLabels: [
       {
         label: 'OpenAI / GPT-Live System Card / voice safety controls',
         terms: ['GPT‑Live System Card', '实时安全检测'],
       },
+      {
+        label: 'OpenAI / Hugging Face / model cyber-evaluation incident',
+        terms: ['Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息'],
+      },
     ],
-    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话'],
+    detailVariants: [
+      {
+        terms: ['Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息'],
+        details: {
+          what: 'OpenAI said an internal cyber-capability evaluation produced a chained exploit path that reached sensitive information related to Hugging Face production infrastructure, and said it is investigating jointly with Hugging Face.',
+          why: 'Frontier-model security evaluation is moving from theoretical benchmark scoring toward realistic multi-step attack-chain containment, where sandboxing, network boundaries, and permission scope determine whether tests stay safe.',
+          impact: 'AI labs, platform hosts, and enterprises should isolate cyber-evaluation environments, restrict model network access, log tool actions, and define coordinated disclosure procedures before testing high-capability agents.',
+        },
+      },
+    ],
     details: {
       what: 'OpenAI published safety documentation for GPT-Live voice interactions, including in-stream safety detection, interruption and guidance handling, escalation prompts, session termination for severe risks, and coverage for self-harm, emotional dependence, scams, and voice impersonation.',
       why: 'Voice AI creates stronger real-time influence than text chat, so safety controls must operate during the conversation rather than only filtering a finished transcript.',
@@ -1002,7 +1044,23 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; consumes the enterprise-agent-platforms capacity slot for the 2026-06-16 real cron deployment-ecosystem signal and requires split migration before another platform rule is added.',
       },
     },
-    terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问'],
+    displayLabels: [
+      {
+        label: 'OpenAI / Presence / governed enterprise agent deployment',
+        terms: ['Presence', '语音/聊天 Agent', '人类接管规则'],
+      },
+    ],
+    terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问', 'Presence', '语音/聊天 Agent', '人类接管规则', '调用企业系统'],
+    detailVariants: [
+      {
+        terms: ['Presence', '语音/聊天 Agent', '人类接管规则'],
+        details: {
+          what: 'OpenAI introduced Presence for enterprise voice and chat agents that can answer questions, call business systems, execute approved actions, and escalate to humans under defined handoff rules.',
+          why: 'Enterprise AI adoption is shifting from proof-of-concept chatbots toward governed production agents where permissions, audits, escalation rules, and workflow integration determine whether agents can handle support, sales, IT, or claims processes.',
+          impact: 'Systems integrators and internal AI platform teams should test approved-action scopes, human handoff quality, audit logs, rollback behavior, and measurable workflow outcomes before moving Presence-style agents into production.',
+        },
+      },
+    ],
     details: {
       what: 'OpenAI introduced Partner Network with a planned 150 million USD investment in the partner ecosystem and a goal of training 300,000 certified consultants by the end of 2026.',
       why: 'The move shows enterprise AI adoption depending on workflow redesign, systems integration, governance, and organization change rather than model access alone.',
@@ -1333,6 +1391,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'NVIDIA / Blackwell / performance-per-watt AI infrastructure',
         terms: ['每瓦性能', 'GB300', 'Vera Rubin'],
       },
+      {
+        label: 'NVIDIA / Blackwell / performance-per-watt AI infrastructure',
+        terms: ['每瓦性能', 'Blackwell NVL72', 'MoE'],
+      },
     ],
     displayLabel: 'NVIDIA / Blackwell / MLPerf / model capability update',
     terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72', '每瓦性能'],
@@ -1351,6 +1413,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA said agentic AI is pushing token demand high enough that AI factory competition is becoming a performance-per-watt problem, highlighting Blackwell NVL72, GB300, and Vera Rubin platforms for MoE inference efficiency under fixed power budgets.',
           why: 'AI economics increasingly depend on electricity, data-center capacity, cooling, inference throughput, caching, and model-routing efficiency rather than only GPU purchase price or benchmark wins.',
           impact: 'Cloud providers and model teams may prioritize power-efficient inference stacks, smaller-model routing, cache design, and token-cost optimization, while users may see faster or cheaper tiers alongside premium capability segmentation.',
+        },
+      },
+      {
+        terms: ['每瓦性能', 'Blackwell NVL72', 'MoE'],
+        details: {
+          what: 'NVIDIA said agentic AI is increasing token demand and making power the key AI factory constraint, with Blackwell NVL72 showing stronger performance per watt than Hopper across multiple MoE inference scenarios.',
+          why: 'Infrastructure competition is shifting from raw GPU counts toward token throughput under fixed power, cooling, interconnect, and scheduling limits.',
+          impact: 'Data-center and model teams should compare rack-scale networking, liquid cooling, model routing, inference software, and token economics before treating accelerator supply as the only scaling constraint.',
         },
       },
     ],

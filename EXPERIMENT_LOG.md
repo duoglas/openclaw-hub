@@ -1,3 +1,14 @@
+## EXP-249 — 2026-07-23 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-07-23）暴露 OpenAI Presence 企业 Agent 生产部署、OpenAI/Hugging Face 模型网络安全评测事件、NVIDIA Blackwell NVL72 每瓦性能、NVIDIA Nemotron 开放模型 ownership 与 WAIC 端侧 AI / 具身智能 / 国产算力五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 OpenAI/Nemotron 泛化 fallback，首日索引会漏掉可控企业 Agent、AI cyber-eval 沙箱治理、AI factory 能效、开放模型可控栈和中国端侧/具身/国产算力长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-23.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-23.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-23 real cron fixture；为 OpenAI Presence governed enterprise agent deployment、OpenAI/Hugging Face model cyber-evaluation incident、Blackwell NVL72 performance-per-watt、Nemotron open model ownership 与 WAIC edge/embodied/domestic compute 增加 fixture-backed label/detailVariants；重写 EN 2026-07-23 页面，移除 OpenAI/Nemotron 泛化 fallback，并补齐 governed enterprise agent deployment 与 cyber-evaluation sandbox hardening Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-23
+- End date: 2026-07-23
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-23 / latestFixture=2026-07-23 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 31 fixtures / 155 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-23 最新双语日报已由同日 real cron fixture 覆盖；OpenAI Presence、OpenAI/Hugging Face cyber-eval incident、Blackwell 每瓦性能、Nemotron ownership 与 WAIC 端侧/具身/国产算力均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `cfcfbec`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-23 fixture 作为企业 Agent 生产部署、AI cyber-eval 安全沙箱、AI factory 能效、开放模型 ownership 与中国端侧/具身/国产算力的首日索引基线；下一步可继续拆分 enterprise-agent-platforms 或 robotics-open-model-research 的满额容量，避免后续只能复用既有规则。）
+
 ## EXP-248 — Tag archive URL-safe slug guardrail
 - Hypothesis: `fetch failed`、`409 conflict` 等 troubleshooting 标签当前会生成含空格 tag archive URL；若 tag archive 改为规范化 URL-safe slug，并在构建产物层增加检查，可提升站点地图、内链与长尾聚合页的索引稳定性。
 - Scope: `src/pages/en/blog/tag/[tag].astro`, `src/pages/zh/blog/tag/[tag].astro`, `src/layouts/BlogPost.astro`, `scripts/check-tag-route-slugs.mjs`, `package.json`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
@@ -6,7 +17,7 @@
 - Start date: 2026-07-22
 - End date: 2026-07-22
 - Success metric: `pnpm build` 成功；`pnpm check:tag-route-slugs` 输出 `390 files map to 299 URL-safe tag archive routes`；tag canonical aliases 与 duplicate slug/id checks 均通过；dist tag 目录无空格 / `%20` route。
-- Result: pass（tag archive 不再用原始空格标签作为 URL；`fetch failed` / `409 conflict` 归档页收敛为 `fetch-failed` / `409-conflict`；构建与三项 tag/slug 闸门全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（tag archive 不再用原始空格标签作为 URL；`fetch failed` / `409 conflict` 归档页收敛为 `fetch-failed` / `409-conflict`；构建与三项 tag/slug 闸门全部通过；commit `cfcfbec`；质量评分 28/30。）
 - Decision: scale（将 `check:tag-route-slugs` 纳入后续 tag/SEO 质量检查，下一步可继续把 tag route slug helper 抽成共享模块，减少 Astro getStaticPaths 与页面运行时的重复实现。）
 
 ### EXP-247

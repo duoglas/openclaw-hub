@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-22 17:26
+Last updated: 2026-07-23 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,7 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
-- [x] P1 Candidate / EXP-248: 将 tag archive 路由从原始标签改为规范化 URL-safe slug，并增加 tag-route-slugs 闸门，消费 EXP-247 后续“收敛 build 阶段 URL/duplicate 警告”假设 | ICE 8x8x8=512 — commit `(this commit)`
+
+- [x] P1 Candidate / EXP-249: 将 2026-07-23 最新双语日报接入 real cron fixture，并修复 OpenAI Presence、OpenAI/Hugging Face 安全评测、Blackwell 每瓦性能、Nemotron ownership 与 WAIC 端侧/具身/国产算力字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `cfcfbec`
+  - Hypothesis: 最近24小时新增日报（2026-07-23）暴露 OpenAI Presence 企业 Agent 生产部署、OpenAI/Hugging Face 模型网络安全评测事件、NVIDIA Blackwell NVL72 每瓦性能、NVIDIA Nemotron 开放模型 ownership 与 WAIC 端侧 AI / 具身智能 / 国产算力五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 OpenAI/Nemotron 泛化 fallback，首日索引会漏掉可控企业 Agent、AI cyber-eval 沙箱治理、AI factory 能效、开放模型可控栈和中国端侧/具身/国产算力长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-07-23 / latestFixture=2026-07-23 / expectedSignals=5；daily source projection labels 覆盖 31 fixtures / 155 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-23.mjs`；2) 为 OpenAI Presence、OpenAI/Hugging Face cyber-eval incident、Blackwell NVL72 performance-per-watt、Nemotron ownership 和 WAIC edge/embodied/domestic compute 增加 fixture-backed 字段级 label/detailVariants；3) EN 2026-07-23 页面移除 OpenAI/Nemotron 泛化 fallback 并补齐 Case-Level FAQ；4) 质量评分 28/30。
+- [x] P1 Candidate / EXP-248: 将 tag archive 路由从原始标签改为规范化 URL-safe slug，并增加 tag-route-slugs 闸门，消费 EXP-247 后续“收敛 build 阶段 URL/duplicate 警告”假设 | ICE 8x8x8=512 — commit `cfcfbec`
   - Hypothesis: 当前 tag archive 直接使用原始标签生成路由，`fetch failed`、`409 conflict` 等含空格标签会生成带空格的归档 URL；若不规范化为 `fetch-failed` / `409-conflict` 并加构建后闸门，站点地图和内链会持续暴露不稳定 tag URL，削弱 troubleshooting 长尾聚合页的索引质量。
   - Metrics: `pnpm build` 成功生成 699 pages；`pnpm check:tag-route-slugs` 显示 390 files / 299 URL-safe tag archive routes；`pnpm check:tag-canonical-aliases` 与 `pnpm check:duplicate-slug-id` 通过；`find dist/en/blog/tag dist/zh/blog/tag ... grep ' |%20|_'` 无输出。
   - Acceptance: 1) EN/ZH tag pages 的 `getStaticPaths` 输出规范化 slug，并保留原始 display label；2) BlogPost tag 内链改为 slugified URL；3) 新增 `check:tag-route-slugs` 阻断含空格/非规范 tag archive URL 与构建产物缺失；4) 质量评分 28/30。
