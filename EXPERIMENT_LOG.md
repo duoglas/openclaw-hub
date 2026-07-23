@@ -1,3 +1,14 @@
+## EXP-250 — Governed agent deployment platform split target
+- Hypothesis: EXP-249 已把 OpenAI Presence governed enterprise agent deployment 接入最新 fixture，但 `enterprise-agent-platforms` 仍同时承载通用企业平台、受治理运行时、团队协作 Agent 与部署生态；若不拆出 `governed-agent-deployment-platforms`，后续带权限、状态、后台执行、人类接管、审计与共享协作边界的 Agent runtime 信号会继续挤占通用企业 Agent 平台容量。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: enterprise-agents scaffold 新增 `governed-agent-deployment-platforms` split target、预算、migration hint 与 self-test 期望；将 OpenAI Partner Network / Presence、Google Gemini Interactions API 与 Anthropic Claude Tag 从 `enterprise-agent-platforms` 迁入新 governed deployment target；同步 capacityPlan 的 selectedSplitTarget、budgetImpact、whyNotAlternatives 与 rejectedAlternateTargets。
+- ICE: 8x8x8=512
+- Start date: 2026-07-23
+- End date: 2026-07-23
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `enterprise-agent-platforms=3/6`、`governed-agent-deployment-platforms=3/4`、`split target categories: 48/48 used`、parentFallback=0、unmatched=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（OpenAI Presence/Partner Network、Gemini Interactions API 与 Claude Tag 已迁入 governed-agent-deployment-platforms；通用 enterprise-agent-platforms 从 6/6 回落到 3/6，新 target 为 3/4；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 governed-agent-deployment-platforms 作为后续权限、状态、后台执行、人类接管、审计与共享协作类企业 Agent runtime 的独立容量入口；下一步可继续拆分 robotics-open-model-research 或 cloud-agent-runtime-infrastructure 的满额容量。）
+
 ## EXP-249 — 2026-07-23 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-07-23）暴露 OpenAI Presence 企业 Agent 生产部署、OpenAI/Hugging Face 模型网络安全评测事件、NVIDIA Blackwell NVL72 每瓦性能、NVIDIA Nemotron 开放模型 ownership 与 WAIC 端侧 AI / 具身智能 / 国产算力五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 OpenAI/Nemotron 泛化 fallback，首日索引会漏掉可控企业 Agent、AI cyber-eval 沙箱治理、AI factory 能效、开放模型可控栈和中国端侧/具身/国产算力长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-23.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-23.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

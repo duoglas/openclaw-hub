@@ -50,6 +50,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'digital-regulation-compliance',
   'domestic-compute-software',
   'enterprise-agent-platforms',
+  'governed-agent-deployment-platforms',
   'frontier-model-cloud-distribution',
   'frontier-model-inference-architecture',
   'open-model-long-context',
@@ -101,6 +102,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'digital-regulation-compliance': 3,
   'domestic-compute-software': 2,
   'enterprise-agent-platforms': 6,
+  'governed-agent-deployment-platforms': 4,
   'frontier-models': 6,
   'frontier-model-cloud-distribution': 2,
   'frontier-model-inference-architecture': 2,
@@ -152,6 +154,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
   ],
   'enterprise-agents': [
     'enterprise-agent-platforms',
+    'governed-agent-deployment-platforms',
     'vertical-workflow-agents',
     'agent-enablement-programs',
   ],
@@ -220,7 +223,11 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   'enterprise-agents': [
     {
       target: 'enterprise-agent-platforms',
-      match: ['meta-business-agent', 'microsoft-enterprise-agent-system', 'aws-quick-connect', 'openai-partner-network', 'claude-tag', 'interactions-api', 'managed-agents', 'gemini-interactions'],
+      match: ['meta-business-agent', 'microsoft-enterprise-agent-system', 'aws-quick-connect'],
+    },
+    {
+      target: 'governed-agent-deployment-platforms',
+      match: ['openai-partner-network', 'presence', 'claude-tag', 'interactions-api', 'managed-agents', 'gemini-interactions'],
     },
     {
       target: 'vertical-workflow-agents',
@@ -1446,9 +1453,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 47/47 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 48/48 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / cloud-training-runtime-infrastructure / edge-hybrid-compute-infrastructure / hpc-science-compute-infrastructure; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> china-code-agent-runtime / code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture / open-model-long-context; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / token-economics-optimization / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / agent-runtime-safety / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / cloud-training-runtime-infrastructure / edge-hybrid-compute-infrastructure / hpc-science-compute-infrastructure; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> china-code-agent-runtime / code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / governed-agent-deployment-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture / open-model-long-context; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / token-economics-optimization / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / agent-runtime-safety / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
@@ -1518,7 +1525,7 @@ function validateSelfTests() {
         category,
       }))),
   }));
-  if (!splitPlanDiagnostic.includes('category split recommendations: enterprise-agents: split into enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs (100% used + 0 headroom)')) {
+  if (!splitPlanDiagnostic.includes('category split recommendations: enterprise-agents: split into enterprise-agent-platforms / governed-agent-deployment-platforms / vertical-workflow-agents / agent-enablement-programs (100% used + 0 headroom)')) {
     failures.push('source projection taxonomy split-plan self-test failed: enterprise-agents split recommendation');
   }
 
@@ -1540,10 +1547,10 @@ function validateSelfTests() {
   const splitMigrationDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
     rules: splitMigrationRules,
   }));
-  if (!splitMigrationDiagnostic.includes('category split migration batches: enterprise-agents: enterprise-agent-platforms=3, vertical-workflow-agents=2, agent-enablement-programs=2, unmatched=7')) {
+  if (!splitMigrationDiagnostic.includes('category split migration batches: enterprise-agents: enterprise-agent-platforms=2, governed-agent-deployment-platforms=1, vertical-workflow-agents=2, agent-enablement-programs=2, unmatched=7')) {
     failures.push('source projection taxonomy split-migration self-test failed: enterprise-agents migration batch counts');
   }
-  if (!splitMigrationDiagnostic.includes('category split migration details: enterprise-agents: enterprise-agent-platforms=[meta-business-agent-2026|microsoft-enterprise-agent-system-2026|openai-partner-network-enterprise-ecosystem-2026], vertical-workflow-agents=[amazon-nova-act-agentic-ai|nvidia-nemoclaw-industrial-agents], agent-enablement-programs=[openai-academy-enterprise-ai-foundations-2026|anthropic-claude-corps-nonprofit-2026], unmatched=[synthetic-unmapped-enterprise-agent|synthetic-extra-enterprise-agent-1|synthetic-extra-enterprise-agent-2|synthetic-extra-enterprise-agent-3|synthetic-extra-enterprise-agent-4|synthetic-extra-enterprise-agent-5|synthetic-extra-enterprise-agent-6]')) {
+  if (!splitMigrationDiagnostic.includes('category split migration details: enterprise-agents: enterprise-agent-platforms=[meta-business-agent-2026|microsoft-enterprise-agent-system-2026], governed-agent-deployment-platforms=[openai-partner-network-enterprise-ecosystem-2026], vertical-workflow-agents=[amazon-nova-act-agentic-ai|nvidia-nemoclaw-industrial-agents], agent-enablement-programs=[openai-academy-enterprise-ai-foundations-2026|anthropic-claude-corps-nonprofit-2026], unmatched=[synthetic-unmapped-enterprise-agent|synthetic-extra-enterprise-agent-1|synthetic-extra-enterprise-agent-2|synthetic-extra-enterprise-agent-3|synthetic-extra-enterprise-agent-4|synthetic-extra-enterprise-agent-5|synthetic-extra-enterprise-agent-6]')) {
     failures.push('source projection taxonomy split-migration self-test failed: enterprise-agents migration rule details');
   }
 
@@ -2054,8 +2061,8 @@ function validateSelfTests() {
     ],
   }).join('\n');
   for (const fragment of [
-    'synthetic-existing-openai-partner-network-missing-target — existing enterprise-agents rule is missing splitTargetCategory; recommended splitTargetCategory=enterprise-agent-platforms via "openai-partner-network"',
-    'synthetic-existing-enterprise-invalid-target — splitTargetCategory cloud-model-distribution is not valid for enterprise-agents; expected one of: enterprise-agent-platforms, vertical-workflow-agents, agent-enablement-programs',
+    'synthetic-existing-openai-partner-network-missing-target — existing enterprise-agents rule is missing splitTargetCategory; recommended splitTargetCategory=governed-agent-deployment-platforms via "openai-partner-network"',
+    'synthetic-existing-enterprise-invalid-target — splitTargetCategory cloud-model-distribution is not valid for enterprise-agents; expected one of: enterprise-agent-platforms, governed-agent-deployment-platforms, vertical-workflow-agents, agent-enablement-programs',
     'synthetic-existing-amazon-nova-act-mismatched-target — splitTargetCategory enterprise-agent-platforms does not match migration hint; recommended vertical-workflow-agents via "amazon-nova-act"',
   ]) {
     if (!existingSplitTargetCoverageDiagnostic.includes(fragment)) {
@@ -2093,8 +2100,8 @@ function validateSelfTests() {
   });
   const splitScaffoldDiagnostic = splitScaffoldFailures.join('\n');
   for (const fragment of [
-    'synthetic-openai-partner-network-new-rule — category enterprise-agents requires splitTargetCategory before adding new rules; recommended splitTargetCategory=enterprise-agent-platforms via "openai-partner-network"',
-    'synthetic-enterprise-rule-invalid-target — splitTargetCategory cloud-model-distribution is not valid for enterprise-agents; expected one of: enterprise-agent-platforms, vertical-workflow-agents, agent-enablement-programs',
+    'synthetic-openai-partner-network-new-rule — category enterprise-agents requires splitTargetCategory before adding new rules; recommended splitTargetCategory=governed-agent-deployment-platforms via "openai-partner-network"',
+    'synthetic-enterprise-rule-invalid-target — splitTargetCategory cloud-model-distribution is not valid for enterprise-agents; expected one of: enterprise-agent-platforms, governed-agent-deployment-platforms, vertical-workflow-agents, agent-enablement-programs',
   ]) {
     if (!splitScaffoldDiagnostic.includes(fragment)) {
       failures.push(`source projection split target scaffold self-test failed: ${fragment}`);

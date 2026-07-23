@@ -21,6 +21,11 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-250: 将 enterprise-agent-platforms 拆出 governed-agent-deployment-platforms，消费 EXP-249 后续“继续拆分 enterprise-agent-platforms 满额容量”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-249 将 OpenAI Presence 接入最新 fixture 后，enterprise-agent-platforms 仍同时承载 Meta/Microsoft/AWS 通用平台、OpenAI Presence/Partner Network、Gemini Interactions API 与 Claude Tag 等受治理部署表面；若不拆出 governed-agent-deployment-platforms，后续带权限、状态、后台执行、人类接管与共享协作边界的 Agent runtime 信号会继续挤占通用企业 Agent 平台容量。
+  - Metrics: 新增 `governed-agent-deployment-platforms=3/4`；`enterprise-agent-platforms` 从 6/6 回落到 3/6；split target categories 48/48 used；source projection taxonomy、registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) enterprise-agents split scaffold 新增 governed-agent-deployment-platforms、预算与 migration hint；2) OpenAI Presence/Partner Network、Gemini Interactions API、Claude Tag 迁入新 target；3) 相关 capacityPlan 与 rejectedAlternateTargets 同步到实时 headroom；4) 质量评分 28/30。
+
 - [x] P1 Candidate / EXP-249: 将 2026-07-23 最新双语日报接入 real cron fixture，并修复 OpenAI Presence、OpenAI/Hugging Face 安全评测、Blackwell 每瓦性能、Nemotron ownership 与 WAIC 端侧/具身/国产算力字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `cfcfbec`
   - Hypothesis: 最近24小时新增日报（2026-07-23）暴露 OpenAI Presence 企业 Agent 生产部署、OpenAI/Hugging Face 模型网络安全评测事件、NVIDIA Blackwell NVL72 每瓦性能、NVIDIA Nemotron 开放模型 ownership 与 WAIC 端侧 AI / 具身智能 / 国产算力五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 OpenAI/Nemotron 泛化 fallback，首日索引会漏掉可控企业 Agent、AI cyber-eval 沙箱治理、AI factory 能效、开放模型可控栈和中国端侧/具身/国产算力长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-07-23 / latestFixture=2026-07-23 / expectedSignals=5；daily source projection labels 覆盖 31 fixtures / 155 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
