@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-23 11:20
+Last updated: 2026-07-24 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-251: 将 2026-07-24 最新双语日报接入 real cron fixture，并修复 Google Gemini 产品面与美团 LongCat 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `92e5623`
+  - Hypothesis: 最近24小时新增日报（2026-07-24）暴露 NVIDIA 后训练 / 每美元智能、Google Gemini App / AI Overviews / AI Mode 高用量产品面、Claude Science 科研工作台、ChatGPT Instant/Medium/High 模型选择器与美团 LongCat / AIGC 商业化信号；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC 错配或 LongCat 泛化 fallback，首日索引会漏掉后训练评测闭环、嵌入式 Gemini 分发、科研 Agent、模型档位选择和中国本地生活 AI 商业化长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-07-24 / latestFixture=2026-07-24 / expectedSignals=5；daily source projection labels 覆盖 32 fixtures / 160 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-24.mjs`；2) 为 Google Gemini product surface 与 Meituan LongCat AI commerce workflow 增加 fixture-backed label/detailVariants；3) EN/ZH 2026-07-24 页面统一到同一五条信号，移除 WAIC 错配与 LongCat 泛化 fallback，并修复 ZH 实战案例截断；4) 质量评分 28/30。
+
 
 - [x] P1 Candidate / EXP-250: 将 enterprise-agent-platforms 拆出 governed-agent-deployment-platforms，消费 EXP-249 后续“继续拆分 enterprise-agent-platforms 满额容量”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-249 将 OpenAI Presence 接入最新 fixture 后，enterprise-agent-platforms 仍同时承载 Meta/Microsoft/AWS 通用平台、OpenAI Presence/Partner Network、Gemini Interactions API 与 Claude Tag 等受治理部署表面；若不拆出 governed-agent-deployment-platforms，后续带权限、状态、后台执行、人类接管与共享协作边界的 Agent runtime 信号会继续挤占通用企业 Agent 平台容量。

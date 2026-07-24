@@ -1,3 +1,14 @@
+## EXP-251 — 2026-07-24 latest real cron fixture and Google/LongCat field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-07-24）暴露 NVIDIA post-training / intelligence-per-dollar、Google Gemini App / AI Overviews / AI Mode 高用量产品面、Claude Science research workbench、ChatGPT Instant/Medium/High model picker 与 Meituan LongCat / AIGC commerce AI 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC token-cost 错配或 LongCat 泛化 fallback，首日索引会漏掉后训练评测闭环、嵌入式 Gemini 分发、科研 Agent、模型档位选择和中国本地生活 AI 商业化长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-24.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-24.md`, `src/content/blog/zh/openclaw-daily-2026-07-24.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-24 real cron fixture；为 Google Gemini embedded product surface 与 Meituan LongCat AI commerce workflow 增加 fixture-backed display label / detailVariants；重写 2026-07-24 EN/ZH 页面，使双语 Top 5 对齐 NVIDIA post-training、Google Gemini、Claude Science、ChatGPT model picker 与 Meituan LongCat，并移除 WAIC 错配、LongCat 泛化 fallback 与 ZH 实战案例截断。
+- ICE: 9x8x8=576
+- Start date: 2026-07-24
+- End date: 2026-07-24
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-24 / latestFixture=2026-07-24 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 32 fixtures / 160 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-24 最新双语日报已由同日 real cron fixture 覆盖；Google Gemini product surface 与 Meituan LongCat commerce AI 输出字段级 projection；EN/ZH 页面已统一信号并移除 WAIC 错配、泛化 fallback 与 ZH 截断；commit `92e5623`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-24 fixture 作为后训练评测闭环、嵌入式 Gemini 产品面、科研 Agent、模型档位选择与中国本地生活 AI 商业化信号的首日索引基线；下一步可把 Google embedded product surfaces 或 China commerce AI 从复用规则拆成独立 split target，避免后续产品面信号继续挤占 governed-agent / commercialization ROI 容量。）
+
 ## EXP-250 — Governed agent deployment platform split target
 - Hypothesis: EXP-249 已把 OpenAI Presence governed enterprise agent deployment 接入最新 fixture，但 `enterprise-agent-platforms` 仍同时承载通用企业平台、受治理运行时、团队协作 Agent 与部署生态；若不拆出 `governed-agent-deployment-platforms`，后续带权限、状态、后台执行、人类接管、审计与共享协作边界的 Agent runtime 信号会继续挤占通用企业 Agent 平台容量。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
@@ -6,7 +17,7 @@
 - Start date: 2026-07-23
 - End date: 2026-07-23
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `enterprise-agent-platforms=3/6`、`governed-agent-deployment-platforms=3/4`、`split target categories: 48/48 used`、parentFallback=0、unmatched=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（OpenAI Presence/Partner Network、Gemini Interactions API 与 Claude Tag 已迁入 governed-agent-deployment-platforms；通用 enterprise-agent-platforms 从 6/6 回落到 3/6，新 target 为 3/4；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（OpenAI Presence/Partner Network、Gemini Interactions API 与 Claude Tag 已迁入 governed-agent-deployment-platforms；通用 enterprise-agent-platforms 从 6/6 回落到 3/6，新 target 为 3/4；taxonomy、registry health、daily source labels 与 build 通过；commit `691b40d`；质量评分 28/30。）
 - Decision: scale（保留 governed-agent-deployment-platforms 作为后续权限、状态、后台执行、人类接管、审计与共享协作类企业 Agent runtime 的独立容量入口；下一步可继续拆分 robotics-open-model-research 或 cloud-agent-runtime-infrastructure 的满额容量。）
 
 ## EXP-249 — 2026-07-23 latest real cron fixture and field-level projection recovery

@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-07-24)"
-description: "Daily AI and tech brief tracking Microsoft, Meta, L1, NVIDIA, Agentic, RL, infrastructure moves, product shifts, policy signals, and practical deployment implications."
+description: "Daily AI and tech brief tracking NVIDIA post-training, Google Gemini product surfaces, Claude Science, ChatGPT model tiers, and Meituan LongCat commerce AI signals."
 pubDate: 2026-07-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
@@ -71,9 +71,3 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 - Evidence item 3: Anthropic / Claude Science / research agent workflow — Anthropic released Claude Science beta for Pro, Max, Team, and Enterprise users, with macOS/Linux support, research databases, Jupyter/R/HPC/SSH access, GPU compute, and auditable research artifacts.
 - Evidence item 4: OpenAI / ChatGPT / Instant / model capability update — OpenAI simplified ChatGPT model selection into task-oriented options such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended across Plus and Pro users on web, iOS, and Android.
 - Evidence item 5: China / LongCat / AIGC / agent platform — The source tracks agent platform, model capability update, AI commerce workflow around China, LongCat, AIGC, ACL, giving the daily brief a named actor and deployment context. The source includes concrete timing or scale signals (AIGC).
-
-## Next-Step CTA
-
-- Start here: [What Is OpenClaw?](/en/blog/what-is-openclaw/)
-- Deploy with guardrails: [OpenClaw VPS Deployment Complete Guide](/en/blog/openclaw-vps-deployment-complete-guide/)
-- Keep reliability under load: [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/)
