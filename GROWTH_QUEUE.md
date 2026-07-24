@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-24 17:20
+Last updated: 2026-07-24 17:35
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,6 +21,12 @@ Manager: main session
 
 ## Done
 
+
+
+- [x] P1 Candidate / EXP-253: 将 Meituan LongCat / AIGC 从通用 ai-commercialization-roi 拆出 local-commerce-ai-workflows，并注册 2026-07-24 latest fixture | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-252/251 后续指出 China commerce AI / Meituan LongCat 仍复用 ai-commercialization-roi；若不拆出 local-commerce-ai-workflows，本地生活、电商海报生成、推荐/广告/商家运营类信号会继续挤占通用商业化 ROI 容量，并且 2026-07-24 latest fixture 未进入 realCronFixtures 会削弱最新闸门覆盖。
+  - Metrics: 新增 `local-commerce-ai-workflows=1/2`；`ai-commercialization-roi` 回落到 1/2；latest fixture freshness 显示 latestDaily=2026-07-24 / latestFixture=2026-07-24；daily source labels 覆盖 32 fixtures / 160 expectedSignals；taxonomy 显示 split target categories 50/50 used；`pnpm build` 通过。
+  - Acceptance: 1) market-intelligence scaffold 新增 local-commerce-ai-workflows、预算与 migration hint；2) Meituan LongCat / AIGC poster workflow 迁入独立 rule；3) 2026-07-24 fixture 注册进 realCronFixtures，并修复 EN Google/Meituan story 与 Case-Level FAQ；4) 质量评分 28/30。
 
 - [x] P1 Candidate / EXP-252: 将 Google Gemini App / AI Overviews / AI Mode 从 governed enterprise runtime 分流到 consumer-agentic-product-surfaces，消费 EXP-251 后续“Google embedded product surfaces split target”假设 | ICE 8x8x8=512 — commit `8c7847f`
   - Hypothesis: EXP-251 已把 2026-07-24 Google Gemini embedded product surface 接入最新 fixture，但仍复用 governed-agent-deployment-platforms；若不拆出 consumer-agentic-product-surfaces，Gemini App / AI Overviews / AI Mode / Ask YouTube / Docs Live 这类面向用户入口的规模化产品面会继续挤占企业 Agent runtime 容量，并与 creative AI 工具混在一起。

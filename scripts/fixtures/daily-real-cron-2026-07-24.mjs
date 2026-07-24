@@ -74,7 +74,7 @@ export const expectedSignals = [
   { title: 'Google I/O 2026 主线明确：Gemini 进入 Agentic 产品化阶段', sourceProjectionRuleMatches: ['google-gemini-interactions-api-agent-runtime-2026'], enLabel: 'Google / Gemini / agentic product surface', zhEvidence: '来源条目 2：Google I/O 2026 主线明确：Gemini 进入 Agentic 产品化阶段', requiredTokens: ['Gemini App 月活超过 9 亿', 'AI Overviews 月活超过 25 亿', 'AI Mode 一年内超过 10 亿月活'] },
   { title: 'Anthropic：Claude Science 上线，科研工作流成为 AI 产品新战场', sourceProjectionRuleMatches: ['anthropic-claude-science-research-workbench-2026'], enLabel: 'Anthropic / Claude Science / research agent workflow', zhEvidence: '来源条目 3：Anthropic：Claude Science 上线，科研工作流成为 AI 产品新战场', requiredTokens: ['Claude Science 已可用', 'AI workbench', '可审计 artifacts'] },
   { title: 'OpenAI 简化 ChatGPT 模型选择器，降低普通用户选择成本', sourceProjectionRuleMatches: ['openai-chatgpt-model-picker-2026'], enLabel: 'OpenAI / ChatGPT / Instant / model capability update', zhEvidence: '来源条目 4：OpenAI 简化 ChatGPT 模型选择器，降低普通用户选择成本', requiredTokens: ['Instant、Medium、High', 'Pro Standard', 'Pro Extended'] },
-  { title: '中国 AI 动向：美团 LongCat / AIGC / 论文进展信息活跃，但需官方源二次确认', sourceProjectionRuleMatches: ['china-ai-commercialization-roi-2026'], enLabel: 'China / Meituan / LongCat AI commerce workflow', zhEvidence: '来源条目 5：中国 AI 动向：美团 LongCat / AIGC / 论文进展信息活跃，但需官方源二次确认', requiredTokens: ['美团', 'LongCat-2.0', 'AIGC 海报生成系统'] },
+  { title: '中国 AI 动向：美团 LongCat / AIGC / 论文进展信息活跃，但需官方源二次确认', sourceProjectionRuleMatches: ['china-meituan-local-commerce-ai-workflow-2026'], enLabel: 'China / Meituan / LongCat AI commerce workflow', zhEvidence: '来源条目 5：中国 AI 动向：美团 LongCat / AIGC / 论文进展信息活跃，但需官方源二次确认', requiredTokens: ['美团', 'LongCat-2.0', 'AIGC 海报生成系统'] },
 ];
 
 export const bannedFallbackPhrases = [
@@ -126,7 +126,7 @@ export const caseLevelFaqSignals = [
   },
   {
     label: 'Post-training evaluation loop',
-    practicalCaseMatchTerms: ['任务评测集', '人工复核', '失败样本'],
+    practicalCaseMatchTerms: ['任务评测集', '人工复核', '失败样本', '后训练', '评测闭环'],
     sourceStoryMatchTerms: ['持续后训练', '每美元智能', 'RL'],
     requiredTerms: ['evaluation loop', 'post-training jobs', 'cost per successful task'],
     links: ['/en/blog/openclaw-model-fallback-strategy/', '/en/blog/openclaw-security-hardening-2026/'],

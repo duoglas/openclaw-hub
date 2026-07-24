@@ -1,3 +1,14 @@
+## EXP-253 — Local commerce AI workflow split target for Meituan LongCat
+- Hypothesis: EXP-252/251 后续指出 China commerce AI / Meituan LongCat 仍复用 `ai-commercialization-roi`；若不拆出 `local-commerce-ai-workflows`，美团 LongCat、AIGC 海报生成、本地生活推荐/广告/商家运营类信号会继续挤占通用商业化 ROI 容量，且 2026-07-24 latest fixture 未注册会让最新闸门漏检。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/fixtures/daily-real-cron-2026-07-24.mjs`, `src/content/blog/en/openclaw-daily-2026-07-24.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: market-intelligence scaffold 新增 `local-commerce-ai-workflows` split target、effective budget 与 migration hint；新增 `china-meituan-local-commerce-ai-workflow-2026` 字段级 rule，并将 2026-07-24 Meituan LongCat / AIGC poster signal 迁入该 rule；注册 2026-07-24 real cron fixture；修复 07-24 EN Google Gemini story、Meituan story 与 Case-Level FAQ。
+- ICE: 8x8x8=512
+- Start date: 2026-07-24
+- End date: 2026-07-24
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-24 / latestFixture=2026-07-24 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 32 fixtures / 160 expectedSignals；taxonomy 显示 `local-commerce-ai-workflows=1/2`、`ai-commercialization-roi=1/2`、`split target categories: 50/50 used`；registry health、daily generator、case FAQ、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（Meituan LongCat / AIGC commerce workflow 已迁入 local-commerce-ai-workflows；通用 ai-commercialization-roi 回落到 1/2；2026-07-24 latest fixture 注册并纳入最新闸门；EN 07-24 Google/Meituan story 与 Case-Level FAQ 已修复；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 local-commerce-ai-workflows 作为本地生活、商家内容生成、广告/推荐和 marketplace conversion 类 commerce AI 信号的独立容量；下一步可继续处理 cloud-agent-runtime-infrastructure 或 robotics-open-model-research 的满额 effective target。）
+
 ## EXP-252 — Consumer agentic product surface split target for Google Gemini embedded surfaces
 - Hypothesis: EXP-251 已把 2026-07-24 Google Gemini App / AI Overviews / AI Mode / Ask YouTube / Docs Live 信号接入 latest real cron fixture，但该规则仍占用 `governed-agent-deployment-platforms`；若不拆出 `consumer-agentic-product-surfaces`，面向用户入口的 agentic 产品面会继续挤占企业 Agent runtime 容量，并与 consumer creative AI 工具混在一起。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

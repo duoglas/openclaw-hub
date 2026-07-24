@@ -386,6 +386,19 @@ export const FIELD_PROJECTION_RULES = [
     },
   },
   {
+    name: 'china-meituan-local-commerce-ai-workflow-2026',
+    owner: 'daily-source-projection',
+    category: 'market-intelligence',
+    splitTargetCategory: 'local-commerce-ai-workflows',
+    displayLabel: 'China / Meituan / LongCat AI commerce workflow',
+    terms: ['美团', 'LongCat-2.0', 'AIGC 海报生成系统'],
+    details: {
+      what: 'Secondary Chinese AI aggregation surfaced Meituan technical activity around LongCat-2.0, AIGC poster generation, ACL/ICML research, and local-commerce AI workflow signals that still need primary-source confirmation.',
+      why: 'Local commerce AI differs from broad commercialization ROI because the buyer journey includes merchant content creation, recommendation quality, ad production, service operations, and marketplace conversion inside high-frequency daily-life channels.',
+      impact: 'Local-service platforms, merchants, ad-tech teams, and commerce AI vendors should verify official Meituan sources, then test whether LongCat and AIGC poster workflows improve listing quality, campaign turnaround, recommendation conversion, and measurable merchant ROI.',
+    },
+  },
+  {
     name: 'china-waic-product-launch-pipeline-2026',
     owner: 'daily-source-projection',
     category: 'market-intelligence',

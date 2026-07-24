@@ -18,11 +18,11 @@ What happened: NVIDIA argued that agentic AI requires continuous post-training r
 Why it matters: Enterprise agent quality now depends on repeated feedback loops, reinforcement learning, tool-environment updates, and cost-aware infrastructure rather than only pretraining scale.
 Potential impact: AI platform teams should budget for ongoing post-training jobs, production feedback capture, evaluation loops, GPU/network capacity, and cost-per-successful-task metrics before scaling autonomous agents.
 
-### 2. China / WAIC / token cost optimization
+### 2. Google / Gemini / agentic product surface
 
-What happened: Xinhua reported that WAIC 2026 participants are trying to reduce token costs across chips, compute-power coordination, large models, cache pricing, free cached tokens, and intelligent model routing.
-Why it matters: AI commercialization is shifting from whether models work to whether enterprises can run them cheaply and reliably at scale, making cost per task, cache reuse, and routing strategy core infrastructure questions.
-Potential impact: Enterprise AI teams should benchmark model routing, cached-token policy, lightweight-model fallback, compute scheduling, and budget guardrails instead of selecting vendors only by leaderboard scores.
+What happened: Google positioned Gemini App, AI Overviews, AI Mode, Ask YouTube, and Docs Live as embedded AI product surfaces, with Gemini App monthly active users above 900 million, AI Overviews above 2.5 billion monthly active users, and AI Mode crossing 1 billion monthly active users within a year.
+Why it matters: Agentic AI distribution is shifting from standalone chatbots into search, video, documents, and consumer productivity surfaces where usage volume, context, and workflow placement become the defensible layer.
+Potential impact: Product and growth teams should test embedded AI surfaces by task completion, handoff quality, source grounding, latency, and model-tier fit rather than only raw model capability.
 
 ### 3. Anthropic / Claude Science / research agent workflow
 
@@ -36,11 +36,11 @@ What happened: OpenAI simplified ChatGPT model selection into task-oriented opti
 Why it matters: The product shift hides complex model names behind speed and reasoning-strength choices, showing AI interfaces moving from model branding toward task-experience tiers.
 Potential impact: Casual users get lower selection friction, while power users should re-map workflows after Thinking Light removal and validate which tier balances latency, cost, and reasoning depth.
 
-### 5. China / LongCat / AIGC / agent platform
+### 5. China / Meituan / LongCat AI commerce workflow
 
-What happened: The source tracks agent platform, model capability update, AI commerce workflow around China, LongCat, AIGC, ACL, giving the daily brief a named actor and deployment context. The source includes concrete timing or scale signals (AIGC).
-Why it matters: China, LongCat, AIGC, ACL now matters for agent platform, model capability update, AI commerce workflow because buyers must check access control, infrastructure availability, operational risk, and whether the workflow can be measured in production. The source includes concrete timing or scale signals (AIGC).
-Potential impact: Teams tracking China, LongCat, AIGC, ACL should convert this into concrete tests for rollout timing, vendor dependency, governance ownership, budget pressure, and success metrics. The source includes concrete timing or scale signals (AIGC).
+What happened: Secondary Chinese AI aggregation surfaced Meituan technical activity around LongCat-2.0, AIGC poster generation, ACL/ICML research, and local-commerce AI workflow signals that still need primary-source confirmation.
+Why it matters: Local commerce AI differs from broad commercialization ROI because the buyer journey includes merchant content creation, recommendation quality, ad production, service operations, and marketplace conversion inside high-frequency daily-life channels.
+Potential impact: Local-service platforms, merchants, ad-tech teams, and commerce AI vendors should verify official Meituan sources, then test whether LongCat and AIGC poster workflows improve listing quality, campaign turnaround, recommendation conversion, and measurable merchant ROI.
 
 ## Practical Cases
 
@@ -51,6 +51,14 @@ Team suggestion: Pick one repeated workflow, define the data boundary, add revie
 2. Convert signals into personal productivity experiments
 What to learn: Users do not need to adopt every new AI feature. The best first use case is a repeated task where summaries, comparisons, reminders, or draft generation save attention.
 User suggestion: Test AI on one daily routine such as reading notes, travel planning, spreadsheet cleanup, meeting preparation, or learning review before expanding to higher-risk tasks.
+
+## Case-Level FAQ
+
+### How should teams turn NVIDIA post-training into an evaluation loop?
+Treat post-training as a recurring production workflow: define a task evaluation loop, capture failed examples, add human review, schedule post-training jobs, and track cost per successful task. For an OpenClaw-style baseline, start from the [model fallback strategy](/en/blog/openclaw-model-fallback-strategy/) and keep security review in the [hardening checklist](/en/blog/openclaw-security-hardening-2026/).
+
+### How should product teams compare Google Gemini embedded AI surfaces with model tier selection?
+Compare embedded AI surfaces and model tier selection by workflow fit: whether Gemini App, AI Overviews, AI Mode, ChatGPT Instant, Medium, and High reduce task friction in real user journeys. Use [What is OpenClaw](/en/blog/what-is-openclaw/) for workflow framing and the [model fallback strategy](/en/blog/openclaw-model-fallback-strategy/) for tier and fallback tests.
 
 ## Today’s Bottom Line
 
@@ -67,7 +75,7 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 ## Evidence Matrix
 
 - Evidence item 1: NVIDIA / post-training / agentic AI infrastructure — NVIDIA argued that agentic AI requires continuous post-training rather than a one-time train-and-serve cycle, linking Nemotron, NeMo RL, Vera Rubin, and intelligence-per-dollar optimization into the agent infrastructure stack.
-- Evidence item 2: China / WAIC / token cost optimization — Xinhua reported that WAIC 2026 participants are trying to reduce token costs across chips, compute-power coordination, large models, cache pricing, free cached tokens, and intelligent model routing.
+- Evidence item 2: Google / Gemini / agentic product surface — Google positioned Gemini App, AI Overviews, AI Mode, Ask YouTube, and Docs Live as embedded AI product surfaces, with Gemini App monthly active users above 900 million, AI Overviews above 2.5 billion monthly active users, and AI Mode crossing 1 billion monthly active users within a year.
 - Evidence item 3: Anthropic / Claude Science / research agent workflow — Anthropic released Claude Science beta for Pro, Max, Team, and Enterprise users, with macOS/Linux support, research databases, Jupyter/R/HPC/SSH access, GPU compute, and auditable research artifacts.
 - Evidence item 4: OpenAI / ChatGPT / Instant / model capability update — OpenAI simplified ChatGPT model selection into task-oriented options such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended across Plus and Pro users on web, iOS, and Android.
-- Evidence item 5: China / LongCat / AIGC / agent platform — The source tracks agent platform, model capability update, AI commerce workflow around China, LongCat, AIGC, ACL, giving the daily brief a named actor and deployment context. The source includes concrete timing or scale signals (AIGC).
+- Evidence item 5: China / Meituan / LongCat AI commerce workflow — Secondary Chinese AI aggregation surfaced Meituan technical activity around LongCat-2.0, AIGC poster generation, ACL/ICML research, and local-commerce AI workflow signals that still need primary-source confirmation.
