@@ -1,0 +1,129 @@
+---
+title: "AI / 科技日报（2026-07-24）"
+description: "NVIDIA 官方博客强调，Agentic AI 不再只是一次性训练后上线，而是需要持续后训练：模型要不断学习工具变化、生产环境异常、复杂任务反馈。"
+pubDate: 2026-07-24
+tags: ["ai", "tech", "daily", "news"]
+category: "news"
+lang: "zh"
+---
+
+《AI、科技日报》
+2026-07-24 早报
+
+说明：本次检索中 `web_search` 两次失败，Microsoft / Meta 官方页抓取失败；因此尾注 validation 不能写 pass。以下只把 L1 官方直抓到的内容标为“已确认”；中国侧二级来源信息标“待确认”。
+
+## 今日要闻（5条）
+
+1. NVIDIA 把“后训练”定义为 Agentic AI 的核心算力战场
+
+发生了什么：
+NVIDIA 官方博客强调，Agentic AI 不再只是一次性训练后上线，而是需要持续后训练：模型要不断学习工具变化、生产环境异常、复杂任务反馈。NVIDIA 将关键指标从“每 token 成本”扩展到“每美元智能”。
+
+为什么重要：
+这等于把 AI 基建竞争从“推理便宜”推进到“持续改进模型能力是否划算”。
+
+可能影响：
+AI 公司和企业私有模型会更重视 RL、评测、环境模拟、自动化后训练流水线；GPU / AI 工厂需求会继续向训练+推理混合负载倾斜。
+
+状态：已确认  
+来源：NVIDIA Blog
+
+2. Google I/O 2026 主线明确：Gemini 进入 Agentic 产品化阶段
+
+发生了什么：
+Google 官方文章称，Gemini App 月活超过 9 亿；AI Overviews 月活超过 25 亿；AI Mode 一年内超过 10 亿月活。Google 还提到 Ask YouTube、Docs Live、语音驱动文档等产品方向。
+
+为什么重要：
+Google 正在把 AI 从“单点聊天工具”塞进搜索、YouTube、Docs、Maps 等高频入口。
+
+可能影响：
+普通用户会越来越少“打开一个 AI 应用”，而是在搜索、视频、办公里直接用 AI。开发者侧，Google 生态的模型 API 和 TPU 基建会继续放大。
+
+状态：已确认  
+来源：Google Blog
+
+3. Anthropic：Claude Science 上线，科研工作流成为 AI 产品新战场
+
+发生了什么：
+Anthropic 新闻页显示，Claude Science 已可用，定位为科学家的 AI workbench，可集成科研常用工具和包，生成可审计 artifacts，并提供灵活计算资源访问。
+
+为什么重要：
+AI 产品正在从通用聊天，走向垂直专业工作台。科研、药物、材料、工程等高价值场景会成为模型能力落地的重要方向。
+
+可能影响：
+研究人员可能更快完成数据分析、实验记录、代码复现和论文辅助；但也会带来可审计性、引用可靠性和研究责任边界问题。
+
+状态：已确认  
+来源：Anthropic News
+
+4. OpenAI 简化 ChatGPT 模型选择器，降低普通用户选择成本
+
+发生了什么：
+OpenAI 中文帮助中心显示，ChatGPT 模型选择器更新为 Instant、Medium、High、Extra High、Pro Standard、Pro Extended 等更直观选项。
+
+为什么重要：
+模型越来越多后，普通用户很难判断“该选哪个”。OpenAI 把模型命名从技术导向改成任务体验导向。
+
+可能影响：
+用户会更少纠结模型名，更多按速度/推理强度选择；但高级用户仍需要理解不同档位的成本、速度和准确率差异。
+
+状态：已确认  
+来源：OpenAI Help Center
+
+5. 中国 AI 动向：美团 LongCat / AIGC / 论文进展信息活跃，但需官方源二次确认
+
+发生了什么：
+二级 AI 聚合页显示，美团技术团队在 7 月 23 日集中出现多条 AI 进展：ACL / ICML 论文、AIGC 海报生成系统、LongCat-2.0 等。
+
+为什么重要：
+如果属实，说明中国本地生活平台正在把 AI 投入搜索推荐、营销内容生成、Agentic Coding 和大模型基础设施。
+
+可能影响：
+本地生活、电商、广告生成、推荐系统可能进一步 AI 化；但目前我只抓到 L3 二级来源，未抓到美团官方原始公告，不能按“已确认”处理。
+
+状态：待确认  
+来源：AI Toolly 二级聚合页
+
+## 实战案例（1-2个）
+
+1. 普通用户：ChatGPT / Gemini 的选择逻辑可以更简单
+
+可执行建议：
+- 快速问答、改写、翻译：选 Instant / 快速档。
+- 复杂规划、代码、长文分析：选 Medium / High。
+- 重要决策、复杂推理、长链路任务：再上 Extra High / Pro 档。
+
+关键点：
+不要默认永远选最强模型。强模型更慢、更贵；多数日常任务用中档即可。
+
+2. 企业 / 团队：开始补“后训练”和评测闭环
+
+可执行建议：
+- 不要只接一个大模型 API。
+- 建一个小型任务评测集：客服、
+
+## 今日结论
+
+- 最值得关注：企业级 AI 正在加速进入核心业务流程，AI 不再只是聊天工具，而是在进入税务、法务、制造、运维、推理服务等真实生产系统。
+- 给普通用户建议：短期优先选择权限透明、可断开授权、有来源标注的 AI 产品，把它用于信息整理、学习复盘、日常文档和低风险决策辅助。
+- 给团队建议：不要只比较模型榜单，先选一个高频流程做试点，并把权限、审计、成本和人工复核写进上线标准。
+
+## 明日跟踪点
+
+- 关注今日提到的模型、平台或硬件动态是否出现产品化细节。
+- 关注企业案例是否披露真实使用场景、权限控制和成本变化。
+- 关注政策、版权、数据安全或来源标注要求是否进一步收紧。
+
+## 证据矩阵
+
+- 来源条目 1：NVIDIA 把“后训练”定义为 Agentic AI 的核心算力战场 —— NVIDIA 官方博客强调，Agentic AI 不再只是一次性训练后上线，而是需要持续后训练：模型要不断学习工具变化、生产环境异常、复杂任务反馈。NVIDIA 将关键指标从“每 token 成本”扩展到“每美元智能”。
+- 来源条目 2：Google I/O 2026 主线明确：Gemini 进入 Agentic 产品化阶段 —— Google 官方文章称，Gemini App 月活超过 9 亿；AI Overviews 月活超过 25 亿；AI Mode 一年内超过 10 亿月活。Google 还提到 Ask YouTube、Docs Live、语音驱动文档等产品方向。
+- 来源条目 3：Anthropic：Claude Science 上线，科研工作流成为 AI 产品新战场 —— Anthropic 新闻页显示，Claude Science 已可用，定位为科学家的 AI workbench，可集成科研常用工具和包，生成可审计 artifacts，并提供灵活计算资源访问。
+- 来源条目 4：OpenAI 简化 ChatGPT 模型选择器，降低普通用户选择成本 —— OpenAI 中文帮助中心显示，ChatGPT 模型选择器更新为 Instant、Medium、High、Extra High、Pro Standard、Pro Extended 等更直观选项。
+- 来源条目 5：中国 AI 动向：美团 LongCat / AIGC / 论文进展信息活跃，但需官方源二次确认 —— 二级 AI 聚合页显示，美团技术团队在 7 月 23 日集中出现多条 AI 进展：ACL / ICML 论文、AIGC 海报生成系统、LongCat-2.0 等。
+
+## 下一步行动（CTA）
+
+- 先读核心定位：[什么是 OpenClaw](/zh/blog/what-is-openclaw/)
+- 需要落地部署：[OpenClaw VPS 部署完整指南](/zh/blog/openclaw-vps-deployment-complete-guide/)
+- 保障稳定性：[OpenClaw 模型回退策略](/zh/blog/openclaw-model-fallback-strategy/)
