@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-24 11:20
+Last updated: 2026-07-24 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-252: 将 Google Gemini App / AI Overviews / AI Mode 从 governed enterprise runtime 分流到 consumer-agentic-product-surfaces，消费 EXP-251 后续“Google embedded product surfaces split target”假设 | ICE 8x8x8=512 — commit `8c7847f`
+  - Hypothesis: EXP-251 已把 2026-07-24 Google Gemini embedded product surface 接入最新 fixture，但仍复用 governed-agent-deployment-platforms；若不拆出 consumer-agentic-product-surfaces，Gemini App / AI Overviews / AI Mode / Ask YouTube / Docs Live 这类面向用户入口的规模化产品面会继续挤占企业 Agent runtime 容量，并与 creative AI 工具混在一起。
+  - Metrics: 新增 `consumer-agentic-product-surfaces=1/2`；`governed-agent-deployment-platforms` 从 3/4 回落到 2/4，`enterprise-agents` 从 14/14 回落到 13/14；source projection taxonomy、registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) consumer-productivity split scaffold 新增 consumer-agentic-product-surfaces、预算与 migration hint；2) Google Gemini Interactions / Gemini App / AI Overviews / AI Mode 迁入新 target；3) 相关 capacityPlan 与 alternate target 诊断同步到实时 headroom；4) 质量评分 28/30。
 
 - [x] P1 Candidate / EXP-251: 将 2026-07-24 最新双语日报接入 real cron fixture，并修复 Google Gemini 产品面与美团 LongCat 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `92e5623`
   - Hypothesis: 最近24小时新增日报（2026-07-24）暴露 NVIDIA 后训练 / 每美元智能、Google Gemini App / AI Overviews / AI Mode 高用量产品面、Claude Science 科研工作台、ChatGPT Instant/Medium/High 模型选择器与美团 LongCat / AIGC 商业化信号；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC 错配或 LongCat 泛化 fallback，首日索引会漏掉后训练评测闭环、嵌入式 Gemini 分发、科研 Agent、模型档位选择和中国本地生活 AI 商业化长尾入口。

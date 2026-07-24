@@ -786,8 +786,8 @@ export const FIELD_PROJECTION_RULES = [
     ],
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
-      whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms because the signal is about manufacturing, healthcare, energy, and materials workflows rather than generic enterprise agent platforms or enablement programs.',
-      rejectedAlternateTargets: ['enterprise-agent-platforms'],
+      whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms and governed-agent-deployment-platforms because the signal is about manufacturing, healthcare, energy, and materials workflows rather than generic enterprise agent platforms, governed deployment surfaces, or enablement programs.',
+      rejectedAlternateTargets: ['enterprise-agent-platforms', 'governed-agent-deployment-platforms'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 6,
@@ -1042,8 +1042,8 @@ export const FIELD_PROJECTION_RULES = [
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 4,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; migrates the 2026-06-16 partner ecosystem and 2026-07-23 Presence deployment signal into governed-agent-deployment-platforms, preserving enterprise-agent-platforms headroom for broader platform announcements.',
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; keeps the 2026-06-16 partner ecosystem and 2026-07-23 Presence deployment signal in governed-agent-deployment-platforms after Google Gemini product surfaces moved to a consumer split target, preserving enterprise-agent-platforms headroom for broader platform announcements.',
       },
     },
     displayLabels: [
@@ -1295,21 +1295,27 @@ export const FIELD_PROJECTION_RULES = [
   {
     name: 'google-gemini-interactions-api-agent-runtime-2026',
     owner: 'daily-source-projection',
-    category: 'enterprise-agents',
-    splitTargetCategory: 'governed-agent-deployment-platforms',
+    category: 'consumer-productivity',
+    splitTargetCategory: 'consumer-agentic-product-surfaces',
     displayLabel: 'Google / Gemini Interactions API / agent-first runtime',
+    displayLabels: [
+      {
+        label: 'Google / Gemini / agentic product surface',
+        terms: ['Gemini App', 'AI Overviews', 'AI Mode', 'Ask YouTube', 'Docs Live'],
+      },
+    ],
     capacityPlan: {
-      selectedSplitTarget: 'governed-agent-deployment-platforms',
-      whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms because Gemini Interactions API is a governed cross-workflow agent runtime surface, not a generic enterprise-agent platform bucket, single vertical workflow, or training program.',
-      rejectedAlternateTargets: ['enterprise-agent-platforms'],
+      selectedSplitTarget: 'consumer-agentic-product-surfaces',
+      whyNotAlternatives: 'Rejected alternate split targets career-productivity-workflows and consumer-creative-ai because the 2026-07-24 Gemini App, AI Overviews, AI Mode, Ask YouTube, and Docs Live signal is a broad embedded agentic product surface, not a job-search/resume workflow or creative-media tool.',
+      rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 4,
+        capacityDelta: 0,
+        categoryBudget: 2,
         categoryHeadroom: 1,
-        rationale: 'capacity delta 0; migrates Gemini Interactions API into governed-agent-deployment-platforms and releases a generic enterprise-agent-platforms slot without raising parent enterprise-agents budget.',
+        rationale: 'capacity delta 0; moves the latest Google Gemini embedded product surface out of governed-agent-deployment-platforms and into a dedicated consumer-agentic-product-surfaces slot, preserving enterprise Agent runtime headroom and separating adoption-scale product surfaces from creative AI tools.',
       },
     },
-    terms: ['Interactions API', 'Gemini 模型和智能体的主要接口', '服务端状态', '后台执行', 'Managed Agents', 'Deep Research 升级'],
+    terms: ['Interactions API', 'Gemini 模型和智能体的主要接口', '服务端状态', '后台执行', 'Managed Agents', 'Deep Research 升级', 'Gemini App', 'AI Overviews', 'AI Mode', 'Ask YouTube', 'Docs Live', '语音驱动文档'],
     details: {
       what: 'Google positioned the Interactions API as the main interface for Gemini models and agents, with server-side state, background execution, tool composition, Managed Agents, remote execution, and Deep Research upgrades.',
       why: 'Model APIs are shifting from one-shot prompt completion toward persistent agent runtimes that manage state, tools, long-running jobs, and recoverable execution.',
@@ -1569,10 +1575,10 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms because Claude Tag is a governed shared team-collaboration agent platform surface, not a generic enterprise-agent platform bucket, vertical workflow, or enablement program.',
       rejectedAlternateTargets: ['enterprise-agent-platforms'],
       budgetImpact: {
-        capacityDelta: 1,
+        capacityDelta: 0,
         categoryBudget: 4,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; migrates Claude Tag into governed-agent-deployment-platforms and releases a generic enterprise-agent-platforms slot while keeping parent enterprise-agents matching narrow.',
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; keeps Claude Tag in governed-agent-deployment-platforms after Google Gemini product surfaces moved to a consumer split target, while keeping parent enterprise-agents matching narrow.',
       },
     },
     terms: ['Claude Tag', '@Claude', 'Claude Enterprise', 'Slack'],
@@ -1615,8 +1621,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Anthropic / Claude Science / research agent workflow',
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
-      whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms because Claude Science is a research workflow workbench, not a generic enterprise agent platform or enablement program.',
-      rejectedAlternateTargets: ['enterprise-agent-platforms'],
+      whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms and governed-agent-deployment-platforms because Claude Science is a research workflow workbench, not a generic enterprise agent platform, governed deployment surface, or enablement program.',
+      rejectedAlternateTargets: ['enterprise-agent-platforms', 'governed-agent-deployment-platforms'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 6,
@@ -1702,8 +1708,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'AWS / FDE / enterprise agent deployment',
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
-      whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms because AWS FDE embeds engineers into customer production workflows, not a generic enterprise agent platform or enablement-only program.',
-      rejectedAlternateTargets: ['enterprise-agent-platforms'],
+      whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms and governed-agent-deployment-platforms because AWS FDE embeds engineers into customer production workflows, not a generic enterprise agent platform, governed deployment surface, or enablement-only program.',
+      rejectedAlternateTargets: ['enterprise-agent-platforms', 'governed-agent-deployment-platforms'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 6,

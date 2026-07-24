@@ -1,3 +1,14 @@
+## EXP-252 — Consumer agentic product surface split target for Google Gemini embedded surfaces
+- Hypothesis: EXP-251 已把 2026-07-24 Google Gemini App / AI Overviews / AI Mode / Ask YouTube / Docs Live 信号接入 latest real cron fixture，但该规则仍占用 `governed-agent-deployment-platforms`；若不拆出 `consumer-agentic-product-surfaces`，面向用户入口的 agentic 产品面会继续挤占企业 Agent runtime 容量，并与 consumer creative AI 工具混在一起。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: consumer-productivity scaffold 新增 `consumer-agentic-product-surfaces` split target、effective budget 与 migration hint；将 `google-gemini-interactions-api-agent-runtime-2026` 从 enterprise governed deployment 迁入 consumer agentic product surfaces，并为 Gemini App / AI Overviews / AI Mode / Ask YouTube / Docs Live 增加字段级 label terms；同步 stale capacityPlan headroom 与 alternate target rejection。
+- ICE: 8x8x8=512
+- Start date: 2026-07-24
+- End date: 2026-07-24
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `consumer-agentic-product-surfaces=1/2`、`governed-agent-deployment-platforms=2/4`、`enterprise-agents=13/14`、`split target categories: 49/49 used`；source projection registry health、daily source labels 与 `pnpm build` 通过。
+- Result: pass（Google Gemini embedded product surface 已迁入 consumer-agentic-product-surfaces；enterprise Agent runtime 释放 1 个父类 headroom，governed deployment target 回落到 2/4；taxonomy、registry health、daily source labels 与 build 通过；commit `8c7847f`；质量评分 28/30。）
+- Decision: scale（保留 consumer-agentic-product-surfaces 作为 Gemini App、AI Overviews、AI Mode、Ask YouTube、Docs Live 这类嵌入式 agentic 产品入口的独立容量；下一步可继续拆分 China commerce AI / Meituan LongCat，避免 AI commercialization ROI 被本地生活工作流信号占满。）
+
 ## EXP-251 — 2026-07-24 latest real cron fixture and Google/LongCat field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-07-24）暴露 NVIDIA post-training / intelligence-per-dollar、Google Gemini App / AI Overviews / AI Mode 高用量产品面、Claude Science research workbench、ChatGPT Instant/Medium/High model picker 与 Meituan LongCat / AIGC commerce AI 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 WAIC token-cost 错配或 LongCat 泛化 fallback，首日索引会漏掉后训练评测闭环、嵌入式 Gemini 分发、科研 Agent、模型档位选择和中国本地生活 AI 商业化长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-24.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-24.md`, `src/content/blog/zh/openclaw-daily-2026-07-24.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

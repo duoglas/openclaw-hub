@@ -19,7 +19,7 @@ export const ALLOWED_SOURCE_PROJECTION_CATEGORIES = [
 export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'cloud-infrastructure': 12,
   'company-finance': 5,
-  'consumer-productivity': 7,
+  'consumer-productivity': 8,
   'developer-tools': 4,
   'enterprise-agents': 14,
   'frontier-models': 7,
@@ -45,6 +45,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'cloud-model-distribution',
   'cloud-agent-runtime-infrastructure',
   'consumer-creative-ai',
+  'consumer-agentic-product-surfaces',
   'content-licensing-markets',
   'desktop-computer-use',
   'digital-regulation-compliance',
@@ -96,6 +97,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'cloud-agent-runtime-infrastructure': 1,
   'company-finance': 5,
   'consumer-creative-ai': 5,
+  'consumer-agentic-product-surfaces': 2,
   'content-licensing-markets': 3,
   'desktop-computer-use': 2,
   'developer-tools': 4,
@@ -151,6 +153,7 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_RECOMMENDATIONS = {
     'career-productivity-workflows',
     'chatgpt-control-surfaces',
     'consumer-creative-ai',
+    'consumer-agentic-product-surfaces',
   ],
   'enterprise-agents': [
     'enterprise-agent-platforms',
@@ -316,16 +319,20 @@ export const SOURCE_PROJECTION_CATEGORY_SPLIT_MIGRATION_HINTS = {
   ],
   'consumer-productivity': [
     {
-      target: 'career-productivity-workflows',
-      match: ['jobs', 'resume', '职位', '简历', 'freelance'],
-    },
-    {
       target: 'chatgpt-control-surfaces',
       match: ['model-picker', 'scheduled-tasks', 'chatgpt-finance', 'pulse', 'instant', 'thinking', 'scheduled'],
     },
     {
       target: 'consumer-creative-ai',
-      match: ['facebook-ai-tools', 'xinhua-ai-fiction', 'fiction-character', 'alexa-plus', 'ai mode', 'alexa', '图片', '视频', '换装', 'creative', '小说角色'],
+      match: ['facebook-ai-tools', 'xinhua-ai-fiction', 'fiction-character', 'alexa-plus', 'alexa', '图片', '视频', '换装', 'creative', '小说角色'],
+    },
+    {
+      target: 'consumer-agentic-product-surfaces',
+      match: ['gemini-app', 'ai-overviews', 'ai-mode', 'ask-youtube', 'docs-live', 'agentic-product-surface', 'gemini app', 'ai overviews', 'ai mode'],
+    },
+    {
+      target: 'career-productivity-workflows',
+      match: ['jobs', 'resume', '职位', '简历', 'freelance'],
     },
   ],
   'market-intelligence': [
@@ -1453,9 +1460,9 @@ function validateSelfTests() {
     'category split migration batches: none',
     'category split migration details: none',
     'new rule capacity plan required for: none',
-    'split target categories: 48/48 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
+    'split target categories: 49/49 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0',
     'existing rule split target coverage: 0/3 covered, missing=3, invalid=0, mismatched=0',
-    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / cloud-training-runtime-infrastructure / edge-hybrid-compute-infrastructure / hpc-science-compute-infrastructure; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai; developer-tools -> china-code-agent-runtime / code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / governed-agent-deployment-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture / open-model-long-context; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / token-economics-optimization / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / agent-runtime-safety / model-account-security / youth-safety-controls',
+    'proposed rule split target scaffold: cloud-infrastructure -> cloud-model-distribution / cloud-agent-runtime-infrastructure / cloud-training-runtime-infrastructure / edge-hybrid-compute-infrastructure / hpc-science-compute-infrastructure; company-finance -> ai-lab-private-financing / public-market-readiness / robotics-capital-markets; consumer-productivity -> career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai / consumer-agentic-product-surfaces; developer-tools -> china-code-agent-runtime / code-agent-runtime / desktop-computer-use / domestic-compute-software; enterprise-agents -> enterprise-agent-platforms / governed-agent-deployment-platforms / vertical-workflow-agents / agent-enablement-programs; frontier-models -> frontier-model-task-capability / frontier-model-cloud-distribution / frontier-model-inference-architecture / open-model-long-context; market-intelligence -> market-sizing-reports / supply-chain-cost-pressure / token-economics-optimization / waic-product-launch-pipeline / waic-industry-agenda / ai-commercialization-roi / content-licensing-markets / regional-ai-ecosystems / regional-office-expansion / regional-research-ecosystems / workforce-ai-enablement; physical-ai-robotics -> robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems / assistive-exoskeleton-robotics / humanoid-embodied-training / robotics-open-model-research; policy-governance -> ai-policy-standards / ai-industrial-policy / aerospace-compute-infrastructure / digital-regulation-compliance; product-safety -> high-sensitivity-ai-deployment / agent-runtime-safety / model-account-security / youth-safety-controls',
     'largest owner share: daily-source-projection=3/3 (100%)',
     'largest category share: physical-ai-robotics=2/3 (67%)',
   ]) {
@@ -1569,9 +1576,9 @@ function validateSelfTests() {
     ],
   }));
   for (const fragment of [
-    'category split recommendations: consumer-productivity: split into career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai (86% used + 1 headroom)',
-    'category split migration batches: consumer-productivity: career-productivity-workflows=1, chatgpt-control-surfaces=3, consumer-creative-ai=2',
-    'category split migration details: consumer-productivity: career-productivity-workflows=[chatgpt-jobs-resume-tools], chatgpt-control-surfaces=[openai-chatgpt-model-picker-2026|openai-chatgpt-scheduled-tasks-pulse-2026|openai-chatgpt-finance-dictation-gpt45-retirement-2026], consumer-creative-ai=[meta-facebook-ai-tools-2026|xinhua-ai-fiction-character-conservatism-2026]',
+    'category split recommendations: none',
+    'category split migration batches: none',
+    'category split migration details: none',
   ]) {
     if (!recentSignalSplitMigrationDiagnostic.includes(fragment)) {
       failures.push(`source projection taxonomy recent-signal split-migration self-test failed: ${fragment}`);
@@ -1730,8 +1737,8 @@ function validateSelfTests() {
         terms: ['scheduled tasks and ChatGPT finance control surfaces'],
         capacityPlan: {
           selectedSplitTarget: 'chatgpt-control-surfaces',
-          whyNotAlternatives: 'Rejected alternate split targets because this rule is specifically about ChatGPT control surfaces, not consumer-creative-ai or career-productivity-workflows.',
-          rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai'],
+          whyNotAlternatives: 'Rejected alternate split targets because this rule is specifically about ChatGPT control surfaces, not consumer-creative-ai, consumer-agentic-product-surfaces, or career-productivity-workflows.',
+          rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai', 'consumer-agentic-product-surfaces'],
           budgetImpact: {
 
             capacityDelta: 0,
