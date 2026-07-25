@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-24 17:35
+Last updated: 2026-07-25 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -22,6 +22,12 @@ Manager: main session
 ## Done
 
 
+
+
+- [x] P1 Candidate / EXP-254: 将 2026-07-25 最新双语日报接入 real cron fixture，并修复 Health in ChatGPT、KAIST、Isaac Healthcare、WAIC 签约与 small business enablement 字段级 projection | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-25）暴露 Health in ChatGPT 敏感健康数据、NVIDIA/KAIST 韩国 agentic AI 研究实验室、Isaac for Healthcare 医疗物理仿真、WAIC 闭幕采购/签约规模与 OpenAI 小企业 AI 赋能五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留通用 fallback，首日索引会漏掉健康数据权限、区域 AI 研究生态、医疗机器人仿真验证、中国 AI 项目管线和小企业 agent 工作流入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-07-25 / latestFixture=2026-07-25 / expectedSignals=5；daily source projection labels 覆盖 33 fixtures / 165 expectedSignals；registry health、taxonomy、daily EN/ZH generator、bilingual pair fixture、case-level FAQ、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-25.mjs`；2) 为 Health in ChatGPT、NVIDIA/KAIST、Isaac for Healthcare、WAIC procurement pipeline 与 OpenAI small business program 增加 fixture-backed label/detailVariants；3) EN 2026-07-25 页面移除泛化 fallback 并补齐 Health / medical robotics Case-Level FAQ；4) 质量评分 28/30。
 
 - [x] P1 Candidate / EXP-253: 将 Meituan LongCat / AIGC 从通用 ai-commercialization-roi 拆出 local-commerce-ai-workflows，并注册 2026-07-24 latest fixture | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-252/251 后续指出 China commerce AI / Meituan LongCat 仍复用 ai-commercialization-roi；若不拆出 local-commerce-ai-workflows，本地生活、电商海报生成、推荐/广告/商家运营类信号会继续挤占通用商业化 ROI 容量，并且 2026-07-24 latest fixture 未进入 realCronFixtures 会削弱最新闸门覆盖。

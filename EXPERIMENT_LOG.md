@@ -550,6 +550,17 @@
 
 # EXPERIMENT_LOG.md
 
+## EXP-254 — 2026-07-25 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-07-25）暴露 OpenAI Health in ChatGPT、NVIDIA/KAIST 韩国 agentic AI 研究实验室、NVIDIA Isaac for Healthcare 医疗物理仿真、WAIC 闭幕采购/签约规模与 OpenAI small-business enablement 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留 generic source-tracks fallback，首日索引会漏掉个人健康数据权限、区域研究生态、医疗机器人仿真验证、中国 AI 项目管线与小企业 agent 工作流长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-25.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-25.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-25 real cron fixture；复用现有 split targets，为 Health in ChatGPT、NVIDIA/KAIST、Isaac for Healthcare、WAIC procurement pipeline 与 OpenAI small business AI enablement 增加 fixture-backed display label / detailVariants；重写 EN 2026-07-25 页面，移除前三条泛化 fallback，并补齐 Health in ChatGPT 与 medical robotics simulation Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-25
+- End date: 2026-07-25
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-25 / latestFixture=2026-07-25 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 33 fixtures / 165 expectedSignals；source projection registry health/taxonomy、daily EN/ZH generator、bilingual pair fixture、case-level FAQ、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-25 最新双语日报已由同日 real cron fixture 覆盖；Health in ChatGPT、NVIDIA/KAIST、Isaac for Healthcare、WAIC procurement pipeline 与 OpenAI small business enablement 均输出字段级 projection；EN 页面移除通用 fallback 并补齐 Health / medical robotics Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-25 fixture 作为个人健康数据权限、韩国 agentic AI 研究生态、医疗机器人仿真验证、中国 AI 采购/项目管线和小企业 AI enablement 的首日索引基线；下一步可继续处理 cloud-agent-runtime-infrastructure 或 robotics-open-model-research 的满额 effective target。）
+
 ### EXP-213
 - Hypothesis: EXP-212 已把 `budgetImpact` 的 capacity delta 与 effective headroom 自动比对，但 `whyNotAlternatives` 仍可能只写“creative AI / career workflows / digital compliance”这类自然语言；若不要求它点名当前可分流的 effective alternate target ID，维护者仍可能漏提真实可用 sibling split target，导致容量治理回到人工判断。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

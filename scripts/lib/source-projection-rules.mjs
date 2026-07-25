@@ -68,7 +68,23 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-simulation-training',
-    terms: ['ICRA', 'sim-to-real'],
+    displayLabels: [
+      {
+        label: 'NVIDIA / Isaac for Healthcare / medical robotics simulation',
+        terms: ['Isaac for Healthcare', 'Medical Physics Simulation', '医疗物理仿真'],
+      },
+    ],
+    terms: ['ICRA', 'sim-to-real', 'Isaac for Healthcare', 'Medical Physics Simulation', '医疗物理仿真'],
+    detailVariants: [
+      {
+        terms: ['Isaac for Healthcare', 'Medical Physics Simulation', '医疗物理仿真'],
+        details: {
+          what: 'NVIDIA open-sourced a GPU-accelerated Medical Physics Simulation framework inside Isaac for Healthcare to model anatomy, instrument contact, sensor input, and training environments for medical robotics development.',
+          why: 'Medical robots need realistic rare-event and contact-dynamics data before clinical deployment; simulation lets teams discover failure modes earlier without treating synthetic evidence as clinical validation.',
+          impact: 'Surgical robotics, catheter navigation, and medical digital-twin teams should benchmark simulation fidelity, regulatory evidence, hardware transfer, and human review gates before moving from virtual tests to patient-facing workflows.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA highlighted eight ICRA robotics papers focused on sim-to-real transfer, including multi-arm scheduling, navigation across robot forms, complex grasping, precision assembly, and vision-language-action models.',
       why: 'Robotics deployment is constrained by expensive real-world data, reliability, and generalization, so simulation training plus real-world correction is becoming a core path to physical AI.',
@@ -406,12 +422,24 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'China / WAIC / AI product launch pipeline',
     displayLabels: [
       {
+        label: 'China / WAIC / AI industry procurement and project pipeline',
+        terms: ['超 40 万人次', '203.6 亿元', '409 亿元'],
+      },
+      {
         label: 'China / WAIC / edge AI embodied compute deployment',
         terms: ['端侧 AI', '具身智能', '国产超节点'],
       },
     ],
-    terms: ['超 300 款', '1100 余家', '端侧 AI、具身智能、国产算力继续落地'],
+    terms: ['超 300 款', '1100 余家', '端侧 AI、具身智能、国产算力继续落地', '超 40 万人次', '203.6 亿元', '409 亿元', '177 个采购团组'],
     detailVariants: [
+      {
+        terms: ['超 40 万人次', '203.6 亿元', '409 亿元'],
+        details: {
+          what: 'Xinhua reported that WAIC 2026 closed in Shanghai with more than 400,000 visitors, 177 procurement groups expecting about 20.36 billion yuan in intended purchases, and 32 Shanghai AI key projects signed for more than 40.9 billion yuan of investment.',
+          why: 'The closing numbers move WAIC from conference messaging into a procurement and project pipeline signal across infrastructure, agents, embodied intelligence, scientific intelligence, and industry deployment.',
+          impact: 'China AI vendors, robotics teams, compute suppliers, and enterprise buyers should track which intended purchases become signed deployments, budgets, delivery milestones, and measurable operating outcomes.',
+        },
+      },
       {
         terms: ['端侧 AI', '具身智能', '国产超节点'],
         details: {
@@ -618,8 +646,22 @@ export const FIELD_PROJECTION_RULES = [
         label: 'US / OpenAI / ChatGPT / agent platform',
         terms: ['OpenAI 6月4日更新 ChatGPT 版本说明', 'Plus/Pro 美国用户先用'],
       },
+      {
+        label: 'OpenAI / Health in ChatGPT / personal health data controls',
+        terms: ['Health in ChatGPT', 'Apple Health', '医疗记录'],
+      },
     ],
-    terms: ['Lockdown Mode', 'Memory 会自动保持更新', '文件下载等高风险外部能力'],
+    terms: ['Lockdown Mode', 'Memory 会自动保持更新', '文件下载等高风险外部能力', 'Health in ChatGPT', 'Apple Health', '医疗记录', '健康数据', '不用于训练基础模型'],
+    detailVariants: [
+      {
+        terms: ['Health in ChatGPT', 'Apple Health', '医疗记录'],
+        details: {
+          what: 'OpenAI rolled out Health in ChatGPT for logged-in US users aged 18 and older, allowing connections to Apple Health and supported medical records while saying connected health data is not used for base-model training or ad targeting.',
+          why: 'ChatGPT is entering sensitive personal health-data workflows where usefulness depends on consent, data boundaries, source traceability, and clear separation from diagnosis or advertising use.',
+          impact: 'Users can organize checkups, sleep, activity, medication, and visit records into questions for clinicians, while healthcare and wearable ecosystems should audit authorization scope, revocation, retention, and clinical-disclaimer controls.',
+        },
+      },
+    ],
     details: {
       what: 'OpenAI’s June 4 ChatGPT release notes say Memory can stay more up to date and reduce outdated or contradictory memories, while Lockdown Mode is now available to all logged-in users to limit browsing, deep research, agents, and file downloads.',
       why: 'The update ties personalization to isolation controls: a more persistent assistant is more useful only if users and teams can reduce prompt-injection risk, external-content exposure, and accidental data leakage.',
@@ -632,7 +674,23 @@ export const FIELD_PROJECTION_RULES = [
     category: 'cloud-infrastructure',
     splitTargetCategory: 'cloud-training-runtime-infrastructure',
     displayLabel: 'Korea / NVIDIA / CEO / compute infrastructure',
-    terms: ['黄仁勋到访首尔', '韩国在机器人、物理 AI、存储制造', 'Korea ecosystem 2026'], 
+    displayLabels: [
+      {
+        label: 'Korea / NVIDIA / KAIST / agentic AI research lab',
+        terms: ['KAIST', '联合 AI 研究实验室', 'AI Summit'],
+      },
+    ],
+    terms: ['黄仁勋到访首尔', '韩国在机器人、物理 AI、存储制造', 'Korea ecosystem 2026', 'KAIST', '联合 AI 研究实验室', 'AI Summit'], 
+    detailVariants: [
+      {
+        terms: ['KAIST', '联合 AI 研究实验室', 'AI Summit'],
+        details: {
+          what: 'NVIDIA and KAIST opened a joint AI research lab in Seoul during NVIDIA AI Summit, with Korean government and industry participants including Samsung, Hyundai, and NAVER tied to the agentic AI research agenda.',
+          why: 'The signal connects national AI capability, university research, industrial champions, and NVIDIA infrastructure into one regional ecosystem rather than a simple chip-supply announcement.',
+          impact: 'Korean semiconductor, automotive, search, robotics, and manufacturing teams should watch for shared research outputs, compute access, deployment pilots, and how sovereign AI priorities shape vendor choices.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA CEO Jensen Huang visited Seoul and said Grace Blackwell is performing well, Vera Rubin has entered full production, and the second half of the year will be busy for AI infrastructure buildout, with Korea highlighted for robotics, physical AI, memory, and manufacturing.',
       why: 'The signal shows AI competition shifting from model releases alone toward compute supply chains, sovereign AI capacity, robotics deployment, and local industrial ecosystems.',
@@ -1140,7 +1198,23 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'agent-enablement-programs',
     displayLabel: 'OpenAI / Academy / Foundations / agent platform',
-    terms: ['AI Foundations', 'Applied AI Foundations', 'Agents and Workflows'],
+    displayLabels: [
+      {
+        label: 'OpenAI / ChatGPT / small business AI enablement',
+        terms: ['small businesses program', 'Dropbox', 'Intuit'],
+      },
+    ],
+    terms: ['AI Foundations', 'Applied AI Foundations', 'Agents and Workflows', 'small businesses program', 'Dropbox', 'Intuit', 'Atlassian', 'Wix'],
+    detailVariants: [
+      {
+        terms: ['small businesses program', 'Dropbox', 'Intuit'],
+        details: {
+          what: 'OpenAI launched a ChatGPT for small businesses program with online training, in-person AI Academy support, getting-started guides, and partner resources from Dropbox, Shopify, Intuit, Slack, Atlassian, Wix, and others.',
+          why: 'AI adoption is moving from enterprise pilots into small-business workflows where owners need packaged guidance for marketing, ecommerce, accounting, customer service, inventory, and collaboration rather than raw model access.',
+          impact: 'Small-business SaaS vendors and operators should test one measurable workflow first, then compare partner integrations, permission boundaries, cost, handoff quality, and repeatable task completion before broad rollout.',
+        },
+      },
+    ],
     details: {
       what: 'OpenAI Academy added three enterprise AI courses — AI Foundations, Applied AI Foundations, and Agents and Workflows — to train employees on prompting, workflow design, and agent collaboration.',
       why: 'The signal shifts AI competition from model access alone toward organizational enablement: training, repeatable workflows, and supervised agent use become part of enterprise adoption.',
