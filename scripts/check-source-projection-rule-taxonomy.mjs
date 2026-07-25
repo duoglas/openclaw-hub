@@ -95,7 +95,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'china-code-agent-runtime': 2,
   'code-agent-runtime': 3,
   'cloud-model-distribution': 4,
-  'cloud-agent-runtime-infrastructure': 1,
+  'cloud-agent-runtime-infrastructure': 2,
   'company-finance': 5,
   'consumer-creative-ai': 5,
   'consumer-agentic-product-surfaces': 2,

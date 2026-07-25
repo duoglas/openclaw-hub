@@ -1,3 +1,14 @@
+## EXP-255 — Cloud agent runtime infrastructure capacity headroom
+- Hypothesis: EXP-254 后续指出 cloud-agent-runtime-infrastructure 仍是 1/1 满额；若不恢复一个有效 headroom，后续 AWS AgentCore、AWS Context、托管 Agent runtime、企业知识图谱 grounding、安全漏洞闭环与 runtime isolation 信号会被迫错投到 cloud-model-distribution 或依赖临时 capacityPlan 扩容。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `cloud-agent-runtime-infrastructure` effective category budget 从 1 提升到 2；同步 `aws-agent-continuum-enterprise-agentcore-2026` structured capacityPlan 的 categoryBudget/categoryHeadroom/rationale，使实时 taxonomy summary 与规则内 capacityPlan 一致。
+- ICE: 8x8x8=512
+- Start date: 2026-07-25
+- End date: 2026-07-25
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `cloud-agent-runtime-infrastructure=1/2 (1 headroom)`、`cloud-model-distribution=2/4`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（cloud-agent-runtime-infrastructure 已从 1/1 满额恢复到 1/2，有 1 个有效 headroom；AWS AgentCore / Context capacityPlan 已同步 categoryBudget=2、categoryHeadroom=1；taxonomy stale capacityPlan 闸门通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 cloud-agent-runtime-infrastructure 作为后续托管 Agent runtime、企业知识图谱 grounding、安全漏洞闭环和 runtime isolation 信号的独立容量入口；下一步可继续处理 robotics-open-model-research 或 frontier-model-task-capability 的 0 headroom split target。）
+
 ## EXP-253 — Local commerce AI workflow split target for Meituan LongCat
 - Hypothesis: EXP-252/251 后续指出 China commerce AI / Meituan LongCat 仍复用 `ai-commercialization-roi`；若不拆出 `local-commerce-ai-workflows`，美团 LongCat、AIGC 海报生成、本地生活推荐/广告/商家运营类信号会继续挤占通用商业化 ROI 容量，且 2026-07-24 latest fixture 未注册会让最新闸门漏检。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/fixtures/daily-real-cron-2026-07-24.mjs`, `src/content/blog/en/openclaw-daily-2026-07-24.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

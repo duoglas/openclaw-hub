@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-25 11:20
+Last updated: 2026-07-25 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-255: 将 cloud-agent-runtime-infrastructure 有效容量从 1 提升到 2，并同步 AWS AgentCore capacityPlan，消费 EXP-254 后续"cloud-agent-runtime-infrastructure 满额容量"假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-254 后续建议继续处理 cloud-agent-runtime-infrastructure 满额容量；若 AWS Continuum / AWS Context / Bedrock AgentCore 仍占满 1/1，后续托管 Agent runtime、企业知识图谱 grounding、安全漏洞闭环和 runtime isolation 信号会被迫错投到 cloud-model-distribution 或临时扩容。
+  - Metrics: source projection taxonomy 显示 cloud-agent-runtime-infrastructure 从 1/1 变为 1/2，并保留 cloud-model-distribution=2/4、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.cloud-agent-runtime-infrastructure` 提升到 2；2) AWS AgentCore / Context rule 的 structured capacityPlan budgetImpact 同步 categoryBudget=2、categoryHeadroom=1；3) taxonomy stale budget/headroom 闸门通过，避免容量计划与实时 summary 漂移；4) 质量评分 27/30。
 
 
 

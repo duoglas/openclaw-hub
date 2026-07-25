@@ -1349,9 +1349,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 1,
-        categoryHeadroom: 0,
-        rationale: 'capacity delta 0; uses cloud-agent-runtime-infrastructure capacity for a fixture-backed AWS AgentCore runtime and Context grounding signal while preserving cloud-model-distribution for pure model availability updates.',
+        categoryBudget: 2,
+        categoryHeadroom: 1,
+        rationale: 'capacity delta 0; uses one of two cloud-agent-runtime-infrastructure slots for a fixture-backed AWS AgentCore runtime and Context grounding signal while preserving one slot for future managed agent runtime updates and cloud-model-distribution for pure model availability updates.',
       },
     },
     terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore', 'Dave Treadwell', 'AWS Compute and ML Services', 'Dave Brown'],
