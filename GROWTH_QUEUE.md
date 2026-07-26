@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-25 17:20
+Last updated: 2026-07-26 11:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-256: 将 robotics-open-model-research 有效容量从 2 提升到 3，并同步 NVIDIA ICML open-model capacityPlan，消费 EXP-255 后续“robotics-open-model-research 0 headroom”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-255 后续建议继续处理 robotics-open-model-research 0 headroom；若 NVIDIA Physical AI Agent Skills 与 NVIDIA ICML open-model research infrastructure 仍占满 2/2，后续 Cosmos / GR00T / LeRobot / 开放机器人模型、数据集与可复现实验工具信号会被迫错投到 robotics-simulation-training 或 robotics-commercial-deployment。
+  - Metrics: source projection taxonomy 显示 robotics-open-model-research 从 2/2 变为 2/3，并保留 robotics-simulation-training=3/6、robotics-commercial-deployment=2/4、autonomous-mobility-systems=1/3、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.robotics-open-model-research` 提升到 3；2) NVIDIA ICML open-model research rule 的 structured capacityPlan budgetImpact 同步 categoryBudget=3、categoryHeadroom=1；3) taxonomy stale budget/headroom 闸门通过，避免容量计划与实时 summary 漂移；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-255: 将 cloud-agent-runtime-infrastructure 有效容量从 1 提升到 2，并同步 AWS AgentCore capacityPlan，消费 EXP-254 后续"cloud-agent-runtime-infrastructure 满额容量"假设 | ICE 8x8x8=512 — commit `(this commit)`

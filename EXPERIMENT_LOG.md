@@ -1,3 +1,14 @@
+## EXP-256 — Robotics open model research capacity headroom
+- Hypothesis: EXP-255 后续指出 robotics-open-model-research 仍是 2/2 满额；若不恢复一个有效 headroom，后续 Cosmos、GR00T、LeRobot、开放机器人模型、数据集、teleoperation、可复现实验工具与 robotics research infrastructure 信号会被迫错投到 robotics-simulation-training、robotics-commercial-deployment 或 autonomous-mobility-systems。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `robotics-open-model-research` effective category budget 从 2 提升到 3；同步 `nvidia-icml-open-models-robotics-research-2026` structured capacityPlan 的 categoryBudget/categoryHeadroom/rationale，使实时 taxonomy summary 与规则内 capacityPlan 一致。
+- ICE: 8x8x8=512
+- Start date: 2026-07-26
+- End date: 2026-07-26
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `robotics-open-model-research=2/3 (1 headroom)`、`robotics-simulation-training=3/6`、`robotics-commercial-deployment=2/4`、`autonomous-mobility-systems=1/3`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（robotics-open-model-research 已从 2/2 满额恢复到 2/3，有 1 个有效 headroom；NVIDIA ICML open-model research capacityPlan 已同步 categoryBudget=3、categoryHeadroom=1；taxonomy stale capacityPlan 闸门通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 robotics-open-model-research 作为后续开放机器人模型、Cosmos / GR00T / LeRobot、数据集、teleoperation 与可复现实验工具信号的独立容量入口；下一步可继续处理 frontier-model-task-capability 或 frontier-model-inference-architecture 的 0 headroom split target。）
+
 ## EXP-255 — Cloud agent runtime infrastructure capacity headroom
 - Hypothesis: EXP-254 后续指出 cloud-agent-runtime-infrastructure 仍是 1/1 满额；若不恢复一个有效 headroom，后续 AWS AgentCore、AWS Context、托管 Agent runtime、企业知识图谱 grounding、安全漏洞闭环与 runtime isolation 信号会被迫错投到 cloud-model-distribution 或依赖临时 capacityPlan 扩容。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
