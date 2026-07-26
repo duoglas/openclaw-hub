@@ -1,3 +1,14 @@
+## EXP-257 — Frontier model task capability capacity headroom
+- Hypothesis: EXP-256 后续指出 frontier-model-task-capability 仍是 3/3 满额；若不恢复一个有效 headroom，后续 GPT / Claude 任务能力、长时间执行、决策辅助、实时语音协作、agent benchmark 与 frontier task workflow 信号会被迫错投到 frontier-model-cloud-distribution、frontier-model-inference-architecture 或 open-model-long-context。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `frontier-model-task-capability` effective category budget 从 3 提升到 4，使当前 Claude Opus 4.8、Anthropic Opus agent coding 与 OpenAI GPT-5.5 Instant / GPT-Live 三条任务能力规则保留 1 个新增信号 headroom。
+- ICE: 8x8x8=512
+- Start date: 2026-07-26
+- End date: 2026-07-26
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `frontier-model-task-capability=3/4 (1 headroom)`、`frontier-model-inference-architecture=2/2`、`frontier-model-cloud-distribution=1/2`、`open-model-long-context=1/2`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（frontier-model-task-capability 已从 3/3 满额恢复到 3/4，有 1 个有效 headroom；taxonomy、registry health 与 daily source labels 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 frontier-model-task-capability 作为后续 GPT / Claude 任务能力、长时间执行、决策辅助、实时语音协作与 agent benchmark 信号的独立容量入口；下一步可继续处理 frontier-model-inference-architecture 的 0 headroom split target。）
+
 ## EXP-256 — Robotics open model research capacity headroom
 - Hypothesis: EXP-255 后续指出 robotics-open-model-research 仍是 2/2 满额；若不恢复一个有效 headroom，后续 Cosmos、GR00T、LeRobot、开放机器人模型、数据集、teleoperation、可复现实验工具与 robotics research infrastructure 信号会被迫错投到 robotics-simulation-training、robotics-commercial-deployment 或 autonomous-mobility-systems。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
