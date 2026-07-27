@@ -1,3 +1,14 @@
+## EXP-258 — Frontier model inference architecture capacity headroom
+- Hypothesis: EXP-257 后续指出 frontier-model-inference-architecture 仍是 2/2 满额；若不恢复一个有效 headroom，后续 DiffusionGemma / diffusion language model、Blackwell / MLPerf、MoE inference efficiency、performance-per-watt、低延迟本地推理与 frontier inference architecture 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution 或 cloud-training-runtime-infrastructure。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `frontier-model-inference-architecture` effective category budget 从 2 提升到 3，使当前 Google DeepMind DiffusionGemma 与 NVIDIA Blackwell MLPerf / performance-per-watt 两条架构规则保留 1 个新增信号 headroom。
+- ICE: 8x8x8=512
+- Start date: 2026-07-27
+- End date: 2026-07-27
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `frontier-model-inference-architecture=2/3 (1 headroom)`、`frontier-model-task-capability=3/4`、`frontier-model-cloud-distribution=1/2`、`open-model-long-context=1/2`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（frontier-model-inference-architecture 已从 2/2 满额恢复到 2/3，有 1 个有效 headroom；taxonomy、registry health 与 daily source labels 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 frontier-model-inference-architecture 作为后续非自回归推理、MoE inference efficiency、AI factory performance-per-watt、低延迟本地模型和 frontier inference architecture 信号的独立容量入口；下一步可继续处理 ai-industrial-policy 或 cloud-training-runtime-infrastructure 的 1 headroom 高利用 target。）
+
 ## EXP-257 — Frontier model task capability capacity headroom
 - Hypothesis: EXP-256 后续指出 frontier-model-task-capability 仍是 3/3 满额；若不恢复一个有效 headroom，后续 GPT / Claude 任务能力、长时间执行、决策辅助、实时语音协作、agent benchmark 与 frontier task workflow 信号会被迫错投到 frontier-model-cloud-distribution、frontier-model-inference-architecture 或 open-model-long-context。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

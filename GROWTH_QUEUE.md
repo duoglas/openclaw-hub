@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-26 11:22
+Last updated: 2026-07-27 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,6 +21,11 @@ Manager: main session
 
 ## Done
 
+
+- [x] P1 Candidate / EXP-258: 将 frontier-model-inference-architecture 有效容量从 2 提升到 3，消费 EXP-257 后续“frontier model inference architecture 0 headroom”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-257 后续建议继续处理 frontier-model-inference-architecture 0 headroom；若 DiffusionGemma 扩散式文本生成与 Blackwell / MLPerf / performance-per-watt 仍占满 2/2，后续非自回归推理、MoE 推理效率、AI factory 能耗、低延迟本地模型与训练/推理架构信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution 或 cloud-training-runtime-infrastructure。
+  - Metrics: source projection taxonomy 显示 frontier-model-inference-architecture 从 2/2 变为 2/3，并保留 frontier-model-task-capability=3/4、frontier-model-cloud-distribution=1/2、open-model-long-context=1/2、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.frontier-model-inference-architecture` 提升到 3；2) taxonomy 输出 frontier-model-inference-architecture=2/3、有 1 个有效 headroom；3) frontier-models split target scaffold 不新增未使用 target，保持 50/50 used；4) 质量评分 27/30。
 
 - [x] P1 Candidate / EXP-257: 将 frontier-model-task-capability 有效容量从 3 提升到 4，消费 EXP-256 后续“frontier model task capability 0 headroom”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-256 后续建议继续处理 frontier-model-task-capability 0 headroom；若 Claude Opus、Anthropic Opus agent coding 与 GPT-5.5 Instant/GPT-Live 仍占满 3/3，后续 GPT / Claude 任务能力、长时间执行、决策辅助、实时语音协作与 agent benchmark 信号会被迫错投到 cloud distribution、inference architecture 或 open-model long-context。
