@@ -1,10 +1,20 @@
 ---
-title: "AGENTS.md Team Guide: Unifying AI Coding Tool Configuration"
-description: "A deep dive into AGENTS.md, CLAUDE.md, and .cursorrules — the three key AI configuration files. Includes file structures, templates, team sharing strategies, and best practices for standardizing your team's AI coding workflow."
+title: "Cursor IDE AGENTS.md Project Configuration: Format, Rules & Examples (2026)"
+description: "Configure Cursor with AGENTS.md and .cursor/rules in 2026. Includes project-root format, nested AGENTS.md precedence, MDC rule examples, CLAUDE.md comparison, and team templates."
 pubDate: 2026-02-11
-tags: ["agentic-engineering", "guide", "agents-md", "claude-md", "cursorrules", "team-workflow"]
+updatedDate: 2026-07-27
+tags: ["cursor", "cursor ide", "agentic-engineering", "guide", "agents-md", "claude-md", "cursor-rules", "team-workflow"]
 category: "tutorial"
 lang: "en"
+faq:
+  - question: "Does Cursor support AGENTS.md?"
+    answer: "Yes. Cursor documents AGENTS.md as a Markdown-based alternative to .cursor/rules for Agent instructions. Put AGENTS.md in the project root and keep the instructions relevant to the repository."
+  - question: "What is the correct Cursor project rules format in 2026?"
+    answer: "Cursor project rules live under .cursor/rules and commonly use .mdc files with optional frontmatter such as description, globs, and alwaysApply. The older root .cursorrules file is legacy and should be migrated."
+  - question: "Can a monorepo have more than one AGENTS.md file?"
+    answer: "Yes. Put a root AGENTS.md at the repository level and nested AGENTS.md files inside packages or modules. The closest applicable file provides the more specific instructions."
+  - question: "Should I use AGENTS.md or .cursor/rules?"
+    answer: "Use AGENTS.md for portable repository instructions shared across coding agents. Add .cursor/rules when you need Cursor-specific scoping, globs, or always-on rule metadata. Many teams use both with AGENTS.md as the source of truth."
 ---
 
 ## 📋 Why Do You Need AI Configuration Files?
@@ -19,19 +29,20 @@ Core problems AI config files solve:
 - 🧠 **Context**: Gives AI knowledge of your architecture and conventions
 - 🔒 **Safety**: Limits what the AI can do
 
-## 🗂️ The Three Configuration Files
+## 🗂️ Current project instruction formats
 
-There are currently three mainstream AI configuration files:
+The useful distinction in 2026 is between portable repository instructions and tool-specific rules:
 
-| File | Tool | Scope | Standardization |
-|------|------|-------|----------------|
-| **AGENTS.md** | Universal (OpenAI Codex, etc.) | All AI tools | 🟢 Emerging standard |
-| **CLAUDE.md** | Claude Code | Anthropic ecosystem | 🟡 Proprietary format |
-| **.cursorrules** | Cursor | Cursor IDE | 🟡 Proprietary format |
+| File | Tool | Scope | Best use |
+|------|------|-------|----------|
+| **AGENTS.md** | Cursor, Codex, Jules, and other coding agents | Repository or nested directory | Portable project context and commands |
+| **.cursor/rules/*.mdc** | Cursor IDE | Project, file patterns, or always-on | Cursor-specific scoped rules |
+| **CLAUDE.md** | Claude Code | User, project, or directory | Claude-specific instructions |
+| **.cursorrules** | Older Cursor versions | Project root | Legacy format; migrate to `.cursor/rules` |
 
-### AGENTS.md — Universal AI Behavior Standard
+### AGENTS.md — portable project instructions
 
-AGENTS.md emerged in late 2025 as a **universal standard**. It's not tied to any specific tool — it provides project context and behavioral guidelines for all AI coding assistants.
+[AGENTS.md](https://agents.md/) is an open Markdown format for coding-agent instructions. Cursor officially supports it as a simpler alternative to `.cursor/rules`, and the same file can be reused by other compatible agents.
 
 ```
 project-root/
@@ -68,19 +79,34 @@ project-root/
 - 🔧 Supports global (user-level) + project-level + directory-level
 - 📋 Can include bash commands (build, test commands)
 
-### .cursorrules — Cursor IDE Specific
+### `.cursor/rules` — Cursor project rules
 
-`.cursorrules` is Cursor's project-level configuration file, placed in the project root.
+Current Cursor project rules are stored under `.cursor/rules` and are version-controlled with the repository:
 
-```
+```text
 project-root/
-└── .cursorrules        ← Cursor config
+├── AGENTS.md
+└── .cursor/
+    └── rules/
+        ├── core.mdc
+        ├── frontend.mdc
+        └── tests.mdc
 ```
 
-**Characteristics**:
-- 🖥️ Only read by Cursor IDE
-- 📄 Single file, no hierarchical support
-- 🎨 Best for defining coding style and project conventions
+An `.mdc` rule can include metadata that controls when it applies:
+
+```md
+---
+description: Frontend conventions
+globs: ["src/**/*.tsx", "src/**/*.ts"]
+alwaysApply: false
+---
+
+- Prefer server components unless browser state is required.
+- Run `pnpm lint` and `pnpm test` after changes.
+```
+
+Use Cursor rules when you need file-pattern scoping or Cursor-specific behavior. The root `.cursorrules` file is now a legacy format.
 
 ## 📝 Template Examples
 
@@ -168,33 +194,24 @@ This is a Next.js 15 + TypeScript web application for [project description].
 - "Refactor": Ensure tests pass before AND after
 ```
 
-### .cursorrules Template
+### Cursor `.cursor/rules/core.mdc` template
 
+```md
+---
+description: Core TypeScript and repository rules
+alwaysApply: true
+---
+
+# Project standards
+
+- Use TypeScript strict mode; do not introduce `any`.
+- Prefer server components unless browser state is required.
+- Use prepared statements for database queries.
+- Never commit `.env` files or credentials.
+- Run `pnpm lint`, `pnpm test`, and `pnpm build` before finishing.
 ```
-You are a senior TypeScript developer working on a Next.js 15 project.
 
-## Style
-- Use functional components with hooks
-- Prefer server components by default, add "use client" only when needed
-- Use Tailwind CSS for styling, no CSS modules
-- Write concise, readable code
-
-## Patterns
-- Error handling: use Result pattern (ok/err) instead of try/catch for business logic
-- API responses: always return typed responses using the ApiResponse<T> type
-- Database queries: always use prepared statements via Drizzle
-
-## Testing
-- Write tests for all new functions
-- Use describe/it blocks with clear test names
-- Mock external services, don't mock internal modules
-
-## Don't
-- Don't use default exports (except pages and layouts)
-- Don't add console.log (use the logger utility)
-- Don't use string concatenation for SQL
-- Don't skip TypeScript types
-```
+Keep the portable explanation of the project in `AGENTS.md`; keep Cursor-only scoping and editor behavior in `.cursor/rules`.
 
 ## 🔄 Team Sharing Strategies
 
@@ -205,7 +222,7 @@ You are a senior TypeScript developer working on a Next.js 15 project.
 # The following files should be version-controlled:
 AGENTS.md
 CLAUDE.md
-.cursorrules
+.cursor/rules/*.mdc
 ```
 
 **Pros**: Everyone auto-syncs, version history is tracked
@@ -215,8 +232,8 @@ CLAUDE.md
 
 ```
 # Team-shared (committed to Git)
-AGENTS.md          ← Team standards
-.cursorrules       ← Team standards
+AGENTS.md                 ← Portable team standards
+.cursor/rules/core.mdc    ← Cursor-specific rules
 
 # Personal config (not committed)
 ~/.claude/CLAUDE.md  ← Personal Claude global config
@@ -227,15 +244,16 @@ In `.gitignore`:
 # Don't ignore team config files
 !AGENTS.md
 !CLAUDE.md
-!.cursorrules
+!.cursor/
+!.cursor/rules/
 ```
 
 ### Strategy 3: Monorepo Multi-Project
 
 ```
 monorepo/
-├── AGENTS.md              ← Global rules
-├── .cursorrules           ← Global Cursor rules
+├── AGENTS.md              ← Global portable rules
+├── .cursor/rules/         ← Cursor-specific project rules
 ├── packages/
 │   ├── web/
 │   │   ├── AGENTS.md      ← Web frontend-specific rules
@@ -285,19 +303,19 @@ Config files aren't write-once-forget:
 - 🐛 When AI repeatedly makes a mistake → add a rule
 - 🆕 Tech stack changes → update immediately
 
-### 4. Unify Core Content Across All Three Files 🤝
+### 4. Keep one source of truth 🤝
 
 If your team uses both Cursor and Claude Code:
+
 ```markdown
-# AGENTS.md — Contains full project standards (source of truth)
+# AGENTS.md — portable project standards and commands
 
-# CLAUDE.md — References AGENTS.md + Claude-specific additions
-See AGENTS.md for project standards.
-[Claude-specific additions here]
+# CLAUDE.md — Claude-specific additions; avoid copying the whole AGENTS.md
 
-# .cursorrules — Condensed version in Cursor-friendly format
-[Condensed version of AGENTS.md rules]
+# .cursor/rules/*.mdc — Cursor-only scopes, globs, or editor behavior
 ```
+
+Do not maintain three full copies of the same rules. Duplicated instructions drift and eventually conflict.
 
 ### 5. Add a "Forbidden" List 🚫
 
@@ -338,13 +356,18 @@ Explicitly tell AI what NOT to do:
 - [ ] Add 3-5 core coding rules
 - [ ] Add build/test commands
 - [ ] Add a "Forbidden" list
-- [ ] If using Cursor: create `.cursorrules`
-- [ ] If using Claude Code: create `CLAUDE.md`
+- [ ] If using Cursor-specific scopes: create `.cursor/rules/*.mdc`
+- [ ] If using Claude Code-specific behavior: create `CLAUDE.md`
 - [ ] Commit to Git for team sync
 - [ ] Schedule monthly reviews and updates
 
 ---
 
 Configuration files are the "infrastructure" of agentic engineering. Spend 30 minutes setting them up, save your team hundreds of hours of rework. 🏗️
+
+## Official references
+
+- [AGENTS.md open format](https://agents.md/)
+- [Cursor Rules documentation](https://cursor.com/docs/rules)
 
 *Want to learn how to roll out agentic engineering across your team? Read our [Team Adoption Guide](/blog/en/agentic-engineering-team-adoption).*
