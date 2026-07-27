@@ -1,10 +1,20 @@
 ---
-title: "OpenClaw Install & First-Run Errors: Complete Troubleshooting Guide (2026)"
-description: "Fix every common OpenClaw installation and first-run error — Node.js version mismatch, npm install failures, config validation errors, API key connection issues, systemd service setup, and port conflicts. Step-by-step commands included."
+title: "OpenClaw Install, Gateway Timeout & First-Run Errors (2026)"
+description: "Fix OpenClaw install and gateway timeout errors on Tencent Cloud, VPS, Ubuntu, Docker, and local machines. Covers Node.js, npm, port 18789, SSH tunnels, systemd, and provider timeouts."
 pubDate: 2026-02-17
-tags: ["openclaw", "install", "troubleshooting", "node", "npm", "systemd", "guide"]
+updatedDate: 2026-07-27
+tags: ["openclaw", "install", "gateway timeout", "tencent cloud", "vps", "troubleshooting", "node", "npm", "systemd", "guide"]
 category: "guide"
 lang: "en"
+faq:
+  - question: "Why does OpenClaw Gateway time out on Tencent Cloud?"
+    answer: "The most common causes are a loopback-only Gateway being opened through the public IP, a missing SSH tunnel, an incorrect port, a stopped Gateway service, or a cloud security group blocking the chosen access method. Keep port 18789 private and use an SSH tunnel or Tailscale Serve."
+  - question: "Should I open port 18789 in a Tencent Cloud security group?"
+    answer: "Usually no. The safer setup keeps the Gateway bound to 127.0.0.1 and forwards it through SSH or Tailscale. An SSH tunnel only requires the SSH port, normally TCP 22, to be reachable."
+  - question: "How do I test whether OpenClaw Gateway is running on a VPS?"
+    answer: "Run openclaw gateway status, then check the listener with ss -ltnp and request http://127.0.0.1:18789 locally. If those work, the Gateway is healthy and the remaining problem is remote access or authentication."
+  - question: "Is an AI provider timeout the same as a Gateway timeout?"
+    answer: "No. A Gateway timeout affects the local OpenClaw control connection, normally port 18789. A provider timeout occurs when the VPS cannot reach an external model API. Test the Gateway locally first, then test the provider endpoint separately."
 ---
 
 You followed the install guide, ran the commands, and... something broke. This guide covers every common error from `npm install` through your first successful gateway start — with exact commands to diagnose and fix each one.
@@ -445,6 +455,76 @@ openclaw doctor --fix
 
 ---
 
+## 6A. OpenClaw Gateway timeout on Tencent Cloud or another VPS
+
+A common cloud deployment failure looks like this:
+
+- OpenClaw starts on the Tencent Cloud CVM or Lighthouse instance.
+- `openclaw gateway status` works over SSH.
+- Opening `http://SERVER_IP:18789` from a laptop times out.
+
+This usually does **not** mean OpenClaw failed to install. The Gateway binds to loopback by default, so it listens on `127.0.0.1:18789` instead of the server's public interface.
+
+### Step 1: test the Gateway on the server
+
+SSH into the VPS and run:
+
+```bash
+openclaw gateway status
+openclaw status --deep
+ss -ltnp | grep 18789
+curl -I http://127.0.0.1:18789/
+```
+
+If the local `curl` succeeds, the Gateway is running. Do not keep restarting it—the remaining problem is how you are reaching it remotely.
+
+### Step 2: use an SSH tunnel — safest quick fix
+
+Run this on your laptop, not on the Tencent Cloud server:
+
+```bash
+ssh -N -L 18789:127.0.0.1:18789 ubuntu@YOUR_TENCENT_CLOUD_PUBLIC_IP
+```
+
+Then open:
+
+```text
+http://127.0.0.1:18789/
+```
+
+Use the Gateway token or password when the Control UI asks for authentication. The Tencent Cloud security group only needs to allow your SSH port, normally TCP 22; you do not need to expose TCP 18789 publicly.
+
+### Step 3: use Tailscale for persistent private access
+
+For an always-on VPS, Tailscale Serve is easier than maintaining a public reverse proxy:
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up --ssh --hostname=openclaw
+openclaw config set gateway.tailscale.mode serve
+openclaw gateway restart
+```
+
+Check the assigned name with `tailscale status`, then access the HTTPS address from a device signed into the same tailnet.
+
+### If the timeout is from an AI provider
+
+A model API timeout is separate from the Gateway listener. Test both layers independently:
+
+```bash
+# Gateway control plane
+curl -I http://127.0.0.1:18789/
+
+# General outbound HTTPS/DNS
+curl -I https://registry.npmjs.org/
+```
+
+If the Gateway works locally but a model request times out, check the provider endpoint, DNS, outbound firewall, regional availability, and proxy configuration. Opening port 18789 will not fix an outbound provider timeout.
+
+Official reference: [OpenClaw remote Gateway access](https://docs.openclaw.ai/gateway/remote).
+
+---
+
 ## 7. First channel connection failures
 
 ### Telegram bot won't connect
@@ -522,6 +602,7 @@ openclaw gateway start
 | 429 rate limit | [API keys](#4-api-key-and-provider-errors) | Add fallback models |
 | systemd service failed | [Systemd](#5-systemd-service-issues) | Check ExecStart path + env |
 | EADDRINUSE | [Port conflicts](#6-port-conflicts-eaddrinuse) | Kill process or change port |
+| Gateway timeout on Tencent Cloud/VPS | [Remote Gateway](#6a-openclaw-gateway-timeout-on-tencent-cloud-or-another-vps) | Test locally, then use SSH/Tailscale |
 | Telegram no messages | [Channels](#7-first-channel-connection-failures) | Check token + privacy mode |
 
 ---
