@@ -6,7 +6,7 @@
 - Start date: 2026-07-27
 - End date: 2026-07-27
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `frontier-model-inference-architecture=2/3 (1 headroom)`、`frontier-model-task-capability=3/4`、`frontier-model-cloud-distribution=1/2`、`open-model-long-context=1/2`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（frontier-model-inference-architecture 已从 2/2 满额恢复到 2/3，有 1 个有效 headroom；taxonomy、registry health 与 daily source labels 通过；commit `(this commit)`；质量评分 27/30。）
+- Result: pass（frontier-model-inference-architecture 已从 2/2 满额恢复到 2/3，有 1 个有效 headroom；taxonomy、registry health 与 daily source labels 通过；commit `3ed56ba`；质量评分 27/30。）
 - Decision: scale（保留 frontier-model-inference-architecture 作为后续非自回归推理、MoE inference efficiency、AI factory performance-per-watt、低延迟本地模型和 frontier inference architecture 信号的独立容量入口；下一步可继续处理 ai-industrial-policy 或 cloud-training-runtime-infrastructure 的 1 headroom 高利用 target。）
 
 ## EXP-257 — Frontier model task capability capacity headroom
