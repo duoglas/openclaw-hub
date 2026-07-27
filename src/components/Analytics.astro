@@ -50,11 +50,39 @@ const cfToken = import.meta.env.CF_WEB_ANALYTICS_TOKEN || '';
           }
         };
 
+        var getAffiliateProvider = function (url) {
+          if (url.hostname === "www.vultr.com" && url.searchParams.has("ref")) return "vultr";
+          if (url.hostname === "m.do.co" && url.pathname.indexOf("/c/") === 0) return "digitalocean";
+          if (url.hostname === "curl.qcloud.com") return "tencent-cloud";
+          return "";
+        };
+
         window.addEventListener("openclaw:growth", function (e) {
           try {
             send(e && e.detail);
           } catch (_) {}
         });
+
+        // Track monetization intent without sending affiliate IDs, query strings,
+        // page text, or any visitor-provided data.
+        document.addEventListener("click", function (e) {
+          try {
+            var target = e && e.target;
+            var anchor = target && target.closest ? target.closest("a[href]") : null;
+            if (!anchor) return;
+            var url = new URL(anchor.href, location.href);
+            var provider = getAffiliateProvider(url);
+            if (!provider) return;
+            send({
+              name: "affiliate_click",
+              lang: document.documentElement.lang || "",
+              path: location.pathname,
+              kind: provider,
+              href: url.origin + url.pathname,
+              label: "outbound-affiliate"
+            });
+          } catch (_) {}
+        }, true);
       } catch (_) {}
     })();
   </script>

@@ -1,20 +1,45 @@
 ---
-title: "OpenClaw Telegram 409 Conflict Fix (terminated by other getUpdates request) — 2026 Checklist"
-description: "A command-first troubleshooting guide for the most common OpenClaw Telegram error: 409 Conflict from competing getUpdates clients. Covers duplicate instances, stale webhooks, systemd/docker overlap, and stable deployment patterns."
+title: "Telegram Bot API 409 Conflict: Fix 'terminated by other getUpdates request' (2026)"
+description: "Fix Telegram Bot API error 409: terminated by another getUpdates request. Find duplicate polling processes across OpenClaw, Python, Node.js, systemd, Docker, and VPS deployments."
 pubDate: 2026-02-28
-tags: ["openclaw", "telegram", "409 conflict", "getupdates", "troubleshooting"]
+updatedDate: 2026-07-27
+tags: ["telegram bot api", "openclaw", "telegram", "409 conflict", "getupdates", "troubleshooting"]
 category: "guide"
 lang: "en"
+faq:
+  - question: "What does '409 Conflict: terminated by other getUpdates request' mean?"
+    answer: "It means two or more processes are calling Telegram Bot API getUpdates with the same bot token. Telegram long polling supports only one active poller per bot, so a newer request terminates the previous one."
+  - question: "How many getUpdates processes can a Telegram bot run?"
+    answer: "Only one long-polling getUpdates process should run for a bot token. If you need multiple application replicas, use one dedicated update consumer and distribute work internally, or switch to a webhook architecture."
+  - question: "Can an old webhook cause this exact 409 error?"
+    answer: "Not usually. An active webhook produces a different conflict saying getUpdates cannot be used while a webhook is active. The exact 'terminated by other getUpdates request' message points to another polling client."
+  - question: "How do I fix Telegram 409 in OpenClaw?"
+    answer: "Stop every OpenClaw instance using the token, including local, VPS, systemd, Docker, staging, and old test processes. Then start one gateway and confirm the 409 message no longer appears in the logs."
+  - question: "Will rotating the Telegram bot token fix a 409 conflict?"
+    answer: "It can disconnect an unknown old poller, but it should be a last resort. First locate duplicate runtimes. If you rotate the token, update the one intended deployment and revoke or stop every old configuration."
 ---
 
-If your logs show this error, you’re dealing with a polling ownership conflict:
+If your Telegram bot logs show this exact error, you have a polling ownership conflict:
 
 ```text
 409 Conflict: terminated by other getUpdates request
 ```
 
-Meaning: **the same Bot Token is being polled by more than one client at the same time**.  
-OpenClaw Telegram integration uses long polling, and Telegram allows only one active poller per bot token.
+## Quick answer
+
+**The same Telegram bot token is being used by two or more `getUpdates` clients.** Stop every duplicate bot process, container, service, VPS instance, development session, or automation that uses that token. Then start exactly one polling process.
+
+For OpenClaw, the shortest safe recovery flow is:
+
+```bash
+openclaw gateway stop
+ps -ef | grep -Ei "openclaw|telegram" | grep -v grep
+# Stop any duplicate process or deployment you find.
+openclaw gateway start
+openclaw logs --follow
+```
+
+This error is defined by Telegram Bot API long polling behavior: [`getUpdates`](https://core.telegram.org/bots/api#getupdates) must not be called concurrently for the same bot. The fix applies to OpenClaw, Python libraries such as python-telegram-bot or aiogram, Node.js bots, Docker, systemd, PM2, Kubernetes, and custom polling scripts.
 
 This guide gives you a practical flow: contain → find cause → stabilize.
 
@@ -83,21 +108,27 @@ systemctl --user disable --now openclaw 2>/dev/null || true
 
 ---
 
-## 3) Root cause B: stale webhook conflicts with polling
+## 3) Check for a webhook conflict — a different 409 message
 
-Even if you now use polling, an old webhook from another service can still break updates.
+An active webhook can also block polling, but it normally produces a different error similar to:
+
+```text
+Conflict: can't use getUpdates method while webhook is active
+```
+
+That is not the same as `terminated by other getUpdates request`. Check it separately if your logs mention a webhook.
 
 Check webhook status:
 
 ```bash
-# replace TOKEN with your real bot token
-curl "https://api.telegram.org/botTOKEN/getWebhookInfo"
+export TELEGRAM_BOT_TOKEN='replace-with-your-token'
+curl "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getWebhookInfo"
 ```
 
-If `url` is not empty, delete webhook:
+If `url` is not empty, delete the webhook:
 
 ```bash
-curl "https://api.telegram.org/botTOKEN/deleteWebhook"
+curl "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/deleteWebhook?drop_pending_updates=false"
 ```
 
 Then restart OpenClaw:
@@ -153,6 +184,8 @@ docker compose ps
 docker compose up -d --scale openclaw=1
 ```
 
+For Kubernetes, PM2, or another process manager, apply the same rule: one Telegram polling replica per token. Scaling the web application is fine, but the update consumer must remain a singleton unless you move to [Telegram webhooks](https://core.telegram.org/bots/api#setwebhook).
+
 ---
 
 ## 6) Post-fix verification checklist
@@ -191,13 +224,24 @@ Practical baseline: 2 vCPU / 2GB RAM.
 ```bash
 openclaw gateway stop
 ps -ef | grep -i openclaw | grep -v grep
-curl "https://api.telegram.org/botTOKEN/getWebhookInfo"
-curl "https://api.telegram.org/botTOKEN/deleteWebhook"
+export TELEGRAM_BOT_TOKEN='replace-with-your-token'
+curl "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getWebhookInfo"
 openclaw gateway start
 openclaw logs --follow
 ```
 
-If conflict persists, a second runtime still exists somewhere else (another host/container/service). Clean up by following sections A/C/Docker.
+If the exact `terminated by other getUpdates request` conflict persists, a second runtime still exists somewhere else. Check another host, container, service manager, staging deployment, development machine, or forgotten script.
+
+Do not repeatedly call `deleteWebhook` for this exact error unless `getWebhookInfo` actually shows an active webhook. A competing `getUpdates` poller is the root cause.
+
+---
+
+## Official Telegram Bot API references
+
+- [`getUpdates` — long polling](https://core.telegram.org/bots/api#getupdates)
+- [`getWebhookInfo` — inspect webhook state](https://core.telegram.org/bots/api#getwebhookinfo)
+- [`setWebhook` — webhook delivery](https://core.telegram.org/bots/api#setwebhook)
+- [`deleteWebhook` — return from webhook to polling](https://core.telegram.org/bots/api#deletewebhook)
 
 ---
 

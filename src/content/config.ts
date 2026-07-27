@@ -11,6 +11,10 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     category: z.enum(['guide', 'comparison', 'tutorial', 'news', 'review', 'analysis']).default('guide'),
     lang: z.enum(['en', 'zh']).default('en'),
+    faq: z.array(z.object({
+      question: z.string(),
+      answer: z.string(),
+    })).optional().default([]),
   }),
 });
 
