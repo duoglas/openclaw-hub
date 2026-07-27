@@ -1,3 +1,14 @@
+## EXP-259 — AI industrial policy capacity headroom
+- Hypothesis: EXP-258 后续指出 ai-industrial-policy 仍是 6/7 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续低空经济、工业互联网、国产算力政策、AI+制造、数据基础设施与 6G/卫星融合政策信号会被迫错投到 ai-policy-standards、digital-regulation-compliance 或 aerospace-compute-infrastructure。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `ai-industrial-policy` effective category budget 从 7 提升到 8，使当前 6 条产业政策规则保留 2 个新增信号 headroom。
+- ICE: 8x8x8=512
+- Start date: 2026-07-27
+- End date: 2026-07-27
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `ai-industrial-policy=6/8 (2 headroom)`、`policy-governance=11/11`、`ai-policy-standards=3/4`、`digital-regulation-compliance=1/3`、`aerospace-compute-infrastructure=1/2`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（ai-industrial-policy 已从 6/7 高利用恢复到 6/8，有 2 个有效 headroom；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 ai-industrial-policy 作为后续工业政策、6G/卫星融合、数据基础设施、AI+制造与国产算力政策信号的独立容量入口；下一步可继续处理 cloud-training-runtime-infrastructure 或 vertical-workflow-agents 的 1 headroom 高利用 target。）
+
 ## EXP-258 — Frontier model inference architecture capacity headroom
 - Hypothesis: EXP-257 后续指出 frontier-model-inference-architecture 仍是 2/2 满额；若不恢复一个有效 headroom，后续 DiffusionGemma / diffusion language model、Blackwell / MLPerf、MoE inference efficiency、performance-per-watt、低延迟本地推理与 frontier inference architecture 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution 或 cloud-training-runtime-infrastructure。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

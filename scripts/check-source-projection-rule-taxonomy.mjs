@@ -85,7 +85,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'cloud-training-runtime-infrastructure': 6,
   'edge-hybrid-compute-infrastructure': 3,
   'hpc-science-compute-infrastructure': 3,
-  'ai-industrial-policy': 7,
+  'ai-industrial-policy': 8,
   'ai-policy-standards': 4,
   'aerospace-compute-infrastructure': 2,
   'autonomous-mobility-systems': 3,

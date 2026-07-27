@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-27 11:20
+Last updated: 2026-07-27 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,6 +21,11 @@ Manager: main session
 
 ## Done
 
+
+- [x] P1 Candidate / EXP-259: 将 ai-industrial-policy 有效容量从 7 提升到 8，消费 EXP-258 后续“ai-industrial-policy 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-258 后续建议继续处理 ai-industrial-policy 的高利用容量；若 6 条国家数据局具身智能、省级算力、6G/移动 AI/卫星、部省 6G 试点、ICT 创新计划与工业 5G 专网信号继续挤在 7-slot target 中，后续低空经济、工业互联网、国产算力政策、AI+制造与数据基础设施政策信号会被迫错投到 ai-policy-standards、digital-regulation-compliance 或 aerospace-compute-infrastructure。
+  - Metrics: source projection taxonomy 显示 ai-industrial-policy 从 6/7 变为 6/8，并保留 policy-governance=11/11、ai-policy-standards=3/4、digital-regulation-compliance=1/3、aerospace-compute-infrastructure=1/2、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.ai-industrial-policy` 提升到 8；2) taxonomy 输出 ai-industrial-policy=6/8、有 2 个有效 headroom；3) policy-governance 父类不新增 fallback，split target scaffold 不漂移；4) 质量评分 27/30。
 
 - [x] P1 Candidate / EXP-258: 将 frontier-model-inference-architecture 有效容量从 2 提升到 3，消费 EXP-257 后续“frontier model inference architecture 0 headroom”假设 | ICE 8x8x8=512 — commit `3ed56ba`
   - Hypothesis: EXP-257 后续建议继续处理 frontier-model-inference-architecture 0 headroom；若 DiffusionGemma 扩散式文本生成与 Blackwell / MLPerf / performance-per-watt 仍占满 2/2，后续非自回归推理、MoE 推理效率、AI factory 能耗、低延迟本地模型与训练/推理架构信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution 或 cloud-training-runtime-infrastructure。

@@ -731,8 +731,8 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 7,
-        categoryHeadroom: 1,
+        categoryBudget: 8,
+        categoryHeadroom: 2,
         rationale: 'capacity delta 0; uses existing ai-industrial-policy capacity for a fixture-backed 6G/mobile-AI infrastructure signal after aerospace compute moved to a dedicated split target.',
       },
     },
@@ -1296,8 +1296,8 @@ export const FIELD_PROJECTION_RULES = [
     ],
     capacityPlan: {
       selectedSplitTarget: 'ai-policy-standards',
-      whyNotAlternatives: 'Rejected alternate split targets because WAICO is an international governance and standards-coordination signal, not ai-industrial-policy or digital-regulation-compliance.',
-      rejectedAlternateTargets: ['digital-regulation-compliance'],
+      whyNotAlternatives: 'Rejected alternate split targets ai-industrial-policy and digital-regulation-compliance because WAICO is an international governance and standards-coordination signal, not an industrial policy or digital compliance signal.',
+      rejectedAlternateTargets: ['ai-industrial-policy', 'digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 4,
@@ -1687,8 +1687,8 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 7,
-        categoryHeadroom: 1,
+        categoryBudget: 8,
+        categoryHeadroom: 2,
         rationale: 'capacity delta 0; uses existing ai-industrial-policy capacity for a fixture-backed industrial AI infrastructure policy signal after aerospace compute moved to a dedicated split target.',
       },
     },
@@ -2047,8 +2047,8 @@ export const FIELD_PROJECTION_RULES = [
     ],
     capacityPlan: {
       selectedSplitTarget: 'aerospace-compute-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets because the signal is specifically about AI-space compute, remote sensing, reusable launch, and commercial aerospace infrastructure, not standards policy, industrial 5G, or digital-regulation-compliance.',
-      rejectedAlternateTargets: ['digital-regulation-compliance'],
+      whyNotAlternatives: 'Rejected alternate split targets ai-industrial-policy and digital-regulation-compliance because the signal is specifically about AI-space compute, remote sensing, reusable launch, and commercial aerospace infrastructure, not general industrial policy or digital-regulation compliance.',
+      rejectedAlternateTargets: ['ai-industrial-policy', 'digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
