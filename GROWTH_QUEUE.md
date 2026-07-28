@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-27 17:20
+Last updated: 2026-07-28 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-260: 将 cloud-training-runtime-infrastructure 有效容量从 6 提升到 7，并同步云基础设施 capacityPlan / alternate-target 诊断，消费 EXP-259 后续“cloud-training-runtime-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-259 后续建议继续处理 cloud-training-runtime-infrastructure 的 5/6 高利用容量；若 NVIDIA post-training、sovereign AI/HPE AI Factory、Korea/KAIST、AWS EC2 G7/OpenSearch/cuVS 与 Vera CPU 五条训练/运行时基础设施信号继续挤在 6-slot target 中，后续 AI factory、post-training runtime、RAG/vector retrieval、agent CPU 与云训练栈信号会被迫错投到 cloud-model-distribution、edge-hybrid-compute-infrastructure 或 hpc-science-compute-infrastructure。
+  - Metrics: source projection taxonomy 显示 cloud-training-runtime-infrastructure 从 5/6 变为 5/7，并保留 cloud-model-distribution=2/4、edge-hybrid-compute-infrastructure=2/3、hpc-science-compute-infrastructure=2/3、cloud-agent-runtime-infrastructure=1/2、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.cloud-training-runtime-infrastructure` 提升到 7；2) taxonomy 输出 cloud-training-runtime-infrastructure=5/7、有 2 个有效 headroom；3) cloud-training 相关 capacityPlan 同步 categoryBudget=7/categoryHeadroom=2，其他云基础设施 split target 显式拒绝 cloud-training-runtime-infrastructure 作为 available alternate；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-259: 将 ai-industrial-policy 有效容量从 7 提升到 8，消费 EXP-258 后续“ai-industrial-policy 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`

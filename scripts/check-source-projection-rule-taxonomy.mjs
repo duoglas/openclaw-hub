@@ -82,7 +82,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
 ];
 export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'agent-enablement-programs': 4,
-  'cloud-training-runtime-infrastructure': 6,
+  'cloud-training-runtime-infrastructure': 7,
   'edge-hybrid-compute-infrastructure': 3,
   'hpc-science-compute-infrastructure': 3,
   'ai-industrial-policy': 8,

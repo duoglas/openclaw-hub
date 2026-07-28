@@ -217,10 +217,10 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because NVIDIA post-training and intelligence-per-dollar optimization are AI infrastructure capacity signals, not model distribution.',
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 6,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta +1; allocates cloud-training-runtime-infrastructure for a 2026-07-20 NVIDIA post-training infrastructure signal while keeping the older NemoClaw industrial-agent rule separate.',
+        capacityDelta: 0,
+        categoryBudget: 7,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; uses existing cloud-training-runtime-infrastructure capacity for a 2026-07-20 NVIDIA post-training infrastructure signal while keeping the older NemoClaw industrial-agent rule separate and preserving two slots for future cloud training/runtime updates.',
       },
     },
     terms: ['持续后训练', 'intelligence per dollar', '生产反馈循环', 'NeMo RL'],
@@ -1345,8 +1345,8 @@ export const FIELD_PROJECTION_RULES = [
     ],
     capacityPlan: {
       selectedSplitTarget: 'cloud-agent-runtime-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because AWS Continuum, AWS Context, and Bedrock AgentCore are managed cloud agent runtime infrastructure, not pure model distribution.',
-      rejectedAlternateTargets: ['cloud-model-distribution'],
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution and cloud-training-runtime-infrastructure because AWS Continuum, AWS Context, and Bedrock AgentCore are managed cloud agent runtime infrastructure, not pure model distribution or cloud training/runtime capacity.',
+      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -1417,8 +1417,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Apple / Broadcom / US chip supply chain',
     capacityPlan: {
       selectedSplitTarget: 'edge-hybrid-compute-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because Apple and Broadcom are expanding domestic chip supply, not distributing a model.',
-      rejectedAlternateTargets: ['cloud-model-distribution'],
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution and cloud-training-runtime-infrastructure because Apple and Broadcom are expanding domestic edge/hybrid chip supply, not distributing a model or adding cloud training/runtime capacity.',
+      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 3,
@@ -1611,8 +1611,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / TOP500 / Green500 / compute infrastructure',
     capacityPlan: {
       selectedSplitTarget: 'hpc-science-compute-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not model distribution.',
-      rejectedAlternateTargets: ['cloud-model-distribution'],
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution and cloud-training-runtime-infrastructure because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not model distribution or cloud training/runtime capacity.',
+      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 3,
@@ -1638,10 +1638,10 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because EC2 G7, OpenSearch Serverless vector search, and cuVS are production AI infrastructure capacity signals rather than model distribution.',
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 6,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta +1; allocates cloud-training-runtime-infrastructure by 1 for a latest-fixture NVIDIA/AWS production infrastructure signal and keeps parent cloud-infrastructure matching narrow.',
+        capacityDelta: 0,
+        categoryBudget: 7,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; uses existing cloud-training-runtime-infrastructure capacity for a latest-fixture NVIDIA/AWS production infrastructure signal while preserving two slots for future cloud training/runtime updates.',
       },
     },
     terms: ['EC2 G7', 'OpenSearch Serverless', 'NVIDIA cuVS'],
@@ -1771,8 +1771,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / AI for Science / HPC software stack',
     capacityPlan: {
       selectedSplitTarget: 'hpc-science-compute-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because AI for Science HPC software is GPU-native infrastructure capacity, not model distribution.',
-      rejectedAlternateTargets: ['cloud-model-distribution'],
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution and cloud-training-runtime-infrastructure because AI for Science HPC software is GPU-native HPC/science infrastructure capacity, not model distribution or cloud training/runtime capacity.',
+      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 3,
@@ -1942,10 +1942,10 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution because Vera CPU is an AI infrastructure capacity and latency signal, not model distribution.',
       rejectedAlternateTargets: ['cloud-model-distribution'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 6,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta +1; allocates cloud-training-runtime-infrastructure for a 2026-07-08 NVIDIA Vera CPU agentic infrastructure signal while keeping cloud-infrastructure matching narrow.',
+        capacityDelta: 0,
+        categoryBudget: 7,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; uses existing cloud-training-runtime-infrastructure capacity for a 2026-07-08 NVIDIA Vera CPU agentic infrastructure signal while preserving two slots for future cloud training/runtime updates.',
       },
     },
     terms: ['高单线程性能 + 大规模并发', '高单线程性能、可规模化', 'Vera 这类', '工具调用、代码执行、数据处理和结果分析'],

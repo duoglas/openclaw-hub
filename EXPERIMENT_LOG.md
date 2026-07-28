@@ -1,3 +1,14 @@
+## EXP-260 — Cloud training/runtime infrastructure capacity headroom
+- Hypothesis: EXP-259 后续指出 cloud-training-runtime-infrastructure 仍是 5/6 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 AI factory、post-training runtime、云端 RAG/vector retrieval、agent CPU/runtime、sovereign AI/HPE AI Factory 与区域云训练栈信号会被迫错投到 cloud-model-distribution、edge-hybrid-compute-infrastructure 或 hpc-science-compute-infrastructure。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `cloud-training-runtime-infrastructure` effective category budget 从 6 提升到 7；同步 NVIDIA post-training、AWS EC2 G7/OpenSearch/cuVS 与 Vera CPU capacityPlan 的 categoryBudget/categoryHeadroom，并让 AWS AgentCore、Apple/Broadcom、TOP500/Green500 与 AI for Science HPC 显式拒绝新可用的 cloud-training-runtime-infrastructure alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-07-28
+- End date: 2026-07-28
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `cloud-training-runtime-infrastructure=5/7 (2 headroom)`、`cloud-model-distribution=2/4`、`edge-hybrid-compute-infrastructure=2/3`、`hpc-science-compute-infrastructure=2/3`、`cloud-agent-runtime-infrastructure=1/2`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（cloud-training-runtime-infrastructure 已从 5/6 高利用恢复到 5/7，有 2 个有效 headroom；cloud-training 相关 capacityPlan 已同步 categoryBudget=7/categoryHeadroom=2；云基础设施 alternate-target 诊断已同步；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 cloud-training-runtime-infrastructure 作为后续 AI factory、post-training runtime、云端 RAG/vector retrieval、agent CPU/runtime、sovereign AI 与云训练栈信号的独立容量入口；下一步可继续处理 vertical-workflow-agents 的 1 headroom 高利用 target。）
+
 ## EXP-259 — AI industrial policy capacity headroom
 - Hypothesis: EXP-258 后续指出 ai-industrial-policy 仍是 6/7 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续低空经济、工业互联网、国产算力政策、AI+制造、数据基础设施与 6G/卫星融合政策信号会被迫错投到 ai-policy-standards、digital-regulation-compliance 或 aerospace-compute-infrastructure。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
