@@ -134,7 +134,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'robotics-open-model-research': 3,
   'youth-safety-controls': 2,
   'robotics-simulation-training': 6,
-  'vertical-workflow-agents': 6,
+  'vertical-workflow-agents': 7,
 };
 export const SOURCE_PROJECTION_CATEGORY_LOW_HEADROOM_THRESHOLD = 1;
 export const SOURCE_PROJECTION_CATEGORY_HIGH_UTILIZATION_THRESHOLD = 0.8;

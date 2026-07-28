@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-28 11:20
+Last updated: 2026-07-28 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-261: 将 vertical-workflow-agents 有效容量从 6 提升到 7，并同步垂直工作流 Agent capacityPlan，消费 EXP-260 后续“vertical-workflow-agents 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-260 后续建议继续处理 vertical-workflow-agents 的 5/6 高利用容量；若 Amazon Nova Act、NVIDIA NemoClaw、中国垂直行业 AI、Claude Science 与 AWS FDE 五条垂直工作流 Agent 信号继续挤在 6-slot target 中，后续科研、工业、生产部署、客户共建和行业 Agent workflow 信号会被迫错投到 enterprise-agent-platforms、governed-agent-deployment-platforms 或 agent-enablement-programs。
+  - Metrics: source projection taxonomy 显示 vertical-workflow-agents 从 5/6 变为 5/7，并保留 enterprise-agent-platforms=3/6、governed-agent-deployment-platforms=2/4、agent-enablement-programs=3/4、enterprise-agents=13/14、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.vertical-workflow-agents` 提升到 7；2) taxonomy 输出 vertical-workflow-agents=5/7、有 2 个有效 headroom；3) 中国垂直行业 AI、Claude Science 与 AWS FDE capacityPlan 同步 categoryBudget=7/categoryHeadroom=2/capacityDelta=0，避免 stale budget/headroom；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-260: 将 cloud-training-runtime-infrastructure 有效容量从 6 提升到 7，并同步云基础设施 capacityPlan / alternate-target 诊断，消费 EXP-259 后续“cloud-training-runtime-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`

@@ -1,3 +1,14 @@
+## EXP-261 — Vertical workflow agents capacity headroom
+- Hypothesis: EXP-260 后续指出 vertical-workflow-agents 仍是 5/6 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续科研 AI workbench、工业 Agent、生产部署 FDE、客户共建、垂直行业 workflow 与 agentic AI 系统信号会被迫错投到 enterprise-agent-platforms、governed-agent-deployment-platforms 或 agent-enablement-programs。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `vertical-workflow-agents` effective category budget 从 6 提升到 7；同步 `china-vertical-industry-ai-scale-deployment-2026`、`anthropic-claude-science-research-workbench-2026` 与 `aws-forward-deployed-ai-engineering-2026` capacityPlan 的 categoryBudget/categoryHeadroom/capacityDelta，使实时 taxonomy summary 与规则内 capacityPlan 一致。
+- ICE: 8x8x8=512
+- Start date: 2026-07-28
+- End date: 2026-07-28
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `vertical-workflow-agents=5/7 (2 headroom)`、`enterprise-agent-platforms=3/6`、`governed-agent-deployment-platforms=2/4`、`agent-enablement-programs=3/4`、`enterprise-agents=13/14`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（vertical-workflow-agents 已从 5/6 高利用恢复到 5/7，有 2 个有效 headroom；相关垂直工作流 Agent capacityPlan 已同步 categoryBudget=7/categoryHeadroom=2/capacityDelta=0；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 vertical-workflow-agents 作为后续科研 AI workbench、工业 Agent、FDE 生产部署、客户共建与垂直行业 workflow 信号的独立容量入口；下一步可继续处理 agent-enablement-programs、chatgpt-control-surfaces 或 model-account-security 的 1 headroom 高利用 target。）
+
 ## EXP-260 — Cloud training/runtime infrastructure capacity headroom
 - Hypothesis: EXP-259 后续指出 cloud-training-runtime-infrastructure 仍是 5/6 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 AI factory、post-training runtime、云端 RAG/vector retrieval、agent CPU/runtime、sovereign AI/HPE AI Factory 与区域云训练栈信号会被迫错投到 cloud-model-distribution、edge-hybrid-compute-infrastructure 或 hpc-science-compute-infrastructure。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
