@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-28 17:20
+Last updated: 2026-07-29 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-262: 将 agent-enablement-programs 有效容量从 4 提升到 5，消费 EXP-261 后续“agent-enablement-programs 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-261 后续建议继续处理 agent-enablement-programs 的 3/4 高利用容量；若 OpenAI Academy、Claude Corps 与 NVIDIA BioNeMo Agent Toolkit 三条 enablement / training / adoption program 信号继续挤在 4-slot target 中，后续企业培训、非营利 AI upskilling、scientific agent toolkit、SMB adoption partner program 与组织变革类信号会被迫错投到 enterprise-agent-platforms、governed-agent-deployment-platforms 或 vertical-workflow-agents。
+  - Metrics: source projection taxonomy 显示 agent-enablement-programs 从 3/4 变为 3/5，并保留 enterprise-agent-platforms=3/6、governed-agent-deployment-platforms=2/4、vertical-workflow-agents=5/7、enterprise-agents=13/14、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.agent-enablement-programs` 提升到 5；2) taxonomy 输出 agent-enablement-programs=3/5、有 2 个有效 headroom；3) new rule capacity plan required 列表移除 agent-enablement-programs，避免新增 enablement program 规则前继续触发高利用闸门；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-261: 将 vertical-workflow-agents 有效容量从 6 提升到 7，并同步垂直工作流 Agent capacityPlan，消费 EXP-260 后续“vertical-workflow-agents 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`

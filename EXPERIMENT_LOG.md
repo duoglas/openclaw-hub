@@ -1,3 +1,14 @@
+## EXP-262 — Agent enablement programs capacity headroom
+- Hypothesis: EXP-261 后续指出 agent-enablement-programs 仍是 3/4 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续企业 AI 培训、非营利 Claude upskilling、scientific agent toolkit、SMB partner enablement、AI change-management 与组织采用支持信号会被迫错投到 enterprise-agent-platforms、governed-agent-deployment-platforms 或 vertical-workflow-agents。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `agent-enablement-programs` effective category budget 从 4 提升到 5，使 OpenAI Academy、Claude Corps 与 NVIDIA BioNeMo Agent Toolkit 三条 enablement program 规则保留 2 个新增信号 headroom。
+- ICE: 8x8x8=512
+- Start date: 2026-07-29
+- End date: 2026-07-29
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `agent-enablement-programs=3/5 (2 headroom)`、`enterprise-agent-platforms=3/6`、`governed-agent-deployment-platforms=2/4`、`vertical-workflow-agents=5/7`、`enterprise-agents=13/14`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（agent-enablement-programs 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；taxonomy 的 new rule capacity plan required 列表已移除 agent-enablement-programs；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 agent-enablement-programs 作为后续企业培训、非营利 AI upskilling、scientific agent toolkit、SMB adoption partner program 与组织变革类信号的独立容量入口；下一步可继续处理 chatgpt-control-surfaces、model-account-security 或 frontier-model-task-capability 的 1 headroom 高利用 target。）
+
 ## EXP-261 — Vertical workflow agents capacity headroom
 - Hypothesis: EXP-260 后续指出 vertical-workflow-agents 仍是 5/6 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续科研 AI workbench、工业 Agent、生产部署 FDE、客户共建、垂直行业 workflow 与 agentic AI 系统信号会被迫错投到 enterprise-agent-platforms、governed-agent-deployment-platforms 或 agent-enablement-programs。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -81,7 +81,7 @@ export const ALLOWED_SOURCE_PROJECTION_SPLIT_TARGET_CATEGORIES = [
   'vertical-workflow-agents',
 ];
 export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
-  'agent-enablement-programs': 4,
+  'agent-enablement-programs': 5,
   'cloud-training-runtime-infrastructure': 7,
   'edge-hybrid-compute-infrastructure': 3,
   'hpc-science-compute-infrastructure': 3,
