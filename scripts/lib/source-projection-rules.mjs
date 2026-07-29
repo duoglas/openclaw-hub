@@ -1393,8 +1393,8 @@ export const FIELD_PROJECTION_RULES = [
     ],
     capacityPlan: {
       selectedSplitTarget: 'consumer-agentic-product-surfaces',
-      whyNotAlternatives: 'Rejected alternate split targets career-productivity-workflows and consumer-creative-ai because the 2026-07-24 Gemini App, AI Overviews, AI Mode, Ask YouTube, and Docs Live signal is a broad embedded agentic product surface, not a job-search/resume workflow or creative-media tool.',
-      rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai'],
+      whyNotAlternatives: 'Rejected alternate split targets career-productivity-workflows, consumer-creative-ai, and chatgpt-control-surfaces because the 2026-07-24 Gemini App, AI Overviews, AI Mode, Ask YouTube, and Docs Live signal is a broad embedded agentic product surface, not a job-search/resume workflow, creative-media tool, or ChatGPT-specific control surface.',
+      rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai', 'chatgpt-control-surfaces'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -1537,10 +1537,10 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets because the rule covers ChatGPT finance, dictation, Codex Remote, and model-retirement controls rather than consumer-creative-ai or career-productivity-workflows.',
       rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 4,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta +1; raises chatgpt-control-surfaces capacity by 1 for a latest-fixture ChatGPT control-surface update and prevents broad GPT-5.5 matching from swallowing field-level details.',
+        capacityDelta: 0,
+        categoryBudget: 5,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; keeps the latest-fixture ChatGPT finance, dictation, Codex Remote, and model-retirement control-surface rule in chatgpt-control-surfaces after the effective budget increase, preserving two slots for future ChatGPT control updates without broad GPT matching.'
       },
     },
     terms: ['个人金融体验', '新版听写模型', 'GPT-4.5 从 ChatGPT 下线', '个人财务体验', '听写模型升级', 'GPT-4.5 在 ChatGPT 中退役', 'Codex Remote'],

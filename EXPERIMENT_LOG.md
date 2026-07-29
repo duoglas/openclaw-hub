@@ -1,3 +1,14 @@
+## EXP-263 — ChatGPT control surfaces capacity headroom
+- Hypothesis: EXP-262 后续建议继续处理 chatgpt-control-surfaces 的 1 headroom 高利用 target；若 ChatGPT model picker、Scheduled Tasks/Pulse 与 finance/dictation/Codex Remote/GPT-4.5 retirement 三类控制面继续挤在 4-slot target 中，后续 ChatGPT 任务调度、控制台、模型迁移、个人数据/财务/语音输入与 proactive assistant 信号会被迫错投到 consumer-creative-ai、career-productivity-workflows 或 consumer-agentic-product-surfaces。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `chatgpt-control-surfaces` effective category budget 从 4 提升到 5；同步 `openai-chatgpt-finance-dictation-gpt45-retirement-2026` capacityPlan 的 categoryBudget/categoryHeadroom/capacityDelta，并让 Google Gemini embedded product surface 显式拒绝新可用的 chatgpt-control-surfaces alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-07-29
+- End date: 2026-07-29
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `chatgpt-control-surfaces=3/5 (2 headroom)`、`consumer-agentic-product-surfaces=1/2`、`consumer-creative-ai=3/5`、`career-productivity-workflows=1/3`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（chatgpt-control-surfaces 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；相关 ChatGPT finance/dictation control-surface capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；Gemini product surface alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 chatgpt-control-surfaces 作为后续 ChatGPT 任务调度、proactive assistant、模型选择/迁移、个人财务、语音输入与 Codex Remote 控制面信号的独立容量入口；下一步可继续处理 model-account-security 或 frontier-model-task-capability 的 1 headroom 高利用 target。）
+
 ## EXP-262 — Agent enablement programs capacity headroom
 - Hypothesis: EXP-261 后续指出 agent-enablement-programs 仍是 3/4 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续企业 AI 培训、非营利 Claude upskilling、scientific agent toolkit、SMB partner enablement、AI change-management 与组织采用支持信号会被迫错投到 enterprise-agent-platforms、governed-agent-deployment-platforms 或 vertical-workflow-agents。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

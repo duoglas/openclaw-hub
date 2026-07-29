@@ -91,7 +91,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'autonomous-mobility-systems': 3,
   'career-productivity-workflows': 3,
   'ai-lab-private-financing': 2,
-  'chatgpt-control-surfaces': 4,
+  'chatgpt-control-surfaces': 5,
   'china-code-agent-runtime': 2,
   'code-agent-runtime': 3,
   'cloud-model-distribution': 4,
@@ -1645,7 +1645,7 @@ function validateSelfTests() {
   }
 
   const capacityPlanAlternateTargetFailures = validateSourceProjectionRuleCategoryCapacityPlan({
-    currentRules: Array.from({ length: 3 }, (_, index) => ({
+    currentRules: Array.from({ length: 4 }, (_, index) => ({
       name: `synthetic-chatgpt-control-surface-current-${index + 1}`,
       owner: 'daily-source-projection',
       category: 'consumer-productivity',
@@ -1704,7 +1704,7 @@ function validateSelfTests() {
   }
 
   const capacityPlanTemplateFailures = validateSourceProjectionRuleCategoryCapacityPlan({
-    currentRules: Array.from({ length: 3 }, (_, index) => ({
+    currentRules: Array.from({ length: 4 }, (_, index) => ({
       name: `synthetic-chatgpt-control-surface-template-current-${index + 1}`,
       owner: 'daily-source-projection',
       category: 'consumer-productivity',
@@ -1730,7 +1730,7 @@ function validateSelfTests() {
   }
 
   const capacityPlanTemplatePassFailures = validateSourceProjectionRuleCategoryCapacityPlan({
-    currentRules: Array.from({ length: 3 }, (_, index) => ({
+    currentRules: Array.from({ length: 4 }, (_, index) => ({
       name: `synthetic-chatgpt-control-surface-template-pass-current-${index + 1}`,
       owner: 'daily-source-projection',
       category: 'consumer-productivity',
@@ -1750,11 +1750,11 @@ function validateSelfTests() {
 
             capacityDelta: 0,
 
-            categoryBudget: 4,
+            categoryBudget: 5,
 
             categoryHeadroom: 1,
 
-            rationale: 'capacity delta 0; consumes the final chatgpt-control-surfaces slot and requires follow-up split migration before another rule is added.',
+            rationale: 'capacity delta 0; consumes the final chatgpt-control-surfaces slot from a one-headroom starting point while documenting rejected lower-risk alternates.',
 
           },
         },
@@ -1890,9 +1890,9 @@ function validateSelfTests() {
 
             capacityDelta: 0,
 
-            categoryBudget: 5,
+            categoryBudget: 6,
 
-            categoryHeadroom: 2,
+            categoryHeadroom: 3,
 
             rationale: 'capacity delta 0; stale synthetic budget/headroom snapshot should fail before this plan can be used.',
 
@@ -1902,8 +1902,8 @@ function validateSelfTests() {
     ]),
   }).join('\n');
   for (const fragment of [
-    'synthetic-existing-rule-with-stale-budget-impact-snapshot — existing rule capacityPlan budgetImpact categoryBudget 5 is stale for effective category chatgpt-control-surfaces; expected 4',
-    'synthetic-existing-rule-with-stale-budget-impact-snapshot — existing rule capacityPlan budgetImpact categoryHeadroom 2 is stale for effective category chatgpt-control-surfaces; expected 0',
+    'synthetic-existing-rule-with-stale-budget-impact-snapshot — existing rule capacityPlan budgetImpact categoryBudget 6 is stale for effective category chatgpt-control-surfaces; expected 5',
+    'synthetic-existing-rule-with-stale-budget-impact-snapshot — existing rule capacityPlan budgetImpact categoryHeadroom 3 is stale for effective category chatgpt-control-surfaces; expected 1',
   ]) {
     if (!staleBudgetImpactSnapshotFailures.includes(fragment)) {
       failures.push(`source projection taxonomy existing capacity-plan self-test failed: ${fragment}`);
@@ -1912,7 +1912,7 @@ function validateSelfTests() {
 
   const proposedBudgetImpactDeltaFailures = validateSourceProjectionRuleCategoryCapacityPlan({
 
-    currentRules: Array.from({ length: 4 }, (_, index) => ({
+    currentRules: Array.from({ length: 5 }, (_, index) => ({
       name: `synthetic-chatgpt-control-surface-delta-current-${index + 1}`,
       owner: 'daily-source-projection',
       category: 'consumer-productivity',
@@ -1933,7 +1933,7 @@ function validateSelfTests() {
 
             categoryBudget: 5,
 
-            categoryHeadroom: 4,
+            categoryHeadroom: 0,
 
             rationale: 'capacity delta 0; claims to reuse capacity despite no remaining headroom.',
 
@@ -2040,7 +2040,7 @@ function validateSelfTests() {
   }
 
   const alternateTargetDiagnostic = formatSourceProjectionRuleTaxonomySummary(summarizeSourceProjectionRuleTaxonomy({
-    rules: Array.from({ length: 3 }, (_, index) => ({
+    rules: Array.from({ length: 4 }, (_, index) => ({
       name: `synthetic-chatgpt-control-surface-${index + 1}`,
       owner: 'daily-source-projection',
       category: 'consumer-productivity',

@@ -22,6 +22,12 @@ Manager: main session
 ## Done
 
 
+- [x] P1 Candidate / EXP-263: 将 chatgpt-control-surfaces 有效容量从 4 提升到 5，并同步 ChatGPT control-surface capacityPlan / Gemini alternate-target 诊断，消费 EXP-262 后续“chatgpt-control-surfaces 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-262 后续建议继续处理 chatgpt-control-surfaces 的 3/4 高利用容量；若 ChatGPT model picker、Scheduled Tasks/Pulse 与 finance/dictation/Codex Remote/GPT-4.5 retirement 三条控制面信号继续挤在 4-slot target 中，后续任务调度、proactive assistant、模型迁移、个人数据/财务/语音输入与 ChatGPT control surface 信号会被迫错投到 consumer-creative-ai、career-productivity-workflows 或 consumer-agentic-product-surfaces。
+  - Metrics: source projection taxonomy 显示 chatgpt-control-surfaces 从 3/4 变为 3/5，并保留 consumer-agentic-product-surfaces=1/2、consumer-creative-ai=3/5、career-productivity-workflows=1/3、consumer-productivity=8/8、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.chatgpt-control-surfaces` 提升到 5；2) taxonomy 输出 chatgpt-control-surfaces=3/5、有 2 个有效 headroom；3) ChatGPT finance/dictation/Codex Remote control-surface capacityPlan 同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0，Gemini product surface 显式拒绝 chatgpt-control-surfaces 作为可用 alternate；4) 质量评分 27/30。
+
+
 - [x] P1 Candidate / EXP-262: 将 agent-enablement-programs 有效容量从 4 提升到 5，消费 EXP-261 后续“agent-enablement-programs 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-261 后续建议继续处理 agent-enablement-programs 的 3/4 高利用容量；若 OpenAI Academy、Claude Corps 与 NVIDIA BioNeMo Agent Toolkit 三条 enablement / training / adoption program 信号继续挤在 4-slot target 中，后续企业培训、非营利 AI upskilling、scientific agent toolkit、SMB adoption partner program 与组织变革类信号会被迫错投到 enterprise-agent-platforms、governed-agent-deployment-platforms 或 vertical-workflow-agents。
   - Metrics: source projection taxonomy 显示 agent-enablement-programs 从 3/4 变为 3/5，并保留 enterprise-agent-platforms=3/6、governed-agent-deployment-platforms=2/4、vertical-workflow-agents=5/7、enterprise-agents=13/14、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
