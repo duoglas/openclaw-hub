@@ -21,6 +21,12 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-265: 将 ai-policy-standards 有效容量从 4 提升到 5，并同步 WAIC governance capacityPlan / policy alternate-target 诊断，消费 EXP-264 后续“ai-policy-standards 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-264 后续建议继续处理 ai-policy-standards 的 3/4 高利用容量；若 AI 计量指南、中国—东盟 AI 创新中心与 WAIC / WAICO 治理协调三条标准/治理协作信号继续挤在 4-slot target 中，后续国际治理机制、AI 标准协调、测评计量、跨境治理协作和 agent governance boundary 信号会被迫错投到 ai-industrial-policy、digital-regulation-compliance 或 aerospace-compute-infrastructure。
+  - Metrics: source projection taxonomy 显示 ai-policy-standards 从 3/4 变为 3/5，并保留 ai-industrial-policy=6/8、digital-regulation-compliance=1/3、aerospace-compute-infrastructure=1/2、policy-governance=11/11、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.ai-policy-standards` 提升到 5；2) taxonomy 输出 ai-policy-standards=3/5、有 2 个有效 headroom；3) WAIC / WAICO governance capacityPlan 同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0，6G/mobile AI、industrial 5G 与 aerospace compute 显式拒绝 ai-policy-standards 作为可用 alternate；4) 质量评分 27/30。
+
+
 
 - [x] P1 Candidate / EXP-264: 将 model-account-security 有效容量从 4 提升到 5，并同步 Claude Fable / AWS Secret Cloud / WAIC agent safety capacityPlan 与 alternate-target 诊断，消费 EXP-263 后续“model-account-security 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-263 后续建议继续处理 model-account-security 的 3/4 高利用容量；若 Active sessions、ChatGPT Lockdown / Health data controls 与 Claude Fable jailbreak severity 三条模型账号/访问安全信号继续挤在 4-slot target 中，后续模型访问恢复、会话控制、记忆隔离、敏感个人数据授权和 jailbreak severity 信号会被迫错投到 high-sensitivity-ai-deployment、agent-runtime-safety 或 youth-safety-controls。

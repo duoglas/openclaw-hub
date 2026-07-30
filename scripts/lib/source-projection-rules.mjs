@@ -728,7 +728,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-industrial-policy',
       whyNotAlternatives: 'Rejected alternate split targets because this story is specifically about China 6G, satellite, non-terrestrial network, and mobile-AI infrastructure policy rather than ai-policy-standards or digital-regulation-compliance.',
-      rejectedAlternateTargets: ['digital-regulation-compliance'],
+      rejectedAlternateTargets: ['ai-policy-standards', 'digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 8,
@@ -1300,9 +1300,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['ai-industrial-policy', 'digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 4,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
+        categoryBudget: 5,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; uses refreshed ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
       },
     },
     terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理', '智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制'],
@@ -1684,7 +1684,7 @@ export const FIELD_PROJECTION_RULES = [
     capacityPlan: {
       selectedSplitTarget: 'ai-industrial-policy',
       whyNotAlternatives: 'Rejected alternate split targets because industrial 5G private networks are industrial AI infrastructure policy, not ai-policy-standards or digital-regulation-compliance.',
-      rejectedAlternateTargets: ['digital-regulation-compliance'],
+      rejectedAlternateTargets: ['ai-policy-standards', 'digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 8,
@@ -2049,8 +2049,8 @@ export const FIELD_PROJECTION_RULES = [
     ],
     capacityPlan: {
       selectedSplitTarget: 'aerospace-compute-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets ai-industrial-policy and digital-regulation-compliance because the signal is specifically about AI-space compute, remote sensing, reusable launch, and commercial aerospace infrastructure, not general industrial policy or digital-regulation compliance.',
-      rejectedAlternateTargets: ['ai-industrial-policy', 'digital-regulation-compliance'],
+      whyNotAlternatives: 'Rejected alternate split targets ai-policy-standards, ai-industrial-policy and digital-regulation-compliance because the signal is specifically about AI-space compute, remote sensing, reusable launch, and commercial aerospace infrastructure, not AI standards coordination, general industrial policy or digital-regulation compliance.',
+      rejectedAlternateTargets: ['ai-policy-standards', 'ai-industrial-policy', 'digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,

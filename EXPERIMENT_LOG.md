@@ -1,3 +1,14 @@
+## EXP-265 — AI policy standards capacity headroom
+- Hypothesis: EXP-264 后续指出 ai-policy-standards 仍是 3/4 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续国际治理机制、AI 标准协调、测评计量、跨境治理协作和 agent governance boundary 信号会被迫错投到 ai-industrial-policy、digital-regulation-compliance 或 aerospace-compute-infrastructure。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `ai-policy-standards` effective category budget 从 4 提升到 5；同步 `china-world-ai-cooperation-organization-2026` capacityPlan 的 categoryBudget/categoryHeadroom/capacityDelta，并让 6G/mobile AI、industrial 5G 与 aerospace compute 规则显式拒绝新可用的 ai-policy-standards alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-07-30
+- End date: 2026-07-30
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `ai-policy-standards=3/5 (2 headroom)`、`ai-industrial-policy=6/8`、`digital-regulation-compliance=1/3`、`aerospace-compute-infrastructure=1/2`、`policy-governance=11/11`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（ai-policy-standards 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；WAIC / WAICO governance capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；6G/mobile AI、industrial 5G 与 aerospace compute alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 ai-policy-standards 作为后续国际治理机制、AI 标准协调、测评计量、跨境治理协作和 agent governance boundary 信号的独立容量入口；下一步可继续处理 frontier-model-task-capability、edge-hybrid-compute-infrastructure 或 frontier-model-inference-architecture 的 1 headroom 高利用 target。）
+
 ## EXP-264 — Model account security capacity headroom
 - Hypothesis: EXP-263 后续指出 model-account-security 仍是 3/4 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续模型访问恢复、账号会话控制、记忆隔离、敏感个人数据授权、jailbreak severity 与模型安全发布门禁信号会被迫错投到 high-sensitivity-ai-deployment、agent-runtime-safety 或 youth-safety-controls。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
