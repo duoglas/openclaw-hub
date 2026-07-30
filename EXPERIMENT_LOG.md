@@ -1,3 +1,14 @@
+## EXP-264 — Model account security capacity headroom
+- Hypothesis: EXP-263 后续指出 model-account-security 仍是 3/4 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续模型访问恢复、账号会话控制、记忆隔离、敏感个人数据授权、jailbreak severity 与模型安全发布门禁信号会被迫错投到 high-sensitivity-ai-deployment、agent-runtime-safety 或 youth-safety-controls。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `model-account-security` effective category budget 从 4 提升到 5；同步 `anthropic-fable-jailbreak-severity-framework-2026` capacityPlan 的 categoryBudget/categoryHeadroom/capacityDelta，并让 AWS Secret Cloud high-sensitivity deployment 与 WAIC agent runtime safety 显式拒绝新可用的 model-account-security alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-07-30
+- End date: 2026-07-30
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `model-account-security=3/5 (2 headroom)`、`high-sensitivity-ai-deployment=2/3`、`agent-runtime-safety=1/2`、`youth-safety-controls=1/2`、`product-safety=7/7`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（model-account-security 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；Claude Fable capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；AWS Secret Cloud 与 WAIC agent safety alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 model-account-security 作为后续模型访问恢复、账号会话控制、记忆隔离、敏感个人数据授权、jailbreak severity 与模型安全发布门禁信号的独立容量入口；下一步可继续处理 frontier-model-task-capability、ai-policy-standards 或 edge-hybrid-compute-infrastructure 的 1 headroom 高利用 target。）
+
 ## EXP-263 — ChatGPT control surfaces capacity headroom
 - Hypothesis: EXP-262 后续建议继续处理 chatgpt-control-surfaces 的 1 headroom 高利用 target；若 ChatGPT model picker、Scheduled Tasks/Pulse 与 finance/dictation/Codex Remote/GPT-4.5 retirement 三类控制面继续挤在 4-slot target 中，后续 ChatGPT 任务调度、控制台、模型迁移、个人数据/财务/语音输入与 proactive assistant 信号会被迫错投到 consumer-creative-ai、career-productivity-workflows 或 consumer-agentic-product-surfaces。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

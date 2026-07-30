@@ -120,7 +120,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'token-economics-optimization': 2,
   'waic-product-launch-pipeline': 2,
   'waic-industry-agenda': 2,
-  'model-account-security': 4,
+  'model-account-security': 5,
   'public-market-readiness': 2,
   'product-safety': 5,
   'regional-ai-ecosystems': 4,

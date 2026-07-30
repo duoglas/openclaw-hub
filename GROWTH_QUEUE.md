@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-29 11:20
+Last updated: 2026-07-30 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-264: 将 model-account-security 有效容量从 4 提升到 5，并同步 Claude Fable / AWS Secret Cloud / WAIC agent safety capacityPlan 与 alternate-target 诊断，消费 EXP-263 后续“model-account-security 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-263 后续建议继续处理 model-account-security 的 3/4 高利用容量；若 Active sessions、ChatGPT Lockdown / Health data controls 与 Claude Fable jailbreak severity 三条模型账号/访问安全信号继续挤在 4-slot target 中，后续模型访问恢复、会话控制、记忆隔离、敏感个人数据授权和 jailbreak severity 信号会被迫错投到 high-sensitivity-ai-deployment、agent-runtime-safety 或 youth-safety-controls。
+  - Metrics: source projection taxonomy 显示 model-account-security 从 3/4 变为 3/5，并保留 high-sensitivity-ai-deployment=2/3、agent-runtime-safety=1/2、youth-safety-controls=1/2、product-safety=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.model-account-security` 提升到 5；2) taxonomy 输出 model-account-security=3/5、有 2 个有效 headroom；3) Claude Fable capacityPlan 同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0，AWS Secret Cloud 与 WAIC agent safety 显式拒绝 model-account-security 作为可用 alternate；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-263: 将 chatgpt-control-surfaces 有效容量从 4 提升到 5，并同步 ChatGPT control-surface capacityPlan / Gemini alternate-target 诊断，消费 EXP-262 后续“chatgpt-control-surfaces 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`

@@ -1819,7 +1819,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'AWS / public sector / secret cloud AI',
     capacityPlan: {
       selectedSplitTarget: 'high-sensitivity-ai-deployment',
-      whyNotAlternatives: 'Rejected alternate split targets because AWS Secret Cloud and public-sector AI are high-sensitivity deployment signals, not model account security or youth safety controls.',
+      whyNotAlternatives: 'Rejected alternate split target model-account-security because AWS Secret Cloud and public-sector AI are high-sensitivity deployment signals, not model account security controls.',
+      rejectedAlternateTargets: ['model-account-security'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 3,
@@ -1866,12 +1867,13 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Anthropic / Claude Fable / jailbreak severity framework',
     capacityPlan: {
       selectedSplitTarget: 'model-account-security',
-      whyNotAlternatives: 'Rejected alternate split targets because Claude Fable availability and jailbreak severity scoring are model safety and abuse-control signals, not high-sensitivity deployment or youth safety controls.',
+      whyNotAlternatives: 'Rejected alternate split targets high-sensitivity-ai-deployment, agent-runtime-safety, and youth-safety-controls because Claude Fable availability and jailbreak severity scoring are model safety and abuse-control signals, not high-sensitivity deployment, runtime agent safety, or youth safety controls.',
+      rejectedAlternateTargets: ['high-sensitivity-ai-deployment', 'agent-runtime-safety', 'youth-safety-controls'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 4,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta +1; raises model-account-security for a 2026-07-07 Claude Fable and jailbreak severity framework signal while keeping product-safety matching narrow.',
+        capacityDelta: 0,
+        categoryBudget: 5,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0 after budget raise; model-account-security now has two headroom slots for future model access, session, memory, and jailbreak severity signals while keeping product-safety matching narrow.',
       },
     },
     terms: ['Fable 5 于 7 月 1 日全球回归', 'Fable 5 已恢复全球访问', 'Claude Fable 5 和 Mythos 5', '美国出口管制', '网络安全分类器', 'jailbreak 严重度评分框架', 'Claude Fable 5 已重新可在 Amazon Bedrock', 'Claude Platform on AWS', '复杂编码、知识工作、视觉任务'],
@@ -1988,8 +1990,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'China / WAIC / agent safety evaluation',
     capacityPlan: {
       selectedSplitTarget: 'agent-runtime-safety',
-      whyNotAlternatives: 'Rejected alternate split targets high-sensitivity-ai-deployment, model-account-security, and youth-safety-controls because WAIC agent safety covers runtime audit, risk monitoring, and response controls for tool-using AI systems, not sector-sensitive deployment, account takeover, or youth controls.',
-      rejectedAlternateTargets: ['high-sensitivity-ai-deployment', 'model-account-security', 'youth-safety-controls'],
+      whyNotAlternatives: 'Rejected alternate split target model-account-security because WAIC agent safety covers runtime audit, risk monitoring, and response controls for tool-using AI systems, not account takeover or model access controls.',
+      rejectedAlternateTargets: ['model-account-security'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
