@@ -1,3 +1,14 @@
+## EXP-267 — Agent runtime safety capacity headroom
+- Hypothesis: EXP-266 后续指出 2026-07-31 WAIC 智能体安全运行期审计会继续消耗 agent-runtime-safety 的 1 headroom；若不恢复额外容量，后续工具调用审计、权限边界、实时风险监测、人类确认与事件响应类 Agent safety 信号会被迫错投到 high-sensitivity-ai-deployment 或 model-account-security。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `agent-runtime-safety` effective category budget 从 2 提升到 3；同步 `china-waic-agent-safety-evaluation-2026` capacityPlan 的 categoryBudget/categoryHeadroom/rationale，并让 AWS Secret Cloud high-sensitivity deployment 显式拒绝新可用的 agent-runtime-safety alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-07-31
+- End date: 2026-07-31
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `agent-runtime-safety=1/3 (2 headroom)`、`high-sensitivity-ai-deployment=2/3`、`model-account-security=3/5`、`product-safety=7/7`、`split target categories=50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source labels、latest fixture 与 `pnpm build` 全部通过。
+- Result: pass（agent-runtime-safety 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；WAIC agent safety capacityPlan 已同步 categoryBudget=3/categoryHeadroom=2；AWS Secret Cloud alternate-target 诊断已同步；taxonomy、registry health、daily source labels、latest fixture 与 build 通过；commit `6ff6415`；质量评分 27/30。）
+- Decision: scale（保留 agent-runtime-safety 作为后续工具调用审计、运行期风险监测、权限边界、人类确认与事件响应类 Agent safety 信号的独立容量入口；下一步可继续处理 frontier-model-task-capability、edge-hybrid-compute-infrastructure 或 robotics-open-model-research 的 1 headroom 高利用 target。）
+
 ## EXP-266 — 2026-07-31 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-07-31）暴露 NVIDIA Isaac for Healthcare 医疗物理仿真、WAIC 智能体安全运行期审计、Jetson Orin 边缘 AI 机器人开发、AIGC 电视剧版权/来源标注风险与工信部“小快轻准”中小企业 AI 赋能五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留泛化 fallback 或双语信号错配，首日索引会漏掉医疗机器人仿真验证、agent runtime safety、边缘机器人开发套件、AIGC provenance 和 SME AI enablement 长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-07-31.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-31.md`, `src/content/blog/zh/openclaw-daily-2026-07-31.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -1859,8 +1859,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'AWS / public sector / secret cloud AI',
     capacityPlan: {
       selectedSplitTarget: 'high-sensitivity-ai-deployment',
-      whyNotAlternatives: 'Rejected alternate split target model-account-security because AWS Secret Cloud and public-sector AI are high-sensitivity deployment signals, not model account security controls.',
-      rejectedAlternateTargets: ['model-account-security'],
+      whyNotAlternatives: 'Rejected alternate split targets model-account-security and agent-runtime-safety because AWS Secret Cloud and public-sector AI are high-sensitivity deployment signals, not model account security controls or tool-using agent runtime audit controls.',
+      rejectedAlternateTargets: ['model-account-security', 'agent-runtime-safety'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 3,
@@ -2034,9 +2034,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['model-account-security'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 2,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses agent-runtime-safety headroom for a 2026-07-21 WAIC agent safety and runtime-audit signal while freeing high-sensitivity-ai-deployment for sector-sensitive deployments.',
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; restores two agent-runtime-safety headroom slots after the 2026-07-21 and 2026-07-31 WAIC agent safety/runtime-audit signals, while keeping high-sensitivity-ai-deployment reserved for sector-sensitive deployments.',
       },
     },
     terms: ['智能体安全', '前沿 AI 风险监测平台', '测评基准', '运行期审计', '实时响应', 'AI 会做什么'],

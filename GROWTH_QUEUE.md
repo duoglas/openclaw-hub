@@ -21,6 +21,12 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-267: 将 agent-runtime-safety 有效容量从 2 提升到 3，并同步 WAIC agent safety capacityPlan / AWS Secret Cloud alternate-target 诊断，消费 EXP-266 后续“WAIC agent safety runtime audit 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `6ff6415`
+  - Hypothesis: EXP-266 后续指出 2026-07-31 WAIC 智能体安全运行期审计会继续消耗 agent-runtime-safety 的 1 headroom；若不恢复额外容量，后续工具调用审计、权限边界、实时风险监测、人类确认与事件响应类 Agent safety 信号会被迫错投到 high-sensitivity-ai-deployment 或 model-account-security。
+  - Metrics: source projection taxonomy 显示 agent-runtime-safety 从 1/2 变为 1/3，并保留 high-sensitivity-ai-deployment=2/3、model-account-security=3/5、product-safety=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels、latest fixture 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.agent-runtime-safety` 提升到 3；2) taxonomy 输出 agent-runtime-safety=1/3、有 2 个有效 headroom；3) WAIC agent safety capacityPlan 同步 categoryBudget=3/categoryHeadroom=2，AWS Secret Cloud 显式拒绝 agent-runtime-safety 作为可用 alternate；4) 质量评分 27/30。
+
+
 
 - [x] P1 Candidate / EXP-266: 将 2026-07-31 最新双语日报接入 real cron fixture，并修复医疗仿真、WAIC 智能体安全、Jetson Orin、AIGC 电视剧与中小企业 AI 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
   - Hypothesis: 最近24小时新增日报（2026-07-31）暴露 NVIDIA Isaac for Healthcare 医疗物理仿真、WAIC 智能体安全运行期审计、Jetson Orin 边缘 AI 机器人开发、AIGC 电视剧版权/来源标注风险与工信部“小快轻准”中小企业 AI 赋能五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留泛化 fallback 或双语信号错配，首日索引会漏掉医疗机器人仿真验证、agent runtime safety、边缘机器人开发套件、AIGC provenance 和 SME AI enablement 长尾入口。

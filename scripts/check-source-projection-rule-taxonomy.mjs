@@ -112,7 +112,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'open-model-long-context': 2,
   'frontier-model-task-capability': 4,
   'high-sensitivity-ai-deployment': 3,
-  'agent-runtime-safety': 2,
+  'agent-runtime-safety': 3,
   'ai-commercialization-roi': 2,
   'local-commerce-ai-workflows': 2,
   'market-sizing-reports': 3,
