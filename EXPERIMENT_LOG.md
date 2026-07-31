@@ -1,3 +1,14 @@
+## EXP-266 — 2026-07-31 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-07-31）暴露 NVIDIA Isaac for Healthcare 医疗物理仿真、WAIC 智能体安全运行期审计、Jetson Orin 边缘 AI 机器人开发、AIGC 电视剧版权/来源标注风险与工信部“小快轻准”中小企业 AI 赋能五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留泛化 fallback 或双语信号错配，首日索引会漏掉医疗机器人仿真验证、agent runtime safety、边缘机器人开发套件、AIGC provenance 和 SME AI enablement 长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-07-31.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-07-31.md`, `src/content/blog/zh/openclaw-daily-2026-07-31.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-07-31 real cron fixture；为 Jetson Orin edge AI developer kit、AIGC TV drama provenance/copyright risk 与 MIIT SME digital AI enablement 增加 fixture-backed label/detailVariants；重写 EN/ZH 2026-07-31 页面，使双语 Top 5 对齐医疗仿真、WAIC agent safety、Jetson Orin、AIGC TV 与 SME enablement，并补齐 Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-07-31
+- End date: 2026-07-31
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-31 / latestFixture=2026-07-31 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 34 fixtures / 170 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（2026-07-31 最新双语日报已由同日 real cron fixture 覆盖；Jetson Orin、AIGC TV provenance 与 MIIT SME enablement 均输出字段级 projection；EN/ZH 页面已统一五条信号并移除泛化 fallback；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-07-31 fixture 作为医疗机器人仿真、智能体运行期安全、边缘 AI 机器人开发、AIGC 来源/版权与中小企业 AI 赋能的首日索引基线；下一步可继续处理 agent-runtime-safety、robotics-open-model-research 或 consumer-creative-ai 的 1 headroom 高利用 target。）
+
 ## EXP-265 — AI policy standards capacity headroom
 - Hypothesis: EXP-264 后续指出 ai-policy-standards 仍是 3/4 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续国际治理机制、AI 标准协调、测评计量、跨境治理协作和 agent governance boundary 信号会被迫错投到 ai-industrial-policy、digital-regulation-compliance 或 aerospace-compute-infrastructure。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

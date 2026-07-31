@@ -801,12 +801,24 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Jetson / IGX T3000', 'Jetson T2000', '865 FP4 TFLOPS'],
       },
       {
+        label: 'NVIDIA / Jetson / Orin / edge AI robotics developer kit',
+        terms: ['Jetson Orin Nano Super'],
+      },
+      {
         label: 'NVIDIA / Hugging Face / LeRobot robotics ecosystem',
         terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
       },
     ],
-    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop', 'Jetson / IGX T3000', 'Jetson T2000', '865 FP4 TFLOPS', '400 FP4 TFLOPS'],
+    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop', 'Jetson / IGX T3000', 'Jetson T2000', '865 FP4 TFLOPS', '400 FP4 TFLOPS', 'Jetson Orin Nano Super'],
     detailVariants: [
+      {
+        terms: ['Jetson Orin Nano Super'],
+        details: {
+          what: 'NVIDIA highlighted Jetson Orin Nano Super and the Jetson edge AI platform for robotics, education, research, visual AI, agent prototypes, and low-latency local inference workflows.',
+          why: 'Robotics and edge AI teams need local compute close to sensors and actuators when latency, bandwidth, privacy, or offline operation make cloud-only inference impractical.',
+          impact: 'Developers, schools, and small robotics teams can prototype visual agents and robots faster, but should benchmark power draw, thermal limits, model size, software-stack maturity, and safety fallbacks before production use.',
+        },
+      },
       {
         terms: ['T3000', 'T2000', '865 FP4 TFLOPS'],
         details: {
@@ -854,6 +866,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / MIIT / SME digital AI enablement',
         terms: ['中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理'],
       },
+      {
+        label: 'China / MIIT / SME digital AI enablement',
+        terms: ['小快轻准', '数智化', '中小企业'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
@@ -866,7 +882,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses refreshed vertical-workflow-agents capacity for a latest-fixture vertical workflow deployment signal without widening generic enterprise-agents matching.',
       },
     },
-    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟', '中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理'],
+    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟', '中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理', '数智化', '中小企业'],
     detailVariants: [
       {
         terms: ['中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理'],
@@ -874,6 +890,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua reported that China’s MIIT will keep promoting SME digital and intelligent transformation, optimize the market ecosystem, develop small, fast, lightweight, and accurate products, and deepen AI use in R&D, manufacturing, and operations management.',
           why: 'SMEs are a large real-world AI adoption market but often lack budget, talent, and systems-integration capacity, so packaged tools and lightweight industry templates matter more than model size.',
           impact: 'Vendors should prove direct cost reduction, deployment simplicity, data security, and workflow fit, while SME owners can prioritize low-risk tools that improve design, production, logistics, documents, or management routines.',
+        },
+      },
+      {
+        terms: ['小快轻准', '数智化', '中小企业'],
+        details: {
+          what: 'Xinhua reported that China’s MIIT issued a 2026 guide for small, fast, lightweight, accurate digital products and services, emphasizing SME digital and intelligent transformation.',
+          why: 'The policy focus is affordable, quick-to-deploy, measurable AI and digital tooling that smaller companies can adopt without heavy integration programs.',
+          impact: 'AI SaaS, industry knowledge bases, customer-service tools, production management, and lightweight data-analysis products may gain policy tailwinds if they prove cost reduction, simple deployment, and data-security fit.',
         },
       },
     ],
@@ -1056,7 +1080,23 @@ export const FIELD_PROJECTION_RULES = [
     category: 'consumer-productivity',
     splitTargetCategory: 'consumer-creative-ai',
     displayLabel: 'Xinhua / AI fiction / creative quality limits',
-    terms: ['AI 生成小说角色', '保守和封闭式结局', '复杂性和神秘感'],
+    displayLabels: [
+      {
+        label: 'China / AIGC TV drama / copyright and provenance risk',
+        terms: ['桃花潭记', 'AI 制作', 'AIGC 导演'],
+      },
+    ],
+    terms: ['AI 生成小说角色', '保守和封闭式结局', '复杂性和神秘感', '桃花潭记', 'AI 制作', 'AIGC 导演', '版权和演员权益'],
+    detailVariants: [
+      {
+        terms: ['桃花潭记', 'AI 制作', 'AIGC 导演'],
+        details: {
+          what: 'Xinhua reported that Anhui Satellite TV aired the AI-made intangible-cultural-heritage drama Peach Blossom Pond, explicitly labeling the production as AI-made and AIGC-directed after earlier AI short-drama experiments.',
+          why: 'AIGC video is moving from short-form experiments into mainstream broadcast tests, making provenance labels, copyright boundaries, performer rights, and editorial quality visible product requirements.',
+          impact: 'Media, tourism, education, and local-culture teams can test AIGC for lower-cost promotional content, but should keep human editorial review, rights clearance, source disclosure, and audience-quality checks in the workflow.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua cited University of North Carolina at Chapel Hill research finding that AI-generated fiction characters tend to be more conservative and closed-ended, with less complexity and mystery than human-written characters.',
       why: 'The signal separates fluent generation from durable creative quality: models can produce readable drafts, but unresolved tension, ambiguity, character depth, and aesthetic judgment still require human editorial control.',

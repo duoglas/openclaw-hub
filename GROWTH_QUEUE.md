@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-30 11:20
+Last updated: 2026-07-31 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-266: 将 2026-07-31 最新双语日报接入 real cron fixture，并修复医疗仿真、WAIC 智能体安全、Jetson Orin、AIGC 电视剧与中小企业 AI 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-07-31）暴露 NVIDIA Isaac for Healthcare 医疗物理仿真、WAIC 智能体安全运行期审计、Jetson Orin 边缘 AI 机器人开发、AIGC 电视剧版权/来源标注风险与工信部“小快轻准”中小企业 AI 赋能五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留泛化 fallback 或双语信号错配，首日索引会漏掉医疗机器人仿真验证、agent runtime safety、边缘机器人开发套件、AIGC provenance 和 SME AI enablement 长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-07-31 / latestFixture=2026-07-31 / expectedSignals=5；daily source projection labels 覆盖 34 fixtures / 170 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-07-31.mjs`；2) 为 Jetson Orin edge AI、AIGC TV provenance 与 MIIT SME enablement 增加 fixture-backed label/detailVariants；3) EN/ZH 2026-07-31 页面统一到同一五条信号，移除泛化 fallback 并补齐 Case-Level FAQ；4) 质量评分 28/30。
 
 - [x] P1 Candidate / EXP-265: 将 ai-policy-standards 有效容量从 4 提升到 5，并同步 WAIC governance capacityPlan / policy alternate-target 诊断，消费 EXP-264 后续“ai-policy-standards 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-264 后续建议继续处理 ai-policy-standards 的 3/4 高利用容量；若 AI 计量指南、中国—东盟 AI 创新中心与 WAIC / WAICO 治理协调三条标准/治理协作信号继续挤在 4-slot target 中，后续国际治理机制、AI 标准协调、测评计量、跨境治理协作和 agent governance boundary 信号会被迫错投到 ai-industrial-policy、digital-regulation-compliance 或 aerospace-compute-infrastructure。
