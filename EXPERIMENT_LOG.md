@@ -6,7 +6,7 @@
 - Start date: 2026-07-31
 - End date: 2026-07-31
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `agent-runtime-safety=1/3 (2 headroom)`、`high-sensitivity-ai-deployment=2/3`、`model-account-security=3/5`、`product-safety=7/7`、`split target categories=50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source labels、latest fixture 与 `pnpm build` 全部通过。
-- Result: pass（agent-runtime-safety 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；WAIC agent safety capacityPlan 已同步 categoryBudget=3/categoryHeadroom=2；AWS Secret Cloud alternate-target 诊断已同步；taxonomy、registry health、daily source labels、latest fixture 与 build 通过；commit `6ff6415`；质量评分 27/30。）
+- Result: pass（agent-runtime-safety 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；WAIC agent safety capacityPlan 已同步 categoryBudget=3/categoryHeadroom=2；AWS Secret Cloud alternate-target 诊断已同步；taxonomy、registry health、daily source labels、latest fixture 与 build 通过；commit `d1a0244`；质量评分 27/30。）
 - Decision: scale（保留 agent-runtime-safety 作为后续工具调用审计、运行期风险监测、权限边界、人类确认与事件响应类 Agent safety 信号的独立容量入口；下一步可继续处理 frontier-model-task-capability、edge-hybrid-compute-infrastructure 或 robotics-open-model-research 的 1 headroom 高利用 target。）
 
 ## EXP-266 — 2026-07-31 latest real cron fixture and field-level projection recovery
