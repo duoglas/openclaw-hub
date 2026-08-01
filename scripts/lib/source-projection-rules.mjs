@@ -1409,8 +1409,8 @@ export const FIELD_PROJECTION_RULES = [
     ],
     capacityPlan: {
       selectedSplitTarget: 'cloud-agent-runtime-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution and cloud-training-runtime-infrastructure because AWS Continuum, AWS Context, and Bedrock AgentCore are managed cloud agent runtime infrastructure, not pure model distribution or cloud training/runtime capacity.',
-      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure'],
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution, cloud-training-runtime-infrastructure, and edge-hybrid-compute-infrastructure because AWS Continuum, AWS Context, and Bedrock AgentCore are managed cloud agent runtime infrastructure, not pure model distribution, cloud training/runtime capacity, or edge/hybrid device infrastructure.',
+      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure', 'edge-hybrid-compute-infrastructure'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -1484,10 +1484,10 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution and cloud-training-runtime-infrastructure because Apple and Broadcom are expanding domestic edge/hybrid chip supply, not distributing a model or adding cloud training/runtime capacity.',
       rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 3,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta +1; allocates edge-hybrid-compute-infrastructure for a 2026-07-20 Apple/Broadcom chip supply-chain signal while raising parent cloud-infrastructure budget by 1.',
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; edge-hybrid-compute-infrastructure now has two effective headroom slots for future RTX/DGX edge workstation, local AI PC, hybrid enterprise appliance, and US chip supply-chain signals.',
       },
     },
     terms: ['Broadcom', '超过 300 亿美元', '超过 150 亿颗美国制造芯片', '定制硅组件', '无线连接技术'],
@@ -1675,8 +1675,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / TOP500 / Green500 / compute infrastructure',
     capacityPlan: {
       selectedSplitTarget: 'hpc-science-compute-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution and cloud-training-runtime-infrastructure because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not model distribution or cloud training/runtime capacity.',
-      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure'],
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution, cloud-training-runtime-infrastructure, and edge-hybrid-compute-infrastructure because TOP500 and Green500 are supercomputing capacity and energy-efficiency signals, not model distribution, cloud training/runtime capacity, or edge/hybrid device infrastructure.',
+      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure', 'edge-hybrid-compute-infrastructure'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 3,
@@ -1835,8 +1835,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'NVIDIA / AI for Science / HPC software stack',
     capacityPlan: {
       selectedSplitTarget: 'hpc-science-compute-infrastructure',
-      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution and cloud-training-runtime-infrastructure because AI for Science HPC software is GPU-native HPC/science infrastructure capacity, not model distribution or cloud training/runtime capacity.',
-      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure'],
+      whyNotAlternatives: 'Rejected alternate split targets cloud-model-distribution, cloud-training-runtime-infrastructure, and edge-hybrid-compute-infrastructure because AI for Science HPC software is GPU-native HPC/science infrastructure capacity, not model distribution, cloud training/runtime capacity, or edge/hybrid device infrastructure.',
+      rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure', 'edge-hybrid-compute-infrastructure'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 3,

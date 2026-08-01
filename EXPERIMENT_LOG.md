@@ -1,3 +1,14 @@
+## EXP-269 — Edge hybrid compute infrastructure capacity headroom
+- Hypothesis: EXP-268 后续指出 edge-hybrid-compute-infrastructure 仍是 2/3 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 RTX Spark / DGX Station / AI PC、本地工作站、混合企业 appliance、端侧推理与芯片供应链信号会被迫错投到 cloud-model-distribution、cloud-training-runtime-infrastructure 或 hpc-science-compute-infrastructure。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `edge-hybrid-compute-infrastructure` effective category budget 从 3 提升到 4；同步 Apple/Broadcom capacityPlan 的 categoryBudget/categoryHeadroom/capacityDelta；让 AWS AgentCore managed runtime、TOP500/Green500 supercomputing 与 AI for Science HPC software stack 显式拒绝新可用的 edge-hybrid-compute-infrastructure alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-01
+- End date: 2026-08-01
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `edge-hybrid-compute-infrastructure=2/4 (2 headroom)`、`cloud-model-distribution=2/4`、`cloud-training-runtime-infrastructure=5/7`、`cloud-agent-runtime-infrastructure=1/2`、`hpc-science-compute-infrastructure=2/3`、`cloud-infrastructure=12/12`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（edge-hybrid-compute-infrastructure 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；Apple/Broadcom capacityPlan 已同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；AWS AgentCore、TOP500/Green500 与 AI for Science HPC alternate-target 诊断已同步；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 edge-hybrid-compute-infrastructure 作为后续 AI PC、本地工作站、边缘/混合企业 appliance、端侧推理与芯片供应链信号的独立容量入口；下一步可继续处理 hpc-science-compute-infrastructure、frontier-model-task-capability 或 robotics-open-model-research 的 1 headroom 高利用 target。）
+
 ## EXP-268 — 2026-08-01 latest real cron fixture and cost/safety/data-service projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-01）暴露 OpenAI 更便宜智能/10亿活跃用户/200万企业、GPT-5.6 Luna/Terra API 降价与 Sol Fast mode、NVIDIA Open Secure AI Alliance 开放安全 agent harness、中国低轨卫星互联网组网和国家数据局词元交易五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉模型成本路由、开放 AI 安全、商业航天数据服务和数据资产交易长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-01.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-01.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

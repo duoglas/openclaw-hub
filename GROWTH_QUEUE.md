@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-01 11:27
+Last updated: 2026-08-01 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-269: 将 edge-hybrid-compute-infrastructure 有效容量从 3 提升到 4，并同步 Apple/Broadcom capacityPlan 与 AWS/HPC alternate-target 诊断，消费 EXP-268 后续“edge-hybrid-compute-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-268 后续建议继续处理 edge-hybrid-compute-infrastructure 的 2/3 高利用容量；若 RTX Spark / DGX Station / Microsoft hybrid stack 与 Apple/Broadcom US chip supply chain 两条边缘/混合算力信号继续只剩 1 个 headroom，后续 AI PC、本地工作站、企业混合 appliance、端侧推理与国产/美国供应链信号会被迫错投到 cloud-model-distribution、cloud-training-runtime-infrastructure 或 hpc-science-compute-infrastructure。
+  - Metrics: source projection taxonomy 显示 edge-hybrid-compute-infrastructure 从 2/3 变为 2/4，并保留 cloud-model-distribution=2/4、cloud-training-runtime-infrastructure=5/7、cloud-agent-runtime-infrastructure=1/2、hpc-science-compute-infrastructure=2/3、cloud-infrastructure=12/12、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.edge-hybrid-compute-infrastructure` 提升到 4；2) Apple/Broadcom capacityPlan 同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；3) AWS AgentCore、TOP500/Green500 与 AI for Science HPC 显式拒绝 edge-hybrid-compute-infrastructure 作为可用 alternate；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-268: 将 2026-08-01 最新双语日报接入 real cron fixture，并修复 OpenAI 更便宜智能/API 降价、NVIDIA Open Secure AI Alliance、卫星互联网与词元交易字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `ceca4c1`
