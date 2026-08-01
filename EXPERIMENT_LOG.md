@@ -6,7 +6,7 @@
 - Start date: 2026-08-01
 - End date: 2026-08-01
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-01 / latestFixture=2026-08-01 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 35 fixtures / 175 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
-- Result: pass（2026-08-01 最新双语日报已由同日 real cron fixture 覆盖；OpenAI cheaper intelligence、Luna/Terra API price cuts、Open Secure AI Alliance、satellite internet commercial data services 与 token trading data assets 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-08-01 最新双语日报已由同日 real cron fixture 覆盖；OpenAI cheaper intelligence、Luna/Terra API price cuts、Open Secure AI Alliance、satellite internet commercial data services 与 token trading data assets 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-08-01 fixture 作为模型成本路由、开放 AI 安全、商业航天数据服务与数据资产交易的首日索引基线；下一步可继续处理 edge-hybrid-compute-infrastructure、robotics-open-model-research 或 frontier-model-inference-architecture 的 1 headroom 高利用 target。）
 
 ## EXP-267 — Agent runtime safety capacity headroom
@@ -28,7 +28,7 @@
 - Start date: 2026-07-31
 - End date: 2026-07-31
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-31 / latestFixture=2026-07-31 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 34 fixtures / 170 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-31 最新双语日报已由同日 real cron fixture 覆盖；Jetson Orin、AIGC TV provenance 与 MIIT SME enablement 均输出字段级 projection；EN/ZH 页面已统一五条信号并移除泛化 fallback；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-31 最新双语日报已由同日 real cron fixture 覆盖；Jetson Orin、AIGC TV provenance 与 MIIT SME enablement 均输出字段级 projection；EN/ZH 页面已统一五条信号并移除泛化 fallback；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-31 fixture 作为医疗机器人仿真、智能体运行期安全、边缘 AI 机器人开发、AIGC 来源/版权与中小企业 AI 赋能的首日索引基线；下一步可继续处理 agent-runtime-safety、robotics-open-model-research 或 consumer-creative-ai 的 1 headroom 高利用 target。）
 
 ## EXP-265 — AI policy standards capacity headroom
@@ -160,7 +160,7 @@
 - Start date: 2026-07-24
 - End date: 2026-07-24
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-24 / latestFixture=2026-07-24 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 32 fixtures / 160 expectedSignals；taxonomy 显示 `local-commerce-ai-workflows=1/2`、`ai-commercialization-roi=1/2`、`split target categories: 50/50 used`；registry health、daily generator、case FAQ、duplicate slug 与 `pnpm build` 全部通过。
-- Result: pass（Meituan LongCat / AIGC commerce workflow 已迁入 local-commerce-ai-workflows；通用 ai-commercialization-roi 回落到 1/2；2026-07-24 latest fixture 注册并纳入最新闸门；EN 07-24 Google/Meituan story 与 Case-Level FAQ 已修复；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（Meituan LongCat / AIGC commerce workflow 已迁入 local-commerce-ai-workflows；通用 ai-commercialization-roi 回落到 1/2；2026-07-24 latest fixture 注册并纳入最新闸门；EN 07-24 Google/Meituan story 与 Case-Level FAQ 已修复；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 local-commerce-ai-workflows 作为本地生活、商家内容生成、广告/推荐和 marketplace conversion 类 commerce AI 信号的独立容量；下一步可继续处理 cloud-agent-runtime-infrastructure 或 robotics-open-model-research 的满额 effective target。）
 
 ## EXP-252 — Consumer agentic product surface split target for Google Gemini embedded surfaces
@@ -226,7 +226,7 @@
 - Start date: 2026-07-22
 - End date: 2026-07-22
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-22 / latestFixture=2026-07-22 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 30 fixtures / 150 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-22 最新双语日报已由同日 real cron fixture 覆盖；Bedrock GPT-5.6、Claude Fable safety availability、Claude Fable Bedrock、AWS FDE 与 NVIDIA performance-per-watt 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-22 最新双语日报已由同日 real cron fixture 覆盖；Bedrock GPT-5.6、Claude Fable safety availability、Claude Fable Bedrock、AWS FDE 与 NVIDIA performance-per-watt 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-22 fixture 作为模型云分发治理、Claude 安全访问恢复、Bedrock fallback 与 AI factory 能效效率的首日索引基线；下一步可继续收敛 build 阶段 duplicate id warning，避免 daily collection 警告长期存在。）
 
 ### EXP-246
@@ -237,7 +237,7 @@
 - Start date: 2026-07-21
 - End date: 2026-07-21
 - Success metric: 三个新 target 分别保留至少 1 个 headroom；47/47 split targets used；taxonomy、registry health、daily labels、双语 fixtures、Case-Level FAQ 与 build 全部通过。
-- Result: pass（九条基础设施规则已按采购意图迁入三个独立 target；`cloud-training-runtime-infrastructure=5/6`、`edge-hybrid-compute-infrastructure=2/3`、`hpc-science-compute-infrastructure=2/3`；47/47 split targets used，parentFallback=0、unmatched=0；taxonomy、registry health、daily labels、双语 fixtures、Case-Level FAQ 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（九条基础设施规则已按采购意图迁入三个独立 target；`cloud-training-runtime-infrastructure=5/6`、`edge-hybrid-compute-infrastructure=2/3`、`hpc-science-compute-infrastructure=2/3`；47/47 split targets used，parentFallback=0、unmatched=0；taxonomy、registry health、daily labels、双语 fixtures、Case-Level FAQ 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（后续云端训练/运行时、端侧/混合算力和 HPC/AI for Science 信号分别进入独立容量，不再恢复宽泛 `ai-infrastructure-capacity`。）
 
 ### EXP-245
@@ -248,7 +248,7 @@
 - Start date: 2026-07-21
 - End date: 2026-07-21
 - Success metric: developer-tools unmatched=0；split target categories 45/45 used；registry health、daily source projection labels、taxonomy 与 `pnpm build` 全部通过。
-- Result: pass（Qoder 与 Kimi K3 已拆成独立规则和 split targets；developer-tools unmatched 收敛为 0；45/45 split targets used；taxonomy、registry health、daily labels、双语生成、Case-Level FAQ 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（Qoder 与 Kimi K3 已拆成独立规则和 split targets；developer-tools unmatched 收敛为 0；45/45 split targets used；taxonomy、registry health、daily labels、双语生成、Case-Level FAQ 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 China code-agent runtime 与 open-model long-context 作为后续 Qoder / Kimi / 国产代码 Agent / 百万 token 开放模型信号的独立容量入口。）
 
 ### EXP-244
@@ -259,7 +259,7 @@
 - Start date: 2026-07-21
 - End date: 2026-07-21
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 43/43 used`，并显示 `supply-chain-cost-pressure=1/2`、`token-economics-optimization=1/2`、`high-sensitivity-ai-deployment=2/3`、`agent-runtime-safety=1/2`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
-- Result: pass（WAIC token-cost optimization 已迁入 token-economics-optimization；WAIC agent safety evaluation 已迁入 agent-runtime-safety；硬件供应链成本桶与高敏部署桶各释放 1 个 headroom；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（WAIC token-cost optimization 已迁入 token-economics-optimization；WAIC agent safety evaluation 已迁入 agent-runtime-safety；硬件供应链成本桶与高敏部署桶各释放 1 个 headroom；taxonomy、registry health、daily source labels 与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 token economics 与 agent runtime safety 作为后续模型路由、缓存计费、算电协同、运行期审计和风险监测信号的独立容量入口；下一步可把 developer-tools unmatched 的 Qoder / Kimi 复用规则拆成 China code-agent runtime / open-model long-context 子目标。）
 
 ### EXP-243
@@ -270,7 +270,7 @@
 - Start date: 2026-07-21
 - End date: 2026-07-21
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-21 / latestFixture=2026-07-21 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 29 fixtures / 145 expectedSignals；source projection registry health/taxonomy、daily EN/ZH generator、bilingual pair fixture、case-level FAQ 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-20/07-21 最新双语日报已由同日 real cron fixtures 覆盖；WAIC governance/agent safety、Gemini agent runtime、NVIDIA post-training/Vera CPU、Claude Azure GB300、Apple/Broadcom 与 WAIC token-cost signals 均输出字段级 projection；EN 页面移除泛化 fallback；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-20/07-21 最新双语日报已由同日 real cron fixtures 覆盖；WAIC governance/agent safety、Gemini agent runtime、NVIDIA post-training/Vera CPU、Claude Azure GB300、Apple/Broadcom 与 WAIC token-cost signals 均输出字段级 projection；EN 页面移除泛化 fallback；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 latest fixture freshness 与 token-cost / agent-safety projection 作为首日索引质量基线；下一步可把 supply-chain-cost-pressure 与 high-sensitivity-ai-deployment 继续拆出 token-economics / agent-runtime-safety split target，避免满额后继续临时扩容。）
 
 ### EXP-242
@@ -281,7 +281,7 @@
 - Start date: 2026-07-20
 - End date: 2026-07-20
 - Success metric: `pnpm check:source-projection-rule-registry-health` 显示 `waic-product-launch-pipeline=1`、`waic-industry-agenda=1`；`pnpm check:source-projection-rule-taxonomy` 显示 `split target categories: 40/40 used`；`pnpm check:daily-source-projection-labels` 保持 `fixtures=27, expectedSignals=135`；`pnpm build` 通过。
-- Result: pass（WAIC product launch pipeline 与 industry/talent/compute agenda 已从 `china-ai-industry-report-l3` 拆出独立 split targets；07-14 / 07-18 fixtures 已改为独立规则；L3 规则回收为 market-sizing / official preview；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（WAIC product launch pipeline 与 industry/talent/compute agenda 已从 `china-ai-industry-report-l3` 拆出独立 split targets；07-14 / 07-18 fixtures 已改为独立规则；L3 规则回收为 market-sizing / official preview；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 WAIC product / agenda / governance 三轨 projection；下一步可为 market-intelligence 中仍 unmatched 的 memory price / consumer electronics cost 新增 supply-chain cost split target，进一步清理 market-intelligence taxonomy 诊断噪声。）
 
 ### EXP-241
@@ -303,7 +303,7 @@
 - Start date: 2026-07-19
 - End date: 2026-07-19
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-19, latestFixture=2026-07-19, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=27, expectedSignals=135`；daily EN/ZH generator、bilingual pair fixture、case FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-19 最新双语日报已由同日 real cron fixture 覆盖；WAIC governance、NVIDIA post-training、Jetson Thor modules、Claude Fable safety framework 与 ChatGPT model picker 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；ZH 页面移除重复截断证据矩阵；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-19 最新双语日报已由同日 real cron fixture 覆盖；WAIC governance、NVIDIA post-training、Jetson Thor modules、Claude Fable safety framework 与 ChatGPT model picker 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；ZH 页面移除重复截断证据矩阵；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-19 fixture 作为 AI governance coordination、agent 后训练成本、端侧机器人模块、模型安全发布门禁和任务型模型选择器的首日索引质量基线；下一步可继续将 WAIC governance 与 WAIC industry/talent/compute agenda 拆成更细治理/产业双轨 projection，避免大会期间宽词互相污染。）
 
 ### EXP-239
@@ -314,7 +314,7 @@
 - Start date: 2026-07-18
 - End date: 2026-07-18
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-18, latestFixture=2026-07-18, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=26, expectedSignals=130`；daily EN/ZH generator、bilingual pair fixture、case FAQ、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-18 最新双语日报已由同日 real cron fixture 覆盖；Kimi K3、NVIDIA post-training、WAIC industry/talent/compute agenda 与 MIIT SME AI enablement 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-18 最新双语日报已由同日 real cron fixture 覆盖；Kimi K3、NVIDIA post-training、WAIC industry/talent/compute agenda 与 MIIT SME AI enablement 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-18 fixture 作为长上下文开放模型、agent 后训练基础设施、中国 AI 产业/人才/算力议程和中小企业 AI 赋能的首日索引质量基线；下一步可把 Kimi/K3 从 Qoder 复用 rule 拆成独立 China open-model long-context split target，降低 developer-tools unmatched 诊断噪声。）
 
 ### EXP-238
@@ -325,7 +325,7 @@
 - Start date: 2026-07-18
 - End date: 2026-07-18
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 38/38 used`，并显示 `regional-ai-ecosystems=1/4`、`regional-research-ecosystems=1/2`、`regional-office-expansion=1/2`、`workforce-ai-enablement=1/2`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
-- Result: pass（regional-ai-ecosystems 已从 3/4 回落到 1/4；Anthropic Canada、Anthropic Korea 与 Amazon RAISE US 已分别迁入 research / office / workforce 三个子目标；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（regional-ai-ecosystems 已从 3/4 回落到 1/4；Anthropic Canada、Anthropic Korea 与 Amazon RAISE US 已分别迁入 research / office / workforce 三个子目标；taxonomy、registry health、daily source labels 与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 research / office / workforce 三个 regional 子目标作为后续区域 AI 生态信号的低风险容量入口；下一步优先补齐 2026-07-18 latest real cron fixture，恢复 latest fixture freshness 闸门。）
 
 ### EXP-237
@@ -336,7 +336,7 @@
 - Start date: 2026-07-17
 - End date: 2026-07-17
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 35/35 used`、`ai-commercialization-roi=1/2`、`market-sizing-reports=2/3`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture` 与 `pnpm build` 全部通过。
-- Result: pass（WorkBuddy / 豆包商业化 ROI 已从 China market-sizing L3 规则拆出独立 ai-commercialization-roi split target；market-sizing-reports 回收为 WAIC / 产业规模报告；ROI 宽词误命中 06-08 AWS/OpenAI story 的 label 漂移已修复；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（WorkBuddy / 豆包商业化 ROI 已从 China market-sizing L3 规则拆出独立 ai-commercialization-roi split target；market-sizing-reports 回收为 WAIC / 产业规模报告；ROI 宽词误命中 06-08 AWS/OpenAI story 的 label 漂移已修复；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 ai-commercialization-roi 作为中国 AI 付费计划、企业 ROI 与商业化采用信号的独立容量入口；下一步可继续把 regional-ai-ecosystems 中 Anthropic Canada / Korea office / Raise workforce training 拆成 regional research、office expansion 与 workforce enablement 子目标。）
 
 ### EXP-236
@@ -347,7 +347,7 @@
 - Start date: 2026-07-17
 - End date: 2026-07-17
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-17, latestFixture=2026-07-17, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=25, expectedSignals=125`；daily EN/ZH generator、bilingual pair fixture、case FAQ、registry health、taxonomy、duplicate slug precheck 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-17 最新双语日报已由同日 real cron fixture 覆盖；Anthropic Canada、Jetson Thor、AWS Compute/ML leadership、Together AI financing 与 WorkBuddy commercialization 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-17 最新双语日报已由同日 real cron fixture 覆盖；Anthropic Canada、Jetson Thor、AWS Compute/ML leadership、Together AI financing 与 WorkBuddy commercialization 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-17 fixture 作为加拿大 AI 研究生态、端侧机器人模块、云 AI 基础设施组织变化、开放模型推理基础设施融资和中国 AI 商业化 ROI 的首日索引质量基线；下一步可把 regional-ai-ecosystems 与 market-sizing-reports 的宽词继续拆细，降低未来待确认媒体摘要污染风险。）
 
 ### EXP-235
@@ -358,7 +358,7 @@
 - Start date: 2026-07-16
 - End date: 2026-07-16
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-16, latestFixture=2026-07-16, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=24, expectedSignals=120`；daily EN/ZH generator、bilingual pair fixture、case FAQ、registry health、taxonomy、duplicate slug precheck 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-16 最新双语日报已由同日 real cron fixture 覆盖；Jetson Thor、NVIDIA Japan healthcare AI、Nemotron Labs、Claude Science 与 ChatGPT Instant 均输出字段级 projection；EN/ZH 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-16 最新双语日报已由同日 real cron fixture 覆盖；Jetson Thor、NVIDIA Japan healthcare AI、Nemotron Labs、Claude Science 与 ChatGPT Instant 均输出字段级 projection；EN/ZH 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-16 fixture 作为边缘机器人模组、医疗 AI 产品化、开放模型 ownership、科研 agent workflow 与模型能力选择界面的首日索引质量基线；下一步可继续把医疗 AI deployment 与 edge robotics modules 拆出更细 capacity plan，降低已满额 physical-ai-robotics / enterprise-agents 分类压力。）
 
 ### EXP-234
@@ -380,7 +380,7 @@
 - Start date: 2026-07-15
 - End date: 2026-07-15
 - Success metric: `pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
-- Result: pass（AWS Continuum / Context / Bedrock AgentCore 已从泛化 agent-platform detail 收敛为安全漏洞闭环、企业知识图谱检索与受治理 agent runtime 字段级详情；新增 detailVariant 被真实 cron fixture 覆盖；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（AWS Continuum / Context / Bedrock AgentCore 已从泛化 agent-platform detail 收敛为安全漏洞闭环、企业知识图谱检索与受治理 agent runtime 字段级详情；新增 detailVariant 被真实 cron fixture 覆盖；全部相关检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 AWS enterprise-agent 条件详情作为云上 Agent 平台首日索引质量基线；下一步可把 Bedrock AgentCore 的 runtime isolation / permission boundary 与 AWS Context 的 enterprise knowledge graph 拆成独立 source projection split target。）
 
 ### EXP-232
@@ -391,7 +391,7 @@
 - Start date: 2026-07-15
 - End date: 2026-07-15
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-15, latestFixture=2026-07-15, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=23, expectedSignals=115`；daily EN/ZH/pair、case FAQ、registry health、taxonomy 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-15 最新双语日报已由同日 real cron fixture 覆盖；AWS Continuum、Bedrock GPT-5.6、Nemotron Labs open-model ownership、Blackwell performance-per-watt 与 WAIC official preview 均输出字段级 projection；EN/ZH 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-15 最新双语日报已由同日 real cron fixture 覆盖；AWS Continuum、Bedrock GPT-5.6、Nemotron Labs open-model ownership、Blackwell performance-per-watt 与 WAIC official preview 均输出字段级 projection；EN/ZH 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-15 fixture 作为企业 Agent 平台、云上 OpenAI 分发、开放模型私有评测、AI 工厂能效和 WAIC 官方看点的首日索引质量基线；下一步可继续把 AWS AgentCore / Context 的安全工作流拆成更细 agent runtime / enterprise knowledge projection。）
 
 ### EXP-231
@@ -413,7 +413,7 @@
 - Start date: 2026-07-13
 - End date: 2026-07-13
 - Success metric: `pnpm check:source-projection-rule-registry-health` 通过并输出 `totalRules=76`、`parent category fallback rules: 0`；`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
-- Result: pass（detailVariants 现在有 fixture-backed 完整性闸门；Claude Science 07-13 generator 输出已收敛为 AI workbench、auditable artifacts、compute resources 与 auditability / permissions / compute-access 字段级详情；latestDaily=2026-07-13、fixtures=21 / expectedSignals=105、duplicate slug precheck 与 build 均通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（detailVariants 现在有 fixture-backed 完整性闸门；Claude Science 07-13 generator 输出已收敛为 AI workbench、auditable artifacts、compute resources 与 auditability / permissions / compute-access 字段级详情；latestDaily=2026-07-13、fixtures=21 / expectedSignals=105、duplicate slug precheck 与 build 均通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 detailVariant 完整性与 fixture 覆盖闸门作为复用 rule 的 registry 级防漂移机制；下一步可把 displayLabels 与 detailVariants 做可选联动校验，确保多标签 rule 的每个高价值 label 都有对应字段级 detail。）
 
 ### EXP-229
@@ -424,7 +424,7 @@
 - Start date: 2026-07-13
 - End date: 2026-07-13
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 输出 `latestDaily=2026-07-13, latestFixture=2026-07-13, fixtureLagDays=0, expectedSignals=5`；`pnpm check:daily-source-projection-labels` 输出 `fixtures=21, expectedSignals=105`；daily EN/ZH/pair、case FAQ、source projection registry health/taxonomy/term narrowness、fixture dedup/parser guardrail、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-13 最新双语日报已由同日 real cron fixture 覆盖；Claude Science 与 Long March 10B 字段级 projection 已阻断泛化 fallback；case-level FAQ 从 07-13 fixture 自动推断 ChatGPT task-based model picker 与 enterprise agent engineering harness 两个 signals；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-13 最新双语日报已由同日 real cron fixture 覆盖；Claude Science 与 Long March 10B 字段级 projection 已阻断泛化 fallback；case-level FAQ 从 07-13 fixture 自动推断 ChatGPT task-based model picker 与 enterprise agent engineering harness 两个 signals；全部相关检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-13 fixture 作为科研 AI workbench、agent engineering harness、模型安全 severity 与可回收发射基础设施的首日索引质量基线；下一步可继续把重复出现的 Claude Science / aerospace detailVariants 扩展为更细条件 projection，减少最新日报复用 rule 时的正文漂移。）
 
 ### EXP-228
@@ -435,7 +435,7 @@
 - Start date: 2026-07-12
 - End date: 2026-07-12
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 33/33 used`、`ai-industrial-policy=6/7 (1 headroom)`、`aerospace-compute-infrastructure=1/2 (1 headroom)`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture` 与 `pnpm build` 全部通过。
-- Result: pass（policy-governance scaffold 已新增 aerospace-compute-infrastructure；2026-07-12 AI-space / Long March 10B rule 已从 ai-industrial-policy 分流；taxonomy 显示 split target categories 33/33 used、effective coverage 76/76 split-backed、ai-industrial-policy=6/7、aerospace-compute-infrastructure=1/2；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（policy-governance scaffold 已新增 aerospace-compute-infrastructure；2026-07-12 AI-space / Long March 10B rule 已从 ai-industrial-policy 分流；taxonomy 显示 split target categories 33/33 used、effective coverage 76/76 split-backed、ai-industrial-policy=6/7、aerospace-compute-infrastructure=1/2；全部相关检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 aerospace-compute-infrastructure 作为后续商业航天、卫星 AI、遥感计算、可复用发射类日报 projection 的低风险容量入口；下一步可继续把 market-intelligence / developer-tools 的 unmatched 规则迁入 split target，减少 taxonomy 诊断噪声。）
 
 ### EXP-227
@@ -446,7 +446,7 @@
 - Start date: 2026-07-12
 - End date: 2026-07-12
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy/term narrowness、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
-- Result: pass（latestDaily=2026-07-12 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 20 个 fixtures / 100 条 expectedSignals；case-level FAQ 从 07-12 fixture 自动推断 ChatGPT task-based model picker 与 enterprise agent engineering harness 两个 signals；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（latestDaily=2026-07-12 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 20 个 fixtures / 100 条 expectedSignals；case-level FAQ 从 07-12 fixture 自动推断 ChatGPT task-based model picker 与 enterprise agent engineering harness 两个 signals；全部相关检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-12 fixture 作为开放机器人生态、Agent CPU 基础设施、AI 太空计算与可回收发射能力的首日索引质量基线；下一步可把 policy-governance 中 AI/space infrastructure 从 ai-industrial-policy 继续拆分为 aerospace-compute-infrastructure，避免 ai-industrial-policy 满额后继续临时扩容。）
 
 ### EXP-226
@@ -457,7 +457,7 @@
 - Start date: 2026-07-11
 - End date: 2026-07-11
 - Success metric: `pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 全部通过。
-- Result: pass（07-11 generator 输出已使用 Nemotron 3 Ultra + LangChain Deep Agents harness 字段级详情，旧 Cadence / Dassault / NemoClaw / CAD 工业代理详情被 fixture banned phrase 阻断；source projection label、registry health、taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（07-11 generator 输出已使用 Nemotron 3 Ultra + LangChain Deep Agents harness 字段级详情，旧 Cadence / Dassault / NemoClaw / CAD 工业代理详情被 fixture banned phrase 阻断；source projection label、registry health、taxonomy 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 `detailVariants` 作为复用 rule 的字段级详情收敛机制；下一步可把早期复用 rule 中仍依赖默认 detail 的 latest fixture 逐步迁移，尤其是同一 rule 同时承载 product update 与 policy / benchmark signal 的条目。）
 
 ### EXP-225
@@ -468,7 +468,7 @@
 - Start date: 2026-07-11
 - End date: 2026-07-11
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy/term narrowness、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 全部通过。
-- Result: pass（latestDaily=2026-07-11 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 19 个 fixtures / 95 条 expectedSignals；case-level FAQ 从 07-11 fixture 自动推断 Qoder agentic coding platform 与 Qwen AI hardware ecosystem 两个 signals；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（latestDaily=2026-07-11 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 19 个 fixtures / 95 条 expectedSignals；case-level FAQ 从 07-11 fixture 自动推断 Qoder agentic coding platform 与 Qwen AI hardware ecosystem 两个 signals；全部相关检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-11 fixture 作为 GPT-5.6、Muse Image 隐私边界、Qoder 代码 Agent 与 Qwen 硬件生态的首日索引质量基线；下一步可将 OpenAI GPT-5.6 / Meta Muse 从复用 rule 升级为条件 detail projection，进一步减少字段级 detail 复用。）
 
 ### EXP-224
@@ -479,7 +479,7 @@
 - Start date: 2026-07-10
 - End date: 2026-07-10
 - Success metric: `pnpm check:daily-bilingual-generator-pair-fixture`、EN/ZH generator real cron fixture、case-level FAQ、daily source projection labels、latest daily real cron fixture 与 `pnpm build` 全部通过。
-- Result: pass（daily bilingual pair fixture 已从 13 个历史 missing token 失败恢复为通过；daily EN/ZH generator、case FAQ、source projection labels、latest fixture 与 build 均通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（daily bilingual pair fixture 已从 13 个历史 missing token 失败恢复为通过；daily EN/ZH generator、case FAQ、source projection labels、latest fixture 与 build 均通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（恢复全量双语内容质量闸门，后续最新日报接入可重新把 bilingual pair fixture 作为必须通过项；下一步可把 requiredTokens 升级为显式 token alias groups，避免未来中英转写再次造成历史基线漂移。）
 
 ### EXP-223
@@ -501,7 +501,7 @@
 - Start date: 2026-07-09
 - End date: 2026-07-09
 - Success metric: `pnpm check:daily-source-projection-labels` 输出 `fixtures=17, expectedSignals=85`，并且 source projection registry health/taxonomy、latest fixture freshness 与 `pnpm build` 通过。
-- Result: pass（label check 已由 registry 自动发现 17 个 label-ready fixtures / 85 条 expectedSignals；补齐 GPT-Live、SWE-Bench Pro、Bedrock 三个条件标签；registry health、taxonomy、latest fixture freshness 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（label check 已由 registry 自动发现 17 个 label-ready fixtures / 85 条 expectedSignals；补齐 GPT-Live、SWE-Bench Pro、Bedrock 三个条件标签；registry health、taxonomy、latest fixture freshness 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 registry-driven label fixture coverage，下一步可把 2026-05-24 至 2026-06-04 的早期 fixture 也迁入 source projection metadata，最终移除日期 cutoff。）
 
 ### EXP-221
@@ -512,7 +512,7 @@
 - Start date: 2026-07-09
 - End date: 2026-07-09
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels`、EN/ZH generator、case-level FAQ、latest specificity、source projection registry health/taxonomy 与 `pnpm build` 通过。
-- Result: pass（latestDaily=2026-07-09 已由同日 real cron fixture 覆盖；EN 最新日报 story 1/2/3/5 已移除泛化 fallback 并补齐 GPT-Live / SWE-Bench Pro FAQ；latest fixture freshness 不再允许 stale lag；相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（latestDaily=2026-07-09 已由同日 real cron fixture 覆盖；EN 最新日报 story 1/2/3/5 已移除泛化 fallback 并补齐 GPT-Live / SWE-Bench Pro FAQ；latest fixture freshness 不再允许 stale lag；相关检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-09 fixture 作为语音 AI、安全卡、代码 Agent 评测、开放 Agent 栈和机器人产业规模的首日索引质量基线；下一步可把 daily-source-projection-labels 改为读取所有 latest fixtures，减少手工 import 漂移。）
 
 ### EXP-220
@@ -534,7 +534,7 @@
 - Start date: 2026-07-07
 - End date: 2026-07-07
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 32/32 used`、`effective category coverage: 71/71 split-backed, parentFallback=0, overBudget=0, missingBudget=0`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture` 与 `pnpm build` 全部通过。
-- Result: pass（physical-ai-robotics 已从 3 个 split target 扩展到 6 个，新增 assistive exoskeleton、humanoid embodied training、robotics open-model research 三条低风险分流入口；robotics-simulation-training 从 6/6 回落到 4/6，robotics-commercial-deployment 从 3/4 回落到 2/4；taxonomy、registry health、daily label、latest fixture 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（physical-ai-robotics 已从 3 个 split target 扩展到 6 个，新增 assistive exoskeleton、humanoid embodied training、robotics open-model research 三条低风险分流入口；robotics-simulation-training 从 6/6 回落到 4/6，robotics-commercial-deployment 从 3/4 回落到 2/4；taxonomy、registry health、daily label、latest fixture 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留三条新机器人 split target 作为后续 ICML/GR00T/Cosmos、实景实训与消费外骨骼日报 projection 的容量治理入口；下一步可为 effective category capacity actions 增加 parent-level sub-split health score，优先提示仍只有 1 headroom 的新子目标。）
 
 ### EXP-218
@@ -545,7 +545,7 @@
 - Start date: 2026-07-07
 - End date: 2026-07-07
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:daily-fixture-source-dedup`、`pnpm check:daily-parser-guardrail-coverage`、`pnpm check:daily-brief-specificity`、`pnpm check:daily-cta`、`pnpm check:daily-action-sections`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 全部通过。
-- Result: pass（latestDaily=2026-07-07 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 与 Evidence Matrix 已命中字段级 projection，Case-Level FAQ 自动推断 ChatGPT model selector 与 Shenzhen consumer robotics 两个 signals；source projection taxonomy 显示 totalRules=71、effective category coverage=71/71 split-backed；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（latestDaily=2026-07-07 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 Top 5 与 Evidence Matrix 已命中字段级 projection，Case-Level FAQ 自动推断 ChatGPT model selector 与 Shenzhen consumer robotics 两个 signals；source projection taxonomy 显示 totalRules=71、effective category coverage=71/71 split-backed；全部相关检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-07 fixture 作为开放模型研究基础设施、主权 AI、模型安全评分与消费级机器人部署的首日索引质量基线；下一步可将 physical-ai-robotics 已满额 split target 继续拆分为 exoskeleton / humanoid / simulation 子目标，降低后续机器人日报 projection 的容量压力。）
 
 ### EXP-217
@@ -578,7 +578,7 @@
 - Start date: 2026-07-05
 - End date: 2026-07-05
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断非结构化/缺数值 `budgetImpact`；`pnpm build` 通过。
-- Result: pass（capacityPlan budgetImpact 已升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`；16 条历史规则迁移完成；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（capacityPlan budgetImpact 已升级为 `{capacityDelta, categoryBudget, categoryHeadroom, rationale}`；16 条历史规则迁移完成；taxonomy check 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 structured budgetImpact 作为 source projection 容量治理字段；下一步可校验 `categoryBudget/categoryHeadroom` 与实时 effective category summary 完全一致，阻断 stale capacity snapshot。）
 
 ### EXP-214
@@ -589,7 +589,7 @@
 - Start date: 2026-07-05
 - End date: 2026-07-05
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断缺少 `rejectedAlternateTargets` 数组、漏列 `consumer-creative-ai`、或包含 `legacy-consumer-target` 的 capacityPlan；`pnpm build` 通过。
-- Result: pass（capacityPlan rejected alternatives 已从自由文本升级为结构化 `rejectedAlternateTargets` 数组；synthetic self-test 锁定缺数组、漏列 current alternate target 与 stale target 三类失败；5 条历史 capacityPlan 已写入可机器比对的 rejected target IDs；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（capacityPlan rejected alternatives 已从自由文本升级为结构化 `rejectedAlternateTargets` 数组；synthetic self-test 锁定缺数组、漏列 current alternate target 与 stale target 三类失败；5 条历史 capacityPlan 已写入可机器比对的 rejected target IDs；taxonomy check 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 rejectedAlternateTargets 作为 source projection 容量治理的结构化审计字段；下一步可把 `budgetImpact` 也拆为 `{capacityDelta, budget, headroom}` 结构，减少数字文本解析。）
 
 ### EXP-210
@@ -611,7 +611,7 @@
 - Start date: 2026-07-03
 - End date: 2026-07-03
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 existing rule unstructured capacityPlan；`grep -R "capacityPlan: '" scripts/lib/source-projection-rules.mjs` 无残留；`pnpm build` 通过。
-- Result: pass（16 条历史 capacityPlan 已迁移为结构化字段；taxonomy check 新增 existing rule 模板闸门与 self-test，legacy string plan 会失败；source projection registry 无 `capacityPlan: '...'` 残留；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（16 条历史 capacityPlan 已迁移为结构化字段；taxonomy check 新增 existing rule 模板闸门与 self-test，legacy string plan 会失败；source projection registry 无 `capacityPlan: '...'` 残留；taxonomy check 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 structured capacityPlan 作为所有 source projection rule 的统一预算治理格式；下一步可把 `capacityPlan.selectedSplitTarget` 与 `splitTargetCategory` 做一致性校验，并要求 budgetImpact 明确 headroom / budget raise 数字。）
 
 ### EXP-208
@@ -622,7 +622,7 @@
 - Start date: 2026-07-02
 - End date: 2026-07-02
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 的 capacity-plan template self-test 锁定 unstructured fail / structured pass，并且 `pnpm build` 通过。
-- Result: pass（proposed rule capacityPlan 现在必须使用结构化字段 selectedSplitTarget、whyNotAlternatives、budgetImpact；self-test 锁定 unstructured string plan 失败并继续输出 consumer-productivity 的 alternate split targets，structured ChatGPT control-surface plan 通过；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（proposed rule capacityPlan 现在必须使用结构化字段 selectedSplitTarget、whyNotAlternatives、budgetImpact；self-test 锁定 unstructured string plan 失败并继续输出 consumer-productivity 的 alternate split targets，structured ChatGPT control-surface plan 通过；taxonomy check 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 structured capacityPlan 作为新增 source projection rule 的预算治理入口；下一步可把实际 source projection rule registry 中的历史 string capacityPlan 分批迁移为结构化字段，降低未来 enum / budget 审计成本。）
 
 ### EXP-207
@@ -633,7 +633,7 @@
 - Start date: 2026-07-02
 - End date: 2026-07-02
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 的 capacity-plan self-test 锁定 alternate target 失败文案，并且 `pnpm build` 通过。
-- Result: pass（proposed rule capacityPlan 失败诊断现在会在可分流时直接输出 sibling alternate targets；self-test 锁定 chatgpt-control-surfaces 缺 plan 时提示 `consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)`；taxonomy check 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（proposed rule capacityPlan 失败诊断现在会在可分流时直接输出 sibling alternate targets；self-test 锁定 chatgpt-control-surfaces 缺 plan 时提示 `consumer-productivity -> consumer-creative-ai=0/4 (4 headroom) / career-productivity-workflows=0/3 (3 headroom)`；taxonomy check 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 alternate target 失败文案作为新增 source projection rule 的执行入口；下一步可把 capacityPlan 模板从纯文本升级为结构化字段，要求声明 selected split target、why not alternatives 与预算影响。）
 
 ### EXP-206
@@ -666,7 +666,7 @@
 - Start date: 2026-06-30
 - End date: 2026-06-30
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 26/26 used`、`existing rule split target coverage: 60/60 covered`、`effective category coverage: 60/63 split-backed, parentFallback=3`；`pnpm check:source-projection-rule-registry-health` 输出 `parent category fallback rules: 3`；`pnpm check:daily-source-projection-labels`、`pnpm check:latest-daily-real-cron-fixture` 与 `pnpm build` 全部通过。
-- Result: pass（frontier-models/product-safety/developer-tools 三个高风险 parent category 已建立 9 个 split target；13 条现有规则已迁入 effective category；taxonomy 显示 26/26 split target used、60/60 covered、parentFallback=3；registry health、daily label、latest fixture 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（frontier-models/product-safety/developer-tools 三个高风险 parent category 已建立 9 个 split target；13 条现有规则已迁入 effective category；taxonomy 显示 26/26 split target used、60/60 covered、parentFallback=3；registry health、daily label、latest fixture 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留三组新增 split target 作为后续 Claude/GPT、AI 安全部署、Codex/国产计算软件 projection 的新增入口；下一步可为 company-finance 3 条 parent fallback 设计融资/IPO/收入质量 split target，把 effective parentFallback 降到 0。）
 
 ### EXP-202
@@ -677,7 +677,7 @@
 - Start date: 2026-06-30
 - End date: 2026-06-30
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-case-signal-faq-links`、source projection scope/registry health/taxonomy、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
-- Result: pass（latestDaily=2026-06-30 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 story 1/2/5 已升级为字段级 projection，Case-Level FAQ 从 latest fixture metadata 自动推断 5 个 signals；ZH 异算方舟实践案例已补全；相关检查与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（latestDaily=2026-06-30 已由最新 real cron fixture 覆盖，expectedSignals=5；EN 最新日报 story 1/2/5 已升级为字段级 projection，Case-Level FAQ 从 latest fixture metadata 自动推断 5 个 signals；ZH 异算方舟实践案例已补全；相关检查与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-06-30 fixture 作为最新内容建设首日索引质量基线；下一步应为已满额 frontier-models / product-safety / developer-tools 等 parent fallback 设计 split target 或预算迁移实验，降低后续新增日报 projection 的容量压力。）
 
 ### EXP-201
@@ -688,7 +688,7 @@
 - Start date: 2026-06-29
 - End date: 2026-06-29
 - Success metric: `pnpm check:daily-case-signal-faq-links` 输出 `latestFixture=2026-06-29, autoSignals=3`，并且 `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
-- Result: pass（latest fixture 已从 expectedSignals 自动推断 3 个 case-level FAQ signals；2026-06-29 EN 日报新增 3 条 Case-Level FAQ，覆盖 Claude Tag、ChatGPT dictation、ChatGPT personal finance 的 required terms 与内部链接；相关检查与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（latest fixture 已从 expectedSignals 自动推断 3 个 case-level FAQ signals；2026-06-29 EN 日报新增 3 条 Case-Level FAQ，覆盖 Claude Tag、ChatGPT dictation、ChatGPT personal finance 的 required terms 与内部链接；相关检查与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 expectedSignals -> case-level FAQ metadata 推断作为低新增量日报的长尾入口闸门；下一步可把 `sourceStoryMatchTerms` 扩展到 Codex Remote 或 NVIDIA/AWS infrastructure 类可执行部署 FAQ。）
 
 ### EXP-200
@@ -712,7 +712,7 @@
 - Start date: 2026-07-25
 - End date: 2026-07-25
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-07-25 / latestFixture=2026-07-25 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 33 fixtures / 165 expectedSignals；source projection registry health/taxonomy、daily EN/ZH generator、bilingual pair fixture、case-level FAQ、duplicate slug 与 `pnpm build` 全部通过。
-- Result: pass（2026-07-25 最新双语日报已由同日 real cron fixture 覆盖；Health in ChatGPT、NVIDIA/KAIST、Isaac for Healthcare、WAIC procurement pipeline 与 OpenAI small business enablement 均输出字段级 projection；EN 页面移除通用 fallback 并补齐 Health / medical robotics Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-07-25 最新双语日报已由同日 real cron fixture 覆盖；Health in ChatGPT、NVIDIA/KAIST、Isaac for Healthcare、WAIC procurement pipeline 与 OpenAI small business enablement 均输出字段级 projection；EN 页面移除通用 fallback 并补齐 Health / medical robotics Case-Level FAQ；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-07-25 fixture 作为个人健康数据权限、韩国 agentic AI 研究生态、医疗机器人仿真验证、中国 AI 采购/项目管线和小企业 AI enablement 的首日索引基线；下一步可继续处理 cloud-agent-runtime-infrastructure 或 robotics-open-model-research 的满额 effective target。）
 
 ### EXP-213
@@ -723,7 +723,7 @@
 - Start date: 2026-07-05
 - End date: 2026-07-05
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断缺少 effective alternate target ID 的 rejected-alternatives 文案；`pnpm build` 通过。
-- Result: pass（capacityPlan.whyNotAlternatives 现在必须和 effective alternate target list 自动对齐；synthetic self-test 锁定 ChatGPT control-surface plan 漏写 `career-productivity-workflows` / `consumer-creative-ai` 会失败；5 条历史 capacityPlan 已改为显式点名可分流 target ID；taxonomy check 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（capacityPlan.whyNotAlternatives 现在必须和 effective alternate target list 自动对齐；synthetic self-test 锁定 ChatGPT control-surface plan 漏写 `career-productivity-workflows` / `consumer-creative-ai` 会失败；5 条历史 capacityPlan 已改为显式点名可分流 target ID；taxonomy check 与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 rejected-alternatives target ID 覆盖作为 source projection 容量治理闸门；下一步可把 capacityPlan 的 whyNotAlternatives 从自由文本进一步结构化为 rejectedAlternateTargets 数组，降低文本包含式校验的脆弱性。）
 
 ### EXP-212
@@ -734,7 +734,7 @@
 - Start date: 2026-07-04
 - End date: 2026-07-04
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 roomy category `capacity delta +1` 与 full proposed rule `capacity delta 0`；`pnpm build` 通过。
-- Result: pass（capacityPlan.budgetImpact 现在会和 effective category headroom 自动比对；synthetic self-test 锁定 consumer-creative-ai 仍有 3 headroom 却声明 `+1` 会失败、chatgpt-control-surfaces 已满额却声明 proposed `0` 会失败；taxonomy check 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（capacityPlan.budgetImpact 现在会和 effective category headroom 自动比对；synthetic self-test 锁定 consumer-creative-ai 仍有 3 headroom 却声明 `+1` 会失败、chatgpt-control-surfaces 已满额却声明 proposed `0` 会失败；taxonomy check 与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 capacity delta/headroom 一致性作为 source projection 容量治理闸门；下一步可把 capacityPlan 的 rejected alternatives 与 effective alternate target 列表自动比对，避免 whyNotAlternatives 漏提可分流目标。）
 
 ### EXP-211
@@ -745,7 +745,7 @@
 - Start date: 2026-07-04
 - End date: 2026-07-04
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 阻断 unquantified budgetImpact；`pnpm build` 通过。
-- Result: pass（capacityPlan.budgetImpact 现在必须包含数值 capacity delta、预算或 headroom；16 条历史 structured capacityPlan 已补齐 `capacity delta +1/0`；synthetic self-test 锁定 `Uses remaining capacity after review.` 会失败；taxonomy check 与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（capacityPlan.budgetImpact 现在必须包含数值 capacity delta、预算或 headroom；16 条历史 structured capacityPlan 已补齐 `capacity delta +1/0`；synthetic self-test 锁定 `Uses remaining capacity after review.` 会失败；taxonomy check 与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 quantifiable budgetImpact 作为 source projection 容量治理闸门；下一步可把 capacity delta 与 effective category budget/headroom 自动比对，避免 `+1/0` 声明和实际预算变化漂移。）
 
 ### EXP-199
@@ -756,7 +756,7 @@
 - Start date: 2026-06-28
 - End date: 2026-06-28
 - Success metric: `pnpm check:daily-case-signal-faq-links` 输出 `latestFixture=2026-06-28, autoSignals=2`，并且 `pnpm build` 通过。
-- Result: pass（最新 case-level FAQ link check 已由 latest real cron fixture 自动推断 2 个 signals：ChatGPT dictation 与 Claude Tag；总计 5 个 case-level signals 有 FAQ copy 与内部链接保护；未覆盖的非泛化 practical case 会输出失败诊断；`pnpm check:daily-case-signal-faq-links` 与 `pnpm build` 均通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（最新 case-level FAQ link check 已由 latest real cron fixture 自动推断 2 个 signals：ChatGPT dictation 与 Claude Tag；总计 5 个 case-level signals 有 FAQ copy 与内部链接保护；未覆盖的非泛化 practical case 会输出失败诊断；`pnpm check:daily-case-signal-faq-links` 与 `pnpm build` 均通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 latest fixture practical case auto-discovery 作为后续内容建设的 FAQ 内链入口闸门；下一步可把 caseSignalCatalog 独立成 fixture metadata 或 source projection metadata，减少脚本内 catalog 维护。）
 
 ### EXP-198
@@ -767,7 +767,7 @@
 - Start date: 2026-06-28
 - End date: 2026-06-28
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-case-signal-faq-links`、`pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy、fixture dedup/parser/publish、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
-- Result: pass（latestDaily=2026-06-28 已由最新 real cron fixture 覆盖，expectedSignals=5；新增 TOP500/Green500 source projection 命中字段级 EN 输出；case-level FAQ link check 覆盖 5 个 ChatGPT/Claude case signals；ZH 最新日报截断内容已补全；全部相关检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（latestDaily=2026-06-28 已由最新 real cron fixture 覆盖，expectedSignals=5；新增 TOP500/Green500 source projection 命中字段级 EN 输出；case-level FAQ link check 覆盖 5 个 ChatGPT/Claude case signals；ZH 最新日报截断内容已补全；全部相关检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-06-28 fixture 与 case-level FAQ 内链闸门作为周末低新增量日报的首日索引质量基线；下一步可把 case-level FAQ check 泛化为自动读取最新 fixture 的 practical cases，减少手写日期清单。）
 
 ### EXP-197
@@ -778,7 +778,7 @@
 - Start date: 2026-06-27
 - End date: 2026-06-27
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-source-projection-labels` 与 `pnpm build` 全部通过。
-- Result: pass（新增 freshness check 已通过：latestDaily=2026-06-27、latest real cron fixture=2026-06-27、expectedSignals=5；daily source projection label metadata check 与 build 均通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（新增 freshness check 已通过：latestDaily=2026-06-27、latest real cron fixture=2026-06-27、expectedSignals=5；daily source projection label metadata check 与 build 均通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留最新日报 fixture freshness 闸门，后续每日内容建设若先发布日报但未补 fixture，会在 CI 中直接失败；下一步可把 Claude Tag / ChatGPT dictation 等 case-level signal 纳入 fixture case projection 或 FAQ 内链实验。）
 
 ### EXP-192
@@ -800,7 +800,7 @@
 - Start date: 2026-06-25
 - End date: 2026-06-25
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
-- Result: pass（2026-06-06 三条 headline label 已迁移到 source projection metadata；label check 现要求 2026-06-06/08/11/13/16/18/21 共 35 条 expectedSignals 全量由 metadata 命中；NVIDIA Korea/Doosan synthetic probe 确认 06-06 Korea CEO label 未污染 06-08 Doosan GPU compute label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-06 三条 headline label 已迁移到 source projection metadata；label check 现要求 2026-06-06/08/11/13/16/18/21 共 35 条 expectedSignals 全量由 metadata 命中；NVIDIA Korea/Doosan synthetic probe 确认 06-06 Korea CEO label 未污染 06-08 Doosan GPU compute label；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-05 或更早 fixture 迁移 enLabel，并优先为共享 OpenAI/NVIDIA/China policy rule 增加 fixture-level 条件 label 防污染检查。）
 
 ### EXP-190
@@ -811,7 +811,7 @@
 - Start date: 2026-06-24
 - End date: 2026-06-24
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
-- Result: pass（2026-06-08 五条 headline label 已迁移到 source projection metadata；OpenAI Memory/Lockdown 与 China provincial AI compute 使用条件 `displayLabels` 保留 2026-06-05/06-06 旧 fixture 标签，未污染既有真实 cron 输出；label check 现要求 2026-06-08/11/13/16/18/21 共 30 条 expectedSignals 全量由 metadata 命中；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-08 五条 headline label 已迁移到 source projection metadata；OpenAI Memory/Lockdown 与 China provincial AI compute 使用条件 `displayLabels` 保留 2026-06-05/06-06 旧 fixture 标签，未污染既有真实 cron 输出；label check 现要求 2026-06-08/11/13/16/18/21 共 30 条 expectedSignals 全量由 metadata 命中；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-06 或更早 fixture 迁移 enLabel，并优先为复用 rule 增加 fixture-level 条件 label 防污染检查。）
 
 ### EXP-189
@@ -822,7 +822,7 @@
 - Start date: 2026-06-24
 - End date: 2026-06-24
 - Success metric: `pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:duplicate-slug-id` 与 `pnpm build` 通过。
-- Result: pass（2026-06-11 五条 headline label 已迁移到 source projection metadata；其中 China humanoid embodied training 使用条件 `displayLabels` 锁定 2026-06-11 新华社文本，synthetic probe 确认未污染后续 MIIT/SASAC 文本；label check 现要求 2026-06-11/13/16/18/21 共 25 条 expectedSignals 全量由 metadata 命中；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-11 五条 headline label 已迁移到 source projection metadata；其中 China humanoid embodied training 使用条件 `displayLabels` 锁定 2026-06-11 新华社文本，synthetic probe 确认未污染后续 MIIT/SASAC 文本；label check 现要求 2026-06-11/13/16/18/21 共 25 条 expectedSignals 全量由 metadata 命中；相关 fixture、source projection health/taxonomy、duplicate precheck 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（继续保留 source projection display label metadata 作为日报首屏标签基线；下一步可继续向 2026-06-08 或更早 fixture 迁移 enLabel，并为共享 rule 的条件 label 增加 fixture-level pollution probes。）
 
 ### EXP-196
@@ -844,7 +844,7 @@
 - Start date: 2026-06-26
 - End date: 2026-06-26
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category capacity actions` 与 effective `new rule capacity plan required for`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 通过。
-- Result: pass（taxonomy 现在同时输出 parent category 迁移提示与 effective category 容量动作；新增规则 capacityPlan guard 已按 declared/recommended split target 或低风险 parent fallback 判定，当前需计划的新增规则目标收敛为 `ai-industrial-policy / enterprise-agent-platforms / frontier-models / robotics-simulation-training / ai-policy-standards / cloud-model-distribution / regional-ai-ecosystems`，不再直接按满额 parent category 阻断；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy 现在同时输出 parent category 迁移提示与 effective category 容量动作；新增规则 capacityPlan guard 已按 declared/recommended split target 或低风险 parent fallback 判定，当前需计划的新增规则目标收敛为 `ai-industrial-policy / enterprise-agent-platforms / frontier-models / robotics-simulation-training / ai-policy-standards / cloud-model-distribution / regional-ai-ecosystems`，不再直接按满额 parent category 阻断；taxonomy、registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 effective capacity plan guard 作为新增 source projection rule 的入口；下一步可为 1-headroom effective categories 自动推荐 alternate split target，进一步降低新日报 projection 的临时预算调整。）
 
 ### EXP-194
@@ -855,7 +855,7 @@
 - Start date: 2026-06-26
 - End date: 2026-06-26
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `effective category budgets` 与 `effective category coverage: 43/56 split-backed, parentFallback=13, overBudget=0, missingBudget=0`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 通过。
-- Result: pass（taxonomy 已按 split target 真实承载容量：当前 56 条 source projection rule 中 43 条 split-backed、13 条低风险 parent fallback；effective category budgets 覆盖 21 个有效分类，overBudget=0、missingBudget=0；synthetic self-test 阻断 `cloud-model-distribution=5/4` 超预算；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy 已按 split target 真实承载容量：当前 56 条 source projection rule 中 43 条 split-backed、13 条低风险 parent fallback；effective category budgets 覆盖 21 个有效分类，overBudget=0、missingBudget=0；synthetic self-test 阻断 `cloud-model-distribution=5/4` 超预算；taxonomy、registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 effective category budget guard 作为真实 category enum 迁移前的容量闸门；下一步可把新增 proposed rule capacity action 从 parent category 切换到 effective category，进一步减少 parent budget raise 依赖。）
 
 ### EXP-193
@@ -866,7 +866,7 @@
 - Start date: 2026-06-26
 - End date: 2026-06-26
 - Success metric: `pnpm check:daily-source-projection-labels`、真实 cron EN/ZH/pair、source projection scope/registry health/taxonomy/metadata/term narrowness、daily dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 全部通过。
-- Result: pass（2026-06-26 真实 cron fixture 已进入 registry；EN 最新日报 Top 5 已升级为 `OpenAI / GPT-5.5 Instant / decision assistance`、`Amazon / RAISE US / AI workforce training`、`NVIDIA / AWS / vector retrieval infrastructure`、`Anthropic / Claude Tag / team agent workflow`、`China / industrial 5G / AI infrastructure pilot`；新增五条 source projection rule 与 label metadata，scope/registry/taxonomy/metadata/term narrowness、真实 cron EN/ZH/pair、dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-26 真实 cron fixture 已进入 registry；EN 最新日报 Top 5 已升级为 `OpenAI / GPT-5.5 Instant / decision assistance`、`Amazon / RAISE US / AI workforce training`、`NVIDIA / AWS / vector retrieval infrastructure`、`Anthropic / Claude Tag / team agent workflow`、`China / industrial 5G / AI infrastructure pilot`；新增五条 source projection rule 与 label metadata，scope/registry/taxonomy/metadata/term narrowness、真实 cron EN/ZH/pair、dedup、parser guardrail、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留最新日报 fixture 作为首日索引质量基线；下一步优先把满额 parent category 的 budget raise 收敛为真实 split category enum 迁移，降低后续新增日报 source projection 对 parent budget 的依赖。）
 
 ### EXP-188
@@ -932,7 +932,7 @@
 - Start date: 2026-06-21
 - End date: 2026-06-21
 - Success metric: `pnpm check:source-projection-rule-scope`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy`、`pnpm check:source-projection-rule-metadata-coverage`、`pnpm check:source-projection-rule-term-narrowness`、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、publish fixture、latest specificity、CTA/action sections、duplicate precheck 与 `pnpm build` 通过。
-- Result: pass（2026-06-21 真实 cron fixture 已进入 registry；新增 OpenAI Codex Record & Replay、Amazon Alexa+ Brazil localization、中国世界人工智能合作组织三条字段级 projection，并复用 Anthropic Korea 与 NVIDIA AI cloud/HPE AI Factory；EN 最新日报 story 1/2/5 已从泛化 fallback 改为字段级事实改写；source projection totalRules=51，existing split target coverage=39/39；全部检查与 build 通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-21 真实 cron fixture 已进入 registry；新增 OpenAI Codex Record & Replay、Amazon Alexa+ Brazil localization、中国世界人工智能合作组织三条字段级 projection，并复用 Anthropic Korea 与 NVIDIA AI cloud/HPE AI Factory；EN 最新日报 story 1/2/5 已从泛化 fallback 改为字段级事实改写；source projection totalRules=51，existing split target coverage=39/39；全部检查与 build 通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 2026-06-21 fixture 作为周末低新增量日报的首日索引质量基线；下一步优先把 generator label taxonomy 也升级到 split target / topic-specific label，减少 Alexa+、WAICO 这类新信号仍显示通用 label 的问题。）
 
 ### EXP-182
@@ -954,7 +954,7 @@
 - Start date: 2026-06-20
 - End date: 2026-06-20
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `existing rule split target coverage: 37/37 covered, missing=0, invalid=0, mismatched=0`；`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-scope` 与 `pnpm build` 通过。
-- Result: pass（37 条现有 high-risk source projection rules 已写入 splitTargetCategory；taxonomy CLI 已输出 `existing rule split target coverage: 37/37 covered, missing=0, invalid=0, mismatched=0`；self-test 锁定 existing rule 缺 target、非法 target、与 migration hint 不一致三类失败诊断；taxonomy、registry health、scope 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（37 条现有 high-risk source projection rules 已写入 splitTargetCategory；taxonomy CLI 已输出 `existing rule split target coverage: 37/37 covered, missing=0, invalid=0, mismatched=0`；self-test 锁定 existing rule 缺 target、非法 target、与 migration hint 不一致三类失败诊断；taxonomy、registry health、scope 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 existing rule split target coverage guard 作为真实 category enum 迁移前的 registry 基线；下一步可把 generator / registry health 迁移为优先读取 splitTargetCategory，逐步降低 parent category 满额对新增日报 source projection 的阻塞。）
 
 ### EXP-180
@@ -965,7 +965,7 @@
 - Start date: 2026-06-19
 - End date: 2026-06-19
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `proposed rule split target scaffold`；缺失/非法 `splitTargetCategory` 的 proposed rule self-test 失败文案包含推荐或可选 target；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 已输出 6 个高风险 parent category 的 proposed rule split target scaffold；self-test 锁定 OpenAI Partner Network 新规则缺 `splitTargetCategory` 时推荐 `enterprise-agent-platforms`，非法 `cloud-model-distribution` 用在 enterprise-agents 时失败并列出三个合法 target，合法 `enterprise-agent-platforms` 通过；taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 已输出 6 个高风险 parent category 的 proposed rule split target scaffold；self-test 锁定 OpenAI Partner Network 新规则缺 `splitTargetCategory` 时推荐 `enterprise-agent-platforms`，非法 `cloud-model-distribution` 用在 enterprise-agents 时失败并列出三个合法 target，合法 `enterprise-agent-platforms` 通过；taxonomy 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 proposed rule split target scaffold 作为真实 category enum 迁移前的新增规则入口；下一步可把真实 rule registry 分阶段迁移到 split target enum 字段，并让 registry health 检查现有 rule 的 split target 覆盖。）
 
 ### EXP-179
@@ -976,7 +976,7 @@
 - Start date: 2026-06-19
 - End date: 2026-06-19
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `split target categories: 17/17 used, missingHints=0, staleHints=0, unknown=0, unusedAllowed=0, duplicate=0`；`pnpm check:source-projection-rule-registry-health` 与 `pnpm build` 通过。
-- Result: pass（taxonomy CLI 已输出 17/17 split target 全覆盖，missingHints/staleHints/unknown/unusedAllowed/duplicate 均为 0；synthetic self-test 锁定 unknown、missing hint、stale hint 与 duplicate target 诊断；source projection registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 已输出 17/17 split target 全覆盖，missingHints/staleHints/unknown/unusedAllowed/duplicate 均为 0；synthetic self-test 锁定 unknown、missing hint、stale hint 与 duplicate target 诊断；source projection registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 split target enum coverage guard 作为真实 category enum 迁移前的 scaffold 闸门；下一步可将高风险 category 分阶段迁移到 split target enum，并为 proposed rule scaffold 自动推荐目标 split category。）
 
 ### EXP-178
@@ -987,7 +987,7 @@
 - Start date: 2026-06-18
 - End date: 2026-06-18
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 consumer-productivity 与 market-intelligence 的 split recommendations、migration batches、migration details；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 consumer-productivity split 为 `career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai`，并将 `chatgpt-jobs-resume-tools`、ChatGPT model picker / Scheduled Tasks、Meta Facebook AI tools 分桶；market-intelligence split 为 `market-sizing-reports / content-licensing-markets / regional-ai-ecosystems`，并将 China AI industry report、Amazon Content Partners、Shanghai Tech Fair / Anthropic Korea 分桶；recent-signal self-test、taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 当前输出 consumer-productivity split 为 `career-productivity-workflows / chatgpt-control-surfaces / consumer-creative-ai`，并将 `chatgpt-jobs-resume-tools`、ChatGPT model picker / Scheduled Tasks、Meta Facebook AI tools 分桶；market-intelligence split 为 `market-sizing-reports / content-licensing-markets / regional-ai-ecosystems`，并将 China AI industry report、Amazon Content Partners、Shanghai Tech Fair / Anthropic Korea 分桶；recent-signal self-test、taxonomy 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision: scale（保留 consumer/market split migration details 作为新增日报 source projection rule 前的分桶基线；下一步可执行真实 category enum 迁移或把 split target 写入 proposed rule scaffold。）
 
 ### EXP-177
@@ -1034,7 +1034,7 @@
 - Start date: 2026-06-17
 - End date: 2026-06-17
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `category split migration batches`；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 `category split migration batches: enterprise-agents: enterprise-agent-platforms=4, vertical-workflow-agents=2, agent-enablement-programs=2; policy-governance: ai-policy-standards=2, ai-industrial-policy=4, digital-regulation-compliance=1; cloud-infrastructure: cloud-model-distribution=2, ai-infrastructure-capacity=3; physical-ai-robotics: robotics-simulation-training=5, robotics-commercial-deployment=2, autonomous-mobility-systems=1`；taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 当前输出 `category split migration batches: enterprise-agents: enterprise-agent-platforms=4, vertical-workflow-agents=2, agent-enablement-programs=2; policy-governance: ai-policy-standards=2, ai-industrial-policy=4, digital-regulation-compliance=1; cloud-infrastructure: cloud-model-distribution=2, ai-infrastructure-capacity=3; physical-ai-robotics: robotics-simulation-training=5, robotics-commercial-deployment=2, autonomous-mobility-systems=1`；taxonomy 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 split migration batches 作为 category enum 迁移前的准备层；下一步可新增真实 split category 枚举并分阶段迁移 enterprise-agents，避免 8/8 满额阻断后续日报 source projection rule。）
 
 ### EXP-174
@@ -1044,7 +1044,7 @@
 - Start date: 2026-06-16
 - End date: 2026-06-16
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `category split recommendations`；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 enterprise-agents 拆分为 `enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs`，policy-governance 拆分为 `ai-policy-standards / ai-industrial-policy / digital-regulation-compliance`，cloud-infrastructure 拆分为 `cloud-model-distribution / ai-infrastructure-capacity`，physical-ai-robotics 拆分为 `robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems`；无风险与 enterprise-agents 满额 self-test 已锁定；taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 当前输出 enterprise-agents 拆分为 `enterprise-agent-platforms / vertical-workflow-agents / agent-enablement-programs`，policy-governance 拆分为 `ai-policy-standards / ai-industrial-policy / digital-regulation-compliance`，cloud-infrastructure 拆分为 `cloud-model-distribution / ai-infrastructure-capacity`，physical-ai-robotics 拆分为 `robotics-simulation-training / robotics-commercial-deployment / autonomous-mobility-systems`；无风险与 enterprise-agents 满额 self-test 已锁定；taxonomy 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 split recommendations 作为新增 source projection rule 前的拆分提示；下一步可把推荐拆分升级为可选的新 category 枚举迁移实验，先迁移 enterprise-agents 中平台、垂直工作流、赋能计划三类规则。）
 
 ### EXP-173
@@ -1054,7 +1054,7 @@
 - Start date: 2026-06-16
 - End date: 2026-06-16
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-taxonomy` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-06-16 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 Meta Facebook AI tools、Amazon Content Partners、China humanoid embodied training、OpenAI Partner Network 与 NVIDIA AgentPerf Blackwell 五条输出；source projection scope/registry/taxonomy/metadata/term narrowness 全部通过；taxonomy 当前 totalRules=44，enterprise-agents=8/8 并由 OpenAI Partner Network 规则附带 capacity plan；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；CTA/action sections、latest specificity、duplicate precheck 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-16 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 Meta Facebook AI tools、Amazon Content Partners、China humanoid embodied training、OpenAI Partner Network 与 NVIDIA AgentPerf Blackwell 五条输出；source projection scope/registry/taxonomy/metadata/term narrowness 全部通过；taxonomy 当前 totalRules=44，enterprise-agents=8/8 并由 OpenAI Partner Network 规则附带 capacity plan；EN 最新日报不再使用泛化 `The source tracks...` 模板，改为字段级事实改写；CTA/action sections、latest specificity、duplicate precheck 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-06-16 fixture 作为最新日报首日索引质量基线；下一步应优先为 enterprise-agents 满额后的新增 source projection 设计 category split / budget raise 专项实验，避免后续新增 enterprise rule 被预算闸门阻断。）
 
 ### EXP-172
@@ -1064,7 +1064,7 @@
 - Start date: 2026-06-16
 - End date: 2026-06-16
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `new rule capacity plan required for`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 `new rule capacity plan required for: enterprise-agents, policy-governance, cloud-infrastructure, physical-ai-robotics`；capacity-plan self-test 已锁定高风险 proposed rule 缺 `capacityPlan` 时失败，并验证带 `capacityPlan` 可通过；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 当前输出 `new rule capacity plan required for: enterprise-agents, policy-governance, cloud-infrastructure, physical-ai-robotics`；capacity-plan self-test 已锁定高风险 proposed rule 缺 `capacityPlan` 时失败，并验证带 `capacityPlan` 可通过；taxonomy、registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 capacity plan guard 作为后续新增 source projection rule 前的维护基线；下一步可把 proposed rule plan guard 接入生成 fixture/rule 的专用脚本，新增规则时自动执行。）
 
 ### EXP-171
@@ -1074,7 +1074,7 @@
 - Start date: 2026-06-15
 - End date: 2026-06-15
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `category capacity actions`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 totalRules=41，`category capacity actions: enterprise-agents: split category or raise budget before adding new rules (88% used + 1 headroom); policy-governance: split category or raise budget before adding new rules (88% used + 1 headroom); cloud-infrastructure: split category or raise budget before adding new rules (83% used + 1 headroom); physical-ai-robotics: split category or raise budget before adding new rules (80% used)`；summary self-test 已锁定无 action 时输出 `none` 与 100%/80% synthetic action 排序/文案；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 当前输出 totalRules=41，`category capacity actions: enterprise-agents: split category or raise budget before adding new rules (88% used + 1 headroom); policy-governance: split category or raise budget before adding new rules (88% used + 1 headroom); cloud-infrastructure: split category or raise budget before adding new rules (83% used + 1 headroom); physical-ai-robotics: split category or raise budget before adding new rules (80% used)`；summary self-test 已锁定无 action 时输出 `none` 与 100%/80% synthetic action 排序/文案；taxonomy、registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 capacity action 作为新增 source projection rule 前的维护提醒；下一步可把新增 rule 的 category 与 capacity action 自动交叉检查，要求命中高风险 category 时附带分流或提高预算理由。）
 
 ### EXP-170
@@ -1084,7 +1084,7 @@
 - Start date: 2026-06-15
 - End date: 2026-06-15
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `high utilization categories`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 totalRules=41，`high utilization categories: enterprise-agents=7/8 (88% used, 1 headroom), policy-governance=7/8 (88% used, 1 headroom), cloud-infrastructure=5/6 (83% used, 1 headroom), physical-ai-robotics=8/10 (80% used, 2 headroom)`；taxonomy self-test 已锁定无高利用率时输出 `none` 与 100%/80% synthetic 排序；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 当前输出 totalRules=41，`high utilization categories: enterprise-agents=7/8 (88% used, 1 headroom), policy-governance=7/8 (88% used, 1 headroom), cloud-infrastructure=5/6 (83% used, 1 headroom), physical-ai-robotics=8/10 (80% used, 2 headroom)`；taxonomy self-test 已锁定无高利用率时输出 `none` 与 100%/80% synthetic 排序；taxonomy、registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留高利用率 warning 作为新增 source projection rule 前的维护提醒；下一步可在新增规则命中高利用率 category 时自动提示分流 category 或要求提高预算理由。）
 
 ### EXP-169
@@ -1094,7 +1094,7 @@
 - Start date: 2026-06-14
 - End date: 2026-06-14
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `low headroom categories`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 totalRules=41，`low headroom categories: enterprise-agents=7/8 (1 headroom), policy-governance=7/8 (1 headroom), cloud-infrastructure=5/6 (1 headroom)`；taxonomy self-test 已锁定无低余量时输出 `none`；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 当前输出 totalRules=41，`low headroom categories: enterprise-agents=7/8 (1 headroom), policy-governance=7/8 (1 headroom), cloud-infrastructure=5/6 (1 headroom)`；taxonomy self-test 已锁定无低余量时输出 `none`；taxonomy、registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留低余量 warning 作为新增 source projection rule 前的维护提醒；下一步可把低 headroom category 与新增日报 rule category 自动建议分流或要求补充更细 category。）
 
 ### EXP-168
@@ -1104,7 +1104,7 @@
 - Start date: 2026-06-14
 - End date: 2026-06-14
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `category budgets` 与 headroom；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 totalRules=41，category budgets 显示 `physical-ai-robotics=8/10 (2 headroom)`、`enterprise-agents=7/8 (1 headroom)`、`policy-governance=7/8 (1 headroom)`；over-budget self-test 已锁定 developer-tools 超预算失败文案；taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 当前输出 totalRules=41，category budgets 显示 `physical-ai-robotics=8/10 (2 headroom)`、`enterprise-agents=7/8 (1 headroom)`、`policy-governance=7/8 (1 headroom)`；over-budget self-test 已锁定 developer-tools 超预算失败文案；taxonomy、registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 category budget 作为 source projection registry 膨胀闸门；下一步可把低 headroom category 输出为专门 warning 或把新增日报 rule 自动分流到更细 category。）
 
 ### EXP-167
@@ -1134,7 +1134,7 @@
 - Start date: 2026-06-12
 - End date: 2026-06-12
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `source projection taxonomy summary: totalRules=37`、`owners: daily-source-projection=37` 与 category distribution；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 已输出稳定分布摘要；当前 37 条 rule 均归属 `daily-source-projection`，category 分布为 physical-ai-robotics 8、policy-governance 6、enterprise-agents 5、cloud-infrastructure 4、company-finance/frontier-models/product-safety 各 3、consumer-productivity/market-intelligence 各 2、developer-tools 1；summary self-test、taxonomy、registry health 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（taxonomy CLI 已输出稳定分布摘要；当前 37 条 rule 均归属 `daily-source-projection`，category 分布为 physical-ai-robotics 8、policy-governance 6、enterprise-agents 5、cloud-infrastructure 4、company-finance/frontier-models/product-safety 各 3、consumer-productivity/market-intelligence 各 2、developer-tools 1；summary self-test、taxonomy、registry health 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 taxonomy summary 作为 source projection registry 维护诊断；下一步可增加 category growth budget 或高膨胀分类提醒，避免单一 rule family 长期吞噬新增日报维护精力。）
 
 ### EXP-164
@@ -1154,7 +1154,7 @@
 - Start date: 2026-06-11
 - End date: 2026-06-11
 - Success metric: `pnpm check:source-projection-rule-registry-health` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm build` 通过。
-- Result: pass（source projection registry health 闸门已接入；当前 37 条 source projection rules 均被真实 cron fixture story block 实际命中；synthetic unused-rule 与 duplicate-detail self-test 可确认失败文案包含 unused 诊断和 duplicate what/why/impact owner；registry health、scope、metadata coverage、term narrowness 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（source projection registry health 闸门已接入；当前 37 条 source projection rules 均被真实 cron fixture story block 实际命中；synthetic unused-rule 与 duplicate-detail self-test 可确认失败文案包含 unused 诊断和 duplicate what/why/impact owner；registry health、scope、metadata coverage、term narrowness 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 registry health 作为 source projection rule 维护基线；下一步可把 source projection registry 分组增加 owner/category 元数据，区分 daily fixture、policy、robotics、product release 等 rule 族，降低长期维护成本。）
 
 ### EXP-162
@@ -1174,7 +1174,7 @@
 - Start date: 2026-06-10
 - End date: 2026-06-10
 - Success metric: `pnpm check:tag-semantic-aliases` 通过；`pnpm check:tag-canonical-aliases` 通过；`pnpm check:tag-case` 通过；`pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
-- Result: pass（semantic alias registry 已接入；306 个 blog 文件不再使用 registry alias；`ai agents`、`tutorial`、`silent message loss`、`web_search`、`chrome relay`、`delivery reliability` 等 frontmatter tag 已回收到 canonical 标签；synthetic alias self-test 可确认失败文案包含 alias、canonical 与样本文件；semantic aliases、canonical aliases、tag case、tag surface compactness 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（semantic alias registry 已接入；306 个 blog 文件不再使用 registry alias；`ai agents`、`tutorial`、`silent message loss`、`web_search`、`chrome relay`、`delivery reliability` 等 frontmatter tag 已回收到 canonical 标签；synthetic alias self-test 可确认失败文案包含 alias、canonical 与样本文件；semantic aliases、canonical aliases、tag case、tag surface compactness 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 semantic alias registry 作为 tag archive 基线；下一步可为 tag routes 增加 URL slug encoding/canonical path 闸门，处理空格标签如 `fetch failed` / `409 conflict` 的可抓取路径一致性。）
 
 ### EXP-160
@@ -1184,7 +1184,7 @@
 - Start date: 2026-06-10
 - End date: 2026-06-10
 - Success metric: `pnpm check:tag-canonical-aliases` 通过；`pnpm check:tag-case` 通过；`pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
-- Result: pass（tag canonical alias 闸门已接入；当前 306 个 blog 文件没有 normalized archive slug collision；EN/ZH `openclaw-vs-hermes-vs-deerflow-2026` 的 agent runtime tag 已统一为 `agent-runtime`；tag canonical aliases、tag case、tag surface compactness 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（tag canonical alias 闸门已接入；当前 306 个 blog 文件没有 normalized archive slug collision；EN/ZH `openclaw-vs-hermes-vs-deerflow-2026` 的 agent runtime tag 已统一为 `agent-runtime`；tag canonical aliases、tag case、tag surface compactness 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 canonical alias 闸门作为 tag archive 基线；下一步可扩展一份显式 alias registry，处理 `ai agents` / `ai-agent` 这类单复数或同义词级别的标签合并。）
 
 ### EXP-159
@@ -1204,7 +1204,7 @@
 - Start date: 2026-06-09
 - End date: 2026-06-09
 - Success metric: `pnpm check:source-projection-rule-term-narrowness` 通过；`pnpm check:source-projection-rule-quote-normalization` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（term narrowness 闸门已接入；Amazon QuickSight off-topic probe 不再命中 `aws-quick-connect-bedrock-openai-2026`；synthetic broad `Amazon Quick` matcher 会确认失败文案包含 `synthetic-amazon-quicksight-off-topic-substring`、`aws-quick-connect-bedrock-openai-2026 via "Amazon Quick"` 与 QuickSight collision reason；term narrowness、quote normalization、scope、metadata coverage、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（term narrowness 闸门已接入；Amazon QuickSight off-topic probe 不再命中 `aws-quick-connect-bedrock-openai-2026`；synthetic broad `Amazon Quick` matcher 会确认失败文案包含 `synthetic-amazon-quicksight-off-topic-substring`、`aws-quick-connect-bedrock-openai-2026 via "Amazon Quick"` 与 QuickSight collision reason；term narrowness、quote normalization、scope、metadata coverage、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 term narrowness probe 作为 source projection registry 维护基线；下一步可把 probe registry 泛化到更多高风险品牌子串，例如 Amazon Quick / QuickSight、AI Cloud / generic cloud、Agent / agentic 等命名碰撞。）
 
 ### EXP-157
@@ -1214,7 +1214,7 @@
 - Start date: 2026-06-08
 - End date: 2026-06-08
 - Success metric: `pnpm check:source-projection-rule-quote-normalization` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（quote-normalized near-miss 闸门已接入；synthetic 引号不一致样本会确认失败文案包含 `synthetic-ai-factory-smart-quotes` 与原始 smart-quote term；真实 registry 中 AWS Quick Connect `What's Next with AWS 2026` term 已与 2026-06-08 fixture 对齐；quote normalization、scope、metadata coverage、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（quote-normalized near-miss 闸门已接入；synthetic 引号不一致样本会确认失败文案包含 `synthetic-ai-factory-smart-quotes` 与原始 smart-quote term；真实 registry 中 AWS Quick Connect `What's Next with AWS 2026` term 已与 2026-06-08 fixture 对齐；quote normalization、scope、metadata coverage、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 quote normalization 作为 source projection registry 维护基线；下一步可执行 EXP-158，为 AWS Quick Connect / Amazon Quick 增加 term 窄化检查，避免 Amazon QuickSight 等无关来源误命中。）
 
 ### EXP-156
@@ -1234,7 +1234,7 @@
 - Start date: 2026-06-07
 - End date: 2026-06-07
 - Success metric: `pnpm check:source-projection-rule-metadata-coverage` 通过；`pnpm check:source-projection-rule-scope` 通过；`pnpm check:source-projection-rule-diagnostics` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（source projection-backed story metadata coverage 已接入；synthetic `AI Cloud` 缺 metadata 样本会确认失败文案包含 `nvidia-ai-cloud-ecosystem via "AI Cloud"`；metadata coverage、scope、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（source projection-backed story metadata coverage 已接入；synthetic `AI Cloud` 缺 metadata 样本会确认失败文案包含 `nvidia-ai-cloud-ecosystem via "AI Cloud"`；metadata coverage、scope、diagnostics、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 metadata coverage 作为新增真实 cron fixture 的维护基线；下一步可把 projection rule registry 增加 term ownership / narrowness 分组检查，减少跨日期宽词污染。）
 
 ### EXP-154
@@ -1254,7 +1254,7 @@
 - Start date: 2026-06-06
 - End date: 2026-06-06
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（scope 闸门现在能输出具体命中 term 诊断；规则名称兼容 API 保留；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（scope 闸门现在能输出具体命中 term 诊断；规则名称兼容 API 保留；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 matched terms 诊断作为 source projection registry 调试基线；下一步可增加可控的 synthetic collision fixture，直接断言失败文案包含污染 term，避免诊断输出被后续重构移除。）
 
 ### EXP-152
@@ -1294,7 +1294,7 @@
 - Start date: 2026-06-04
 - End date: 2026-06-04
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-06-04 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 NVIDIA CVPR、Meta Business Agent、OpenAI youth safety、Microsoft Agent system 与上海上交会 hard-tech 五条输出；source projection rule scope 已加入 2026-06-04 story-level 允许命中并阻断跨样本污染；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity、日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-04 真实 cron fixture 已进入 registry；EN/ZH/pair fixture 已锁定 NVIDIA CVPR、Meta Business Agent、OpenAI youth safety、Microsoft Agent system 与上海上交会 hard-tech 五条输出；source projection rule scope 已加入 2026-06-04 story-level 允许命中并阻断跨样本污染；专项 scope、发布 generator fixture、真实 cron EN/ZH/pair、dedup、parser guardrail coverage、latest specificity、日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-06-04 fixture 作为最新日报首日索引质量基线；下一步可自动从 fixture expected outputs / projection rule names 生成 allowed match map，减少新增真实 cron 样本时手工维护白名单的遗漏。）
 
 ### EXP-148
@@ -1304,7 +1304,7 @@
 - Start date: 2026-06-04
 - End date: 2026-06-04
 - Success metric: `pnpm check:source-projection-rule-scope` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm build` 通过。
-- Result: pass（新增 source projection rule scope 闸门已遍历全部真实 cron fixtures，并对每条 story 的允许 rule 命中做白名单断言；2026-06-02 L3 中国 AI 产业报告只命中 `china-ai-industry-report-l3`，不会被 2026-06-03 国家数据局/具身智能 rule 污染；专项 scope 闸门、发布 generator fixture、真实 cron EN/ZH/pair fixture、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（新增 source projection rule scope 闸门已遍历全部真实 cron fixtures，并对每条 story 的允许 rule 命中做白名单断言；2026-06-02 L3 中国 AI 产业报告只命中 `china-ai-industry-report-l3`，不会被 2026-06-03 国家数据局/具身智能 rule 污染；专项 scope 闸门、发布 generator fixture、真实 cron EN/ZH/pair fixture、dedup、parser guardrail coverage、latest specificity 与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 fixture story-level rule scope 作为 source projection registry 基线；下一步可自动从 fixture expected outputs 生成 allowed match map，减少新增真实 cron 样本时手工维护白名单的遗漏。）
 
 ### EXP-147
@@ -1314,7 +1314,7 @@
 - Start date: 2026-06-03
 - End date: 2026-06-03
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-06-03 真实 cron fixture 已进入 registry；新增字段级英文 projection 已覆盖 NVIDIA/Microsoft Windows-Azure stack、NemoClaw、ChatGPT Active sessions 与国家数据局/具身智能/AI for Science；ZH 证据矩阵截断 guardrail 已修复，当前 2026-06-03 ZH 页面不再含 `GitHub Copilot 中的 N。` 或宇树案例省略号；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-06-03 真实 cron fixture 已进入 registry；新增字段级英文 projection 已覆盖 NVIDIA/Microsoft Windows-Azure stack、NemoClaw、ChatGPT Active sessions 与国家数据局/具身智能/AI for Science；ZH 证据矩阵截断 guardrail 已修复，当前 2026-06-03 ZH 页面不再含 `GitHub Copilot 中的 N。` 或宇树案例省略号；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-06-03 fixture 作为最新日报首日索引质量基线；下一步可为 source projection rule registry 增加“term 过宽污染旧 fixture”的专项检查，防止单词级 term 覆盖不相关中文样本。）
 
 ### EXP-146
@@ -1324,7 +1324,7 @@
 - Start date: 2026-06-02
 - End date: 2026-06-02
 - Success metric: `pnpm check:daily-brief-specificity` 通过；最近 7 篇 EN 日报不再命中 `This matters because ... links ...`、`more specific evaluation path`、`Source N reports ... signal involving`；`pnpm build` 通过。
-- Result: pass（最新 EN 日报具体度闸门已从默认 1 篇扩展为最近 7 篇；2026-05-29 残留泛化 Source/links/evaluation path 模板已重写为具体事实稿；专项 grep、`pnpm check:daily-brief-specificity` 与 `pnpm build` 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（最新 EN 日报具体度闸门已从默认 1 篇扩展为最近 7 篇；2026-05-29 残留泛化 Source/links/evaluation path 模板已重写为具体事实稿；专项 grep、`pnpm check:daily-brief-specificity` 与 `pnpm build` 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留最近 7 篇作为日报短窗口具体度基线；下一步可把字段级 source projection generator 中仍存在的 fallback 文案继续替换为规则化投影，避免未来新实体未命中时再生成模板句。）
 
 ### EXP-145
@@ -1344,7 +1344,7 @@
 - Start date: 2026-06-01
 - End date: 2026-06-01
 - Success metric: `pnpm check:daily-parser-guardrail-coverage` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（coverage 闸门已强制 post-Top5 case fixture 声明 detail 与 EN/ZH evidence forbidden token；2026-05-27/28/29 fixtures 已补齐 story 5 post-section 污染断言；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（coverage 闸门已强制 post-Top5 case fixture 声明 detail 与 EN/ZH evidence forbidden token；2026-05-27/28/29 fixtures 已补齐 story 5 post-section 污染断言；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 parser guardrail coverage 作为真实 cron fixture 基线；下一步可把 coverage 闸门扩展为检查所有 fixture 文件自动注册进 registry，减少新增真实样本漏接 CI。）
 
 ### EXP-143
@@ -1354,7 +1354,7 @@
 - Start date: 2026-06-01
 - End date: 2026-06-01
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（parserGuardrails 已扩展到 parsed story detail 与 EN/ZH evidence line；2026-05-31 NVIDIA story 5 已阻断 Amazon Agentic AI / 90%+ reliability / gym / 点击滚动 UI 操作等 post-section 污染 token；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（parserGuardrails 已扩展到 parsed story detail 与 EN/ZH evidence line；2026-05-31 NVIDIA story 5 已阻断 Amazon Agentic AI / 90%+ reliability / gym / 点击滚动 UI 操作等 post-section 污染 token；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 detail/evidence line 级 parserGuardrails 作为真实 cron fixture 基线；下一步可把同类 post-section 污染断言推广到所有含实战案例与证据矩阵尾部截断样本。）
 
 ### EXP-142
@@ -1364,7 +1364,7 @@
 - Start date: 2026-05-31
 - End date: 2026-05-31
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-31 真实 cron fixture 已进入 registry；EN/ZH parser 已阻断 Top 5 后 section 污染；OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心已输出字段级英文事实改写；2026-05-31 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-05-31 真实 cron fixture 已进入 registry；EN/ZH parser 已阻断 Top 5 后 section 污染；OpenAI Codex Windows Computer Use 与中国—东盟 AI 产业创新中心已输出字段级英文事实改写；2026-05-31 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28/29/30/31 multi-fixture registry 作为日报 generator 回归基线；下一步可为 post-Top5 实战案例和 evidence section 增加专门污染断言，减少 parser 隐性串段。）
 
 ### EXP-141
@@ -1374,7 +1374,7 @@
 - Start date: 2026-05-31
 - End date: 2026-05-31
 - Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（中文 topic keyword 与 entity projection map 已从 EN generator 内联定义迁移到 `daily-signal-maps.mjs`；fixture 闸门已检查 registry 完整性并阻断 map 重新内联；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（中文 topic keyword 与 entity projection map 已从 EN generator 内联定义迁移到 `daily-signal-maps.mjs`；fixture 闸门已检查 registry 完整性并阻断 map 重新内联；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 daily signal map registry 作为后续真实 cron fixture 扩展入口；下一步可为 signal map 增加重复英文 label / 过宽主题映射专项检查，减少新增词条导致的 label 噪声。）
 
 ### EXP-140
@@ -1384,7 +1384,7 @@
 - Start date: 2026-05-30
 - End date: 2026-05-30
 - Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（字段级英文 projection 已从 EN generator 内联分支迁移到 `source-projection-rules.mjs`；fixture 闸门已阻断长文案重新内联并检查 5 条规则完整性；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（字段级英文 projection 已从 EN generator 内联分支迁移到 `source-projection-rules.mjs`；fixture 闸门已阻断长文案重新内联并检查 5 条规则完整性；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 source projection rule registry 作为后续真实 cron fixture 扩展入口；下一步可把 `KEYWORD_MAP` / `ZH_ENTITY_MAP` 也逐步抽成可测 mapping registry，减少 generator 主文件体积。）
 
 ### EXP-139
@@ -1394,7 +1394,7 @@
 - Start date: 2026-05-30
 - End date: 2026-05-30
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-30 真实 cron fixture 已进入 registry；EN generator 已为 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 输出字段级英文事实改写；ZH description 已避免粗体字段标签泄漏和 `特别。` 句尾截断；2026-05-30 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-05-30 真实 cron fixture 已进入 registry；EN generator 已为 Claude Opus 4.8、Series H、AI 计量、Amazon Nova Act 与 NVIDIA ICRA 输出字段级英文事实改写；ZH description 已避免粗体字段标签泄漏和 `特别。` 句尾截断；2026-05-30 EN/ZH 最新日报已重写；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28/29/30 multi-fixture registry 作为日报 generator 回归基线；下一步可把字段级英文改写从 hard-coded source patterns 进一步抽成可维护的 phrase rule registry。）
 
 ### EXP-138
@@ -1404,7 +1404,7 @@
 - Start date: 2026-05-29
 - End date: 2026-05-29
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-29 真实 cron fixture 已进入 registry；EN generator 已输出包含 GPT-5.5/GPT-4.5 退役日期、ICRA/sim-to-real、AIGC 等字段级 fact 的英文 source detail；ZH generator 已避免 API/Claude Code 半句截断；latest specificity 和 dedup 闸门已覆盖新增回归；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-05-29 真实 cron fixture 已进入 registry；EN generator 已输出包含 GPT-5.5/GPT-4.5 退役日期、ICRA/sim-to-real、AIGC 等字段级 fact 的英文 source detail；ZH generator 已避免 API/Claude Code 半句截断；latest specificity 和 dedup 闸门已覆盖新增回归；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28/29 multi-fixture registry 作为日报 generator 回归基线；下一步可把 EN source projection 继续升级为更自然的字段级英文改写，减少模板感。）
 
 ### EXP-137
@@ -1414,7 +1414,7 @@
 - Start date: 2026-05-29
 - End date: 2026-05-29
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-28 真实 cron fixture 已进入 registry；EN generator 与 specificity 闸门已阻断 EXP-136 暴露的泛化占位句和句尾截断；2026-05-29 EN 最新日报已用修复后的 generator 重写并通过 latest specificity；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-05-28 真实 cron fixture 已进入 registry；EN generator 与 specificity 闸门已阻断 EXP-136 暴露的泛化占位句和句尾截断；2026-05-29 EN 最新日报已用修复后的 generator 重写并通过 latest specificity；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 2026-05-24/27/28 multi-fixture registry 作为日报 generator 回归基线；下一步可把 2026-05-29 样本纳入 registry，并把 source projection 从实体/主题摘要继续升级为字段级英文改写。）
 
 ### EXP-136
@@ -1434,7 +1434,7 @@
 - Start date: 2026-05-28
 - End date: 2026-05-28
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过。
-- Result: pass（2026-05-27 fixture 已接入 registry；parser section-boundary 污染已修复；story 5 不再泄漏 Tencent/Alibaba/Baidu 等后续 section token；ZH description 不再泄漏日期、编号标题或字段标签；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（2026-05-27 fixture 已接入 registry；parser section-boundary 污染已修复；story 5 不再泄漏 Tencent/Alibaba/Baidu 等后续 section token；ZH description 不再泄漏日期、编号标题或字段标签；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 multi-fixture registry 作为日报 generator 回归基线；下一步可把最新 2026-05-28 内容建设样本加入 fixture，并增加 URL/source 行截断专项断言，进一步覆盖来源行对英文 projection 的影响。）
 
 ### EXP-134
@@ -1444,7 +1444,7 @@
 - Start date: 2026-05-27
 - End date: 2026-05-27
 - Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`pnpm build` 通过。
-- Result: pass（EN generator 已把 CJK fallback 改为实体/主题 projection，真实 cron fixture 已阻断 CJK 泄漏与 EXP-133 fallback 短语；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（EN generator 已把 CJK fallback 改为实体/主题 projection，真实 cron fixture 已阻断 CJK 泄漏与 EXP-133 fallback 短语；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 CJK-to-English source projection 与 fixture 闸门作为日报发布生成基线；下一步可扩展到 2026-05-27 fixture，验证 Huawei/China Mobile/France 等最新样本的 projection 覆盖度。）
 
 ### EXP-133
@@ -1454,7 +1454,7 @@
 - Start date: 2026-05-27
 - End date: 2026-05-27
 - Success metric: `pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；EN 页面不再出现 generator fallback 句式，ZH 页面不再含实战案例省略号或证据矩阵截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-27.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 实战案例/证据矩阵补全；`check-daily-brief-specificity.mjs` 已阻断 EXP-133 暴露的 `daily story N` / `anchors story` / `named source signal` 泛化 fallback；本地十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-27.md` 已完成 EN 完整英文实稿回补、ZH description 可检索化、ZH 实战案例/证据矩阵补全；`check-daily-brief-specificity.mjs` 已阻断 EXP-133 暴露的 `daily story N` / `anchors story` / `named source signal` 泛化 fallback；本地十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 expanded specificity 闸门作为最新英文日报事实密度基线；下一步建议把发布脚本 EN generator 从 CJK 丢弃式 fallback 升级为结构化翻译/摘要 fixture，避免需要发布后人工回补。）
 
 ### EXP-132
@@ -1464,7 +1464,7 @@
 - Start date: 2026-05-26
 - End date: 2026-05-26
 - Success metric: `pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-fixture-source-dedup` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily fixture source dedup check。
-- Result: pass（已抽出共享真实 cron fixture module，三个 EN/ZH/pair fixture 检查脚本已统一 import；新增去重闸门并接入 package/CI；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（已抽出共享真实 cron fixture module，三个 EN/ZH/pair fixture 检查脚本已统一 import；新增去重闸门并接入 package/CI；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留共享 fixture source + dedup 闸门作为发布脚本生成质量检查的维护基线；下一步可把 fixture 覆盖扩展到最新 2026-05-26 日报，验证新增内容建设样本不会出现 description 或 evidence drift。）
 
 ### EXP-131
@@ -1474,7 +1474,7 @@
 - Start date: 2026-05-26
 - End date: 2026-05-26
 - Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm check:publish-daily-generator-fixture` 通过；`pnpm check:daily-generator-real-cron-fixture` 通过；`pnpm check:daily-zh-generator-real-cron-fixture` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily bilingual generator pair fixture check。
-- Result: pass（已新增双语 pair fixture 并接入 package/CI；ZH description 已过滤 Markdown 标题、字段标签和纯英文标题；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 28/30。）
+- Result: pass（已新增双语 pair fixture 并接入 package/CI；ZH description 已过滤 Markdown 标题、字段标签和纯英文标题；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `ceca4c1`；质量评分 28/30。）
 - Decision (scale / iterate / stop): scale（保留 EN/ZH pair fixture 作为发布脚本双语一致性基线；下一步可把 fixture source 抽成共享文件，避免 EN、ZH、pair 三个检查脚本重复维护同一真实 cron 摘要。）
 
 ### EXP-130
