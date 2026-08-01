@@ -974,7 +974,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta +1; extracts Kimi K3 from the reused Qoder developer-tools rule into a dedicated open-model long-context target.',
       },
     },
-    terms: ['Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', '百万 token', 'Kimi Code'],
+    terms: ['Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', 'Kimi Code'],
     details: {
       what: 'Moonshot / Kimi released Kimi K3 as a 2.8T-parameter native multimodal model with a 1 million token context window, available through Kimi.com, Kimi Work, Kimi Code, and API access while full weights are planned before July 27, 2026.',
       why: 'China’s model competition is moving toward very large open-model ecosystems, long-context coding, research workflows, and agent engineering rather than only chatbot quality.',
@@ -997,11 +997,19 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['GPT-5.6', 'Sol', 'Terra', 'Luna'],
       },
       {
+        label: 'OpenAI / GPT-5.6 / Luna-Terra API price cuts',
+        terms: ['GPT‑5.6 Luna', '0.20 / 1.20 美元', 'Fast mode'],
+      },
+      {
         label: 'OpenAI / GPT-5.6 / Sol-Terra-Luna agent platform',
         terms: ['GPT‑5.6', 'Sol', 'Terra', 'Luna'],
       },
+      {
+        label: 'OpenAI / cheaper intelligence / enterprise scale economics',
+        terms: ['更便宜的智能', '10 亿活跃用户', '200 万家企业'],
+      },
     ],
-    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'GPT‑5.6', 'Sol 主打编码', 'ultra 工作模式', 'ultra 多智能体并行工作模式'],
+    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'GPT‑5.6', 'Sol 主打编码', 'ultra 工作模式', 'ultra 多智能体并行工作模式', '更便宜的智能', '10 亿活跃用户', '200 万家企业', '0.20 / 1.20 美元', 'Sol 推出 Fast mode'],
     detailVariants: [
       {
         terms: ['GPT-5.6 Sol', 'Amazon Bedrock', 'Prompt 缓存'],
@@ -1009,6 +1017,22 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Amazon said OpenAI GPT-5.6 Sol, Terra, and Luna are generally available on Amazon Bedrock with enterprise security controls, in-region processing, prompt caching, and up to 90% cached-input discounts.',
           why: 'OpenAI distribution is moving deeper into managed cloud procurement, where model access, regional data boundaries, identity controls, logging, pricing, and caching economics become one adoption decision.',
           impact: 'Enterprise AI teams can compare GPT-5.6 against Anthropic, Meta, Mistral, and other Bedrock models while measuring latency, audit logs, data residency, cached-token savings, and governance fit.',
+        },
+      },
+      {
+        terms: ['更便宜的智能', '10 亿活跃用户', '200 万家企业'],
+        details: {
+          what: 'OpenAI argued that AI infrastructure should deliver cheaper intelligence at scale, saying its models now reach more than 1 billion active users and over 2 million businesses.',
+          why: 'The competitive frame is shifting from model size alone toward cost per unit of useful intelligence, enterprise adoption scale, and infrastructure efficiency.',
+          impact: 'Buyers should measure AI systems by cost per completed task, latency, reliability, governance fit, and measurable business output rather than only token price or benchmark rank.',
+        },
+      },
+      {
+        terms: ['GPT‑5.6 Luna', '0.20 / 1.20 美元', 'Fast mode'],
+        details: {
+          what: 'OpenAI cut GPT‑5.6 Luna API prices to $0.20 input and $1.20 output per million tokens, reduced Terra pricing, and introduced a faster Sol mode at premium pricing.',
+          why: 'Lower API prices make model routing more practical: expensive models can plan or review while lower-cost models execute high-volume drafts, code changes, classification, and batch analysis.',
+          impact: 'Developers and SMEs can redesign workflows around cost-per-task budgets, quality gates, and fallback policies instead of sending every request to the strongest model.',
         },
       },
       {
@@ -2015,7 +2039,13 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses token-economics-optimization headroom for a 2026-07-21 WAIC token-cost optimization signal while freeing supply-chain-cost-pressure for hardware and component pricing signals.',
       },
     },
-    terms: ['词元降本', '缓存 token 免费', '智能模型路由', '算电协同', 'TPU', '降低 token 成本'],
+    displayLabels: [
+      {
+        label: 'China / National Data Administration / token trading data assets',
+        terms: ['国家数据局', '高质量数据集超 12 万个', '词元交易'],
+      },
+    ],
+    terms: ['词元降本', '缓存 token 免费', '智能模型路由', '算电协同', 'TPU', '降低 token 成本', '国家数据局', '高质量数据集超 12 万个', '1565PB', '词元交易'],
     details: {
       what: 'Xinhua reported that WAIC 2026 participants are trying to reduce token costs across chips, compute-power coordination, large models, cache pricing, free cached tokens, and intelligent model routing.',
       why: 'AI commercialization is shifting from whether models work to whether enterprises can run them cheaply and reliably at scale, making cost per task, cache reuse, and routing strategy core infrastructure questions.',
@@ -2028,6 +2058,12 @@ export const FIELD_PROJECTION_RULES = [
     category: 'product-safety',
     splitTargetCategory: 'agent-runtime-safety',
     displayLabel: 'China / WAIC / agent safety evaluation',
+    displayLabels: [
+      {
+        label: 'NVIDIA / Open Secure AI Alliance / open AI security',
+        terms: ['Open Secure AI Alliance', '开放 agent harness', '网络防御'],
+      },
+    ],
     capacityPlan: {
       selectedSplitTarget: 'agent-runtime-safety',
       whyNotAlternatives: 'Rejected alternate split target model-account-security because WAIC agent safety covers runtime audit, risk monitoring, and response controls for tool-using AI systems, not account takeover or model access controls.',
@@ -2039,7 +2075,17 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; restores two agent-runtime-safety headroom slots after the 2026-07-21 and 2026-07-31 WAIC agent safety/runtime-audit signals, while keeping high-sensitivity-ai-deployment reserved for sector-sensitive deployments.',
       },
     },
-    terms: ['智能体安全', '前沿 AI 风险监测平台', '测评基准', '运行期审计', '实时响应', 'AI 会做什么'],
+    terms: ['智能体安全', '前沿 AI 风险监测平台', '测评基准', '运行期审计', '实时响应', 'AI 会做什么', 'Open Secure AI Alliance', '开放 agent harness', '网络防御', '开放式 AI 安全'],
+    detailVariants: [
+      {
+        terms: ['Open Secure AI Alliance', '开放 agent harness', '网络防御'],
+        details: {
+          what: 'NVIDIA said cloud, security, software, open-source, and AI companies joined the Open Secure AI Alliance to improve cyber defense with open models, open tools, and open agent harnesses.',
+          why: 'AI security is shifting from a binary open-versus-closed debate toward whether defenders can inspect, run locally, audit, evaluate, and isolate AI tools used in security operations.',
+          impact: 'Security teams should require identity controls, scoped permissions, logs, evaluation harnesses, sandboxing, and incident-response playbooks before deploying defensive AI agents.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua reported that WAIC 2026 experts are treating agent safety as a priority, moving from what models say toward what AI systems can do, with risk-monitoring platforms, evaluation benchmarks, runtime audit, and response capability.',
       why: 'Agents can call tools, access systems, and execute tasks, so safety failures become permission, workflow, and real-world action failures rather than only hallucinated answers.',
@@ -2086,6 +2132,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'Xinhua / Long March 10B / reusable rocket recovery',
         terms: ['长征十号乙', '一子级垂直返回'],
       },
+      {
+        label: 'China / satellite internet / commercial space data services',
+        terms: ['千帆星座', 'GW 星座', '用星'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'aerospace-compute-infrastructure',
@@ -2098,7 +2148,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses a dedicated aerospace-compute-infrastructure slot for a 2026-07-12 China AI-space and reusable launch infrastructure signal while reducing ai-industrial-policy saturation.',
       },
     },
-    terms: ['AI 与太空计算挑战赛', '太空计算主题国际赛事', '长征十号乙', '一级可控回收', '一子级垂直返回', '海南商业航天发射场'],
+    terms: ['AI 与太空计算挑战赛', '太空计算主题国际赛事', '长征十号乙', '一级可控回收', '一子级垂直返回', '海南商业航天发射场', '千帆星座', 'GW 星座', '骨干网组网', '用星'],
     detailVariants: [
       {
         terms: ['AI 与太空计算挑战赛', '三项金奖'],
@@ -2106,6 +2156,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua reported that the first international AI and space computing challenge announced results in Geneva, with Chinese research teams winning gold medals in three tracks covering space-computing and remote-sensing scenarios.',
           why: 'AI is moving from ground data centers into space infrastructure, where remote sensing, food security, water quality, urban heat analysis, and sustainable-development workloads need onboard or near-space computation.',
           impact: 'China’s AI and aerospace teams may gain more engineering validation opportunities across satellite data processing, remote-sensing models, space-ground coordination, and sustainability applications.',
+        },
+      },
+      {
+        terms: ['千帆星座', 'GW 星座', '用星'],
+        details: {
+          what: 'Xinhua reported that China’s Qianfan constellation has 238 stable satellites in orbit, the GW constellation has about 180 satellites operating, and both low-earth-orbit networks aim to complete backbone networking this year while the industry shifts from launching satellites to using them.',
+          why: 'Satellite internet can support low-altitude mobility, emergency communications, ocean monitoring, high-precision positioning, remote sensing, and data services, but commercial value depends on usable ground workflows.',
+          impact: 'Manufacturers and launch providers may benefit near term, while durable revenue will depend on data products, service-level agreements, industry operations, and repeatable customer use cases.',
         },
       },
       {

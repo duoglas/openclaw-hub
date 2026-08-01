@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-07-31 11:25
+Last updated: 2026-08-01 11:27
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-268: 将 2026-08-01 最新双语日报接入 real cron fixture，并修复 OpenAI 更便宜智能/API 降价、NVIDIA Open Secure AI Alliance、卫星互联网与词元交易字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-08-01）暴露 OpenAI 更便宜智能/10亿活跃用户/200万企业、GPT-5.6 Luna/Terra API 降价与 Sol Fast mode、NVIDIA Open Secure AI Alliance 开放安全 agent harness、中国低轨卫星互联网组网和国家数据局词元交易五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉模型成本路由、开放 AI 安全、商业航天数据服务和数据资产交易长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-01 / latestFixture=2026-08-01 / expectedSignals=5；daily source projection labels 覆盖 35 fixtures / 175 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-01.mjs`；2) 为 OpenAI cheaper intelligence、Luna/Terra API price cuts、Open Secure AI Alliance、satellite internet commercial data services 与 token trading data assets 增加 fixture-backed label/detailVariants；3) EN 2026-08-01 页面移除泛化 fallback 并补齐 cost-per-task routing 与 satellite data service Case-Level FAQ；4) 质量评分 28/30。
 
 - [x] P1 Candidate / EXP-267: 将 agent-runtime-safety 有效容量从 2 提升到 3，并同步 WAIC agent safety capacityPlan / AWS Secret Cloud alternate-target 诊断，消费 EXP-266 后续“WAIC agent safety runtime audit 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `d1a0244`
   - Hypothesis: EXP-266 后续指出 2026-07-31 WAIC 智能体安全运行期审计会继续消耗 agent-runtime-safety 的 1 headroom；若不恢复额外容量，后续工具调用审计、权限边界、实时风险监测、人类确认与事件响应类 Agent safety 信号会被迫错投到 high-sensitivity-ai-deployment 或 model-account-security。
