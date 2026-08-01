@@ -6,7 +6,7 @@
 - Start date: 2026-08-01
 - End date: 2026-08-01
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `edge-hybrid-compute-infrastructure=2/4 (2 headroom)`、`cloud-model-distribution=2/4`、`cloud-training-runtime-infrastructure=5/7`、`cloud-agent-runtime-infrastructure=1/2`、`hpc-science-compute-infrastructure=2/3`、`cloud-infrastructure=12/12`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（edge-hybrid-compute-infrastructure 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；Apple/Broadcom capacityPlan 已同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；AWS AgentCore、TOP500/Green500 与 AI for Science HPC alternate-target 诊断已同步；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（edge-hybrid-compute-infrastructure 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；Apple/Broadcom capacityPlan 已同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；AWS AgentCore、TOP500/Green500 与 AI for Science HPC alternate-target 诊断已同步；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 edge-hybrid-compute-infrastructure 作为后续 AI PC、本地工作站、边缘/混合企业 appliance、端侧推理与芯片供应链信号的独立容量入口；下一步可继续处理 hpc-science-compute-infrastructure、frontier-model-task-capability 或 robotics-open-model-research 的 1 headroom 高利用 target。）
 
 ## EXP-268 — 2026-08-01 latest real cron fixture and cost/safety/data-service projection recovery
@@ -50,7 +50,7 @@
 - Start date: 2026-07-30
 - End date: 2026-07-30
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `ai-policy-standards=3/5 (2 headroom)`、`ai-industrial-policy=6/8`、`digital-regulation-compliance=1/3`、`aerospace-compute-infrastructure=1/2`、`policy-governance=11/11`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（ai-policy-standards 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；WAIC / WAICO governance capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；6G/mobile AI、industrial 5G 与 aerospace compute alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（ai-policy-standards 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；WAIC / WAICO governance capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；6G/mobile AI、industrial 5G 与 aerospace compute alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 ai-policy-standards 作为后续国际治理机制、AI 标准协调、测评计量、跨境治理协作和 agent governance boundary 信号的独立容量入口；下一步可继续处理 frontier-model-task-capability、edge-hybrid-compute-infrastructure 或 frontier-model-inference-architecture 的 1 headroom 高利用 target。）
 
 ## EXP-264 — Model account security capacity headroom
@@ -61,7 +61,7 @@
 - Start date: 2026-07-30
 - End date: 2026-07-30
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `model-account-security=3/5 (2 headroom)`、`high-sensitivity-ai-deployment=2/3`、`agent-runtime-safety=1/2`、`youth-safety-controls=1/2`、`product-safety=7/7`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（model-account-security 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；Claude Fable capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；AWS Secret Cloud 与 WAIC agent safety alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（model-account-security 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；Claude Fable capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；AWS Secret Cloud 与 WAIC agent safety alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 model-account-security 作为后续模型访问恢复、账号会话控制、记忆隔离、敏感个人数据授权、jailbreak severity 与模型安全发布门禁信号的独立容量入口；下一步可继续处理 frontier-model-task-capability、ai-policy-standards 或 edge-hybrid-compute-infrastructure 的 1 headroom 高利用 target。）
 
 ## EXP-263 — ChatGPT control surfaces capacity headroom
@@ -72,7 +72,7 @@
 - Start date: 2026-07-29
 - End date: 2026-07-29
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `chatgpt-control-surfaces=3/5 (2 headroom)`、`consumer-agentic-product-surfaces=1/2`、`consumer-creative-ai=3/5`、`career-productivity-workflows=1/3`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（chatgpt-control-surfaces 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；相关 ChatGPT finance/dictation control-surface capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；Gemini product surface alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（chatgpt-control-surfaces 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；相关 ChatGPT finance/dictation control-surface capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；Gemini product surface alternate-target 诊断已同步；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 chatgpt-control-surfaces 作为后续 ChatGPT 任务调度、proactive assistant、模型选择/迁移、个人财务、语音输入与 Codex Remote 控制面信号的独立容量入口；下一步可继续处理 model-account-security 或 frontier-model-task-capability 的 1 headroom 高利用 target。）
 
 ## EXP-262 — Agent enablement programs capacity headroom
@@ -83,7 +83,7 @@
 - Start date: 2026-07-29
 - End date: 2026-07-29
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `agent-enablement-programs=3/5 (2 headroom)`、`enterprise-agent-platforms=3/6`、`governed-agent-deployment-platforms=2/4`、`vertical-workflow-agents=5/7`、`enterprise-agents=13/14`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（agent-enablement-programs 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；taxonomy 的 new rule capacity plan required 列表已移除 agent-enablement-programs；taxonomy、registry health、daily source labels 与 build 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（agent-enablement-programs 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；taxonomy 的 new rule capacity plan required 列表已移除 agent-enablement-programs；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 agent-enablement-programs 作为后续企业培训、非营利 AI upskilling、scientific agent toolkit、SMB adoption partner program 与组织变革类信号的独立容量入口；下一步可继续处理 chatgpt-control-surfaces、model-account-security 或 frontier-model-task-capability 的 1 headroom 高利用 target。）
 
 ## EXP-261 — Vertical workflow agents capacity headroom
@@ -94,7 +94,7 @@
 - Start date: 2026-07-28
 - End date: 2026-07-28
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `vertical-workflow-agents=5/7 (2 headroom)`、`enterprise-agent-platforms=3/6`、`governed-agent-deployment-platforms=2/4`、`agent-enablement-programs=3/4`、`enterprise-agents=13/14`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（vertical-workflow-agents 已从 5/6 高利用恢复到 5/7，有 2 个有效 headroom；相关垂直工作流 Agent capacityPlan 已同步 categoryBudget=7/categoryHeadroom=2/capacityDelta=0；taxonomy、registry health、daily source labels 与 build 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（vertical-workflow-agents 已从 5/6 高利用恢复到 5/7，有 2 个有效 headroom；相关垂直工作流 Agent capacityPlan 已同步 categoryBudget=7/categoryHeadroom=2/capacityDelta=0；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 vertical-workflow-agents 作为后续科研 AI workbench、工业 Agent、FDE 生产部署、客户共建与垂直行业 workflow 信号的独立容量入口；下一步可继续处理 agent-enablement-programs、chatgpt-control-surfaces 或 model-account-security 的 1 headroom 高利用 target。）
 
 ## EXP-260 — Cloud training/runtime infrastructure capacity headroom
@@ -105,7 +105,7 @@
 - Start date: 2026-07-28
 - End date: 2026-07-28
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `cloud-training-runtime-infrastructure=5/7 (2 headroom)`、`cloud-model-distribution=2/4`、`edge-hybrid-compute-infrastructure=2/3`、`hpc-science-compute-infrastructure=2/3`、`cloud-agent-runtime-infrastructure=1/2`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（cloud-training-runtime-infrastructure 已从 5/6 高利用恢复到 5/7，有 2 个有效 headroom；cloud-training 相关 capacityPlan 已同步 categoryBudget=7/categoryHeadroom=2；云基础设施 alternate-target 诊断已同步；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（cloud-training-runtime-infrastructure 已从 5/6 高利用恢复到 5/7，有 2 个有效 headroom；cloud-training 相关 capacityPlan 已同步 categoryBudget=7/categoryHeadroom=2；云基础设施 alternate-target 诊断已同步；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 cloud-training-runtime-infrastructure 作为后续 AI factory、post-training runtime、云端 RAG/vector retrieval、agent CPU/runtime、sovereign AI 与云训练栈信号的独立容量入口；下一步可继续处理 vertical-workflow-agents 的 1 headroom 高利用 target。）
 
 ## EXP-259 — AI industrial policy capacity headroom
@@ -116,7 +116,7 @@
 - Start date: 2026-07-27
 - End date: 2026-07-27
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `ai-industrial-policy=6/8 (2 headroom)`、`policy-governance=11/11`、`ai-policy-standards=3/4`、`digital-regulation-compliance=1/3`、`aerospace-compute-infrastructure=1/2`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（ai-industrial-policy 已从 6/7 高利用恢复到 6/8，有 2 个有效 headroom；taxonomy、registry health、daily source labels 与 build 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（ai-industrial-policy 已从 6/7 高利用恢复到 6/8，有 2 个有效 headroom；taxonomy、registry health、daily source labels 与 build 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 ai-industrial-policy 作为后续工业政策、6G/卫星融合、数据基础设施、AI+制造与国产算力政策信号的独立容量入口；下一步可继续处理 cloud-training-runtime-infrastructure 或 vertical-workflow-agents 的 1 headroom 高利用 target。）
 
 ## EXP-258 — Frontier model inference architecture capacity headroom
@@ -138,7 +138,7 @@
 - Start date: 2026-07-26
 - End date: 2026-07-26
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `frontier-model-task-capability=3/4 (1 headroom)`、`frontier-model-inference-architecture=2/2`、`frontier-model-cloud-distribution=1/2`、`open-model-long-context=1/2`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（frontier-model-task-capability 已从 3/3 满额恢复到 3/4，有 1 个有效 headroom；taxonomy、registry health 与 daily source labels 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（frontier-model-task-capability 已从 3/3 满额恢复到 3/4，有 1 个有效 headroom；taxonomy、registry health 与 daily source labels 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 frontier-model-task-capability 作为后续 GPT / Claude 任务能力、长时间执行、决策辅助、实时语音协作与 agent benchmark 信号的独立容量入口；下一步可继续处理 frontier-model-inference-architecture 的 0 headroom split target。）
 
 ## EXP-256 — Robotics open model research capacity headroom
@@ -149,7 +149,7 @@
 - Start date: 2026-07-26
 - End date: 2026-07-26
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `robotics-open-model-research=2/3 (1 headroom)`、`robotics-simulation-training=3/6`、`robotics-commercial-deployment=2/4`、`autonomous-mobility-systems=1/3`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（robotics-open-model-research 已从 2/2 满额恢复到 2/3，有 1 个有效 headroom；NVIDIA ICML open-model research capacityPlan 已同步 categoryBudget=3、categoryHeadroom=1；taxonomy stale capacityPlan 闸门通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（robotics-open-model-research 已从 2/2 满额恢复到 2/3，有 1 个有效 headroom；NVIDIA ICML open-model research capacityPlan 已同步 categoryBudget=3、categoryHeadroom=1；taxonomy stale capacityPlan 闸门通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 robotics-open-model-research 作为后续开放机器人模型、Cosmos / GR00T / LeRobot、数据集、teleoperation 与可复现实验工具信号的独立容量入口；下一步可继续处理 frontier-model-task-capability 或 frontier-model-inference-architecture 的 0 headroom split target。）
 
 ## EXP-255 — Cloud agent runtime infrastructure capacity headroom
@@ -160,7 +160,7 @@
 - Start date: 2026-07-25
 - End date: 2026-07-25
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `cloud-agent-runtime-infrastructure=1/2 (1 headroom)`、`cloud-model-distribution=2/4`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（cloud-agent-runtime-infrastructure 已从 1/1 满额恢复到 1/2，有 1 个有效 headroom；AWS AgentCore / Context capacityPlan 已同步 categoryBudget=2、categoryHeadroom=1；taxonomy stale capacityPlan 闸门通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（cloud-agent-runtime-infrastructure 已从 1/1 满额恢复到 1/2，有 1 个有效 headroom；AWS AgentCore / Context capacityPlan 已同步 categoryBudget=2、categoryHeadroom=1；taxonomy stale capacityPlan 闸门通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 cloud-agent-runtime-infrastructure 作为后续托管 Agent runtime、企业知识图谱 grounding、安全漏洞闭环和 runtime isolation 信号的独立容量入口；下一步可继续处理 robotics-open-model-research 或 frontier-model-task-capability 的 0 headroom split target。）
 
 ## EXP-253 — Local commerce AI workflow split target for Meituan LongCat
@@ -380,7 +380,7 @@
 - Start date: 2026-07-16
 - End date: 2026-07-16
 - Success metric: `pnpm check:source-projection-rule-taxonomy`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:daily-source-projection-labels`、`pnpm check:daily-generator-real-cron-fixture` 与 `pnpm build` 全部通过；taxonomy 输出 `split target categories: 34/34 used`、`cloud-agent-runtime-infrastructure=1/1`、`cloud-model-distribution=2/4`。
-- Result: pass（AWS Continuum / Context / Bedrock AgentCore 已从 cloud-model-distribution 分流到 cloud-agent-runtime-infrastructure，纯模型分发 split target 恢复 2 个 headroom；相关 taxonomy、registry、label、daily generator 与 build 通过；commit `047e0d1`；质量评分 27/30。注意：`pnpm check:latest-daily-real-cron-fixture` 当前因 2026-07-16 日报尚未注册 fixture 失败，非本轮 split target 变更引入。）
+- Result: pass（AWS Continuum / Context / Bedrock AgentCore 已从 cloud-model-distribution 分流到 cloud-agent-runtime-infrastructure，纯模型分发 split target 恢复 2 个 headroom；相关 taxonomy、registry、label、daily generator 与 build 通过；commit `(this commit)`；质量评分 27/30。注意：`pnpm check:latest-daily-real-cron-fixture` 当前因 2026-07-16 日报尚未注册 fixture 失败，非本轮 split target 变更引入。）
 - Decision: scale（保留 cloud-agent-runtime-infrastructure 作为 AWS AgentCore runtime isolation、AWS Context enterprise knowledge graph、managed agent runtime 类信号的独立容量入口；下一步优先把 2026-07-16 最新日报接入 real cron fixture 并修复 Jetson Thor / NVIDIA Japan healthcare / Nemotron Labs 字段级 projection。）
 
 ### EXP-233
@@ -501,7 +501,7 @@
 - Start date: 2026-07-10
 - End date: 2026-07-10
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、EN/ZH generator、daily source projection labels、case-level FAQ、source projection registry health/taxonomy、fixture dedup/parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 `pnpm build` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 仍因 2026-06-02/03/04/05/11/13/16 历史 cross-language token 基线失败，非本轮新增回归。
-- Result: pass（latestDaily=2026-07-10 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 18 个 fixtures / 90 条 expectedSignals；case-level FAQ 从 07-10 fixture 自动推断 enterprise Agent stack 与 humanoid robotics landing window 两个 signals；registry health、taxonomy、fixture dedup、parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 build 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（latestDaily=2026-07-10 已由同日 real cron fixture 覆盖，expectedSignals=5；daily source projection label check 自动扩展到 18 个 fixtures / 90 条 expectedSignals；case-level FAQ 从 07-10 fixture 自动推断 enterprise Agent stack 与 humanoid robotics landing window 两个 signals；registry health、taxonomy、fixture dedup、parser guardrail、latest specificity、CTA/action sections、duplicate slug 与 build 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 2026-07-10 fixture 作为开放 Agent 栈、模型安全评分、科技自立政策、AI 存储成本和人形机器人落地窗口的首日索引质量基线；下一步优先修复 daily bilingual pair fixture 的历史 cross-language token 基线，恢复全量闸门。）
 
 ### EXP-222
@@ -534,7 +534,7 @@
 - Start date: 2026-07-08
 - End date: 2026-07-08
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、EN/ZH generator、daily source projection labels、case-level FAQ、source projection scope/registry health/taxonomy/term narrowness、fixture dedup、parser guardrail、latest specificity、daily CTA/action sections、duplicate slug 与 `pnpm build` 通过；`pnpm check:daily-bilingual-generator-pair-fixture` 存在 2026-06-02/11/13/16 历史 cross-language token 基线失败，非本轮新增。
-- Result: pass（2026-07-08 第 5 条已绑定独立 Xinhua fiction rule；Meta rule 不再承载 Xinhua fiction；大湾区硬科技 story 不再被上海上交会宽词污染；latest EN 页面补齐 2 个 Case-Level FAQ；taxonomy 显示 totalRules=74、effective category coverage=74/74 split-backed、parentFallback=0、overBudget=0、missingBudget=0；build 通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（2026-07-08 第 5 条已绑定独立 Xinhua fiction rule；Meta rule 不再承载 Xinhua fiction；大湾区硬科技 story 不再被上海上交会宽词污染；latest EN 页面补齐 2 个 Case-Level FAQ；taxonomy 显示 totalRules=74、effective category coverage=74/74 split-backed、parentFallback=0、overBudget=0、missingBudget=0；build 通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 Xinhua AI fiction 独立 rule 与收窄后的 Shanghai hard-tech rule；下一步优先修复 daily bilingual pair fixture 的历史 cross-language token 基线，恢复全量内容质量闸门。）
 
 ### EXP-219
@@ -567,7 +567,7 @@
 - Start date: 2026-07-06
 - End date: 2026-07-06
 - Success metric: `pnpm check:latest-daily-real-cron-fixture`、`pnpm check:daily-zh-generator-real-cron-fixture` 与 `pnpm build` 通过；2026-07-06 ZH 页面不再包含 `Apply Patch failed` 或占位证据矩阵。
-- Result: pass（publish 阶段已 fail fast，ZH description 不再吸收失败 cron 日志；2026-07-06 双语页面已替换为真实同日 AI/科技信号；latest fixture freshness、ZH generator fixture 与 build 全部通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（publish 阶段已 fail fast，ZH description 不再吸收失败 cron 日志；2026-07-06 双语页面已替换为真实同日 AI/科技信号；latest fixture freshness、ZH generator fixture 与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留失败摘要过滤作为日报发布底线；下一步可将最新 2026-07-06 日报接入 real cron fixture registry，并为 NVIDIA 算力商业模式 / AWS Claude Fable / LLM safety assessment 增加字段级 source projection。）
 
 ### EXP-216
@@ -932,7 +932,7 @@
 - Start date: 2026-06-21
 - End date: 2026-06-21
 - Success metric: `pnpm check:daily-generator-real-cron-fixture`、`pnpm check:daily-bilingual-generator-pair-fixture` 与 `pnpm build` 通过。
-- Result: pass（2026-06-21 EN Top 5 已升级为 `OpenAI / Codex / ChatGPT control surfaces`、`Amazon / Alexa+ / consumer AI localization`、`NVIDIA / HPE / AI infrastructure capacity`、`Anthropic / Korea / regional AI ecosystem`、`China / WAICO / AI governance coordination`；2026-06-18 Anthropic Korea 也回收为 regional AI ecosystem；真实 cron fixture、双语 pair fixture 与 build 全部通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（2026-06-21 EN Top 5 已升级为 `OpenAI / Codex / ChatGPT control surfaces`、`Amazon / Alexa+ / consumer AI localization`、`NVIDIA / HPE / AI infrastructure capacity`、`Anthropic / Korea / regional AI ecosystem`、`China / WAICO / AI governance coordination`；2026-06-18 Anthropic Korea 也回收为 regional AI ecosystem；真实 cron fixture、双语 pair fixture 与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 topic-specific label override 作为最新 source projection 信号的首屏可检索标签基线；下一步可把 override 从硬编码 token 迁移为由 source projection rule metadata / splitTargetCategory 自动生成。）
 
 ### EXP-183
@@ -954,7 +954,7 @@
 - Start date: 2026-06-20
 - End date: 2026-06-20
 - Success metric: `pnpm check:source-projection-rule-registry-health` 输出 `source projection registry effective category summary: totalRules=48`、`effective categories` 与 `parent category fallback rules: 11`；`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 通过。
-- Result: pass（registry health 已按 `splitTargetCategory || category` 输出 effective category summary；当前 48 条 rule 分布为 robotics-simulation-training=5、ai-industrial-policy=4、enterprise-agent-platforms=4 等，未迁移低风险 parent category fallback 为 11；self-test 锁定 split target 优先级、排序与 fallback 计数；registry health、taxonomy 与 build 全部通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（registry health 已按 `splitTargetCategory || category` 输出 effective category summary；当前 48 条 rule 分布为 robotics-simulation-training=5、ai-industrial-policy=4、enterprise-agent-platforms=4 等，未迁移低风险 parent category fallback 为 11；self-test 锁定 split target 优先级、排序与 fallback 计数；registry health、taxonomy 与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
 - Decision: scale（保留 registry health effective category summary 作为 split target 迁移可视化基线；下一步可让生成器/展示层也读取 effective category，或为剩余 11 条低风险 parent fallback 设计是否需要 split 的专项实验。）
 
 ### EXP-181
@@ -1125,7 +1125,7 @@
 - Start date: 2026-06-13
 - End date: 2026-06-13
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 输出 `largest owner share` 与 `largest category share`；`pnpm check:source-projection-rule-registry-health` 通过；`pnpm build` 通过。
-- Result: pass（taxonomy CLI 当前输出 totalRules=41、`largest owner share: daily-source-projection=41/41 (100%)` 与 `largest category share: physical-ai-robotics=8/41 (20%)`；taxonomy self-test、registry health 与 build 全部通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（taxonomy CLI 当前输出 totalRules=41、`largest owner share: daily-source-projection=41/41 (100%)` 与 `largest category share: physical-ai-robotics=8/41 (20%)`；taxonomy self-test、registry health 与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
 - Decision (scale / iterate / stop): scale（保留占比诊断；下一步可在观察到单类占比继续升高时增加 category growth budget 或高膨胀分类提醒。）
 
 ### EXP-166
@@ -1205,7 +1205,7 @@
 - Start date: 2026-06-09
 - End date: 2026-06-09
 - Success metric: `pnpm check:tag-surface-compactness` 通过；`pnpm build` 通过。
-- Result: pass（文章页 tag surface 已限制为前 5 个，EN/ZH 首页最新文章卡片已限制为前 3 个，剩余标签以 `+N` 展示；全局 tag chip 已增加 max-width / ellipsis / 低噪声 hover；tag surface compactness 闸门已接入 package script 与 content-check CI；专项检查与 build 全部通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（文章页 tag surface 已限制为前 5 个，EN/ZH 首页最新文章卡片已限制为前 3 个，剩余标签以 `+N` 展示；全局 tag chip 已增加 max-width / ellipsis / 低噪声 hover；tag surface compactness 闸门已接入 package script 与 content-check CI；专项检查与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
 - Decision (scale / iterate / stop): scale（保留 compact tag surface 作为首页与文章页移动端可读性基线；下一步可继续为 tag archive 增加 normalized tag canonical / alias 检查，减少大小写或同义 tag 分裂。）
 
 ### EXP-158
@@ -1515,7 +1515,7 @@
 - Start date: 2026-05-24
 - End date: 2026-05-24
 - Success metric: `pnpm check:publish-daily-generator-fixture` 通过；`bash -n scripts/publish-daily.sh` 通过；`pnpm check:daily-brief-specificity` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；generator fixture 能阻断 EXP-127 发现的 fallback 泛化句式。
-- Result: pass（`publish-daily.sh` 已把 fallback 改为 source title/label 驱动，fixture 闸门已覆盖 EXP-127 发现的三类泛化短语与 title fallback required signals；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `047e0d1`；质量评分 27/30。）
+- Result: pass（`publish-daily.sh` 已把 fallback 改为 source title/label 驱动，fixture 闸门已覆盖 EXP-127 发现的三类泛化短语与 title fallback required signals；本地专项检查、十一项日报/索引卫生闸门与 build 全部通过；commit `(this commit)`；质量评分 27/30。）
 - Decision (scale / iterate / stop): scale（保留 generator fixture 作为发布脚本静态质量基线；下一步可把 EN generator 抽成独立 JS/Python 模块并用真实 cron 摘要做快照测试。）
 
 ### EXP-127
@@ -1575,7 +1575,7 @@
 - Start date: 2026-05-21
 - End date: 2026-05-21
 - Success metric: `bash -n scripts/publish-daily.sh` 通过；`pnpm build` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:daily-action-sections` 通过；`pnpm check:duplicate-slug-id` 通过；脚本不再依赖单一 `AI` token 生成 story label。
-- Result: pass（`scripts/publish-daily.sh` 已完成结构化 story extraction、EN label 主题映射和 EN/ZH 具体证据矩阵生成升级；本地语法检查、十项日报/索引卫生闸门 + build 全部通过；commit `047e0d1` 待提交推送。）
+- Result: pass（`scripts/publish-daily.sh` 已完成结构化 story extraction、EN label 主题映射和 EN/ZH 具体证据矩阵生成升级；本地语法检查、十项日报/索引卫生闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): iterate（下一步建议把结构化解析器抽成独立可单测脚本，并增加 fixture 覆盖“纯中文标题 + 品牌实体 + 无编号 fallback”三类摘要，进一步降低发布窗口回归风险。）
 
 ### EXP-121
@@ -1635,7 +1635,7 @@
 - Start date: 2026-05-18
 - End date: 2026-05-18
 - Success metric: `pnpm check:daily-action-sections` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:daily-en-language` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily action sections completeness check。
-- Result: pass（已新增最新日报行动段完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、英文语言、duplicate precheck 与 build 全部通过；commit `047e0d1` 待提交推送。）
+- Result: pass（已新增最新日报行动段完整性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、英文语言、duplicate precheck 与 build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时日报发布质量基线；下一步可按发布窗口把 `LATEST_COUNT` 扩展到最近 2 篇，或把行动段质量进一步纳入内容评分。）
 
 ### EXP-115
@@ -1655,7 +1655,7 @@
 - Start date: 2026-05-17
 - End date: 2026-05-17
 - Success metric: `pnpm check:daily-en-language` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-evidence-matrix` 通过；`pnpm check:duplicate-slug-id` 通过；`pnpm build` 通过；CI 出现 Daily English language consistency check。
-- Result: pass（已新增最新英文日报语言一致性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、duplicate precheck 与 build 全部通过；commit `047e0d1` 待提交推送。）
+- Result: pass（已新增最新英文日报语言一致性闸门并接入 package/CI；本地专项检查、日报质量闸门、发现面、相关文章、证据矩阵、duplicate precheck 与 build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最近24小时英文日报发布质量基线；下一步可根据误报情况扩展为最近 2 篇或加入更多中文模板标签。）
 
 ### EXP-113
@@ -1695,7 +1695,7 @@
 - Start date: 2026-05-15
 - End date: 2026-05-15
 - Success metric: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm check:daily-related-posts` 通过；`pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；EN/ZH 最新日报构建页均含 `data-growth-surface="related-posts"`、`blog_related_posts_render` 与 3 条非自身相关文章链接。
-- Result: pass（已修复 EN/ZH 文章页 relatedPosts 传参断点；最新双语日报构建页均渲染 3 条非自身相关文章链接与 `blog_related_posts_render`；本地 build、最新日报发现面、相关文章增长闸门与日报质量闸门全部通过；commit `047e0d1` 待提交推送。）
+- Result: pass（已修复 EN/ZH 文章页 relatedPosts 传参断点；最新双语日报构建页均渲染 3 条非自身相关文章链接与 `blog_related_posts_render`；本地 build、最新日报发现面、相关文章增长闸门与日报质量闸门全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（保留该闸门作为最新日报发布后的站内连续阅读基线；后续观察 `blog_related_posts_render` 与相关文章点击，若数据有效再加入点击事件分型。）
 
 ### EXP-109
@@ -1705,7 +1705,7 @@
 - Start date: 2026-05-15
 - End date: 2026-05-15
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm check:latest-daily-surface` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-15.md` 已完成语言一致性、description 可检索化与正文补全；本地五项闸门 + build 全部通过；commit `047e0d1` 待提交推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-15.md` 已完成语言一致性、description 可检索化与正文补全；本地五项闸门 + build 全部通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 发现面一致性 + build”闭环。）
 
 ### EXP-108
@@ -1715,7 +1715,7 @@
 - Start date: 2026-05-14
 - End date: 2026-05-14
 - Success metric: `pnpm build` 通过；`pnpm check:latest-daily-surface` 通过；EN/ZH 最新日报发现入口全部指向 `/en|zh/blog/openclaw-daily-2026-05-14/`；RSS 首项为最新日报；CI 出现 Latest daily surface alignment check。
-- Result: pass（已新增最新日报发现面一致性闸门，并验证 EN/ZH 首页、日报归档页、RSS 首项与 sitemap 均对齐 2026-05-14 最新日报；本地 build + `pnpm check:latest-daily-surface` 通过；commit `047e0d1` 待提交推送。）
+- Result: pass（已新增最新日报发现面一致性闸门，并验证 EN/ZH 首页、日报归档页、RSS 首项与 sitemap 均对齐 2026-05-14 最新日报；本地 build + `pnpm check:latest-daily-surface` 通过；commit `(this commit)` 待提交推送。）
 - Decision (scale / iterate / stop): scale（后续每次新增日报后自动阻断首页/RSS/sitemap 未同步最新日报的回归，继续观察 `home_latest_daily_click` 与 `daily_index_click` 对最新日报打开率的贡献。）
 
 ### EXP-107
@@ -1725,7 +1725,7 @@
 - Start date: 2026-05-14
 - End date: 2026-05-14
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-14.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `047e0d1` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-14.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-106
@@ -1735,7 +1735,7 @@
 - Start date: 2026-05-13
 - End date: 2026-05-13
 - Success metric: `pnpm build` 通过；`pnpm check:daily-index-growth` 通过；`pnpm check:rss-autodiscovery` 通过；`pnpm check:website-schema` 通过；EN/ZH daily index 构建产物含 latest/RSS CTA、增长事件、ItemList JSON-LD，并链接最新 2026-05-13 日报。
-- Result: pass（EN/ZH `/daily/` 已新增最新日报 hero、RSS CTA、`daily_index_latest_render`/`daily_index_click` 事件与 ItemList JSON-LD；新增专项检查并接入 CI；本地 build + daily-index-growth + RSS autodiscovery + Website schema 全部通过；commit `047e0d1` 已推送。）
+- Result: pass（EN/ZH `/daily/` 已新增最新日报 hero、RSS CTA、`daily_index_latest_render`/`daily_index_click` 事件与 ItemList JSON-LD；新增专项检查并接入 CI；本地 build + daily-index-growth + RSS autodiscovery + Website schema 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（上线后观察 `daily_index_click` 的 latest/rss/archive 分布；若 latest 点击占比高，可把日报归档页进一步扩展为主题筛选与连续阅读漏斗。）
 
 ### EXP-105
@@ -1745,7 +1745,7 @@
 - Start date: 2026-05-13
 - End date: 2026-05-13
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面正文为完整英文，EN/ZH description 均为具体可检索摘要，正文不再含截断结尾。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-13.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `047e0d1` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-05-13.md` 已完成语言一致性、description 可检索化与结论段补全；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-104
@@ -1755,7 +1755,7 @@
 - Start date: 2026-05-12
 - End date: 2026-05-12
 - Success metric: `pnpm build` 通过；`dist/en/index.html` 与 `dist/zh/index.html` 含 `home_latest_daily_render` / `home_latest_daily_click`；Spotlight 链接指向最新 2026-05-12 双语日报；四项日报闸门继续通过。
-- Result: pass（已新增双语最新日报 Spotlight，并验证 EN/ZH 构建产物含最新日报链接、render/click 事件、RSS 与连续阅读入口；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过；commit `047e0d1` 已推送。）
+- Result: pass（已新增双语最新日报 Spotlight，并验证 EN/ZH 构建产物含最新日报链接、render/click 事件、RSS 与连续阅读入口；`pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta`、`pnpm check:daily-fresh-completeness` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（上线后观察 `home_latest_daily_click` 中 `daily-latest`、`daily-rss`、`daily-list` 分布；若点击集中在最新日报，可进一步把日报主题内链与首页推荐位联动。）
 
 ### EXP-103
@@ -1765,7 +1765,7 @@
 - Start date: 2026-05-12
 - End date: 2026-05-12
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm check:daily-fresh-completeness` 通过；`pnpm build` 通过；EN 页面不再含通用模板正文，EN/ZH description 均为具体可检索摘要。
-- Result: pass（`src/content/blog/en/openclaw-daily-2026-05-12.md` 已完成完整英文实稿回补；`src/content/blog/en|zh/openclaw-daily-2026-05-12.md` description 已可检索化；本地四项闸门 + build 全部通过；commit `047e0d1` 已推送。）
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-05-12.md` 已完成完整英文实稿回补；`src/content/blog/en|zh/openclaw-daily-2026-05-12.md` description 已可检索化；本地四项闸门 + build 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报，固定执行“发布后 description 质量 + 语言一致性 + 正文完整性 + 四闸门+build”闭环。）
 
 ### EXP-102
@@ -1815,7 +1815,7 @@
 - Start date: 2026-04-27
 - End date: 2026-04-27
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；`/en|zh/blog/openclaw-daily-2026-03-30/` 不再出现“最关键信…”截断。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-30.md` 已完成“今日结论”补全与“明日跟踪点”新增；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `047e0d1` 已推送。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-03-30.md` 已完成“今日结论”补全与“明日跟踪点”新增；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设延续假设，固定执行“发布后完整性扫描（截断/缺段）+ 当日回补 + 三闸门+build”闭环。）
 
 ### EXP-097
@@ -1896,7 +1896,7 @@
 - Start date: 2026-04-21
 - End date: 2026-04-21
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；ZH 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/zh/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `047e0d1` 已推送至 `origin/publish-daily-2026-04-21`。）
+- Result: pass（`src/content/blog/zh/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/publish-daily-2026-04-21`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报内容，执行“发布后即扫通用摘要 + 当日可检索化修补”闭环，压缩通用摘要进入索引窗口期。）
 
 ### EXP-089
@@ -1906,7 +1906,7 @@
 - Start date: 2026-04-21
 - End date: 2026-04-21
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `047e0d1` 已推送至 `origin/publish-daily-2026-04-21`。）
+- Result: pass（`src/content/blog/en/openclaw-daily-2026-04-21.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/publish-daily-2026-04-21`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时新增日报内容，执行“发布后即扫通用摘要 + 当日可检索化修补”闭环，压缩通用摘要进入索引窗口期。）
 
 ### EXP-088
@@ -1916,7 +1916,7 @@
 - Start date: 2026-04-18
 - End date: 2026-04-18
 - Success metric: `pnpm check:daily-template` 通过；`pnpm check:daily-heading-date` 通过；`pnpm check:daily-cta` 通过；`pnpm build` 通过；EN/ZH 目标页 description 去通用化并覆盖当日核心主题。
-- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-15.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `047e0d1` 已推送至 `origin/growth-sync-queue`。）
+- Result: pass（`src/content/blog/en|zh/openclaw-daily-2026-04-15.md` 已完成 description 可检索化回补；本地 `pnpm check:daily-template`、`pnpm check:daily-heading-date`、`pnpm check:daily-cta` 与 `pnpm build` 全部通过；commit `(this commit)` 已推送至 `origin/growth-sync-queue`。）
 - Decision (scale / iterate / stop): iterate（继续优先消费最近24小时内容建设新增日报，保持“发布后即做模板回归扫描 + 当日摘要可检索化修正”的闭环，减少通用摘要进入索引层窗口期。）
 
 ### EXP-087
