@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-01 17:20
+Last updated: 2026-08-02 11:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,6 +21,12 @@ Manager: main session
 
 ## Done
 
+
+
+- [x] P1 Candidate / EXP-270: 将 hpc-science-compute-infrastructure 有效容量从 3 提升到 4，并同步 TOP500/AI for Science capacityPlan 与 AWS AgentCore alternate-target 诊断，消费 EXP-269 后续“hpc-science-compute-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `b1e6675`
+  - Hypothesis: EXP-269 后续建议继续处理 hpc-science-compute-infrastructure 的 2/3 高利用容量；若 TOP500/Green500 supercomputing 与 AI for Science HPC software stack 继续只剩 1 个 headroom，后续 GPU-native simulation、scientific-compute、experimental-data pipeline 与 research infrastructure 信号会被迫错投到 cloud-model-distribution、cloud-training-runtime-infrastructure、cloud-agent-runtime-infrastructure 或 edge-hybrid-compute-infrastructure。
+  - Metrics: source projection taxonomy 显示 hpc-science-compute-infrastructure 从 2/3 变为 2/4，并保留 cloud-model-distribution=2/4、cloud-training-runtime-infrastructure=5/7、edge-hybrid-compute-infrastructure=2/4、cloud-agent-runtime-infrastructure=1/2、cloud-infrastructure=12/12、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.hpc-science-compute-infrastructure` 提升到 4；2) TOP500/Green500 与 AI for Science capacityPlan 同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；3) AWS AgentCore 显式拒绝 hpc-science-compute-infrastructure 作为可用 alternate；4) 质量评分 27/30。
 
 - [x] P1 Candidate / EXP-269: 将 edge-hybrid-compute-infrastructure 有效容量从 3 提升到 4，并同步 Apple/Broadcom capacityPlan 与 AWS/HPC alternate-target 诊断，消费 EXP-268 后续“edge-hybrid-compute-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `047e0d1`
   - Hypothesis: EXP-268 后续建议继续处理 edge-hybrid-compute-infrastructure 的 2/3 高利用容量；若 RTX Spark / DGX Station / Microsoft hybrid stack 与 Apple/Broadcom US chip supply chain 两条边缘/混合算力信号继续只剩 1 个 headroom，后续 AI PC、本地工作站、企业混合 appliance、端侧推理与国产/美国供应链信号会被迫错投到 cloud-model-distribution、cloud-training-runtime-infrastructure 或 hpc-science-compute-infrastructure。
