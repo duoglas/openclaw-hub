@@ -6,7 +6,7 @@
 - Start date: 2026-08-02
 - End date: 2026-08-02
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `hpc-science-compute-infrastructure=2/4 (2 headroom)`、`cloud-model-distribution=2/4`、`cloud-training-runtime-infrastructure=5/7`、`edge-hybrid-compute-infrastructure=2/4`、`cloud-agent-runtime-infrastructure=1/2`、`cloud-infrastructure=12/12`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（hpc-science-compute-infrastructure 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；TOP500/Green500 与 AI for Science capacityPlan 已同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；AWS AgentCore alternate-target 诊断已同步；commit `b1e6675`；质量评分 27/30。）
+- Result: pass（hpc-science-compute-infrastructure 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；TOP500/Green500 与 AI for Science capacityPlan 已同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；AWS AgentCore alternate-target 诊断已同步；commit `8d6325e`；质量评分 27/30。）
 - Decision: scale（保留 hpc-science-compute-infrastructure 作为后续 GPU-native simulation、AI for Science HPC software、experimental-data pipeline 与 research infrastructure 信号的独立容量入口；下一步可继续处理 frontier-model-task-capability、robotics-open-model-research 或 high-sensitivity-ai-deployment 的 1 headroom 高利用 target。）
 
 ## EXP-269 — Edge hybrid compute infrastructure capacity headroom
