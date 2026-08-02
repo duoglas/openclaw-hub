@@ -1620,6 +1620,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'frontier-models',
     splitTargetCategory: 'frontier-model-task-capability',
     displayLabel: 'OpenAI / GPT-5.5 Instant / decision assistance',
+    capacityPlan: {
+      selectedSplitTarget: 'frontier-model-task-capability',
+      whyNotAlternatives: 'Rejected alternate split targets frontier-model-cloud-distribution, frontier-model-inference-architecture, and open-model-long-context because GPT-5.5 Instant, GPT-Live, and delegated frontier-model task handling are task-capability and real-time workflow signals, not a cloud distribution, inference-architecture, or open long-context model signal.',
+      rejectedAlternateTargets: ['frontier-model-cloud-distribution', 'frontier-model-inference-architecture', 'open-model-long-context'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 5,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; frontier-model-task-capability now has two effective headroom slots for future GPT/Claude task capability, real-time voice collaboration, long-running agent benchmark, and decision-assistance signals.',
+      },
+    },
     displayLabels: [
       {
         label: 'OpenAI / GPT-Live / full-duplex voice AI',

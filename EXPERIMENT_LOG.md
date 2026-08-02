@@ -1,3 +1,14 @@
+## EXP-271 — Frontier model task capability capacity headroom
+- Hypothesis: EXP-270 后续指出 frontier-model-task-capability 仍是 3/4 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 GPT / Claude 任务能力、长时间执行、实时语音协作、agent benchmark、决策辅助与 frontier task workflow 信号会被迫错投到 frontier-model-cloud-distribution、frontier-model-inference-architecture 或 open-model-long-context。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `frontier-model-task-capability` effective category budget 从 4 提升到 5；为 `openai-gpt55-instant-decision-shopping-2026` 增加 structured capacityPlan，同步 categoryBudget/categoryHeadroom/capacityDelta，并显式拒绝 frontier-model-cloud-distribution、frontier-model-inference-architecture 与 open-model-long-context 作为 alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-02
+- End date: 2026-08-02
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `frontier-model-task-capability=3/5 (2 headroom)`、`frontier-model-inference-architecture=2/3`、`frontier-model-cloud-distribution=1/2`、`open-model-long-context=1/2`、`frontier-models=7/7`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（frontier-model-task-capability 已从 3/4 高利用恢复到 3/5，有 2 个有效 headroom；GPT-5.5 Instant / GPT-Live capacityPlan 已同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0；frontier alternate-target 诊断已同步；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 frontier-model-task-capability 作为后续 GPT / Claude 任务能力、长时间执行、实时语音协作、agent benchmark 与决策辅助信号的独立容量入口；下一步可继续处理 frontier-model-inference-architecture、robotics-open-model-research 或 high-sensitivity-ai-deployment 的 1 headroom 高利用 target。）
+
 ## EXP-270 — HPC science compute infrastructure capacity headroom
 - Hypothesis: EXP-269 后续指出 hpc-science-compute-infrastructure 仍是 2/3 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 GPU-native simulation、AI for Science HPC software、scientific-compute、experimental-data pipeline 与 research infrastructure 信号会被迫错投到 cloud-model-distribution、cloud-training-runtime-infrastructure、cloud-agent-runtime-infrastructure 或 edge-hybrid-compute-infrastructure。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
