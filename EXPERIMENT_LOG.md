@@ -1,3 +1,14 @@
+## EXP-273 — Robotics open model research capacity headroom
+- Hypothesis: EXP-272 后续指出 robotics-open-model-research 仍是 2/3 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 Cosmos / GR00T / LeRobot / Jetson developer kit、开放机器人模型、数据集、teleoperation、可复现实验工具与 robotics research infrastructure 信号会被迫错投到 robotics-simulation-training、robotics-commercial-deployment、autonomous-mobility-systems、humanoid-embodied-training 或 assistive-exoskeleton-robotics。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `robotics-open-model-research` effective category budget 从 3 提升到 4；为 `nvidia-physical-ai-agent-skills-2026` 增加 structured capacityPlan，同步 `nvidia-icml-open-models-robotics-research-2026` capacityPlan 的 categoryBudget/categoryHeadroom/capacityDelta，并显式拒绝 simulation/commercial/mobility/humanoid/assistive alternate targets。
+- ICE: 8x8x8=512
+- Start date: 2026-08-03
+- End date: 2026-08-03
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `robotics-open-model-research=2/4 (2 headroom)`、`robotics-simulation-training=3/6`、`robotics-commercial-deployment=2/4`、`autonomous-mobility-systems=1/3`、`physical-ai-robotics=10/10`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（robotics-open-model-research 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；Physical AI Agent Skills capacityPlan 已补齐，ICML open-model research capacityPlan 已同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；alternate-target 诊断已同步；commit `(this commit)`；质量评分 27/30。）
+- Decision: scale（保留 robotics-open-model-research 作为后续开放机器人模型、Cosmos / GR00T / LeRobot、Jetson developer kit、数据集、teleoperation 与可复现实验工具信号的独立容量入口；下一步可继续处理 high-sensitivity-ai-deployment、cloud-agent-runtime-infrastructure 或 aerospace-compute-infrastructure 的 1 headroom 高利用 target。）
+
 ## EXP-272 — Frontier model inference architecture capacity headroom
 - Hypothesis: EXP-271 后续指出 frontier-model-inference-architecture 仍是 2/3 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续非自回归推理、MoE inference efficiency、AI factory performance-per-watt、低延迟本地模型与 frontier inference architecture 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution、open-model-long-context 或 cloud-training-runtime-infrastructure。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

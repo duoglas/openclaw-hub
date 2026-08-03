@@ -21,6 +21,12 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-273: 将 robotics-open-model-research 有效容量从 3 提升到 4，并同步 Physical AI Agent Skills / ICML open-model capacityPlan，消费 EXP-272 后续“robotics-open-model-research 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-272 后续建议继续处理 robotics-open-model-research 的 2/3 高利用容量；若 NVIDIA Physical AI Agent Skills 与 NVIDIA ICML open-model research infrastructure 两条开放机器人模型/工具链信号继续只剩 1 个 headroom，后续 Cosmos / GR00T / LeRobot / Jetson developer kit、开放机器人模型、数据集、teleoperation 与可复现实验工具信号会被迫错投到 robotics-simulation-training、robotics-commercial-deployment、autonomous-mobility-systems、humanoid-embodied-training 或 assistive-exoskeleton-robotics。
+  - Metrics: source projection taxonomy 显示 robotics-open-model-research 从 2/3 变为 2/4，并保留 robotics-simulation-training=3/6、robotics-commercial-deployment=2/4、autonomous-mobility-systems=1/3、physical-ai-robotics=10/10、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.robotics-open-model-research` 提升到 4；2) taxonomy 输出 robotics-open-model-research=2/4、有 2 个有效 headroom；3) Physical AI Agent Skills 新增 structured capacityPlan，ICML open-model capacityPlan 同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0，并显式拒绝 simulation/commercial/mobility/humanoid/assistive alternate；4) 质量评分 27/30。
+
+
 
 
 - [x] P1 Candidate / EXP-272: 将 frontier-model-inference-architecture 有效容量从 3 提升到 4，并同步 DiffusionGemma / Blackwell MLPerf capacityPlan 与 Kimi alternate-target 诊断，消费 EXP-271 后续“frontier-model-inference-architecture 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`

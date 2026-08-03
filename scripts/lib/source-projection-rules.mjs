@@ -791,6 +791,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'physical-ai-robotics',
     splitTargetCategory: 'robotics-open-model-research',
     displayLabel: 'NVIDIA / Physical / Agent / robotics deployment',
+    capacityPlan: {
+      selectedSplitTarget: 'robotics-open-model-research',
+      whyNotAlternatives: 'Rejected alternate split targets robotics-simulation-training, robotics-commercial-deployment, autonomous-mobility-systems, humanoid-embodied-training, and assistive-exoskeleton-robotics because Physical AI Agent Skills, LeRobot, Isaac GR00T, Isaac Teleop, and Jetson developer signals are open robotics model/tooling research infrastructure signals, not simulation-only, commercial deployment, mobility, humanoid training, or assistive robotics signals.',
+      rejectedAlternateTargets: ['robotics-simulation-training', 'robotics-commercial-deployment', 'autonomous-mobility-systems', 'humanoid-embodied-training', 'assistive-exoskeleton-robotics'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; robotics-open-model-research now has two effective headroom slots for future Cosmos, GR00T, LeRobot, open robotics model, dataset, teleoperation, and reproducible research infrastructure signals.',
+      },
+    },
     displayLabels: [
       {
         label: 'NVIDIA / Jetson Thor / edge robotics AI modules',
@@ -1943,10 +1954,10 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets robotics-simulation-training, robotics-commercial-deployment, and autonomous-mobility-systems because the ICML open-model signal centers on Cosmos/GR00T research infrastructure and reproducible open model tooling, not simulation-training regression, factory deployment, or autonomous mobility programs.',
       rejectedAlternateTargets: ['robotics-simulation-training', 'robotics-commercial-deployment', 'autonomous-mobility-systems'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 3,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta +1; restores one robotics-open-model-research headroom slot for future open robotics model, dataset, and reproducible research infrastructure signals without widening simulation or commercial deployment targets.',
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; robotics-open-model-research now has two effective headroom slots for future open robotics model, dataset, teleoperation, and reproducible research infrastructure signals without widening simulation or commercial deployment targets.',
       },
     },
     terms: ['ICML 2026', '约 2000 篇论文引用 NVIDIA GPU', '145 篇引用 Nemotron'],
