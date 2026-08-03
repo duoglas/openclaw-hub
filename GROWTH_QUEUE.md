@@ -23,6 +23,13 @@ Manager: main session
 
 
 
+- [x] P1 Candidate / EXP-272: 将 frontier-model-inference-architecture 有效容量从 3 提升到 4，并同步 DiffusionGemma / Blackwell MLPerf capacityPlan 与 Kimi alternate-target 诊断，消费 EXP-271 后续“frontier-model-inference-architecture 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+  - Hypothesis: EXP-271 后续建议继续处理 frontier-model-inference-architecture 的 2/3 高利用容量；若 DiffusionGemma 扩散式文本生成与 Blackwell / MLPerf / performance-per-watt 两条架构信号继续只剩 1 个 headroom，后续非自回归推理、MoE inference efficiency、AI factory performance-per-watt、低延迟本地模型与 frontier inference architecture 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution、open-model-long-context 或 cloud-training-runtime-infrastructure。
+  - Metrics: source projection taxonomy 显示 frontier-model-inference-architecture 从 2/3 变为 2/4，并保留 frontier-model-task-capability=3/5、frontier-model-cloud-distribution=1/2、open-model-long-context=1/2、frontier-models=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.frontier-model-inference-architecture` 提升到 4；2) taxonomy 输出 frontier-model-inference-architecture=2/4、有 2 个有效 headroom；3) DiffusionGemma 与 Blackwell MLPerf capacityPlan 同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0，并让 Kimi K3 显式拒绝 frontier-model-inference-architecture 作为 alternate；4) 质量评分 27/30。
+
+
+
 - [x] P1 Candidate / EXP-271: 将 frontier-model-task-capability 有效容量从 4 提升到 5，并同步 GPT-5.5 Instant / GPT-Live capacityPlan 与 frontier alternate-target 诊断，消费 EXP-270 后续“frontier-model-task-capability 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
   - Hypothesis: EXP-270 后续建议继续处理 frontier-model-task-capability 的 3/4 高利用容量；若 Claude Opus、Anthropic Opus agent coding 与 GPT-5.5 Instant/GPT-Live 三条任务能力信号继续只剩 1 个 headroom，后续 GPT / Claude 任务能力、长时间执行、实时语音协作、agent benchmark 与决策辅助信号会被迫错投到 frontier-model-cloud-distribution、frontier-model-inference-architecture 或 open-model-long-context。
   - Metrics: source projection taxonomy 显示 frontier-model-task-capability 从 3/4 变为 3/5，并保留 frontier-model-inference-architecture=2/3、frontier-model-cloud-distribution=1/2、open-model-long-context=1/2、frontier-models=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。

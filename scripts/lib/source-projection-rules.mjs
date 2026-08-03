@@ -913,6 +913,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'frontier-models',
     splitTargetCategory: 'frontier-model-inference-architecture',
     displayLabel: 'Google / DeepMind / DiffusionGemma / AI hardware',
+    capacityPlan: {
+      selectedSplitTarget: 'frontier-model-inference-architecture',
+      whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability, frontier-model-cloud-distribution, and open-model-long-context because DiffusionGemma is an inference-architecture experiment for diffusion-style text generation, not a task benchmark, cloud availability, or long-context open-model signal.',
+      rejectedAlternateTargets: ['frontier-model-task-capability', 'frontier-model-cloud-distribution', 'open-model-long-context'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; frontier-model-inference-architecture now has two effective headroom slots for future diffusion generation, MoE inference efficiency, low-latency local model, and AI factory performance-per-watt signals.',
+      },
+    },
     terms: ['DiffusionGemma', '扩散式文本生成'],
     details: {
       what: 'Google DeepMind released the experimental open DiffusionGemma model, using diffusion-style text generation to create text blocks in parallel, while NVIDIA announced optimizations across RTX, RTX PRO, DGX Spark, and H100 hardware.',
@@ -965,8 +976,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'China / Kimi K3 / long-context open model',
     capacityPlan: {
       selectedSplitTarget: 'open-model-long-context',
-      whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability and code-agent-runtime because Kimi K3 is an open-model and million-token context signal spanning research and coding, not a single task benchmark or coding-agent runtime.',
-      rejectedAlternateTargets: ['frontier-model-task-capability'],
+      whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability, frontier-model-inference-architecture, and code-agent-runtime because Kimi K3 is an open-model and million-token context signal spanning research and coding, not a single task benchmark, inference-architecture, or coding-agent runtime.',
+      rejectedAlternateTargets: ['frontier-model-task-capability', 'frontier-model-inference-architecture'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 2,
@@ -1556,6 +1567,17 @@ export const FIELD_PROJECTION_RULES = [
       },
     ],
     displayLabel: 'NVIDIA / Blackwell / MLPerf / model capability update',
+    capacityPlan: {
+      selectedSplitTarget: 'frontier-model-inference-architecture',
+      whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability, frontier-model-cloud-distribution, and cloud-training-runtime-infrastructure because Blackwell MLPerf and performance-per-watt coverage is about frontier inference/training architecture efficiency, not task capability, model availability, or generic cloud runtime capacity.',
+      rejectedAlternateTargets: ['frontier-model-task-capability', 'frontier-model-cloud-distribution', 'cloud-training-runtime-infrastructure'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; keeps Blackwell MLPerf and performance-per-watt coverage inside refreshed frontier-model-inference-architecture capacity with two remaining headroom slots for MoE inference, power-constrained AI factory, and low-latency architecture signals.',
+      },
+    },
     terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72', '每瓦性能'],
     detailVariants: [
       {
