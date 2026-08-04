@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-02 11:22
+Last updated: 2026-08-04 17:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,13 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-275: 将 2026-08-04 最新双语日报接入 real cron fixture，并修复 Open Secure AI Alliance、医疗仿真、Jetson、Claude Fable 与 WorkBuddy 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+  - Hypothesis: 最近24小时新增日报（2026-08-04）暴露 NVIDIA Open Secure AI Alliance 开放防御栈、Isaac for Healthcare Medical Physics Simulation 医疗机器人仿真、Jetson Orin 边缘机器人开发、Claude Fable jailbreak severity framework 与豆包/WorkBuddy 商业化 ROI 五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面信号错位，首日索引会漏掉开放 agent 安全、医疗机器人仿真、边缘机器人开发、模型安全评分和中国 AI 商业化 ROI 长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-04 / latestFixture=2026-08-04 / expectedSignals=5；daily source projection labels 覆盖 36 fixtures / 180 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-04.mjs`；2) EN/ZH 2026-08-04 页面统一到 Open Secure AI Alliance、Medical Physics Simulation、Jetson Orin、Claude Fable 与 WorkBuddy 五条信号；3) 补齐 Edge robotics local assistant 与 Agent safety launch checklist Case-Level FAQ 内链；4) 质量评分 28/30。
+
 
 
 - [x] P1 Candidate / EXP-274: 将 high-sensitivity-ai-deployment 有效容量从 3 提升到 4，并同步 NVIDIA Palantir / AWS Secret Cloud capacityPlan，消费 EXP-273 后续“high-sensitivity-ai-deployment 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `f2592f6`

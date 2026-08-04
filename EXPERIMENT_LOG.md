@@ -1,3 +1,14 @@
+## EXP-275 — 2026-08-04 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-04）暴露 NVIDIA Open Secure AI Alliance 开放防御栈、Isaac for Healthcare Medical Physics Simulation 医疗机器人仿真、Jetson Orin 边缘机器人开发、Claude Fable jailbreak severity framework 与豆包/WorkBuddy 商业化 ROI 五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面信号错位，首日索引会漏掉开放 agent 安全、医疗机器人仿真、边缘机器人开发、模型安全评分和中国 AI 商业化 ROI 长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-04.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `src/content/blog/en/openclaw-daily-2026-08-04.md`, `src/content/blog/zh/openclaw-daily-2026-08-04.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-04 real cron fixture；将 EN/ZH 2026-08-04 页面统一为 Open Secure AI Alliance、Medical Physics Simulation、Jetson Orin、Claude Fable jailbreak severity framework 与豆包/WorkBuddy 商业化 ROI 五条信号；为最新 EN 页面补齐 Edge robotics local assistant workflow 与 Agent safety launch checklist 的 Case-Level FAQ 内链。
+- ICE: 9x8x8=576
+- Start date: 2026-08-04
+- End date: 2026-08-04
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-04 / latestFixture=2026-08-04 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 36 fixtures / 180 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-04 最新双语日报已由同日 real cron fixture 覆盖；Open Secure AI Alliance、Medical Physics Simulation、Jetson Orin、Claude Fable jailbreak severity framework 与 WorkBuddy 均输出字段级 projection；EN/ZH 页面已统一五条信号并补齐 Case-Level FAQ；commit `(this commit)`；质量评分 28/30。）
+- Decision: scale（保留 2026-08-04 fixture 作为开放 agent 安全、医疗机器人仿真、边缘机器人开发、模型安全评分与中国 AI 商业化 ROI 的首日索引基线；下一步可继续处理 cloud-agent-runtime-infrastructure、aerospace-compute-infrastructure 或 consumer-agentic-product-surfaces 的 1 headroom 高利用 target。）
+
 ## EXP-274 — High sensitivity AI deployment capacity headroom
 - Hypothesis: EXP-273 后续指出 high-sensitivity-ai-deployment 仍是 2/3 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续政府、关键基础设施、主权云、涉密数据、公共部门、国防相邻和受监管行业 AI 部署信号会被迫错投到 model-account-security、agent-runtime-safety 或 youth-safety-controls。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
