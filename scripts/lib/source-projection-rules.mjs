@@ -173,6 +173,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'product-safety',
     splitTargetCategory: 'high-sensitivity-ai-deployment',
     displayLabel: 'NVIDIA / Palantir / secure government AI',
+    capacityPlan: {
+      selectedSplitTarget: 'high-sensitivity-ai-deployment',
+      whyNotAlternatives: 'Rejected alternate split targets model-account-security and agent-runtime-safety because NVIDIA Palantir secure government AI is a high-sensitivity deployment signal for government and critical infrastructure, not account-level model safety or runtime agent audit controls.',
+      rejectedAlternateTargets: ['model-account-security', 'agent-runtime-safety'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; high-sensitivity-ai-deployment now has two effective headroom slots for future government, critical-infrastructure, sovereign, classified, and regulated-industry AI deployment signals without widening account-security or agent-runtime-safety targets.',
+      },
+    },
     terms: ['Palantir 新智能引擎', 'NVIDIA Nemotron 开放模型', '关键基础设施运营方'],
     details: {
       what: 'NVIDIA said Palantir’s new intelligence engine will use NVIDIA Nemotron open models for US government agencies and critical-infrastructure operators, supporting deployment in isolated, auditable, customer-owned infrastructure.',
@@ -1930,10 +1941,10 @@ export const FIELD_PROJECTION_RULES = [
       whyNotAlternatives: 'Rejected alternate split targets model-account-security and agent-runtime-safety because AWS Secret Cloud and public-sector AI are high-sensitivity deployment signals, not model account security controls or tool-using agent runtime audit controls.',
       rejectedAlternateTargets: ['model-account-security', 'agent-runtime-safety'],
       budgetImpact: {
-        capacityDelta: 1,
-        categoryBudget: 3,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta +1; raises high-sensitivity-ai-deployment for a 2026-07-01 public-sector and secret-cloud AI deployment signal with compliance, isolation, and sovereignty requirements.',
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; high-sensitivity-ai-deployment now has two effective headroom slots for future public-sector, secret-cloud, sovereign, classified-data, and regulated-industry AI deployment signals while preserving model-account-security and agent-runtime-safety as separate safety targets.',
       },
     },
     terms: ['Secret Cloud for Industry', '情报机构云迁移激励', '公共部门'],
