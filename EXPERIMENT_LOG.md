@@ -6,7 +6,7 @@
 - Start date: 2026-08-04
 - End date: 2026-08-04
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `high-sensitivity-ai-deployment=2/4 (2 headroom)`、`agent-runtime-safety=1/3`、`model-account-security=3/5`、`youth-safety-controls=1/2`、`product-safety=7/7`、`split target categories: 50/50 used`、parentFallback=0、overBudget=0；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（high-sensitivity-ai-deployment 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；NVIDIA Palantir secure government AI capacityPlan 已补齐，AWS Secret Cloud capacityPlan 已同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；alternate-target 诊断已同步；commit `645f40a`；质量评分 27/30。）
+- Result: pass（high-sensitivity-ai-deployment 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；NVIDIA Palantir secure government AI capacityPlan 已补齐，AWS Secret Cloud capacityPlan 已同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；alternate-target 诊断已同步；commit `f2592f6`；质量评分 27/30。）
 - Decision: scale（保留 high-sensitivity-ai-deployment 作为后续政府、关键基础设施、主权云、涉密数据、公共部门、国防相邻和受监管行业 AI 部署信号的独立容量入口；下一步可继续处理 cloud-agent-runtime-infrastructure、aerospace-compute-infrastructure 或 consumer-agentic-product-surfaces 的 1 headroom 高利用 target。）
 
 ## EXP-273 — Robotics open model research capacity headroom
