@@ -260,12 +260,24 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['后训练', 'NeMo RL', 'intelligence per dollar'],
       },
       {
+        label: 'NVIDIA / Spectrum-6 / AI factory networking infrastructure',
+        terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
+      },
+      {
         label: 'NVIDIA / Nemotron 3 Ultra / LangChain Deep Agents',
         terms: ['Nemotron 3 Ultra', 'LangChain'],
       },
     ],
-    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '开放模型可被企业定制、审计和私有评估', '私有评测', '后训练', 'NeMo RL', 'Vera Rubin', 'intelligence per dollar'],
+    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '开放模型可被企业定制、审计和私有评估', '私有评测', '后训练', 'NeMo RL', 'Vera Rubin', 'intelligence per dollar', 'Spectrum-6', '102.4Tbps'],
     detailVariants: [
+      {
+        terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
+        details: {
+          what: 'NVIDIA positioned Spectrum-6 as 102.4Tbps Ethernet switching infrastructure for Vera Rubin AI factories, with early deployments cited across CoreWeave, Microsoft, Nebius, and other hyperscale operators.',
+          why: 'AI factory throughput depends on network synchronization, reliability, rack-scale design, power, and cooling as much as GPU count when training and inference clusters become larger.',
+          impact: 'Infrastructure teams should plan AI capacity around end-to-end network bandwidth, congestion control, liquid cooling, power envelopes, and utilization metrics rather than treating GPU procurement as the whole buildout.',
+        },
+      },
       {
         terms: ['Nemotron Labs', '私有评测', '后训练'],
         details: {
@@ -327,8 +339,22 @@ export const FIELD_PROJECTION_RULES = [
         label: 'NVIDIA / HPE / AI infrastructure capacity',
         terms: ['HPE AI Factory with NVIDIA', 'NVIDIA Agent Toolkit'],
       },
+      {
+        label: 'NVIDIA / Spectrum-6 / AI factory networking infrastructure',
+        terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
+      },
     ],
-    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA'],
+    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin'],
+    detailVariants: [
+      {
+        terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
+        details: {
+          what: 'NVIDIA positioned Spectrum-6 as 102.4Tbps Ethernet switching infrastructure for Vera Rubin AI factories, with early deployments cited across CoreWeave, Microsoft, Nebius, and other hyperscale operators.',
+          why: 'AI factory throughput depends on network synchronization, reliability, rack-scale design, power, and cooling as much as GPU count when training and inference clusters become larger.',
+          impact: 'Infrastructure teams should plan AI capacity around end-to-end network bandwidth, congestion control, liquid cooling, power envelopes, and utilization metrics rather than treating GPU procurement as the whole buildout.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA said sovereign AI infrastructure is expanding around local compute, local data, foundation models, talent systems, AI factories, and regional AI cloud capacity for training, inference, agents, and physical AI workloads.',
       why: 'The competitive bottleneck is shifting from model announcements toward reliable token production, data residency, regional cloud capacity, sovereign AI infrastructure, and end-to-end inference economics.',
@@ -549,7 +575,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'product-safety',
     splitTargetCategory: 'youth-safety-controls',
-    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话', 'Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息'],
+    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话', 'Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息', 'UK AISI', 'Irregular', '环境配置不当'],
     displayLabels: [
       {
         label: 'OpenAI / GPT-Live System Card / voice safety controls',
@@ -559,8 +585,20 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / Hugging Face / model cyber-evaluation incident',
         terms: ['Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息'],
       },
+      {
+        label: 'OpenAI / UK AISI / cyber evaluation boundary incident',
+        terms: ['UK AISI', 'Irregular', '环境配置不当'],
+      },
     ],
     detailVariants: [
+      {
+        terms: ['UK AISI', 'Irregular', '环境配置不当'],
+        details: {
+          what: 'OpenAI said a third-party cyber-safety evaluation involving UK AISI and Irregular crossed intended test boundaries when protections were reduced, network access was enabled, or the environment was misconfigured.',
+          why: 'Frontier-model security evaluation is moving from model-only capability scoring toward whole-environment containment, where sandboxing, network boundaries, permission scope, monitoring, and stop controls decide whether tests remain safe.',
+          impact: 'AI labs and enterprises should isolate cyber-evaluation environments, restrict model network access, log tool actions, and require kill switches before testing or deploying high-capability networked agents.',
+        },
+      },
       {
         terms: ['Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息'],
         details: {
@@ -816,6 +854,10 @@ export const FIELD_PROJECTION_RULES = [
     displayLabels: [
       {
         label: 'NVIDIA / Jetson Thor / edge robotics AI modules',
+        terms: ['T3000', 'T2000', 'Thor 架构'],
+      },
+      {
+        label: 'NVIDIA / Jetson Thor / edge robotics AI modules',
         terms: ['T3000', 'T2000', '865 FP4 TFLOPS'],
       },
       {
@@ -831,8 +873,16 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
       },
     ],
-    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop', 'Jetson / IGX T3000', 'Jetson T2000', '865 FP4 TFLOPS', '400 FP4 TFLOPS', 'Jetson Orin Nano Super'],
+    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop', 'Jetson / IGX T3000', 'Jetson T2000', 'T3000', 'T2000', 'Thor 架构', '865 FP4 TFLOPS', '400 FP4 TFLOPS', 'Jetson Orin Nano Super'],
     detailVariants: [
+      {
+        terms: ['T3000', 'T2000', 'Thor 架构'],
+        details: {
+          what: 'NVIDIA introduced Thor-based T3000 and T2000 Jetson modules for general-purpose robots, industrial devices, visual AI agents, and edge inference workflows.',
+          why: 'Robotics and edge AI need local multimodal inference close to sensors and actuators when latency, power, privacy, or offline operation make cloud-only execution fragile.',
+          impact: 'Robotics and industrial teams should benchmark local inference cost, power draw, thermal limits, safety certification, sensor integration, and fallback behavior before scaling Jetson Thor deployments.',
+        },
+      },
       {
         terms: ['Jetson Orin Nano Super'],
         details: {
@@ -1300,9 +1350,21 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / ChatGPT / small business AI enablement',
         terms: ['small businesses program', 'Dropbox', 'Intuit'],
       },
+      {
+        label: 'OpenAI / ChatGPT Work / education workflow plugins',
+        terms: ['ChatGPT Work', 'Codex 插件', '课程材料'],
+      },
     ],
-    terms: ['AI Foundations', 'Applied AI Foundations', 'Agents and Workflows', 'small businesses program', 'Dropbox', 'Intuit', 'Atlassian', 'Wix'],
+    terms: ['AI Foundations', 'Applied AI Foundations', 'Agents and Workflows', 'small businesses program', 'Dropbox', 'Intuit', 'Atlassian', 'Wix', 'ChatGPT Work', 'Codex 插件', '课程材料'],
     detailVariants: [
+      {
+        terms: ['ChatGPT Work', 'Codex 插件', '课程材料'],
+        details: {
+          what: 'OpenAI introduced education-oriented ChatGPT Work and Codex plugin workflows for students, K-12 teachers, and university instructors, connecting course materials, calendars, documents, and multi-step learning or teaching tasks.',
+          why: 'Education AI is moving from generic question answering toward governed workflow assistants that operate inside school context, content, schedules, and teacher-controlled boundaries.',
+          impact: 'Schools and institutions should evaluate hosted environments, privacy, permission scope, teacher controls, source visibility, and learning-outcome metrics before scaling education plugins.',
+        },
+      },
       {
         terms: ['small businesses program', 'Dropbox', 'Intuit'],
         details: {
@@ -2100,7 +2162,17 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['国家数据局', '高质量数据集超 12 万个', '词元交易'],
       },
     ],
-    terms: ['词元降本', '缓存 token 免费', '智能模型路由', '算电协同', 'TPU', '降低 token 成本', '国家数据局', '高质量数据集超 12 万个', '1565PB', '词元交易'],
+    terms: ['词元降本', '缓存 token 免费', '智能模型路由', '算电协同', 'TPU', '降低 token 成本', '国家数据局', '高质量数据集超 12 万个', '1565PB', '词元交易', '140 万 PFLOPS'],
+    detailVariants: [
+      {
+        terms: ['高质量数据集超 12 万个', '1565PB', '140 万 PFLOPS'],
+        details: {
+          what: 'Xinhua cited China National Data Administration figures showing more than 120,000 high-quality datasets, over 1,565PB of data, and 1.4 million PFLOPS of intelligent compute connected to the national integrated compute-network trial platform.',
+          why: 'Dataset quality and compute-network availability are becoming practical AI infrastructure inputs, especially for industrial, medical, financial, and embodied-AI deployment workflows.',
+          impact: 'Teams should watch data-quality inspection, token trading, scenario datasets, compute-network access, and governance requirements as China turns data assets into AI production capacity.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua reported that WAIC 2026 participants are trying to reduce token costs across chips, compute-power coordination, large models, cache pricing, free cached tokens, and intelligent model routing.',
       why: 'AI commercialization is shifting from whether models work to whether enterprises can run them cheaply and reliably at scale, making cost per task, cache reuse, and routing strategy core infrastructure questions.',
@@ -2132,6 +2204,14 @@ export const FIELD_PROJECTION_RULES = [
     },
     terms: ['智能体安全', '前沿 AI 风险监测平台', '测评基准', '运行期审计', '实时响应', 'AI 会做什么', 'Open Secure AI Alliance', '开放 agent harness', '网络防御', '开放式 AI 安全'],
     detailVariants: [
+      {
+        terms: ['高质量数据集超 12 万个', '1565PB', '140 万 PFLOPS'],
+        details: {
+          what: 'Xinhua cited China National Data Administration figures showing more than 120,000 high-quality datasets, over 1,565PB of data, and 1.4 million PFLOPS of intelligent compute connected to the national integrated compute-network trial platform.',
+          why: 'Dataset quality and compute-network availability are becoming practical AI infrastructure inputs, especially for industrial, medical, financial, and embodied-AI deployment workflows.',
+          impact: 'Teams should watch data-quality inspection, token trading, scenario datasets, compute-network access, and governance requirements as China turns data assets into AI production capacity.',
+        },
+      },
       {
         terms: ['Open Secure AI Alliance', '开放 agent harness', '网络防御'],
         details: {
