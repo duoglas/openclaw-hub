@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-05 11:24
+Last updated: 2026-08-05 11:29
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-277: 将 aerospace-compute-infrastructure 有效容量从 2 提升到 3，并同步 Xinhua AI-space / commercial space capacityPlan，消费 EXP-276 后续“aerospace-compute-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`
+  - Hypothesis: EXP-276 后续建议处理 aerospace-compute-infrastructure 的 1 headroom 高利用容量；若 AI-space compute、商业航天、卫星互联网、遥感数据服务与可复用火箭基础设施继续只保留 1 个 headroom，后续太空计算、低轨卫星组网、商业航天数据服务、遥感模型和 launch cadence 信号会被迫错投到 ai-policy-standards、ai-industrial-policy 或 digital-regulation-compliance。
+  - Metrics: source projection taxonomy 显示 aerospace-compute-infrastructure 从 1/2 变为 1/3，并保留 ai-policy-standards=3/5、ai-industrial-policy=6/8、digital-regulation-compliance=1/3、policy-governance=11/11、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.aerospace-compute-infrastructure` 提升到 3；2) Xinhua AI-space / commercial space structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) taxonomy stale budget/headroom 闸门通过，并保持 policy alternate-target 诊断清晰；4) 质量评分 27/30。
 
 - [x] P1 Candidate / EXP-276: 将 cloud-agent-runtime-infrastructure 有效容量从 2 提升到 3，并同步 AWS AgentCore capacityPlan，消费 EXP-275 后续“cloud-agent-runtime-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `1694fea`
   - Hypothesis: EXP-275 后续建议处理 cloud-agent-runtime-infrastructure 的 1 headroom 高利用容量；若 AWS Continuum / AWS Context / Bedrock AgentCore 继续只保留 1 个 headroom，后续托管 Agent runtime、企业知识图谱 grounding、安全漏洞闭环、权限审计与 runtime isolation 信号会被迫错投到 cloud-model-distribution、cloud-training-runtime-infrastructure 或 edge-hybrid-compute-infrastructure。

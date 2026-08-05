@@ -2198,9 +2198,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['ai-policy-standards', 'ai-industrial-policy', 'digital-regulation-compliance'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 2,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses a dedicated aerospace-compute-infrastructure slot for a 2026-07-12 China AI-space and reusable launch infrastructure signal while reducing ai-industrial-policy saturation.',
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; preserves two aerospace-compute-infrastructure headroom slots for future AI-space compute, satellite internet, reusable launch, remote sensing, and commercial aerospace infrastructure signals while reducing ai-industrial-policy saturation.',
       },
     },
     terms: ['AI 与太空计算挑战赛', '太空计算主题国际赛事', '长征十号乙', '一级可控回收', '一子级垂直返回', '海南商业航天发射场', '千帆星座', 'GW 星座', '骨干网组网', '用星'],

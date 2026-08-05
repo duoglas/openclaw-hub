@@ -1,3 +1,14 @@
+## EXP-277 — Aerospace compute infrastructure capacity headroom
+- Hypothesis: EXP-276 后续指出 aerospace-compute-infrastructure 仍是 1/2 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 AI-space compute、商业航天、低轨卫星互联网、遥感数据服务、可复用火箭、space-ground coordination 与 launch cadence 信号会被迫错投到 ai-policy-standards、ai-industrial-policy 或 digital-regulation-compliance。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `aerospace-compute-infrastructure` effective category budget 从 2 提升到 3；同步 `xinhua-space-computing-commercial-space-2026` structured capacityPlan 的 categoryBudget/categoryHeadroom/rationale，保留 ai-policy-standards、ai-industrial-policy 与 digital-regulation-compliance alternate-target 边界。
+- ICE: 8x8x8=512
+- Start date: 2026-08-05
+- End date: 2026-08-05
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `aerospace-compute-infrastructure=1/3 (2 headroom)`、`ai-policy-standards=3/5`、`ai-industrial-policy=6/8`、`digital-regulation-compliance=1/3`、`policy-governance=11/11`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（aerospace-compute-infrastructure 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Xinhua AI-space / commercial space capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；policy alternate-target 诊断保持清晰；commit `pending`；质量评分 27/30。）
+- Decision: scale（保留 aerospace-compute-infrastructure 作为后续太空计算、卫星互联网、商业航天数据服务、遥感模型、可复用火箭与 launch cadence 信号的独立容量入口；下一步可继续处理 consumer-agentic-product-surfaces、ai-commercialization-roi 或其他 1 headroom 高利用 target。）
+
 ## EXP-276 — Cloud agent runtime infrastructure capacity headroom
 - Hypothesis: EXP-275 后续指出 cloud-agent-runtime-infrastructure 仍是 1/2 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 AWS Continuum、AWS Context、Bedrock AgentCore、托管 Agent runtime、企业知识图谱 grounding、安全漏洞闭环、权限审计与 runtime isolation 信号会被迫错投到 cloud-model-distribution、cloud-training-runtime-infrastructure 或 edge-hybrid-compute-infrastructure。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -87,7 +87,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'hpc-science-compute-infrastructure': 4,
   'ai-industrial-policy': 8,
   'ai-policy-standards': 5,
-  'aerospace-compute-infrastructure': 2,
+  'aerospace-compute-infrastructure': 3,
   'autonomous-mobility-systems': 3,
   'career-productivity-workflows': 3,
   'ai-lab-private-financing': 2,
