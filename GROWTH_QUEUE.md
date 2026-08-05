@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-04 17:25
+Last updated: 2026-08-05 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,8 +21,13 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-276: 将 cloud-agent-runtime-infrastructure 有效容量从 2 提升到 3，并同步 AWS AgentCore capacityPlan，消费 EXP-275 后续“cloud-agent-runtime-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `1694fea`
+  - Hypothesis: EXP-275 后续建议处理 cloud-agent-runtime-infrastructure 的 1 headroom 高利用容量；若 AWS Continuum / AWS Context / Bedrock AgentCore 继续只保留 1 个 headroom，后续托管 Agent runtime、企业知识图谱 grounding、安全漏洞闭环、权限审计与 runtime isolation 信号会被迫错投到 cloud-model-distribution、cloud-training-runtime-infrastructure 或 edge-hybrid-compute-infrastructure。
+  - Metrics: source projection taxonomy 显示 cloud-agent-runtime-infrastructure 从 1/2 变为 1/3，并保留 cloud-model-distribution=2/4、cloud-training-runtime-infrastructure=5/7、edge-hybrid-compute-infrastructure=2/4、hpc-science-compute-infrastructure=2/4、cloud-infrastructure=12/12、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.cloud-agent-runtime-infrastructure` 提升到 3；2) AWS AgentCore structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) taxonomy stale budget/headroom 闸门通过，并保持 cloud alternate-target 诊断清晰；4) 质量评分 27/30。
 
-- [x] P1 Candidate / EXP-275: 将 2026-08-04 最新双语日报接入 real cron fixture，并修复 Open Secure AI Alliance、医疗仿真、Jetson、Claude Fable 与 WorkBuddy 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `(this commit)`
+
+- [x] P1 Candidate / EXP-275: 将 2026-08-04 最新双语日报接入 real cron fixture，并修复 Open Secure AI Alliance、医疗仿真、Jetson、Claude Fable 与 WorkBuddy 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `1694fea`
   - Hypothesis: 最近24小时新增日报（2026-08-04）暴露 NVIDIA Open Secure AI Alliance 开放防御栈、Isaac for Healthcare Medical Physics Simulation 医疗机器人仿真、Jetson Orin 边缘机器人开发、Claude Fable jailbreak severity framework 与豆包/WorkBuddy 商业化 ROI 五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面信号错位，首日索引会漏掉开放 agent 安全、医疗机器人仿真、边缘机器人开发、模型安全评分和中国 AI 商业化 ROI 长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-04 / latestFixture=2026-08-04 / expectedSignals=5；daily source projection labels 覆盖 36 fixtures / 180 expectedSignals；daily EN/ZH generator、bilingual pair fixture、case-level FAQ、source projection registry health/taxonomy、duplicate slug 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-04.mjs`；2) EN/ZH 2026-08-04 页面统一到 Open Secure AI Alliance、Medical Physics Simulation、Jetson Orin、Claude Fable 与 WorkBuddy 五条信号；3) 补齐 Edge robotics local assistant 与 Agent safety launch checklist Case-Level FAQ 内链；4) 质量评分 28/30。
@@ -35,7 +40,7 @@ Manager: main session
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.high-sensitivity-ai-deployment` 提升到 4；2) taxonomy 输出 high-sensitivity-ai-deployment=2/4、有 2 个有效 headroom；3) NVIDIA Palantir secure government AI 新增 structured capacityPlan，AWS Secret Cloud capacityPlan 同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0，并显式拒绝 model-account-security 与 agent-runtime-safety alternate；4) 质量评分 27/30。
 
 
-- [x] P1 Candidate / EXP-273: 将 robotics-open-model-research 有效容量从 3 提升到 4，并同步 Physical AI Agent Skills / ICML open-model capacityPlan，消费 EXP-272 后续“robotics-open-model-research 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+- [x] P1 Candidate / EXP-273: 将 robotics-open-model-research 有效容量从 3 提升到 4，并同步 Physical AI Agent Skills / ICML open-model capacityPlan，消费 EXP-272 后续“robotics-open-model-research 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `1694fea`
   - Hypothesis: EXP-272 后续建议继续处理 robotics-open-model-research 的 2/3 高利用容量；若 NVIDIA Physical AI Agent Skills 与 NVIDIA ICML open-model research infrastructure 两条开放机器人模型/工具链信号继续只剩 1 个 headroom，后续 Cosmos / GR00T / LeRobot / Jetson developer kit、开放机器人模型、数据集、teleoperation 与可复现实验工具信号会被迫错投到 robotics-simulation-training、robotics-commercial-deployment、autonomous-mobility-systems、humanoid-embodied-training 或 assistive-exoskeleton-robotics。
   - Metrics: source projection taxonomy 显示 robotics-open-model-research 从 2/3 变为 2/4，并保留 robotics-simulation-training=3/6、robotics-commercial-deployment=2/4、autonomous-mobility-systems=1/3、physical-ai-robotics=10/10、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.robotics-open-model-research` 提升到 4；2) taxonomy 输出 robotics-open-model-research=2/4、有 2 个有效 headroom；3) Physical AI Agent Skills 新增 structured capacityPlan，ICML open-model capacityPlan 同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0，并显式拒绝 simulation/commercial/mobility/humanoid/assistive alternate；4) 质量评分 27/30。
@@ -43,14 +48,14 @@ Manager: main session
 
 
 
-- [x] P1 Candidate / EXP-272: 将 frontier-model-inference-architecture 有效容量从 3 提升到 4，并同步 DiffusionGemma / Blackwell MLPerf capacityPlan 与 Kimi alternate-target 诊断，消费 EXP-271 后续“frontier-model-inference-architecture 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+- [x] P1 Candidate / EXP-272: 将 frontier-model-inference-architecture 有效容量从 3 提升到 4，并同步 DiffusionGemma / Blackwell MLPerf capacityPlan 与 Kimi alternate-target 诊断，消费 EXP-271 后续“frontier-model-inference-architecture 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `1694fea`
   - Hypothesis: EXP-271 后续建议继续处理 frontier-model-inference-architecture 的 2/3 高利用容量；若 DiffusionGemma 扩散式文本生成与 Blackwell / MLPerf / performance-per-watt 两条架构信号继续只剩 1 个 headroom，后续非自回归推理、MoE inference efficiency、AI factory performance-per-watt、低延迟本地模型与 frontier inference architecture 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution、open-model-long-context 或 cloud-training-runtime-infrastructure。
   - Metrics: source projection taxonomy 显示 frontier-model-inference-architecture 从 2/3 变为 2/4，并保留 frontier-model-task-capability=3/5、frontier-model-cloud-distribution=1/2、open-model-long-context=1/2、frontier-models=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.frontier-model-inference-architecture` 提升到 4；2) taxonomy 输出 frontier-model-inference-architecture=2/4、有 2 个有效 headroom；3) DiffusionGemma 与 Blackwell MLPerf capacityPlan 同步 categoryBudget=4/categoryHeadroom=2/capacityDelta=0，并让 Kimi K3 显式拒绝 frontier-model-inference-architecture 作为 alternate；4) 质量评分 27/30。
 
 
 
-- [x] P1 Candidate / EXP-271: 将 frontier-model-task-capability 有效容量从 4 提升到 5，并同步 GPT-5.5 Instant / GPT-Live capacityPlan 与 frontier alternate-target 诊断，消费 EXP-270 后续“frontier-model-task-capability 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `(this commit)`
+- [x] P1 Candidate / EXP-271: 将 frontier-model-task-capability 有效容量从 4 提升到 5，并同步 GPT-5.5 Instant / GPT-Live capacityPlan 与 frontier alternate-target 诊断，消费 EXP-270 后续“frontier-model-task-capability 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `1694fea`
   - Hypothesis: EXP-270 后续建议继续处理 frontier-model-task-capability 的 3/4 高利用容量；若 Claude Opus、Anthropic Opus agent coding 与 GPT-5.5 Instant/GPT-Live 三条任务能力信号继续只剩 1 个 headroom，后续 GPT / Claude 任务能力、长时间执行、实时语音协作、agent benchmark 与决策辅助信号会被迫错投到 frontier-model-cloud-distribution、frontier-model-inference-architecture 或 open-model-long-context。
   - Metrics: source projection taxonomy 显示 frontier-model-task-capability 从 3/4 变为 3/5，并保留 frontier-model-inference-architecture=2/3、frontier-model-cloud-distribution=1/2、open-model-long-context=1/2、frontier-models=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.frontier-model-task-capability` 提升到 5；2) taxonomy 输出 frontier-model-task-capability=3/5、有 2 个有效 headroom；3) GPT-5.5 Instant / GPT-Live capacityPlan 同步 categoryBudget=5/categoryHeadroom=2/capacityDelta=0，并显式拒绝 frontier-model-cloud-distribution、frontier-model-inference-architecture 与 open-model-long-context 作为 alternate；4) 质量评分 27/30。

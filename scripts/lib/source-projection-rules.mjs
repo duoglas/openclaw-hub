@@ -1446,9 +1446,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['cloud-model-distribution', 'cloud-training-runtime-infrastructure', 'edge-hybrid-compute-infrastructure', 'hpc-science-compute-infrastructure'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 2,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses one of two cloud-agent-runtime-infrastructure slots for a fixture-backed AWS AgentCore runtime and Context grounding signal while preserving one slot for future managed agent runtime updates and cloud-model-distribution for pure model availability updates.',
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; cloud-agent-runtime-infrastructure now has two effective headroom slots for future managed agent runtime, enterprise context grounding, agent security triage, and cloud orchestration updates while preserving cloud-model-distribution for pure model availability updates.',
       },
     },
     terms: ['AWS Continuum', 'AWS Context', 'Bedrock AgentCore', 'Dave Treadwell', 'AWS Compute and ML Services', 'Dave Brown'],
