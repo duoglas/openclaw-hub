@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-05 11:29
+Last updated: 2026-08-05 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,7 +21,13 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-277: 将 aerospace-compute-infrastructure 有效容量从 2 提升到 3，并同步 Xinhua AI-space / commercial space capacityPlan，消费 EXP-276 后续“aerospace-compute-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`
+
+- [x] P1 Candidate / EXP-278: 将 2026-08-05 最新双语日报接入 real cron fixture，并修复 OpenAI cyber-eval、ChatGPT Work 教育插件、Spectrum-6、Jetson Thor 与高质量数据集字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `10b02d3`
+  - Hypothesis: 最近24小时新增日报（2026-08-05）暴露 OpenAI / UK AISI / Irregular 网络安全评测越界、ChatGPT Work / Codex 教育工作流插件、NVIDIA Spectrum-6 AI factory 网络、Jetson Thor 边缘机器人模块与中国高质量数据集 / 算力网五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉 cyber-eval containment、教育 AI workflow、AI factory networking、edge robotics hardware 和数据资产基础设施长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-05 / latestFixture=2026-08-05 / expectedSignals=5；daily source projection labels 覆盖新增 OpenAI cyber-eval、ChatGPT Work、Spectrum-6、Jetson Thor 与国家数据局数据资产五条信号；daily generator/zh generator/bilingual fixture/case FAQ/parser guardrail/source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-05.mjs`；2) EN/ZH 2026-08-05 页面统一到 OpenAI cyber-eval boundary、ChatGPT Work education plugins、NVIDIA Spectrum-6 networking、Jetson Thor modules 与 China high-quality datasets 五条信号；3) 补齐医疗机器人仿真验证与 AI factory supply-chain case-level FAQ 内链；4) 质量评分 28/30。
+
+- [x] P1 Candidate / EXP-277: 将 aerospace-compute-infrastructure 有效容量从 2 提升到 3，并同步 Xinhua AI-space / commercial space capacityPlan，消费 EXP-276 后续“aerospace-compute-infrastructure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `b8f1bfd`
   - Hypothesis: EXP-276 后续建议处理 aerospace-compute-infrastructure 的 1 headroom 高利用容量；若 AI-space compute、商业航天、卫星互联网、遥感数据服务与可复用火箭基础设施继续只保留 1 个 headroom，后续太空计算、低轨卫星组网、商业航天数据服务、遥感模型和 launch cadence 信号会被迫错投到 ai-policy-standards、ai-industrial-policy 或 digital-regulation-compliance。
   - Metrics: source projection taxonomy 显示 aerospace-compute-infrastructure 从 1/2 变为 1/3，并保留 ai-policy-standards=3/5、ai-industrial-policy=6/8、digital-regulation-compliance=1/3、policy-governance=11/11、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 全部通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.aerospace-compute-infrastructure` 提升到 3；2) Xinhua AI-space / commercial space structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) taxonomy stale budget/headroom 闸门通过，并保持 policy alternate-target 诊断清晰；4) 质量评分 27/30。

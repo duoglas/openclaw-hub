@@ -2911,3 +2911,12 @@
 - Result: pass（taxonomy / registry health / build 全部通过；company-finance parent fallback 从 3 收敛到 0）。
 - Decision: scale
 
+### EXP-278
+- Hypothesis: 最近24小时新增日报（2026-08-05）暴露 OpenAI / UK AISI / Irregular 网络安全评测越界、ChatGPT Work / Codex 教育工作流插件、NVIDIA Spectrum-6 AI factory 网络、Jetson Thor 边缘机器人模块与中国高质量数据集 / 算力网五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉 cyber-eval containment、教育 AI workflow、AI factory networking、edge robotics hardware 和数据资产基础设施长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-05.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-05.md`, `src/content/blog/zh/openclaw-daily-2026-08-05.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-05 real cron fixture；扩展 source projection metadata 以覆盖 OpenAI cyber-eval boundary、ChatGPT Work education plugins、Spectrum-6 AI factory networking、Jetson Thor edge robotics modules 与国家数据局高质量数据集；重生成 EN/ZH 最新日报，移除泛化 fallback，并补齐 case-level FAQ 信号。
+- Start date: 2026-08-05
+- End date: 2026-08-05
+- Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-bilingual-generator-pair-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes; EN/ZH 2026-08-05 routes render the five fixture-backed signals without fallback leakage.
+- Result: pass（latest fixture freshness、daily EN/ZH generators、bilingual pair fixture、case-level FAQ、parser guardrails、source projection registry health/taxonomy 与 build 全部通过；实现提交 `10b02d3`）。
+- Decision: scale（将“最新日报必须同日 fixture 覆盖 + source projection label/detail + case FAQ”的模式继续作为增长执行默认门槛）。
