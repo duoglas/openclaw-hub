@@ -343,8 +343,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'NVIDIA / Spectrum-6 / AI factory networking infrastructure',
         terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
       },
+      {
+        label: 'NVIDIA / FMS / AI storage data path infrastructure',
+        terms: ['FMS', 'cuFile APIs', '高并发'],
+      },
     ],
-    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin'],
+    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验'],
     detailVariants: [
       {
         terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
@@ -352,6 +356,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA positioned Spectrum-6 as 102.4Tbps Ethernet switching infrastructure for Vera Rubin AI factories, with early deployments cited across CoreWeave, Microsoft, Nebius, and other hyperscale operators.',
           why: 'AI factory throughput depends on network synchronization, reliability, rack-scale design, power, and cooling as much as GPU count when training and inference clusters become larger.',
           impact: 'Infrastructure teams should plan AI capacity around end-to-end network bandwidth, congestion control, liquid cooling, power envelopes, and utilization metrics rather than treating GPU procurement as the whole buildout.',
+        },
+      },
+      {
+        terms: ['FMS', 'cuFile APIs', '高并发'],
+        details: {
+          what: 'NVIDIA FMS coverage emphasized that AI agents and long-context workloads make storage and data paths handle concurrency, encryption, compression, verification, and GPU data movement through open cuFile APIs.',
+          why: 'AI factory bottlenecks are shifting from GPU availability alone toward whether data can reach accelerators securely, quickly, and observably under production load.',
+          impact: 'Platform teams should benchmark storage throughput, data integrity checks, encryption overhead, retrieval latency, and GPU utilization before treating more GPUs as the only capacity fix.',
         },
       },
     ],
@@ -431,7 +443,23 @@ export const FIELD_PROJECTION_RULES = [
     category: 'market-intelligence',
     splitTargetCategory: 'ai-commercialization-roi',
     displayLabel: 'China / WorkBuddy / AI commercialization ROI',
-    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试'],
+    displayLabels: [
+      {
+        label: 'US / ByteDance / Doubao / Seedance 2.0 video generation',
+        terms: ['Seedance 2.0', '豆包', '视频生成'],
+      },
+    ],
+    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试', 'Seedance 2.0', '视频生成'],
+    detailVariants: [
+      {
+        terms: ['Seedance 2.0', '豆包', '视频生成'],
+        details: {
+          what: 'Search-result summaries indicated Seedance 2.0 video generation may be entering Doubao, while the daily source could only confirm the Doubao assistant page and not the full announcement body.',
+          why: 'Consumer video generation is a high-competition surface for creators, advertising, and e-commerce content, but product claims need confirmation before teams redesign workflows around them.',
+          impact: 'Creators can watch Doubao and ByteDance release notes for availability, watermarking, commercial-use terms, controllability, and usage limits before adopting Seedance workflows.',
+        },
+      },
+    ],
     details: {
       what: 'Chinese media coverage points to Doubao, WorkBuddy, and other AI products testing paid plans while office, logistics, consumer electronics, and humanoid-robotics workflows adopt AI more directly.',
       why: 'China AI competition is shifting from model launches toward paid users, embedded workflows, measurable productivity, and enterprise ROI as model capability becomes less differentiated.',
@@ -869,11 +897,15 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Jetson Orin Nano Super'],
       },
       {
+        label: 'NVIDIA / Alpamayo 2 Super / autonomous driving model',
+        terms: ['Alpamayo 2 Super', '商业用途'],
+      },
+      {
         label: 'NVIDIA / Hugging Face / LeRobot robotics ecosystem',
         terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
       },
     ],
-    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop', 'Jetson / IGX T3000', 'Jetson T2000', 'T3000', 'T2000', 'Thor 架构', '865 FP4 TFLOPS', '400 FP4 TFLOPS', 'Jetson Orin Nano Super'],
+    terms: ['Physical AI Agent Skills', 'Omniverse', 'Alpamayo', 'Alpamayo 2 Super', '商业用途', 'Hugging Face', 'LeRobot', 'Isaac GR00T 1.7', 'Isaac Teleop', 'Jetson / IGX T3000', 'Jetson T2000', 'T3000', 'T2000', 'Thor 架构', '865 FP4 TFLOPS', '400 FP4 TFLOPS', 'Jetson Orin Nano Super'],
     detailVariants: [
       {
         terms: ['T3000', 'T2000', 'Thor 架构'],
@@ -897,6 +929,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA introduced Thor-based Jetson / IGX T3000 and Jetson T2000 modules for humanoid robots, industrial robots, visual AI agents, and autonomous mobile robots, with T3000 at 865 FP4 TFLOPS and T2000 at 400 FP4 TFLOPS.',
           why: 'Physical AI deployment is moving more inference from cloud services into edge modules that can run multimodal models, world models, robot policies, and safety loops close to sensors and actuators.',
           impact: 'Robotics and industrial AI teams can benchmark local inference cost, power draw, latency, thermal limits, sensor integration, and fallback behavior before replacing cloud-dependent robot workflows.',
+        },
+      },
+      {
+        terms: ['Alpamayo 2 Super', '商业用途'],
+        details: {
+          what: 'NVIDIA said Alpamayo 2 Super is available for commercial use as an autonomous-driving reasoning model for robotaxi and long-tail driving scenarios.',
+          why: 'Autonomous driving is moving from perception-only stacks toward explainable reasoning, cloud training, simulation validation, and deployable edge models that can handle rare cases.',
+          impact: 'Autonomous-driving and robotics teams can test open commercial reasoning models, then validate distillation, sensor coverage, safety cases, licensing, and edge deployment constraints before production.',
         },
       },
       {
@@ -1046,6 +1086,12 @@ export const FIELD_PROJECTION_RULES = [
     category: 'frontier-models',
     splitTargetCategory: 'open-model-long-context',
     displayLabel: 'China / Kimi K3 / long-context open model',
+    displayLabels: [
+      {
+        label: 'China / Z.ai / GLM-5.2 / agent platform',
+        terms: ['Z.ai', 'GLM-5.2'],
+      },
+    ],
     capacityPlan: {
       selectedSplitTarget: 'open-model-long-context',
       whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability, frontier-model-inference-architecture, and code-agent-runtime because Kimi K3 is an open-model and million-token context signal spanning research and coding, not a single task benchmark, inference-architecture, or coding-agent runtime.',
@@ -1057,7 +1103,17 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta +1; extracts Kimi K3 from the reused Qoder developer-tools rule into a dedicated open-model long-context target.',
       },
     },
-    terms: ['Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', 'Kimi Code'],
+    terms: ['Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', 'Kimi Code', 'Z.ai', 'GLM-5.2'],
+    detailVariants: [
+      {
+        terms: ['Z.ai', 'GLM-5.2'],
+        details: {
+          what: 'Z.ai pages showed a GLM-5.2-powered AI assistant, while the exact release timing remained less certain from the L1 page captured in the daily source.',
+          why: 'China model platforms continue to iterate around agent tasks, long-context work, coding, and website-generation workflows where product cadence and integration quality matter as much as parameter claims.',
+          impact: 'Users and enterprises can compare GLM updates on Chinese-language reasoning, tool use, coding, long-task reliability, and local deployment options while checking primary release notes before migration.',
+        },
+      },
+    ],
     details: {
       what: 'Moonshot / Kimi released Kimi K3 as a 2.8T-parameter native multimodal model with a 1 million token context window, available through Kimi.com, Kimi Work, Kimi Code, and API access while full weights are planned before July 27, 2026.',
       why: 'China’s model competition is moving toward very large open-model ecosystems, long-context coding, research workflows, and agent engineering rather than only chatbot quality.',
@@ -1163,8 +1219,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'Meta / Muse Image / Instagram reference rollback',
         terms: ['Muse Image', 'Instagram Stories', '不合适'],
       },
+      {
+        label: 'US / ByteDance / Doubao / Seedance 2.0 video generation',
+        terms: ['Seedance 2.0', '豆包', '视频生成'],
+      },
     ],
-    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装', 'Muse Image', 'Instagram Stories', '不合适'],
+    terms: ['AI Mode 搜索', 'AI 图片/视频编辑', 'AI 换装', 'Muse Image', 'Instagram Stories', '不合适', 'Seedance 2.0', '豆包', '视频生成'],
     detailVariants: [
       {
         terms: ['Muse Image', 'Instagram Stories', '不合适'],
@@ -1172,6 +1232,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Meta launched Muse Image across Meta AI, Instagram Stories, WhatsApp, and related surfaces, then removed the public Instagram-account reference feature after user feedback called it inappropriate.',
           why: 'The rollback shows that generative-image features inside social products must handle consent, likeness, provenance, and default permissions as product requirements, not only model capability.',
           impact: 'Creators and platform teams should test image-generation quality together with account-reference controls, opt-out paths, labeling, and abuse reporting before expanding social AI defaults.',
+        },
+      },
+      {
+        terms: ['Seedance 2.0', '豆包', '视频生成'],
+        details: {
+          what: 'Search-result summaries indicated Seedance 2.0 video generation may be entering Doubao, while the daily source could only confirm the Doubao assistant page and not the full announcement body.',
+          why: 'Consumer video generation is a high-competition surface for creators, advertising, and e-commerce content, but product claims need confirmation before teams redesign workflows around them.',
+          impact: 'Creators can watch Doubao and ByteDance release notes for availability, watermarking, commercial-use terms, controllability, and usage limits before adopting Seedance workflows.',
         },
       },
     ],
@@ -2190,6 +2258,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'NVIDIA / Open Secure AI Alliance / open AI security',
         terms: ['Open Secure AI Alliance', '开放 agent harness', '网络防御'],
       },
+      {
+        label: 'NVIDIA / Open Secure AI Alliance / SAFE / shared AI findings exchange',
+        terms: ['SAFE', 'Shared AI Findings Exchange', 'Linux Foundation'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'agent-runtime-safety',
@@ -2202,7 +2274,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; restores two agent-runtime-safety headroom slots after the 2026-07-21 and 2026-07-31 WAIC agent safety/runtime-audit signals, while keeping high-sensitivity-ai-deployment reserved for sector-sensitive deployments.',
       },
     },
-    terms: ['智能体安全', '前沿 AI 风险监测平台', '测评基准', '运行期审计', '实时响应', 'AI 会做什么', 'Open Secure AI Alliance', '开放 agent harness', '网络防御', '开放式 AI 安全'],
+    terms: ['智能体安全', '前沿 AI 风险监测平台', '测评基准', '运行期审计', '实时响应', 'AI 会做什么', 'Open Secure AI Alliance', '开放 agent harness', '网络防御', '开放式 AI 安全', 'SAFE', 'Shared AI Findings Exchange', 'Linux Foundation', '事故共享'],
     detailVariants: [
       {
         terms: ['高质量数据集超 12 万个', '1565PB', '140 万 PFLOPS'],
@@ -2218,6 +2290,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA said cloud, security, software, open-source, and AI companies joined the Open Secure AI Alliance to improve cyber defense with open models, open tools, and open agent harnesses.',
           why: 'AI security is shifting from a binary open-versus-closed debate toward whether defenders can inspect, run locally, audit, evaluate, and isolate AI tools used in security operations.',
           impact: 'Security teams should require identity controls, scoped permissions, logs, evaluation harnesses, sandboxing, and incident-response playbooks before deploying defensive AI agents.',
+        },
+      },
+      {
+        terms: ['SAFE', 'Shared AI Findings Exchange', 'Linux Foundation'],
+        details: {
+          what: 'Open Secure AI Alliance participants proposed SAFE, the Shared AI Findings Exchange framework, with a Linux Foundation RFC and GitHub discussion process for sharing AI incidents and near misses.',
+          why: 'As agents enter production systems, organizations need cross-company incident learning, runtime logs, permission boundaries, and disclosure norms rather than isolated internal postmortems.',
+          impact: 'Enterprise AI security teams should define incident notes, audit logs, tool-call boundaries, sandboxing, and human escalation paths before scaling high-impact agents.',
         },
       },
     ],
