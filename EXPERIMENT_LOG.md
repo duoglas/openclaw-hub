@@ -1,3 +1,14 @@
+## EXP-279 — Consumer agentic product surfaces capacity headroom
+- Hypothesis: EXP-277 后续指出 consumer-agentic-product-surfaces 仍是 1/2 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 Gemini App、AI Overviews、AI Mode、Ask YouTube、Docs Live、嵌入式助手、跨产品 agentic UI 与消费级 agent runtime surface 信号会被迫错投到 career-productivity-workflows、consumer-creative-ai 或 chatgpt-control-surfaces。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `consumer-agentic-product-surfaces` effective category budget 从 2 提升到 3；同步 `google-gemini-interactions-api-agent-runtime-2026` structured capacityPlan 的 categoryBudget/categoryHeadroom/rationale，并更新 ChatGPT control surface alternate-target 自测以显式覆盖新可用 sibling target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-06
+- End date: 2026-08-06
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `consumer-agentic-product-surfaces=1/3 (2 headroom)`、`career-productivity-workflows=1/3`、`consumer-creative-ai=3/5`、`chatgpt-control-surfaces=3/5`、`consumer-productivity=8/8`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（consumer-agentic-product-surfaces 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Google Gemini Interactions API capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；consumer-productivity alternate-target 诊断与自测已同步；commit `pending`；质量评分 27/30。）
+- Decision: scale（保留 consumer-agentic-product-surfaces 作为后续 Gemini App、AI Overviews、AI Mode、Ask YouTube、Docs Live、嵌入式助手与跨产品 agentic surface 的独立容量入口；下一步可继续处理 ai-commercialization-roi 或其他 1 headroom 高利用 target。）
+
 ## EXP-277 — Aerospace compute infrastructure capacity headroom
 - Hypothesis: EXP-276 后续指出 aerospace-compute-infrastructure 仍是 1/2 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 AI-space compute、商业航天、低轨卫星互联网、遥感数据服务、可复用火箭、space-ground coordination 与 launch cadence 信号会被迫错投到 ai-policy-standards、ai-industrial-policy 或 digital-regulation-compliance。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

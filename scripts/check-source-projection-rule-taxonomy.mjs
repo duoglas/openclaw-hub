@@ -98,7 +98,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'cloud-agent-runtime-infrastructure': 3,
   'company-finance': 5,
   'consumer-creative-ai': 5,
-  'consumer-agentic-product-surfaces': 2,
+  'consumer-agentic-product-surfaces': 3,
   'content-licensing-markets': 3,
   'desktop-computer-use': 2,
   'developer-tools': 4,
@@ -1971,7 +1971,7 @@ function validateSelfTests() {
       },
     ]),
   }).join('\n');
-  if (!rejectedAlternativesCoverageFailures.includes('synthetic-existing-rule-with-incomplete-rejected-alternatives — existing rule capacityPlan whyNotAlternatives must name available alternate split targets: career-productivity-workflows, consumer-creative-ai')) {
+  if (!rejectedAlternativesCoverageFailures.includes('synthetic-existing-rule-with-incomplete-rejected-alternatives — existing rule capacityPlan whyNotAlternatives must name available alternate split targets: career-productivity-workflows, consumer-agentic-product-surfaces, consumer-creative-ai')) {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: rejected alternate target coverage should fail');
   }
 
@@ -2000,7 +2000,7 @@ function validateSelfTests() {
       },
     ]),
   }).join('\n');
-  if (!rejectedAlternateTargetsMissingFailures.includes('synthetic-existing-rule-with-missing-rejected-target-list — existing rule capacityPlan rejectedAlternateTargets must list available alternate split target IDs: career-productivity-workflows, consumer-creative-ai')) {
+  if (!rejectedAlternateTargetsMissingFailures.includes('synthetic-existing-rule-with-missing-rejected-target-list — existing rule capacityPlan rejectedAlternateTargets must list available alternate split target IDs: career-productivity-workflows, consumer-agentic-product-surfaces, consumer-creative-ai')) {
     failures.push('source projection taxonomy existing capacity-plan self-test failed: rejectedAlternateTargets array should be required');
   }
 
@@ -2031,7 +2031,7 @@ function validateSelfTests() {
     ]),
   }).join('\n');
   for (const fragment of [
-    'synthetic-existing-rule-with-stale-rejected-target-list — existing rule capacityPlan rejectedAlternateTargets missing available alternate split targets: consumer-creative-ai',
+    'synthetic-existing-rule-with-stale-rejected-target-list — existing rule capacityPlan rejectedAlternateTargets missing available alternate split targets: consumer-agentic-product-surfaces, consumer-creative-ai',
     'synthetic-existing-rule-with-stale-rejected-target-list — existing rule capacityPlan rejectedAlternateTargets includes non-recommended split targets: legacy-consumer-target',
   ]) {
     if (!rejectedAlternateTargetsStaleFailures.includes(fragment)) {
@@ -2047,7 +2047,7 @@ function validateSelfTests() {
       splitTargetCategory: 'chatgpt-control-surfaces',
     })),
   }));
-  if (!alternateTargetDiagnostic.includes('effective category alternate targets: chatgpt-control-surfaces: consumer-productivity -> consumer-creative-ai=0/5 (5 headroom) / career-productivity-workflows=0/3 (3 headroom)')) {
+  if (!alternateTargetDiagnostic.includes('effective category alternate targets: chatgpt-control-surfaces: consumer-productivity -> consumer-creative-ai=0/5 (5 headroom) / career-productivity-workflows=0/3 (3 headroom) / consumer-agentic-product-surfaces=0/3 (3 headroom)')) {
     failures.push('source projection taxonomy alternate-target self-test failed: chatgpt-control-surfaces sibling target recommendations');
   }
 

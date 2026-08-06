@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-05 17:20
+Last updated: 2026-08-06 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,6 +21,12 @@ Manager: main session
 
 ## Done
 
+
+
+- [x] P1 Candidate / EXP-279: 将 consumer-agentic-product-surfaces 有效容量从 2 提升到 3，并同步 Google Gemini Interactions API capacityPlan，消费 EXP-277 后续“consumer-agentic-product-surfaces 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`
+  - Hypothesis: EXP-277 后续建议处理 consumer-agentic-product-surfaces 的 1 headroom 高利用容量；若 Gemini App、AI Overviews、AI Mode、Ask YouTube、Docs Live 与后续嵌入式助手产品面继续只保留 1 个 headroom，新增消费级 agentic surface 信号会被迫错投到 career-productivity-workflows、consumer-creative-ai 或 chatgpt-control-surfaces。
+  - Metrics: source projection taxonomy 显示 consumer-agentic-product-surfaces 从 1/2 变为 1/3，并保留 career-productivity-workflows=1/3、consumer-creative-ai=3/5、chatgpt-control-surfaces=3/5、consumer-productivity=8/8、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.consumer-agentic-product-surfaces` 提升到 3；2) Google Gemini Interactions API structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) ChatGPT control surface alternate-target 自测同步新可用 sibling target；4) 质量评分 27/30。
 
 - [x] P1 Candidate / EXP-278: 将 2026-08-05 最新双语日报接入 real cron fixture，并修复 OpenAI cyber-eval、ChatGPT Work 教育插件、Spectrum-6、Jetson Thor 与高质量数据集字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `10b02d3`
   - Hypothesis: 最近24小时新增日报（2026-08-05）暴露 OpenAI / UK AISI / Irregular 网络安全评测越界、ChatGPT Work / Codex 教育工作流插件、NVIDIA Spectrum-6 AI factory 网络、Jetson Thor 边缘机器人模块与中国高质量数据集 / 算力网五条信号；若最新日报不进入 real cron fixture 且 EN 页面继续保留泛化 fallback，首日索引会漏掉 cyber-eval containment、教育 AI workflow、AI factory networking、edge robotics hardware 和数据资产基础设施长尾入口。

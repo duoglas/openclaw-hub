@@ -1624,9 +1624,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['career-productivity-workflows', 'consumer-creative-ai', 'chatgpt-control-surfaces'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 2,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; moves the latest Google Gemini embedded product surface out of governed-agent-deployment-platforms and into a dedicated consumer-agentic-product-surfaces slot, preserving enterprise Agent runtime headroom and separating adoption-scale product surfaces from creative AI tools.',
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; consumer-agentic-product-surfaces now has two effective headroom slots for future Gemini App, AI Overviews, AI Mode, Ask YouTube, Docs Live, and embedded assistant product-surface signals while preserving career workflows, creative AI, and ChatGPT control surfaces as separate consumer-productivity targets.',
       },
     },
     terms: ['Interactions API', 'Gemini 模型和智能体的主要接口', '服务端状态', '后台执行', 'Managed Agents', 'Deep Research 升级', 'Gemini App', 'AI Overviews', 'AI Mode', 'Ask YouTube', 'Docs Live', '语音驱动文档'],
