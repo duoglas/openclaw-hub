@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-07 11:20
+Last updated: 2026-08-07 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-281: 将 ai-commercialization-roi 有效容量从 2 提升到 3，并同步 Doubao / WorkBuddy commercialization ROI capacityPlan，消费 EXP-280 后续“剩余 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `eaa9261`
+  - Hypothesis: EXP-280 后续建议继续处理剩余 1 headroom 高利用 target；若 Doubao、WorkBuddy、付费计划测试、订阅转化、工作流 ROI 与跨行业商业化验证继续只保留 1 个有效 headroom，后续 AI monetization、paid-plan rollout、workflow ROI 与 commercialization evidence 信号会被迫错投到 local-commerce-ai-workflows、market-sizing-reports 或 regional-ai-ecosystems。
+  - Metrics: source projection taxonomy 显示 ai-commercialization-roi 从 1/2 变为 1/3，并保留 local-commerce-ai-workflows=1/2、market-sizing-reports=1/3、regional-ai-ecosystems=1/4、market-intelligence=12/12、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.ai-commercialization-roi` 提升到 3；2) China / WorkBuddy / AI commercialization ROI structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) market-intelligence alternate-target 诊断同步新可用 sibling target；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-280: 将 2026-08-07 最新双语日报接入 real cron fixture，并修复 GPT-5.6 Sol/Luna、APA 青少年安全、NSF 区域 AI 基建与 GB 44721 自动驾驶标准字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `cea8dd0`

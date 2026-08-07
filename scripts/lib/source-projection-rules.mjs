@@ -475,6 +475,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'market-intelligence',
     splitTargetCategory: 'ai-commercialization-roi',
     displayLabel: 'China / WorkBuddy / AI commercialization ROI',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-commercialization-roi',
+      whyNotAlternatives: 'Rejected alternate split targets local-commerce-ai-workflows, market-sizing-reports, and regional-ai-ecosystems because Doubao, WorkBuddy, paid-plan testing, and cross-sector workflow adoption are direct AI monetization and ROI signals rather than local-commerce, market-sizing, or regional-ecosystem signals.',
+      rejectedAlternateTargets: ['local-commerce-ai-workflows', 'market-sizing-reports', 'regional-ai-ecosystems'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; ai-commercialization-roi now has two effective headroom slots for future paid-plan, workflow ROI, subscription conversion, and measurable commercialization signals while keeping local-commerce and market-sizing targets separate.',
+      },
+    },
     displayLabels: [
       {
         label: 'US / ByteDance / Doubao / Seedance 2.0 video generation',
@@ -1892,8 +1903,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Amazon / RAISE US / AI workforce training',
     capacityPlan: {
       selectedSplitTarget: 'workforce-ai-enablement',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, and regional-ai-ecosystems because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, or generic regional market ecosystem.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, and ai-commercialization-roi because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, or paid-product commercialization signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -2271,8 +2282,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'China / WAIC / token cost optimization',
     capacityPlan: {
       selectedSplitTarget: 'token-economics-optimization',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, and regional-ai-ecosystems because WAIC token-cost reduction, cache pricing, model routing, and compute-power coordination are token-economics optimization signals, not market-size, media licensing, or regional ecosystem signals.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, and ai-commercialization-roi because WAIC token-cost reduction, cache pricing, model routing, and compute-power coordination are token-economics optimization signals, not market-size, media licensing, regional ecosystem, or paid-product commercialization signals.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -2372,8 +2383,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Xinhua / AI memory demand / consumer electronics cost pressure',
     capacityPlan: {
       selectedSplitTarget: 'supply-chain-cost-pressure',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, and regional-ai-ecosystems because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, or regional ecosystem expansion.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, and ai-commercialization-roi because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, regional ecosystem expansion, or paid-product commercialization signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,

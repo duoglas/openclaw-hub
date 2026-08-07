@@ -1,3 +1,14 @@
+## EXP-281 — AI commercialization ROI capacity headroom
+- Hypothesis: EXP-280 后续建议继续处理剩余 1 headroom 高利用 target；若 Doubao、WorkBuddy、付费计划测试、订阅转化、工作流 ROI 与跨行业商业化验证继续只保留 1 个有效 headroom，后续 AI monetization、paid-plan rollout、workflow ROI 与 commercialization evidence 信号会被迫错投到 local-commerce-ai-workflows、market-sizing-reports 或 regional-ai-ecosystems。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `ai-commercialization-roi` effective category budget 从 2 提升到 3；为 `china-ai-commercialization-roi-2026` 增加 structured capacityPlan，并让 workforce enablement、token economics 与 supply-chain cost pressure 规则显式拒绝新可用的 ai-commercialization-roi alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-07
+- End date: 2026-08-07
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `ai-commercialization-roi=1/3 (2 headroom)`、`local-commerce-ai-workflows=1/2`、`market-sizing-reports=1/3`、`regional-ai-ecosystems=1/4`、`market-intelligence=12/12`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（ai-commercialization-roi 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Doubao / WorkBuddy commercialization ROI capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；market-intelligence alternate-target 诊断已同步；commit `eaa9261`；质量评分 27/30。）
+- Decision: scale（保留 ai-commercialization-roi 作为后续付费计划测试、订阅转化、workflow ROI、AI commercialization evidence 与跨行业商业化验证信号的独立容量入口；下一步可继续处理 local-commerce-ai-workflows、frontier-model-cloud-distribution 或其他 1 headroom 高利用 target。）
+
 ## EXP-280 — 2026-08-07 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-07）暴露 OpenAI GPT-5.6 Sol/Luna ChatGPT 可用性更新、OpenAI/APA 青少年心理健康安全、NVIDIA Cosmos 3 Physical AI 世界模型、NVIDIA/NSF 区域 AI 基础设施中心与中国 GB 44721 L3/L4 自动驾驶安全强标五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉 ChatGPT 档位更新、青少年 AI 安全、Physical AI 世界模型、区域科研算力和自动驾驶合规长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-07.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-07.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
