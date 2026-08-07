@@ -1,3 +1,14 @@
+## EXP-280 — 2026-08-07 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-07）暴露 OpenAI GPT-5.6 Sol/Luna ChatGPT 可用性更新、OpenAI/APA 青少年心理健康安全、NVIDIA Cosmos 3 Physical AI 世界模型、NVIDIA/NSF 区域 AI 基础设施中心与中国 GB 44721 L3/L4 自动驾驶安全强标五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉 ChatGPT 档位更新、青少年 AI 安全、Physical AI 世界模型、区域科研算力和自动驾驶合规长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-07.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-07.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-07 real cron fixture；为 OpenAI GPT-5.6 Sol/Luna ChatGPT 更新、APA youth AI mental health safety、NVIDIA/NSF regional AI infrastructure hubs 与 China GB 44721 autonomous driving safety standard 增加 fixture-backed display label/detailVariants；重写 EN 2026-08-07 页面，移除 story 4/5 的 compute/governance 泛化 fallback。
+- ICE: 9x8x8=576
+- Start date: 2026-08-07
+- End date: 2026-08-07
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-07 / latestFixture=2026-08-07 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 39 fixtures / 195 expectedSignals；daily generator real cron fixture 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-07 最新双语日报已由同日 real cron fixture 覆盖；GPT-5.6 Sol/Luna、APA youth AI mental health safety、Cosmos 3、NSF regional AI infrastructure hubs 与 GB 44721 autonomous driving safety standard 均输出字段级 projection；EN 页面移除泛化 fallback；commit `a40f47b`；质量评分 28/30。）
+- Decision: scale（保留 2026-08-07 fixture 作为 ChatGPT 档位更新、青少年 AI 安全、Physical AI 世界模型、区域科研算力和 L3/L4 自动驾驶合规的首日索引基线；下一步可继续处理 story-level Case-Level FAQ 个性化或剩余 1 headroom 高利用 target。）
+
 ## EXP-279 — Consumer agentic product surfaces capacity headroom
 - Hypothesis: EXP-277 后续指出 consumer-agentic-product-surfaces 仍是 1/2 高利用、仅 1 个有效 headroom；若不恢复额外容量，后续 Gemini App、AI Overviews、AI Mode、Ask YouTube、Docs Live、嵌入式助手、跨产品 agentic UI 与消费级 agent runtime surface 信号会被迫错投到 career-productivity-workflows、consumer-creative-ai 或 chatgpt-control-surfaces。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

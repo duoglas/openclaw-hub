@@ -44,7 +44,23 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'policy-governance',
     splitTargetCategory: 'ai-policy-standards',
-    terms: ['计量体系', '计量能力', '测不准'],
+    displayLabels: [
+      {
+        label: 'China / MIIT / GB 44721 autonomous driving safety standard',
+        terms: ['GB 44721—2026', 'L3/L4', '自动驾驶系统安全要求'],
+      },
+    ],
+    terms: ['计量体系', '计量能力', '测不准', 'GB 44721—2026', 'L3/L4', '自动驾驶系统安全要求'],
+    detailVariants: [
+      {
+        terms: ['GB 44721—2026', 'L3/L4', '自动驾驶系统安全要求'],
+        details: {
+          what: 'China approved GB 44721—2026, a mandatory national safety standard for L3/L4 intelligent connected vehicle automated-driving systems that is scheduled to take effect on July 1, 2027.',
+          why: 'Autonomous driving is moving from pilots toward scaled deployment, where safety requirements, takeover monitoring, human-machine interaction, and validation evidence become market-entry conditions.',
+          impact: 'Automakers and suppliers should prepare lifecycle safety controls, simulation, proving-ground and road-test evidence, compliance automation, driver-takeover monitoring, and audit trails before L3/L4 rollout.',
+        },
+      },
+    ],
     details: {
       what: 'China’s SAMR and NDRC issued an AI metrology and capability-building guide that targets measurement gaps, data scarcity, AI standards, test datasets, and metrology service infrastructure.',
       why: 'The policy moves AI deployment toward measurable, comparable, and traceable evaluation, which is necessary before high-stakes systems enter healthcare, transport, manufacturing, and public services.',
@@ -121,6 +137,10 @@ export const FIELD_PROJECTION_RULES = [
     category: 'cloud-infrastructure',
     splitTargetCategory: 'cloud-model-distribution',
     displayLabels: [
+      {
+        label: 'OpenAI / GPT-5.6 / Sol-Luna ChatGPT update',
+        terms: ['GPT‑5.6 Sol', 'GPT‑5.6 Luna', 'Think 按钮'],
+      },
       {
         label: 'OpenAI / GPT-5.6 / Bedrock enterprise distribution',
         terms: ['OpenAI GPT-5.6 系列', 'Amazon Bedrock'],
@@ -347,8 +367,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'NVIDIA / FMS / AI storage data path infrastructure',
         terms: ['FMS', 'cuFile APIs', '高并发'],
       },
+      {
+        label: 'US / NVIDIA / NSF / regional AI infrastructure hubs',
+        terms: ['NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟'],
+      },
     ],
-    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验'],
+    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟'],
     detailVariants: [
       {
         terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
@@ -364,6 +388,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA FMS coverage emphasized that AI agents and long-context workloads make storage and data paths handle concurrency, encryption, compression, verification, and GPU data movement through open cuFile APIs.',
           why: 'AI factory bottlenecks are shifting from GPU availability alone toward whether data can reach accelerators securely, quickly, and observably under production load.',
           impact: 'Platform teams should benchmark storage throughput, data integrity checks, encryption overhead, retrieval latency, and GPU utilization before treating more GPUs as the only capacity fix.',
+        },
+      },
+      {
+        terms: ['NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟'],
+        details: {
+          what: 'NVIDIA joined the NSF State and Regional AI Infrastructure Hubs program to help universities and regional alliances access AI compute, data, software, and technical support.',
+          why: 'AI infrastructure is becoming regional research infrastructure rather than only a hyperscaler or top-lab asset, widening access for universities, public-sector research, and local industry clusters.',
+          impact: 'Research teams and regional coalitions should track compute allocation, data access, software support, governance ownership, and measurable education or industry outcomes before treating the hub as production capacity.',
         },
       },
     ],
@@ -603,7 +635,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'product-safety',
     splitTargetCategory: 'youth-safety-controls',
-    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话', 'Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息', 'UK AISI', 'Irregular', '环境配置不当'],
+    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话', 'Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息', 'UK AISI', 'Irregular', '环境配置不当', '美国心理学会', 'APA', '青少年心理健康'],
     displayLabels: [
       {
         label: 'OpenAI / GPT-Live System Card / voice safety controls',
@@ -617,8 +649,20 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / UK AISI / cyber evaluation boundary incident',
         terms: ['UK AISI', 'Irregular', '环境配置不当'],
       },
+      {
+        label: 'OpenAI / APA / youth AI mental health safety',
+        terms: ['美国心理学会', 'APA', '青少年心理健康'],
+      },
     ],
     detailVariants: [
+      {
+        terms: ['美国心理学会', 'APA', '青少年心理健康'],
+        details: {
+          what: 'OpenAI partnered with the American Psychological Association on responsible AI-use resources for teen mental health, family guidance, and clinical and school psychology professionals.',
+          why: 'Youth AI safety is moving from generic content rules toward mental-health boundaries, family education, age-aware product design, and clearer limits on when AI should not substitute for real relationships.',
+          impact: 'AI product teams should prepare age signals, guardian resources, crisis escalation paths, teen-specific safety copy, and evidence that companion or tutoring workflows avoid emotional-dependence risks.',
+        },
+      },
       {
         terms: ['UK AISI', 'Irregular', '环境配置不当'],
         details: {
@@ -1128,6 +1172,10 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'OpenAI / ChatGPT / Instant / model capability update',
     displayLabels: [
       {
+        label: 'OpenAI / GPT-5.6 / Sol-Luna ChatGPT update',
+        terms: ['GPT‑5.6 Sol', 'GPT‑5.6 Luna', 'Think 按钮'],
+      },
+      {
         label: 'OpenAI / GPT-5.6 / Bedrock enterprise distribution',
         terms: ['GPT-5.6 Sol', 'Terra', 'Luna', 'Prompt 缓存'],
       },
@@ -1150,6 +1198,14 @@ export const FIELD_PROJECTION_RULES = [
     ],
     terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'GPT‑5.6', 'Sol 主打编码', 'ultra 工作模式', 'ultra 多智能体并行工作模式', '更便宜的智能', '10 亿活跃用户', '200 万家企业', '0.20 / 1.20 美元', 'Sol 推出 Fast mode'],
     detailVariants: [
+      {
+        terms: ['GPT‑5.6 Sol', 'GPT‑5.6 Luna', 'Think 按钮'],
+        details: {
+          what: 'OpenAI updated GPT‑5.6 Sol in ChatGPT for Plus and Pro users with more reliable facts and more focused answers, while free users will default to GPT‑5.6 Luna with a Think button and unlimited text chat.',
+          why: 'ChatGPT competition is shifting from raw model branding toward everyday usability: fewer mistakes, less rambling, adjustable reasoning strength, and clearer product tiers.',
+          impact: 'Users should remap daily tasks across free and paid tiers, checking which workflows need tools, speed, quota, or stronger review rather than assuming every task needs the flagship option.',
+        },
+      },
       {
         terms: ['GPT-5.6 Sol', 'Amazon Bedrock', 'Prompt 缓存'],
         details: {
