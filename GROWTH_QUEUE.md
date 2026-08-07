@@ -22,7 +22,7 @@ Manager: main session
 ## Done
 
 
-- [x] P1 Candidate / EXP-280: 将 2026-08-07 最新双语日报接入 real cron fixture，并修复 GPT-5.6 Sol/Luna、APA 青少年安全、NSF 区域 AI 基建与 GB 44721 自动驾驶标准字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `a40f47b`
+- [x] P1 Candidate / EXP-280: 将 2026-08-07 最新双语日报接入 real cron fixture，并修复 GPT-5.6 Sol/Luna、APA 青少年安全、NSF 区域 AI 基建与 GB 44721 自动驾驶标准字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `cea8dd0`
   - Hypothesis: 最近24小时新增日报（2026-08-07）暴露 OpenAI GPT-5.6 Sol/Luna ChatGPT 可用性更新、OpenAI/APA 青少年心理健康安全、NVIDIA Cosmos 3 Physical AI 世界模型、NVIDIA/NSF 区域 AI 基础设施中心与中国 GB 44721 L3/L4 自动驾驶安全强标五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉 ChatGPT 档位更新、青少年 AI 安全、Physical AI 世界模型、区域科研算力和自动驾驶合规长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-07 / latestFixture=2026-08-07 / expectedSignals=5；daily source projection labels 覆盖 39 fixtures / 195 expectedSignals；daily EN generator、source projection labels、latest fixture 与 `pnpm build` 通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-07.mjs`；2) 为 GPT-5.6 Sol/Luna、APA youth AI mental health safety、NSF regional AI infrastructure hubs 与 GB 44721 autonomous driving safety standard 增加 fixture-backed label/detailVariants；3) EN 2026-08-07 页面移除 compute/governance 泛化 fallback 并统一五条信号；4) 质量评分 28/30。
