@@ -6,7 +6,7 @@
 - Start date: 2026-08-07
 - End date: 2026-08-07
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `ai-commercialization-roi=1/3 (2 headroom)`、`local-commerce-ai-workflows=1/2`、`market-sizing-reports=1/3`、`regional-ai-ecosystems=1/4`、`market-intelligence=12/12`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（ai-commercialization-roi 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Doubao / WorkBuddy commercialization ROI capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；market-intelligence alternate-target 诊断已同步；commit `eaa9261`；质量评分 27/30。）
+- Result: pass（ai-commercialization-roi 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Doubao / WorkBuddy commercialization ROI capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；market-intelligence alternate-target 诊断已同步；commit `10a6b6f`；质量评分 27/30。）
 - Decision: scale（保留 ai-commercialization-roi 作为后续付费计划测试、订阅转化、workflow ROI、AI commercialization evidence 与跨行业商业化验证信号的独立容量入口；下一步可继续处理 local-commerce-ai-workflows、frontier-model-cloud-distribution 或其他 1 headroom 高利用 target。）
 
 ## EXP-280 — 2026-08-07 latest real cron fixture and field-level projection recovery
