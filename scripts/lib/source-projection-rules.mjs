@@ -371,8 +371,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'US / NVIDIA / NSF / regional AI infrastructure hubs',
         terms: ['NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟'],
       },
+      {
+        label: 'US / NVIDIA / Build in America AI infrastructure',
+        terms: ['Build in America', 'Wistron', 'GB300'],
+      },
     ],
-    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟'],
+    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟', 'Build in America', 'Wistron', 'GB300', '得州工厂'],
     detailVariants: [
       {
         terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
@@ -396,6 +400,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA joined the NSF State and Regional AI Infrastructure Hubs program to help universities and regional alliances access AI compute, data, software, and technical support.',
           why: 'AI infrastructure is becoming regional research infrastructure rather than only a hyperscaler or top-lab asset, widening access for universities, public-sector research, and local industry clusters.',
           impact: 'Research teams and regional coalitions should track compute allocation, data access, software support, governance ownership, and measurable education or industry outcomes before treating the hub as production capacity.',
+        },
+      },
+      {
+        terms: ['Build in America', 'Wistron', 'GB300'],
+        details: {
+          what: 'NVIDIA updated its Build in America progress, citing participation in NSF regional AI infrastructure hubs and Wistron production of GB300 systems in Texas while preparing Vera Rubin manufacturing.',
+          why: 'AI infrastructure competition is extending into domestic manufacturing, power, data centers, regional research access, and supply-chain resilience rather than only GPU performance.',
+          impact: 'Infrastructure buyers should track regional compute access, US manufacturing capacity, data-center power, cooling, procurement timing, and supply-chain concentration before assuming AI capacity will be available on demand.',
         },
       },
     ],
@@ -449,8 +461,22 @@ export const FIELD_PROJECTION_RULES = [
         label: 'Xinhua / China / science self-reliance policy',
         terms: ['国家科学技术奖励大会', '两院院士大会', '中国科协第十一次全国代表大会'],
       },
+      {
+        label: 'China / SASAC / central enterprise AI deployment',
+        terms: ['国务院国资委', '第二批央企人工智能战略性高价值场景', '焕新社区'],
+      },
     ],
-    terms: ['国家数据局', '刘烈宏', 'National Data Administration', '国家科学技术奖励大会', '两院院士大会', '中国科协第十一次全国代表大会', '科技自立自强'],
+    terms: ['国家数据局', '刘烈宏', 'National Data Administration', '国家科学技术奖励大会', '两院院士大会', '中国科协第十一次全国代表大会', '科技自立自强', '国务院国资委', '第二批央企人工智能战略性高价值场景', '行业高质量数据集', '焕新社区', '智能软件工厂'],
+    detailVariants: [
+      {
+        terms: ['国务院国资委', '第二批央企人工智能战略性高价值场景', '焕新社区'],
+        details: {
+          what: 'China SASAC released a second batch of central-enterprise strategic high-value AI scenarios and industry high-quality datasets, upgraded the AI open-source Huanxin community, and started a joint foundation project for central-enterprise intelligent software factories.',
+          why: 'China enterprise AI policy is moving from model launches toward state-owned enterprise scenarios, data assets, open-source ecosystems, software factories, and measurable industry deployment.',
+          impact: 'Energy, grid, telecom, manufacturing, and industrial-software teams should watch which datasets, scenarios, procurement paths, and software-factory standards become reusable deployment channels.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua reported China’s national science and technology awards conference, the academies conference, and the China Association for Science and Technology congress, with policy emphasis on original breakthroughs in artificial intelligence, quantum technology, life sciences, and related frontier fields.',
       why: 'China’s AI policy focus continues to broaden from large models toward high-level science self-reliance, industrial innovation, datasets, embodied intelligence, and scientific research infrastructure.',
@@ -646,7 +672,7 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'product-safety',
     splitTargetCategory: 'youth-safety-controls',
-    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话', 'Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息', 'UK AISI', 'Irregular', '环境配置不当', '美国心理学会', 'APA', '青少年心理健康'],
+    terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话', 'Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息', 'UK AISI', 'Irregular', '环境配置不当', 'Astra', 'Preparedness Framework', 'Critical cybersecurity', '代理式编码和网络安全', '美国心理学会', 'APA', '青少年心理健康'],
     displayLabels: [
       {
         label: 'OpenAI / GPT-Live System Card / voice safety controls',
@@ -661,11 +687,23 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['UK AISI', 'Irregular', '环境配置不当'],
       },
       {
+        label: 'OpenAI / Astra / critical cyber capability evaluation',
+        terms: ['Astra', 'Preparedness Framework', 'Critical cybersecurity'],
+      },
+      {
         label: 'OpenAI / APA / youth AI mental health safety',
         terms: ['美国心理学会', 'APA', '青少年心理健康'],
       },
     ],
     detailVariants: [
+      {
+        terms: ['Astra', 'Preparedness Framework', 'Critical cybersecurity'],
+        details: {
+          what: 'OpenAI said internal evaluation of the upcoming Astra model showed stronger agentic coding and cybersecurity capability, and that it could not yet rule out the Critical cybersecurity capability level in its Preparedness Framework.',
+          why: 'Frontier-model release safety is moving from content filtering toward whether models can discover vulnerabilities, plan attack chains, operate tools, and stay contained during high-capability cyber evaluations.',
+          impact: 'AI labs, security teams, and enterprises should require staged release gates, isolated cyber-evaluation sandboxes, scoped tool access, audit logs, and independent review before deploying high-capability coding or security agents.',
+        },
+      },
       {
         terms: ['美国心理学会', 'APA', '青少年心理健康'],
         details: {

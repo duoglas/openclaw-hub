@@ -1,3 +1,14 @@
+## EXP-282 — 2026-08-08 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-08）暴露 OpenAI Astra Preparedness Framework critical cybersecurity 评估、GPT-5.6 Sol/Luna ChatGPT 档位、NVIDIA Cosmos 3 Physical AI、NVIDIA Build in America / Wistron GB300 AI 基础设施与中国央企 AI 高价值场景五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉关键网络安全能力评估、免费/付费模型分层、物理 AI 仿真、美国本土 AI 制造与央企软件工厂长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-08.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-08.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-08 real cron fixture；为 Astra critical cybersecurity、NVIDIA Build in America / Wistron GB300 与 China SASAC central enterprise AI deployment 增加 fixture-backed display label/detailVariants；重写 EN 2026-08-08 页面，移除 story 1 泛化 fallback，并补齐 Astra cyber gate、ChatGPT tier triage、Build in America 与央企 AI 场景 Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-08-08
+- End date: 2026-08-08
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-08 / latestFixture=2026-08-08 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 40 fixtures / 200 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-08 最新双语日报已由同日 real cron fixture 覆盖；Astra critical cybersecurity、GPT-5.6 Sol/Luna、Cosmos 3、Build in America / Wistron GB300 与 SASAC central enterprise AI deployment 均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `1795099`；质量评分 28/30。）
+- Decision: scale（保留 2026-08-08 fixture 作为 critical cyber capability evaluation、ChatGPT tiering、Physical AI、US AI infrastructure manufacturing 与 China central-enterprise AI deployment 的首日索引基线；下一步可继续处理 frontier-model-cloud-distribution、local-commerce-ai-workflows 或其他 1 headroom 高利用 target。）
+
 ## EXP-281 — AI commercialization ROI capacity headroom
 - Hypothesis: EXP-280 后续建议继续处理剩余 1 headroom 高利用 target；若 Doubao、WorkBuddy、付费计划测试、订阅转化、工作流 ROI 与跨行业商业化验证继续只保留 1 个有效 headroom，后续 AI monetization、paid-plan rollout、workflow ROI 与 commercialization evidence 信号会被迫错投到 local-commerce-ai-workflows、market-sizing-reports 或 regional-ai-ecosystems。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

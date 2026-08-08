@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-07 17:20
+Last updated: 2026-08-08 11:28
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,13 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-282: 将 2026-08-08 最新双语日报接入 real cron fixture，并修复 Astra critical cybersecurity、Build in America 与央企 AI 部署字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `1795099`
+  - Hypothesis: 最近24小时新增日报（2026-08-08）暴露 OpenAI Astra Preparedness Framework critical cybersecurity 评估、GPT-5.6 Sol/Luna ChatGPT 档位、NVIDIA Cosmos 3 Physical AI、NVIDIA Build in America / Wistron GB300 AI 基础设施与中国央企 AI 高价值场景五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉关键网络安全能力评估、免费/付费模型分层、物理 AI 仿真、美国本土 AI 制造与央企软件工厂长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-08 / latestFixture=2026-08-08 / expectedSignals=5；daily source projection labels 覆盖 40 fixtures / 200 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、source projection registry health/taxonomy 与 `pnpm build` 通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-08.mjs`；2) 为 Astra critical cybersecurity、Build in America / Wistron GB300 与 SASAC central enterprise AI deployment 增加 fixture-backed label/detailVariants；3) EN 2026-08-08 页面移除泛化 fallback 并补齐 Case-Level FAQ；4) 质量评分 28/30。
+
 
 
 - [x] P1 Candidate / EXP-281: 将 ai-commercialization-roi 有效容量从 2 提升到 3，并同步 Doubao / WorkBuddy commercialization ROI capacityPlan，消费 EXP-280 后续“剩余 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `10a6b6f`
