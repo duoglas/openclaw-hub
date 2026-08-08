@@ -107,7 +107,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'enterprise-agent-platforms': 6,
   'governed-agent-deployment-platforms': 4,
   'frontier-models': 6,
-  'frontier-model-cloud-distribution': 2,
+  'frontier-model-cloud-distribution': 3,
   'frontier-model-inference-architecture': 4,
   'open-model-long-context': 2,
   'frontier-model-task-capability': 5,

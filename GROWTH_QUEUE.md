@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-08 11:28
+Last updated: 2026-08-08 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-283: 将 frontier-model-cloud-distribution 有效容量从 2 提升到 3，并同步 Claude on Azure GB300 / Foundry capacityPlan，消费 EXP-282 后续“frontier-model-cloud-distribution 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`
+  - Hypothesis: EXP-282 后续建议继续处理 frontier-model-cloud-distribution 的 1 headroom 高利用容量；若 Claude on Azure GB300 / Microsoft Foundry、Bedrock、Foundry、cloud marketplace 与企业采购可用性信号继续只保留 1 个有效 headroom，后续 frontier model cloud availability、enterprise procurement、governed cloud distribution 与 GPU-backed model marketplace 信号会被迫错投到 frontier-model-task-capability、frontier-model-inference-architecture 或 open-model-long-context。
+  - Metrics: source projection taxonomy 显示 frontier-model-cloud-distribution 从 1/2 变为 1/3，并保留 frontier-model-task-capability=3/5、frontier-model-inference-architecture=2/4、open-model-long-context=1/2、frontier-models=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.frontier-model-cloud-distribution` 提升到 3；2) Claude on Azure GB300 / Microsoft Foundry structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) Kimi K3 open-model long-context alternate-target 诊断同步新可用 sibling target；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-282: 将 2026-08-08 最新双语日报接入 real cron fixture，并修复 Astra critical cybersecurity、Build in America 与央企 AI 部署字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `1795099`

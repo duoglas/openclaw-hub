@@ -217,6 +217,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'frontier-models',
     splitTargetCategory: 'frontier-model-cloud-distribution',
     displayLabel: 'Anthropic / Claude / Azure GB300 deployment',
+    capacityPlan: {
+      selectedSplitTarget: 'frontier-model-cloud-distribution',
+      whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability, frontier-model-inference-architecture, and open-model-long-context because Claude on Azure GB300 / Microsoft Foundry is a cloud procurement and distribution signal, not a model task benchmark, architecture-efficiency, or long-context open-model signal.',
+      rejectedAlternateTargets: ['frontier-model-task-capability', 'frontier-model-inference-architecture', 'open-model-long-context'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; frontier-model-cloud-distribution now has two effective headroom slots for future Azure, Bedrock, Foundry, cloud marketplace, and enterprise procurement availability signals without broadening task-capability, inference-architecture, or long-context matching.',
+      },
+    },
     terms: ['Claude 模型在 Azure', 'Microsoft Foundry', 'GB300 Blackwell Ultra'],
     details: {
       what: 'NVIDIA said Anthropic Claude models are now available in Microsoft Foundry on Azure infrastructure powered by NVIDIA GB300 Blackwell Ultra GPUs.',
@@ -1187,8 +1198,8 @@ export const FIELD_PROJECTION_RULES = [
     ],
     capacityPlan: {
       selectedSplitTarget: 'open-model-long-context',
-      whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability, frontier-model-inference-architecture, and code-agent-runtime because Kimi K3 is an open-model and million-token context signal spanning research and coding, not a single task benchmark, inference-architecture, or coding-agent runtime.',
-      rejectedAlternateTargets: ['frontier-model-task-capability', 'frontier-model-inference-architecture'],
+      whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability, frontier-model-cloud-distribution, frontier-model-inference-architecture, and code-agent-runtime because Kimi K3 is an open-model and million-token context signal spanning research and coding, not a single task benchmark, cloud procurement surface, inference-architecture, or coding-agent runtime.',
+      rejectedAlternateTargets: ['frontier-model-task-capability', 'frontier-model-cloud-distribution', 'frontier-model-inference-architecture'],
       budgetImpact: {
         capacityDelta: 1,
         categoryBudget: 2,

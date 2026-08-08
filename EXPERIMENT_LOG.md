@@ -1,3 +1,14 @@
+## EXP-283 — Frontier model cloud distribution capacity headroom
+- Hypothesis: EXP-282 后续建议继续处理 frontier-model-cloud-distribution 的 1 headroom 高利用容量；若 Claude on Azure GB300 / Microsoft Foundry、Bedrock、Foundry、cloud marketplace 与企业采购可用性信号继续只保留 1 个有效 headroom，后续 frontier model cloud availability、enterprise procurement、governed cloud distribution 与 GPU-backed model marketplace 信号会被迫错投到 frontier-model-task-capability、frontier-model-inference-architecture 或 open-model-long-context。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `frontier-model-cloud-distribution` effective category budget 从 2 提升到 3；为 `anthropic-claude-azure-gb300-foundry-2026` 增加 structured capacityPlan，并让 Kimi K3 open-model long-context 规则显式拒绝新可用的 frontier-model-cloud-distribution alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-08
+- End date: 2026-08-08
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `frontier-model-cloud-distribution=1/3 (2 headroom)`、`frontier-model-task-capability=3/5`、`frontier-model-inference-architecture=2/4`、`open-model-long-context=1/2`、`frontier-models=7/7`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（frontier-model-cloud-distribution 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Claude on Azure GB300 / Microsoft Foundry capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；Kimi K3 alternate-target 诊断已同步；commit `pending`；质量评分 27/30。）
+- Decision: scale（保留 frontier-model-cloud-distribution 作为后续 Azure、Bedrock、Foundry、cloud marketplace、enterprise procurement availability 与 GPU-backed model distribution 信号的独立容量入口；下一步可继续处理 local-commerce-ai-workflows、open-model-long-context 或其他 1 headroom 高利用 target。）
+
 ## EXP-282 — 2026-08-08 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-08）暴露 OpenAI Astra Preparedness Framework critical cybersecurity 评估、GPT-5.6 Sol/Luna ChatGPT 档位、NVIDIA Cosmos 3 Physical AI、NVIDIA Build in America / Wistron GB300 AI 基础设施与中国央企 AI 高价值场景五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉关键网络安全能力评估、免费/付费模型分层、物理 AI 仿真、美国本土 AI 制造与央企软件工厂长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-08.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-08.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
