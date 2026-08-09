@@ -6,7 +6,7 @@
 - Start date: 2026-08-09
 - End date: 2026-08-09
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `open-model-long-context=1/3 (2 headroom)`、`frontier-model-cloud-distribution=1/3`、`frontier-model-inference-architecture=2/4`、`frontier-model-task-capability=3/5`、`frontier-models=7/7`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（open-model-long-context 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Kimi K3 / Z.ai GLM-5.2 capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；frontier alternate-target 诊断保持清晰；commit `ca5b517`；质量评分 27/30。）
+- Result: pass（open-model-long-context 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Kimi K3 / Z.ai GLM-5.2 capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；frontier alternate-target 诊断保持清晰；commit `a65e210`；质量评分 27/30。）
 - Decision: scale（保留 open-model-long-context 作为后续 open-weight long-context、百万 token、repository-scale coding、research replication 与 long-document workflow 信号的独立容量入口；下一步可继续处理 local-commerce-ai-workflows 或其他 1 headroom 高利用 target。）
 
 ## EXP-284 — 2026-08-09 latest real cron fixture and field-level projection recovery
