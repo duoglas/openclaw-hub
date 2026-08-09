@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-09 11:25
+Last updated: 2026-08-09 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-285: 将 open-model-long-context 有效容量从 2 提升到 3，并同步 Kimi K3 long-context open-model capacityPlan，消费 EXP-284 后续“open-model-long-context 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `ca5b517`
+  - Hypothesis: EXP-284 后续建议继续处理 open-model-long-context 的 1 headroom 高利用容量；若 Kimi K3 / Z.ai GLM-5.2、百万 token 上下文、开放权重、长文档研究与 repository-scale coding 信号继续只保留 1 个有效 headroom，后续 open-weight long-context、research replication、coding workspace 与 multimodal context window 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution 或 frontier-model-inference-architecture。
+  - Metrics: source projection taxonomy 显示 open-model-long-context 从 1/2 变为 1/3，并保留 frontier-model-cloud-distribution=1/3、frontier-model-inference-architecture=2/4、frontier-model-task-capability=3/5、frontier-models=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.open-model-long-context` 提升到 3；2) Kimi K3 / Z.ai GLM-5.2 structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) frontier-model alternate-target 诊断同步保留 task/cloud/inference 边界；4) 质量评分 27/30。
 
 
 - [x] P1 Candidate / EXP-284: 将 2026-08-09 最新双语日报接入 real cron fixture，并修复 Firebird AI Factory、6G NTN 与 AI 视频商业化字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `pending`

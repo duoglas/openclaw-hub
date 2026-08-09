@@ -1,3 +1,14 @@
+## EXP-285 — Open model long-context capacity headroom
+- Hypothesis: EXP-284 后续建议继续处理 open-model-long-context 的 1 headroom 高利用容量；若 Kimi K3 / Z.ai GLM-5.2、百万 token 上下文、开放权重、长文档研究与 repository-scale coding 信号继续只保留 1 个有效 headroom，后续 open-weight long-context、research replication、coding workspace 与 multimodal context window 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution 或 frontier-model-inference-architecture。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `open-model-long-context` effective category budget 从 2 提升到 3；同步 `moonshot-kimi-k3-long-context-open-model-2026` structured capacityPlan 的 categoryBudget/categoryHeadroom/capacityDelta，并保持 frontier-model task、cloud distribution 与 inference architecture alternate-target 边界清晰。
+- ICE: 8x8x8=512
+- Start date: 2026-08-09
+- End date: 2026-08-09
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `open-model-long-context=1/3 (2 headroom)`、`frontier-model-cloud-distribution=1/3`、`frontier-model-inference-architecture=2/4`、`frontier-model-task-capability=3/5`、`frontier-models=7/7`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（open-model-long-context 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Kimi K3 / Z.ai GLM-5.2 capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；frontier alternate-target 诊断保持清晰；commit `ca5b517`；质量评分 27/30。）
+- Decision: scale（保留 open-model-long-context 作为后续 open-weight long-context、百万 token、repository-scale coding、research replication 与 long-document workflow 信号的独立容量入口；下一步可继续处理 local-commerce-ai-workflows 或其他 1 headroom 高利用 target。）
+
 ## EXP-284 — 2026-08-09 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-09）暴露 OpenAI Astra critical cybersecurity、GPT-5.6 Sol/Luna Think workflow、NVIDIA/Firebird Armenia AI Factory、China IMT-2030 satellite-terrestrial 6G NTN 与中国 AI 视频融资/商业化五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉区域 AI factory capacity、6G NTN 标准协同和 AI video commercialization 长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-09.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-09.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -109,7 +109,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'frontier-models': 6,
   'frontier-model-cloud-distribution': 3,
   'frontier-model-inference-architecture': 4,
-  'open-model-long-context': 2,
+  'open-model-long-context': 3,
   'frontier-model-task-capability': 5,
   'high-sensitivity-ai-deployment': 4,
   'agent-runtime-safety': 3,
