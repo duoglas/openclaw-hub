@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-08 17:22
+Last updated: 2026-08-09 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-284: 将 2026-08-09 最新双语日报接入 real cron fixture，并修复 Firebird AI Factory、6G NTN 与 AI 视频商业化字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `pending`
+  - Hypothesis: 最近24小时新增日报（2026-08-09）暴露 OpenAI Astra critical cybersecurity、GPT-5.6 Sol/Luna Think workflow、NVIDIA/Firebird Armenia AI Factory、China IMT-2030 satellite-terrestrial 6G NTN 与中国 AI 视频融资/商业化五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉区域 AI factory capacity、6G NTN 标准协同和 AI video commercialization 长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-09 / latestFixture=2026-08-09 / expectedSignals=5；daily source projection labels 覆盖 41 fixtures / 205 expectedSignals；daily case-level FAQ、parser guardrail、source projection registry health/taxonomy 与 `pnpm build` 通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-09.mjs`；2) 为 Firebird Armenia AI Factory、IMT-2030 satellite-terrestrial 6G NTN 与 China AI video commercialization 增加 fixture-backed label/detailVariants；3) EN 2026-08-09 页面移除泛化 fallback 并补齐 Think workflow、AI video 与 Firebird capacity Case-Level FAQ；4) 质量评分 28/30。
 
 
 - [x] P1 Candidate / EXP-283: 将 frontier-model-cloud-distribution 有效容量从 2 提升到 3，并同步 Claude on Azure GB300 / Foundry capacityPlan，消费 EXP-282 后续“frontier-model-cloud-distribution 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`

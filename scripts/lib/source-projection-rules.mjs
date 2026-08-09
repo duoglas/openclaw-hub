@@ -386,8 +386,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'US / NVIDIA / Build in America AI infrastructure',
         terms: ['Build in America', 'Wistron', 'GB300'],
       },
+      {
+        label: 'Armenia / Firebird / NVIDIA AI factory capacity',
+        terms: ['Firebird', '亚美尼亚', '300MW'],
+      },
     ],
-    terms: ['AI Cloud', 'AI factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟', 'Build in America', 'Wistron', 'GB300', '得州工厂'],
+    terms: ['AI Cloud', 'AI factory', 'AI Factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟', 'Build in America', 'Wistron', 'GB300', '得州工厂', 'Firebird', '亚美尼亚', 'CIS 区域最大', '300MW'],
     detailVariants: [
       {
         terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
@@ -419,6 +423,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA updated its Build in America progress, citing participation in NSF regional AI infrastructure hubs and Wistron production of GB300 systems in Texas while preparing Vera Rubin manufacturing.',
           why: 'AI infrastructure competition is extending into domestic manufacturing, power, data centers, regional research access, and supply-chain resilience rather than only GPU performance.',
           impact: 'Infrastructure buyers should track regional compute access, US manufacturing capacity, data-center power, cooling, procurement timing, and supply-chain concentration before assuming AI capacity will be available on demand.',
+        },
+      },
+      {
+        terms: ['Firebird', '亚美尼亚', '300MW'],
+        details: {
+          what: 'NVIDIA said Firebird launched the CIS region’s largest AI Factory in Armenia using NVIDIA accelerated computing and Dell high-performance AI infrastructure, with plans for more than 70,000 Rubin and Blackwell GPUs and 300MW of AI infrastructure capacity by the end of 2027.',
+          why: 'AI infrastructure is spreading from the largest AI markets into regional sovereign compute hubs where electricity, data-center construction, partner ecosystems, and local talent can become strategic capacity constraints.',
+          impact: 'Cloud buyers, model labs, and regional policy teams should track Firebird capacity timing, GPU supply, power availability, Dell/NVIDIA dependencies, data residency, and whether local AI workloads can reserve production capacity.',
         },
       },
     ],
@@ -528,8 +540,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'US / ByteDance / Doubao / Seedance 2.0 video generation',
         terms: ['Seedance 2.0', '豆包', '视频生成'],
       },
+      {
+        label: 'China / AI video / financing and commercialization race',
+        terms: ['可灵 AI', '生数科技', '爱诗科技', '演语科技'],
+      },
     ],
-    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试', 'Seedance 2.0', '视频生成'],
+    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试', 'Seedance 2.0', '视频生成', '可灵 AI', '生数科技', '爱诗科技', '演语科技'],
     detailVariants: [
       {
         terms: ['Seedance 2.0', '豆包', '视频生成'],
@@ -537,6 +553,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Search-result summaries indicated Seedance 2.0 video generation may be entering Doubao, while the daily source could only confirm the Doubao assistant page and not the full announcement body.',
           why: 'Consumer video generation is a high-competition surface for creators, advertising, and e-commerce content, but product claims need confirmation before teams redesign workflows around them.',
           impact: 'Creators can watch Doubao and ByteDance release notes for availability, watermarking, commercial-use terms, controllability, and usage limits before adopting Seedance workflows.',
+        },
+      },
+      {
+        terms: ['可灵 AI', '生数科技', '爱诗科技', '演语科技'],
+        details: {
+          what: 'Xinhua reported that Chinese AI video companies including Kling AI, Shengshu Technology, AIsphere, and Yanyu Technology disclosed nearly 30 billion yuan in new financing over the past three months, while Kling AI surpassed 100 million global users and AI short drama, advertising, and e-commerce content use cases accelerated.',
+          why: 'AI video is moving from demo quality toward commercialization tests where revenue, retention, copyright boundaries, and compute cost matter more than a single model showcase.',
+          impact: 'Content teams should use AI video for low-cost creative testing, ad variants, storyboards, and e-commerce assets while keeping rights review, human editing, user-retention checks, and compute-cost controls in the launch plan.',
         },
       },
     ],
@@ -906,6 +930,12 @@ export const FIELD_PROJECTION_RULES = [
     category: 'policy-governance',
     splitTargetCategory: 'ai-industrial-policy',
     displayLabel: 'China / 6G / mobile AI infrastructure',
+    displayLabels: [
+      {
+        label: 'China / IMT-2030 / satellite-terrestrial 6G NTN',
+        terms: ['IMT-2030', '星地融合 NTN 工作组', '卫星空口接入'],
+      },
+    ],
     capacityPlan: {
       selectedSplitTarget: 'ai-industrial-policy',
       whyNotAlternatives: 'Rejected alternate split targets because this story is specifically about China 6G, satellite, non-terrestrial network, and mobile-AI infrastructure policy rather than ai-policy-standards or digital-regulation-compliance.',
@@ -917,7 +947,17 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses existing ai-industrial-policy capacity for a fixture-backed 6G/mobile-AI infrastructure signal after aerospace compute moved to a dedicated split target.',
       },
     },
-    terms: ['2026 MWC 上海', '6G 产业生态展区', '未来星座', '非地面网络通信'],
+    terms: ['2026 MWC 上海', '6G 产业生态展区', '未来星座', '非地面网络通信', 'IMT-2030', '星地融合 NTN 工作组', '卫星空口接入', '卫星终端', '星地融合网络'],
+    detailVariants: [
+      {
+        terms: ['IMT-2030', '星地融合 NTN 工作组', '卫星空口接入'],
+        details: {
+          what: 'Xinhua reported that China’s IMT-2030 (6G) Promotion Group created a satellite-terrestrial integration NTN working group under MIIT guidance, covering satellite air-interface access, terminals, integrated networks, operations, maintenance, and applications.',
+          why: '6G is being defined as a space-ground network layer for remote areas, oceans, aviation, emergency response, low-altitude mobility, and industrial connectivity rather than simply a faster phone network.',
+          impact: 'Telecom operators, satellite-internet firms, terminal-chip vendors, and low-altitude-economy teams should monitor standards work, pilot scenarios, terminal readiness, and cross-network operations requirements.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua reported that MWC Shanghai 2026 is focusing on 6G, mobile AI, embodied intelligence, satellite and non-terrestrial network communications, with first-time 6G industry ecosystem and Future Constellation satellite areas.',
       why: 'Large-scale AI deployment increasingly depends on next-generation connectivity across edge devices, satellite links, sensing, low-altitude mobility, industrial manufacturing, and remote-service scenarios.',
@@ -1356,6 +1396,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Search-result summaries indicated Seedance 2.0 video generation may be entering Doubao, while the daily source could only confirm the Doubao assistant page and not the full announcement body.',
           why: 'Consumer video generation is a high-competition surface for creators, advertising, and e-commerce content, but product claims need confirmation before teams redesign workflows around them.',
           impact: 'Creators can watch Doubao and ByteDance release notes for availability, watermarking, commercial-use terms, controllability, and usage limits before adopting Seedance workflows.',
+        },
+      },
+      {
+        terms: ['可灵 AI', '生数科技', '爱诗科技', '演语科技'],
+        details: {
+          what: 'Xinhua reported that Chinese AI video companies including Kling AI, Shengshu Technology, AIsphere, and Yanyu Technology disclosed nearly 30 billion yuan in new financing over the past three months, while Kling AI surpassed 100 million global users and AI short drama, advertising, and e-commerce content use cases accelerated.',
+          why: 'AI video is moving from demo quality toward commercialization tests where revenue, retention, copyright boundaries, and compute cost matter more than a single model showcase.',
+          impact: 'Content teams should use AI video for low-cost creative testing, ad variants, storyboards, and e-commerce assets while keeping rights review, human editing, user-retention checks, and compute-cost controls in the launch plan.',
         },
       },
     ],

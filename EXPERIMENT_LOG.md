@@ -1,3 +1,14 @@
+## EXP-284 — 2026-08-09 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-09）暴露 OpenAI Astra critical cybersecurity、GPT-5.6 Sol/Luna Think workflow、NVIDIA/Firebird Armenia AI Factory、China IMT-2030 satellite-terrestrial 6G NTN 与中国 AI 视频融资/商业化五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉区域 AI factory capacity、6G NTN 标准协同和 AI video commercialization 长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-09.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-09.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-09 real cron fixture；为 Firebird Armenia AI Factory、IMT-2030 satellite-terrestrial 6G NTN 与 China AI video financing/commercialization 增加 fixture-backed display label/detailVariants；重写 EN 2026-08-09 页面，使 Top 5 对齐中文日报五条信号，并补齐 Think workflow、AI video low-cost testing 与 Firebird regional capacity Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-08-09
+- End date: 2026-08-09
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-09 / latestFixture=2026-08-09 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 41 fixtures / 205 expectedSignals；daily case-level FAQ、parser guardrail、source projection registry health/taxonomy 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-09 最新双语日报已由同日 real cron fixture 覆盖；Astra critical cybersecurity、GPT-5.6 Sol/Luna、Firebird Armenia AI Factory、IMT-2030 6G NTN 与 China AI video commercialization 均输出字段级 projection；EN 页面移除 Firebird/6G/AI video 泛化 fallback 并补齐 Case-Level FAQ；commit `pending`；质量评分 28/30。）
+- Decision: scale（保留 2026-08-09 fixture 作为 critical cyber capability、ChatGPT Think workflow、regional AI factory capacity、satellite-terrestrial 6G NTN 与 AI video commercialization 的首日索引基线；下一步可继续处理 open-model-long-context、local-commerce-ai-workflows 或其他 1 headroom 高利用 target。）
+
 ## EXP-283 — Frontier model cloud distribution capacity headroom
 - Hypothesis: EXP-282 后续建议继续处理 frontier-model-cloud-distribution 的 1 headroom 高利用容量；若 Claude on Azure GB300 / Microsoft Foundry、Bedrock、Foundry、cloud marketplace 与企业采购可用性信号继续只保留 1 个有效 headroom，后续 frontier model cloud availability、enterprise procurement、governed cloud distribution 与 GPU-backed model marketplace 信号会被迫错投到 frontier-model-task-capability、frontier-model-inference-architecture 或 open-model-long-context。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
