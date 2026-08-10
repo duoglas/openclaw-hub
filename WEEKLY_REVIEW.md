@@ -1,9 +1,9 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: 2026-08-03 to 2026-08-09
+- Week: 2026-08-10 to 2026-08-16
 - Owner: hub-growth-worker
-- Reviewed at: 2026-08-03 08:45 (Asia/Shanghai)
+- Reviewed at: 2026-08-10 08:45 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
@@ -36,7 +36,7 @@
   - status: done
 
 - [ ] 当前缺少可计算的高展现低CTR query 数据，先完成 7 天 GSC query 回填后再生成标题改写清单。
-  - owner: hub-growth-worker | due: 2026-08-09
+  - owner: hub-growth-worker | due: 2026-08-16
 
 ## Postmortem
 - What was low-value busy work this week?
