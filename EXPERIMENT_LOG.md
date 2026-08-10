@@ -1,3 +1,14 @@
+## EXP-286 — 2026-08-10 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-10）暴露 Firebird Armenia AI Factory、Open Secure AI Alliance SAFE 事件共享、OpenAI GPT-5.6 Bedrock enterprise distribution、Anthropic Claude Fable export-control safety availability 与中国 AI 视频融资/商业化五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留 fallback 或截断，首日索引会漏掉区域算力、agent 事故共享、云上模型采购、安全访问恢复和 AI 视频商业化长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-10.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/daily-generator.mjs`, `src/content/blog/en/openclaw-daily-2026-08-10.md`, `src/content/blog/zh/openclaw-daily-2026-08-10.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-10 real cron fixture；用 fixture 重新生成 EN/ZH 2026-08-10 日报，修复 EN Anthropic Fable fallback 和 ZH 中国 AI 视频截断；为最新 EN 页面补齐 SAFE incident sharing、AI video creative testing 与 Bedrock procurement Case-Level FAQ；同时让英文 generator 固定输出 Case-Level FAQ 段落以覆盖 fixture gate。
+- ICE: 9x8x8=576
+- Start date: 2026-08-10
+- End date: 2026-08-10
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-10 / latestFixture=2026-08-10 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 42 fixtures / 210 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、daily quality gates 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-10 最新双语日报已由同日 real cron fixture 覆盖；Firebird、SAFE、OpenAI GPT-5.6 Bedrock、Claude Fable export-control safety availability 与 China AI video commercialization 均输出字段级 projection；EN fallback 与 ZH 截断已修复；commit `pending`；质量评分 29/30。）
+- Decision: scale（保留 2026-08-10 fixture 作为 regional AI factory capacity、agent incident-sharing standard、Bedrock model procurement、frontier-model safety availability 与 AI video commercialization 的首日索引基线；下一步可继续处理 Bedrock/cloud-model-distribution 或 agent-runtime-safety 的后续 headroom/FAQ 实验。）
+
 ## EXP-285 — Open model long-context capacity headroom
 - Hypothesis: EXP-284 后续建议继续处理 open-model-long-context 的 1 headroom 高利用容量；若 Kimi K3 / Z.ai GLM-5.2、百万 token 上下文、开放权重、长文档研究与 repository-scale coding 信号继续只保留 1 个有效 headroom，后续 open-weight long-context、research replication、coding workspace 与 multimodal context window 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution 或 frontier-model-inference-architecture。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

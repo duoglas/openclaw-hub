@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-09 17:20
+Last updated: 2026-08-10 11:25
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,6 +21,12 @@ Manager: main session
 
 ## Done
 
+
+
+- [x] P1 Candidate / EXP-286: 将 2026-08-10 最新双语日报接入 real cron fixture，修复 Claude Fable fallback 与中国 AI 视频截断，并补齐 SAFE/Bedrock/AI video Case-Level FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `pending`
+  - Hypothesis: 最近24小时新增日报（2026-08-10）暴露 Firebird Armenia AI Factory、Open Secure AI Alliance SAFE 事件共享、OpenAI GPT-5.6 Bedrock enterprise distribution、Anthropic Claude Fable export-control safety availability 与中国 AI 视频融资/商业化五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留 fallback 或截断，首日索引会漏掉区域算力、agent 事故共享、云上模型采购、安全访问恢复和 AI 视频商业化长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-10 / latestFixture=2026-08-10 / expectedSignals=5；daily source projection labels 覆盖 42 fixtures / 210 expectedSignals；daily generator、ZH generator、Case-Level FAQ、parser guardrail、latest surface、fresh completeness、evidence matrix、EN language、brief specificity 与 `pnpm build` 通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-10.mjs`；2) EN 2026-08-10 移除 Anthropic Fable 泛化 fallback 并输出五条字段级 projection；3) ZH 2026-08-10 补全中国 AI 视频 story 5 截断；4) 补齐 SAFE incident sharing、AI video creative testing 与 Bedrock procurement Case-Level FAQ；5) 质量评分 29/30。
 
 - [x] P1 Candidate / EXP-285: 将 open-model-long-context 有效容量从 2 提升到 3，并同步 Kimi K3 long-context open-model capacityPlan，消费 EXP-284 后续“open-model-long-context 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `a65e210`
   - Hypothesis: EXP-284 后续建议继续处理 open-model-long-context 的 1 headroom 高利用容量；若 Kimi K3 / Z.ai GLM-5.2、百万 token 上下文、开放权重、长文档研究与 repository-scale coding 信号继续只保留 1 个有效 headroom，后续 open-weight long-context、research replication、coding workspace 与 multimodal context window 信号会被迫错投到 frontier-model-task-capability、frontier-model-cloud-distribution 或 frontier-model-inference-architecture。

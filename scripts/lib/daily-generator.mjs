@@ -257,6 +257,14 @@ export function generateEnglishDailyBody(sourceText, date) {
   out.push('What to learn: Users do not need to adopt every new AI feature. The best first use case is a repeated task where summaries, comparisons, reminders, or draft generation save attention.');
   out.push('User suggestion: Test AI on one daily routine such as reading notes, travel planning, spreadsheet cleanup, meeting preparation, or learning review before expanding to higher-risk tasks.');
   out.push('');
+  out.push('## Case-Level FAQ');
+  out.push('');
+  labels.slice(0, 3).forEach((label, index) => {
+    const idx = index + 1;
+    out.push(`### How should a small team validate the ${label} signal?`);
+    out.push(`Start with one bounded workflow, document the source assumption from story ${idx}, define an owner, and run a reversible pilot before expanding access or budget.`);
+    out.push('');
+  });
   out.push('## Today’s Bottom Line');
   out.push('');
   out.push('- AI adoption is moving from isolated demos toward workflow integration, infrastructure decisions, and measurable operating outcomes.');
