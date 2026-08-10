@@ -23,7 +23,7 @@ Manager: main session
 
 
 
-- [x] P1 Candidate / EXP-286: 将 2026-08-10 最新双语日报接入 real cron fixture，修复 Claude Fable fallback 与中国 AI 视频截断，并补齐 SAFE/Bedrock/AI video Case-Level FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `pending`
+- [x] P1 Candidate / EXP-286: 将 2026-08-10 最新双语日报接入 real cron fixture，修复 Claude Fable fallback 与中国 AI 视频截断，并补齐 SAFE/Bedrock/AI video Case-Level FAQ，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `843fa78`
   - Hypothesis: 最近24小时新增日报（2026-08-10）暴露 Firebird Armenia AI Factory、Open Secure AI Alliance SAFE 事件共享、OpenAI GPT-5.6 Bedrock enterprise distribution、Anthropic Claude Fable export-control safety availability 与中国 AI 视频融资/商业化五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留 fallback 或截断，首日索引会漏掉区域算力、agent 事故共享、云上模型采购、安全访问恢复和 AI 视频商业化长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-10 / latestFixture=2026-08-10 / expectedSignals=5；daily source projection labels 覆盖 42 fixtures / 210 expectedSignals；daily generator、ZH generator、Case-Level FAQ、parser guardrail、latest surface、fresh completeness、evidence matrix、EN language、brief specificity 与 `pnpm build` 通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-10.mjs`；2) EN 2026-08-10 移除 Anthropic Fable 泛化 fallback 并输出五条字段级 projection；3) ZH 2026-08-10 补全中国 AI 视频 story 5 截断；4) 补齐 SAFE incident sharing、AI video creative testing 与 Bedrock procurement Case-Level FAQ；5) 质量评分 29/30。

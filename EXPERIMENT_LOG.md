@@ -6,7 +6,7 @@
 - Start date: 2026-08-10
 - End date: 2026-08-10
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-10 / latestFixture=2026-08-10 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 42 fixtures / 210 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、daily quality gates 与 `pnpm build` 全部通过。
-- Result: pass（2026-08-10 最新双语日报已由同日 real cron fixture 覆盖；Firebird、SAFE、OpenAI GPT-5.6 Bedrock、Claude Fable export-control safety availability 与 China AI video commercialization 均输出字段级 projection；EN fallback 与 ZH 截断已修复；commit `pending`；质量评分 29/30。）
+- Result: pass（2026-08-10 最新双语日报已由同日 real cron fixture 覆盖；Firebird、SAFE、OpenAI GPT-5.6 Bedrock、Claude Fable export-control safety availability 与 China AI video commercialization 均输出字段级 projection；EN fallback 与 ZH 截断已修复；commit `843fa78`；质量评分 29/30。）
 - Decision: scale（保留 2026-08-10 fixture 作为 regional AI factory capacity、agent incident-sharing standard、Bedrock model procurement、frontier-model safety availability 与 AI video commercialization 的首日索引基线；下一步可继续处理 Bedrock/cloud-model-distribution 或 agent-runtime-safety 的后续 headroom/FAQ 实验。）
 
 ## EXP-285 — Open model long-context capacity headroom
