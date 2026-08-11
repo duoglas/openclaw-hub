@@ -1501,8 +1501,16 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / Presence / governed enterprise agent deployment',
         terms: ['Presence', '语音/聊天 Agent', '人类接管规则'],
       },
+      {
+        label: 'OpenAI / ChatGPT Business / Premium seats',
+        terms: ['ChatGPT Business', 'Premium 席位', '125 美元'],
+      },
+      {
+        label: 'OpenAI / Daybreak / cyber partner program',
+        terms: ['Daybreak Cyber Partner', 'Accenture', 'CrowdStrike'],
+      },
     ],
-    terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问', 'Presence', '语音/聊天 Agent', '人类接管规则', '调用企业系统'],
+    terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问', 'Presence', '语音/聊天 Agent', '人类接管规则', '调用企业系统', 'ChatGPT Business', 'Premium 席位', '125 美元', '5 倍用量', 'Daybreak Cyber Partner', 'CrowdStrike', 'Cloudflare'],
     detailVariants: [
       {
         terms: ['Presence', '语音/聊天 Agent', '人类接管规则'],
@@ -1510,6 +1518,22 @@ export const FIELD_PROJECTION_RULES = [
           what: 'OpenAI introduced Presence for enterprise voice and chat agents that can answer questions, call business systems, execute approved actions, and escalate to humans under defined handoff rules.',
           why: 'Enterprise AI adoption is shifting from proof-of-concept chatbots toward governed production agents where permissions, audits, escalation rules, and workflow integration determine whether agents can handle support, sales, IT, or claims processes.',
           impact: 'Systems integrators and internal AI platform teams should test approved-action scopes, human handoff quality, audit logs, rollback behavior, and measurable workflow outcomes before moving Presence-style agents into production.',
+        },
+      },
+      {
+        terms: ['ChatGPT Business', 'Premium 席位', '125 美元'],
+        details: {
+          what: 'OpenAI said ChatGPT Business will add Premium seats priced at 125 USD per user monthly or 100 USD annually, offering five times Standard usage and removing the five-hour usage cap for high-frequency employees.',
+          why: 'Enterprise AI subscriptions are shifting from flat organization-wide access toward role-based capacity allocation where heavy users, developers, analysts, and operators need measurable ROI before upgrades.',
+          impact: 'AI program owners should map Standard versus Premium seats by job role, usage logs, workflow value, budget owner, and approval controls before scaling paid access across the company.',
+        },
+      },
+      {
+        terms: ['Daybreak Cyber Partner', 'Accenture', 'CrowdStrike'],
+        details: {
+          what: 'OpenAI expanded the Daybreak Cyber Partner program by connecting frontier cybersecurity models with partners including Accenture, IBM, CrowdStrike, Cisco, and Cloudflare for enterprise defense workflows.',
+          why: 'Frontier cyber capability is moving from model evaluation into real security operations, where identity checks, scope limits, logging, human supervision, and partner integrations determine safe deployment.',
+          impact: 'Security teams should pilot bounded vulnerability discovery, validation, and remediation workflows with verified identity, authorized targets, audit logs, escalation rules, and rollback paths.',
         },
       },
     ],
@@ -1549,8 +1573,22 @@ export const FIELD_PROJECTION_RULES = [
         label: 'Xinhua / Honor / humanoid robotics landing window',
         terms: ['荣耀终端机器人首席技术架构师严斌', '人形机器人技术落地的重要时期'],
       },
+      {
+        label: 'SAMR / China / humanoid robotics company growth',
+        terms: ['市场监管总局', '人形机器人领域新设企业', '11.6 万户'],
+      },
     ],
-    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书', '世界机器人大会', '规上机器人企业', '营收超900亿元', '荣耀终端机器人首席技术架构师严斌', '人形机器人技术落地的重要时期'],
+    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书', '世界机器人大会', '规上机器人企业', '营收超900亿元', '荣耀终端机器人首席技术架构师严斌', '人形机器人技术落地的重要时期', '市场监管总局', '人形机器人领域新设企业', '11.6 万户', '同比增长 9.5%'],
+    detailVariants: [
+      {
+        terms: ['市场监管总局', '人形机器人领域新设企业', '11.6 万户'],
+        details: {
+          what: 'Xinhua reported that SAMR data showed 116,000 newly established humanoid-robotics companies in China during the first half of 2026, up 9.5% year over year; the original SAMR page still needs direct confirmation.',
+          why: 'Humanoid robotics remains in a capital, supply-chain, and scenario-pilot expansion phase, but company-count growth is not the same as validated commercial deployment or safety readiness.',
+          impact: 'Robotics buyers and suppliers should track which new entrants produce audited deployments, component demand, edge-compute orders, safety evidence, after-sales capacity, and repeatable customer outcomes.',
+        },
+      },
+    ],
     details: {
       what: 'MIIT said the 2026 World Robot Conference will run in Beijing from August 19 to 23 with more than 300 exhibitors, over 2,000 exhibits, and more than 150 debut products; Xinhuanet also reported Honor robotics architect Yan Bin’s view that the next few years will be an important landing window for humanoid robotics technology.',
       why: 'China’s robotics market is moving from demonstrations toward industrial scale, exhibition density, product launches, embodied-intelligence deployment capacity, and real production or service scenarios.',
@@ -2393,8 +2431,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / National Data Administration / token trading data assets',
         terms: ['国家数据局', '高质量数据集超 12 万个', '词元交易'],
       },
+      {
+        label: 'Tencent / China / OpenRouter token ranking',
+        terms: ['OpenRouter', 'Token 调用榜', 'DeepSeek V4 Flash'],
+      },
     ],
-    terms: ['词元降本', '缓存 token 免费', '智能模型路由', '算电协同', 'TPU', '降低 token 成本', '国家数据局', '高质量数据集超 12 万个', '1565PB', '词元交易', '140 万 PFLOPS'],
+    terms: ['词元降本', '缓存 token 免费', '智能模型路由', '算电协同', 'TPU', '降低 token 成本', '国家数据局', '高质量数据集超 12 万个', '1565PB', '词元交易', '140 万 PFLOPS', 'OpenRouter', 'Token 调用榜', 'DeepSeek V4 Flash', 'MiMo V2.5', '腾讯 Hy3'],
     detailVariants: [
       {
         terms: ['高质量数据集超 12 万个', '1565PB', '140 万 PFLOPS'],
@@ -2402,6 +2444,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua cited China National Data Administration figures showing more than 120,000 high-quality datasets, over 1,565PB of data, and 1.4 million PFLOPS of intelligent compute connected to the national integrated compute-network trial platform.',
           why: 'Dataset quality and compute-network availability are becoming practical AI infrastructure inputs, especially for industrial, medical, financial, and embodied-AI deployment workflows.',
           impact: 'Teams should watch data-quality inspection, token trading, scenario datasets, compute-network access, and governance requirements as China turns data assets into AI production capacity.',
+        },
+      },
+      {
+        terms: ['OpenRouter', 'Token 调用榜', 'DeepSeek V4 Flash'],
+        details: {
+          what: 'Xinhua reported that the latest OpenRouter weekly token-call ranking put Chinese models in the top five, led by DeepSeek V4 Flash with Xiaomi MiMo V2.5, Tencent Hy3, DeepSeek V4 Pro, and Zhipu GLM5.2 following; the original OpenRouter list still needs direct confirmation.',
+          why: 'If confirmed, the ranking would show low-cost, high-throughput Chinese model APIs gaining global developer usage through routing platforms rather than only domestic distribution channels.',
+          impact: 'Developer-platform teams should verify the primary ranking, then compare Chinese model APIs on price, throughput, latency, stability, interface compatibility, and compliance delivery before switching traffic.',
         },
       },
     ],

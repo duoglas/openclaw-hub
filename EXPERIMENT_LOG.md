@@ -1,3 +1,14 @@
+## EXP-287 — 2026-08-11 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-11）暴露 ChatGPT Business Premium seats、OpenAI Daybreak Cyber Partner、NVIDIA/Firebird Armenia AI Factory、OpenRouter 国产模型 Token 调用榜与中国人形机器人企业增长五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留 fallback 或缺少 Case-Level FAQ，首日索引会漏掉企业 AI seat 分层、网络安全 AI 伙伴、区域 AI factory、模型路由平台与人形机器人供应链长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-11.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-11.md`, `src/content/blog/zh/openclaw-daily-2026-08-11.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-11 real cron fixture；为 ChatGPT Business Premium seats、Daybreak Cyber Partner、OpenRouter token ranking 与 SAMR humanoid robotics company growth 增加 fixture-backed display label/detailVariants；用 fixture 重新生成 EN/ZH 2026-08-11 日报，并补齐 ChatGPT Business seat allocation、Daybreak Cyber bounded pilot 与 OpenRouter ranking verification Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-08-11
+- End date: 2026-08-11
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-11 / latestFixture=2026-08-11 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 43 fixtures / 215 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、latest surface、EN language、brief specificity 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-11 最新双语日报已由同日 real cron fixture 覆盖；ChatGPT Business Premium seats、Daybreak Cyber Partner、Firebird Armenia AI Factory、OpenRouter token ranking 与 SAMR humanoid robotics company growth 均输出字段级 projection；EN/ZH 页面统一到同一五条信号并补齐 Case-Level FAQ；commit `6b9f923`；质量评分 29/30。）
+- Decision: scale（保留 2026-08-11 fixture 作为 enterprise seat allocation、cyber partner pilot、regional AI factory capacity、model-routing platform ranking 与 humanoid robotics supply-chain demand 的首日索引基线；下一步可继续处理 cloud-model-distribution、token-economics-optimization 或 robotics-commercial-deployment 的后续 headroom/FAQ 实验。）
+
 ## EXP-286 — 2026-08-10 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-10）暴露 Firebird Armenia AI Factory、Open Secure AI Alliance SAFE 事件共享、OpenAI GPT-5.6 Bedrock enterprise distribution、Anthropic Claude Fable export-control safety availability 与中国 AI 视频融资/商业化五条信号；若最新日报不进入 real cron fixture 且 EN/ZH 页面保留 fallback 或截断，首日索引会漏掉区域算力、agent 事故共享、云上模型采购、安全访问恢复和 AI 视频商业化长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-10.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/daily-generator.mjs`, `src/content/blog/en/openclaw-daily-2026-08-10.md`, `src/content/blog/zh/openclaw-daily-2026-08-10.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
