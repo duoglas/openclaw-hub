@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-11 11:38
+Last updated: 2026-08-11 17:23
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-289: 将 local-commerce-ai-workflows 有效容量从 2 提升到 3，并为 Meituan local-commerce workflow 补齐 structured capacityPlan，消费 EXP-288 后续“local-commerce-ai-workflows headroom”假设 | ICE 8x8x8=512 — commit `pending`
+  - Hypothesis: EXP-288 后续建议继续处理 local-commerce-ai-workflows；若 Meituan LongCat、AIGC 海报生成、商户 listing 优化、本地服务广告与 marketplace conversion 继续只保留 1 个有效 headroom，后续本地生活 AI 工作流信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 token-economics-optimization。
+  - Metrics: source projection taxonomy 显示 local-commerce-ai-workflows 从 1/2 变为 1/3，并保留 regional-ai-ecosystems=1/4、ai-commercialization-roi=1/3、content-licensing-markets=1/3、market-sizing-reports=1/3、token-economics-optimization=1/3、parentFallback=0、overBudget=0、split target categories=50/50；registry health、daily source projection labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.local-commerce-ai-workflows` 提升到 3；2) Meituan local-commerce workflow capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) workforce enablement 与 supply-chain cost pressure alternate-target 诊断同步新可用 sibling target；4) 质量评分 27/30。
+
 
 
 - [x] P1 Candidate / EXP-288: 将 token-economics-optimization 有效容量从 2 提升到 3，并同步 WAIC token-cost optimization capacityPlan，消费 EXP-287 后续“OpenRouter / token economics optimization headroom”假设 | ICE 8x8x8=512 — commit `3f1973e`

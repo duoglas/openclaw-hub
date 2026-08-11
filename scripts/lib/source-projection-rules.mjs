@@ -577,6 +577,17 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'local-commerce-ai-workflows',
     displayLabel: 'China / Meituan / LongCat AI commerce workflow',
     terms: ['美团', 'LongCat-2.0', 'AIGC 海报生成系统'],
+    capacityPlan: {
+      selectedSplitTarget: 'local-commerce-ai-workflows',
+      whyNotAlternatives: 'Rejected alternate split targets regional-ai-ecosystems, ai-commercialization-roi, content-licensing-markets, market-sizing-reports, and token-economics-optimization because Meituan LongCat, AIGC poster generation, merchant listing quality, local-service ads, and marketplace conversion are local-commerce workflow signals rather than regional ecosystem, broad ROI, licensing, market-sizing, or token-cost signals.',
+      rejectedAlternateTargets: ['regional-ai-ecosystems', 'ai-commercialization-roi', 'content-licensing-markets', 'market-sizing-reports', 'token-economics-optimization'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; local-commerce-ai-workflows now has two effective headroom slots for future merchant AIGC, local-service advertising, recommendation conversion, AI listing optimization, and marketplace operations signals while preserving broader ROI and regional ecosystem capacity.',
+      },
+    },
     details: {
       what: 'Secondary Chinese AI aggregation surfaced Meituan technical activity around LongCat-2.0, AIGC poster generation, ACL/ICML research, and local-commerce AI workflow signals that still need primary-source confirmation.',
       why: 'Local commerce AI differs from broad commercialization ROI because the buyer journey includes merchant content creation, recommendation quality, ad production, service operations, and marketplace conversion inside high-frequency daily-life channels.',
@@ -2038,8 +2049,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Amazon / RAISE US / AI workforce training',
     capacityPlan: {
       selectedSplitTarget: 'workforce-ai-enablement',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, and ai-commercialization-roi because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, token-cost optimization signal, or paid-product commercialization signal.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'ai-commercialization-roi'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, local-commerce-ai-workflows, and ai-commercialization-roi because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, token-cost optimization signal, or paid-product commercialization signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -2530,8 +2541,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Xinhua / AI memory demand / consumer electronics cost pressure',
     capacityPlan: {
       selectedSplitTarget: 'supply-chain-cost-pressure',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, and ai-commercialization-roi because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, regional ecosystem expansion, token-cost optimization signal, or paid-product commercialization signal.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'ai-commercialization-roi'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, local-commerce-ai-workflows, and ai-commercialization-roi because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, regional ecosystem expansion, token-cost optimization signal, or paid-product commercialization signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,

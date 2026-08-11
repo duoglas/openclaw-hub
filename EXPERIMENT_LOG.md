@@ -1,3 +1,14 @@
+## EXP-289 — Local-commerce AI workflow capacity headroom
+- Hypothesis: EXP-288 后续建议继续处理 local-commerce-ai-workflows；若 Meituan LongCat、AIGC 海报生成、商户 listing 优化、本地服务广告与 marketplace conversion 继续只保留 1 个有效 headroom，后续本地生活 AI 工作流信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 token-economics-optimization。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `local-commerce-ai-workflows` effective category budget 从 2 提升到 3；为 `china-meituan-local-commerce-ai-workflow-2026` 补充 structured capacityPlan；同步 workforce enablement 与 supply-chain cost pressure 的 alternate-target 诊断，显式拒绝新可用的 local-commerce-ai-workflows alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-11
+- End date: 2026-08-11
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `local-commerce-ai-workflows=1/3 (2 headroom)`、`parentFallback=0`、`overBudget=0`、`split target categories=50/50`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（local-commerce-ai-workflows 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Meituan local-commerce workflow capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；workforce enablement 与 supply-chain cost pressure alternate-target 诊断已同步；commit `pending`; 质量评分 27/30。）
+- Decision: scale（保留 local-commerce-ai-workflows 作为后续 merchant AIGC、local-service advertising、recommendation conversion、AI listing optimization 与 marketplace operations 信号的独立容量入口；下一步可继续处理 supply-chain-cost-pressure 或 waic-product-launch-pipeline 等 1 headroom 高利用 target。）
+
 ## EXP-288 — Token economics optimization capacity headroom
 - Hypothesis: EXP-287 后续建议继续处理 OpenRouter / token economics optimization headroom；若 WAIC 词元降本、缓存 token、智能模型路由、词元交易与 OpenRouter 国产模型调用榜继续只保留 1 个有效 headroom，后续 cost-per-task、cached-token pricing、routing-platform ranking、token trading 与 model-routing efficiency 信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 supply-chain-cost-pressure。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -114,7 +114,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'high-sensitivity-ai-deployment': 4,
   'agent-runtime-safety': 3,
   'ai-commercialization-roi': 3,
-  'local-commerce-ai-workflows': 2,
+  'local-commerce-ai-workflows': 3,
   'market-sizing-reports': 3,
   'supply-chain-cost-pressure': 2,
   'token-economics-optimization': 3,
