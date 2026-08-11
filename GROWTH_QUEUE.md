@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-289: 将 local-commerce-ai-workflows 有效容量从 2 提升到 3，并为 Meituan local-commerce workflow 补齐 structured capacityPlan，消费 EXP-288 后续“local-commerce-ai-workflows headroom”假设 | ICE 8x8x8=512 — commit `pending`
+- [x] P1 Candidate / EXP-289: 将 local-commerce-ai-workflows 有效容量从 2 提升到 3，并为 Meituan local-commerce workflow 补齐 structured capacityPlan，消费 EXP-288 后续“local-commerce-ai-workflows headroom”假设 | ICE 8x8x8=512 — commit `9bdeeab`
   - Hypothesis: EXP-288 后续建议继续处理 local-commerce-ai-workflows；若 Meituan LongCat、AIGC 海报生成、商户 listing 优化、本地服务广告与 marketplace conversion 继续只保留 1 个有效 headroom，后续本地生活 AI 工作流信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 token-economics-optimization。
   - Metrics: source projection taxonomy 显示 local-commerce-ai-workflows 从 1/2 变为 1/3，并保留 regional-ai-ecosystems=1/4、ai-commercialization-roi=1/3、content-licensing-markets=1/3、market-sizing-reports=1/3、token-economics-optimization=1/3、parentFallback=0、overBudget=0、split target categories=50/50；registry health、daily source projection labels 与 `pnpm build` 通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.local-commerce-ai-workflows` 提升到 3；2) Meituan local-commerce workflow capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) workforce enablement 与 supply-chain cost pressure alternate-target 诊断同步新可用 sibling target；4) 质量评分 27/30。
@@ -51,13 +51,13 @@ Manager: main session
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.open-model-long-context` 提升到 3；2) Kimi K3 / Z.ai GLM-5.2 structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) frontier-model alternate-target 诊断同步保留 task/cloud/inference 边界；4) 质量评分 27/30。
 
 
-- [x] P1 Candidate / EXP-284: 将 2026-08-09 最新双语日报接入 real cron fixture，并修复 Firebird AI Factory、6G NTN 与 AI 视频商业化字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `pending`
+- [x] P1 Candidate / EXP-284: 将 2026-08-09 最新双语日报接入 real cron fixture，并修复 Firebird AI Factory、6G NTN 与 AI 视频商业化字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `9bdeeab`
   - Hypothesis: 最近24小时新增日报（2026-08-09）暴露 OpenAI Astra critical cybersecurity、GPT-5.6 Sol/Luna Think workflow、NVIDIA/Firebird Armenia AI Factory、China IMT-2030 satellite-terrestrial 6G NTN 与中国 AI 视频融资/商业化五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉区域 AI factory capacity、6G NTN 标准协同和 AI video commercialization 长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-09 / latestFixture=2026-08-09 / expectedSignals=5；daily source projection labels 覆盖 41 fixtures / 205 expectedSignals；daily case-level FAQ、parser guardrail、source projection registry health/taxonomy 与 `pnpm build` 通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-09.mjs`；2) 为 Firebird Armenia AI Factory、IMT-2030 satellite-terrestrial 6G NTN 与 China AI video commercialization 增加 fixture-backed label/detailVariants；3) EN 2026-08-09 页面移除泛化 fallback 并补齐 Think workflow、AI video 与 Firebird capacity Case-Level FAQ；4) 质量评分 28/30。
 
 
-- [x] P1 Candidate / EXP-283: 将 frontier-model-cloud-distribution 有效容量从 2 提升到 3，并同步 Claude on Azure GB300 / Foundry capacityPlan，消费 EXP-282 后续“frontier-model-cloud-distribution 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`
+- [x] P1 Candidate / EXP-283: 将 frontier-model-cloud-distribution 有效容量从 2 提升到 3，并同步 Claude on Azure GB300 / Foundry capacityPlan，消费 EXP-282 后续“frontier-model-cloud-distribution 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `9bdeeab`
   - Hypothesis: EXP-282 后续建议继续处理 frontier-model-cloud-distribution 的 1 headroom 高利用容量；若 Claude on Azure GB300 / Microsoft Foundry、Bedrock、Foundry、cloud marketplace 与企业采购可用性信号继续只保留 1 个有效 headroom，后续 frontier model cloud availability、enterprise procurement、governed cloud distribution 与 GPU-backed model marketplace 信号会被迫错投到 frontier-model-task-capability、frontier-model-inference-architecture 或 open-model-long-context。
   - Metrics: source projection taxonomy 显示 frontier-model-cloud-distribution 从 1/2 变为 1/3，并保留 frontier-model-task-capability=3/5、frontier-model-inference-architecture=2/4、open-model-long-context=1/2、frontier-models=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.frontier-model-cloud-distribution` 提升到 3；2) Claude on Azure GB300 / Microsoft Foundry structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) Kimi K3 open-model long-context alternate-target 诊断同步新可用 sibling target；4) 质量评分 27/30。
@@ -83,7 +83,7 @@ Manager: main session
 
 
 
-- [x] P1 Candidate / EXP-279: 将 consumer-agentic-product-surfaces 有效容量从 2 提升到 3，并同步 Google Gemini Interactions API capacityPlan，消费 EXP-277 后续“consumer-agentic-product-surfaces 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`
+- [x] P1 Candidate / EXP-279: 将 consumer-agentic-product-surfaces 有效容量从 2 提升到 3，并同步 Google Gemini Interactions API capacityPlan，消费 EXP-277 后续“consumer-agentic-product-surfaces 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `9bdeeab`
   - Hypothesis: EXP-277 后续建议处理 consumer-agentic-product-surfaces 的 1 headroom 高利用容量；若 Gemini App、AI Overviews、AI Mode、Ask YouTube、Docs Live 与后续嵌入式助手产品面继续只保留 1 个 headroom，新增消费级 agentic surface 信号会被迫错投到 career-productivity-workflows、consumer-creative-ai 或 chatgpt-control-surfaces。
   - Metrics: source projection taxonomy 显示 consumer-agentic-product-surfaces 从 1/2 变为 1/3，并保留 career-productivity-workflows=1/3、consumer-creative-ai=3/5、chatgpt-control-surfaces=3/5、consumer-productivity=8/8、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source labels 与 `pnpm build` 通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.consumer-agentic-product-surfaces` 提升到 3；2) Google Gemini Interactions API structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) ChatGPT control surface alternate-target 自测同步新可用 sibling target；4) 质量评分 27/30。
