@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-10 11:25
+Last updated: 2026-08-11 11:38
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-288: 将 token-economics-optimization 有效容量从 2 提升到 3，并同步 WAIC token-cost optimization capacityPlan，消费 EXP-287 后续“OpenRouter / token economics optimization headroom”假设 | ICE 8x8x8=512 — commit `d5e1b80`
+  - Hypothesis: EXP-287 后续建议继续处理 token-economics-optimization；若 WAIC 词元降本、缓存 token、模型路由、词元交易与 OpenRouter 国产模型调用榜继续只保留 1 个有效 headroom，后续 cost-per-task、cached-token pricing、routing-platform ranking 与 token trading 信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 supply-chain-cost-pressure。
+  - Metrics: source projection taxonomy 显示 token-economics-optimization 从 1/2 变为 1/3，并保留 regional-ai-ecosystems=1/4、ai-commercialization-roi=1/3、content-licensing-markets=1/3、market-sizing-reports=1/3、market-intelligence=12/12、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.token-economics-optimization` 提升到 3；2) China / WAIC / token cost optimization capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) workforce enablement 与 supply-chain cost pressure alternate-target 诊断同步新可用 sibling target；4) 质量评分 27/30。
 
 - [x] P1 Candidate / EXP-287: 将 2026-08-11 最新双语日报接入 real cron fixture，并修复 ChatGPT Business Premium、Daybreak Cyber、OpenRouter 国产模型榜与人形机器人新增企业字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `2ea6626`
   - Hypothesis: 最近24小时新增日报若不进入 real cron fixture，ChatGPT Business 高用量席位、Daybreak Cyber 合作伙伴、Firebird AI Factory、OpenRouter 国产模型调用榜与人形机器人企业增长信号会在首日索引中回落到泛化 fallback 或缺失 Case-Level FAQ。

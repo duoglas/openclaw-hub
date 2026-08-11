@@ -2038,8 +2038,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Amazon / RAISE US / AI workforce training',
     capacityPlan: {
       selectedSplitTarget: 'workforce-ai-enablement',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, and ai-commercialization-roi because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, or paid-product commercialization signal.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'ai-commercialization-roi'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, and ai-commercialization-roi because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, token-cost optimization signal, or paid-product commercialization signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -2421,9 +2421,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 2,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses token-economics-optimization headroom for a 2026-07-21 WAIC token-cost optimization signal while freeing supply-chain-cost-pressure for hardware and component pricing signals.',
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; token-economics-optimization now has two effective headroom slots for future model-routing, cached-token pricing, token trading, and cost-per-task optimization signals while freeing supply-chain-cost-pressure for hardware and component pricing signals.',
       },
     },
     displayLabels: [
@@ -2530,8 +2530,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Xinhua / AI memory demand / consumer electronics cost pressure',
     capacityPlan: {
       selectedSplitTarget: 'supply-chain-cost-pressure',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, and ai-commercialization-roi because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, regional ecosystem expansion, or paid-product commercialization signal.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'ai-commercialization-roi'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, and ai-commercialization-roi because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, regional ecosystem expansion, token-cost optimization signal, or paid-product commercialization signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
