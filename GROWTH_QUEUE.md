@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-287: 将 2026-08-11 最新双语日报接入 real cron fixture，并修复 ChatGPT Business Premium、Daybreak Cyber、OpenRouter 国产模型榜与人形机器人新增企业字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `6b9f923`
+- [x] P1 Candidate / EXP-287: 将 2026-08-11 最新双语日报接入 real cron fixture，并修复 ChatGPT Business Premium、Daybreak Cyber、OpenRouter 国产模型榜与人形机器人新增企业字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `2ea6626`
   - Hypothesis: 最近24小时新增日报若不进入 real cron fixture，ChatGPT Business 高用量席位、Daybreak Cyber 合作伙伴、Firebird AI Factory、OpenRouter 国产模型调用榜与人形机器人企业增长信号会在首日索引中回落到泛化 fallback 或缺失 Case-Level FAQ。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-11 / latestFixture=2026-08-11 / expectedSignals=5；daily source projection labels 覆盖 43 fixtures / 215 expectedSignals；daily EN/ZH generator、Case-Level FAQ、parser guardrail、latest surface、EN language、brief specificity 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-11.mjs`；2) 为 ChatGPT Business Premium seats、Daybreak Cyber、OpenRouter token ranking 与 SAMR humanoid robotics company growth 补齐 fixture-backed label/detailVariants；3) EN/ZH 2026-08-11 页面统一到同一五条信号；4) 补齐 ChatGPT Business seat allocation、Daybreak Cyber pilot 与 OpenRouter ranking verification Case-Level FAQ；5) 质量评分 29/30。
@@ -979,7 +979,7 @@ Manager: main session
 
 ## Done
 - [x] P1 Candidate / EXP-234: 为 AWS AgentCore / Context 增加 cloud-agent-runtime-infrastructure split target，并将 AWS Continuum 从 cloud-model-distribution 分流，消费 EXP-233 后续“AgentCore runtime / Context knowledge graph 拆分”假设 | ICE 8x8x8=512 — commit `ceca4c1`
-- [x] P1 Candidate / EXP-287: 将 2026-08-11 最新双语日报接入 real cron fixture，并修复 ChatGPT Business Premium、Daybreak Cyber、OpenRouter 国产模型榜与人形机器人新增企业字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `6b9f923`
+- [x] P1 Candidate / EXP-287: 将 2026-08-11 最新双语日报接入 real cron fixture，并修复 ChatGPT Business Premium、Daybreak Cyber、OpenRouter 国产模型榜与人形机器人新增企业字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `2ea6626`
   - Hypothesis: 最近24小时新增日报若不进入 real cron fixture，ChatGPT Business 高用量席位、Daybreak Cyber 合作伙伴、Firebird AI Factory、OpenRouter 国产模型调用榜与人形机器人企业增长信号会在首日索引中回落到泛化 fallback 或缺失 Case-Level FAQ。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-11 / latestFixture=2026-08-11 / expectedSignals=5；daily source projection labels 覆盖 43 fixtures / 215 expectedSignals；daily EN/ZH generator、Case-Level FAQ、parser guardrail、latest surface、EN language、brief specificity 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-11.mjs`；2) 为 ChatGPT Business Premium seats、Daybreak Cyber、OpenRouter token ranking 与 SAMR humanoid robotics company growth 补齐 fixture-backed label/detailVariants；3) EN/ZH 2026-08-11 页面统一到同一五条信号；4) 补齐 ChatGPT Business seat allocation、Daybreak Cyber pilot 与 OpenRouter ranking verification Case-Level FAQ；5) 质量评分 29/30。

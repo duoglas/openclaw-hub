@@ -6,7 +6,7 @@
 - Start date: 2026-08-11
 - End date: 2026-08-11
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-11 / latestFixture=2026-08-11 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 43 fixtures / 215 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、latest surface、EN language、brief specificity 与 `pnpm build` 全部通过。
-- Result: pass（2026-08-11 最新双语日报已由同日 real cron fixture 覆盖；ChatGPT Business Premium seats、Daybreak Cyber Partner、Firebird Armenia AI Factory、OpenRouter token ranking 与 SAMR humanoid robotics company growth 均输出字段级 projection；EN/ZH 页面统一到同一五条信号并补齐 Case-Level FAQ；commit `6b9f923`；质量评分 29/30。）
+- Result: pass（2026-08-11 最新双语日报已由同日 real cron fixture 覆盖；ChatGPT Business Premium seats、Daybreak Cyber Partner、Firebird Armenia AI Factory、OpenRouter token ranking 与 SAMR humanoid robotics company growth 均输出字段级 projection；EN/ZH 页面统一到同一五条信号并补齐 Case-Level FAQ；commit `2ea6626`；质量评分 29/30。）
 - Decision: scale（保留 2026-08-11 fixture 作为 enterprise seat allocation、cyber partner pilot、regional AI factory capacity、model-routing platform ranking 与 humanoid robotics supply-chain demand 的首日索引基线；下一步可继续处理 cloud-model-distribution、token-economics-optimization 或 robotics-commercial-deployment 的后续 headroom/FAQ 实验。）
 
 ## EXP-286 — 2026-08-10 latest real cron fixture and field-level projection recovery
