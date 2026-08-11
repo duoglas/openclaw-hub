@@ -6,7 +6,7 @@
 - Start date: 2026-08-11
 - End date: 2026-08-11
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `token-economics-optimization=1/3 (2 headroom)`、`regional-ai-ecosystems=1/4`、`ai-commercialization-roi=1/3`、`content-licensing-markets=1/3`、`market-sizing-reports=1/3`、`market-intelligence=12/12`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（token-economics-optimization 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；WAIC token-cost optimization capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；workforce enablement 与 supply-chain cost pressure alternate-target 诊断已同步；commit `d5e1b80`；质量评分 27/30。）
+- Result: pass（token-economics-optimization 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；WAIC token-cost optimization capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；workforce enablement 与 supply-chain cost pressure alternate-target 诊断已同步；commit `3f1973e`；质量评分 27/30。）
 - Decision: scale（保留 token-economics-optimization 作为后续 cached-token pricing、intelligent model routing、OpenRouter ranking、token trading、cost-per-task optimization 与 compute-power coordination 信号的独立容量入口；下一步可继续处理 local-commerce-ai-workflows、supply-chain-cost-pressure 或其他 1 headroom 高利用 target。）
 
 ## EXP-287 — 2026-08-11 latest real cron fixture and field-level projection recovery
@@ -61,7 +61,7 @@
 - Start date: 2026-08-08
 - End date: 2026-08-08
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `frontier-model-cloud-distribution=1/3 (2 headroom)`、`frontier-model-task-capability=3/5`、`frontier-model-inference-architecture=2/4`、`open-model-long-context=1/2`、`frontier-models=7/7`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（frontier-model-cloud-distribution 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Claude on Azure GB300 / Microsoft Foundry capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；Kimi K3 alternate-target 诊断已同步；commit `d5e1b80`；质量评分 27/30。）
+- Result: pass（frontier-model-cloud-distribution 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Claude on Azure GB300 / Microsoft Foundry capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；Kimi K3 alternate-target 诊断已同步；commit `pending`；质量评分 27/30。）
 - Decision: scale（保留 frontier-model-cloud-distribution 作为后续 Azure、Bedrock、Foundry、cloud marketplace、enterprise procurement availability 与 GPU-backed model distribution 信号的独立容量入口；下一步可继续处理 local-commerce-ai-workflows、open-model-long-context 或其他 1 headroom 高利用 target。）
 
 ## EXP-282 — 2026-08-08 latest real cron fixture and field-level projection recovery
@@ -105,7 +105,7 @@
 - Start date: 2026-08-06
 - End date: 2026-08-06
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `consumer-agentic-product-surfaces=1/3 (2 headroom)`、`career-productivity-workflows=1/3`、`consumer-creative-ai=3/5`、`chatgpt-control-surfaces=3/5`、`consumer-productivity=8/8`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（consumer-agentic-product-surfaces 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Google Gemini Interactions API capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；consumer-productivity alternate-target 诊断与自测已同步；commit `d5e1b80`；质量评分 27/30。）
+- Result: pass（consumer-agentic-product-surfaces 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Google Gemini Interactions API capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；consumer-productivity alternate-target 诊断与自测已同步；commit `pending`；质量评分 27/30。）
 - Decision: scale（保留 consumer-agentic-product-surfaces 作为后续 Gemini App、AI Overviews、AI Mode、Ask YouTube、Docs Live、嵌入式助手与跨产品 agentic surface 的独立容量入口；下一步可继续处理 ai-commercialization-roi 或其他 1 headroom 高利用 target。）
 
 ## EXP-277 — Aerospace compute infrastructure capacity headroom
@@ -116,7 +116,7 @@
 - Start date: 2026-08-05
 - End date: 2026-08-05
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `aerospace-compute-infrastructure=1/3 (2 headroom)`、`ai-policy-standards=3/5`、`ai-industrial-policy=6/8`、`digital-regulation-compliance=1/3`、`policy-governance=11/11`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（aerospace-compute-infrastructure 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Xinhua AI-space / commercial space capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；policy alternate-target 诊断保持清晰；commit `d5e1b80`；质量评分 27/30。）
+- Result: pass（aerospace-compute-infrastructure 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Xinhua AI-space / commercial space capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；policy alternate-target 诊断保持清晰；commit `pending`；质量评分 27/30。）
 - Decision: scale（保留 aerospace-compute-infrastructure 作为后续太空计算、卫星互联网、商业航天数据服务、遥感模型、可复用火箭与 launch cadence 信号的独立容量入口；下一步可继续处理 consumer-agentic-product-surfaces、ai-commercialization-roi 或其他 1 headroom 高利用 target。）
 
 ## EXP-276 — Cloud agent runtime infrastructure capacity headroom
