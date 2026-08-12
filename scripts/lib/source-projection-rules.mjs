@@ -2063,8 +2063,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Amazon / RAISE US / AI workforce training',
     capacityPlan: {
       selectedSplitTarget: 'workforce-ai-enablement',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, local-commerce-ai-workflows, and ai-commercialization-roi because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, token-cost optimization signal, or paid-product commercialization signal.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, supply-chain-cost-pressure, token-economics-optimization, local-commerce-ai-workflows, and ai-commercialization-roi because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, hardware supply-chain cost signal, token-cost optimization signal, local-commerce workflow, or paid-product commercialization signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'supply-chain-cost-pressure', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -2559,9 +2559,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 2,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses supply-chain-cost-pressure headroom for a 2026-07-08 memory supply and consumer electronics cost signal.',
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; supply-chain-cost-pressure now has two effective headroom slots for future HBM, DRAM, NAND, memory allocation, consumer-electronics BOM, and AI hardware component pricing signals while keeping token economics and commercialization targets separate.',
       },
     },
     terms: ['HBM', 'DRAM/NAND', '消费电子产业链面临成本重构'],

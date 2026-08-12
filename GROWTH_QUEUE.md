@@ -21,6 +21,11 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-291: 将 supply-chain-cost-pressure 有效容量从 2 提升到 3，并同步 Xinhua AI memory price capacityPlan，消费 EXP-290 后续“supply-chain-cost-pressure 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `PENDING`
+  - Hypothesis: EXP-290 后续建议继续处理 supply-chain-cost-pressure；若 HBM、DRAM/NAND、AI 服务器内存挤压、消费电子 BOM 与存储配置价格压力继续只保留 1 个有效 headroom，后续 AI hardware component pricing、memory allocation、supply-chain spillover 与 device cost signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 token-economics-optimization。
+  - Metrics: source projection taxonomy 显示 supply-chain-cost-pressure 从 1/2 变为 1/3，并保留 regional-ai-ecosystems=1/4、ai-commercialization-roi=1/3、content-licensing-markets=1/3、local-commerce-ai-workflows=1/3、market-sizing-reports=1/3、token-economics-optimization=1/3、market-intelligence=12/12、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.supply-chain-cost-pressure` 提升到 3；2) Xinhua AI memory price / consumer electronics cost pressure capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) Amazon RAISE US workforce enablement alternate-target 诊断同步新可用 supply-chain-cost-pressure sibling target；4) 质量评分 27/30。
+
 - [x] P1 Candidate / EXP-290: 将 2026-08-12 最新双语日报接入 real cron fixture，并修复 ChatGPT 广告国际化、Daybreak Bedrock 合作伙伴生态、OpenRouter 国产模型霸榜与中国自动驾驶 UAE 出海字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `f54d47e`
   - Hypothesis: 最近24小时新增日报（2026-08-12）暴露 ChatGPT 广告扩展到 5 个国家、OpenAI Daybreak 网络安全模型登陆 AWS Bedrock 并启动 15+ 家安全厂商合作伙伴计划、国产大模型包揽 OpenRouter Token 调用榜前五、ChatGPT Business Premium 席位推出与中国自动驾驶出租车（百度萝卜快跑/文远知行）集体出海阿联酋五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉 ChatGPT 广告变现国际化、AI 网络安全即服务、国产模型全球调用格局、企业 AI 订阅分层与中国自动驾驶全球化长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-12 / latestFixture=2026-08-12 / expectedSignals=5；daily source projection labels 覆盖 44 fixtures / 220 expectedSignals；daily EN/ZH generator、Case-Level FAQ、parser guardrail、latest surface、EN language、brief specificity 与 `pnpm build` 全部通过。

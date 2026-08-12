@@ -116,7 +116,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'ai-commercialization-roi': 3,
   'local-commerce-ai-workflows': 3,
   'market-sizing-reports': 3,
-  'supply-chain-cost-pressure': 2,
+  'supply-chain-cost-pressure': 3,
   'token-economics-optimization': 3,
   'waic-product-launch-pipeline': 2,
   'waic-industry-agenda': 2,

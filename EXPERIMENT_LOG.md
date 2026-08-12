@@ -1,3 +1,14 @@
+## EXP-291 — Supply-chain cost pressure capacity headroom
+- Hypothesis: EXP-290 后续建议继续处理 supply-chain-cost-pressure；若 HBM、DRAM/NAND、AI 服务器内存挤压、消费电子 BOM 与存储配置价格压力继续只保留 1 个有效 headroom，后续 AI hardware component pricing、memory allocation、supply-chain spillover 与 device cost signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 token-economics-optimization。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `supply-chain-cost-pressure` effective category budget 从 2 提升到 3；同步 `xinhua-ai-memory-price-consumer-electronics-2026` structured capacityPlan 的 categoryBudget/categoryHeadroom/rationale，并让 Amazon RAISE US workforce enablement 规则显式拒绝新可用的 supply-chain-cost-pressure alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-12
+- End date: 2026-08-12
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `supply-chain-cost-pressure=1/3 (2 headroom)`、`regional-ai-ecosystems=1/4`、`ai-commercialization-roi=1/3`、`content-licensing-markets=1/3`、`local-commerce-ai-workflows=1/3`、`market-sizing-reports=1/3`、`token-economics-optimization=1/3`、`market-intelligence=12/12`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（supply-chain-cost-pressure 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Xinhua AI memory price capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；Amazon RAISE US alternate-target 诊断已同步；commit `PENDING`；质量评分 27/30。）
+- Decision: scale（保留 supply-chain-cost-pressure 作为后续 HBM、DRAM/NAND、memory allocation、consumer-electronics BOM、AI hardware component pricing 与 device cost spillover 信号的独立容量入口；下一步可继续处理 waic-product-launch-pipeline、waic-industry-agenda 或 workforce-ai-enablement 等 1 headroom 高利用 target。）
+
 ## EXP-290 — 2026-08-12 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-12）暴露 ChatGPT 广告扩展到 5 个国家、OpenAI Daybreak 网络安全模型登陆 AWS Bedrock 并启动 15+ 家安全厂商合作伙伴计划、国产大模型包揽 OpenRouter Token 调用榜前五、ChatGPT Business Premium 席位推出与中国自动驾驶出租车（百度萝卜快跑/文远知行）集体出海阿联酋五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉 ChatGPT 广告变现国际化、AI 网络安全即服务、国产模型全球调用格局、企业 AI 订阅分层与中国自动驾驶全球化长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-12.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
