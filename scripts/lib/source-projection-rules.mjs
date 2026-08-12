@@ -1204,7 +1204,13 @@ export const FIELD_PROJECTION_RULES = [
     category: 'physical-ai-robotics',
     splitTargetCategory: 'autonomous-mobility-systems',
     displayLabel: 'NVIDIA / DRIVE / Hyperion / compute infrastructure',
-    terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN'],
+    displayLabels: [
+      {
+        label: 'China / Baidu Apollo / WeRide / UAE robotaxi deployment',
+        terms: ['萝卜快跑', '文远知行', '迪拜', '阿联酋', 'Robotaxi', '自动驾驶出租车'],
+      },
+    ],
+    terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN', '萝卜快跑', '文远知行', '迪拜', '阿联酋', '自动驾驶出租车'],
     details: {
       what: 'NVIDIA expanded the DRIVE Hyperion robotaxi ecosystem with Uber/Autobrains in Munich, Foxconn L4-ready fleets in Taiwan, VinFast in Southeast Asia, and HUMAIN in Saudi Arabia and the Middle East.',
       why: 'Autonomous driving is moving from single-vehicle demos toward platformized deployment stacks that combine vehicle compute, sensors, safety operating systems, simulation validation, and mobility-network partners.',
@@ -1306,8 +1312,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / cheaper intelligence / enterprise scale economics',
         terms: ['更便宜的智能', '10 亿活跃用户', '200 万家企业'],
       },
+      {
+        label: 'OpenAI / ChatGPT / ad expansion international rollout',
+        terms: ['ChatGPT 广告', '英国', '墨西哥', '巴西', '日本', '韩国', '免费用户', '关闭广告'],
+      },
     ],
-    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'GPT‑5.6', 'Sol 主打编码', 'ultra 工作模式', 'ultra 多智能体并行工作模式', '更便宜的智能', '10 亿活跃用户', '200 万家企业', '0.20 / 1.20 美元', 'Sol 推出 Fast mode'],
+    terms: ['Instant、Medium、High', 'Pro Extended', 'Thinking Light', 'GPT-5.6', 'GPT‑5.6', 'Sol 主打编码', 'ultra 工作模式', 'ultra 多智能体并行工作模式', '更便宜的智能', '10 亿活跃用户', '200 万家企业', '0.20 / 1.20 美元', 'Sol 推出 Fast mode', 'ChatGPT 广告'],
     detailVariants: [
       {
         terms: ['GPT‑5.6 Sol', 'GPT‑5.6 Luna', 'Think 按钮'],
@@ -1520,8 +1530,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / Daybreak / cyber partner program',
         terms: ['Daybreak Cyber Partner', 'Accenture', 'CrowdStrike'],
       },
+      {
+        label: 'OpenAI / Daybreak / Bedrock cyber partner ecosystem',
+        terms: ['Daybreak', 'Bedrock', 'Accenture', 'CrowdStrike'],
+      },
     ],
-    terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问', 'Presence', '语音/聊天 Agent', '人类接管规则', '调用企业系统', 'ChatGPT Business', 'Premium 席位', '125 美元', '5 倍用量', 'Daybreak Cyber Partner', 'CrowdStrike', 'Cloudflare'],
+    terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问', 'Presence', '语音/聊天 Agent', '人类接管规则', '调用企业系统', 'ChatGPT Business', 'Premium 席位', '125 美元', '5 倍用量', 'Daybreak Cyber Partner', 'Daybreak', 'CrowdStrike', 'Cloudflare'],
     detailVariants: [
       {
         terms: ['Presence', '语音/聊天 Agent', '人类接管规则'],

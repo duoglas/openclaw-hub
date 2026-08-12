@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-11 17:23
+Last updated: 2026-08-12 11:26
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -18,6 +18,13 @@ Manager: main session
 
 ## Doing
 - [ ] N/A
+
+## Done
+
+- [x] P1 Candidate / EXP-290: 将 2026-08-12 最新双语日报接入 real cron fixture，并修复 ChatGPT 广告国际化、Daybreak Bedrock 合作伙伴生态、OpenRouter 国产模型霸榜与中国自动驾驶 UAE 出海字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `TBD`
+  - Hypothesis: 最近24小时新增日报（2026-08-12）暴露 ChatGPT 广告扩展到 5 个国家、OpenAI Daybreak 网络安全模型登陆 AWS Bedrock 并启动 15+ 家安全厂商合作伙伴计划、国产大模型包揽 OpenRouter Token 调用榜前五、ChatGPT Business Premium 席位推出与中国自动驾驶出租车（百度萝卜快跑/文远知行）集体出海阿联酋五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉 ChatGPT 广告变现国际化、AI 网络安全即服务、国产模型全球调用格局、企业 AI 订阅分层与中国自动驾驶全球化长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-12 / latestFixture=2026-08-12 / expectedSignals=5；daily source projection labels 覆盖 44 fixtures / 220 expectedSignals；daily EN/ZH generator、Case-Level FAQ、parser guardrail、latest surface、EN language、brief specificity 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-12.mjs`；2) 为 ChatGPT 广告国际化新增 `openai-chatgpt-model-picker-2026` displayLabel，为 Daybreak Bedrock 合作伙伴生态新增 `openai-partner-network-enterprise-ecosystem-2026` displayLabel，为中国自动驾驶 UAE 出海新增 `nvidia-drive-hyperion-robotaxi-2026` displayLabel；3) EN 2026-08-12 页面移除泛化 fallback 并统一五条信号；4) 补齐 ChatGPT ad monetization、Daybreak Bedrock security pilot 与 OpenRouter ranking Case-Level FAQ；5) 质量评分 28/30。
 
 ## Done
 
