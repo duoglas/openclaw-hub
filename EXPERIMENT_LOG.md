@@ -1,3 +1,14 @@
+## EXP-290 — 2026-08-12 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-12）暴露 ChatGPT 广告扩展到 5 个国家、OpenAI Daybreak 网络安全模型登陆 AWS Bedrock 并启动 15+ 家安全厂商合作伙伴计划、国产大模型包揽 OpenRouter Token 调用榜前五、ChatGPT Business Premium 席位推出与中国自动驾驶出租车（百度萝卜快跑/文远知行）集体出海阿联酋五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉 ChatGPT 广告变现国际化、AI 网络安全即服务、国产模型全球调用格局、企业 AI 订阅分层与中国自动驾驶全球化长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-12.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-12 real cron fixture；为 ChatGPT 广告国际化在 `openai-chatgpt-model-picker-2026` 新增 displayLabel，为 Daybreak Bedrock 合作伙伴生态在 `openai-partner-network-enterprise-ecosystem-2026` 新增 displayLabel，为中国自动驾驶 UAE 出海在 `nvidia-drive-hyperion-robotaxi-2026` 新增 displayLabel；补齐 ChatGPT ad monetization、Daybreak Bedrock security pilot 与 OpenRouter ranking Case-Level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-08-12
+- End date: 2026-08-12
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-12 / latestFixture=2026-08-12 / expectedSignals=5；`pnpm check:daily-source-projection-labels` 覆盖 44 fixtures / 220 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、latest surface、EN language、brief specificity 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-12 最新双语日报已由同日 real cron fixture 覆盖；ChatGPT 广告国际化、Daybreak Bedrock 合作伙伴生态、OpenRouter 国产模型霸榜、ChatGPT Business Premium 与中国自动驾驶 UAE 出海均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 Case-Level FAQ；commit `f54d47e`；质量评分 28/30。）
+- Decision: scale（保留 2026-08-12 fixture 作为 ChatGPT 广告变现国际化、AI 网络安全即服务、国产模型全球调用格局、企业 AI 订阅分层与中国自动驾驶全球化的首日索引基线；下一步可继续处理 supply-chain-cost-pressure 或其他 1 headroom 高利用 target。）
+
 ## EXP-289 — Local-commerce AI workflow capacity headroom
 - Hypothesis: EXP-288 后续建议继续处理 local-commerce-ai-workflows；若 Meituan LongCat、AIGC 海报生成、商户 listing 优化、本地服务广告与 marketplace conversion 继续只保留 1 个有效 headroom，后续本地生活 AI 工作流信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 token-economics-optimization。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
