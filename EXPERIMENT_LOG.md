@@ -6,7 +6,7 @@
 - Start date: 2026-08-13
 - End date: 2026-08-13
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `waic-product-launch-pipeline=1/3 (2 headroom)`、`regional-ai-ecosystems=1/4`、`ai-commercialization-roi=1/3`、`content-licensing-markets=1/3`、`local-commerce-ai-workflows=1/3`、`market-sizing-reports=1/3`、`supply-chain-cost-pressure=1/3`、`token-economics-optimization=1/3`、`market-intelligence=12/12`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（waic-product-launch-pipeline 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；WAIC product launch pipeline capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；market-intelligence sibling alternate-target 诊断已同步；commit `PENDING`；质量评分 27/30。）
+- Result: pass（waic-product-launch-pipeline 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；WAIC product launch pipeline capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；market-intelligence sibling alternate-target 诊断已同步；commit `ec326ac`；质量评分 27/30。）
 - Decision: scale（保留 waic-product-launch-pipeline 作为后续 WAIC product debuts、procurement groups、project pipeline、edge AI launches、embodied intelligence showcase 与 domestic compute launch signals 的独立容量入口；下一步可继续处理 waic-industry-agenda、workforce-ai-enablement 或 regional-research-ecosystems 等 1 headroom 高利用 target。）
 
 ## EXP-291 — Supply-chain cost pressure capacity headroom
