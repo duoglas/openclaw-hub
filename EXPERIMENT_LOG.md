@@ -1,3 +1,14 @@
+## EXP-293 — Workforce AI enablement capacity headroom
+- Hypothesis: EXP-292 后续建议继续处理 workforce-ai-enablement；若 RAISE US、Future Ready 2030、AI workforce-skilling、教育赋能、企业培训、worker-transition 与 credential-like programs 继续只保留 1 个有效 headroom，后续 AI workforce training、employer upskilling、education enablement 与 labor-transition signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization 或 waic-product-launch-pipeline。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `workforce-ai-enablement` effective category budget 从 2 提升到 3；同步 `amazon-raise-us-ai-workforce-training-2026` structured capacityPlan 的 categoryBudget/categoryHeadroom/rationale；market-intelligence sibling alternate-target 诊断同步新可用 workforce-ai-enablement target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-13
+- End date: 2026-08-13
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `workforce-ai-enablement=1/3 (2 headroom)`、`regional-ai-ecosystems=1/4`、`ai-commercialization-roi=1/3`、`content-licensing-markets=1/3`、`local-commerce-ai-workflows=1/3`、`market-sizing-reports=1/3`、`supply-chain-cost-pressure=1/3`、`token-economics-optimization=1/3`、`waic-product-launch-pipeline=1/3`、`market-intelligence=12/12`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（workforce-ai-enablement 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Amazon RAISE US workforce training capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；market-intelligence sibling alternate-target 诊断已同步；commit `PENDING`；质量评分 27/30。）
+- Decision: scale（保留 workforce-ai-enablement 作为后续 AI workforce-skilling、employer training、education enablement、credential-like programs 与 worker-transition signals 的独立容量入口；下一步可继续处理 waic-industry-agenda、regional-research-ecosystems 或 regional-office-expansion 等 1 headroom 高利用 target。）
+
 ## EXP-292 — WAIC product launch pipeline capacity headroom
 - Hypothesis: EXP-291 后续建议继续处理 waic-product-launch-pipeline；若 WAIC 300+ product debuts、177 procurement groups、203.6B yuan intended purchases、409B yuan signed Shanghai AI projects、edge AI、embodied intelligence 与 domestic compute showcase 继续只保留 1 个有效 headroom，后续 WAIC product debut、procurement pipeline、project-signing、edge-device launch 与 embodied/domestic compute signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure 或 token-economics-optimization。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

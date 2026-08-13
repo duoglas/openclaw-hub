@@ -2078,9 +2078,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'supply-chain-cost-pressure', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi', 'waic-product-launch-pipeline'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 2,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; uses workforce-ai-enablement capacity for a fixture-backed workforce and education ecosystem signal while preserving regional-ai-ecosystems for location-specific industry clusters.',
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; workforce-ai-enablement now has two effective headroom slots for future AI workforce-skilling, education enablement, credential, employer training, and worker-transition signals while preserving regional ecosystem, ROI, and WAIC product-launch targets.',
       },
     },
     terms: ['RAISE US', 'Future Ready 2030', 'AI 时代技能'],

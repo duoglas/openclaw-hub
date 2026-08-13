@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-13 11:20
+Last updated: 2026-08-13 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-293: 将 workforce-ai-enablement 有效容量从 2 提升到 3，并同步 Amazon RAISE US workforce training capacityPlan，消费 EXP-292 后续“workforce-ai-enablement 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `PENDING`
+  - Hypothesis: EXP-292 后续建议继续处理 workforce-ai-enablement；若 RAISE US、Future Ready 2030、AI workforce-skilling、教育赋能、企业培训、worker-transition 与 credential-like programs 继续只保留 1 个有效 headroom，后续 AI workforce training、employer upskilling、education enablement 与 labor-transition signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization 或 waic-product-launch-pipeline。
+  - Metrics: source projection taxonomy 显示 workforce-ai-enablement 从 1/2 变为 1/3，并保留 regional-ai-ecosystems=1/4、ai-commercialization-roi=1/3、content-licensing-markets=1/3、local-commerce-ai-workflows=1/3、market-sizing-reports=1/3、supply-chain-cost-pressure=1/3、token-economics-optimization=1/3、waic-product-launch-pipeline=1/3、market-intelligence=12/12、split target categories=50/50、parentFallback=0、overBudget=0；registry health、daily source projection labels 与 `pnpm build` 通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.workforce-ai-enablement` 提升到 3；2) Amazon RAISE US workforce training capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) market-intelligence sibling alternate-target 诊断同步新可用 workforce-ai-enablement target；4) 质量评分 27/30。
 
 - [x] P1 Candidate / EXP-292: 将 waic-product-launch-pipeline 有效容量从 2 提升到 3，并补齐 WAIC product launch pipeline structured capacityPlan，消费 EXP-291 后续“waic-product-launch-pipeline 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `ec326ac`
   - Hypothesis: EXP-291 后续建议继续处理 waic-product-launch-pipeline；若 WAIC 300+ product debuts、177 procurement groups、203.6B yuan intended purchases、409B yuan signed Shanghai AI projects、edge AI、embodied intelligence 与 domestic compute showcase 继续只保留 1 个有效 headroom，后续 WAIC product debut、procurement pipeline、project-signing、edge-device launch 与 embodied/domestic compute signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure 或 token-economics-optimization。
