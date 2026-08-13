@@ -1,3 +1,14 @@
+## EXP-292 — WAIC product launch pipeline capacity headroom
+- Hypothesis: EXP-291 后续建议继续处理 waic-product-launch-pipeline；若 WAIC 300+ product debuts、177 procurement groups、203.6B yuan intended purchases、409B yuan signed Shanghai AI projects、edge AI、embodied intelligence 与 domestic compute showcase 继续只保留 1 个有效 headroom，后续 WAIC product debut、procurement pipeline、project-signing、edge-device launch 与 embodied/domestic compute signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure 或 token-economics-optimization。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `waic-product-launch-pipeline` effective category budget 从 2 提升到 3；为 `china-waic-product-launch-pipeline-2026` 增加 structured capacityPlan；同步 market-intelligence sibling capacityPlan/alternate-target 诊断，显式拒绝新可用的 waic-product-launch-pipeline alternate target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-13
+- End date: 2026-08-13
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `waic-product-launch-pipeline=1/3 (2 headroom)`、`regional-ai-ecosystems=1/4`、`ai-commercialization-roi=1/3`、`content-licensing-markets=1/3`、`local-commerce-ai-workflows=1/3`、`market-sizing-reports=1/3`、`supply-chain-cost-pressure=1/3`、`token-economics-optimization=1/3`、`market-intelligence=12/12`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（waic-product-launch-pipeline 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；WAIC product launch pipeline capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；market-intelligence sibling alternate-target 诊断已同步；commit `PENDING`；质量评分 27/30。）
+- Decision: scale（保留 waic-product-launch-pipeline 作为后续 WAIC product debuts、procurement groups、project pipeline、edge AI launches、embodied intelligence showcase 与 domestic compute launch signals 的独立容量入口；下一步可继续处理 waic-industry-agenda、workforce-ai-enablement 或 regional-research-ecosystems 等 1 headroom 高利用 target。）
+
 ## EXP-291 — Supply-chain cost pressure capacity headroom
 - Hypothesis: EXP-290 后续建议继续处理 supply-chain-cost-pressure；若 HBM、DRAM/NAND、AI 服务器内存挤压、消费电子 BOM 与存储配置价格压力继续只保留 1 个有效 headroom，后续 AI hardware component pricing、memory allocation、supply-chain spillover 与 device cost signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、market-sizing-reports 或 token-economics-optimization。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

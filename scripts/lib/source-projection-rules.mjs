@@ -526,8 +526,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'China / WorkBuddy / AI commercialization ROI',
     capacityPlan: {
       selectedSplitTarget: 'ai-commercialization-roi',
-      whyNotAlternatives: 'Rejected alternate split targets local-commerce-ai-workflows, market-sizing-reports, and regional-ai-ecosystems because Doubao, WorkBuddy, paid-plan testing, and cross-sector workflow adoption are direct AI monetization and ROI signals rather than local-commerce, market-sizing, or regional-ecosystem signals.',
-      rejectedAlternateTargets: ['local-commerce-ai-workflows', 'market-sizing-reports', 'regional-ai-ecosystems'],
+      whyNotAlternatives: 'Rejected alternate split targets local-commerce-ai-workflows, market-sizing-reports, regional-ai-ecosystems, and waic-product-launch-pipeline because Doubao, WorkBuddy, paid-plan testing, and cross-sector workflow adoption are direct AI monetization and ROI signals rather than local-commerce, market-sizing, regional-ecosystem, or WAIC product-launch pipeline signals.',
+      rejectedAlternateTargets: ['local-commerce-ai-workflows', 'market-sizing-reports', 'regional-ai-ecosystems', 'waic-product-launch-pipeline'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 3,
@@ -579,8 +579,8 @@ export const FIELD_PROJECTION_RULES = [
     terms: ['美团', 'LongCat-2.0', 'AIGC 海报生成系统'],
     capacityPlan: {
       selectedSplitTarget: 'local-commerce-ai-workflows',
-      whyNotAlternatives: 'Rejected alternate split targets regional-ai-ecosystems, ai-commercialization-roi, content-licensing-markets, market-sizing-reports, and token-economics-optimization because Meituan LongCat, AIGC poster generation, merchant listing quality, local-service ads, and marketplace conversion are local-commerce workflow signals rather than regional ecosystem, broad ROI, licensing, market-sizing, or token-cost signals.',
-      rejectedAlternateTargets: ['regional-ai-ecosystems', 'ai-commercialization-roi', 'content-licensing-markets', 'market-sizing-reports', 'token-economics-optimization'],
+      whyNotAlternatives: 'Rejected alternate split targets regional-ai-ecosystems, ai-commercialization-roi, content-licensing-markets, market-sizing-reports, token-economics-optimization, and waic-product-launch-pipeline because Meituan LongCat, AIGC poster generation, merchant listing quality, local-service ads, and marketplace conversion are local-commerce workflow signals rather than regional ecosystem, broad ROI, licensing, market-sizing, token-cost, or WAIC product-launch pipeline signals.',
+      rejectedAlternateTargets: ['regional-ai-ecosystems', 'ai-commercialization-roi', 'content-licensing-markets', 'market-sizing-reports', 'token-economics-optimization', 'waic-product-launch-pipeline'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 3,
@@ -611,6 +611,17 @@ export const FIELD_PROJECTION_RULES = [
       },
     ],
     terms: ['超 300 款', '1100 余家', '端侧 AI、具身智能、国产算力继续落地', '超 40 万人次', '203.6 亿元', '409 亿元', '177 个采购团组'],
+    capacityPlan: {
+      selectedSplitTarget: 'waic-product-launch-pipeline',
+      whyNotAlternatives: 'Rejected alternate split targets regional-ai-ecosystems, ai-commercialization-roi, content-licensing-markets, local-commerce-ai-workflows, market-sizing-reports, supply-chain-cost-pressure, and token-economics-optimization because WAIC product debuts, procurement groups, signed project pipeline, edge AI products, embodied intelligence, and domestic compute showcases are product-launch and project-pipeline signals rather than regional ecosystem, commercialization ROI, licensing, local-commerce workflow, market-size report, supply-chain cost, or token-cost optimization signals.',
+      rejectedAlternateTargets: ['regional-ai-ecosystems', 'ai-commercialization-roi', 'content-licensing-markets', 'local-commerce-ai-workflows', 'market-sizing-reports', 'supply-chain-cost-pressure', 'token-economics-optimization'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; waic-product-launch-pipeline now has two effective headroom slots for future WAIC product debuts, procurement groups, signed project pipeline, edge AI products, embodied intelligence showcases, and domestic compute launch signals while preserving regional ecosystem, ROI, supply-chain, and token-economics targets.',
+      },
+    },
     detailVariants: [
       {
         terms: ['超 40 万人次', '203.6 亿元', '409 亿元'],
@@ -2063,8 +2074,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Amazon / RAISE US / AI workforce training',
     capacityPlan: {
       selectedSplitTarget: 'workforce-ai-enablement',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, supply-chain-cost-pressure, token-economics-optimization, local-commerce-ai-workflows, and ai-commercialization-roi because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, hardware supply-chain cost signal, token-cost optimization signal, local-commerce workflow, or paid-product commercialization signal.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'supply-chain-cost-pressure', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, supply-chain-cost-pressure, token-economics-optimization, local-commerce-ai-workflows, ai-commercialization-roi, and waic-product-launch-pipeline because RAISE US is a workforce and education enablement signal, not a market-size report, media licensing signal, generic regional market ecosystem, hardware supply-chain cost signal, token-cost optimization signal, local-commerce workflow, paid-product commercialization signal, or WAIC product-launch pipeline signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'supply-chain-cost-pressure', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi', 'waic-product-launch-pipeline'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 2,
@@ -2442,8 +2453,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'China / WAIC / token cost optimization',
     capacityPlan: {
       selectedSplitTarget: 'token-economics-optimization',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, and ai-commercialization-roi because WAIC token-cost reduction, cache pricing, model routing, and compute-power coordination are token-economics optimization signals, not market-size, media licensing, regional ecosystem, or paid-product commercialization signals.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'ai-commercialization-roi'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, ai-commercialization-roi, and waic-product-launch-pipeline because WAIC token-cost reduction, cache pricing, model routing, and compute-power coordination are token-economics optimization signals, not market-size, media licensing, regional ecosystem, paid-product commercialization, or product-launch pipeline signals.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'ai-commercialization-roi', 'waic-product-launch-pipeline'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 3,
@@ -2555,8 +2566,8 @@ export const FIELD_PROJECTION_RULES = [
     displayLabel: 'Xinhua / AI memory demand / consumer electronics cost pressure',
     capacityPlan: {
       selectedSplitTarget: 'supply-chain-cost-pressure',
-      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, local-commerce-ai-workflows, and ai-commercialization-roi because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, regional ecosystem expansion, token-cost optimization signal, or paid-product commercialization signal.',
-      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi'],
+      whyNotAlternatives: 'Rejected alternate split targets market-sizing-reports, content-licensing-markets, regional-ai-ecosystems, token-economics-optimization, local-commerce-ai-workflows, ai-commercialization-roi, and waic-product-launch-pipeline because HBM, DRAM, and NAND price pressure is a supply-chain cost signal, not a market-size report, media licensing signal, regional ecosystem expansion, token-cost optimization signal, local-commerce workflow, paid-product commercialization signal, or WAIC product-launch pipeline signal.',
+      rejectedAlternateTargets: ['market-sizing-reports', 'content-licensing-markets', 'regional-ai-ecosystems', 'token-economics-optimization', 'local-commerce-ai-workflows', 'ai-commercialization-roi', 'waic-product-launch-pipeline'],
       budgetImpact: {
         capacityDelta: 0,
         categoryBudget: 3,
