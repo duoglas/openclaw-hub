@@ -28,7 +28,7 @@
 - Start date: 2026-08-12
 - End date: 2026-08-12
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `supply-chain-cost-pressure=1/3 (2 headroom)`、`regional-ai-ecosystems=1/4`、`ai-commercialization-roi=1/3`、`content-licensing-markets=1/3`、`local-commerce-ai-workflows=1/3`、`market-sizing-reports=1/3`、`token-economics-optimization=1/3`、`market-intelligence=12/12`、`split target categories: 50/50 used`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（supply-chain-cost-pressure 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Xinhua AI memory price capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；Amazon RAISE US alternate-target 诊断已同步；commit `763c950`；质量评分 27/30。）
+- Result: pass（supply-chain-cost-pressure 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Xinhua AI memory price capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；Amazon RAISE US alternate-target 诊断已同步；commit `568b6d0`；质量评分 27/30。）
 - Decision: scale（保留 supply-chain-cost-pressure 作为后续 HBM、DRAM/NAND、memory allocation、consumer-electronics BOM、AI hardware component pricing 与 device cost spillover 信号的独立容量入口；下一步可继续处理 waic-product-launch-pipeline、waic-industry-agenda 或 workforce-ai-enablement 等 1 headroom 高利用 target。）
 
 ## EXP-290 — 2026-08-12 latest real cron fixture and field-level projection recovery
