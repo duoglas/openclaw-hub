@@ -375,6 +375,10 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
       },
       {
+        label: 'NVIDIA / Spectrum-6 / AI factory networking infrastructure',
+        terms: ['Spectrum-6', '102.4Tbps', 'CoreWeave'],
+      },
+      {
         label: 'NVIDIA / FMS / AI storage data path infrastructure',
         terms: ['FMS', 'cuFile APIs', '高并发'],
       },
@@ -1067,6 +1071,10 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Alpamayo 2 Super', '商业用途'],
       },
       {
+        label: 'NVIDIA / Alpamayo 2 Super / autonomous driving model',
+        terms: ['Alpamayo 2 Super', '已可商用'],
+      },
+      {
         label: 'NVIDIA / Hugging Face / LeRobot robotics ecosystem',
         terms: ['Hugging Face', 'LeRobot', 'Isaac GR00T 1.7'],
       },
@@ -1103,6 +1111,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA said Alpamayo 2 Super is available for commercial use as an autonomous-driving reasoning model for robotaxi and long-tail driving scenarios.',
           why: 'Autonomous driving is moving from perception-only stacks toward explainable reasoning, cloud training, simulation validation, and deployable edge models that can handle rare cases.',
           impact: 'Autonomous-driving and robotics teams can test open commercial reasoning models, then validate distillation, sensor coverage, safety cases, licensing, and edge deployment constraints before production.',
+        },
+      },
+      {
+        terms: ['Alpamayo 2 Super', '已可商用'],
+        details: {
+          what: 'NVIDIA released Alpamayo 2 Super on Hugging Face for commercial autonomous-driving development, with outputs for trajectories, causal reasoning traces, meta actions, automatic labeling, and visual question answering.',
+          why: 'Robotaxi and autonomous-driving programs are shifting from perception models toward explainable reasoning models that can generate training data and support long-tail scenario analysis.',
+          impact: 'Autonomous-driving teams should validate commercial license terms, reasoning traces, distillation quality, sensor coverage, safety cases, and edge deployment constraints before moving the model into production workflows.',
         },
       },
       {
@@ -1148,6 +1164,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / MIIT / SME digital AI enablement',
         terms: ['小快轻准', '数智化', '中小企业'],
       },
+      {
+        label: 'China / Xinhua / AI manufacturing robotics photonics deployment',
+        terms: ['浙江数控机床', '宁波精密光学', '苏州光子产业'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
@@ -1160,8 +1180,16 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses refreshed vertical-workflow-agents capacity for a latest-fixture vertical workflow deployment signal without widening generic enterprise-agents matching.',
       },
     },
-    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟', '中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理', '数智化', '中小企业'],
+    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟', '中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理', '数智化', '中小企业', '浙江数控机床', '宁波精密光学', '苏州光子产业', '合肥具身智能机器人训练场'],
     detailVariants: [
+      {
+        terms: ['浙江数控机床', '宁波精密光学', '苏州光子产业'],
+        details: {
+          what: 'Xinhua reported local China AI manufacturing examples across Zhejiang CNC machine tools, Ningbo precision optics, Suzhou photonics, and a Hefei embodied-intelligence robotics training field.',
+          why: 'China AI industrialization is moving from single model apps toward coordinated supply chains across industrial machinery, robotics training, photonics, optical chips, and smart manufacturing clusters.',
+          impact: 'Manufacturers, robotics vendors, and regional suppliers should track which pilot factories become signed orders, measurable yield improvements, training-field utilization, and repeatable deployment templates.',
+        },
+      },
       {
         terms: ['中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理'],
         details: {
@@ -1220,8 +1248,22 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / Baidu Apollo / WeRide / UAE robotaxi deployment',
         terms: ['萝卜快跑', '文远知行', '迪拜', '阿联酋', 'Robotaxi', '自动驾驶出租车'],
       },
+      {
+        label: 'NVIDIA / Halos OS / robotaxi safety stack',
+        terms: ['Halos OS', '安全 OS', 'AI 安全护栏'],
+      },
     ],
-    terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN', '萝卜快跑', '文远知行', '迪拜', '阿联酋', '自动驾驶出租车'],
+    terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN', '萝卜快跑', '文远知行', '迪拜', '阿联酋', '自动驾驶出租车', 'Halos OS', '安全 OS', 'AI 安全护栏', '仿真验证'],
+    detailVariants: [
+      {
+        terms: ['Halos OS', '安全 OS', 'AI 安全护栏'],
+        details: {
+          what: 'NVIDIA framed robotaxi safety around Halos OS, certifiable operating-system layers, standardized interfaces, AI guardrails, and large-scale simulation validation before road deployment.',
+          why: 'Robotaxi commercialization is moving from whether a vehicle can drive a demo route toward whether the full stack can prove reliability under failures, long-tail scenarios, and regulatory review.',
+          impact: 'Robotaxi platforms should prepare certified OS evidence, interface contracts, guardrail tests, simulation coverage, audit trails, and failure-mode documentation before scaling commercial fleets.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA expanded the DRIVE Hyperion robotaxi ecosystem with Uber/Autobrains in Munich, Foxconn L4-ready fleets in Taiwan, VinFast in Southeast Asia, and HUMAIN in Saudi Arabia and the Middle East.',
       why: 'Autonomous driving is moving from single-vehicle demos toward platformized deployment stacks that combine vehicle compute, sensors, safety operating systems, simulation validation, and mobility-network partners.',

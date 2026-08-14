@@ -1,3 +1,14 @@
+## EXP-294 — 2026-08-14 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-14）暴露 NVIDIA Alpamayo 2 Super 商用自动驾驶推理模型、Spectrum-6 102.4Tbps AI factory 网络、Halos OS Robotaxi 安全栈、GB 44721—2026 自动驾驶强标与中国 AI+制造/机器人/光电产业落地五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉自动驾驶推理数据、AI factory 网络瓶颈、Robotaxi 安全验证、中国智驾标准化与区域智能制造长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-14.mjs`, `scripts/fixtures/daily-real-cron-2026-08-12.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-14.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-14 real cron fixture；为 Alpamayo 2 Super、Spectrum-6、Halos OS Robotaxi safety stack 与中国 AI manufacturing robotics photonics 增加 fixture-backed display label/detailVariants；重写 EN 2026-08-14 页面，移除 story 3/5 泛化 fallback，补齐 Alpamayo、Spectrum-6、Robotaxi safety 与 ChatGPT model picker Case-Level FAQ，并修正 2026-08-12 fixture gate 的 Business Premium token 与 Bottom Line 标题校验。
+- ICE: 9x8x8=576
+- Start date: 2026-08-14
+- End date: 2026-08-14
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-14 / latestFixture=2026-08-14 / expectedSignals=5；daily source projection labels 覆盖新增 Alpamayo、Spectrum-6、Halos OS、GB 44721 与 AI manufacturing robotics photonics 五条信号；daily generator、ZH generator、Case-Level FAQ、parser guardrail、latest surface 与 `pnpm build` 通过。
+- Result: pass（2026-08-14 最新双语日报已由同日 real cron fixture 覆盖；Alpamayo、Spectrum-6、Halos OS、GB 44721 与中国 AI 制造/机器人/光电均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 4 个 Case-Level FAQ；commit `PENDING`；质量评分 28/30。）
+- Decision: scale（保留 2026-08-14 fixture 作为 autonomous-driving reasoning data、AI factory networking、robotaxi safety stack、中国智驾标准化与 AI manufacturing cluster 的首日索引基线；下一步可继续处理 waic-industry-agenda、regional-research-ecosystems 或 regional-office-expansion 等 1 headroom 高利用 target。）
+
 ## EXP-293 — Workforce AI enablement capacity headroom
 - Hypothesis: EXP-292 后续建议继续处理 workforce-ai-enablement；若 RAISE US、Future Ready 2030、AI workforce-skilling、教育赋能、企业培训、worker-transition 与 credential-like programs 继续只保留 1 个有效 headroom，后续 AI workforce training、employer upskilling、education enablement 与 labor-transition signals 会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization 或 waic-product-launch-pipeline。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

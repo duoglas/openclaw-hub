@@ -102,7 +102,7 @@ export const expectedSignals = [
   { title: 'ChatGPT 广告正式扩张至英、墨、巴、日、韩', sourceProjectionRuleMatches: ['openai-chatgpt-model-picker-2026'], enLabel: 'OpenAI / ChatGPT / ad expansion international rollout', zhEvidence: '来源条目 1：ChatGPT 广告正式扩张至英、墨、巴、日、韩', requiredTokens: ['ChatGPT 广告', '英国', '墨西哥', '巴西', '日本', '韩国', '免费用户', '关闭广告'] },
   { title: 'OpenAI Daybreak 网络安全模型登陆 AWS Bedrock，顶级安全厂商加入生态', sourceProjectionRuleMatches: ['openai-partner-network-enterprise-ecosystem-2026'], enLabel: 'OpenAI / Daybreak / Bedrock cyber partner ecosystem', zhEvidence: '来源条目 2：OpenAI Daybreak 网络安全模型登陆 AWS Bedrock，顶级安全厂商加入生态', requiredTokens: ['Daybreak', 'Bedrock', 'Accenture', 'CrowdStrike', 'Cloudflare', '15+'] },
   { title: '国产大模型改写全球调用版图：OpenRouter 前五全是中国模型', sourceProjectionRuleMatches: ['china-waic-token-cost-optimization-2026'], enLabel: 'Tencent / China / OpenRouter token ranking', zhEvidence: '来源条目 3：国产大模型改写全球调用版图：OpenRouter 前五全是中国模型', requiredTokens: ['OpenRouter', 'DeepSeek V4 Flash', 'MiMo V2.5', '腾讯 Hy3', 'GLM5.2', '前五'] },
-  { title: 'ChatGPT Business 推出 Premium 席位：$125/月，无使用限制', sourceProjectionRuleMatches: ['openai-partner-network-enterprise-ecosystem-2026'], enLabel: 'OpenAI / ChatGPT Business / Premium seats', zhEvidence: '来源条目 4：ChatGPT Business 推出 Premium 席位：$125/月，无使用限制', requiredTokens: ['ChatGPT Business', 'Premium 席位', '125 美元', '5 倍用量', '无使用限制'] },
+  { title: 'ChatGPT Business 推出 Premium 席位：$125/月，无使用限制', sourceProjectionRuleMatches: ['openai-partner-network-enterprise-ecosystem-2026'], enLabel: 'OpenAI / ChatGPT Business / Premium seats', zhEvidence: '来源条目 4：ChatGPT Business 推出 Premium 席位：$125/月，无使用限制', requiredTokens: ['ChatGPT Business', 'Premium 席位', '125 美元', '5 倍的用量', '无使用限制'] },
   { title: '中国自动驾驶出租车集体"出海"阿联酋', sourceProjectionRuleMatches: ['nvidia-drive-hyperion-robotaxi-2026'], enLabel: 'China / Baidu Apollo / WeRide / UAE robotaxi deployment', zhEvidence: '来源条目 5：中国自动驾驶出租车集体"出海"阿联酋', requiredTokens: ['萝卜快跑', '文远知行', '迪拜', '阿联酋', 'Robotaxi', '自动驾驶出租车'] },
 ];
 
@@ -126,7 +126,7 @@ export const requiredEnglishOutputs = [
   'Evidence item 1: OpenAI / ChatGPT / ad expansion international rollout',
   'Evidence item 5: China / Baidu Apollo / WeRide / UAE robotaxi deployment',
   '## Case-Level FAQ',
-  '## Today\'s Bottom Line',
+  '## Today’s Bottom Line',
   '## What to Watch Tomorrow',
   '## Evidence Matrix',
 ];
@@ -176,7 +176,7 @@ export const parserGuardrails = {
   story2ForbiddenDetailTokens: ['ChatGPT 广告', 'OpenRouter', 'Premium 席位', '萝卜快跑', '阿联酋'],
   story3RequiredDetailTokens: ['OpenRouter', 'DeepSeek V4 Flash', 'MiMo V2.5', '腾讯 Hy3', 'GLM5.2', '前五'],
   story3ForbiddenDetailTokens: ['ChatGPT 广告', 'Daybreak', 'Bedrock', 'Premium 席位', '萝卜快跑', '阿联酋'],
-  story4RequiredDetailTokens: ['ChatGPT Business', 'Premium 席位', '125 美元', '5 倍用量', '无使用限制'],
+  story4RequiredDetailTokens: ['ChatGPT Business', 'Premium 席位', '125 美元', '5 倍的用量', '无使用限制'],
   story4ForbiddenDetailTokens: ['ChatGPT 广告', 'Daybreak', 'Bedrock', 'OpenRouter', '萝卜快跑', '阿联酋'],
   story5RequiredDetailTokens: ['萝卜快跑', '文远知行', '迪拜', '阿联酋', 'Robotaxi', '自动驾驶出租车'],
   story5ForbiddenDetailTokens: ['ChatGPT 广告', 'Daybreak', 'Bedrock', 'OpenRouter', 'Premium 席位'],
