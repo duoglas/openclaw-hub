@@ -6,7 +6,7 @@
 - Start date: 2026-08-14
 - End date: 2026-08-14
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-14 / latestFixture=2026-08-14 / expectedSignals=5；daily source projection labels 覆盖新增 Alpamayo、Spectrum-6、Halos OS、GB 44721 与 AI manufacturing robotics photonics 五条信号；daily generator、ZH generator、Case-Level FAQ、parser guardrail、latest surface 与 `pnpm build` 通过。
-- Result: pass（2026-08-14 最新双语日报已由同日 real cron fixture 覆盖；Alpamayo、Spectrum-6、Halos OS、GB 44721 与中国 AI 制造/机器人/光电均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 4 个 Case-Level FAQ；commit `PENDING`；质量评分 28/30。）
+- Result: pass（2026-08-14 最新双语日报已由同日 real cron fixture 覆盖；Alpamayo、Spectrum-6、Halos OS、GB 44721 与中国 AI 制造/机器人/光电均输出字段级 projection；EN 页面移除泛化 fallback 并补齐 4 个 Case-Level FAQ；commit `93304e8`；质量评分 28/30。）
 - Decision: scale（保留 2026-08-14 fixture 作为 autonomous-driving reasoning data、AI factory networking、robotaxi safety stack、中国智驾标准化与 AI manufacturing cluster 的首日索引基线；下一步可继续处理 waic-industry-agenda、regional-research-ecosystems 或 regional-office-expansion 等 1 headroom 高利用 target。）
 
 ## EXP-293 — Workforce AI enablement capacity headroom
