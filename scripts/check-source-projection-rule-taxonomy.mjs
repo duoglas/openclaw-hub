@@ -24,7 +24,7 @@ export const SOURCE_PROJECTION_CATEGORY_RULE_BUDGETS = {
   'enterprise-agents': 14,
   'frontier-models': 7,
   'market-intelligence': 12,
-  'physical-ai-robotics': 10,
+  'physical-ai-robotics': 11,
   'policy-governance': 11,
   'product-safety': 7,
 };
@@ -1457,7 +1457,7 @@ function validateSelfTests() {
     'source projection taxonomy summary: totalRules=3',
     'owners: daily-source-projection=3',
     'categories: physical-ai-robotics=2, frontier-models=1',
-    'category budgets: physical-ai-robotics=2/10 (8 headroom), frontier-models=1/7 (6 headroom)',
+    'category budgets: physical-ai-robotics=2/11 (9 headroom), frontier-models=1/7 (6 headroom)',
     'effective category budgets: physical-ai-robotics=2/unbudgeted, frontier-models=1/6 (5 headroom)',
     'effective category coverage: 0/3 split-backed, parentFallback=3, overBudget=0, missingBudget=1',
     'low headroom categories: none',

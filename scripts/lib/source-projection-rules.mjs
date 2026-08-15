@@ -2688,6 +2688,32 @@ export const FIELD_PROJECTION_RULES = [
       impact: 'AI, aerospace, telecom, and remote-sensing teams should track whether reusable launch and space-computing milestones translate into lower-cost data services and more frequent deployment windows.',
     },
   },
+  {
+    name: 'nvidia-glassdoor-best-ceo-2026',
+    owner: 'daily-source-projection',
+    category: 'company-finance',
+    splitTargetCategory: 'public-market-readiness',
+    displayLabel: 'NVIDIA / Glassdoor / CEO / company leadership',
+    terms: ['Glassdoor 2026', '全球最佳 CEO', '99% 员工认可度'],
+    details: {
+      what: 'Glassdoor published its 2026 ranking and ranked NVIDIA CEO Jensen Huang first with 99% employee approval, with nine technology CEOs in the top list, the most of any sector.',
+      why: 'AI-driven talent competition is showing up in leadership, retention, and organizational-health signals rather than only in model or product benchmarks, and employee approval has become a proxy for hiring and execution capacity.',
+      impact: 'Talent, recruiting, and organizational teams can treat CEO approval and employee sentiment as leading indicators of hiring capacity, retention risk, and execution bandwidth in the AI infrastructure arms race.',
+    },
+  },
+  {
+    name: 'world-humanoid-robot-games-2026',
+    owner: 'daily-source-projection',
+    category: 'physical-ai-robotics',
+    splitTargetCategory: 'humanoid-embodied-training',
+    displayLabel: 'China / humanoid robot games / robotics standard',
+    terms: ['世界人形机器人运动会', '冰丝带', '16 国', '2056 台'],
+    details: {
+      what: 'The second World Humanoid Robot Games will run from August 22 to 26 at the Ice Ribbon venue in Beijing, with 666 teams from 16 countries fielding 2,056 robots, a 138% increase in teams and new weightlifting, tug-of-war, and table-tennis events plus a dexterous-hand competition.',
+      why: 'Competition rules are evolving into technical acceptance standards, so humanoid robots are shifting from demonstrations toward measurable capability grades across strength, balance, manipulation, and coordination.',
+      impact: 'Humanoid robotics teams should track whether competition performance turns into validated capability grades, procurement-ready specifications, and safety evidence for industrial, household, and firefighting deployment scenarios.',
+    },
+  },
 
 ];
 
