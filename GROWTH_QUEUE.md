@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-14 17:20
+Last updated: 2026-08-15 17:30
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-295: 将 2026-08-15 最新双语日报接入 real cron fixture，并新增 NVIDIA Glassdoor CEO 与世界人形机器人运动会两条字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `2a80904`
+  - Hypothesis: 最近24小时新增日报（2026-08-15）暴露 NVIDIA Cosmos 3 首个全开源物理 AI 世界基础模型、月之暗面全量开源 Kimi K3（中国开源模型全球下载量破 100 亿次）、黄仁勋登顶 Glassdoor 2026 全球最佳 CEO、世界人形机器人运动会扩容（16 国 2056 台机器人）与 NVIDIA 开源 Physical AI Agent Skills 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉物理 AI 世界模型、长上下文开源模型、AI 人才竞争与领导力、人形机器人能力分级与物理 AI Agent 编排长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-15 / latestFixture=2026-08-15 / expectedSignals=5；daily source projection labels 覆盖 46 fixtures / 230 expectedSignals；新增 nvidia-glassdoor-best-ceo-2026 与 world-humanoid-robot-games-2026 两条字段级 projection rule；source projection parent budget physical-ai-robotics 从 10 提升到 11（吸收新 rule，effective humanoid-embodied-training=2/2、public-market-readiness=2/2）；EN 2026-08-15 页面移除泛化 fallback 并统一五条信号，补齐 5 条 case-level FAQ；ZH description 泄露指令文案与证据矩阵已修复；registry health、taxonomy、parser guardrail、latest surface、case FAQ links 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-15.mjs`；2) 为 NVIDIA Glassdoor CEO 与世界人形机器人运动会新增 fixture-backed label/detailVariants 与 source projection rule；3) EN 2026-08-15 页面移除泛化 fallback 并统一五条信号；4) 补齐 Cosmos 3、Kimi K3、Physical AI Agent Skills、制造合成缺陷数据、可重复实验 5 条 case-level FAQ；5) 质量评分 27/30。
 
 - [x] P1 Candidate / EXP-294: 将 2026-08-14 最新双语日报接入 real cron fixture，并修复 Alpamayo、Spectrum-6、Halos OS、GB 44721 与中国 AI 制造字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `93304e8`
   - Hypothesis: 最近24小时新增日报（2026-08-14）暴露 NVIDIA Alpamayo 2 Super 商用自动驾驶推理模型、Spectrum-6 102.4Tbps AI factory 网络、Halos OS Robotaxi 安全栈、GB 44721—2026 自动驾驶强标与中国 AI+制造/机器人/光电产业落地五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉自动驾驶推理数据、AI factory 网络瓶颈、Robotaxi 安全验证、中国智驾标准化与区域智能制造长尾入口。

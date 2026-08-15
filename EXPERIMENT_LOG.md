@@ -3096,3 +3096,13 @@
 - Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-bilingual-generator-pair-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes; EN/ZH 2026-08-05 routes render the five fixture-backed signals without fallback leakage.
 - Result: pass（latest fixture freshness、daily EN/ZH generators、bilingual pair fixture、case-level FAQ、parser guardrails、source projection registry health/taxonomy 与 build 全部通过；实现提交 `10b02d3`）。
 - Decision: scale（将“最新日报必须同日 fixture 覆盖 + source projection label/detail + case FAQ”的模式继续作为增长执行默认门槛）。
+
+### EXP-295
+- Hypothesis: 最近24小时新增日报（2026-08-15）暴露 NVIDIA Cosmos 3 首个全开源物理 AI 世界基础模型、月之暗面全量开源 Kimi K3（中国开源模型全球下载量破 100 亿次）、黄仁勋登顶 Glassdoor 2026 全球最佳 CEO、世界人形机器人运动会扩容（16 国 666 队 2056 台机器人）与 NVIDIA 开源 Physical AI Agent Skills 五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉物理 AI 世界模型、长上下文开源模型、AI 人才竞争与领导力、人形机器人能力分级与物理 AI Agent 编排长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-15.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/check-source-projection-rule-taxonomy.mjs`, `src/content/blog/en/openclaw-daily-2026-08-15.md`, `src/content/blog/zh/openclaw-daily-2026-08-15.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-15 real cron fixture；新增 `nvidia-glassdoor-best-ceo-2026` 与 `world-humanoid-robot-games-2026` 两条字段级 projection rule；将 parent budget `physical-ai-robotics` 从 10 提升到 11 以吸收新 rule；EN 2026-08-15 页面移除泛化 fallback 并统一五条字段级信号，补齐 5 条 case-level FAQ；ZH 页面修复 description 泄露指令文案与证据矩阵。
+- Start date: 2026-08-15
+- End date: 2026-08-15
+- Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes; EN/ZH 2026-08-15 routes render the five fixture-backed signals without fallback leakage.
+- Result: pass（latest fixture freshness、daily EN/ZH generators、case-level FAQ、parser guardrails、source projection registry health/taxonomy 与 build 全部通过；实现提交 `2a80904`）。
+- Decision: scale（继续将"最新日报必须同日 fixture 覆盖 + source projection label/detail + case FAQ"作为增长执行默认门槛；新增规则需同步校验 parent category budget，超出时按既有 capacityPlan/budget 提升模式处理）。
