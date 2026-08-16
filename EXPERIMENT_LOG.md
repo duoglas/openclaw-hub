@@ -6,7 +6,7 @@
 - Start date: 2026-08-16
 - End date: 2026-08-16
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-16 / latestFixture=2026-08-16 / expectedSignals=5；daily source projection labels 覆盖 47 fixtures / 235 expectedSignals；daily EN/ZH generator、bilingual pair、case-level FAQ links、parser guardrail、latest surface 与 `pnpm build` 全部通过。
-- Result: pass（2026-08-16 最新双语日报已由同日 real cron fixture 覆盖；Cosmos 3、Kimi K3/MiniMax H3、Glassdoor CEO、人形机器人运动会、Physical AI Agent Skills 均输出字段级 projection；ZH 泄露指令文案与日期错位已修复，EN 泛化 fallback 已移除；commit `COMMIT_HASH`；质量评分 28/30。）
+- Result: pass（2026-08-16 最新双语日报已由同日 real cron fixture 覆盖；Cosmos 3、Kimi K3/MiniMax H3、Glassdoor CEO、人形机器人运动会、Physical AI Agent Skills 均输出字段级 projection；ZH 泄露指令文案与日期错位已修复，EN 泛化 fallback 已移除；commit `b48640d`；质量评分 28/30。）
 - Decision: scale（保留 2026-08-16 fixture 作为物理 AI 世界模型、中国开源模型全球格局、AI 人才竞争与领导力、人形机器人能力分级与物理 AI Agent 编排的首日索引基线；下一步可继续处理 `regional-research-ecosystems`、`regional-office-expansion`、`waic-industry-agenda` 等 1 headroom 高利用 target。）
 
 ## EXP-294 — 2026-08-14 latest real cron fixture and field-level projection recovery

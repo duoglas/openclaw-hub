@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-296: 将 2026-08-16 最新双语日报接入 real cron fixture，修复 ZH 页面泄露指令文案、8月15日日期错位与 EN 页面泛化 fallback，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `COMMIT_HASH`
+- [x] P1 Candidate / EXP-296: 将 2026-08-16 最新双语日报接入 real cron fixture，修复 ZH 页面泄露指令文案、8月15日日期错位与 EN 页面泛化 fallback，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `b48640d`
   - Hypothesis: 最近24小时新增日报（2026-08-16）暴露 NVIDIA Cosmos 3 开源源物理 AI 世界基础模型、中国开源大模型（MiniMax H3 冲榜 + 月之暗面 Kimi K3 全量开源）全球下载破 100 亿次、黄仁勳登顶 Glassdoor 2026 全球最佳 CEO、世界人形机器人运动会扩容（16 国 666 队 2056 台）与 NVIDIA 开源 Physical AI Agent Skills 五条信号；若最新日报不进入 real cron fixture 且 ZH 页面残留“素材已足够/无需再用浏览器/直接输出日报正文”等内部指令文案、EN 页面保留泛化 fallback，首日索引会漏掉物理 AI 世界模型、中国开源模型全球格局、AI 人才竞争与领导力、人形机器人能力分级与物理 AI Agent 编排长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-16 / latestFixture=2026-08-16 / expectedSignals=5；daily source projection labels 覆盖 47 fixtures / 235 expectedSignals；daily EN/ZH generator、bilingual pair、case-level FAQ links、parser guardrail、latest surface、daily template/heading/fresh/evidence/en-language/brief specificity 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-16.mjs`；2) 5 条信号复用已有字段级 projection rule（Cosmos 3、Kimi K3、Glassdoor CEO、人形机器人运动会、Physical AI Agent Skills）并补齐 fixture-backed label/detailVariants；3) ZH 2026-08-16 页面移除泄露的指令文案并修正日期为 8 月 16 日；4) EN 2026-08-16 页面移除 story 2/4/5 泛化 fallback，补齐 5 条 case-level FAQ 内链；5) 质量评分 28/30。
