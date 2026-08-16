@@ -1,3 +1,14 @@
+## EXP-297 — Regional research ecosystems capacity headroom
+- Hypothesis: EXP-296 后续建议继续处理 regional-research-ecosystems；若 Anthropic Canada 1000 万加元研究生态资助、Amii/Mila/Vector Institute 合作、区域 talent pipeline 与应用安全研究继续只保留 1 个有效 headroom，后续 frontier-lab regional research commitment、university partnership、applied-safety collaboration、healthcare/robotics research 与 low-resource language 信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization、waic-product-launch-pipeline 或 workforce-ai-enablement。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `regional-research-ecosystems` effective category budget 从 2 提升到 3；为 `anthropic-canada-ai-research-ecosystem-2026` 补充 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact），并让 regional-office-expansion 与 waic-industry-agenda 的 market-intelligence sibling alternate-target 诊断同步新可用 regional-research-ecosystems target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-16
+- End date: 2026-08-16
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `regional-research-ecosystems=1/3 (2 headroom)`、`market-intelligence=12/12`、`parentFallback=0`、`overBudget=0`、`split target categories: 50/50`；source projection registry health、`pnpm check:daily-source-projection-labels`（47 fixtures / 235 expectedSignals）与 `pnpm build` 全部通过。
+- Result: pass（regional-research-ecosystems 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Anthropic Canada research ecosystem capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；regional-office-expansion 与 waic-industry-agenda alternate-target 诊断已同步；commit 待填；质量评分 27/30。）
+- Decision: scale（保留 regional-research-ecosystems 作为后续 frontier-lab regional research commitments、university partnerships、applied-safety collaboration、talent pipeline 与 healthcare/robotics research 信号的独立容量入口；下一步可继续处理 regional-office-expansion 或 waic-industry-agenda 的 1 headroom 高利用 target。）
+
 ## EXP-296 — 2026-08-16 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-16）暴露 NVIDIA Cosmos 3 开源源物理 AI 世界基础模型、中国开源大模型（MiniMax H3 冲榜 + 月之暗面 Kimi K3 全量开源）全球下载破 100 亿次、黄仁勳登顶 Glassdoor 2026 全球最佳 CEO、世界人形机器人运动会扩容（16 国 666 队 2056 台）与 NVIDIA 开源 Physical AI Agent Skills 五条信号；若最新日报不进入 real cron fixture 且 ZH 页面残留“素材已足够/无需再用浏览器/直接输出日报正文”等内部指令文案、EN 页面保留泛化 fallback，首日索引会漏掉物理 AI 世界模型、中国开源模型全球格局、AI 人才竞争与领导力、人形机器人能力分级与物理 AI Agent 编排长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-16.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `src/content/blog/en/openclaw-daily-2026-08-16.md`, `src/content/blog/zh/openclaw-daily-2026-08-16.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

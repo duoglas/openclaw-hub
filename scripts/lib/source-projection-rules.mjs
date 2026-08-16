@@ -1946,6 +1946,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'market-intelligence',
     splitTargetCategory: 'regional-research-ecosystems',
     displayLabel: 'Anthropic / Canada / AI research ecosystem',
+    capacityPlan: {
+      selectedSplitTarget: 'regional-research-ecosystems',
+      whyNotAlternatives: 'Rejected alternate split targets regional-ai-ecosystems, ai-commercialization-roi, content-licensing-markets, local-commerce-ai-workflows, market-sizing-reports, supply-chain-cost-pressure, token-economics-optimization, waic-product-launch-pipeline, and workforce-ai-enablement because Anthropic Canada AI research ecosystem is a frontier-lab regional research, talent-pipeline, and applied-safety signal, not a generic regional market ecosystem, paid-product commercialization signal, media licensing signal, local-commerce workflow, market-size report, hardware supply-chain cost signal, token-cost optimization signal, WAIC product-launch pipeline signal, or workforce/education enablement signal.',
+      rejectedAlternateTargets: ['regional-ai-ecosystems', 'ai-commercialization-roi', 'content-licensing-markets', 'local-commerce-ai-workflows', 'market-sizing-reports', 'supply-chain-cost-pressure', 'token-economics-optimization', 'waic-product-launch-pipeline', 'workforce-ai-enablement'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; regional-research-ecosystems now has two effective headroom slots for future frontier-lab regional research commitments, university partnerships, applied-safety collaborations, talent-pipeline, and healthcare/robotics research signals while preserving regional ecosystem, ROI, and WAIC product-launch targets.',
+      },
+    },
     terms: ['1000 万加元', 'Amii', 'Mila', 'Vector Institute'],
     details: {
       what: 'Anthropic committed 10 million CAD to Canadian AI research institutions and partnerships with Amii, Mila, and the Vector Institute across AI safety, healthcare, robotics, multi-agent systems, and low-resource languages.',
