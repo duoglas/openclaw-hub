@@ -1,3 +1,14 @@
+## EXP-296 — 2026-08-16 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-16）暴露 NVIDIA Cosmos 3 开源源物理 AI 世界基础模型、中国开源大模型（MiniMax H3 冲榜 + 月之暗面 Kimi K3 全量开源）全球下载破 100 亿次、黄仁勳登顶 Glassdoor 2026 全球最佳 CEO、世界人形机器人运动会扩容（16 国 666 队 2056 台）与 NVIDIA 开源 Physical AI Agent Skills 五条信号；若最新日报不进入 real cron fixture 且 ZH 页面残留“素材已足够/无需再用浏览器/直接输出日报正文”等内部指令文案、EN 页面保留泛化 fallback，首日索引会漏掉物理 AI 世界模型、中国开源模型全球格局、AI 人才竞争与领导力、人形机器人能力分级与物理 AI Agent 编排长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-16.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `src/content/blog/en/openclaw-daily-2026-08-16.md`, `src/content/blog/zh/openclaw-daily-2026-08-16.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-16 real cron fixture；5 条信号复用已有字段级 projection rule（`nvidia-cosmos-3-physical-ai-2026`、`moonshot-kimi-k3-long-context-open-model-2026`、`nvidia-glassdoor-best-ceo-2026`、`world-humanoid-robot-games-2026`、`nvidia-physical-ai-agent-skills-2026`）；重写 EN/ZH 2026-08-16 页面，移除 ZH 泄露指令文案与“8月15日”日期错位、修复 EN story 2/4/5 泛化 fallback，并补齐 5 条 case-level FAQ 内链；规避 story 2 中“Hugging Face”与 `nvidia-physical-ai-agent-skills-2026` rule 的跨 rule 命冲突。
+- ICE: 9x8x8=576
+- Start date: 2026-08-16
+- End date: 2026-08-16
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-16 / latestFixture=2026-08-16 / expectedSignals=5；daily source projection labels 覆盖 47 fixtures / 235 expectedSignals；daily EN/ZH generator、bilingual pair、case-level FAQ links、parser guardrail、latest surface 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-16 最新双语日报已由同日 real cron fixture 覆盖；Cosmos 3、Kimi K3/MiniMax H3、Glassdoor CEO、人形机器人运动会、Physical AI Agent Skills 均输出字段级 projection；ZH 泄露指令文案与日期错位已修复，EN 泛化 fallback 已移除；commit `COMMIT_HASH`；质量评分 28/30。）
+- Decision: scale（保留 2026-08-16 fixture 作为物理 AI 世界模型、中国开源模型全球格局、AI 人才竞争与领导力、人形机器人能力分级与物理 AI Agent 编排的首日索引基线；下一步可继续处理 `regional-research-ecosystems`、`regional-office-expansion`、`waic-industry-agenda` 等 1 headroom 高利用 target。）
+
 ## EXP-294 — 2026-08-14 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-14）暴露 NVIDIA Alpamayo 2 Super 商用自动驾驶推理模型、Spectrum-6 102.4Tbps AI factory 网络、Halos OS Robotaxi 安全栈、GB 44721—2026 自动驾驶强标与中国 AI+制造/机器人/光电产业落地五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback，首日索引会漏掉自动驾驶推理数据、AI factory 网络瓶颈、Robotaxi 安全验证、中国智驾标准化与区域智能制造长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-14.mjs`, `scripts/fixtures/daily-real-cron-2026-08-12.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-14.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
