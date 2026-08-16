@@ -6,7 +6,7 @@
 - Start date: 2026-08-16
 - End date: 2026-08-16
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `regional-research-ecosystems=1/3 (2 headroom)`、`market-intelligence=12/12`、`parentFallback=0`、`overBudget=0`、`split target categories: 50/50`；source projection registry health、`pnpm check:daily-source-projection-labels`（47 fixtures / 235 expectedSignals）与 `pnpm build` 全部通过。
-- Result: pass（regional-research-ecosystems 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Anthropic Canada research ecosystem capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；regional-office-expansion 与 waic-industry-agenda alternate-target 诊断已同步；commit 待填；质量评分 27/30。）
+- Result: pass（regional-research-ecosystems 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Anthropic Canada research ecosystem capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；regional-office-expansion 与 waic-industry-agenda alternate-target 诊断已同步；commit `3d01e34`；质量评分 27/30。）
 - Decision: scale（保留 regional-research-ecosystems 作为后续 frontier-lab regional research commitments、university partnerships、applied-safety collaboration、talent pipeline 与 healthcare/robotics research 信号的独立容量入口；下一步可继续处理 regional-office-expansion 或 waic-industry-agenda 的 1 headroom 高利用 target。）
 
 ## EXP-296 — 2026-08-16 latest real cron fixture and field-level projection recovery
