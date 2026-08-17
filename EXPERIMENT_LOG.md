@@ -6,7 +6,7 @@
 - Start date: 2026-08-17
 - End date: 2026-08-17
 - Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-17 / latestFixture=2026-08-17 / expectedSignals=5；daily source projection labels 覆盖 48 fixtures / 240 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、latest surface 与 `pnpm build` 全部通过。
-- Result: pass（2026-08-17 最新双语日报已由同日 real cron fixture 覆盖；Open Secure AI Alliance、Spectrum-6、Nations AI、Kimi K3/MiniMax H3 与人形机器人运动会均输出字段级 projection；ZH 泄露指令文案与截断已修复，EN story 3 泛化 fallback 已移除；commit `TBD`；质量评分 28/30。）
+- Result: pass（2026-08-17 最新双语日报已由同日 real cron fixture 覆盖；Open Secure AI Alliance、Spectrum-6、Nations AI、Kimi K3/MiniMax H3 与人形机器人运动会均输出字段级 projection；ZH 泄露指令文案与截断已修复，EN story 3 泛化 fallback 已移除；commit `1700b98`；质量评分 28/30。）
 - Decision: scale（保留 2026-08-17 fixture 作为开放 AI 安全联盟、AI factory 网络、主权 AI 基础设施、中国开源模型全球格局与人形机器人能力分级的首日索引基线；下一步可继续处理 Nations AI 主权 AI 是否应拆独立 rule，或 regional-office-expansion / waic-industry-agenda 等 1 headroom 高利用 target。）
 
 ## EXP-297 — Regional research ecosystems capacity headroom

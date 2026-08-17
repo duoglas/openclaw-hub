@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-298: 将 2026-08-17 最新双语日报接入 real cron fixture，并为 Open Secure AI Alliance、Spectrum-6、Nations AI 主权 AI、MiniMax H3/Kimi K3 与人形机器人运动会补齐字段级 projection，修复 ZH 泄露指令文案/截断与 EN 泛化 fallback，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `TBD`
+- [x] P1 Candidate / EXP-298: 将 2026-08-17 最新双语日报接入 real cron fixture，并为 Open Secure AI Alliance、Spectrum-6、Nations AI 主权 AI、MiniMax H3/Kimi K3 与人形机器人运动会补齐字段级 projection，修复 ZH 泄露指令文案/截断与 EN 泛化 fallback，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `1700b98`
   - Hypothesis: 最近24小时新增日报（2026-08-17）若最新日报不进入 real cron fixture 且 ZH 页面残留“runbook/工具错误/validation”等内部指令文案并截断、EN story 3 保留泛化 fallback，首日索引会漏掉开放 AI 安全联盟、AI factory 网络、主权 AI 基础设施、中国开源模型全球格局与人形机器人能力分级长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-17 / latestFixture=2026-08-17 / expectedSignals=5；daily source projection labels 覆盖 48 fixtures / 240 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、latest surface 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-17.mjs`；2) 为 `nvidia-ai-cloud-ecosystem` 增加 Nations AI / 主权 AI displayLabel + terms + detailVariants；3) ZH 2026-08-17 页面移除泄露指令文案与“继 DeepSeek 后”截断；4) EN 2026-08-17 story 3 移除泛化 fallback 并补齐 4 条 case-level FAQ；5) 质量评分 28/30。
