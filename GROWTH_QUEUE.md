@@ -21,6 +21,11 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-299: 将 regional-office-expansion 有效容量从 2 提升到 3，并为 Anthropic Korea Seoul office ecosystem 补齐 structured capacityPlan，消费 EXP-297 后续“regional-office-expansion 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `<hash>`
+  - Hypothesis: EXP-297 后续建议继续处理 regional-office-expansion；若 Anthropic 首尔办公室正式开放并公开 NAVER、Nexon、LG CNS、Samsung SDS、Hanwha Solutions、Channel Corp 等企业合作伙伴生态继续只保留 1 个有效 headroom，后续 frontier-lab regional office opening、enterprise partner ecosystem、market-entry 与亚洲企业 AI 扩张信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization、waic-product-launch-pipeline、regional-research-ecosystems 或 workforce-ai-enablement。
+  - Metrics: source projection taxonomy 显示 regional-office-expansion 从 1/2 变为 1/3，并保留 regional-ai-ecosystems=1/4、ai-commercialization-roi=1/3、content-licensing-markets=1/3、local-commerce-ai-workflows=1/3、market-sizing-reports=1/3、supply-chain-cost-pressure=1/3、token-economics-optimization=1/3、waic-product-launch-pipeline=1/3、regional-research-ecosystems=1/3、workforce-ai-enablement=1/3、market-intelligence=12/12、parentFallback=0、overBudget=0；registry health 与 `pnpm build` 全部通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.regional-office-expansion` 提升到 3；2) `anthropic-korea-seoul-office-ecosystem-2026` structured capacityPlan 补齐 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) market-intelligence sibling alternate-target 诊断同步新可用 regional-office-expansion target；4) 质量评分 27/30。
+
 - [x] P1 Candidate / EXP-298: 将 2026-08-17 最新双语日报接入 real cron fixture，并为 Open Secure AI Alliance、Spectrum-6、Nations AI 主权 AI、MiniMax H3/Kimi K3 与人形机器人运动会补齐字段级 projection，修复 ZH 泄露指令文案/截断与 EN 泛化 fallback，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `1700b98`
   - Hypothesis: 最近24小时新增日报（2026-08-17）若最新日报不进入 real cron fixture 且 ZH 页面残留“runbook/工具错误/validation”等内部指令文案并截断、EN story 3 保留泛化 fallback，首日索引会漏掉开放 AI 安全联盟、AI factory 网络、主权 AI 基础设施、中国开源模型全球格局与人形机器人能力分级长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-17 / latestFixture=2026-08-17 / expectedSignals=5；daily source projection labels 覆盖 48 fixtures / 240 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、latest surface 与 `pnpm build` 全部通过。

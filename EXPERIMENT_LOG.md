@@ -1,3 +1,14 @@
+## EXP-299 — Regional office expansion capacity headroom
+- Hypothesis: EXP-297 后续建议继续处理 regional-office-expansion；若 Anthropic 首尔办公室正式开放并公开 NAVER、Nexon、LG CNS、Samsung SDS、Hanwha Solutions、Channel Corp 等企业合作伙伴生态继续只保留 1 个有效 headroom，后续 frontier-lab regional office opening、enterprise partner ecosystem、market-entry 与亚洲企业 AI 扩张信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization、waic-product-launch-pipeline、regional-research-ecosystems 或 workforce-ai-enablement。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `regional-office-expansion` effective category budget 从 2 提升到 3；为 `anthropic-korea-seoul-office-ecosystem-2026` 补充 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact），并让 market-intelligence sibling alternate-target 诊断同步新可用 regional-office-expansion target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-17
+- End date: 2026-08-17
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `regional-office-expansion=1/3 (2 headroom)`、`market-intelligence=12/12`、`parentFallback=0`、`overBudget=0`、`split target categories: 50/50`；source projection registry health 与 `pnpm build` 全部通过。
+- Result: pass（regional-office-expansion 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Anthropic Korea Seoul office ecosystem capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；market-intelligence sibling alternate-target 诊断已同步；commit；质量评分 27/30。）
+- Decision: scale（保留 regional-office-expansion 作为后续 frontier-lab regional office openings、enterprise partner ecosystems、market-entry 与亚洲企业 AI 扩张信号的独立容量入口；下一步可继续处理 waic-industry-agenda 的 1 headroom 高利用 target。）
+
 ## EXP-298 — 2026-08-17 latest real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-17）暴露 NVIDIA 牵头 Open Secure AI Alliance 成立（100+ 家）、NVIDIA Spectrum-6 千兆级 AI 工厂交付、NVIDIA Nations AI 主权 AI 战略、中国开源模型改写 AI 竞争规则（MiniMax H3 冲榜 + Kimi K3 全量开源累计下载破 100 亿次）与第二届世界人形机器人运动会扩容五条信号；若最新日报不进入 real cron fixture 且 ZH 页面残留“runbook/工具错误/validation”等内部指令文案并截断、EN story 3 保留泛化 fallback，首日索引会漏掉开放 AI 安全联盟、AI factory 网络、主权 AI 基础设施、中国开源模型全球格局与人形机器人能力分级长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-17.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-17.md`, `src/content/blog/zh/openclaw-daily-2026-08-17.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

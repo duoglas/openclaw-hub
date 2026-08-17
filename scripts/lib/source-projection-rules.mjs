@@ -1982,6 +1982,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'market-intelligence',
     splitTargetCategory: 'regional-office-expansion',
     displayLabel: 'Anthropic / Korea / regional AI ecosystem',
+    capacityPlan: {
+      selectedSplitTarget: 'regional-office-expansion',
+      whyNotAlternatives: 'Rejected alternate split targets regional-ai-ecosystems, ai-commercialization-roi, content-licensing-markets, local-commerce-ai-workflows, market-sizing-reports, regional-research-ecosystems, supply-chain-cost-pressure, token-economics-optimization, waic-product-launch-pipeline, and workforce-ai-enablement because Anthropic opening its Seoul office and naming NAVER, Nexon, LG CNS, Samsung SDS, Hanwha Solutions, and Channel Corp as enterprise partners is a frontier-lab regional office/enterprise adoption expansion signal, not a generic regional market ecosystem, paid-product commercialization, media licensing, local-commerce workflow, market-size report, research-ecosystem funding, hardware supply-chain cost, token-cost optimization, WAIC product-launch pipeline, or workforce/education enablement signal.',
+      rejectedAlternateTargets: ['regional-ai-ecosystems', 'ai-commercialization-roi', 'content-licensing-markets', 'local-commerce-ai-workflows', 'market-sizing-reports', 'regional-research-ecosystems', 'supply-chain-cost-pressure', 'token-economics-optimization', 'waic-product-launch-pipeline', 'workforce-ai-enablement'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; regional-office-expansion now has two effective headroom slots for future frontier-lab regional office openings, enterprise partner ecosystems, and market-entry signals while preserving regional ecosystem, ROI, research-ecosystem, and WAIC product-launch targets.',
+      },
+    },
     terms: ['首尔办公室正式开放', 'NAVER、Nexon、LG CNS', 'Samsung SDS、Channel Corp'],
     details: {
       what: 'Anthropic opened its Seoul office and named NAVER, Nexon, LG CNS, Hanwha Solutions, Samsung SDS, Channel Corp, and Korean university research groups as users or ecosystem partners.',

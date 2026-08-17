@@ -124,7 +124,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'public-market-readiness': 2,
   'product-safety': 5,
   'regional-ai-ecosystems': 4,
-  'regional-office-expansion': 2,
+  'regional-office-expansion': 3,
   'regional-research-ecosystems': 3,
   'workforce-ai-enablement': 3,
   'robotics-commercial-deployment': 4,
