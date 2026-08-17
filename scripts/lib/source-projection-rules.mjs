@@ -367,6 +367,10 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['本地 AI 能力', '本地算力', 'AI 工厂'],
       },
       {
+        label: 'NVIDIA / Nations AI / sovereign AI strategy',
+        terms: ['Nations AI', '主权 AI'],
+      },
+      {
         label: 'NVIDIA / HPE / AI infrastructure capacity',
         terms: ['HPE AI Factory with NVIDIA', 'NVIDIA Agent Toolkit'],
       },
@@ -395,8 +399,16 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Firebird', '亚美尼亚', '300MW'],
       },
     ],
-    terms: ['AI Cloud', 'AI factory', 'AI Factory', '本地 AI 能力', '六大洲', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟', 'Build in America', 'Wistron', 'GB300', '得州工厂', 'Firebird', '亚美尼亚', 'CIS 区域最大', '300MW'],
+    terms: ['AI Cloud', 'AI factory', 'AI Factory', '本地 AI 能力', '六大洲', 'Nations AI', '主权 AI', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟', 'Build in America', 'Wistron', 'GB300', '得州工厂', 'Firebird', '亚美尼亚', 'CIS 区域最大', '300MW'],
     detailVariants: [
+      {
+        terms: ['Nations AI', '主权 AI'],
+        details: {
+          what: 'NVIDIA framed Nations AI as a sovereign-AI strategy where countries build local compute, local data, foundation models, talent systems, and AI factories to keep sensitive workloads and strategic capability within national borders.',
+          why: 'Sovereign AI turns model and compute procurement into a national-infrastructure decision, so data residency, local energy, talent pipelines, and supply-chain control now compete with raw GPU performance.',
+          impact: 'Nations and enterprises should plan sovereign AI around local compute access, data boundaries, energy availability, partner geography, and regional compliance instead of assuming frontier models are the only path to AI capability.',
+        },
+      },
       {
         terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
         details: {

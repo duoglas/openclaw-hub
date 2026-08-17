@@ -1,3 +1,14 @@
+## EXP-298 — 2026-08-17 latest real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-17）暴露 NVIDIA 牵头 Open Secure AI Alliance 成立（100+ 家）、NVIDIA Spectrum-6 千兆级 AI 工厂交付、NVIDIA Nations AI 主权 AI 战略、中国开源模型改写 AI 竞争规则（MiniMax H3 冲榜 + Kimi K3 全量开源累计下载破 100 亿次）与第二届世界人形机器人运动会扩容五条信号；若最新日报不进入 real cron fixture 且 ZH 页面残留“runbook/工具错误/validation”等内部指令文案并截断、EN story 3 保留泛化 fallback，首日索引会漏掉开放 AI 安全联盟、AI factory 网络、主权 AI 基础设施、中国开源模型全球格局与人形机器人能力分级长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-17.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-17.md`, `src/content/blog/zh/openclaw-daily-2026-08-17.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 `nvidia-ai-cloud-ecosystem` 增加 Nations AI / 主权 AI 的 displayLabel 变体、terms 与 detailVariants；新增并注册 2026-08-17 real cron fixture；重写 EN/ZH 2026-08-17 页面，移除 ZH 泄露指令文案与截断、修复 EN story 3 泛化 fallback，并补齐 4 条 case-level FAQ 内链。
+- ICE: 9x8x8=576
+- Start date: 2026-08-17
+- End date: 2026-08-17
+- Success metric: `pnpm check:latest-daily-real-cron-fixture` 显示 latestDaily=2026-08-17 / latestFixture=2026-08-17 / expectedSignals=5；daily source projection labels 覆盖 48 fixtures / 240 expectedSignals；daily EN/ZH generator、case-level FAQ、parser guardrail、latest surface 与 `pnpm build` 全部通过。
+- Result: pass（2026-08-17 最新双语日报已由同日 real cron fixture 覆盖；Open Secure AI Alliance、Spectrum-6、Nations AI、Kimi K3/MiniMax H3 与人形机器人运动会均输出字段级 projection；ZH 泄露指令文案与截断已修复，EN story 3 泛化 fallback 已移除；commit `TBD`；质量评分 28/30。）
+- Decision: scale（保留 2026-08-17 fixture 作为开放 AI 安全联盟、AI factory 网络、主权 AI 基础设施、中国开源模型全球格局与人形机器人能力分级的首日索引基线；下一步可继续处理 Nations AI 主权 AI 是否应拆独立 rule，或 regional-office-expansion / waic-industry-agenda 等 1 headroom 高利用 target。）
+
 ## EXP-297 — Regional research ecosystems capacity headroom
 - Hypothesis: EXP-296 后续建议继续处理 regional-research-ecosystems；若 Anthropic Canada 1000 万加元研究生态资助、Amii/Mila/Vector Institute 合作、区域 talent pipeline 与应用安全研究继续只保留 1 个有效 headroom，后续 frontier-lab regional research commitment、university partnership、applied-safety collaboration、healthcare/robotics research 与 low-resource language 信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization、waic-product-launch-pipeline 或 workforce-ai-enablement。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
