@@ -1,3 +1,14 @@
+## EXP-301 — WAIC industry agenda capacity headroom 2->3
+- Hypothesis: EXP-299 后续建议继续处理 waic-industry-agenda；若 WAIC 2026 172 场会议、industry development、talent ecosystem 与 compute availability 等议程层信号继续只保留 1 个有效 headroom，后续中国 AI 工业部署、人才管线、算力可用性与应用就绪度信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization、waic-product-launch-pipeline、regional-office-expansion、regional-research-ecosystems 或 workforce-ai-enablement。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `waic-industry-agenda` effective category budget 从 2 提升到 3；为 `china-waic-industry-talent-compute-agenda-2026` 补充 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact）。
+- ICE: 8x8x8=512
+- Start date: 2026-08-18
+- End date: 2026-08-18
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `waic-industry-agenda=1/3 (2 headroom)`、`market-intelligence=12/12`、`split target categories: 50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health 与 `pnpm build` 全部通过。
+- Result: pass（waic-industry-agenda 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；China WAIC industry talent compute agenda capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；实现提交 `1b5ef16`；质量评分 27/30。）
+- Decision: scale（保留 waic-industry-agenda 作为后续 China AI industrial-deployment、talent-pipeline、compute-availability 与 application-readiness 信号的独立容量入口；剩余 1 headroom 高利用 target：ai-lab-private-financing、assistive-exoskeleton-robotics、china-code-agent-runtime、desktop-computer-use、domestic-compute-software、robotics-capital-markets、youth-safety-controls。）
+
 ## EXP-300 — 2026-08-18 real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-18）暴露 NVIDIA Cosmos 3 全模态物理 AI 世界基础模型、NVIDIA Spectrum-6 千兆级 AI 工厂网络、Open Secure AI Alliance 150+ 开源安全联盟、NVIDIA Nations AI 主权 AI 与 OpenAI PORTS-Pike 全球事务布局五条信号；若最新日报不进入 real cron fixture，EN 页面 story 1-3 重复回落到 Cosmos 标签、story 5 保留“model capability update”泛化 fallback、ZH 页面 description 与正文泄露“Now I'll compose the full report / 用于补齐日报来源核验矩阵”内部文案，首日索引会漏掉物理 AI 世界模型、AI factory 网络、开源 AI 安全联盟、主权 AI 与前沿大厂全球事务长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-18.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-18.md`, `src/content/blog/zh/openclaw-daily-2026-08-18.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
