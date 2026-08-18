@@ -1812,6 +1812,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / WAIC / agent governance boundaries',
         terms: ['智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制'],
       },
+      {
+        label: 'OpenAI / PORTS-Pike / global affairs infrastructure',
+        terms: ['PORTS-Pike', '全球事务'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'ai-policy-standards',
@@ -1824,7 +1828,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses refreshed ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
       },
     },
-    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理', '智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制'],
+    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理', '智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制', 'PORTS-Pike', '全球事务'],
     detailVariants: [
       {
         terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
@@ -1840,6 +1844,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'The WAIC chair statement framed AI agents as a new form of AI product and service, calling for clear decision authority, behavior boundaries, traceability, risk prompts, and stronger built-in safety.',
           why: 'Governance attention is moving from generated content alone toward AI systems that can plan, call tools, and take actions on behalf of users or organizations.',
           impact: 'Agent builders should prepare permission scopes, operation logs, human confirmation gates, risk notices, and auditable behavior traces before expanding autonomous workflows.',
+        },
+      },
+      {
+        terms: ['PORTS-Pike', '全球事务'],
+        details: {
+          what: 'OpenAI joined the PORTS-Pike project, listing it under Global Affairs to signal growing public-sector and infrastructure cooperation alongside its domestic compute, energy, and data-center expansion.',
+          why: 'Frontier-lab global affairs activity is moving from model and product announcements toward infrastructure, energy, and cross-border partnership signals that shape where and how sovereign and enterprise AI capacity gets built.',
+          impact: 'Teams tracking OpenAI should watch whether PORTS-Pike clarifies partner roles, funding scale, and deployment geography before treating it as a capacity or procurement catalyst versus a positioning-only disclosure.',
         },
       },
     ],
