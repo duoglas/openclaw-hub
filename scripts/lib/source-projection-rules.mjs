@@ -668,6 +668,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'market-intelligence',
     splitTargetCategory: 'waic-industry-agenda',
     displayLabel: 'China / WAIC / industry talent compute agenda',
+    capacityPlan: {
+      selectedSplitTarget: 'waic-industry-agenda',
+      whyNotAlternatives: 'Rejected alternate split targets regional-ai-ecosystems, ai-commercialization-roi, content-licensing-markets, local-commerce-ai-workflows, market-sizing-reports, supply-chain-cost-pressure, token-economics-optimization, waic-product-launch-pipeline, regional-office-expansion, regional-research-ecosystems, and workforce-ai-enablement because WAIC 172-meeting industry-development, talent-ecosystem, and compute agenda is an industrial-policy + talent + compute availability agenda signal, not a generic regional market ecosystem, paid-product commercialization, media licensing, local-commerce workflow, market-size report, hardware supply-chain cost, token-cost optimization, WAIC product-launch pipeline, regional office expansion, research-ecosystem funding, or workforce/education enablement signal.',
+      rejectedAlternateTargets: ['regional-ai-ecosystems', 'ai-commercialization-roi', 'content-licensing-markets', 'local-commerce-ai-workflows', 'market-sizing-reports', 'supply-chain-cost-pressure', 'token-economics-optimization', 'waic-product-launch-pipeline', 'regional-office-expansion', 'regional-research-ecosystems', 'workforce-ai-enablement'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; waic-industry-agenda now has two effective headroom slots for future China AI industrial-deployment, talent-pipeline, compute-availability, and application-readiness signals while preserving regional ecosystem, ROI, supply-chain, token-economics, and WAIC product-launch targets.',
+      },
+    },
     terms: ['172 场会议'],
     details: {
       what: 'Xinhua reported that WAIC 2026 opened in Shanghai with about 172 meetings, forums, and events, where industry development, talent ecosystems, and compute were among the most frequent themes.',

@@ -119,7 +119,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'supply-chain-cost-pressure': 3,
   'token-economics-optimization': 3,
   'waic-product-launch-pipeline': 3,
-  'waic-industry-agenda': 2,
+  'waic-industry-agenda': 3,
   'model-account-security': 5,
   'public-market-readiness': 2,
   'product-safety': 5,
