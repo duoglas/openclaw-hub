@@ -1,3 +1,14 @@
+## EXP-302 — 2026-08-19 real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-19）暴露 NVIDIA Cosmos 3 全模态物理 AI 世界基础模型、NVIDIA Spectrum-6 千兆级 AI 工厂网络、Open Secure AI Alliance 150+ 开源安全联盟、NVIDIA Nations AI 主权 AI（印度 Sarvam）与 OpenAI PORTS-Pike 全球事务布局五条信号；若最新日报不进入 real cron fixture，EN 页面 story 1-3 重复回落到 Cosmos 标签、story 4/5 保留“model capability update”泛化 fallback、ZH 页面 description 与正文泄露“Now I'll compose the full report / 用于补齐日报来源核验矩阵”内部文案且日期错位为 08-18，首日索引会漏掉物理 AI 世界模型、AI factory 网络、开源 AI 安全联盟、主权 AI 与前沿大厂全球事务长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-19.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `src/content/blog/en/openclaw-daily-2026-08-19.md`, `src/content/blog/zh/openclaw-daily-2026-08-19.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-19 real cron fixture；重写 EN 2026-08-19 页面（story 1-3 去重、还原 Spectrum-6/Open Secure AI Alliance/Nations AI/PORTS-Pike 字段级 projection、移除 model capability update fallback、补齐 5 条 case-level FAQ terms+内链）；重写 ZH 2026-08-19 页面（移除 description/正文泄露指令文案“Now I'll compose the full report”与“用于补齐日报来源核验矩阵”、修正日期为 08-19、还原 Nations AI story 4 与 PORTS-Pike story 5、修复证据矩阵）。
+- ICE: 9x8x8=576
+- Start date: 2026-08-19
+- End date: 2026-08-19
+- Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-source-projection-labels && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm build` passes; EN/ZH 2026-08-19 路由渲染五条 fixture-backed 信号且无 fallback 泄露。
+- Result: pass（latest fixture freshness 08-19/08-19、daily EN/ZH generators、case-level FAQ 8 signals、parser guardrails、source projection labels 50 fixtures/250 expectedSignals、EN language、brief specificity、registry health 与 `pnpm build`（759 pages）全部通过；实现提交 `ef1b26b`；质量评分 29/30。）
+- Decision: scale（继续将“最新日报必须同日 fixture 覆盖 + source projection label/detail + case FAQ + 无 fallback 泄露”作为增长执行默认门槛；今日内容建设任务产出的破损页面（EN story 1-3 重复 + story 4/5 泛化 fallback + ZH 泄露指令文案/日期错位）已按 EXP-300 同款模式修复后提交。）
+
 ## EXP-301 — WAIC industry agenda capacity headroom 2->3
 - Hypothesis: EXP-299 后续建议继续处理 waic-industry-agenda；若 WAIC 2026 172 场会议、industry development、talent ecosystem 与 compute availability 等议程层信号继续只保留 1 个有效 headroom，后续中国 AI 工业部署、人才管线、算力可用性与应用就绪度信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization、waic-product-launch-pipeline、regional-office-expansion、regional-research-ecosystems 或 workforce-ai-enablement。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

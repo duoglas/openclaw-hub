@@ -21,6 +21,11 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-302: 将 2026-08-19 最新双语日报接入 real cron fixture，修复 EN story 1-3 重复回落 Cosmos、story 4/5 泛化 fallback 与 ZH 泄露指令文案/日期错位，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `ef1b26b`
+  - Hypothesis: 最近24小时新增日报（2026-08-19）若最新日报不进入 real cron fixture 且 EN story 1-3 重复回落到 Cosmos、story 4/5 保留“model capability update”泛化 fallback、ZH 页面 description+正文泄露“Now I'll compose the full report / 用于补齐日报来源核验矩阵”内部文案并日期错位为 08-18，首日索引会漏掉物理 AI 世界模型、AI factory 网络、开源 AI 安全联盟、主权 AI 与前沿大厂全球事务长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-19 / latestFixture=2026-08-19 / expectedSignals=5；daily source projection labels 覆盖 50 fixtures / 250 expectedSignals；case-level FAQ 8 signals 全部含 required terms 与 internal links；parser guardrail、EN language、brief specificity、registry health 与 `pnpm build`（759 pages）全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-19.mjs`；2) EN 2026-08-19 story 1-3 去重，story 2/3/4/5 分别还原为 Spectrum-6/Open Secure AI Alliance/Nations AI/PORTS-Pike 字段级 projection，移除“model capability update”fallback；3) ZH 页面移除 description+正文泄露指令文案并修正日期为 08-19、还原 Nations AI story 4 与 PORTS-Pike story 5、修复证据矩阵；4) 质量评分 29/30。
+
 - [x] P1 Candidate / EXP-301: 将 waic-industry-agenda 有效容量从 2 提升到 3，并为 China WAIC industry talent compute agenda 补齐 structured capacityPlan，消费 EXP-299 后续“waic-industry-agenda 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `1b5ef16`
   - Hypothesis: EXP-299 后续建议继续处理 waic-industry-agenda；若 WAIC 2026 172 场会议、industry development、talent ecosystem 与 compute availability 等议程层信号继续只保留 1 个有效 headroom，后续中国 AI 工业部署、人才管线、算力可用性与应用就绪度信号会被迫错投到 regional-ai-ecosystems、ai-commercialization-roi、content-licensing-markets、local-commerce-ai-workflows、market-sizing-reports、supply-chain-cost-pressure、token-economics-optimization、waic-product-launch-pipeline、regional-office-expansion、regional-research-ecosystems 或 workforce-ai-enablement。
   - Metrics: source projection taxonomy 显示 waic-industry-agenda 从 1/2 变为 1/3，并保留 regional-ai-ecosystems=1/4、ai-commercialization-roi=1/3、supply-chain-cost-pressure=1/3、token-economics-optimization=1/3、waic-product-launch-pipeline=1/3、market-intelligence=12/12、split target categories=50/50、parentFallback=0、overBudget=0；registry health 与 `pnpm build`（757 pages）全部通过。
