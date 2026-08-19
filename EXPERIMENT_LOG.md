@@ -1,3 +1,14 @@
+## EXP-303 — AI lab private financing capacity headroom 2->3
+- Hypothesis: EXP-301 后续建议优先处理剩余 1 headroom 高利用 target 中的 ai-lab-private-financing；若 frontier AI lab Series H 巨额融资（Anthropic 65B USD / 965B post-money）、私有市场估值、算力/安全/企业分发资本承诺与 Together AI 等推理基础设施风投信号继续只保留 1 个有效 headroom，后续 AI lab mega-round、private-market valuation 与 inference-infrastructure funding 信号会被迫错投到 public-market-readiness（SEC Form S-1 / IPO 前瞻）、robotics-capital-markets（宇树科创板等机器人资本市场）或在 company-finance parent 层堆积。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `ai-lab-private-financing` effective category budget 从 2 提升到 3；为 `anthropic-series-h` 补充 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact）。
+- ICE: 8x8x8=512
+- Start date: 2026-08-19
+- End date: 2026-08-19
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `ai-lab-private-financing=1/3 (2 headroom)`、`split target categories: 50/50`、`parentFallback=0`、`overBudget=0`；public-market-readiness 与 robotics-capital-markets 的 company-finance sibling alternate-target 诊断同步新可用 ai-lab-private-financing target；source projection registry health 与 `pnpm build` 全部通过。
+- Result: pass（ai-lab-private-financing 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Anthropic Series H capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；company-finance sibling alternate-target 诊断自动同步；实现提交 `12a6dd7`；质量评分 27/30。）
+- Decision: scale（保留 ai-lab-private-financing 作为后续 AI lab mega-round、private-market valuation 与 inference-infrastructure funding 信号的独立容量入口；剩余 1 headroom 高利用 target：assistive-exoskeleton-robotics、china-code-agent-runtime、desktop-computer-use、domestic-compute-software、robotics-capital-markets、youth-safety-controls。）
+
 ## EXP-302 — 2026-08-19 real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-19）暴露 NVIDIA Cosmos 3 全模态物理 AI 世界基础模型、NVIDIA Spectrum-6 千兆级 AI 工厂网络、Open Secure AI Alliance 150+ 开源安全联盟、NVIDIA Nations AI 主权 AI（印度 Sarvam）与 OpenAI PORTS-Pike 全球事务布局五条信号；若最新日报不进入 real cron fixture，EN 页面 story 1-3 重复回落到 Cosmos 标签、story 4/5 保留“model capability update”泛化 fallback、ZH 页面 description 与正文泄露“Now I'll compose the full report / 用于补齐日报来源核验矩阵”内部文案且日期错位为 08-18，首日索引会漏掉物理 AI 世界模型、AI factory 网络、开源 AI 安全联盟、主权 AI 与前沿大厂全球事务长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-19.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `src/content/blog/en/openclaw-daily-2026-08-19.md`, `src/content/blog/zh/openclaw-daily-2026-08-19.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

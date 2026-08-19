@@ -21,6 +21,11 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-303: 将 ai-lab-private-financing 有效容量从 2 提升到 3，并为 Anthropic Series H frontier lab financing 补齐 structured capacityPlan，消费 EXP-301 后续“剩余 1 headroom 高利用 target（ai-lab-private-financing）首选”假设 | ICE 8x8x8=512 — commit `12a6dd7`
+  - Hypothesis: EXP-301 后续建议优先处理 ai-lab-private-financing；若 frontier AI lab Series H 巨额融资、私有市场估值（965B post-money）、算力/安全/企业分发资本承诺与 Together AI 等推理基础设施风投继续只保留 1 个有效 headroom，后续 AI lab mega-round、private-market valuation 与 inference-infrastructure funding 信号会被迫错投到 public-market-readiness（S-1/IPO 前瞻）或 robotics-capital-markets（机器人资本市场），或在 company-finance parent 层堆积。
+  - Metrics: source projection taxonomy 显示 ai-lab-private-financing 从 1/2 变为 1/3（2 headroom），并保留 public-market-readiness=2/2、robotics-capital-markets=1/2、company-finance=4/5（1 headroom）、split target categories=50/50、parentFallback=0、overBudget=0；public-market-readiness 与 robotics-capital-markets 的 sibling alternate-target 诊断自动同步新可用 ai-lab-private-financing target；registry health（89 rules、parentFallback=0）与 `pnpm build`（759 pages）全部通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.ai-lab-private-financing` 提升到 3；2) `anthropic-series-h` structured capacityPlan 补齐 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) 质量评分 27/30。
+
 - [x] P1 Candidate / EXP-302: 将 2026-08-19 最新双语日报接入 real cron fixture，修复 EN story 1-3 重复回落 Cosmos、story 4/5 泛化 fallback 与 ZH 泄露指令文案/日期错位，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `ef1b26b`
   - Hypothesis: 最近24小时新增日报（2026-08-19）若最新日报不进入 real cron fixture 且 EN story 1-3 重复回落到 Cosmos、story 4/5 保留“model capability update”泛化 fallback、ZH 页面 description+正文泄露“Now I'll compose the full report / 用于补齐日报来源核验矩阵”内部文案并日期错位为 08-18，首日索引会漏掉物理 AI 世界模型、AI factory 网络、开源 AI 安全联盟、主权 AI 与前沿大厂全球事务长尾入口。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-19 / latestFixture=2026-08-19 / expectedSignals=5；daily source projection labels 覆盖 50 fixtures / 250 expectedSignals；case-level FAQ 8 signals 全部含 required terms 与 internal links；parser guardrail、EN language、brief specificity、registry health 与 `pnpm build`（759 pages）全部通过。
