@@ -90,7 +90,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'aerospace-compute-infrastructure': 3,
   'autonomous-mobility-systems': 3,
   'career-productivity-workflows': 3,
-  'ai-lab-private-financing': 2,
+  'ai-lab-private-financing': 3,
   'chatgpt-control-surfaces': 5,
   'china-code-agent-runtime': 2,
   'code-agent-runtime': 3,

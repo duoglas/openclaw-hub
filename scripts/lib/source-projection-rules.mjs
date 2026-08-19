@@ -16,6 +16,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'company-finance',
     splitTargetCategory: 'ai-lab-private-financing',
+    capacityPlan: {
+      selectedSplitTarget: 'ai-lab-private-financing',
+      whyNotAlternatives: 'Rejected alternate split targets public-market-readiness and robotics-capital-markets because frontier AI lab Series H mega-rounds, private-market valuations, and inference-infrastructure venture financing are pre-IPO private-market capital signals, not SEC Form S-1 public-market readiness filings, confidential IPO submissions, or STAR Market robotics company listings and manufacturing-capacity fundraising.',
+      rejectedAlternateTargets: ['public-market-readiness', 'robotics-capital-markets'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; ai-lab-private-financing now has two effective headroom slots for future AI lab mega-round, private-market valuation, and inference-infrastructure funding signals while preserving public-market-readiness and robotics-capital-markets boundaries.',
+      },
+    },
     displayLabels: [
       {
         label: 'Together AI / NVIDIA / open model inference funding',
