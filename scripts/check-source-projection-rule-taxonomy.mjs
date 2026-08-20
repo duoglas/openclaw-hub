@@ -128,7 +128,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'regional-research-ecosystems': 3,
   'workforce-ai-enablement': 3,
   'robotics-commercial-deployment': 4,
-  'robotics-capital-markets': 2,
+  'robotics-capital-markets': 3,
   'assistive-exoskeleton-robotics': 2,
   'humanoid-embodied-training': 2,
   'robotics-open-model-research': 4,

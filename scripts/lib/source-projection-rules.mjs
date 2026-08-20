@@ -1175,6 +1175,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'company-finance',
     splitTargetCategory: 'robotics-capital-markets',
+    capacityPlan: {
+      selectedSplitTarget: 'robotics-capital-markets',
+      whyNotAlternatives: 'Rejected alternate split targets ai-lab-private-financing and public-market-readiness because Unitree STAR Market IPO listing, planned robotics manufacturing-capacity fundraising, and robotics supply-chain capital signals are public-equity robotics capital-markets events, not pre-IPO frontier AI lab mega-rounds, private-market valuations, or inference-infrastructure venture financing, and not SEC Form S-1 public-market readiness filings from frontier labs.',
+      rejectedAlternateTargets: ['ai-lab-private-financing', 'public-market-readiness'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; robotics-capital-markets now has two effective headroom slots for future robotics IPO, robotics supply-chain financing, and humanoid commercialization capital signals while preserving ai-lab-private-financing and public-market-readiness boundaries.',
+      },
+    },
     displayLabel: 'China / Xinhua / IPO / compute infrastructure',
     terms: ['宇树科技', '科创板 IPO', '42.02亿元'],
     details: {
