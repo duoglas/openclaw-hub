@@ -1286,9 +1286,21 @@ export const FIELD_PROJECTION_RULES = [
         label: 'NVIDIA / Halos OS / robotaxi safety stack',
         terms: ['Halos OS', '安全 OS', 'AI 安全护栏'],
       },
+      {
+        label: 'Waymo / Gemini / Ojai / robotaxi personalization',
+        terms: ['Waymo', 'Gemini', 'Ojai'],
+      },
     ],
-    terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN', '萝卜快跑', '文远知行', '迪拜', '阿联酋', '自动驾驶出租车', 'Halos OS', '安全 OS', 'AI 安全护栏', '仿真验证'],
+    terms: ['DRIVE Hyperion', 'Uber/Autobrains', 'HUMAIN', '萝卜快跑', '文远知行', '迪拜', '阿联酋', '自动驾驶出租车', 'Halos OS', '安全 OS', 'AI 安全护栏', '仿真验证', 'Waymo', 'Ojai'],
     detailVariants: [
+      {
+        terms: ['Waymo', 'Gemini', 'Ojai'],
+        details: {
+          what: 'Waymo introduced Gemini into its custom Ojai robotaxi vehicle, bringing frontier-model capabilities into the in-cabin experience for more personalized rides.',
+          why: 'Frontier models are moving beyond phone and desktop assistants into robotaxi cabins, shifting autonomous-vehicle competition from perception hardware toward in-cabin intelligence and ride personalization.',
+          impact: 'Robotaxi platforms and ride-hailing partners should compare in-cabin AI personalization, driverless safety, and regulatory compliance before treating cabin intelligence as a finished feature.',
+        },
+      },
       {
         terms: ['Halos OS', '安全 OS', 'AI 安全护栏'],
         details: {
@@ -1943,6 +1955,18 @@ export const FIELD_PROJECTION_RULES = [
         label: 'Google / Gemini / agentic product surface',
         terms: ['Gemini App', 'AI Overviews', 'AI Mode', 'Ask YouTube', 'Docs Live'],
       },
+      {
+        label: 'Google / Gemini / Chrome Android assistant',
+        terms: ['Gemini', 'Chrome', 'Android'],
+      },
+      {
+        label: 'Google / Search / AI learning features',
+        terms: ['Search', '学习新功能', 'Ask Google'],
+      },
+      {
+        label: 'Google / Gemini / student AI plan',
+        terms: ['Google AI 计划', '大学生', 'Gemini'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'consumer-agentic-product-surfaces',
@@ -1955,7 +1979,33 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; consumer-agentic-product-surfaces now has two effective headroom slots for future Gemini App, AI Overviews, AI Mode, Ask YouTube, Docs Live, and embedded assistant product-surface signals while preserving career workflows, creative AI, and ChatGPT control surfaces as separate consumer-productivity targets.',
       },
     },
-    terms: ['Interactions API', 'Gemini 模型和智能体的主要接口', '服务端状态', '后台执行', 'Managed Agents', 'Deep Research 升级', 'Gemini App', 'AI Overviews', 'AI Mode', 'Ask YouTube', 'Docs Live', '语音驱动文档'],
+    terms: ['Interactions API', 'Gemini 模型和智能体的主要接口', '服务端状态', '后台执行', 'Managed Agents', 'Deep Research 升级', 'Gemini App', 'AI Overviews', 'AI Mode', 'Ask YouTube', 'Docs Live', '语音驱动文档', 'Chrome', '学习新功能', 'Google AI 计划', '12 个月'],
+    detailVariants: [
+      {
+        terms: ['Gemini', 'Chrome', 'Android'],
+        details: {
+          what: 'Google rolled Gemini in Chrome out to Android users in the US, bringing the assistant into the browser as a default mobile entry point.',
+          why: 'AI assistants are moving from standalone apps into the browser as the default search-and-browse interaction, changing how mobile users reach AI.',
+          impact: 'Consumers can invoke Gemini directly in Chrome without a separate app, while competitors should watch assistant, search, and browser integration depth.',
+        },
+      },
+      {
+        terms: ['Search', '学习新功能', 'Ask Google'],
+        details: {
+          what: 'Google Search added five AI learning features covering courses and standardized-test prep, including Add Notebook and Ask Google.',
+          why: 'AI is reshaping the search mainstream into education scenarios rather than staying a separate chatbot, applying pressure to study tools such as Quizlet.',
+          impact: 'Education and study-tool teams should watch search-side AI learning depth before treating classroom and test-prep flows as separate markets.',
+        },
+      },
+      {
+        terms: ['Google AI 计划', '大学生', 'Gemini'],
+        details: {
+          what: 'Google offered university students worldwide a free 12-month Google AI plan including Gemini plus new learning tools, directly matching OpenAI student efforts.',
+          why: 'AI subscription competition is moving onto campus to capture the next generation of users and pull the paid-conversion funnel forward.',
+          impact: 'Students can start with the free Gemini tier and built-in test-prep tools during back-to-school, while vendors should verify eligibility and regional availability.',
+        },
+      },
+    ],
     details: {
       what: 'Google positioned the Interactions API as the main interface for Gemini models and agents, with server-side state, background execution, tool composition, Managed Agents, remote execution, and Deep Research upgrades.',
       why: 'Model APIs are shifting from one-shot prompt completion toward persistent agent runtimes that manage state, tools, long-running jobs, and recoverable execution.',
