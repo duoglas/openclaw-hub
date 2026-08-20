@@ -6,7 +6,7 @@
 - Start date: 2026-08-20
 - End date: 2026-08-20
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `china-code-agent-runtime=1/3 (2 headroom)`、`code-agent-runtime=1/3`、`desktop-computer-use=1/2`、`domestic-compute-software=1/2`、`developer-tools=4/4`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（china-code-agent-runtime 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Alibaba Qoder capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；developer-tools sibling alternate-target 诊断已同步；commit `pending`；质量评分 27/30。）
+- Result: pass（china-code-agent-runtime 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Alibaba Qoder capacityPlan 已同步 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；developer-tools sibling alternate-target 诊断已同步；commit `de692d7`；质量评分 27/30。）
 - Decision: scale（保留 china-code-agent-runtime 作为后续中国 repository-scale coding agent、Quest Mode/异步任务委托、企业开发者工具与国内模型/算力适配信号的独立容量入口；剩余 1 headroom 高利用 target：assistive-exoskeleton-robotics、desktop-computer-use、domestic-compute-software、youth-safety-controls。）
 
 ## EXP-305 — Robotics capital markets capacity headroom 2->3

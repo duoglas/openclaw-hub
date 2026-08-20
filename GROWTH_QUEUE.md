@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-306: 将 china-code-agent-runtime 有效容量从 2 提升到 3，并同步 Alibaba Qoder agentic coding platform capacityPlan，消费 EXP-305 后续“china-code-agent-runtime 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`
+- [x] P1 Candidate / EXP-306: 将 china-code-agent-runtime 有效容量从 2 提升到 3，并同步 Alibaba Qoder agentic coding platform capacityPlan，消费 EXP-305 后续“china-code-agent-runtime 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `de692d7`
   - Hypothesis: EXP-305 后续建议继续处理 china-code-agent-runtime；若 Qoder、Quest Mode、代码库理解、异步任务委托与中国企业级 coding-agent 平台继续只保留 1 个有效 headroom，后续国产 repository-scale coding agent、异步软件工程委托、企业开发者工具与国内模型/算力适配信号会被迫错投到 code-agent-runtime、desktop-computer-use 或 domestic-compute-software。
   - Metrics: source projection taxonomy 显示 china-code-agent-runtime 从 1/2 变为 1/3（2 headroom），并保留 code-agent-runtime=1/3、desktop-computer-use=1/2、domestic-compute-software=1/2、developer-tools=4/4、split target categories=50/50、parentFallback=0、overBudget=0；desktop-computer-use 与 domestic-compute-software sibling alternate-target 诊断自动同步新可用 china-code-agent-runtime target；registry health、daily source projection labels（51 fixtures / 255 expectedSignals）与 `pnpm build`（761 pages）全部通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.china-code-agent-runtime` 提升到 3；2) `alibaba-qoder-agentic-coding-platform-2026` structured capacityPlan 同步 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) 质量评分 27/30。
