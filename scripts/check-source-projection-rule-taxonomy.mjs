@@ -92,7 +92,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'career-productivity-workflows': 3,
   'ai-lab-private-financing': 3,
   'chatgpt-control-surfaces': 5,
-  'china-code-agent-runtime': 2,
+  'china-code-agent-runtime': 3,
   'code-agent-runtime': 3,
   'cloud-model-distribution': 4,
   'cloud-agent-runtime-infrastructure': 3,

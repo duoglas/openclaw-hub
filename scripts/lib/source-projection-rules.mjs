@@ -1339,9 +1339,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['code-agent-runtime'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 2,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; migrates the existing Qoder signal out of the unmatched developer-tools bucket into a dedicated China code-agent runtime target.',
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; china-code-agent-runtime now has two effective headroom slots for future China-specific repository-scale coding agents, asynchronous delegation, enterprise coding-platform, and domestic developer-tool workflow signals without broadening generic code-agent-runtime matching.',
       },
     },
     terms: ['Qoder', '代码库理解', 'Quest Mode', '异步任务委托'],
