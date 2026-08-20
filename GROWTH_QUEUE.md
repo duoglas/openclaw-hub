@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-17 11:30
+Last updated: 2026-08-20 11:40
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,16 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-305: 将 robotics-capital-markets 有效容量从 2 提升到 3，并为宇树科技科创板 IPO 补齐 structured capacityPlan，消费 EXP-303 后续“剩余 1 headroom 高利用 target（robotics-capital-markets）”假设 | ICE 8x8x8=512 — commit `bfdb39c`
+  - Hypothesis: 若宇树科技科创板 IPO 过会、42.02 亿元机器人产能墓资、机器人供应链资本市场信号继续只保留 1 个有效 headroom，后续 robotics IPO、robotics supply-chain financing 与 humanoid commercialization capital 信号会被迫错投到 ai-lab-private-financing、public-market-readiness 或在 company-finance parent 层堆积。
+  - Metrics: source projection taxonomy 显示 robotics-capital-markets 从 1/2 变为 1/3（2 headroom），并保留 ai-lab-private-financing=1/3、public-market-readiness=2/2、company-finance=4/5、split target categories=50/50、parentFallback=0、overBudget=0；public-market-readiness sibling alternate-target 诊断自动同步新可用 robotics-capital-markets target；registry health（89 rules、parentFallback=0）与 `pnpm build`（761 pages）全部通过。
+  - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.robotics-capital-markets` 提升到 3；2) `unitree-star-market-ipo-2026` structured capacityPlan 补齐 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) 质量评分 27/30。
+
+- [x] P1 Candidate / EXP-304: 2026-08-20 real cron fixture + 字段级 projection 恢复（PORTS-Pike Ohio AI factory / Waymo Gemini Ojai / Google student AI plan / Gemini Chrome / Search AI learning） | ICE 9x8x8=576 — commit `ae06d80`
+  - Hypothesis: 若 2026-08-20 最新日报不进入 real cron fixture，EN 泛化 fallback 与 ZH 泄露指令文案会漏掉全球事务 AI 基础设施、robotaxi 多模态、教育 AI 普惠与浏览器 agent 入口长尾索引。
+  - Metrics: 新增并注册 daily-real-cron-2026-08-20 fixture；扩展 nvidia-drive-hyperion-robotaxi 与 google-gemini-interactions-api rule；EN 08-20 页面移除泛化 fallback 并补齐 7 条 case-level FAQ；ZH 08-20 页面移除泄露指令文案并修复证据矩阵截断；build 761 pages 通过。
+  - Acceptance: 1) fixture 同日覆盖；2) EN 无 fallback；3) ZH 无泄露；4) 质量评分 28/30；5) 本轮补齐队列与日志回写断链。
 
 - [x] P1 Candidate / EXP-303: 将 ai-lab-private-financing 有效容量从 2 提升到 3，并为 Anthropic Series H frontier lab financing 补齐 structured capacityPlan，消费 EXP-301 后续“剩余 1 headroom 高利用 target（ai-lab-private-financing）首选”假设 | ICE 8x8x8=512 — commit `12a6dd7`
   - Hypothesis: EXP-301 后续建议优先处理 ai-lab-private-financing；若 frontier AI lab Series H 巨额融资、私有市场估值（965B post-money）、算力/安全/企业分发资本承诺与 Together AI 等推理基础设施风投继续只保留 1 个有效 headroom，后续 AI lab mega-round、private-market valuation 与 inference-infrastructure funding 信号会被迫错投到 public-market-readiness（S-1/IPO 前瞻）或 robotics-capital-markets（机器人资本市场），或在 company-finance parent 层堆积。

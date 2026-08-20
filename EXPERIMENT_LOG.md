@@ -1,3 +1,25 @@
+## EXP-305 — Robotics capital markets capacity headroom 2->3
+- Hypothesis: EXP-303 后续建议继续处理剩余 1 headroom 高利用 target 中的 robotics-capital-markets；若宇树科技科创板 IPO 过会、42.02 亿元机器人产能墓资、机器人供应链资本市场信号继续只保留 1 个有效 headroom，后续 robotics IPO、robotics supply-chain financing、humanoid commercialization capital 与 robotics listing 信号会被迫错投到 ai-lab-private-financing（前沿实验室私募）、public-market-readiness（SEC S-1）或在 company-finance parent 层堆积。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `robotics-capital-markets` effective category budget 从 2 提升到 3；为 `unitree-star-market-ipo-2026` 补充 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact）。
+- ICE: 8x8x8=512
+- Start date: 2026-08-20
+- End date: 2026-08-20
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `robotics-capital-markets=1/3 (2 headroom)`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；public-market-readiness 的 company-finance sibling alternate-target 诊断同步新可用 robotics-capital-markets target；source projection registry health 与 `pnpm build` 全部通过。
+- Result: pass（robotics-capital-markets 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Unitree STAR Market IPO capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；public-market-readiness sibling alternate-target 诊断自动同步；实现提交 `bfdb39c`；质量评分 27/30。）
+- Decision: scale（保留 robotics-capital-markets 作为后续 robotics IPO、robotics supply-chain financing 与 humanoid commercialization capital 信号的独立容量入口；剩余 1 headroom 高利用 target：assistive-exoskeleton-robotics、china-code-agent-runtime、desktop-computer-use、domestic-compute-software、youth-safety-controls。）
+
+## EXP-304 — 2026-08-20 real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-20）暴露 PORTS-Pike Ohio AI factory、Waymo Gemini Ojai robotaxi、Google 学生 AI 计划、Gemini Chrome 深度集成与 Search AI learning 五条信号；若最新日报不进入 real cron fixture，EN 页面泛化 fallback 与 ZH 页面泄露指令文案会漏掉全球事务 AI 基础设施、robotaxi 多模态、教育 AI 普惠与浏览器 agent 入口长尾索引。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-20.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-20.md`, `src/content/blog/zh/openclaw-daily-2026-08-20.md`
+- Change: 新增并注册 2026-08-20 real cron fixture；扩展 nvidia-drive-hyperion-robotaxi 与 google-gemini-interactions-api rule 字段级 projection；重写 EN 08-20 页面移除泛化 fallback 并补齐 7 条 case-level FAQ；重写 ZH 08-20 页面移除泄露指令文案并修复证据矩阵截断。
+- ICE: 9x8x8=576
+- Start date: 2026-08-20
+- End date: 2026-08-20
+- Success metric: latest fixture freshness、daily EN/ZH generator、case-level FAQ、parser guardrail、source projection labels、EN language、brief specificity、registry health 与 `pnpm build` 全部通过。
+- Result: pass（实现提交 `ae06d80`，由本轮增长执行补写实验记录；质量评分 28/30。）
+- Decision: scale（继续维持“最新日报必须同日 fixture 覆盖 + 字段级 projection + case FAQ + 无泄露”默认门槛；实现与日志回写应在同一轮完成，本轮已补齐 EXP-304 断链。）
+
 ## EXP-303 — AI lab private financing capacity headroom 2->3
 - Hypothesis: EXP-301 后续建议优先处理剩余 1 headroom 高利用 target 中的 ai-lab-private-financing；若 frontier AI lab Series H 巨额融资（Anthropic 65B USD / 965B post-money）、私有市场估值、算力/安全/企业分发资本承诺与 Together AI 等推理基础设施风投信号继续只保留 1 个有效 headroom，后续 AI lab mega-round、private-market valuation 与 inference-infrastructure funding 信号会被迫错投到 public-market-readiness（SEC Form S-1 / IPO 前瞻）、robotics-capital-markets（宇树科创板等机器人资本市场）或在 company-finance parent 层堆积。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
