@@ -100,7 +100,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'consumer-creative-ai': 5,
   'consumer-agentic-product-surfaces': 3,
   'content-licensing-markets': 3,
-  'desktop-computer-use': 2,
+  'desktop-computer-use': 3,
   'developer-tools': 4,
   'digital-regulation-compliance': 3,
   'domestic-compute-software': 2,

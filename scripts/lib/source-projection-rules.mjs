@@ -123,6 +123,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'developer-tools',
     splitTargetCategory: 'desktop-computer-use',
+    capacityPlan: {
+      selectedSplitTarget: 'desktop-computer-use',
+      whyNotAlternatives: 'Rejected alternate split targets china-code-agent-runtime, code-agent-runtime, and domestic-compute-software because Codex Windows Computer Use is a desktop interaction and local application-control signal, not a China-specific coding platform, generic repository coding runtime, or domestic heterogeneous-compute software signal.',
+      rejectedAlternateTargets: ['china-code-agent-runtime', 'code-agent-runtime', 'domestic-compute-software'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; desktop-computer-use now has two effective headroom slots for future supervised desktop agents, Windows application control, remote-control, local debugging, and cross-device task-handoff signals without broadening repository coding or domestic-compute matching.',
+      },
+    },
     terms: ['Windows 版 Codex', 'Computer Use', 'Codex app'],
     details: {
       what: 'OpenAI release notes say the Codex Windows app now supports Computer Use, allowing the agent to see, click, and type in Windows applications while adding remote-control, profile, performance, and stability updates.',

@@ -1,3 +1,14 @@
+## EXP-307 — Desktop computer-use capacity headroom 2->3
+- Hypothesis: EXP-306 后续建议继续处理剩余 1 headroom 高利用 target 中的 desktop-computer-use；若 Codex Windows Computer Use、see/click/type、远程控制、本地应用调试与跨设备任务交接继续只保留 1 个有效 headroom，后续桌面 agent、Windows 应用控制、监督式自动化与本地调试信号会被迫错投到 china-code-agent-runtime（中国 coding agent）、code-agent-runtime（泛化 coding agent）或 domestic-compute-software（国产异构算力软件）。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `desktop-computer-use` effective category budget 从 2 提升到 3；为 `openai-codex-windows-computer-use` 补齐 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact），并让 domestic-compute-software 的 developer-tools sibling alternate-target 诊断同步新可用 desktop-computer-use target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-20
+- End date: 2026-08-20
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `desktop-computer-use=1/3 (2 headroom)`、`china-code-agent-runtime=1/3`、`code-agent-runtime=1/3`、`domestic-compute-software=1/2`、`developer-tools=4/4`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（desktop-computer-use 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Codex Windows Computer Use capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；developer-tools sibling alternate-target 诊断已同步；commit `pending`；质量评分 27/30。）
+- Decision: scale（保留 desktop-computer-use 作为后续 Windows application control、supervised desktop agents、local debugging 与 cross-device task handoff 信号的独立容量入口；剩余 1 headroom 高利用 target：assistive-exoskeleton-robotics、domestic-compute-software、youth-safety-controls。）
+
 ## EXP-306 — China code-agent runtime capacity headroom 2->3
 - Hypothesis: EXP-305 后续建议继续处理剩余 1 headroom 高利用 target 中的 china-code-agent-runtime；若 Qoder、Quest Mode、代码库理解、异步任务委托与中国企业级 coding-agent 平台继续只保留 1 个有效 headroom，后续国产 repository-scale coding agent、异步软件工程委托、企业开发者工具与国内模型/算力适配信号会被迫错投到 code-agent-runtime（泛化 coding agent）、desktop-computer-use（桌面 computer use）或 domestic-compute-software（国产异构算力软件）。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
