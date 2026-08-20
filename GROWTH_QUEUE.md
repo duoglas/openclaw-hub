@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-307: 将 desktop-computer-use 有效容量从 2 提升到 3，并为 OpenAI Codex Windows Computer Use 补齐 structured capacityPlan，消费 EXP-306 后续“desktop-computer-use 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `pending`
+- [x] P1 Candidate / EXP-307: 将 desktop-computer-use 有效容量从 2 提升到 3，并为 OpenAI Codex Windows Computer Use 补齐 structured capacityPlan，消费 EXP-306 后续“desktop-computer-use 1 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `c7620ab`
   - Hypothesis: 若 Codex Windows Computer Use、see/click/type、远程控制、本地应用调试与跨设备任务交接继续只保留 1 个有效 headroom，后续桌面 agent、Windows 应用控制、监督式自动化与本地调试信号会被迫错投到 china-code-agent-runtime、code-agent-runtime 或 domestic-compute-software。
   - Metrics: source projection taxonomy 显示 desktop-computer-use 从 1/2 变为 1/3（2 headroom），并保留 china-code-agent-runtime=1/3、code-agent-runtime=1/3、domestic-compute-software=1/2、developer-tools=4/4、split target categories=50/50、parentFallback=0、overBudget=0；domestic-compute-software sibling alternate-target 诊断自动同步新可用 desktop-computer-use target；registry health、daily source projection labels（51 fixtures / 255 expectedSignals）与 `pnpm build`（761 pages）全部通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.desktop-computer-use` 提升到 3；2) `openai-codex-windows-computer-use` structured capacityPlan 补齐 categoryBudget=3/categoryHeadroom=2/capacityDelta=0；3) 质量评分 27/30。

@@ -6,7 +6,7 @@
 - Start date: 2026-08-20
 - End date: 2026-08-20
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `desktop-computer-use=1/3 (2 headroom)`、`china-code-agent-runtime=1/3`、`code-agent-runtime=1/3`、`domestic-compute-software=1/2`、`developer-tools=4/4`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（desktop-computer-use 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Codex Windows Computer Use capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；developer-tools sibling alternate-target 诊断已同步；commit `pending`；质量评分 27/30。）
+- Result: pass（desktop-computer-use 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Codex Windows Computer Use capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；developer-tools sibling alternate-target 诊断已同步；commit `c7620ab`；质量评分 27/30。）
 - Decision: scale（保留 desktop-computer-use 作为后续 Windows application control、supervised desktop agents、local debugging 与 cross-device task handoff 信号的独立容量入口；剩余 1 headroom 高利用 target：assistive-exoskeleton-robotics、domestic-compute-software、youth-safety-controls。）
 
 ## EXP-306 — China code-agent runtime capacity headroom 2->3
