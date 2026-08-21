@@ -6,7 +6,7 @@
 - Start date: 2026-08-21
 - End date: 2026-08-21
 - Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm build` passes; latest fixture freshness shows latestDaily=2026-08-21/latestFixture=2026-08-21/expectedSignals=5; source projection labels show 52 fixtures/260 expectedSignals.
-- Result: pass（latest fixture freshness 08-21/08-21、daily EN/ZH generator、case-level FAQ links latestFixture=2026-08-21 autoSignals=7、parser guardrails、registry health/taxonomy、EN language、brief specificity 与 `pnpm build`（763 pages）全部通过；实现提交 `49b8250`；质量评分 28/30。）
+- Result: pass（latest fixture freshness 08-21/08-21、daily EN/ZH generator、case-level FAQ links latestFixture=2026-08-21 autoSignals=7、parser guardrails、registry health/taxonomy、EN language、brief specificity 与 `pnpm build`（763 pages）全部通过；实现提交 `fa59c5d`；质量评分 28/30。）
 - Decision: scale（继续将“最新日报同日 fixture 覆盖 + source projection label/detail + case-level FAQ + 无 fallback/泄露”作为增长执行默认门槛；下一步优先处理 taxonomy 诊断中的 0/1 headroom 高利用 target，如 humanoid-embodied-training、public-market-readiness、assistive-exoskeleton-robotics、domestic-compute-software、youth-safety-controls。）
 
 ## EXP-307 — Desktop computer-use capacity headroom 2->3

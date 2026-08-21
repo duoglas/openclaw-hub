@@ -22,7 +22,7 @@ Manager: main session
 ## Done
 
 
-- [x] P1 Candidate / EXP-308: 将 2026-08-21 最新双语日报接入 real cron fixture，补齐 PORTS-Pike 4.25GW、Daybreak Bedrock、机器人营收、AI Plus 与 GeForce NOW Firefox 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `49b8250`
+- [x] P1 Candidate / EXP-308: 将 2026-08-21 最新双语日报接入 real cron fixture，补齐 PORTS-Pike 4.25GW、Daybreak Bedrock、机器人营收、AI Plus 与 GeForce NOW Firefox 字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `fa59c5d`
   - Hypothesis: 最近24小时新增日报（2026-08-21）暴露 PORTS-Pike 4.25GW AI factory、OpenAI Daybreak Bedrock 网络安全模型、中国机器人产业 1655 亿元营收、AI Plus 垂直场景落地与 GeForce NOW Firefox 浏览器云 GPU 五条信号；若最新日报不进入 real cron fixture，首日索引会漏掉 AI 基础设施容量、云上安全模型采购、机器人产业规模、AI+ 产业/政务落地与浏览器算力入口长尾。
   - Metrics: latest fixture freshness 显示 latestDaily=2026-08-21 / latestFixture=2026-08-21 / expectedSignals=5；daily source projection labels 覆盖 52 fixtures / 260 expectedSignals；daily EN/ZH generator、case-level FAQ links（latestFixture=2026-08-21, autoSignals=7）、parser guardrail、registry health、taxonomy、EN language、brief specificity 与 `pnpm build`（763 pages）全部通过。
   - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-21.mjs`；2) 为 Daybreak Bedrock、机器人营收、AI Plus vertical deployment、GeForce NOW Firefox 与 PORTS-Pike 4.25GW 增加/收窄 fixture-backed label/detailVariants；3) EN/ZH 2026-08-21 页面输出五条 fixture-backed 信号，补齐 7 条 case-level FAQ 与证据矩阵；4) 质量评分 28/30。
