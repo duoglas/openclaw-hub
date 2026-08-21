@@ -1,3 +1,14 @@
+## EXP-309 — Humanoid embodied-training capacity headroom 2->4
+- Hypothesis: EXP-308 后续建议优先处理 humanoid-embodied-training 这个 0 headroom 高利用 target；若人形机器人实景实训、世界人形机器人运动会、能力分级、技能认证、机器人产业营收与竞赛标准继续保持 0 个有效 headroom，后续 humanoid competition standard、dexterous-hand benchmark、real-scene training、capability certification 与 embodied-training 信号会被迫错投到 robotics-simulation-training、robotics-commercial-deployment、autonomous-mobility-systems 或 robotics-open-model-research。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `humanoid-embodied-training` effective category budget 从 2 提升到 4；为 `china-humanoid-embodied-training-2026` 与 `world-humanoid-robot-games-2026` 补齐 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact），并让 assistive-exoskeleton-robotics 的 physical-ai-robotics sibling alternate-target 诊断同步新可用 humanoid-embodied-training target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-21
+- End date: 2026-08-21
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `humanoid-embodied-training=2/4 (2 headroom)`、`robotics-simulation-training=3/6`、`autonomous-mobility-systems=1/3`、`robotics-commercial-deployment=2/4`、`robotics-open-model-research=2/4`、`physical-ai-robotics=11/11`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
+- Result: pass（humanoid-embodied-training 已从 2/2 满载恢复到 2/4，有 2 个有效 headroom；China humanoid embodied training 与 World Humanoid Robot Games capacityPlan 已补齐 categoryBudget=4、categoryHeadroom=2、capacityDelta=0；assistive-exoskeleton-robotics sibling alternate-target 诊断已同步；commit `648d8e7`；质量评分 27/30。）
+- Decision: scale（保留 humanoid-embodied-training 作为后续 humanoid real-scene training、competition standards、dexterous-hand benchmark、capability certification 与 embodied-training readiness 信号的独立容量入口；剩余高利用 target：public-market-readiness、assistive-exoskeleton-robotics、domestic-compute-software、youth-safety-controls。）
+
 ## EXP-308 — 2026-08-21 real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-21）暴露 PORTS-Pike 4.25GW AI factory、OpenAI Daybreak Bedrock 网络安全模型、中国机器人产业 1655 亿元营收、AI Plus 垂直场景落地与 GeForce NOW Firefox 浏览器云 GPU 五条信号；若最新日报不进入 real cron fixture，首日索引会漏掉 AI 基础设施容量、云上安全模型采购、机器人产业规模、AI+ 产业/政务落地与浏览器算力入口长尾。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-21.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-21.md`, `src/content/blog/zh/openclaw-daily-2026-08-21.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

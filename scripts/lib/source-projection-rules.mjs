@@ -1726,6 +1726,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'humanoid-embodied-training',
+    capacityPlan: {
+      selectedSplitTarget: 'humanoid-embodied-training',
+      whyNotAlternatives: 'Rejected alternate split targets robotics-simulation-training, robotics-commercial-deployment, autonomous-mobility-systems, and robotics-open-model-research because China humanoid embodied training, real-scene training, robot-industry revenue, company growth, and capability certification are humanoid training/deployment-readiness signals, not simulation-only, commercial robot deployment, autonomous mobility, assistive exoskeleton, or open robotics model research signals.',
+      rejectedAlternateTargets: ['robotics-simulation-training', 'robotics-commercial-deployment', 'autonomous-mobility-systems', 'robotics-open-model-research'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; humanoid-embodied-training now has two effective headroom slots for future humanoid robot real-scene training, capability-grade, certification, and competition-standard signals while preserving simulation, commercial deployment, mobility, and open research boundaries.',
+      },
+    },
     displayLabels: [
       {
         label: 'Xinhua / MIIT / China / robotics deployment',
@@ -2886,6 +2897,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'humanoid-embodied-training',
+    capacityPlan: {
+      selectedSplitTarget: 'humanoid-embodied-training',
+      whyNotAlternatives: 'Rejected alternate split targets robotics-simulation-training, robotics-commercial-deployment, autonomous-mobility-systems, and robotics-open-model-research because World Humanoid Robot Games signals turn humanoid competitions into measurable capability grades and embodied-training standards, not simulation-only training, generic commercial deployment, autonomous mobility systems, or open robotics model/tooling research.',
+      rejectedAlternateTargets: ['robotics-simulation-training', 'robotics-commercial-deployment', 'autonomous-mobility-systems', 'robotics-open-model-research'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; humanoid-embodied-training now has two effective headroom slots for future humanoid competition standards, dexterous-hand capability, balance/strength grading, and embodied-training benchmark signals while preserving nearby robotics split-target boundaries.',
+      },
+    },
     displayLabel: 'China / humanoid robot games / robotics standard',
     terms: ['世界人形机器人运动会', '冰丝带', '16 国', '2056 台'],
     details: {
