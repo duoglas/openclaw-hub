@@ -1,3 +1,14 @@
+## EXP-308 — 2026-08-21 real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-21）暴露 PORTS-Pike 4.25GW AI factory、OpenAI Daybreak Bedrock 网络安全模型、中国机器人产业 1655 亿元营收、AI Plus 垂直场景落地与 GeForce NOW Firefox 浏览器云 GPU 五条信号；若最新日报不进入 real cron fixture，首日索引会漏掉 AI 基础设施容量、云上安全模型采购、机器人产业规模、AI+ 产业/政务落地与浏览器算力入口长尾。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-21.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-21.md`, `src/content/blog/zh/openclaw-daily-2026-08-21.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-21 real cron fixture；扩展/收窄 source projection rules，使 PORTS-Pike 4.25GW、Daybreak Bedrock cyber partner ecosystem、MIIT robot industry revenue、China AI Plus vertical deployment、GeForce NOW Firefox cloud GPU access 均可稳定输出字段级 label/detail；重写 EN/ZH 2026-08-21 页面，补齐证据矩阵、今日结论/明日跟踪点与 7 条 case-level FAQ 内链。
+- ICE: 9x8x8=576
+- Start date: 2026-08-21
+- End date: 2026-08-21
+- Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm build` passes; latest fixture freshness shows latestDaily=2026-08-21/latestFixture=2026-08-21/expectedSignals=5; source projection labels show 52 fixtures/260 expectedSignals.
+- Result: pass（latest fixture freshness 08-21/08-21、daily EN/ZH generator、case-level FAQ links latestFixture=2026-08-21 autoSignals=7、parser guardrails、registry health/taxonomy、EN language、brief specificity 与 `pnpm build`（763 pages）全部通过；实现提交 `49b8250`；质量评分 28/30。）
+- Decision: scale（继续将“最新日报同日 fixture 覆盖 + source projection label/detail + case-level FAQ + 无 fallback/泄露”作为增长执行默认门槛；下一步优先处理 taxonomy 诊断中的 0/1 headroom 高利用 target，如 humanoid-embodied-training、public-market-readiness、assistive-exoskeleton-robotics、domestic-compute-software、youth-safety-controls。）
+
 ## EXP-307 — Desktop computer-use capacity headroom 2->3
 - Hypothesis: EXP-306 后续建议继续处理剩余 1 headroom 高利用 target 中的 desktop-computer-use；若 Codex Windows Computer Use、see/click/type、远程控制、本地应用调试与跨设备任务交接继续只保留 1 个有效 headroom，后续桌面 agent、Windows 应用控制、监督式自动化与本地调试信号会被迫错投到 china-code-agent-runtime（中国 coding agent）、code-agent-runtime（泛化 coding agent）或 domestic-compute-software（国产异构算力软件）。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

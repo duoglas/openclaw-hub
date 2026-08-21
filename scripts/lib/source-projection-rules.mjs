@@ -202,7 +202,23 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'edge-hybrid-compute-infrastructure',
-    terms: ['RTX Spark', 'DGX Station', 'Microsoft Fabric', 'NVIDIA OpenShell'],
+    displayLabels: [
+      {
+        label: 'NVIDIA / GeForce NOW / Firefox cloud GPU access',
+        terms: ['GeForce NOW', 'Firefox', '1440p', '120fps'],
+      },
+    ],
+    terms: ['RTX Spark', 'DGX Station', 'Microsoft Fabric', 'NVIDIA OpenShell', 'GeForce NOW', 'Firefox', '1440p', '120fps'],
+    detailVariants: [
+      {
+        terms: ['GeForce NOW', 'Firefox'],
+        details: {
+          what: 'NVIDIA said GeForce NOW now supports Firefox, letting users stream supported PC games in the browser without a dedicated client, with Ultimate members reaching up to 1440p and 120fps.',
+          why: 'Cloud GPU access is becoming more browser-native, lowering the device and client-install barrier for high-performance graphics and compute-like workloads.',
+          impact: 'Cloud gaming, cloud workstation, and browser-delivered AI application teams should benchmark latency, network quality, cross-device compatibility, and subscription economics before assuming local GPU ownership is required.',
+        },
+      },
+    ],
     details: {
       what: 'NVIDIA said its Microsoft Build / GTC Taipei updates expand the joint AI stack across RTX Spark, DGX Station for Windows, Microsoft Fabric GPU acceleration, NVIDIA open models on Foundry, and NVIDIA OpenShell security runtime support in GitHub Copilot.',
       why: 'The update turns agentic AI into a deployment stack across local Windows PCs, Azure services, Fabric data workflows, and private or hybrid enterprise environments rather than a standalone model release.',
@@ -1224,6 +1240,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / Xinhua / AI manufacturing robotics photonics deployment',
         terms: ['浙江数控机床', '宁波精密光学', '苏州光子产业'],
       },
+      {
+        label: 'China / AI Plus / vertical deployment',
+        terms: ['AI 相关产业规模超过万亿元', '2026 年预计增速超 30%', '政务四类场景'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'vertical-workflow-agents',
@@ -1236,8 +1256,16 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses refreshed vertical-workflow-agents capacity for a latest-fixture vertical workflow deployment signal without widening generic enterprise-agents matching.',
       },
     },
-    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟', '中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理', '数智化', '中小企业', '浙江数控机床', '宁波精密光学', '苏州光子产业', '合肥具身智能机器人训练场'],
+    terms: ['夏季达沃斯论坛', '工艺图纸解析从半天缩短至几分钟', '材料研发周期缩短', '工厂读图和工艺制定从半天缩短到几分钟', '中小企业数智化转型培训班', '小快轻准', '研发设计、生产制造、经营管理', '数智化', '中小企业', '浙江数控机床', '宁波精密光学', '苏州光子产业', '合肥具身智能机器人训练场', 'AI 相关产业规模超过万亿元', '2026 年预计增速超 30%', '政务四类场景'],
     detailVariants: [
+      {
+        terms: ['AI 相关产业规模超过万亿元', '2026 年预计增速超 30%', '政务四类场景'],
+        details: {
+          what: 'Xinhua reported that China’s AI-related industry exceeded one trillion yuan in 2025 and is expected to grow by more than 30% in 2026, with early commercialization across production, services, public welfare, and government workflows.',
+          why: 'China AI adoption is shifting from model capability claims toward vertical workflow transformation in factories, pharmacies, airport catering, professional-title review, and work-injury administration.',
+          impact: 'Enterprises should choose specific measurable workflows, data boundaries, EDA and chip dependencies, governance ownership, and human review standards before broad AI procurement.',
+        },
+      },
       {
         terms: ['浙江数控机床', '宁波精密光学', '苏州光子产业'],
         details: {
@@ -1655,6 +1683,10 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / Daybreak / Bedrock cyber partner ecosystem',
         terms: ['Daybreak', 'Bedrock', 'Accenture', 'CrowdStrike'],
       },
+      {
+        label: 'OpenAI / Daybreak / Bedrock cyber partner ecosystem',
+        terms: ['OpenAI Daybreak', 'Bedrock', '网络安全'],
+      },
     ],
     terms: ['Partner Network', '支持合作伙伴生态', '30 万名认证顾问', 'Presence', '语音/聊天 Agent', '人类接管规则', '调用企业系统', 'ChatGPT Business', 'Premium 席位', '125 美元', '5 倍用量', 'Daybreak Cyber Partner', 'Daybreak', 'CrowdStrike', 'Cloudflare'],
     detailVariants: [
@@ -1713,7 +1745,11 @@ export const FIELD_PROJECTION_RULES = [
       },
       {
         label: 'MIIT / China / robot industry revenue',
-        terms: ['世界机器人大会', '规上机器人企业'],
+        terms: ['世界机器人大会', '1655 亿元'],
+      },
+      {
+        label: 'MIIT / China / robot industry revenue',
+        terms: ['世界机器人大会', '规上机器人企业', '营收超900亿元'],
       },
       {
         label: 'Xinhua / Honor / humanoid robotics landing window',
@@ -1724,7 +1760,7 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['市场监管总局', '人形机器人领域新设企业', '11.6 万户'],
       },
     ],
-    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书', '世界机器人大会', '规上机器人企业', '营收超900亿元', '荣耀终端机器人首席技术架构师严斌', '人形机器人技术落地的重要时期', '市场监管总局', '人形机器人领域新设企业', '11.6 万户', '同比增长 9.5%'],
+    terms: ['实景实训专项行动', '百个以上高价值应用场景', '万台级规模落地能力', '杭州机器人学校', '技能证书', '世界机器人大会', '规上机器人企业', '1655 亿元', '24.5%', '标志性产品', '营收超900亿元', '荣耀终端机器人首席技术架构师严斌', '人形机器人技术落地的重要时期', '市场监管总局', '人形机器人领域新设企业', '11.6 万户', '同比增长 9.5%'],
     detailVariants: [
       {
         terms: ['市场监管总局', '人形机器人领域新设企业', '11.6 万户'],
@@ -1870,6 +1906,10 @@ export const FIELD_PROJECTION_RULES = [
       },
       {
         label: 'OpenAI / PORTS-Pike / global affairs infrastructure',
+        terms: ['PORTS-Pike', '4.25GW'],
+      },
+      {
+        label: 'OpenAI / PORTS-Pike / global affairs infrastructure',
         terms: ['PORTS-Pike', '全球事务'],
       },
     ],
@@ -1884,7 +1924,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; uses refreshed ai-policy-standards capacity for a fixture-backed international AI governance mechanism and avoids adding another broad policy-governance fallback.',
       },
     },
-    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理', '智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制', 'PORTS-Pike', '全球事务'],
+    terms: ['世界人工智能合作组织', '上海世界人工智能大会', '全球 AI 治理合作', '2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来', '全球治理', '智能体是 AI 产品和服务的新形态', '决策权限和行为边界', '行为追溯和风险提示机制', 'SB Energy', 'PORTS-Pike', '4.25GW', '全球事务'],
     detailVariants: [
       {
         terms: ['2026 世界人工智能大会', '7 月 17-20 日', '智能伙伴 共创未来'],
@@ -1903,7 +1943,7 @@ export const FIELD_PROJECTION_RULES = [
         },
       },
       {
-        terms: ['PORTS-Pike', '全球事务'],
+        terms: ['SB Energy', 'PORTS-Pike', '4.25GW'],
         details: {
           what: 'OpenAI joined the PORTS-Pike project, listing it under Global Affairs to signal growing public-sector and infrastructure cooperation alongside its domestic compute, energy, and data-center expansion.',
           why: 'Frontier-lab global affairs activity is moving from model and product announcements toward infrastructure, energy, and cross-border partnership signals that shape where and how sovereign and enterprise AI capacity gets built.',
