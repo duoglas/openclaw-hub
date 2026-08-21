@@ -6,7 +6,7 @@
 - Start date: 2026-08-21
 - End date: 2026-08-21
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `humanoid-embodied-training=2/4 (2 headroom)`、`robotics-simulation-training=3/6`、`autonomous-mobility-systems=1/3`、`robotics-commercial-deployment=2/4`、`robotics-open-model-research=2/4`、`physical-ai-robotics=11/11`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health、daily source projection labels 与 `pnpm build` 全部通过。
-- Result: pass（humanoid-embodied-training 已从 2/2 满载恢复到 2/4，有 2 个有效 headroom；China humanoid embodied training 与 World Humanoid Robot Games capacityPlan 已补齐 categoryBudget=4、categoryHeadroom=2、capacityDelta=0；assistive-exoskeleton-robotics sibling alternate-target 诊断已同步；commit `648d8e7`；质量评分 27/30。）
+- Result: pass（humanoid-embodied-training 已从 2/2 满载恢复到 2/4，有 2 个有效 headroom；China humanoid embodied training 与 World Humanoid Robot Games capacityPlan 已补齐 categoryBudget=4、categoryHeadroom=2、capacityDelta=0；assistive-exoskeleton-robotics sibling alternate-target 诊断已同步；commit `fa44045`；质量评分 27/30。）
 - Decision: scale（保留 humanoid-embodied-training 作为后续 humanoid real-scene training、competition standards、dexterous-hand benchmark、capability certification 与 embodied-training readiness 信号的独立容量入口；剩余高利用 target：public-market-readiness、assistive-exoskeleton-robotics、domestic-compute-software、youth-safety-controls。）
 
 ## EXP-308 — 2026-08-21 real cron fixture and field-level projection recovery

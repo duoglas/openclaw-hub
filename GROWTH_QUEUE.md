@@ -22,7 +22,7 @@ Manager: main session
 ## Done
 
 
-- [x] P1 Candidate / EXP-309: 将 humanoid-embodied-training 有效容量从 2 提升到 4，并为 China humanoid embodied training / World Humanoid Robot Games 补齐 structured capacityPlan，消费 EXP-308 后续“humanoid-embodied-training 0 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `648d8e7`
+- [x] P1 Candidate / EXP-309: 将 humanoid-embodied-training 有效容量从 2 提升到 4，并为 China humanoid embodied training / World Humanoid Robot Games 补齐 structured capacityPlan，消费 EXP-308 后续“humanoid-embodied-training 0 headroom 高利用 target”假设 | ICE 8x8x8=512 — commit `fa44045`
   - Hypothesis: EXP-308 后续建议优先处理 humanoid-embodied-training；若人形机器人实景实训、世界人形机器人运动会、能力分级、技能认证、机器人产业营收与竞赛标准继续保持 0 个有效 headroom，后续 humanoid competition standard、dexterous-hand benchmark、real-scene training、capability certification 与 embodied-training 信号会被迫错投到 robotics-simulation-training、robotics-commercial-deployment、autonomous-mobility-systems 或 robotics-open-model-research。
   - Metrics: source projection taxonomy 显示 humanoid-embodied-training 从 2/2 变为 2/4（2 headroom），并保留 robotics-simulation-training=3/6、autonomous-mobility-systems=1/3、robotics-commercial-deployment=2/4、robotics-open-model-research=2/4、physical-ai-robotics=11/11、split target categories=50/50、parentFallback=0、overBudget=0；assistive-exoskeleton-robotics alternate-target 诊断自动同步新可用 humanoid-embodied-training target；registry health、daily source projection labels（52 fixtures / 260 expectedSignals）与 `pnpm build`（763 pages）全部通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.humanoid-embodied-training` 提升到 4；2) `china-humanoid-embodied-training-2026` 与 `world-humanoid-robot-games-2026` structured capacityPlan 补齐 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；3) 质量评分 27/30。
