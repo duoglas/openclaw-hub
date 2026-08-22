@@ -6,7 +6,7 @@
 - Start date: 2026-08-22
 - End date: 2026-08-22
 - Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-evidence-matrix && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes; latest fixture freshness shows latestDaily=2026-08-22/latestFixture=2026-08-22/expectedSignals=5; source projection labels show 53 fixtures/265 expectedSignals; registry health 89 rules parentFallback=0。
-- Result: pass（latest fixture freshness 08-22/08-22、daily EN/ZH generator、case-level FAQ links latestFixture=2026-08-22 autoSignals=7、parser guardrails、evidence matrix、EN language、brief specificity、registry health/taxonomy 与 `pnpm build`（765 pages）全部通过；实现提交 `__COMMIT__`；质量评分 28/30。）
+- Result: pass（latest fixture freshness 08-22/08-22、daily EN/ZH generator、case-level FAQ links latestFixture=2026-08-22 autoSignals=7、parser guardrails、evidence matrix、EN language、brief specificity、registry health/taxonomy 与 `pnpm build`（765 pages）全部通过；实现提交 `e7aad35`；质量评分 28/30。）
 - Decision: scale（继续将“最新日报同日 fixture 覆盖 + source projection label/detail + case-level FAQ + 无 fallback/泄露”作为增长执行默认门槛；新增字段级 projection 时优先复用既有规则以规避 0 headroom 顶层 category budget 风险。）
 
 
