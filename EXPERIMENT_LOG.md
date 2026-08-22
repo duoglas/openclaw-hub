@@ -6,7 +6,7 @@
 - Start date: 2026-08-22
 - End date: 2026-08-22
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `public-market-readiness=2/3 (1 headroom)`、`ai-lab-private-financing=1/3`、`robotics-capital-markets=1/3`、`company-finance=4/5`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health 与 `pnpm build` 全部通过。
-- Result: pass（public-market-readiness 已从 2/2 满载恢复到 2/3，有 1 个有效 headroom；Anthropic SEC S-1 capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=1、capacityDelta=0；company-finance sibling alternate-target 诊断自动同步；commit (pending)；质量评分 27/30。）
+- Result: pass（public-market-readiness 已从 2/2 满载恢复到 2/3，有 1 个有效 headroom；Anthropic SEC S-1 capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=1、capacityDelta=0；company-finance sibling alternate-target 诊断自动同步；commit `2a26578`；质量评分 27/30。）
 - Decision: scale（保留 public-market-readiness 作为后续 frontier-lab S-1/IPO readiness、public-market listing 与 public-equity 信号的独立容量入口；剩余 1 headroom 高利用 target：assistive-exoskeleton-robotics、domestic-compute-software、youth-safety-controls。）
 
 

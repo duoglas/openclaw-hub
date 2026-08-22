@@ -22,7 +22,7 @@ Manager: main session
 ## Done
 
 
-- [x] P1 Candidate / EXP-310: 将 public-market-readiness 有效容量从 2 提升到 3，并为 Anthropic SEC Form S-1 IPO 补齐 structured capacityPlan，消费 EXP-309 后续“唯一剩余 0 headroom 高利用 target（public-market-readiness）”假设 | ICE 8x8x8=512 — commit `(pending)`
+- [x] P1 Candidate / EXP-310: 将 public-market-readiness 有效容量从 2 提升到 3，并为 Anthropic SEC Form S-1 IPO 补齐 structured capacityPlan，消费 EXP-309 后续“唯一剩余 0 headroom 高利用 target（public-market-readiness）”假设 | ICE 8x8x8=512 — commit `2a26578`
   - Hypothesis: EXP-309 后续建议中指出 public-market-readiness 是唯一剩余 0 headroom（100% 利用）的有效类别；若 Anthropic SEC Form S-1 秘密提交 IPO 与潜在上市披露信号继续无有效 headroom，后续 frontier-lab public-market listing、S-1/IPO readiness 与 frontier-lab public-equity 信号会被迫错投到 ai-lab-private-financing（私募）或 robotics-capital-markets（机器人资本市场），或在 company-finance parent 层堆积。
   - Metrics: source projection taxonomy 显示 public-market-readiness 从 2/2 变为 2/3（1 headroom），并保留 ai-lab-private-financing=1/3、robotics-capital-markets=1/3、company-finance=4/5（1 headroom）、split target categories=50/50、parentFallback=0、overBudget=0；ai-lab-private-financing 与 robotics-capital-markets sibling alternate-target 诊断自动同步新可用 public-market-readiness target；registry health 与 `pnpm build`（765 pages）全部通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.public-market-readiness` 提升到 3；2) `anthropic-sec-ipo-s1` structured capacityPlan 补齐 categoryBudget=3/categoryHeadroom=1/capacityDelta=0；3) 质量评分 27/30。
