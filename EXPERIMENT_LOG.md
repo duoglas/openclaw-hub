@@ -1,4 +1,15 @@
-## EXP-309 — Humanoid embodied-training capacity headroom 2->4
+## EXP-310 — Public-market-readiness capacity headroom 2->3
+- Hypothesis: EXP-309 后续建议指出 public-market-readiness 是唯一剩余 0 headroom（100% 利用）的有效类别；若 Anthropic SEC Form S-1 秘密提交 IPO、潜在上市披露与 frontier-lab public-equity 信号继续无有效 headroom，后续 S-1/IPO readiness、public-market listing 与 frontier-lab public-equity 信号会被迫错投到 ai-lab-private-financing（私募融资）或 robotics-capital-markets（机器人资本市场），或在 company-finance parent 层堆积。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `public-market-readiness` effective category budget 从 2 提升到 3；为 `anthropic-sec-ipo-s1` 补齐 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact），并让 ai-lab-private-financing 与 robotics-capital-markets 的 company-finance sibling alternate-target 诊断同步新可用 public-market-readiness target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-22
+- End date: 2026-08-22
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `public-market-readiness=2/3 (1 headroom)`、`ai-lab-private-financing=1/3`、`robotics-capital-markets=1/3`、`company-finance=4/5`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health 与 `pnpm build` 全部通过。
+- Result: pass（public-market-readiness 已从 2/2 满载恢复到 2/3，有 1 个有效 headroom；Anthropic SEC S-1 capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=1、capacityDelta=0；company-finance sibling alternate-target 诊断自动同步；commit (pending)；质量评分 27/30。）
+- Decision: scale（保留 public-market-readiness 作为后续 frontier-lab S-1/IPO readiness、public-market listing 与 public-equity 信号的独立容量入口；剩余 1 headroom 高利用 target：assistive-exoskeleton-robotics、domestic-compute-software、youth-safety-controls。）
+
+
 - Hypothesis: EXP-308 后续建议优先处理 humanoid-embodied-training 这个 0 headroom 高利用 target；若人形机器人实景实训、世界人形机器人运动会、能力分级、技能认证、机器人产业营收与竞赛标准继续保持 0 个有效 headroom，后续 humanoid competition standard、dexterous-hand benchmark、real-scene training、capability certification 与 embodied-training 信号会被迫错投到 robotics-simulation-training、robotics-commercial-deployment、autonomous-mobility-systems 或 robotics-open-model-research。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
 - Change: 将 `humanoid-embodied-training` effective category budget 从 2 提升到 4；为 `china-humanoid-embodied-training-2026` 与 `world-humanoid-robot-games-2026` 补齐 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact），并让 assistive-exoskeleton-robotics 的 physical-ai-robotics sibling alternate-target 诊断同步新可用 humanoid-embodied-training target。

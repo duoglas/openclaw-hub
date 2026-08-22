@@ -146,6 +146,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'company-finance',
     splitTargetCategory: 'public-market-readiness',
+    capacityPlan: {
+      selectedSplitTarget: 'public-market-readiness',
+      whyNotAlternatives: 'Rejected alternate split targets ai-lab-private-financing and robotics-capital-markets because Anthropic confidential SEC Form S-1 IPO submission, public-market readiness filings, and potential listing disclosures are pre-IPO public-equity market signals, not frontier AI lab Series H mega-rounds or private-market valuations, and not STAR Market robotics company listings or manufacturing-capacity fundraising.',
+      rejectedAlternateTargets: ['ai-lab-private-financing', 'robotics-capital-markets'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 1,
+        rationale: 'capacity delta 0; public-market-readiness now has one effective headroom slot for future SEC Form S-1/IPO readiness, public-market listing disclosures, and frontier-lab public-equity signals while preserving ai-lab-private-financing and robotics-capital-markets boundaries.',
+      },
+    },
     terms: ['Form S-1', '潜在 IPO', 'SEC 秘密提交'],
     details: {
       what: 'Anthropic said on June 1 that it confidentially submitted a draft Form S-1 registration statement to the US SEC for a potential IPO, with share count and pricing still undecided.',
