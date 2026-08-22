@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-21 11:30
+Last updated: 2026-08-22 17:30
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+
+- [x] P1 Candidate / EXP-311: 将 2026-08-22 最新双语日报接入 real cron fixture，修复 EN 泛化 fallback 与 ZH 泄露指令文案/截断/重复段落/占位证据矩阵，并为 DeepSeek V4-Flash-Vision-Exp / GLM-5.3 / Anthropic Astra RL pause / Tencent Q2 capex 增补字段级 projection，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `__COMMIT__`
+  - Hypothesis: 最近24小时新增日报（2026-08-22）暴露 DeepSeek V4-Flash-Vision-Exp 多模态视觉模型 + 免费 Files API、智谱 GLM-5.3 开源 SOTA（CyberGym 漏洞发现基准）、NVIDIA×OpenAI PORTS-Pike 4.25GW 算力金融化、Anthropic 因 Astra 触及网络安全阈值暂停两周 RL 训练（待确认）与腾讯 Q2 资本开支 528 亿元（待确认）五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback、ZH 页面保留 runbook 泄露指令文案/截断/重复“今日结论”/占位证据矩阵，首日索引会漏掉多模态视觉 API、开源模型 SOTA、算力金融化、前沿实验室安全阈值与国内大厂 AI 资本开支长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-22 / latestFixture=2026-08-22 / expectedSignals=5；daily source projection labels 覆盖 53 fixtures / 265 expectedSignals；daily EN/ZH generator、case-level FAQ（7 signals）、parser guardrail、registry health（89 rules，parentFallback=0）、taxonomy 与 `pnpm build`（765 pages）全部通过；新增 3 组 displayLabel/detailVariant/terms 复用既有规则（moonshot-kimi-k3-long-context-open-model-2026、anthropic-fable-jailbreak-severity-framework-2026、china-ai-commercialization-roi-2026），未新增顶层规则、无 budget 变更。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-22.mjs`；2) EN 2026-08-22 页面移除 4 条泛化 fallback 并统一五条字段级 projection；3) ZH 2026-08-22 页面移除 description+正文泄露指令文案、修复正文截断与重复“今日结论”、修复占位证据矩阵；4) 补齐 7 条 case-level FAQ 与证据矩阵内链；5) 质量评分 28/30。
 
 
 - [x] P1 Candidate / EXP-310: 将 public-market-readiness 有效容量从 2 提升到 3，并为 Anthropic SEC Form S-1 IPO 补齐 structured capacityPlan，消费 EXP-309 后续“唯一剩余 0 headroom 高利用 target（public-market-readiness）”假设 | ICE 8x8x8=512 — commit `2a26578`

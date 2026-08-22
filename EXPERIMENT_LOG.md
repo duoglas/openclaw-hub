@@ -1,3 +1,15 @@
+## EXP-311 — 2026-08-22 real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时新增日报（2026-08-22）暴露 DeepSeek V4-Flash-Vision-Exp 多模态视觉模型 + 免费 Files API、智谱 GLM-5.3 开源 SOTA（CyberGym 漏洞发现基准）、NVIDIA×OpenAI PORTS-Pike 4.25GW 算力金融化、Anthropic 因 Astra 触及网络安全阈值暂停两周 RL 训练（待确认）与腾讯 Q2 资本开支 528 亿元（待确认）五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback、ZH 页面保留 runbook 泄露指令文案/正文截断/重复“今日结论”/占位证据矩阵，首日索引会漏掉多模态视觉 API、开源模型 SOTA、算力金融化、前沿实验室安全阈值与国内大厂 AI 资本开支长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-22.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-22.md`, `src/content/blog/zh/openclaw-daily-2026-08-22.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-22 real cron fixture；为 DeepSeek V4-Flash-Vision-Exp、GLM-5.3 开源 SOTA 在 `moonshot-kimi-k3-long-context-open-model-2026`、Anthropic Astra RL pause 在 `anthropic-fable-jailbreak-severity-framework-2026`、Tencent Q2 capex 在 `china-ai-commercialization-roi-2026` 增补 displayLabel/detailVariant/terms（复用既有规则、不新增顶层规则、无 budget 变更）；重写 EN/ZH 2026-08-22 页面，移除 EN 4 条泛化 fallback 与 ZH 泄露指令文案/截断/重复段落/占位证据矩阵，补齐 7 条 case-level FAQ 内链。
+- ICE: 9x8x8=576
+- Start date: 2026-08-22
+- End date: 2026-08-22
+- Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-evidence-matrix && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes; latest fixture freshness shows latestDaily=2026-08-22/latestFixture=2026-08-22/expectedSignals=5; source projection labels show 53 fixtures/265 expectedSignals; registry health 89 rules parentFallback=0。
+- Result: pass（latest fixture freshness 08-22/08-22、daily EN/ZH generator、case-level FAQ links latestFixture=2026-08-22 autoSignals=7、parser guardrails、evidence matrix、EN language、brief specificity、registry health/taxonomy 与 `pnpm build`（765 pages）全部通过；实现提交 `__COMMIT__`；质量评分 28/30。）
+- Decision: scale（继续将“最新日报同日 fixture 覆盖 + source projection label/detail + case-level FAQ + 无 fallback/泄露”作为增长执行默认门槛；新增字段级 projection 时优先复用既有规则以规避 0 headroom 顶层 category budget 风险。）
+
+
 ## EXP-310 — Public-market-readiness capacity headroom 2->3
 - Hypothesis: EXP-309 后续建议指出 public-market-readiness 是唯一剩余 0 headroom（100% 利用）的有效类别；若 Anthropic SEC Form S-1 秘密提交 IPO、潜在上市披露与 frontier-lab public-equity 信号继续无有效 headroom，后续 S-1/IPO readiness、public-market listing 与 frontier-lab public-equity 信号会被迫错投到 ai-lab-private-financing（私募融资）或 robotics-capital-markets（机器人资本市场），或在 company-finance parent 层堆积。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

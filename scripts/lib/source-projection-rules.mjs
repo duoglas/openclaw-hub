@@ -609,8 +609,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / AI video / financing and commercialization race',
         terms: ['可灵 AI', '生数科技', '爱诗科技', '演语科技'],
       },
+      {
+        label: 'Tencent / China / Q2 capex AI spend',
+        terms: ['资本开支', '自由现金流'],
+      },
     ],
-    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试', 'Seedance 2.0', '视频生成', '可灵 AI', '生数科技', '爱诗科技', '演语科技'],
+    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试', 'Seedance 2.0', '视频生成', '可灵 AI', '生数科技', '爱诗科技', '演语科技', '自由现金流', '528 亿元'],
     detailVariants: [
       {
         terms: ['Seedance 2.0', '豆包', '视频生成'],
@@ -626,6 +630,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Xinhua reported that Chinese AI video companies including Kling AI, Shengshu Technology, AIsphere, and Yanyu Technology disclosed nearly 30 billion yuan in new financing over the past three months, while Kling AI surpassed 100 million global users and AI short drama, advertising, and e-commerce content use cases accelerated.',
           why: 'AI video is moving from demo quality toward commercialization tests where revenue, retention, copyright boundaries, and compute cost matter more than a single model showcase.',
           impact: 'Content teams should use AI video for low-cost creative testing, ad variants, storyboards, and e-commerce assets while keeping rights review, human editing, user-retention checks, and compute-cost controls in the launch plan.',
+        },
+      },
+      {
+        terms: ['资本开支', '自由现金流'],
+        details: {
+          what: 'A secondary aggregated-industry page (updated August 14) reported Tencent second-quarter capital expenditure of 52.8 billion yuan with free cash flow turning negative.',
+          why: 'Major Chinese platform companies are signaling a profit-for-AI-space tradeoff, mirroring the NVIDIA/OpenAI trillion-scale compute buildout, as cloud and model providers shift from measured investment to rigid AI spending commitments.',
+          impact: 'Buyers should treat the figure as unconfirmed until primary earnings disclosure, while watching whether domestic cloud AI investment becomes a fixed commitment that reshapes compute pricing, capacity, and vendor lock-in.',
         },
       },
     ],
@@ -1412,6 +1424,14 @@ export const FIELD_PROJECTION_RULES = [
         label: 'China / Z.ai / GLM-5.2 / agent platform',
         terms: ['Z.ai', 'GLM-5.2'],
       },
+      {
+        label: 'China / Z.ai / GLM-5.3 open-source model SOTA',
+        terms: ['GLM-5.3', 'CyberGym'],
+      },
+      {
+        label: 'China / DeepSeek / V4-Flash-Vision-Exp multimodal API',
+        terms: ['V4-Flash-Vision-Exp', 'deepseek-v4-flash-vision-exp'],
+      },
     ],
     capacityPlan: {
       selectedSplitTarget: 'open-model-long-context',
@@ -1424,7 +1444,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; open-model-long-context now has two effective headroom slots for future open-weight, million-token, repository-scale research, coding, and long-document model signals without broadening task-capability, cloud-distribution, or inference-architecture targets.',
       },
     },
-    terms: ['Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', 'Kimi Code', 'Z.ai', 'GLM-5.2'],
+    terms: ['Kimi K3', '2.8T', '2.8 万亿参数', '100 万 token', 'Kimi Code', 'Z.ai', 'GLM-5.2', 'GLM-5.3', 'CyberGym', 'V4-Flash-Vision-Exp', 'deepseek-v4-flash-vision-exp', '多模态视觉模型'],
     detailVariants: [
       {
         terms: ['Z.ai', 'GLM-5.2'],
@@ -1432,6 +1452,22 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Z.ai pages showed a GLM-5.2-powered AI assistant, while the exact release timing remained less certain from the L1 page captured in the daily source.',
           why: 'China model platforms continue to iterate around agent tasks, long-context work, coding, and website-generation workflows where product cadence and integration quality matter as much as parameter claims.',
           impact: 'Users and enterprises can compare GLM updates on Chinese-language reasoning, tool use, coding, long-task reliability, and local deployment options while checking primary release notes before migration.',
+        },
+      },
+      {
+        terms: ['GLM-5.3', 'CyberGym'],
+        details: {
+          what: 'Zhipu released GLM-5.3 on August 14 and opened the API on August 19, with the National Supercomputing Internet platform enabling calls on August 20; official docs confirm a 50% coding improvement over GLM-5.2 and a 1M-context plus 128K-output window, with open weights planned the following Friday.',
+          why: 'China open-source models are moving toward competitive offensive-security and coding capability where benchmark leadership, weight availability, and domestic compute access decide developer adoption rather than chatbot quality alone.',
+          impact: 'Coding Plan users can switch directly to GLM-5.3 while teams should watch the promised weight release, CyberGym vulnerability-finding results, and whether the open-source ecosystem sustains a durable developer base.',
+        },
+      },
+      {
+        terms: ['V4-Flash-Vision-Exp', 'deepseek-v4-flash-vision-exp'],
+        details: {
+          what: 'DeepSeek added the experimental deepseek-v4-flash-vision-exp model to its API platform on August 21 with image-plus-text input, a free Files API, and DeepSeek Harness 0.1.1 released the same day.',
+          why: 'Chinese frontier models are now competing on multimodal agent capability and per-image cost, where screenshot understanding and chart analysis workflows become much cheaper when vision is bundled at Flash pricing.',
+          impact: 'Developer teams can build screenshot-to-structured-data automations by uploading an image once and reusing the file_id, while checking the experimental status and pricing before production rollout.',
         },
       },
     ],
@@ -2607,7 +2643,7 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0 after budget raise; model-account-security now has two headroom slots for future model access, session, memory, and jailbreak severity signals while keeping product-safety matching narrow.',
       },
     },
-    terms: ['Fable 5 于 7 月 1 日全球回归', 'Fable 5 已恢复全球访问', 'Claude Fable 5 和 Mythos 5', '美国出口管制', '网络安全分类器', 'jailbreak 严重度评分框架', 'Claude Fable 5 已重新可在 Amazon Bedrock', 'Claude Platform on AWS', '复杂编码、知识工作、视觉任务'],
+    terms: ['Fable 5 于 7 月 1 日全球回归', 'Fable 5 已恢复全球访问', 'Claude Fable 5 和 Mythos 5', '美国出口管制', '网络安全分类器', 'jailbreak 严重度评分框架', 'Claude Fable 5 已重新可在 Amazon Bedrock', 'Claude Platform on AWS', '复杂编码、知识工作、视觉任务', 'Astra 模型', '直接网络、直接接口', '网络安全阈值', '暂停强化学习'],
     displayLabels: [
       {
         label: 'Anthropic / Claude Fable / export-control safety availability',
@@ -2616,6 +2652,10 @@ export const FIELD_PROJECTION_RULES = [
       {
         label: 'Anthropic / Claude Fable / Bedrock enterprise distribution',
         terms: ['Claude Fable 5 已重新可在 Amazon Bedrock', 'Claude Platform on AWS'],
+      },
+      {
+        label: 'Anthropic / Astra / cybersecurity threshold RL pause',
+        terms: ['Astra 模型', '关键网络安全能力阈值'],
       },
     ],
     detailVariants: [
@@ -2633,6 +2673,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'Amazon confirmed Claude Fable 5 is available again in Amazon Bedrock for complex coding, knowledge work, visual tasks, and Claude Platform on AWS deployments.',
           why: 'Cloud marketplaces are becoming the recovery and governance layer for frontier-model distribution when direct access changes because of safety or regulatory constraints.',
           impact: 'Teams that depend on Claude can resume Bedrock deployments while validating fallback models, IAM scope, audit logs, data boundaries, and stricter safety filtering for sensitive workflows.',
+        },
+      },
+      {
+        terms: ['Astra 模型', '关键网络安全能力阈值'],
+        details: {
+          what: 'A single aggregated-industry report said Anthropic paused two weeks of reinforcement-learning training on its latest model because it may have approached a critical cybersecurity capability threshold, with no official Anthropic announcement yet.',
+          why: 'Frontier-lab release discipline is moving from post-hoc filtering toward pre-release training gates when a model nears cyber-capability thresholds that could enable vulnerability discovery or attack-chain planning.',
+          impact: 'Teams should treat the claim as unconfirmed until primary confirmation, but should prepare launch-timeline contingency, staged release gates, and independent cyber-evaluation review when high-capability models approach safety thresholds.',
         },
       },
     ],
