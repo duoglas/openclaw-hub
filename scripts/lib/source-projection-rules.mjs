@@ -817,6 +817,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'product-safety',
     splitTargetCategory: 'youth-safety-controls',
+    capacityPlan: {
+      selectedSplitTarget: 'youth-safety-controls',
+      whyNotAlternatives: 'Rejected alternate split targets high-sensitivity-ai-deployment, agent-runtime-safety, and model-account-security because GPT-Live System Card voice-safety controls, age-recognition, guardian controls, annual risk assessment, and APA youth mental-health partnership are age-aware youth-protection and family-governance signals, not classified/high-sensitivity deployment, runtime agent safety, or account/memory security signals.',
+      rejectedAlternateTargets: ['high-sensitivity-ai-deployment', 'agent-runtime-safety', 'model-account-security'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; youth-safety-controls now has two effective headroom slots for future age-aware product design, guardian resource, teen mental-health boundary, and youth-specific safety-copy signals while preserving high-sensitivity-ai-deployment, agent-runtime-safety, and model-account-security boundaries.',
+      },
+    },
     terms: ['国际青少年 AI 安全', '年龄识别', '年度风险评估', '家长控制', 'GPT‑Live System Card', '实时安全检测', '严重风险下可结束语音会话', 'Hugging Face 生产基础设施', '链式利用漏洞', '敏感信息', 'UK AISI', 'Irregular', '环境配置不当', 'Astra', 'Preparedness Framework', 'Critical cybersecurity', '代理式编码和网络安全', '美国心理学会', 'APA', '青少年心理健康'],
     displayLabels: [
       {

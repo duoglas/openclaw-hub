@@ -132,7 +132,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'assistive-exoskeleton-robotics': 3,
   'humanoid-embodied-training': 4,
   'robotics-open-model-research': 4,
-  'youth-safety-controls': 2,
+  'youth-safety-controls': 3,
   'robotics-simulation-training': 6,
   'vertical-workflow-agents': 7,
 };
