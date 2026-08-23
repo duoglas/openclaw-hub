@@ -2695,6 +2695,17 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'physical-ai-robotics',
     splitTargetCategory: 'assistive-exoskeleton-robotics',
+    capacityPlan: {
+      selectedSplitTarget: 'assistive-exoskeleton-robotics',
+      whyNotAlternatives: 'Rejected alternate split targets robotics-simulation-training, autonomous-mobility-systems, humanoid-embodied-training, robotics-commercial-deployment, and robotics-open-model-research because Shenzhen robot-valley consumer exoskeletons, elder-care assistive robotics, Great Bay Area hard-tech commercialization, brain-computer interfaces, and low-altitude logistics are consumer-assistive and commercial-deployment robotics signals, not simulation-to-real training, autonomous vehicle mobility, humanoid training/certification, industrial deployment, or open robotics model/tooling research signals.',
+      rejectedAlternateTargets: ['robotics-simulation-training', 'autonomous-mobility-systems', 'humanoid-embodied-training', 'robotics-commercial-deployment', 'robotics-open-model-research'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; assistive-exoskeleton-robotics now has two effective headroom slots for future consumer exoskeleton, elder-care/rehabilitation assistive robotics, brain-computer interface, and low-altitude logistics commercialization signals while preserving robotics-commercial-deployment, humanoid-embodied-training, autonomous-mobility-systems, robotics-simulation-training, and robotics-open-model-research boundaries.',
+      },
+    },
     displayLabels: [
       {
         label: 'Xinhua / Shenzhen / consumer robotics deployment',

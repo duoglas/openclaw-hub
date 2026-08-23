@@ -129,7 +129,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'workforce-ai-enablement': 3,
   'robotics-commercial-deployment': 4,
   'robotics-capital-markets': 3,
-  'assistive-exoskeleton-robotics': 2,
+  'assistive-exoskeleton-robotics': 3,
   'humanoid-embodied-training': 4,
   'robotics-open-model-research': 4,
   'youth-safety-controls': 2,
