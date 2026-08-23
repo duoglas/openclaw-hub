@@ -1,3 +1,15 @@
+## EXP-312 — Assistive-exoskeleton-robotics capacity headroom 2->3
+- Hypothesis: EXP-311 后续 taxonomy 诊断指出 assistive-exoskeleton-robotics 是剩余 1 headroom 高利用 target 之一；若深圳南山“机器人谷”消费级外骨骼（极壳科技、2426 亿元）、大湾区硬件科技商业化、脑机接口与低空物流等 assistive 商业化信号继续只保留 1 个有效 headroom，后续 consumer exoskeleton、elder-care/rehabilitation assistive robotics、brain-computer interface 与 low-altitude logistics 信号会被迫错投到 robotics-commercial-deployment、humanoid-embodied-training 或 autonomous-mobility-systems。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `assistive-exoskeleton-robotics` effective category budget 从 2 提升到 3；为 `xinhua-shenzhen-robotics-consumer-deployment-2026` 补齐 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact），并以 physical-ai-robotics sibling alternate-target 维度列明拒绝的竞争 target。
+- ICE: 8x8x8=512
+- Start date: 2026-08-23
+- End date: 2026-08-23
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `assistive-exoskeleton-robotics=1/3 (2 headroom)`、`physical-ai-robotics=11/11`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health（89 rules）与 `pnpm build`（765 pages）全部通过。
+- Result: pass（assistive-exoskeleton-robotics 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；Shenzhen consumer deployment capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；taxonomy 诊断中的 1-headroom 待办 target 已减少为 public-market-readiness、domestic-compute-software、youth-safety-controls；commit `7eb2989`；质量评分 27/30。）
+- Decision: scale（保留 assistive-exoskeleton-robotics 作为后续 consumer exoskeleton、elder-care/rehabilitation assistive robotics、brain-computer interface 与 low-altitude logistics 信号的独立容量入口；剩余 1 headroom 高利用 target：domestic-compute-software、youth-safety-controls。）
+
+
 ## EXP-311 — 2026-08-22 real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时新增日报（2026-08-22）暴露 DeepSeek V4-Flash-Vision-Exp 多模态视觉模型 + 免费 Files API、智谱 GLM-5.3 开源 SOTA（CyberGym 漏洞发现基准）、NVIDIA×OpenAI PORTS-Pike 4.25GW 算力金融化、Anthropic 因 Astra 触及网络安全阈值暂停两周 RL 训练（待确认）与腾讯 Q2 资本开支 528 亿元（待确认）五条信号；若最新日报不进入 real cron fixture 且 EN 页面保留泛化 fallback、ZH 页面保留 runbook 泄露指令文案/正文截断/重复“今日结论”/占位证据矩阵，首日索引会漏掉多模态视觉 API、开源模型 SOTA、算力金融化、前沿实验室安全阈值与国内大厂 AI 资本开支长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-22.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-22.md`, `src/content/blog/zh/openclaw-daily-2026-08-22.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
