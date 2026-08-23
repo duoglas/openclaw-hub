@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-313: 将 youth-safety-controls 有效容量从 2 提升到 3，并为 OpenAI GPT-Live System Card 青少年安全/G7 补齐 structured capacityPlan，消费 EXP-312 后续“剩余 1 headroom 高利用 target（youth-safety-controls）”假设 | ICE 8x8x8=512 — commit `__COMMIT__`
+- [x] P1 Candidate / EXP-313: 将 youth-safety-controls 有效容量从 2 提升到 3，并为 OpenAI GPT-Live System Card 青少年安全/G7 补齐 structured capacityPlan，消费 EXP-312 后续“剩余 1 headroom 高利用 target（youth-safety-controls）”假设 | ICE 8x8x8=512 — commit `54295f3`
   - Hypothesis: EXP-312 后续 taxonomy 诊断指出 youth-safety-controls 是剩余 1 headroom 高利用 target 之一（product-safety parent 下唯一 1-headroom 有效类别）；若 GPT-Live System Card 语音安全控制、年龄识别、年度风险评估、家长控制与 APA 青少年心理健康合作等 age-aware 青少年保护信号继续只保留 1 个有效 headroom，后续 age-aware product design、guardian resource、teen mental-health boundary 与 youth-specific safety-copy 信号会被迫错投到 high-sensitivity-ai-deployment、agent-runtime-safety 或 model-account-security，或堆积在 product-safety parent 层。
   - Metrics: source projection taxonomy 显示 youth-safety-controls 从 1/2 变为 1/3（2 headroom），并保留 high-sensitivity-ai-deployment=2/4、agent-runtime-safety=1/3、model-account-security=3/5、product-safety=7/7、split target categories=50/50、parentFallback=0、overBudget=0；registry health（89 rules）与 `pnpm build`（765 pages）全部通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.youth-safety-controls` 提升到 3；2) `openai-youth-safety-g7-2026` 补齐 structured capacityPlan（selectedSplitTarget / whyNotAlternatives / rejectedAlternateTargets / budgetImpact，categoryBudget=3/categoryHeadroom=2/capacityDelta=0）；3) 质量评分 27/30。

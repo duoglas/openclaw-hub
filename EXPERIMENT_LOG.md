@@ -6,7 +6,7 @@
 - Start date: 2026-08-23
 - End date: 2026-08-23
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `youth-safety-controls=1/3 (2 headroom)`、`product-safety=7/7`、`split target categories=50/50`、`parentFallback=0`、`overBudget=0`；source projection registry health（89 rules）与 `pnpm build`（765 pages）全部通过。
-- Result: pass（youth-safety-controls 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；OpenAI G7 youth-safety capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；taxonomy 诊断中的 1-headroom 待办 target 已减少为 public-market-readiness、domestic-compute-software；commit `__COMMIT__`；质量评分 27/30。）
+- Result: pass（youth-safety-controls 已从 1/2 高利用恢复到 1/3，有 2 个有效 headroom；OpenAI G7 youth-safety capacityPlan 已补齐 categoryBudget=3、categoryHeadroom=2、capacityDelta=0；taxonomy 诊断中的 1-headroom 待办 target 已减少为 public-market-readiness、domestic-compute-software；commit `54295f3`；质量评分 27/30。）
 - Decision: scale（保留 youth-safety-controls 作为后续 age-aware product design、guardian resource、teen mental-health boundary 与 youth-specific safety-copy 信号的独立容量入口；剩余 1 headroom 高利用 target：public-market-readiness、domestic-compute-software。）
 
 
