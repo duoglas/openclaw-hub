@@ -6,7 +6,7 @@
 - Start date: 2026-08-24
 - End date: 2026-08-24
 - Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-evidence-matrix && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes; latestDaily=2026-08-24/latestFixture=2026-08-24/expectedSignals=5; daily source projection labels show 54 fixtures/270 expectedSignals; registry health 89 rules parentFallback=0。
-- Result: pass（latest fixture freshness 08-24/08-24、daily source projection labels 54 fixtures/270 expectedSignals、daily EN/ZH generators、case-level FAQ links latestFixture=2026-08-24 autoSignals=8、parser guardrails、evidence matrix、EN language、brief specificity、registry health/taxonomy 与 `pnpm build`（767 pages）全部通过；实现提交 pending-push；质量评分 29/30。）
+- Result: pass（latest fixture freshness 08-24/08-24、daily source projection labels 54 fixtures/270 expectedSignals、daily EN/ZH generators、case-level FAQ links latestFixture=2026-08-24 autoSignals=8、parser guardrails、evidence matrix、EN language、brief specificity、registry health/taxonomy 与 `pnpm build`（767 pages）全部通过；实现提交 b1cf9aa；质量评分 29/30。）
 - Decision: scale（继续将“最新日报同日 fixture 覆盖 + 字段级 projection + case-level FAQ + 无 fallback/泄露”作为增长执行默认门槛；新增字段级 projection 优先复用既有规则以规避 0 headroom 顶层 category budget 风险；下一步仍需处理 taxonomy 诊断中的 public-market-readiness 1-headroom 待办。）
 
 ## EXP-314 — Domestic-compute-software capacity headroom 2->3
