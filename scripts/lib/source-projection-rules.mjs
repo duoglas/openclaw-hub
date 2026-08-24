@@ -290,6 +290,17 @@ export const FIELD_PROJECTION_RULES = [
     category: 'developer-tools',
     splitTargetCategory: 'domestic-compute-software',
     displayLabel: 'China / Xinhua / AI for Science software stack',
+    capacityPlan: {
+      selectedSplitTarget: 'domestic-compute-software',
+      whyNotAlternatives: 'Rejected alternate split targets china-code-agent-runtime, code-agent-runtime, and desktop-computer-use because Yisuan Ark is a domestic heterogeneous-compute software migration and AI-for-Science toolchain signal, not a China coding-agent platform, generic repository coding runtime, or desktop computer-use automation signal.',
+      rejectedAlternateTargets: ['china-code-agent-runtime', 'code-agent-runtime', 'desktop-computer-use'],
+      budgetImpact: {
+        capacityDelta: 0,
+        categoryBudget: 3,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; domestic-compute-software now has two effective headroom slots for future domestic GPU migration, heterogeneous-compute middleware, code-conversion model, simulation-agent, and AI-for-Science software stack signals without broadening coding-agent or desktop-computer-use matching.',
+      },
+    },
     terms: ['异算方舟', '国产异构算力', '代码转换大模型'],
     details: {
       what: 'Xinhua reported that Chinese research institutes and Sugon released Yisuan Ark, a full-stack software platform for domestic heterogeneous compute environments with algorithm libraries, a code-conversion large model, and automated simulation-agent capabilities.',

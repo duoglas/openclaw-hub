@@ -103,7 +103,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'desktop-computer-use': 3,
   'developer-tools': 4,
   'digital-regulation-compliance': 3,
-  'domestic-compute-software': 2,
+  'domestic-compute-software': 3,
   'enterprise-agent-platforms': 6,
   'governed-agent-deployment-platforms': 4,
   'frontier-models': 6,
