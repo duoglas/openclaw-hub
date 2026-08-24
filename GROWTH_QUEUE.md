@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-23 17:25
+Last updated: 2026-08-24 17:26
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-315: 将 2026-08-24 最新双语日报接入 real cron fixture，修复 EN Gemma/Codex/Anthropic 泛化 fallback 与 ZH 泄露 runbook/tool_errors 文案，消费最近24小时内容建设新增 Kimi K3 / Gemma / WAICO / Codex Harness / Claude Skills-Files API 假设 | ICE 9x8x8=576 — commit `pending-push`
+  - Hypothesis: 最近24小时内容建设新增 2026-08-24 日报，但 latest real cron fixture 停在 2026-08-22，EN 08-24 页面 story 2/4/5 回落到泛化 fallback，ZH 08-24 页面泄露抓取过程、tool_errors 与收口指令文案；若不补同日 fixture 与字段级 projection，首日索引会漏掉 Kimi K3 长上下文开放模型、Gemma 10 亿下载开放模型生态、WAICO 全球治理、Codex Harness coding-agent 评测与 Claude Skills/Files API agent workflow。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-24 / latestFixture=2026-08-24 / expectedSignals=5；daily source projection labels 覆盖 54 fixtures / 270 expectedSignals；daily EN/ZH generator、case-level FAQ links（latestFixture=2026-08-24, autoSignals=8）、parser guardrails、evidence matrix、EN language、brief specificity、registry health（89 rules）、taxonomy 与 `pnpm build`（767 pages）全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-24.mjs`；2) 为 Gemma 10 亿下载、Codex Harness 与 Claude Skills/Files API 补齐 fixture-backed displayLabel/detailVariants；3) 重写 EN/ZH 2026-08-24 页面，移除泛化 fallback 与 ZH 泄露抓取过程；4) 补齐 8 条 case-level FAQ 内链；5) 质量评分 29/30。
 
 - [x] P1 Candidate / EXP-314: 将 domestic-compute-software 有效容量从 2 提升到 3，并为 Yisuan Ark 国产异构算力软件栈补齐 structured capacityPlan，消费 EXP-313 后续“剩余 1 headroom 高利用 target（domestic-compute-software）”假设 | ICE 8x8x8=512 — commit `eff9cb5`
   - Hypothesis: EXP-313 后续 taxonomy 诊断指出 domestic-compute-software 是剩余 1 headroom 高利用 target 之一；若异算方舟、国产异构算力、代码转换大模型、仿真 agent 与 AI-for-Science 工具链继续只保留 1 个有效 headroom，后续 domestic GPU migration、heterogeneous-compute middleware、scientific workload adaptation 与 reproducible validation 信号会被迫错投到 china-code-agent-runtime、code-agent-runtime 或 desktop-computer-use。

@@ -1348,6 +1348,12 @@ export const FIELD_PROJECTION_RULES = [
     category: 'frontier-models',
     splitTargetCategory: 'frontier-model-inference-architecture',
     displayLabel: 'Google / DeepMind / DiffusionGemma / AI hardware',
+    displayLabels: [
+      {
+        label: 'Google / Gemma / open model ecosystem',
+        terms: ['Gemma 系列下载量突破 10 亿'],
+      },
+    ],
     capacityPlan: {
       selectedSplitTarget: 'frontier-model-inference-architecture',
       whyNotAlternatives: 'Rejected alternate split targets frontier-model-task-capability, frontier-model-cloud-distribution, and open-model-long-context because DiffusionGemma is an inference-architecture experiment for diffusion-style text generation, not a task benchmark, cloud availability, or long-context open-model signal.',
@@ -1359,7 +1365,17 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; frontier-model-inference-architecture now has two effective headroom slots for future diffusion generation, MoE inference efficiency, low-latency local model, and AI factory performance-per-watt signals.',
       },
     },
-    terms: ['DiffusionGemma', '扩散式文本生成'],
+    terms: ['DiffusionGemma', '扩散式文本生成', 'Gemma 系列下载量突破 10 亿', 'Gemma 开放模型家族'],
+    detailVariants: [
+      {
+        terms: ['Gemma 系列下载量突破 10 亿'],
+        details: {
+          what: 'Google said its Gemma open-model family passed one billion downloads while continuing to expand usage across developers, researchers, local inference, and edge deployment scenarios.',
+          why: 'Open-model adoption is now measured through downloads, reuse, fine-tuning, local deployment, and developer ecosystem scale rather than launch-day attention alone.',
+          impact: 'Developers can evaluate Gemma for local inference, education, research replication, lightweight agents, and edge devices while checking license terms, model version, hardware cost, and task quality.',
+        },
+      },
+    ],
     details: {
       what: 'Google DeepMind released the experimental open DiffusionGemma model, using diffusion-style text generation to create text blocks in parallel, while NVIDIA announced optimizations across RTX, RTX PRO, DGX Spark, and H100 hardware.',
       why: 'The release tests whether language-model inference can move beyond token-by-token generation toward lower-latency local interaction, while still requiring quality checks before production use.',
@@ -1595,8 +1611,22 @@ export const FIELD_PROJECTION_RULES = [
         label: 'OpenAI / SWE-Bench Pro / benchmark reliability',
         terms: ['SWE‑Bench Pro', '公开 731 个任务'],
       },
+      {
+        label: 'OpenAI / Codex Harness / coding-agent evaluation',
+        terms: ['Codex Harness', 'coding agent'],
+      },
     ],
-    terms: ['Record & Replay', '应用权限控制', 'Codex 新增', 'SWE‑Bench Pro', '公开 731 个任务', '34.1% 有问题'],
+    terms: ['Record & Replay', '应用权限控制', 'Codex 新增', 'SWE‑Bench Pro', '公开 731 个任务', '34.1% 有问题', 'Codex Harness', 'coding agent', '评测框架'],
+    detailVariants: [
+      {
+        terms: ['Codex Harness', 'coding agent'],
+        details: {
+          what: 'OpenAI open-sourced Codex Harness for running coding-agent tasks, reproducing model behavior, and evaluating software-engineering task performance, while the primary page was identified but direct fetching failed in the upstream crawl.',
+          why: 'Coding-agent competition is shifting from IDE demos toward reproducible evaluation, task traces, sandbox execution, permissions, and cross-model comparison.',
+          impact: 'Development teams can turn real issues into repeatable evaluation tasks and require command logs, test results, permission boundaries, patches, rollback paths, and human review before selecting a coding agent.',
+        },
+      },
+    ],
     details: {
       what: 'OpenAI updated ChatGPT Scheduled tasks, app permission controls, voice pronunciation help, chat organization, iOS upload flow, and Codex Record & Replay, which can turn a demonstrated workflow into a reusable skill.',
       why: 'The update shows AI products moving from chat responses toward scheduled execution, permissioned app access, reusable workflows, and supervised desktop or browser automation.',
@@ -2446,6 +2476,12 @@ export const FIELD_PROJECTION_RULES = [
     category: 'enterprise-agents',
     splitTargetCategory: 'governed-agent-deployment-platforms',
     displayLabel: 'Anthropic / Claude Tag / team agent workflow',
+    displayLabels: [
+      {
+        label: 'Anthropic / Claude / Skills Files API agent workflow',
+        terms: ['Skills', 'Files API'],
+      },
+    ],
     capacityPlan: {
       selectedSplitTarget: 'governed-agent-deployment-platforms',
       whyNotAlternatives: 'Rejected alternate split targets enterprise-agent-platforms because Claude Tag is a governed shared team-collaboration agent platform surface, not a generic enterprise-agent platform bucket, vertical workflow, or enablement program.',
@@ -2457,7 +2493,17 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; keeps Claude Tag in governed-agent-deployment-platforms after Google Gemini product surfaces moved to a consumer split target, while keeping parent enterprise-agents matching narrow.',
       },
     },
-    terms: ['Claude Tag', '@Claude', 'Claude Enterprise', 'Slack'],
+    terms: ['Claude Tag', '@Claude', 'Claude Enterprise', 'Slack', 'computer use', 'Skills', 'Files API', 'Claude API'],
+    detailVariants: [
+      {
+        terms: ['Skills', 'Files API'],
+        details: {
+          what: 'Anthropic moved computer use, Skills, and the Files API into a more generally available Claude API workflow for file handling, tool use, and reusable task skills, while the upstream crawl identified the primary page but could not fetch it directly.',
+          why: 'Model platforms are productizing agent capability as permissioned, reusable, and auditable file-and-tool workflows instead of only offering single-turn text generation.',
+          impact: 'Enterprises can pilot low-risk file organization, report generation, codebase assistance, and internal knowledge workflows while defining permissions, audit logs, revocation paths, and human review boundaries.',
+        },
+      },
+    ],
     details: {
       what: 'Anthropic launched Claude Tag as a Slack-based @Claude collaboration surface for Claude Enterprise and Team beta users, with channel context, asynchronous task handling, and authorized tool or codebase connections.',
       why: 'AI assistants are moving from private chat boxes into shared team workflows, where permissions, memory boundaries, asynchronous execution, and auditability determine whether agents can be trusted.',
