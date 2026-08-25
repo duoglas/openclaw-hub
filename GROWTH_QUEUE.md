@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-317: 修复 xinhua-china-ai-education-service-robotics 英文 projection 中的泛化 Source 5 叙述，消费 EXP-315 后续“latest daily brief specificity / ZH 泄露文案清理后继续降低生成式占位痕迹”假设 | ICE 7x8x8=448 — commit `074b101`
+- [x] P1 Candidate / EXP-317: 修复 xinhua-china-ai-education-service-robotics 英文 projection 中的泛化 Source 5 叙述，消费 EXP-315 后续“latest daily brief specificity / ZH 泄露文案清理后继续降低生成式占位痕迹”假设 | ICE 7x8x8=448 — commit `15ef34c`
   - Hypothesis: 最近24小时内容建设已清理 2026-08-24 EN/ZH 日报 fallback 与内部过程泄露，但 source projection registry 仍存在 `Source 5 reports...` 这类按来源序号而非实体/场景命名的英文 details；若继续保留，会降低 latest daily snippet 的可读性与 SEO 实体覆盖，尤其影响中国教育、文旅、养老与公共服务机器人部署信号。
   - Metrics: `rg "Source \d" scripts/lib/source-projection-rules.mjs` 返回 0；`pnpm check:daily-brief-specificity`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` 全部通过；source projection registry 仍保持 89 rules、parentFallback=0、overBudget=0。
   - Acceptance: 1) 将 `xinhua-china-ai-education-service-robotics.details.what` 从序号式 Source 5 描述改成实体/场景式 Xinhua coverage 描述；2) 不新增规则、不消耗顶层 category budget；3) 质量评分 25/30。

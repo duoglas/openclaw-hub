@@ -6,7 +6,7 @@
 - Start date: 2026-08-25
 - End date: 2026-08-25
 - Success metric: `rg "Source \d" scripts/lib/source-projection-rules.mjs` 返回 0；`pnpm check:daily-brief-specificity`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` passes；registry health 维持 totalRules=89、parentFallback=0，taxonomy 维持 effective category capacity actions=none、split target categories=50/50。
-- Result: pass（`rg "Source \d" scripts/lib/source-projection-rules.mjs` 返回 0；daily brief specificity、source projection registry health、source projection taxonomy 与 `pnpm build`（769 pages）全部通过；registry health 维持 totalRules=89、parentFallback=0；taxonomy 维持 effective category capacity actions=none、split target categories=50/50；commit `074b101`；质量评分 25/30。）
+- Result: pass（`rg "Source \d" scripts/lib/source-projection-rules.mjs` 返回 0；daily brief specificity、source projection registry health、source projection taxonomy 与 `pnpm build`（769 pages）全部通过；registry health 维持 totalRules=89、parentFallback=0；taxonomy 维持 effective category capacity actions=none、split target categories=50/50；commit `15ef34c`；质量评分 25/30。）
 - Decision: ship（保留实体/场景式 projection 文案；下一步继续从 taxonomy 0-headroom 顶层 category 中挑选不增 rule 的 split/metadata 质量任务，或消费最新日报 fixture/content 假设。）
 
 ## EXP-316 — Public-market-readiness capacity headroom 3->4
