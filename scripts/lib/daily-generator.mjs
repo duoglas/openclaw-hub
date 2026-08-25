@@ -209,7 +209,7 @@ export function detailFrom(story, key, fallback, label = '', idx = 1) {
 function sentence(kind, story, label, idx) {
   const title = compactTitle(story, label, idx);
   if (kind === 'what') {
-    const detail = detailFrom(story, 'what', `Source ${idx} reports ${title} as a named update tied to ${label}, with enough context to track the actor, timing, and deployment implication.`, label, idx);
+    const detail = detailFrom(story, 'what', `The source describes ${title} as a named update tied to ${label}, with enough context to track the actor, timing, and deployment implication.`, label, idx);
     return `What happened: ${detail}`;
   }
   if (kind === 'why') {
