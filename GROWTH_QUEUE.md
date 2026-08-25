@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-316: 将 public-market-readiness 有效容量从 3 提升到 4，并为 Anthropic confidential Form S-1 / frontier lab IPO readiness 补齐 2 headroom capacityPlan，消费 EXP-315 后续“public-market-readiness 1-headroom 待办”假设 | ICE 8x8x8=512 — commit `PENDING`
+- [x] P1 Candidate / EXP-316: 将 public-market-readiness 有效容量从 3 提升到 4，并为 Anthropic confidential Form S-1 / frontier lab IPO readiness 补齐 2 headroom capacityPlan，消费 EXP-315 后续“public-market-readiness 1-headroom 待办”假设 | ICE 8x8x8=512 — commit `5a45550`
   - Hypothesis: EXP-315 后续 taxonomy 诊断指出 public-market-readiness 是剩余 1 headroom 高利用 target；若 Anthropic confidential Form S-1、frontier lab IPO readiness、public-market listing disclosure 与 public-equity diligence 信号继续只保留 1 个有效 headroom，后续 frontier-lab public listing、SEC filing、上市窗口与公开市场估值信号会被迫错投到 ai-lab-private-financing 或 robotics-capital-markets。
   - Metrics: source projection taxonomy 显示 public-market-readiness 从 2/3 变为 2/4（2 headroom），effective category capacity actions 从 public-market-readiness 待办变为 none，并保留 company-finance=4/5、ai-lab-private-financing=1/3、robotics-capital-markets=1/3、split target categories=50/50、parentFallback=0、overBudget=0；registry health（89 rules）与 `pnpm build` 全部通过。
   - Acceptance: 1) `SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS.public-market-readiness` 提升到 4；2) `anthropic-sec-ipo-s1` structured capacityPlan 更新 categoryBudget=4/categoryHeadroom=2/capacityDelta=0；3) 质量评分 27/30。

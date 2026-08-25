@@ -6,7 +6,7 @@
 - Start date: 2026-08-25
 - End date: 2026-08-25
 - Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `public-market-readiness=2/4 (2 headroom)`、effective category capacity actions 为 none、effective alternate targets 为 none、`company-finance=4/5`、split target categories=50/50、parentFallback=0、overBudget=0；source projection registry health（89 rules）与 `pnpm build` 全部通过。
-- Result: pass（public-market-readiness 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；`anthropic-sec-ipo-s1` capacityPlan 已更新 categoryBudget=4、categoryHeadroom=2、capacityDelta=0；effective category capacity actions 归零；commit `PENDING`；质量评分 27/30。）
+- Result: pass（public-market-readiness 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；`anthropic-sec-ipo-s1` capacityPlan 已更新 categoryBudget=4、categoryHeadroom=2、capacityDelta=0；effective category capacity actions 归零；commit `5a45550`；质量评分 27/30。）
 - Decision: scale（保留 public-market-readiness 作为后续 frontier-lab IPO、SEC filing、confidential listing submission、public-market disclosure 与 public-equity diligence 信号的独立容量入口；下一步转向顶层 0 headroom category 的结构化拆分或最近日报 fixture/content 质量任务。）
 
 ## EXP-315 — 2026-08-24 real cron fixture and field-level projection recovery
