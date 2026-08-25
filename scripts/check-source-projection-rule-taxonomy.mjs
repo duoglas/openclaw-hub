@@ -121,7 +121,7 @@ export const SOURCE_PROJECTION_EFFECTIVE_CATEGORY_RULE_BUDGETS = {
   'waic-product-launch-pipeline': 3,
   'waic-industry-agenda': 3,
   'model-account-security': 5,
-  'public-market-readiness': 3,
+  'public-market-readiness': 4,
   'product-safety': 5,
   'regional-ai-ecosystems': 4,
   'regional-office-expansion': 3,

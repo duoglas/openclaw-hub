@@ -1,3 +1,14 @@
+## EXP-316 — Public-market-readiness capacity headroom 3->4
+- Hypothesis: EXP-315 后续 taxonomy 诊断指出 public-market-readiness 是剩余 1 headroom 高利用 target；若 Anthropic confidential Form S-1、frontier lab IPO readiness、public-market listing disclosure 与 public-equity diligence 信号继续只保留 1 个有效 headroom，后续 frontier-lab public listing、SEC filing、上市窗口与公开市场估值信号会被迫错投到 ai-lab-private-financing 或 robotics-capital-markets。
+- Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `public-market-readiness` effective category budget 从 3 提升到 4；同步更新 `anthropic-sec-ipo-s1` structured capacityPlan 中的 budgetImpact，将 categoryBudget/categoryHeadroom 更新为 4/2，并明确 future SEC Form S-1、confidential listing submissions、frontier-lab public-equity signals 的独立容量边界。
+- ICE: 8x8x8=512
+- Start date: 2026-08-25
+- End date: 2026-08-25
+- Success metric: `pnpm check:source-projection-rule-taxonomy` 显示 `public-market-readiness=2/4 (2 headroom)`、effective category capacity actions 为 none、effective alternate targets 为 none、`company-finance=4/5`、split target categories=50/50、parentFallback=0、overBudget=0；source projection registry health（89 rules）与 `pnpm build` 全部通过。
+- Result: pass（public-market-readiness 已从 2/3 高利用恢复到 2/4，有 2 个有效 headroom；`anthropic-sec-ipo-s1` capacityPlan 已更新 categoryBudget=4、categoryHeadroom=2、capacityDelta=0；effective category capacity actions 归零；commit `PENDING`；质量评分 27/30。）
+- Decision: scale（保留 public-market-readiness 作为后续 frontier-lab IPO、SEC filing、confidential listing submission、public-market disclosure 与 public-equity diligence 信号的独立容量入口；下一步转向顶层 0 headroom category 的结构化拆分或最近日报 fixture/content 质量任务。）
+
 ## EXP-315 — 2026-08-24 real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时内容建设新增 2026-08-24 日报，暴露 Kimi K3 长上下文多模态模型、Google Gemma 10 亿下载、WAICO 全球 AI 治理组织、OpenAI Codex Harness coding-agent 评测框架与 Anthropic computer use / Skills / Files API GA 五条信号；若 latest fixture 继续停留在 2026-08-22 且 EN 08-24 页面保留 Gemma/Codex/Anthropic 泛化 fallback、ZH 页面泄露抓取过程/tool_errors/收口指令文案，首日索引会漏掉开放模型生态、国际治理、coding-agent 评测与文件/工具 agent workflow 长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-24.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-24.md`, `src/content/blog/zh/openclaw-daily-2026-08-24.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

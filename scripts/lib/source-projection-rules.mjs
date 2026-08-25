@@ -152,9 +152,9 @@ export const FIELD_PROJECTION_RULES = [
       rejectedAlternateTargets: ['ai-lab-private-financing', 'robotics-capital-markets'],
       budgetImpact: {
         capacityDelta: 0,
-        categoryBudget: 3,
-        categoryHeadroom: 1,
-        rationale: 'capacity delta 0; public-market-readiness now has one effective headroom slot for future SEC Form S-1/IPO readiness, public-market listing disclosures, and frontier-lab public-equity signals while preserving ai-lab-private-financing and robotics-capital-markets boundaries.',
+        categoryBudget: 4,
+        categoryHeadroom: 2,
+        rationale: 'capacity delta 0; public-market-readiness now has two effective headroom slots for future SEC Form S-1/IPO readiness, public-market listing disclosures, confidential listing submissions, and frontier-lab public-equity signals while preserving ai-lab-private-financing and robotics-capital-markets boundaries.',
       },
     },
     terms: ['Form S-1', '潜在 IPO', 'SEC 秘密提交'],
