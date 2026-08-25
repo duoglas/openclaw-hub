@@ -1,3 +1,14 @@
+## EXP-317 — Source projection brief specificity cleanup for China service robotics
+- Hypothesis: 最近24小时内容建设已清理 2026-08-24 EN/ZH 日报 fallback 与内部过程泄露，但 `xinhua-china-ai-education-service-robotics` 仍保留 `Source 5 reports...` 这类序号式英文 projection；若不改，后续中国教育、文旅、养老、公服机器人部署信号会继续生成低实体密度摘要，削弱 daily snippet 可读性、搜索实体覆盖与内部链接上下文质量。
+- Scope: `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 `xinhua-china-ai-education-service-robotics.details.what` 改为 Xinhua coverage + China robotics / AI education deployments + culture and tourism / elderly care / public-service efficiency scenarios 的实体场景描述，移除 `Source 5` 序号式占位痕迹；不新增 rule、不改变 splitTargetCategory、不消耗 category budget。
+- ICE: 7x8x8=448
+- Start date: 2026-08-25
+- End date: 2026-08-25
+- Success metric: `rg "Source \d" scripts/lib/source-projection-rules.mjs` 返回 0；`pnpm check:daily-brief-specificity`、`pnpm check:source-projection-rule-registry-health`、`pnpm check:source-projection-rule-taxonomy` 与 `pnpm build` passes；registry health 维持 totalRules=89、parentFallback=0，taxonomy 维持 effective category capacity actions=none、split target categories=50/50。
+- Result: pass（`rg "Source \d" scripts/lib/source-projection-rules.mjs` 返回 0；daily brief specificity、source projection registry health、source projection taxonomy 与 `pnpm build`（769 pages）全部通过；registry health 维持 totalRules=89、parentFallback=0；taxonomy 维持 effective category capacity actions=none、split target categories=50/50；commit `074b101`；质量评分 25/30。）
+- Decision: ship（保留实体/场景式 projection 文案；下一步继续从 taxonomy 0-headroom 顶层 category 中挑选不增 rule 的 split/metadata 质量任务，或消费最新日报 fixture/content 假设。）
+
 ## EXP-316 — Public-market-readiness capacity headroom 3->4
 - Hypothesis: EXP-315 后续 taxonomy 诊断指出 public-market-readiness 是剩余 1 headroom 高利用 target；若 Anthropic confidential Form S-1、frontier lab IPO readiness、public-market listing disclosure 与 public-equity diligence 信号继续只保留 1 个有效 headroom，后续 frontier-lab public listing、SEC filing、上市窗口与公开市场估值信号会被迫错投到 ai-lab-private-financing 或 robotics-capital-markets。
 - Scope: `scripts/check-source-projection-rule-taxonomy.mjs`, `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
