@@ -1,3 +1,14 @@
+## EXP-318 — 2026-08-26 real cron fixture and field-level projection recovery
+- Hypothesis: 最近24小时内容建设新增 2026-08-26 日报，暴露 OpenAI Jalapeño 推理芯片首测、NVIDIA Groq 3 LPX agentic inference、OpenAI 俄源隐蔽影响力行动封禁、北京 AI4Chip 集成电路行动计划与小米 O3/O100/D100 端侧 AI 芯片五条信号；若 latest fixture 继续停在 2026-08-24 且 EN 08-26 页面保留泛化 fallback / NemoClaw 错投，首日索引会漏掉推理芯片效率、agent 低延迟推理、AI 生成影响力行动治理、芯片产业 AI 政策和端侧本地模型入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-26.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-26.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增并注册 2026-08-26 real cron fixture；在既有 source projection rule 中为 Jalapeño、Groq 3 LPX、International Burke 影响力行动、AI4Chip 与小米 O3/O100/D100 增补 displayLabel/detailVariants/terms，复用既有规则、不新增顶层 rule；用 generator 重写 EN 2026-08-26 页面，移除泛化 fallback 与 NemoClaw/OpenShell 错投，并补齐 7 条 case-level FAQ 内链。
+- ICE: 9x8x8=576
+- Start date: 2026-08-26
+- End date: 2026-08-26
+- Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-evidence-matrix && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes; latestDaily=2026-08-26/latestFixture=2026-08-26/expectedSignals=5。
+- Result: pass（latest fixture freshness 08-26/08-26、daily source projection labels、daily EN/ZH generators、case-level FAQ links、parser guardrails、evidence matrix、EN language、brief specificity、registry health/taxonomy 与 `pnpm build` 全部通过；实现提交 `5f62e96`；质量评分 29/30。）
+- Decision: scale（继续将“最新日报同日 fixture 覆盖 + 字段级 projection + case-level FAQ + 无 fallback/错投”作为增长执行默认门槛；下一步继续消费 08-25 仍未 fixture-backed 的 Thomson Reuters / Wan3.0 / NVLink Fusion 内容假设，或处理 taxonomy 诊断中新的高利用 target。）
+
 ## EXP-317 — Source projection brief specificity cleanup for China service robotics
 - Hypothesis: 最近24小时内容建设已清理 2026-08-24 EN/ZH 日报 fallback 与内部过程泄露，但 `xinhua-china-ai-education-service-robotics` 仍保留 `Source 5 reports...` 这类序号式英文 projection；若不改，后续中国教育、文旅、养老、公服机器人部署信号会继续生成低实体密度摘要，削弱 daily snippet 可读性、搜索实体覆盖与内部链接上下文质量。
 - Scope: `scripts/lib/source-projection-rules.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-25 17:20
+Last updated: 2026-08-26 11:23
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-318: 将 2026-08-26 最新双语日报接入 real cron fixture，修复 EN Jalapeño / Groq 3 LPX / International Burke / AI4Chip / Xiaomi 芯片泛化 fallback，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `5f62e96`
+  - Hypothesis: 最近24小时内容建设新增 2026-08-26 日报，但 latest real cron fixture 停在 2026-08-24，EN 08-26 页面 story 1/3/4/5 回落到 `The source tracks...` 泛化 fallback，story 2 误投 NemoClaw/OpenShell 工业 agent 叙述；若不补同日 fixture 与字段级 projection，首日索引会漏掉 OpenAI Jalapeño 推理芯片、NVIDIA Groq 3 LPX agentic inference、OpenAI 俄源影响力行动封禁、北京 AI4Chip 政策与小米端侧 AI 芯片长尾入口。
+  - Metrics: latest fixture freshness 显示 latestDaily=2026-08-26 / latestFixture=2026-08-26 / expectedSignals=5；daily source projection labels、daily EN/ZH generator、case-level FAQ links、parser guardrails、evidence matrix、EN language、brief specificity、registry health、taxonomy 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `scripts/fixtures/daily-real-cron-2026-08-26.mjs`；2) 为 Jalapeño、Groq 3 LPX、International Burke 影响力行动、AI4Chip 与小米 O3/O100/D100 补齐 fixture-backed displayLabel/detailVariants；3) 重写 EN 2026-08-26 页面，移除泛化 fallback 与错投 NemoClaw/OpenShell；4) 补齐 7 条 case-level FAQ；5) 质量评分 29/30。
+
 
 - [x] P1 Candidate / EXP-317: 修复 xinhua-china-ai-education-service-robotics 英文 projection 中的泛化 Source 5 叙述，消费 EXP-315 后续“latest daily brief specificity / ZH 泄露文案清理后继续降低生成式占位痕迹”假设 | ICE 7x8x8=448 — commit `15ef34c`
   - Hypothesis: 最近24小时内容建设已清理 2026-08-24 EN/ZH 日报 fallback 与内部过程泄露，但 source projection registry 仍存在 `Source 5 reports...` 这类按来源序号而非实体/场景命名的英文 details；若继续保留，会降低 latest daily snippet 的可读性与 SEO 实体覆盖，尤其影响中国教育、文旅、养老与公共服务机器人部署信号。

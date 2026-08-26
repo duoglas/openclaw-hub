@@ -972,6 +972,10 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'model-account-security',
     displayLabels: [
       {
+        label: 'OpenAI / ChatGPT / covert influence account enforcement',
+        terms: ['International Burke Institute', '俄罗斯', '封禁'],
+      },
+      {
         label: 'OpenAI / Lockdown / Mode / enterprise AI rollout',
         terms: ['OpenAI 帮助中心版本说明显示', 'Lockdown Mode 面向所有登录用户开放'],
       },
@@ -988,8 +992,16 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Health in ChatGPT', 'Apple Health', '医疗记录'],
       },
     ],
-    terms: ['Lockdown Mode', 'Memory 会自动保持更新', '文件下载等高风险外部能力', 'Health in ChatGPT', 'Apple Health', '医疗记录', '健康数据', '不用于训练基础模型'],
+    terms: ['Lockdown Mode', 'Memory 会自动保持更新', '文件下载等高风险外部能力', 'Health in ChatGPT', 'Apple Health', '医疗记录', '健康数据', '不用于训练基础模型', 'International Burke Institute', '俄罗斯', '封禁', '隐蔽影响力行动'],
     detailVariants: [
+      {
+        terms: ['International Burke Institute', '俄罗斯', '封禁'],
+        details: {
+          what: 'OpenAI said it banned ChatGPT accounts linked to a Russia-origin covert influence operation that generated social posts promoting the International Burke Institute across multiple platforms.',
+          why: 'Generative AI abuse is moving into cross-platform influence operations that blend fake think-tank, academic, and social-media packaging rather than simple spam generation.',
+          impact: 'Platforms and enterprise teams should strengthen account-risk scoring, provenance checks, cross-platform reporting, and review workflows for AI-generated public communications.',
+        },
+      },
       {
         terms: ['Health in ChatGPT', 'Apple Health', '医疗记录'],
         details: {
@@ -1041,6 +1053,10 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'ai-industrial-policy',
     displayLabels: [
       {
+        label: 'China / Beijing / AI4Chip industrial policy',
+        terms: ['AI4Chip', '集成电路产业跨越式发展行动计划', '2026-2028'],
+      },
+      {
         label: 'China / compute infrastructure / AI chip supply / model capability update',
         terms: ['31份规划', '1370次'],
       },
@@ -1049,7 +1065,17 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['30个省市提及“大模型”', '北京、浙江、上海、广东被描述为第一梯队'],
       },
     ],
-    terms: ['各省级“十五五”规划纲要密集发布', '30个省市提及“大模型”', '所有省市均提及“人工智能”和“算力”', '北京、浙江、上海、广东被描述为第一梯队'],
+    terms: ['各省级“十五五”规划纲要密集发布', '30个省市提及“大模型”', '所有省市均提及“人工智能”和“算力”', '北京、浙江、上海、广东被描述为第一梯队', 'AI4Chip', '集成电路产业跨越式发展行动计划', '2026-2028'],
+    detailVariants: [
+      {
+        terms: ['AI4Chip', '集成电路产业跨越式发展行动计划', '2026-2028'],
+        details: {
+          what: 'Beijing Economic-Technological Development Area published a policy explainer for its 2026-2028 AI4Chip action plan to apply AI across integrated-circuit design, manufacturing, packaging, testing, equipment, and materials.',
+          why: 'China local industrial policy is explicitly embedding AI into chip workflows, making EDA automation, yield improvement, manufacturing intelligence, and supply-chain coordination measurable policy priorities.',
+          impact: 'EDA vendors, chip designers, fabs, equipment suppliers, and industrial-AI teams should monitor funding windows, pilot lists, evaluation metrics, data boundaries, and procurement requirements tied to AI4Chip programs.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua reported that provincial 15th Five-Year Plan outlines are being published, with all provinces and municipalities mentioning artificial intelligence and compute power, 30 mentioning large models, and Beijing, Zhejiang, Shanghai, and Guangdong described as leading clusters.',
       why: 'China’s AI industry is entering a regional specialization phase instead of relying only on single-model competition.',
@@ -2189,6 +2215,12 @@ export const FIELD_PROJECTION_RULES = [
     owner: 'daily-source-projection',
     category: 'cloud-infrastructure',
     splitTargetCategory: 'edge-hybrid-compute-infrastructure',
+    displayLabels: [
+      {
+        label: 'Xinhua / Xiaomi / edge AI chip supply',
+        terms: ['玄戒 O3', 'O100', 'D100'],
+      },
+    ],
     displayLabel: 'Apple / Broadcom / US chip supply chain',
     capacityPlan: {
       selectedSplitTarget: 'edge-hybrid-compute-infrastructure',
@@ -2201,7 +2233,17 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; edge-hybrid-compute-infrastructure now has two effective headroom slots for future RTX/DGX edge workstation, local AI PC, hybrid enterprise appliance, and US chip supply-chain signals.',
       },
     },
-    terms: ['Broadcom', '超过 300 亿美元', '超过 150 亿颗美国制造芯片', '定制硅组件', '无线连接技术'],
+    terms: ['Broadcom', '超过 300 亿美元', '超过 150 亿颗美国制造芯片', '定制硅组件', '无线连接技术', '玄戒 O3', 'O100', 'D100', '端侧 AI 加速', '智能驾驶'],
+    detailVariants: [
+      {
+        terms: ['玄戒 O3', 'O100', 'D100'],
+        details: {
+          what: 'Xinhua reported that Xiaomi released the Xring O3, O100, and D100 chips for personal devices, edge-AI acceleration, and intelligent-driving workloads.',
+          why: 'AI competition is spreading into device-side compute, self-developed chips, vehicle intelligence, and local model execution instead of depending only on cloud inference.',
+          impact: 'Phone, PC, vehicle, and smart-home teams should evaluate whether local AI chips deliver real latency, privacy, battery-life, and offline-capability improvements rather than only AI branding.',
+        },
+      },
+    ],
     details: {
       what: 'Apple expanded its multiyear Broadcom commitment, saying the partnership will involve more than 30 billion USD and more than 15 billion US-made chips across custom silicon components and wireless connectivity technology.',
       why: 'AI-capable devices and services depend on long-horizon chip, connectivity, and domestic manufacturing capacity rather than only frontier model releases.',
@@ -2276,6 +2318,14 @@ export const FIELD_PROJECTION_RULES = [
     splitTargetCategory: 'frontier-model-inference-architecture',
     displayLabels: [
       {
+        label: 'OpenAI / Jalapeño / inference chip efficiency',
+        terms: ['Jalapeño', 'GPT‑OSS 120B', 'Kimi K2.5'],
+      },
+      {
+        label: 'NVIDIA / Groq 3 LPX / agentic inference acceleration',
+        terms: ['Groq 3 LPX', 'Vera Rubin', '3,400 output tokens/s'],
+      },
+      {
         label: 'NVIDIA / Blackwell / performance-per-watt AI infrastructure',
         terms: ['performance per watt', 'GB300 NVL72'],
       },
@@ -2300,8 +2350,24 @@ export const FIELD_PROJECTION_RULES = [
         rationale: 'capacity delta 0; keeps Blackwell MLPerf and performance-per-watt coverage inside refreshed frontier-model-inference-architecture capacity with two remaining headroom slots for MoE inference, power-constrained AI factory, and low-latency architecture signals.',
       },
     },
-    terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72', '每瓦性能'],
+    terms: ['MLPerf Training 6.0', '8192 GPU', 'Blackwell NVL72', '每瓦性能', 'Jalapeño', 'GPT‑OSS 120B', 'Kimi K2.5', 'Groq 3 LPX', '3,400 output tokens/s'],
     detailVariants: [
+      {
+        terms: ['Jalapeño', 'GPT‑OSS 120B', 'Kimi K2.5'],
+        details: {
+          what: 'OpenAI said its Jalapeño inference chip tests on GPT‑OSS 120B, DeepSeek R1, and Kimi K2.5 delivered higher throughput per watt and lower end-to-end latency than comparison systems.',
+          why: 'Frontier AI competition is moving below model weights into the combined efficiency of chips, inference software, networking, scheduling, and data-center power envelopes.',
+          impact: 'ChatGPT, Codex, and API capacity planning may depend more on OpenAI-owned hardware, power efficiency, latency targets, and supply-chain resilience than on model capability alone.',
+        },
+      },
+      {
+        terms: ['Groq 3 LPX', 'Vera Rubin', '3,400 output tokens/s'],
+        details: {
+          what: 'NVIDIA said Groq 3 LPX entered volume production as a Vera Rubin inference-extension option focused on low latency and high token-generation speed, citing 3,400 output tokens per second on a Gemma 4 31B long-context workload.',
+          why: 'Agentic AI infrastructure is being judged by multi-step latency, sustained token throughput, context length, and cost per completed task rather than training accelerators alone.',
+          impact: 'Cloud providers and enterprise AI teams should benchmark agent loops, long-context latency, interconnect fit, scheduler behavior, and token economics before standardizing on an inference stack.',
+        },
+      },
       {
         terms: ['performance per watt', 'GB300 NVL72'],
         details: {
