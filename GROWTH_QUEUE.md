@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-26 17:20
+Last updated: 2026-08-27 16:50
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,7 +21,12 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-319: 将 2026-08-25 双语日报接入 real cron fixture，修复 NVLink Fusion / Thomson Reuters Thomson / Wan3.0 / 智能消费泛化 projection，并补齐 08-26 registry 断链与 stale generator guardrail | ICE 9x8x8=576 — commit `pending`
+- [x] P1 Candidate / EXP-320: 撤回 2026-08-27 误复刻的 08-26 双语日报，并新增跨日期 Top 5/今日要闻重复检测与多行标题日期 guardrail | ICE 9x9x9=729 — commit `pending`
+  - Hypothesis: 最近24小时内容建设把 2026-08-26 的 Jalapeño / Groq 3 LPX / International Burke / AI4Chip / 小米芯片五条内容原样再次发布为 2026-08-27，且 ZH 正文标题仍写 08-26；若继续保留，会制造近重复索引页、稀释搜索信号并让 latest fixture freshness 被无新增信息的页面阻断。
+  - Metrics: 删除 08-27 EN/ZH 误复刻页面；新增 latest EN/ZH pair Top 5/今日要闻完整重复检测；标题日期 gate 支持 EN/ZH 多行格式并检查文件名/frontmatter/正文日期；latestDaily/latestFixture 恢复 2026-08-26/2026-08-26；全部日报门禁、taxonomy 与 `pnpm build` 通过。
+  - Acceptance: 1) 08-27 重复路由不再进入 sitemap/index；2) `pnpm check:daily-cross-date-duplicate` 与 `pnpm check:daily-heading-date` 通过且含 synthetic self-test；3) latest fixture freshness 恢复 0 天滞后；4) 质量评分 28/30。
+
+- [x] P1 Candidate / EXP-319: 将 2026-08-25 双语日报接入 real cron fixture，修复 NVLink Fusion / Thomson Reuters Thomson / Wan3.0 / 智能消费泛化 projection，并补齐 08-26 registry 断链与 stale generator guardrail | ICE 9x8x8=576 — commit `18c6720`
   - Hypothesis: 最近24小时内容建设新增 2026-08-25 日报，但 real cron fixture 跳过 08-25，且 08-26 fixture 文件虽已提交却未注册；08-25 EN story 2/3 回落为泛化叙述，漏掉 NVLink Fusion AI factory interconnect、Thomson Reuters 专业模型、Wan3.0 商用视频与智能消费增长信号。
   - Metrics: fixture registry 覆盖 56 fixtures / 280 expectedSignals；08-25/08-26 EN/ZH generator、case-level FAQ、parser guardrails、evidence matrix、EN language、brief specificity、registry health、taxonomy 与 `pnpm build` 全部通过。
   - Acceptance: 1) 新增并注册 `daily-real-cron-2026-08-25.mjs`，同时注册遗漏的 08-26 fixture；2) 为 NVLink Fusion、Thomson、Wan3.0 与智能消费补 fixture-backed label/detailVariants；3) 重写 08-25/08-26 EN/ZH 页面并补齐 case-level FAQ；4) 修复 EXP-317 后遗留的 05-24 stale guardrail；5) 质量评分 29/30。

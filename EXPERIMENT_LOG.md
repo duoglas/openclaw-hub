@@ -1,3 +1,14 @@
+## EXP-320 — Remove duplicated 2026-08-27 daily and add cross-date/date-heading guardrails
+- Hypothesis: 最近24小时内容建设将 2026-08-26 的五条日报信号原样复刻为 2026-08-27，ZH 正文日期仍为 08-26，EN/ZH 均没有新增事实；若把日期换皮内容继续留在索引，会造成近重复页面、稀释实体与关键词信号，并迫使 latest fixture gate 为无新增信息的页面制造重复 fixture。
+- Scope: `src/content/blog/{en,zh}/openclaw-daily-2026-08-27.md`, `scripts/check-daily-cross-date-duplicate.mjs`, `scripts/check-daily-heading-date-consistency.sh`, `package.json`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 删除 08-27 EN/ZH 误复刻页面；新增 latest EN/ZH pair 的 Top 5/今日要闻完整重复检测（含 whitespace/date normalization synthetic self-test）；扩展标题日期 gate，使其识别 EN/ZH 多行标题格式并校验文件名、frontmatter 与正文标题日期；将检查窗口限定在最新 14 个双语页面，避免历史遗留日期债务阻塞最新发布门禁。
+- ICE: 9x9x9=729
+- Start date: 2026-08-27
+- End date: 2026-08-27
+- Success metric: `pnpm check:daily-heading-date && pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-evidence-matrix && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes；latestDaily=2026-08-26/latestFixture=2026-08-26/fixtureLagDays=0。
+- Result: pass（08-27 重复页面已撤回；跨日期完整 story section 重复检测和多行标题日期检测已上线；latest fixture freshness 恢复 0 天滞后；实现提交待回写；质量评分 28/30。）
+- Decision: scale（每日内容发布后必须先过“正文日期一致 + latest EN/ZH story section 不与前一日完整重复 + 同日 fixture-backed”三重门槛；若来源没有新增信号，不用换日期重复发布旧日报。）
+
 ## EXP-319 — 2026-08-25 real cron fixture, projection recovery, and registry repair
 - Hypothesis: 最近24小时内容建设新增 2026-08-25 日报，暴露 Vera Rubin/GB300 每瓦性能、NVLink Fusion AI factory interconnect、Thomson Reuters 自研专业模型 Thomson、阿里 Wan3.0 商用视频与中国智能消费增长五条信号；若 08-25 fixture 持续缺失、08-26 fixture 文件未注册且 EN 页面保留泛化 projection，首日索引会漏掉基础设施互联、专业模型、AI 视频产品化和端侧智能消费长尾入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-25.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/lib/daily-generator.mjs`, `scripts/check-daily-generator-real-cron-fixture.mjs`, `src/content/blog/{en,zh}/openclaw-daily-2026-08-{25,26}.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
@@ -6,7 +17,7 @@
 - Start date: 2026-08-26
 - End date: 2026-08-26
 - Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-evidence-matrix && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes；fixture registry=56 / expectedSignals=280。
-- Result: pass（08-25 fixture 与 08-26 registry 断链已修复；五条 08-25 信号均使用字段级 projection；08-25/08-26 双语页面与 case-level FAQ 已重建；全部质量门禁和 build 通过；实现提交待回写；质量评分 29/30。）
+- Result: pass（08-25 fixture 与 08-26 registry 断链已修复；五条 08-25 信号均使用字段级 projection；08-25/08-26 双语页面与 case-level FAQ 已重建；全部质量门禁和 build 通过；实现提交 `18c6720`；质量评分 29/30。）
 - Decision: scale（继续将“内容建设日报必须同日 fixture-backed，fixture 文件必须实际注册，EN/ZH 页面必须由 generator 重建且 case-level FAQ 完整”作为增长执行默认门槛；下一步优先检查 08-27 新内容或 taxonomy 新高利用 target。）
 
 ## EXP-318 — 2026-08-26 real cron fixture and field-level projection recovery
