@@ -6,7 +6,7 @@
 - Start date: 2026-08-27
 - End date: 2026-08-27
 - Success metric: `pnpm check:daily-heading-date && pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-evidence-matrix && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes；latestDaily=2026-08-26/latestFixture=2026-08-26/fixtureLagDays=0。
-- Result: pass（08-27 重复页面已撤回；跨日期完整 story section 重复检测和多行标题日期检测已上线；latest fixture freshness 恢复 0 天滞后；实现提交待回写；质量评分 28/30。）
+- Result: pass（08-27 重复页面已撤回；跨日期完整 story section 重复检测和多行标题日期检测已上线；latest fixture freshness 恢复 0 天滞后；实现提交 `912a1b0`；质量评分 28/30。）
 - Decision: scale（每日内容发布后必须先过“正文日期一致 + latest EN/ZH story section 不与前一日完整重复 + 同日 fixture-backed”三重门槛；若来源没有新增信号，不用换日期重复发布旧日报。）
 
 ## EXP-319 — 2026-08-25 real cron fixture, projection recovery, and registry repair

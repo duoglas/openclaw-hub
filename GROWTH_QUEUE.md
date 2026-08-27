@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-320: 撤回 2026-08-27 误复刻的 08-26 双语日报，并新增跨日期 Top 5/今日要闻重复检测与多行标题日期 guardrail | ICE 9x9x9=729 — commit `pending`
+- [x] P1 Candidate / EXP-320: 撤回 2026-08-27 误复刻的 08-26 双语日报，并新增跨日期 Top 5/今日要闻重复检测与多行标题日期 guardrail | ICE 9x9x9=729 — commit `912a1b0`
   - Hypothesis: 最近24小时内容建设把 2026-08-26 的 Jalapeño / Groq 3 LPX / International Burke / AI4Chip / 小米芯片五条内容原样再次发布为 2026-08-27，且 ZH 正文标题仍写 08-26；若继续保留，会制造近重复索引页、稀释搜索信号并让 latest fixture freshness 被无新增信息的页面阻断。
   - Metrics: 删除 08-27 EN/ZH 误复刻页面；新增 latest EN/ZH pair Top 5/今日要闻完整重复检测；标题日期 gate 支持 EN/ZH 多行格式并检查文件名/frontmatter/正文日期；latestDaily/latestFixture 恢复 2026-08-26/2026-08-26；全部日报门禁、taxonomy 与 `pnpm build` 通过。
   - Acceptance: 1) 08-27 重复路由不再进入 sitemap/index；2) `pnpm check:daily-cross-date-duplicate` 与 `pnpm check:daily-heading-date` 通过且含 synthetic self-test；3) latest fixture freshness 恢复 0 天滞后；4) 质量评分 28/30。
