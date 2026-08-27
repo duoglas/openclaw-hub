@@ -1,3 +1,14 @@
+## EXP-319 — 2026-08-25 real cron fixture, projection recovery, and registry repair
+- Hypothesis: 最近24小时内容建设新增 2026-08-25 日报，暴露 Vera Rubin/GB300 每瓦性能、NVLink Fusion AI factory interconnect、Thomson Reuters 自研专业模型 Thomson、阿里 Wan3.0 商用视频与中国智能消费增长五条信号；若 08-25 fixture 持续缺失、08-26 fixture 文件未注册且 EN 页面保留泛化 projection，首日索引会漏掉基础设施互联、专业模型、AI 视频产品化和端侧智能消费长尾入口。
+- Scope: `scripts/fixtures/daily-real-cron-2026-08-25.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `scripts/lib/daily-generator.mjs`, `scripts/check-daily-generator-real-cron-fixture.mjs`, `src/content/blog/{en,zh}/openclaw-daily-2026-08-{25,26}.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 08-25 fixture；注册 08-25 与遗漏的 08-26 fixture；复用既有 source projection rules 增补 NVLink Fusion、Thomson、Wan3.0 和智能消费 displayLabel/detailVariants；让 Thomson Reuters 成为 EN generator recognized entity；更新 EXP-317 后已过期的 05-24 entity-specific guardrail；重写 08-25/08-26 双语页面并补齐 fixture-driven case-level FAQ。
+- ICE: 9x8x8=576
+- Start date: 2026-08-26
+- End date: 2026-08-26
+- Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:daily-evidence-matrix && pnpm check:daily-en-language && pnpm check:daily-brief-specificity && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes；fixture registry=56 / expectedSignals=280。
+- Result: pass（08-25 fixture 与 08-26 registry 断链已修复；五条 08-25 信号均使用字段级 projection；08-25/08-26 双语页面与 case-level FAQ 已重建；全部质量门禁和 build 通过；实现提交待回写；质量评分 29/30。）
+- Decision: scale（继续将“内容建设日报必须同日 fixture-backed，fixture 文件必须实际注册，EN/ZH 页面必须由 generator 重建且 case-level FAQ 完整”作为增长执行默认门槛；下一步优先检查 08-27 新内容或 taxonomy 新高利用 target。）
+
 ## EXP-318 — 2026-08-26 real cron fixture and field-level projection recovery
 - Hypothesis: 最近24小时内容建设新增 2026-08-26 日报，暴露 OpenAI Jalapeño 推理芯片首测、NVIDIA Groq 3 LPX agentic inference、OpenAI 俄源隐蔽影响力行动封禁、北京 AI4Chip 集成电路行动计划与小米 O3/O100/D100 端侧 AI 芯片五条信号；若 latest fixture 继续停在 2026-08-24 且 EN 08-26 页面保留泛化 fallback / NemoClaw 错投，首日索引会漏掉推理芯片效率、agent 低延迟推理、AI 生成影响力行动治理、芯片产业 AI 政策和端侧本地模型入口。
 - Scope: `scripts/fixtures/daily-real-cron-2026-08-26.mjs`, `scripts/fixtures/daily-real-cron-fixtures.mjs`, `scripts/lib/source-projection-rules.mjs`, `src/content/blog/en/openclaw-daily-2026-08-26.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

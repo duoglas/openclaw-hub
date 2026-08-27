@@ -12,31 +12,31 @@ AI & Tech Daily Brief
 
 ## Top 5 Stories
 
-### 1. NVIDIA / Agent / Vera / compute infrastructure
+### 1. NVIDIA / Blackwell / performance-per-watt AI infrastructure
 
 What happened: NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.
 Why it matters: AI agents are moving beyond chat, writing, and coding into CAD operations, mesh generation, simulation setup, debugging, and report production.
 Potential impact: Industrial AI adoption may depend less on raw model capability and more on safe runtimes, tool permissions, deterministic workflow integration, audit logs, and domain-specific validation.
 
-### 2. NVIDIA / NVLink / Fusion / AI chip supply
+### 2. NVIDIA / NVLink Fusion / AI factory interconnect
 
-What happened: The source tracks AI chip supply, compute infrastructure around NVIDIA, NVLink, Fusion, XPU, giving the daily brief a named actor and deployment context.
-Why it matters: NVIDIA, NVLink, Fusion, XPU now matters for AI chip supply, compute infrastructure because buyers must check access control, infrastructure availability, operational risk, and whether the workflow can be measured in production.
-Potential impact: Teams tracking NVIDIA, NVLink, Fusion, XPU should convert this into concrete tests for rollout timing, vendor dependency, governance ownership, budget pressure, and success metrics.
+What happened: NVIDIA described NVLink Fusion as a way to connect custom XPUs into NVIDIA AI infrastructure with 72-XPU scale-up, low-latency communication, and high packet-processing capacity across an AI factory.
+Why it matters: Custom accelerators still depend on rack-scale interconnects, networking, software, supply-chain integration, and operations before they become usable AI factory capacity.
+Potential impact: Chip and infrastructure teams should test XPU interoperability, topology, latency, collective performance, software support, and vendor dependency before treating an in-house accelerator as a complete platform.
 
-### 3. AWS / Thomson / Reuters / API / open-source model ecosystem
+### 3. Thomson Reuters / Thomson / professional domain model
 
-What happened: The source tracks open-source model ecosystem, model capability update, enterprise AI rollout, data infrastructure around Thomson, Reuters, API, giving the daily brief a named actor and deployment context. The source includes concrete timing or scale signals (API).
-Why it matters: Thomson, Reuters, API now matters for open-source model ecosystem, model capability update, enterprise AI rollout, data infrastructure because buyers must check access control, infrastructure availability, operational risk, and whether the workflow can be measured in production. The source includes concrete timing or scale signals (API).
-Potential impact: Teams tracking Thomson, Reuters, API should convert this into concrete tests for rollout timing, vendor dependency, governance ownership, budget pressure, and success metrics. The source includes concrete timing or scale signals (API).
+What happened: Thomson Reuters introduced Thomson, its first internally developed large language model, built from open-source foundations plus proprietary legal, tax, and news content with roughly 40 million dollars of investment and integration into professional workflows such as CoCounsel.
+Why it matters: Professional AI competition is shifting toward trusted domain data, expert evaluation, auditable citations, and workflow integration rather than general-model parameter scale alone.
+Potential impact: Legal, tax, audit, and news organizations should benchmark domain accuracy, source traceability, permissions, review trails, and error cost before allowing a specialized model into core professional decisions.
 
-### 4. China / WorkBuddy / AI commercialization ROI
+### 4. Alibaba / Wan3.0 / commercial video generation
 
-What happened: Chinese media coverage points to Doubao, WorkBuddy, and other AI products testing paid plans while office, logistics, consumer electronics, and humanoid-robotics workflows adopt AI more directly.
-Why it matters: China AI competition is shifting from model launches toward paid users, embedded workflows, measurable productivity, and enterprise ROI as model capability becomes less differentiated.
-Potential impact: Users should expect more subscriptions, usage pricing, and embedded AI features, while enterprise buyers compare workflow fit, data security, deployment cost, and measurable productivity rather than parameter counts.
+What happened: Alibaba Cloud listed Wan3.0-Video with four-modal reference, editing, replication, and driving controls for videos up to 30 seconds, extending distribution through cloud and consumer creation surfaces such as Qwen and Wanxiang.
+Why it matters: China video generation is moving from model demos toward platform distribution, controllable production workflows, and measurable commercial use in marketing, e-commerce, short video, and education.
+Potential impact: Content teams should pilot one bounded asset workflow and measure reference consistency, editing time, copyright review, commercial-use terms, inference cost, and conversion before scaling AI video production.
 
-### 5. China / compute infrastructure / AI hardware / robotics deployment
+### 5. Xinhua / China / AI smart consumer adoption
 
 What happened: Xinhua coverage describes China robotics and AI education deployments across culture and tourism, elderly care, and public-service efficiency scenarios.
 Why it matters: The item shows AI adoption expanding from model and platform news into public-service and local-industry use cases where deployment quality, responsibility boundaries, and offline service outcomes matter.
@@ -54,14 +54,29 @@ User suggestion: Test AI on one daily routine such as reading notes, travel plan
 
 ## Case-Level FAQ
 
-### How should a small team validate the NVIDIA / Agent / Vera / compute infrastructure signal?
-Start with one bounded workflow, document the source assumption from story 1, define an owner, and run a reversible pilot before expanding access or budget.
+### NVIDIA_PERFORMANCE_PER_WATT: how should a small team validate this signal?
+Use the fixture context (Vera Rubin NVL72, GB300 NVL72) to test performance per watt, agentic coding, power, token cost, throughput. Start with one bounded, reversible workflow, define an owner and success metric, and review [guide 1](/en/blog/openclaw-model-fallback-strategy/) and [guide 2](/en/blog/openclaw-vps-deployment-complete-guide/) before expanding access, budget, or automation.
 
-### How should a small team validate the NVIDIA / NVLink / Fusion / AI chip supply signal?
-Start with one bounded workflow, document the source assumption from story 2, define an owner, and run a reversible pilot before expanding access or budget.
+### NVIDIA_NVLINK_FUSION: how should a small team validate this signal?
+Use the fixture context (NVLink Fusion, 72-XPU) to test NVLink Fusion, XPU, interconnect, latency, AI factory. Start with one bounded, reversible workflow, define an owner and success metric, and review [guide 1](/en/blog/openclaw-vps-deployment-complete-guide/) and [guide 2](/en/blog/openclaw-model-fallback-strategy/) before expanding access, budget, or automation.
 
-### How should a small team validate the AWS / Thomson / Reuters / API / open-source model ecosystem signal?
-Start with one bounded workflow, document the source assumption from story 3, define an owner, and run a reversible pilot before expanding access or budget.
+### THOMSON_PROFESSIONAL_MODEL: how should a small team validate this signal?
+Use the fixture context (Thomson Reuters, CoCounsel) to test professional model, legal, tax, audit, domain data. Start with one bounded, reversible workflow, define an owner and success metric, and review [guide 1](/en/blog/what-is-openclaw/) and [guide 2](/en/blog/openclaw-security-hardening-2026/) before expanding access, budget, or automation.
+
+### ALIBABA_WAN3_VIDEO: how should a small team validate this signal?
+Use the fixture context (Wan3.0-Video, 30 秒) to test video generation, multimodal, copyright, review, commercial use. Start with one bounded, reversible workflow, define an owner and success metric, and review [guide 1](/en/blog/what-is-openclaw/) and [guide 2](/en/blog/openclaw-model-fallback-strategy/) before expanding access, budget, or automation.
+
+### CHINA_SMART_CONSUMER_ADOPTION: how should a small team validate this signal?
+Use the fixture context (AI 眼镜, 增长超过 1 倍) to test wearables, edge AI, privacy, offline, adoption. Start with one bounded, reversible workflow, define an owner and success metric, and review [guide 1](/en/blog/what-is-openclaw/) and [guide 2](/en/blog/openclaw-vps-deployment-complete-guide/) before expanding access, budget, or automation.
+
+### THOMSON_DOMAIN_MODEL_EVAL: how should a small team validate this signal?
+Use the fixture context (Thomson Reuters 专业模型评估清单) to test sources, expert evaluation, citations, permissions, human review. Start with one bounded, reversible workflow, define an owner and success metric, and review [guide 1](/en/blog/openclaw-security-hardening-2026/) and [guide 2](/en/blog/openclaw-model-fallback-strategy/) before expanding access, budget, or automation.
+
+### WAN3_COMMERCIAL_VIDEO_PILOT: how should a small team validate this signal?
+Use the fixture context (Wan3.0 商用视频工作流试点) to test reference assets, copyright, human editing, cost, conversion. Start with one bounded, reversible workflow, define an owner and success metric, and review [guide 1](/en/blog/what-is-openclaw/) and [guide 2](/en/blog/openclaw-model-fallback-strategy/) before expanding access, budget, or automation.
+
+### SMART_HARDWARE_SCENARIO_TEST: how should a small team validate this signal?
+Use the fixture context (智能消费硬件场景验证) to test offline, privacy, battery, accuracy, after-sales. Start with one bounded, reversible workflow, define an owner and success metric, and review [guide 1](/en/blog/what-is-openclaw/) and [guide 2](/en/blog/openclaw-security-hardening-2026/) before expanding access, budget, or automation.
 
 ## Today’s Bottom Line
 
@@ -77,11 +92,11 @@ Start with one bounded workflow, document the source assumption from story 3, de
 
 ## Evidence Matrix
 
-- Evidence item 1: NVIDIA / Agent / Vera / compute infrastructure — NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.
-- Evidence item 2: NVIDIA / NVLink / Fusion / AI chip supply — The source tracks AI chip supply, compute infrastructure around NVIDIA, NVLink, Fusion, XPU, giving the daily brief a named actor and deployment context.
-- Evidence item 3: AWS / Thomson / Reuters / API / open-source model ecosystem — The source tracks open-source model ecosystem, model capability update, enterprise AI rollout, data infrastructure around Thomson, Reuters, API, giving the daily brief a named actor and deployment context. The source includes concrete timing or scale signals (API).
-- Evidence item 4: China / WorkBuddy / AI commercialization ROI — Chinese media coverage points to Doubao, WorkBuddy, and other AI products testing paid plans while office, logistics, consumer electronics, and humanoid-robotics workflows adopt AI more directly.
-- Evidence item 5: China / compute infrastructure / AI hardware / robotics deployment — Xinhua coverage describes China robotics and AI education deployments across culture and tourism, elderly care, and public-service efficiency scenarios.
+- Evidence item 1: NVIDIA / Blackwell / performance-per-watt AI infrastructure — NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.
+- Evidence item 2: NVIDIA / NVLink Fusion / AI factory interconnect — NVIDIA described NVLink Fusion as a way to connect custom XPUs into NVIDIA AI infrastructure with 72-XPU scale-up, low-latency communication, and high packet-processing capacity across an AI factory.
+- Evidence item 3: Thomson Reuters / Thomson / professional domain model — Thomson Reuters introduced Thomson, its first internally developed large language model, built from open-source foundations plus proprietary legal, tax, and news content with roughly 40 million dollars of investment and integration into professional workflows such as CoCounsel.
+- Evidence item 4: Alibaba / Wan3.0 / commercial video generation — Alibaba Cloud listed Wan3.0-Video with four-modal reference, editing, replication, and driving controls for videos up to 30 seconds, extending distribution through cloud and consumer creation surfaces such as Qwen and Wanxiang.
+- Evidence item 5: Xinhua / China / AI smart consumer adoption — Xinhua coverage describes China robotics and AI education deployments across culture and tourism, elderly care, and public-service efficiency scenarios.
 
 ## Next-Step CTA
 

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-26 11:23
+Last updated: 2026-08-26 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-319: 将 2026-08-25 双语日报接入 real cron fixture，修复 NVLink Fusion / Thomson Reuters Thomson / Wan3.0 / 智能消费泛化 projection，并补齐 08-26 registry 断链与 stale generator guardrail | ICE 9x8x8=576 — commit `pending`
+  - Hypothesis: 最近24小时内容建设新增 2026-08-25 日报，但 real cron fixture 跳过 08-25，且 08-26 fixture 文件虽已提交却未注册；08-25 EN story 2/3 回落为泛化叙述，漏掉 NVLink Fusion AI factory interconnect、Thomson Reuters 专业模型、Wan3.0 商用视频与智能消费增长信号。
+  - Metrics: fixture registry 覆盖 56 fixtures / 280 expectedSignals；08-25/08-26 EN/ZH generator、case-level FAQ、parser guardrails、evidence matrix、EN language、brief specificity、registry health、taxonomy 与 `pnpm build` 全部通过。
+  - Acceptance: 1) 新增并注册 `daily-real-cron-2026-08-25.mjs`，同时注册遗漏的 08-26 fixture；2) 为 NVLink Fusion、Thomson、Wan3.0 与智能消费补 fixture-backed label/detailVariants；3) 重写 08-25/08-26 EN/ZH 页面并补齐 case-level FAQ；4) 修复 EXP-317 后遗留的 05-24 stale guardrail；5) 质量评分 29/30。
 
 - [x] P1 Candidate / EXP-318: 将 2026-08-26 最新双语日报接入 real cron fixture，修复 EN Jalapeño / Groq 3 LPX / International Burke / AI4Chip / Xiaomi 芯片泛化 fallback，消费最近24小时内容建设新增日报假设 | ICE 9x8x8=576 — commit `5f62e96`
   - Hypothesis: 最近24小时内容建设新增 2026-08-26 日报，但 latest real cron fixture 停在 2026-08-24，EN 08-26 页面 story 1/3/4/5 回落到 `The source tracks...` 泛化 fallback，story 2 误投 NemoClaw/OpenShell 工业 agent 叙述；若不补同日 fixture 与字段级 projection，首日索引会漏掉 OpenAI Jalapeño 推理芯片、NVIDIA Groq 3 LPX agentic inference、OpenAI 俄源影响力行动封禁、北京 AI4Chip 政策与小米端侧 AI 芯片长尾入口。

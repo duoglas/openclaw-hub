@@ -30,8 +30,8 @@ for (const fixture of realCronFixtures) {
     if (label !== signal.enLabel) failures.push(`${fixtureDate}: EN label ${index + 1} drifted: ${label}`);
   });
 
-  if (fixtureDate === '2026-05-24' && !body.includes('Source 5 reports a robotics deployment, AI education deployment signal involving China, Xinhua')) {
-    failures.push('2026-05-24: missing CJK-to-English source projection for Xinhua/China fixture item');
+  if (fixtureDate === '2026-05-24' && !body.includes('Xinhua coverage describes China robotics and AI education deployments across culture and tourism, elderly care, and public-service efficiency scenarios.')) {
+    failures.push('2026-05-24: missing entity-specific CJK-to-English source projection for Xinhua/China fixture item');
   }
 
   for (let index = 1; index <= 5; index += 1) {

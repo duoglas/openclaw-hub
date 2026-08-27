@@ -358,8 +358,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'NVIDIA / Nemotron 3 Ultra / LangChain Deep Agents',
         terms: ['Nemotron 3 Ultra', 'LangChain'],
       },
+      {
+        label: 'Thomson Reuters / Thomson / professional domain model',
+        terms: ['Thomson Reuters', '4000 万美元', 'CoCounsel'],
+      },
     ],
-    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '开放模型可被企业定制、审计和私有评估', '私有评测', '后训练', 'NeMo RL', 'Vera Rubin', 'intelligence per dollar', 'Spectrum-6', '102.4Tbps'],
+    terms: ['NemoClaw', 'Cadence', 'Dassault', 'Siemens', 'Synopsys', 'Nemotron 3 Ultra', 'LangChain Deep Agents', 'Nemotron Labs', '开放模型可被企业定制、审计和私有评估', '私有评测', '后训练', 'NeMo RL', 'Vera Rubin', 'intelligence per dollar', 'Spectrum-6', '102.4Tbps', 'Thomson Reuters', '4000 万美元', 'CoCounsel'],
     detailVariants: [
       {
         terms: ['Spectrum-6', '102.4Tbps', 'Vera Rubin'],
@@ -409,6 +413,14 @@ export const FIELD_PROJECTION_RULES = [
           impact: 'Teams can compare open agent stacks against closed systems on auditability, private deployment, permission boundaries, evaluation traces, and operational cost before using agents in high-risk workflows.',
         },
       },
+      {
+        terms: ['Thomson Reuters', '4000 万美元', 'CoCounsel'],
+        details: {
+          what: 'Thomson Reuters introduced Thomson, its first internally developed large language model, built from open-source foundations plus proprietary legal, tax, and news content with roughly 40 million dollars of investment and integration into professional workflows such as CoCounsel.',
+          why: 'Professional AI competition is shifting toward trusted domain data, expert evaluation, auditable citations, and workflow integration rather than general-model parameter scale alone.',
+          impact: 'Legal, tax, audit, and news organizations should benchmark domain accuracy, source traceability, permissions, review trails, and error cost before allowing a specialized model into core professional decisions.',
+        },
+      },
     ],
     details: {
       what: 'NVIDIA said Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA NemoClaw / OpenShell to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows.',
@@ -447,6 +459,10 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['FMS', 'cuFile APIs', '高并发'],
       },
       {
+        label: 'NVIDIA / NVLink Fusion / AI factory interconnect',
+        terms: ['NVLink Fusion', '定制 XPU', '72-XPU'],
+      },
+      {
         label: 'US / NVIDIA / NSF / regional AI infrastructure hubs',
         terms: ['NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟'],
       },
@@ -459,7 +475,7 @@ export const FIELD_PROJECTION_RULES = [
         terms: ['Firebird', '亚美尼亚', '300MW'],
       },
     ],
-    terms: ['AI Cloud', 'AI factory', 'AI Factory', '本地 AI 能力', '六大洲', 'Nations AI', '主权 AI', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟', 'Build in America', 'Wistron', 'GB300', '得州工厂', 'Firebird', '亚美尼亚', 'CIS 区域最大', '300MW'],
+    terms: ['AI Cloud', 'AI factory', 'AI Factory', '本地 AI 能力', '六大洲', 'Nations AI', '主权 AI', 'HPE AI Factory with NVIDIA', 'Spectrum-6', '102.4Tbps', 'Vera Rubin', 'FMS', 'cuFile APIs', '高并发', '加密、压缩、校验', 'NSF', 'State and Regional AI Infrastructure Hubs', '高校和区域联盟', 'Build in America', 'Wistron', 'GB300', '得州工厂', 'Firebird', '亚美尼亚', 'CIS 区域最大', '300MW', 'NVLink Fusion', '定制 XPU', '72-XPU'],
     detailVariants: [
       {
         terms: ['Nations AI', '主权 AI'],
@@ -499,6 +515,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'NVIDIA updated its Build in America progress, citing participation in NSF regional AI infrastructure hubs and Wistron production of GB300 systems in Texas while preparing Vera Rubin manufacturing.',
           why: 'AI infrastructure competition is extending into domestic manufacturing, power, data centers, regional research access, and supply-chain resilience rather than only GPU performance.',
           impact: 'Infrastructure buyers should track regional compute access, US manufacturing capacity, data-center power, cooling, procurement timing, and supply-chain concentration before assuming AI capacity will be available on demand.',
+        },
+      },
+      {
+        terms: ['NVLink Fusion', '定制 XPU', '72-XPU'],
+        details: {
+          what: 'NVIDIA described NVLink Fusion as a way to connect custom XPUs into NVIDIA AI infrastructure with 72-XPU scale-up, low-latency communication, and high packet-processing capacity across an AI factory.',
+          why: 'Custom accelerators still depend on rack-scale interconnects, networking, software, supply-chain integration, and operations before they become usable AI factory capacity.',
+          impact: 'Chip and infrastructure teams should test XPU interoperability, topology, latency, collective performance, software support, and vendor dependency before treating an in-house accelerator as a complete platform.',
         },
       },
       {
@@ -624,8 +648,12 @@ export const FIELD_PROJECTION_RULES = [
         label: 'Tencent / China / Q2 capex AI spend',
         terms: ['资本开支', '自由现金流'],
       },
+      {
+        label: 'Alibaba / Wan3.0 / commercial video generation',
+        terms: ['Wan3.0-Video', '四模态', '30 秒'],
+      },
     ],
-    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试', 'Seedance 2.0', '视频生成', '可灵 AI', '生数科技', '爱诗科技', '演语科技', '自由现金流', '528 亿元'],
+    terms: ['豆包', 'WorkBuddy', '付费计划', '商业化测试', 'Seedance 2.0', '视频生成', '可灵 AI', '生数科技', '爱诗科技', '演语科技', '自由现金流', '528 亿元', 'Wan3.0-Video', '四模态', '30 秒', '万相'],
     detailVariants: [
       {
         terms: ['Seedance 2.0', '豆包', '视频生成'],
@@ -649,6 +677,14 @@ export const FIELD_PROJECTION_RULES = [
           what: 'A secondary aggregated-industry page (updated August 14) reported Tencent second-quarter capital expenditure of 52.8 billion yuan with free cash flow turning negative.',
           why: 'Major Chinese platform companies are signaling a profit-for-AI-space tradeoff, mirroring the NVIDIA/OpenAI trillion-scale compute buildout, as cloud and model providers shift from measured investment to rigid AI spending commitments.',
           impact: 'Buyers should treat the figure as unconfirmed until primary earnings disclosure, while watching whether domestic cloud AI investment becomes a fixed commitment that reshapes compute pricing, capacity, and vendor lock-in.',
+        },
+      },
+      {
+        terms: ['Wan3.0-Video', '四模态', '30 秒'],
+        details: {
+          what: 'Alibaba Cloud listed Wan3.0-Video with four-modal reference, editing, replication, and driving controls for videos up to 30 seconds, extending distribution through cloud and consumer creation surfaces such as Qwen and Wanxiang.',
+          why: 'China video generation is moving from model demos toward platform distribution, controllable production workflows, and measurable commercial use in marketing, e-commerce, short video, and education.',
+          impact: 'Content teams should pilot one bounded asset workflow and measure reference consistency, editing time, copyright review, commercial-use terms, inference cost, and conversion before scaling AI video production.',
         },
       },
     ],
@@ -2849,8 +2885,22 @@ export const FIELD_PROJECTION_RULES = [
         label: 'Xinhua / Greater Bay Area / AI hard-tech commercialization',
         terms: ['大湾区', '消费级外骨骼', '低空物流'],
       },
+      {
+        label: 'Xinhua / China / AI smart consumer adoption',
+        terms: ['AI 眼镜', '可穿戴', '增长超过 1 倍'],
+      },
     ],
-    terms: ['深圳南山区“机器人谷”', '极壳科技', '2426 亿元', '大湾区', '消费级外骨骼', '低空物流'],
+    terms: ['深圳南山区“机器人谷”', '极壳科技', '2426 亿元', '大湾区', '消费级外骨骼', '低空物流', '国家统计局数据显示 1-7 月', '增长超过 1 倍'],
+    detailVariants: [
+      {
+        terms: ['AI 眼镜', '可穿戴', '增长超过 1 倍'],
+        details: {
+          what: 'Xinhua reported that AI phones, AI glasses, wearables, exoskeletons, and robots are appearing more clearly in company earnings and consumer data, while official statistics showed retail sales of wearable smart devices at large enterprises more than doubled in January through July.',
+          why: 'AI adoption is moving from model announcements into device-side hardware, retail, elder care, healthcare, shopping assistance, and consumer robotics where usage and revenue can be measured.',
+          impact: 'Consumers and product teams should evaluate offline capability, privacy permissions, battery life, accuracy, after-sales support, and repeat usage before treating AI hardware launch claims as durable adoption.',
+        },
+      },
+    ],
     details: {
       what: 'Xinhua reported that Shenzhen and the Greater Bay Area are moving AI hard-tech projects from labs into commercialization, including consumer exoskeletons, embodied robots, brain-computer interfaces, AI design, low-altitude logistics, and AI data-center materials.',
       why: 'Robotics and AI hardware commercialization is expanding from industrial lines into elder care, outdoor work, rehabilitation, logistics, medical devices, and consumer-assistive scenarios where supply-chain depth and real deployment contexts matter.',
