@@ -1,3 +1,14 @@
+## EXP-321 — Expand cross-date duplicate detection to a 14-brief window
+- Hypothesis: EXP-320 的跨日期重复门禁只比较最新相邻两篇；内容建设若隔一天或数天复刻旧 Top 5/今日要闻，仍能绕过检查并产生近重复索引页、稀释实体与关键词信号。
+- Scope: `scripts/check-daily-cross-date-duplicate.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 将 EN/ZH 日报检查窗口扩展到最近 14 篇，并对窗口内完整 story section 做全量重复检测；保留日期与空白归一化；synthetic self-test 新增 A/B/C 非相邻样本，确认第三篇可命中第一篇而不会被中间不同内容遮蔽。
+- ICE: 8x9x9=648
+- Start date: 2026-08-27
+- End date: 2026-08-27
+- Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:daily-heading-date && pnpm build` passes；输出显示 latest 14 EN/ZH briefs；非相邻 duplicate synthetic self-test 通过。
+- Result: pass（最近 14 篇 EN/ZH 日报无完整 story section 重复；全窗口 guardrail 与非相邻 synthetic self-test 已上线；实现提交 `PENDING`；质量评分 28/30。）
+- Decision: scale（内容发布门禁不再只防相邻日期复刻；任何最近 14 篇内的换日期完整复刻都会阻塞构建。下一步可评估“部分 Top 5 高重合但非 100% 相同”的相似度门槛，避免 4/5 条复刻绕过。）
+
 ## EXP-320 — Remove duplicated 2026-08-27 daily and add cross-date/date-heading guardrails
 - Hypothesis: 最近24小时内容建设将 2026-08-26 的五条日报信号原样复刻为 2026-08-27，ZH 正文日期仍为 08-26，EN/ZH 均没有新增事实；若把日期换皮内容继续留在索引，会造成近重复页面、稀释实体与关键词信号，并迫使 latest fixture gate 为无新增信息的页面制造重复 fixture。
 - Scope: `src/content/blog/{en,zh}/openclaw-daily-2026-08-27.md`, `scripts/check-daily-cross-date-duplicate.mjs`, `scripts/check-daily-heading-date-consistency.sh`, `package.json`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

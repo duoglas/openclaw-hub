@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-27 16:50
+Last updated: 2026-08-27 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-321: 将双语日报跨日期完整重复检测从“仅相邻两天”扩展为“最近 14 篇全窗口”，消费 EXP-320 后续非相邻日期换皮复刻风险 | ICE 8x9x9=648 — commit `PENDING`
+  - Hypothesis: EXP-320 只比较最新两篇日报；若内容建设隔一天或数天复刻旧 Top 5/今日要闻，仍可绕过门禁并生成近重复索引页。
+  - Metrics: 最近 14 篇 EN/ZH 日报任意两篇完整 story section 重复均失败；日期与空白归一化保留；synthetic self-test 可捕获非相邻重复；`pnpm check:daily-cross-date-duplicate` 与 `pnpm build` 通过。
+  - Acceptance: 1) 检查窗口覆盖最近 14 篇而非仅 latest pair；2) 任意非相邻重复可定位首次页面与重复页面；3) 缺失 Top 5/今日要闻 section 继续 fail closed；4) 质量评分 28/30。
 
 - [x] P1 Candidate / EXP-320: 撤回 2026-08-27 误复刻的 08-26 双语日报，并新增跨日期 Top 5/今日要闻重复检测与多行标题日期 guardrail | ICE 9x9x9=729 — commit `912a1b0`
   - Hypothesis: 最近24小时内容建设把 2026-08-26 的 Jalapeño / Groq 3 LPX / International Burke / AI4Chip / 小米芯片五条内容原样再次发布为 2026-08-27，且 ZH 正文标题仍写 08-26；若继续保留，会制造近重复索引页、稀释搜索信号并让 latest fixture freshness 被无新增信息的页面阻断。
