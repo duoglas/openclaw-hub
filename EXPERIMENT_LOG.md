@@ -6,7 +6,7 @@
 - Start date: 2026-08-27
 - End date: 2026-08-27
 - Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:daily-heading-date && pnpm build` passes；输出显示 latest 14 EN/ZH briefs；非相邻 duplicate synthetic self-test 通过。
-- Result: pass（最近 14 篇 EN/ZH 日报无完整 story section 重复；全窗口 guardrail 与非相邻 synthetic self-test 已上线；实现提交 `PENDING`；质量评分 28/30。）
+- Result: pass（最近 14 篇 EN/ZH 日报无完整 story section 重复；全窗口 guardrail 与非相邻 synthetic self-test 已上线；实现提交 `1e6a0f7`；质量评分 28/30。）
 - Decision: scale（内容发布门禁不再只防相邻日期复刻；任何最近 14 篇内的换日期完整复刻都会阻塞构建。下一步可评估“部分 Top 5 高重合但非 100% 相同”的相似度门槛，避免 4/5 条复刻绕过。）
 
 ## EXP-320 — Remove duplicated 2026-08-27 daily and add cross-date/date-heading guardrails

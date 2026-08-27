@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-321: 将双语日报跨日期完整重复检测从“仅相邻两天”扩展为“最近 14 篇全窗口”，消费 EXP-320 后续非相邻日期换皮复刻风险 | ICE 8x9x9=648 — commit `PENDING`
+- [x] P1 Candidate / EXP-321: 将双语日报跨日期完整重复检测从“仅相邻两天”扩展为“最近 14 篇全窗口”，消费 EXP-320 后续非相邻日期换皮复刻风险 | ICE 8x9x9=648 — commit `1e6a0f7`
   - Hypothesis: EXP-320 只比较最新两篇日报；若内容建设隔一天或数天复刻旧 Top 5/今日要闻，仍可绕过门禁并生成近重复索引页。
   - Metrics: 最近 14 篇 EN/ZH 日报任意两篇完整 story section 重复均失败；日期与空白归一化保留；synthetic self-test 可捕获非相邻重复；`pnpm check:daily-cross-date-duplicate` 与 `pnpm build` 通过。
   - Acceptance: 1) 检查窗口覆盖最近 14 篇而非仅 latest pair；2) 任意非相邻重复可定位首次页面与重复页面；3) 缺失 Top 5/今日要闻 section 继续 fail closed；4) 质量评分 28/30。
