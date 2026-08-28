@@ -6,7 +6,7 @@
 - Start date: 2026-08-28
 - End date: 2026-08-28
 - Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:daily-heading-date && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；latestDaily=2026-08-26/latestFixture=2026-08-26/fixtureLagDays=0；workflow 含唯一一条 cross-date duplicate CI step。
-- Result: pass（08-28 EN/ZH 重复页面已撤回；最近 14 篇重复 gate 已接入 push/PR CI；latest fixture freshness 恢复 0 天滞后；实现提交 `PENDING`；质量评分 29/30。）
+- Result: pass（08-28 EN/ZH 重复页面已撤回；最近 14 篇重复 gate 已接入 push/PR CI；latest fixture freshness 恢复 0 天滞后；实现提交 `68a381d`；质量评分 29/30。）
 - Decision: scale（完整换日期复刻不再依赖增长执行事后发现；后续内容提交会在进入 main 前被 CI 阻塞。下一步可增加 4/5 story 高重合阈值，拦截部分换皮复刻。）
 
 ## EXP-321 — Expand cross-date duplicate detection to a 14-brief window
