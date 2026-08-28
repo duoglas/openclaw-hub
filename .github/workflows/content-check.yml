@@ -91,6 +91,9 @@ jobs:
       - name: Daily heading date consistency check
         run: pnpm check:daily-heading-date
 
+      - name: Daily cross-date duplicate check
+        run: pnpm check:daily-cross-date-duplicate
+
       - name: Fresh daily completeness check
         run: pnpm check:daily-fresh-completeness
 

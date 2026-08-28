@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-27 17:20
+Last updated: 2026-08-28 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-322: 撤回 2026-08-28 对 08-26 的双语完整复刻，并把 14 篇跨日期重复检查接入 Content Check CI，消费最近24小时内容建设重复发布假设 | ICE 9x10x10=900 — commit `PENDING`
+  - Hypothesis: 最近24小时内容建设再次把 2026-08-26 的 Jalapeño / Groq 3 LPX / International Burke / AI4Chip / 小米芯片五条内容完整换日期发布为 2026-08-28；EXP-321 虽能在本地检测，但未接入 GitHub Content Check，自动内容提交仍可绕过门禁进入 main。
+  - Metrics: 删除未提交的 08-28 EN/ZH 重复页面；`content-check.yml` 显式运行 `pnpm check:daily-cross-date-duplicate`；latestDaily/latestFixture 恢复 2026-08-26/2026-08-26；重复检查、fixture freshness 与 `pnpm build` 通过。
+  - Acceptance: 1) 08-28 重复路由不进入 sitemap/index；2) 后续 push/PR 中最近 14 篇任意完整复刻会在 CI 阻塞；3) latest fixture lag=0；4) 质量评分 29/30。
 
 - [x] P1 Candidate / EXP-321: 将双语日报跨日期完整重复检测从“仅相邻两天”扩展为“最近 14 篇全窗口”，消费 EXP-320 后续非相邻日期换皮复刻风险 | ICE 8x9x9=648 — commit `1e6a0f7`
   - Hypothesis: EXP-320 只比较最新两篇日报；若内容建设隔一天或数天复刻旧 Top 5/今日要闻，仍可绕过门禁并生成近重复索引页。

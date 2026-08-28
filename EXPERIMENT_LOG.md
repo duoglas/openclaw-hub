@@ -1,3 +1,14 @@
+## EXP-322 — Remove duplicated 2026-08-28 daily and enforce cross-date duplicate detection in CI
+- Hypothesis: 最近24小时内容建设再次把 2026-08-26 的五条日报信号完整换日期复刻为 2026-08-28；EXP-321 的最近 14 篇重复检测只存在于 package script、没有接入 GitHub Content Check，因此自动内容提交可绕过门禁并把近重复索引页推入 main。
+- Scope: `src/content/blog/{en,zh}/openclaw-daily-2026-08-28.md`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 撤回未提交的 08-28 EN/ZH 完整复刻页面；在 Content Check 的 heading-date gate 后新增 `pnpm check:daily-cross-date-duplicate`，使 push 与 PR 都执行最近 14 篇全窗口重复检查。
+- ICE: 9x10x10=900
+- Start date: 2026-08-28
+- End date: 2026-08-28
+- Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:daily-heading-date && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；latestDaily=2026-08-26/latestFixture=2026-08-26/fixtureLagDays=0；workflow 含唯一一条 cross-date duplicate CI step。
+- Result: pass（08-28 EN/ZH 重复页面已撤回；最近 14 篇重复 gate 已接入 push/PR CI；latest fixture freshness 恢复 0 天滞后；实现提交 `PENDING`；质量评分 29/30。）
+- Decision: scale（完整换日期复刻不再依赖增长执行事后发现；后续内容提交会在进入 main 前被 CI 阻塞。下一步可增加 4/5 story 高重合阈值，拦截部分换皮复刻。）
+
 ## EXP-321 — Expand cross-date duplicate detection to a 14-brief window
 - Hypothesis: EXP-320 的跨日期重复门禁只比较最新相邻两篇；内容建设若隔一天或数天复刻旧 Top 5/今日要闻，仍能绕过检查并产生近重复索引页、稀释实体与关键词信号。
 - Scope: `scripts/check-daily-cross-date-duplicate.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
