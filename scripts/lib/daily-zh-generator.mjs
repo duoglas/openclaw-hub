@@ -151,6 +151,10 @@ export function buildZhDescription(sourceText) {
 
 export function generateZhDailyBody(sourceText, date) {
   let body = String(sourceText || '').replace(/\r/g, '\n').trim();
+  body = body.replace(
+    /^\d{4}-\d{2}-\d{2}(\s*(?:早报|日报))?\s*$/m,
+    `${date}$1`
+  );
   if (!body || !/[\u4e00-\u9fff]/.test(body)) {
     body = '今日 AI / 科技日报暂未生成完整上游摘要，本页先保留结构化发布占位，重点跟踪 OpenAI、Anthropic、Google、Microsoft、NVIDIA 与 AWS 相关的模型、基础设施和治理信号。';
   }
