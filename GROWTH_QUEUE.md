@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-324: 将 4/5 story 高重合门禁从 latest-only 扩展到最近 14 篇全窗口，阻止同一批提交中“倒数第二篇”近重复绕过，消费 EXP-323 后续发布脚本绕过假设 | ICE 9x9x9=729 — commit `pending`
+- [x] P1 Candidate / EXP-324: 将 4/5 story 高重合门禁从 latest-only 扩展到最近 14 篇全窗口，阻止同一批提交中“倒数第二篇”近重复绕过，消费 EXP-323 后续发布脚本绕过假设 | ICE 9x9x9=729 — commit `2a31869`
   - Hypothesis: EXP-323 只检查窗口中的 newest 文件；若内容建设在同一批 push 中连续加入两篇日报，倒数第二篇可复用旧页面 4/5 story，而最后一篇只需保持独立即可让 near-duplicate 绕过 CI。
   - Metrics: 最近 14 篇 EN/ZH 任意两篇共享至少 4/5 归一化 story 时失败；仅显式豁免门禁上线前已知的 ZH 08-18/08-19 历史重合；synthetic self-test 验证三篇输入中前两篇重合也能命中；日报门禁与 `pnpm build` 通过。
   - Acceptance: 1) 4/5 高重合检查覆盖全窗口而非 latest-only；2) 同批新增多篇时任一 near-duplicate 都会阻塞 CI；3) 历史 ZH 08-18/08-19 不倒灌；4) 质量评分 29/30。

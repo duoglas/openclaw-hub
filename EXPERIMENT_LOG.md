@@ -6,7 +6,7 @@
 - Start date: 2026-08-29
 - End date: 2026-08-29
 - Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:daily-heading-date && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；全窗口只保留一条显式历史豁免；synthetic self-test 命中 non-latest 4/5 overlap。
-- Result: pass（最近 14 篇任意 pair 的 4/5 story 高重合门禁已上线；同批新增多篇无法再用最后一篇独立内容掩盖倒数第二篇 near-duplicate；ZH 08-18/08-19 旧债显式豁免；实现提交 `pending`；质量评分 29/30。）
+- Result: pass（最近 14 篇任意 pair 的 4/5 story 高重合门禁已上线；同批新增多篇无法再用最后一篇独立内容掩盖倒数第二篇 near-duplicate；ZH 08-18/08-19 旧债显式豁免；实现提交 `2a31869`；质量评分 29/30。）
 - Decision: scale（保留全窗口完整重复 + 4/5 story 高重合双门禁；后续若出现新的历史豁免需求，必须逐 pair 显式记录，禁止恢复 latest-only 或通配跳过。）
 
 ## EXP-323 — Remove duplicated 2026-08-29 daily and block latest 4/5 story reuse
