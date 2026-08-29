@@ -13,7 +13,7 @@ function dailyFiles(dir) {
     .sort();
 }
 
-function sectionBody(markdown, lang) {
+function sectionRaw(markdown, lang) {
   const startPattern = lang === 'zh'
     ? /^(?:##\s+今日要闻(?:（5条）)?|\*\*(?:一、)?今日要闻(?:（5条）)?\*\*)\s*$/m
     : /^##\s+Top 5 Stories\s*$/m;
@@ -25,11 +25,30 @@ function sectionBody(markdown, lang) {
   const contentStart = startMatch.index + startMatch[0].length;
   const endMatch = endPattern.exec(markdown.slice(contentStart));
   if (!endMatch) return '';
-  return markdown
-    .slice(contentStart, contentStart + endMatch.index)
+  return markdown.slice(contentStart, contentStart + endMatch.index).trim();
+}
+
+function normalizeStory(text) {
+  return text
+    .replace(/^###\s+\d+\.\s*/m, '')
+    .replace(/^(?:###\s+)?(?:\*\*)?\d+\.\s*/m, '')
     .replace(/\d{4}-\d{2}-\d{2}/g, '<date>')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function storyBodies(section, lang) {
+  const splitPattern = lang === 'zh'
+    ? /(?=^(?:###\s+)?(?:\*\*)?\d+\.\s+)/m
+    : /(?=^###\s+\d+\.\s+)/m;
+  return section
+    .split(splitPattern)
+    .map(normalizeStory)
+    .filter(Boolean);
+}
+
+function sectionBody(markdown, lang) {
+  return normalizeStory(sectionRaw(markdown, lang));
 }
 
 function duplicatePairs(entries) {
@@ -43,17 +62,44 @@ function duplicatePairs(entries) {
   return duplicates;
 }
 
+function highOverlapPairs(entries, threshold = 4, repeatedFileOnly = null) {
+  const overlaps = [];
+  for (let i = 0; i < entries.length; i += 1) {
+    for (let j = i + 1; j < entries.length; j += 1) {
+      if (repeatedFileOnly && entries[j].file !== repeatedFileOnly) continue;
+      if (entries[i].body === entries[j].body) continue;
+      const firstStories = new Set(entries[i].stories);
+      const shared = entries[j].stories.filter((story) => firstStories.has(story)).length;
+      if (shared >= threshold) overlaps.push([entries[i].file, entries[j].file, shared]);
+    }
+  }
+  return overlaps;
+}
+
 function assertSyntheticSelfTest() {
-  const a = '## Top 5 Stories\nSame story on 2026-08-25\n## Practical Cases';
-  const b = '## Top 5 Stories\nDifferent story\n## Practical Cases';
-  const c = '## Top 5 Stories\n Same   story on 2026-08-27 \n## Practical Cases';
+  const fullA = '## Top 5 Stories\nSame story on 2026-08-25\n## Practical Cases';
+  const different = '## Top 5 Stories\nDifferent story\n## Practical Cases';
+  const fullC = '## Top 5 Stories\n Same   story on 2026-08-27 \n## Practical Cases';
   const duplicates = duplicatePairs([
-    { file: 'day-a.md', body: sectionBody(a, 'en') },
-    { file: 'day-b.md', body: sectionBody(b, 'en') },
-    { file: 'day-c.md', body: sectionBody(c, 'en') },
+    { file: 'day-a.md', body: sectionBody(fullA, 'en') },
+    { file: 'day-b.md', body: sectionBody(different, 'en') },
+    { file: 'day-c.md', body: sectionBody(fullC, 'en') },
   ]);
   if (duplicates.length !== 1 || duplicates[0][0] !== 'day-a.md' || duplicates[0][1] !== 'day-c.md') {
     console.error('daily cross-date duplicate synthetic self-test failed');
+    process.exit(1);
+  }
+
+  const stories = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon'];
+  const partialA = `## Top 5 Stories\n${stories.map((story, index) => `### ${index + 1}. ${story}`).join('\n')}\n## Practical Cases`;
+  const partialB = `## Top 5 Stories\n${[...stories.slice(0, 4), 'Zeta'].map((story, index) => `### ${index + 1}. ${story}`).join('\n')}\n## Practical Cases`;
+  const partialEntries = [partialA, partialB].map((markdown, index) => {
+    const section = sectionRaw(markdown, 'en');
+    return { file: `partial-${index}.md`, body: normalizeStory(section), stories: storyBodies(section, 'en') };
+  });
+  const overlaps = highOverlapPairs(partialEntries);
+  if (overlaps.length !== 1 || overlaps[0][2] !== 4) {
+    console.error('daily cross-date high-overlap synthetic self-test failed');
     process.exit(1);
   }
 }
@@ -67,15 +113,25 @@ for (const [lang, dir] of blogRoots) {
   if (files.length < 2) continue;
   const entries = [];
   for (const file of files) {
-    const body = sectionBody(fs.readFileSync(path.join(dir, file), 'utf8'), lang);
-    if (!body) {
+    const markdown = fs.readFileSync(path.join(dir, file), 'utf8');
+    const section = sectionRaw(markdown, lang);
+    if (!section) {
       failures.push(`${lang}: missing Top 5/今日要闻 section in ${file}`);
       continue;
     }
-    entries.push({ file, body });
+    const stories = storyBodies(section, lang);
+    if (stories.length !== 5) {
+      failures.push(`${lang}: expected 5 stories in ${file}, found ${stories.length}`);
+      continue;
+    }
+    entries.push({ file, body: normalizeStory(section), stories });
   }
   for (const [firstFile, repeatedFile] of duplicatePairs(entries)) {
     failures.push(`${lang}: ${repeatedFile} repeats the complete story section from ${firstFile}`);
+  }
+  const newestFile = files.at(-1);
+  for (const [firstFile, repeatedFile, shared] of highOverlapPairs(entries, 4, newestFile)) {
+    failures.push(`${lang}: ${repeatedFile} repeats ${shared}/5 stories from ${firstFile}`);
   }
 }
 

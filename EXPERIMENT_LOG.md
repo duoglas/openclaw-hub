@@ -1,3 +1,14 @@
+## EXP-323 — Remove duplicated 2026-08-29 daily and block latest 4/5 story reuse
+- Hypothesis: 最近24小时内容建设在完整重复门禁已接入 CI 后，仍把 2026-08-26 五条 story 原样换日期提交为 2026-08-29；若发布任务只替换 1 条 story，现有 100% 完整正文比较会放行 4/5 旧内容，继续制造近重复索引页并稀释搜索信号。
+- Scope: `src/content/blog/{en,zh}/openclaw-daily-2026-08-29.md`, `scripts/check-daily-cross-date-duplicate.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 撤回 08-29 EN/ZH 完整复刻页面；将跨日期检查扩展为 story-level normalization，对 latest 日报与最近 13 篇逐一比较，共享至少 4/5 story 即失败；兼容 EN 三级标题和 ZH 普通编号、粗体编号、三级标题三种历史模板；保留全窗口 100% 完整重复检测，并用 latest-only 方式避免历史 08-18/08-19 已存在的 4/5 重合倒灌阻塞。
+- ICE: 10x10x9=900
+- Start date: 2026-08-29
+- End date: 2026-08-29
+- Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:daily-heading-date && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；latestDaily/latestFixture 恢复 2026-08-26/2026-08-26；synthetic self-test 可捕获 4/5 story reuse。
+- Result: pass（08-29 EN/ZH 重复页面已撤回；latest 4/5 story 高重合门禁已上线并兼容三种 ZH 编号模板；历史 08-18/08-19 重合不倒灌；实现提交 `pending`；质量评分 29/30。）
+- Decision: scale（继续维持完整重复全窗口门禁，并对每次新增 latest 日报执行 4/5 story 高重合检测；内容来源没有至少 2 条新信号时不应新增日期页。下一步可把检查前移到内容发布脚本，在 git commit 前 fail fast，而不只依赖 push 后 CI。）
+
 ## EXP-322 — Remove duplicated 2026-08-28 daily and enforce cross-date duplicate detection in CI
 - Hypothesis: 最近24小时内容建设再次把 2026-08-26 的五条日报信号完整换日期复刻为 2026-08-28；EXP-321 的最近 14 篇重复检测只存在于 package script、没有接入 GitHub Content Check，因此自动内容提交可绕过门禁并把近重复索引页推入 main。
 - Scope: `src/content/blog/{en,zh}/openclaw-daily-2026-08-28.md`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

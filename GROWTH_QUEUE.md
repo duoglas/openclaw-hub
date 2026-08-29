@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-28 11:20
+Last updated: 2026-08-29 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-323: 撤回 2026-08-29 对 08-26 的第三次双语完整复刻，并把跨日期门禁扩展为 latest 4/5 story 高重合检测，消费最近24小时内容建设重复发布假设 | ICE 10x10x9=900 — commit `pending`
+  - Hypothesis: 最近24小时内容建设在 EXP-322 已接入 CI 后仍直接向 main 提交 2026-08-29 双语复刻页，五条 story 与 08-26 完全相同；完整重复门禁虽能在 push 后报错，但若后续仅替换 1 条 story，仍可能用 4/5 旧内容制造近重复索引页。
+  - Metrics: 删除 08-29 EN/ZH 重复页面；最近 14 篇窗口继续拦截完整重复；latest 新页面与任一旧页面共享至少 4/5 个归一化 story 时失败；兼容 ZH 普通编号、粗体编号与三级标题编号；synthetic self-test、日报门禁与 `pnpm build` 通过。
+  - Acceptance: 1) 08-29 重复路由不再进入 sitemap/index；2) latest EN/ZH 日报 4/5 story 换皮复刻会被 CI 阻塞；3) 历史已存在的 08-18/08-19 4/5 重合不倒灌阻塞；4) 质量评分 29/30。
 
 - [x] P1 Candidate / EXP-322: 撤回 2026-08-28 对 08-26 的双语完整复刻，并把 14 篇跨日期重复检查接入 Content Check CI，消费最近24小时内容建设重复发布假设 | ICE 9x10x10=900 — commit `68a381d`
   - Hypothesis: 最近24小时内容建设再次把 2026-08-26 的 Jalapeño / Groq 3 LPX / International Burke / AI4Chip / 小米芯片五条内容完整换日期发布为 2026-08-28；EXP-321 虽能在本地检测，但未接入 GitHub Content Check，自动内容提交仍可绕过门禁进入 main。
