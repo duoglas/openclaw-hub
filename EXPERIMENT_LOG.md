@@ -1,3 +1,14 @@
+## EXP-324 — Expand 4/5 story overlap detection to the full 14-brief window
+- Hypothesis: EXP-323 只对最近 14 篇中的 newest 日报执行 4/5 story 高重合检查；若内容建设在同一批 push 中连续加入两篇日报，倒数第二篇可复用旧页面 4/5 story，而最后一篇保持独立即可绕过 CI，继续生成近重复索引页。
+- Scope: `scripts/check-daily-cross-date-duplicate.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 移除 high-overlap 检查的 latest-only 限制，对最近 14 篇 EN/ZH 日报任意 pair 执行 4/5 story 检测；仅显式 grandfather 门禁上线前已知的 ZH 08-18/08-19 历史 4/5 重合；扩展 synthetic self-test 为三篇输入，验证重合发生在前两篇、最后一篇独立时仍能命中。
+- ICE: 9x9x9=729
+- Start date: 2026-08-29
+- End date: 2026-08-29
+- Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:daily-heading-date && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；全窗口只保留一条显式历史豁免；synthetic self-test 命中 non-latest 4/5 overlap。
+- Result: pass（最近 14 篇任意 pair 的 4/5 story 高重合门禁已上线；同批新增多篇无法再用最后一篇独立内容掩盖倒数第二篇 near-duplicate；ZH 08-18/08-19 旧债显式豁免；实现提交 `pending`；质量评分 29/30。）
+- Decision: scale（保留全窗口完整重复 + 4/5 story 高重合双门禁；后续若出现新的历史豁免需求，必须逐 pair 显式记录，禁止恢复 latest-only 或通配跳过。）
+
 ## EXP-323 — Remove duplicated 2026-08-29 daily and block latest 4/5 story reuse
 - Hypothesis: 最近24小时内容建设在完整重复门禁已接入 CI 后，仍把 2026-08-26 五条 story 原样换日期提交为 2026-08-29；若发布任务只替换 1 条 story，现有 100% 完整正文比较会放行 4/5 旧内容，继续制造近重复索引页并稀释搜索信号。
 - Scope: `src/content/blog/{en,zh}/openclaw-daily-2026-08-29.md`, `scripts/check-daily-cross-date-duplicate.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

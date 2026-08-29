@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-29 11:20
+Last updated: 2026-08-29 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-324: 将 4/5 story 高重合门禁从 latest-only 扩展到最近 14 篇全窗口，阻止同一批提交中“倒数第二篇”近重复绕过，消费 EXP-323 后续发布脚本绕过假设 | ICE 9x9x9=729 — commit `pending`
+  - Hypothesis: EXP-323 只检查窗口中的 newest 文件；若内容建设在同一批 push 中连续加入两篇日报，倒数第二篇可复用旧页面 4/5 story，而最后一篇只需保持独立即可让 near-duplicate 绕过 CI。
+  - Metrics: 最近 14 篇 EN/ZH 任意两篇共享至少 4/5 归一化 story 时失败；仅显式豁免门禁上线前已知的 ZH 08-18/08-19 历史重合；synthetic self-test 验证三篇输入中前两篇重合也能命中；日报门禁与 `pnpm build` 通过。
+  - Acceptance: 1) 4/5 高重合检查覆盖全窗口而非 latest-only；2) 同批新增多篇时任一 near-duplicate 都会阻塞 CI；3) 历史 ZH 08-18/08-19 不倒灌；4) 质量评分 29/30。
 
 - [x] P1 Candidate / EXP-323: 撤回 2026-08-29 对 08-26 的第三次双语完整复刻，并把跨日期门禁扩展为 latest 4/5 story 高重合检测，消费最近24小时内容建设重复发布假设 | ICE 10x10x9=900 — commit `7b1531b`
   - Hypothesis: 最近24小时内容建设在 EXP-322 已接入 CI 后仍直接向 main 提交 2026-08-29 双语复刻页，五条 story 与 08-26 完全相同；完整重复门禁虽能在 push 后报错，但若后续仅替换 1 条 story，仍可能用 4/5 旧内容制造近重复索引页。

@@ -62,11 +62,10 @@ function duplicatePairs(entries) {
   return duplicates;
 }
 
-function highOverlapPairs(entries, threshold = 4, repeatedFileOnly = null) {
+function highOverlapPairs(entries, threshold = 4) {
   const overlaps = [];
   for (let i = 0; i < entries.length; i += 1) {
     for (let j = i + 1; j < entries.length; j += 1) {
-      if (repeatedFileOnly && entries[j].file !== repeatedFileOnly) continue;
       if (entries[i].body === entries[j].body) continue;
       const firstStories = new Set(entries[i].stories);
       const shared = entries[j].stories.filter((story) => firstStories.has(story)).length;
@@ -75,6 +74,11 @@ function highOverlapPairs(entries, threshold = 4, repeatedFileOnly = null) {
   }
   return overlaps;
 }
+
+// Grandfather the one known pre-guardrail overlap while checking every other pair.
+const legacyHighOverlapPairs = new Set([
+  'zh:openclaw-daily-2026-08-18.md->openclaw-daily-2026-08-19.md',
+]);
 
 function assertSyntheticSelfTest() {
   const fullA = '## Top 5 Stories\nSame story on 2026-08-25\n## Practical Cases';
@@ -93,12 +97,13 @@ function assertSyntheticSelfTest() {
   const stories = ['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon'];
   const partialA = `## Top 5 Stories\n${stories.map((story, index) => `### ${index + 1}. ${story}`).join('\n')}\n## Practical Cases`;
   const partialB = `## Top 5 Stories\n${[...stories.slice(0, 4), 'Zeta'].map((story, index) => `### ${index + 1}. ${story}`).join('\n')}\n## Practical Cases`;
-  const partialEntries = [partialA, partialB].map((markdown, index) => {
+  const partialC = `## Top 5 Stories\n${['Eta', 'Theta', 'Iota', 'Kappa', 'Lambda'].map((story, index) => `### ${index + 1}. ${story}`).join('\n')}\n## Practical Cases`;
+  const partialEntries = [partialA, partialB, partialC].map((markdown, index) => {
     const section = sectionRaw(markdown, 'en');
     return { file: `partial-${index}.md`, body: normalizeStory(section), stories: storyBodies(section, 'en') };
   });
   const overlaps = highOverlapPairs(partialEntries);
-  if (overlaps.length !== 1 || overlaps[0][2] !== 4) {
+  if (overlaps.length !== 1 || overlaps[0][0] !== 'partial-0.md' || overlaps[0][1] !== 'partial-1.md' || overlaps[0][2] !== 4) {
     console.error('daily cross-date high-overlap synthetic self-test failed');
     process.exit(1);
   }
@@ -129,8 +134,9 @@ for (const [lang, dir] of blogRoots) {
   for (const [firstFile, repeatedFile] of duplicatePairs(entries)) {
     failures.push(`${lang}: ${repeatedFile} repeats the complete story section from ${firstFile}`);
   }
-  const newestFile = files.at(-1);
-  for (const [firstFile, repeatedFile, shared] of highOverlapPairs(entries, 4, newestFile)) {
+  for (const [firstFile, repeatedFile, shared] of highOverlapPairs(entries)) {
+    const pairKey = `${lang}:${firstFile}->${repeatedFile}`;
+    if (legacyHighOverlapPairs.has(pairKey)) continue;
     failures.push(`${lang}: ${repeatedFile} repeats ${shared}/5 stories from ${firstFile}`);
   }
 }
