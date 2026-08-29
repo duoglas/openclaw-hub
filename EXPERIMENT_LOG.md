@@ -6,7 +6,7 @@
 - Start date: 2026-08-29
 - End date: 2026-08-29
 - Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:daily-heading-date && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；latestDaily/latestFixture 恢复 2026-08-26/2026-08-26；synthetic self-test 可捕获 4/5 story reuse。
-- Result: pass（08-29 EN/ZH 重复页面已撤回；latest 4/5 story 高重合门禁已上线并兼容三种 ZH 编号模板；历史 08-18/08-19 重合不倒灌；实现提交 `pending`；质量评分 29/30。）
+- Result: pass（08-29 EN/ZH 重复页面已撤回；latest 4/5 story 高重合门禁已上线并兼容三种 ZH 编号模板；历史 08-18/08-19 重合不倒灌；实现提交 `7b1531b`；质量评分 29/30。）
 - Decision: scale（继续维持完整重复全窗口门禁，并对每次新增 latest 日报执行 4/5 story 高重合检测；内容来源没有至少 2 条新信号时不应新增日期页。下一步可把检查前移到内容发布脚本，在 git commit 前 fail fast，而不只依赖 push 后 CI。）
 
 ## EXP-322 — Remove duplicated 2026-08-28 daily and enforce cross-date duplicate detection in CI
