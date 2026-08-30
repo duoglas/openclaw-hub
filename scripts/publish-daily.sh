@@ -167,6 +167,7 @@ pnpm build
 DAILY_QUALITY_CHECKS=(
   "check:daily-template"
   "check:daily-heading-date"
+  "check:daily-cross-date-duplicate"
   "check:daily-cta"
   "check:daily-fresh-completeness"
   "check:latest-daily-surface"
@@ -175,6 +176,7 @@ DAILY_QUALITY_CHECKS=(
   "check:daily-en-language"
   "check:daily-action-sections"
   "check:daily-brief-specificity"
+  "check:latest-daily-real-cron-fixture"
   "check:duplicate-slug-id"
 )
 

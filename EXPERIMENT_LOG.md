@@ -1,3 +1,14 @@
+## EXP-325 — Move duplicate and fixture freshness gates before daily commit/push
+- Hypothesis: 最近24小时内容建设再次把 2026-08-26 五条 story 原样换日期发布为 2026-08-30；虽然 Content Check 已有最近 14 篇全窗口重复检测与 latest real-cron fixture freshness 检测，但 `publish-daily.sh` 的本地质量列表遗漏这两项，自动发布会先把坏页面 commit/push 到 main，再等待 CI 事后失败。
+- Scope: `src/content/blog/{en,zh}/openclaw-daily-2026-08-30.md`, `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 撤回 08-30 EN/ZH 完整复刻页面；将 `check:daily-cross-date-duplicate` 与 `check:latest-daily-real-cron-fixture` 加入 `publish-daily.sh` 的 `DAILY_QUALITY_CHECKS`，确保两项检查在 `git commit` / `git push` 前执行；扩展 publish generator fixture 自检，锁定两项 gate 必须存在且位于 commit 之前。
+- ICE: 10x10x10=1000
+- Start date: 2026-08-30
+- End date: 2026-08-30
+- Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm check:publish-daily-generator-fixture && pnpm check:daily-heading-date && pnpm build` passes；latestDaily/latestFixture 恢复 2026-08-26/2026-08-26；publish script 两项 freshness gate 均位于 commit 之前。
+- Result: pass（08-30 EN/ZH 重复页面已撤回；跨日期完整/4-of-5 重复与同日 real-cron fixture freshness 已前移至自动发布 commit/push 前；publish generator fixture 自检已锁定门禁顺序；实现提交 `PENDING`；质量评分 30/30。）
+- Decision: scale（后续日报自动发布必须同时满足“至少 2 条新 story 信号、不与最近 14 篇形成 4/5 高重合、存在同日已注册 real-cron fixture”后才能提交；CI 保留为第二道防线，不再作为首次阻断点。）
+
 ## EXP-324 — Expand 4/5 story overlap detection to the full 14-brief window
 - Hypothesis: EXP-323 只对最近 14 篇中的 newest 日报执行 4/5 story 高重合检查；若内容建设在同一批 push 中连续加入两篇日报，倒数第二篇可复用旧页面 4/5 story，而最后一篇保持独立即可绕过 CI，继续生成近重复索引页。
 - Scope: `scripts/check-daily-cross-date-duplicate.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

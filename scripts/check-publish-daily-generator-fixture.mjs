@@ -38,6 +38,21 @@ if (!source.includes("import { generateZhDailyBody } from './scripts/lib/daily-z
   console.error('publish-daily.sh does not call the shared ZH daily generator module');
   process.exit(1);
 }
+
+const commitIndex = source.indexOf('git commit -m "content: sync daily site post');
+const requiredPreCommitChecks = [
+  '"check:daily-cross-date-duplicate"',
+  '"check:latest-daily-real-cron-fixture"',
+];
+const missingPreCommitChecks = requiredPreCommitChecks.filter((check) => {
+  const checkIndex = source.indexOf(check);
+  return checkIndex < 0 || commitIndex < 0 || checkIndex > commitIndex;
+});
+if (missingPreCommitChecks.length > 0) {
+  console.error('publish-daily.sh is missing required pre-commit content freshness gates:');
+  for (const check of missingPreCommitChecks) console.error(`- ${check}`);
+  process.exit(1);
+}
 const failures = bannedGeneratedPhrases.filter((phrase) => generator.includes(phrase));
 if (failures.length > 0) {
   console.error('publish-daily EN generator still contains generic fixture phrases:');
