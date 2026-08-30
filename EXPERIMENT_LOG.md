@@ -6,7 +6,7 @@
 - Start date: 2026-08-30
 - End date: 2026-08-30
 - Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；`publish-daily.sh` 不含 `entries[0]` fallback，且同日摘要缺失会在写页面前退出。
-- Result: pass（发布脚本已删除跨日 `entries[0]` fallback；缺少 Asia/Shanghai 同日可用摘要时会在页面生成前退出；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交 `PENDING`；质量评分 30/30。）
+- Result: pass（发布脚本已删除跨日 `entries[0]` fallback；缺少 Asia/Shanghai 同日可用摘要时会在页面生成前退出；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交 `1cb8fe1`；质量评分 30/30。）
 - Decision: scale（日报发布日期必须由同日成功源摘要驱动；缺少同日内容时宁可不发布，也不把旧 brief 换日期复刻。pre-commit 重复与 fixture freshness gate 继续保留为第二道防线。）
 
 ## EXP-325 — Move duplicate and fixture freshness gates before daily commit/push

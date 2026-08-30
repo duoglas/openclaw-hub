@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-326: 移除 `publish-daily.sh` 对旧 cron 摘要的跨日 fallback，缺少同日可用摘要时 fail closed，消费最近24小时内容建设连续换日期复刻假设 | ICE 10x10x10=1000 — commit `PENDING`
+- [x] P1 Candidate / EXP-326: 移除 `publish-daily.sh` 对旧 cron 摘要的跨日 fallback，缺少同日可用摘要时 fail closed，消费最近24小时内容建设连续换日期复刻假设 | ICE 10x10x10=1000 — commit `1cb8fe1`
   - Hypothesis: 最近24小时内容建设再次把 08-26 五条 story 换日期发布为 08-30，根因是 `publish-daily.sh` 找不到同日成功摘要时会直接采用最近一次旧摘要，再套用当天日期；EXP-325 的 pre-commit 门禁能阻止 push，但仍会生成重复页面并执行完整 build，且根因持续存在。
   - Metrics: 发布脚本只接受 Asia/Shanghai 同日且成功、无失败标记的 `daily-ai-tech` 摘要；无同日摘要时在生成 EN/ZH 页面前退出；fixture 自检禁止恢复 `entries[0]` 跨日 fallback；脚本语法、自检与 `pnpm build` 通过。
   - Acceptance: 1) 不再用旧摘要生成新日期页面；2) 缺少同日摘要时明确 fail closed；3) guardrail 锁定同日筛选与拒绝旧摘要文案；4) 质量评分 30/30。
