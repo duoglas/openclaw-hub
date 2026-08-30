@@ -6,7 +6,7 @@
 - Start date: 2026-08-30
 - End date: 2026-08-30
 - Success metric: `pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm check:publish-daily-generator-fixture && pnpm check:daily-heading-date && pnpm build` passes；latestDaily/latestFixture 恢复 2026-08-26/2026-08-26；publish script 两项 freshness gate 均位于 commit 之前。
-- Result: pass（08-30 EN/ZH 重复页面已撤回；跨日期完整/4-of-5 重复与同日 real-cron fixture freshness 已前移至自动发布 commit/push 前；publish generator fixture 自检已锁定门禁顺序；实现提交 `PENDING`；质量评分 30/30。）
+- Result: pass（08-30 EN/ZH 重复页面已撤回；跨日期完整/4-of-5 重复与同日 real-cron fixture freshness 已前移至自动发布 commit/push 前；publish generator fixture 自检已锁定门禁顺序；实现提交 `1a4d22e`；质量评分 30/30。）
 - Decision: scale（后续日报自动发布必须同时满足“至少 2 条新 story 信号、不与最近 14 篇形成 4/5 高重合、存在同日已注册 real-cron fixture”后才能提交；CI 保留为第二道防线，不再作为首次阻断点。）
 
 ## EXP-324 — Expand 4/5 story overlap detection to the full 14-brief window

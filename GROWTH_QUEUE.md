@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-325: 撤回 2026-08-30 对 08-26 的第四次双语完整复刻，并把跨日期重复与同日 real-cron fixture freshness 门禁前移到 `publish-daily.sh` 的 commit/push 之前，消费最近24小时内容建设绕过 CI 后置检查假设 | ICE 10x10x10=1000 — commit `PENDING`
+- [x] P1 Candidate / EXP-325: 撤回 2026-08-30 对 08-26 的第四次双语完整复刻，并把跨日期重复与同日 real-cron fixture freshness 门禁前移到 `publish-daily.sh` 的 commit/push 之前，消费最近24小时内容建设绕过 CI 后置检查假设 | ICE 10x10x10=1000 — commit `1a4d22e`
   - Hypothesis: 最近24小时内容建设再次把 2026-08-26 五条 story 原样换日期发布为 2026-08-30；虽然 CI 已有全窗口重复与 fixture freshness 门禁，但 `publish-daily.sh` 本地质量列表未运行这两项检查，导致坏页面先 commit/push、再由 CI 事后失败。
   - Metrics: 删除 08-30 EN/ZH 重复页面；发布脚本在 `git commit` 前显式运行 `check:daily-cross-date-duplicate` 与 `check:latest-daily-real-cron-fixture`；generator fixture 自检锁定两项 pre-commit gate；日报重复、fixture freshness、发布脚本自检与 `pnpm build` 通过。
   - Acceptance: 1) 08-30 重复路由不再进入 sitemap/index；2) 后续换日期复刻会在本地 commit/push 前失败；3) 未注册同日 real-cron fixture 的新日报会在本地 commit/push 前失败；4) 质量评分 30/30。
