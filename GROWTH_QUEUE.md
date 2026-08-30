@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-30 11:20
+Last updated: 2026-08-30 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-326: 移除 `publish-daily.sh` 对旧 cron 摘要的跨日 fallback，缺少同日可用摘要时 fail closed，消费最近24小时内容建设连续换日期复刻假设 | ICE 10x10x10=1000 — commit `PENDING`
+  - Hypothesis: 最近24小时内容建设再次把 08-26 五条 story 换日期发布为 08-30，根因是 `publish-daily.sh` 找不到同日成功摘要时会直接采用最近一次旧摘要，再套用当天日期；EXP-325 的 pre-commit 门禁能阻止 push，但仍会生成重复页面并执行完整 build，且根因持续存在。
+  - Metrics: 发布脚本只接受 Asia/Shanghai 同日且成功、无失败标记的 `daily-ai-tech` 摘要；无同日摘要时在生成 EN/ZH 页面前退出；fixture 自检禁止恢复 `entries[0]` 跨日 fallback；脚本语法、自检与 `pnpm build` 通过。
+  - Acceptance: 1) 不再用旧摘要生成新日期页面；2) 缺少同日摘要时明确 fail closed；3) guardrail 锁定同日筛选与拒绝旧摘要文案；4) 质量评分 30/30。
 
 - [x] P1 Candidate / EXP-325: 撤回 2026-08-30 对 08-26 的第四次双语完整复刻，并把跨日期重复与同日 real-cron fixture freshness 门禁前移到 `publish-daily.sh` 的 commit/push 之前，消费最近24小时内容建设绕过 CI 后置检查假设 | ICE 10x10x10=1000 — commit `1a4d22e`
   - Hypothesis: 最近24小时内容建设再次把 2026-08-26 五条 story 原样换日期发布为 2026-08-30；虽然 CI 已有全窗口重复与 fixture freshness 门禁，但 `publish-daily.sh` 本地质量列表未运行这两项检查，导致坏页面先 commit/push、再由 CI 事后失败。

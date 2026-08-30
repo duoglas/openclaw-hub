@@ -51,7 +51,9 @@ if git ls-tree -r --name-only origin/main | grep -q "^${EN_FILE}$" \
   exit 0
 fi
 
-# Pull latest daily summary from cron runs (prefer same-day run, fallback to latest available)
+# Pull a same-day daily summary from cron runs. Never relabel an older brief with
+# today's date: that creates duplicate index pages when the source run is late or
+# missing, and freshness gates should fail before page generation instead.
 SUMMARY=$(python3 - <<'PY'
 import json,subprocess,datetime,sys
 cron_id = "fdc137d1-c50d-4686-9b1d-c6c923890cf8"
@@ -75,10 +77,8 @@ for e in entries:
     if d == today:
         summary = e['summary']
         break
-if summary is None and entries:
-    summary = entries[0]['summary']
 if not summary:
-    sys.stderr.write('No usable successful daily-ai-tech cron summary found; refusing to publish fallback placeholder.\n')
+    sys.stderr.write(f'No usable same-day daily-ai-tech cron summary found for {today}; refusing to relabel an older brief.\n')
     sys.exit(2)
 print(summary)
 PY

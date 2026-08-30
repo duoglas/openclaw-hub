@@ -53,6 +53,29 @@ if (missingPreCommitChecks.length > 0) {
   for (const check of missingPreCommitChecks) console.error(`- ${check}`);
   process.exit(1);
 }
+
+const staleSummaryFallbackPhrases = [
+  'fallback to latest available',
+  'if summary is None and entries:',
+  "summary = entries[0]['summary']",
+];
+const staleSummaryFallbacks = staleSummaryFallbackPhrases.filter((phrase) => source.includes(phrase));
+if (staleSummaryFallbacks.length > 0) {
+  console.error('publish-daily.sh can still relabel an older cron summary with today\'s date:');
+  for (const phrase of staleSummaryFallbacks) console.error(`- ${phrase}`);
+  process.exit(1);
+}
+const requiredSameDaySummarySignals = [
+  "if d == today:",
+  "No usable same-day daily-ai-tech cron summary found for {today}",
+  'refusing to relabel an older brief',
+];
+const missingSameDaySummarySignals = requiredSameDaySummarySignals.filter((signal) => !source.includes(signal));
+if (missingSameDaySummarySignals.length > 0) {
+  console.error('publish-daily.sh is missing the fail-closed same-day cron summary guard:');
+  for (const signal of missingSameDaySummarySignals) console.error(`- ${signal}`);
+  process.exit(1);
+}
 const failures = bannedGeneratedPhrases.filter((phrase) => generator.includes(phrase));
 if (failures.length > 0) {
   console.error('publish-daily EN generator still contains generic fixture phrases:');

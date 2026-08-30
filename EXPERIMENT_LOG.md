@@ -1,3 +1,14 @@
+## EXP-326 — Require a same-day source brief before daily page generation
+- Hypothesis: 最近24小时内容建设再次把 2026-08-26 五条 story 换日期发布为 2026-08-30，直接根因是 `publish-daily.sh` 在找不到同日成功摘要时 fallback 到最近一次旧摘要并套用当天日期；EXP-325 已能在 commit/push 前拦截重复，但仍会制造临时重复页面、浪费完整 build，并保留错误发布意图。
+- Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 删除 `entries[0]` 跨日 fallback，只接受 Asia/Shanghai 同日、finished/ok、含 summary 且无失败标记的 `daily-ai-tech` run；缺少同日摘要时在 EN/ZH 页面生成前退出；扩展 publish generator fixture 自检，禁止恢复旧摘要 fallback 并锁定同日 fail-closed guard。
+- ICE: 10x10x10=1000
+- Start date: 2026-08-30
+- End date: 2026-08-30
+- Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；`publish-daily.sh` 不含 `entries[0]` fallback，且同日摘要缺失会在写页面前退出。
+- Result: pass（发布脚本已删除跨日 `entries[0]` fallback；缺少 Asia/Shanghai 同日可用摘要时会在页面生成前退出；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交 `PENDING`；质量评分 30/30。）
+- Decision: scale（日报发布日期必须由同日成功源摘要驱动；缺少同日内容时宁可不发布，也不把旧 brief 换日期复刻。pre-commit 重复与 fixture freshness gate 继续保留为第二道防线。）
+
 ## EXP-325 — Move duplicate and fixture freshness gates before daily commit/push
 - Hypothesis: 最近24小时内容建设再次把 2026-08-26 五条 story 原样换日期发布为 2026-08-30；虽然 Content Check 已有最近 14 篇全窗口重复检测与 latest real-cron fixture freshness 检测，但 `publish-daily.sh` 的本地质量列表遗漏这两项，自动发布会先把坏页面 commit/push 到 main，再等待 CI 事后失败。
 - Scope: `src/content/blog/{en,zh}/openclaw-daily-2026-08-30.md`, `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
