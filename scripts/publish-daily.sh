@@ -2,7 +2,11 @@
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
-DATE=$(date +%Y-%m-%d)
+# Freeze one Asia/Shanghai calendar date for filenames, source-run matching,
+# frontmatter, and headings. Inheriting the host timezone or recomputing the
+# date mid-run can split one publish across two dates around midnight.
+export TZ=Asia/Shanghai
+export DATE=$(date +%Y-%m-%d)
 SLUG="openclaw-daily-${DATE}"
 EN_FILE="src/content/blog/en/${SLUG}.md"
 ZH_FILE="src/content/blog/zh/${SLUG}.md"
@@ -55,14 +59,17 @@ fi
 # today's date: that creates duplicate index pages when the source run is late or
 # missing, and freshness gates should fail before page generation instead.
 SUMMARY=$(python3 - <<'PY'
-import json,subprocess,datetime,sys
+import json,subprocess,datetime,os,sys
 cron_id = "fdc137d1-c50d-4686-9b1d-c6c923890cf8"
 out = subprocess.check_output(["openclaw","cron","runs","--id",cron_id,"--limit","20"], text=True)
 start = out.find('{')
 if start < 0:
     sys.exit(1)
 data = json.loads(out[start:])
-today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d')
+publish_date = os.environ.get('DATE', '')
+if not publish_date:
+    sys.stderr.write('Missing frozen Asia/Shanghai publish DATE; refusing to generate daily pages.\n')
+    sys.exit(2)
 def usable(e):
     if e.get('action') != 'finished' or e.get('status') != 'ok' or not e.get('summary'):
         return False
@@ -74,11 +81,11 @@ entries = [e for e in data.get('entries', []) if usable(e)]
 summary = None
 for e in entries:
     d = datetime.datetime.fromtimestamp(e.get('runAtMs',0)/1000, datetime.timezone(datetime.timedelta(hours=8))).strftime('%Y-%m-%d')
-    if d == today:
+    if d == publish_date:
         summary = e['summary']
         break
 if not summary:
-    sys.stderr.write(f'No usable same-day daily-ai-tech cron summary found for {today}; refusing to relabel an older brief.\n')
+    sys.stderr.write(f'No usable same-day daily-ai-tech cron summary found for {publish_date}; refusing to relabel an older brief.\n')
     sys.exit(2)
 print(summary)
 PY

@@ -1,3 +1,14 @@
+## EXP-327 — Freeze one Asia/Shanghai publish date across the daily release
+- Hypothesis: EXP-326 已让日报缺少同日源摘要时 fail closed，但 shell 的 `DATE` 仍继承宿主机默认时区，Python source-run matcher 又独立用 Asia/Shanghai `datetime.now()` 重算日期；若运行环境时区改变或任务恰好跨过午夜，文件名/frontmatter/正文日期与被选中的 cron run 日期会分裂，造成错误日期页面、误拒绝同日摘要或重复索引风险。
+- Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 在发布脚本入口固定并导出 `TZ=Asia/Shanghai` 与单次计算的 `DATE`；文件名、slug、frontmatter、正文和 Python cron-run matcher 统一复用该冻结日期；扩展 publish generator fixture 自检，要求 frozen-date guard 存在并禁止恢复 `datetime.now()` / `today` 独立重算。
+- ICE: 8x9x10=720
+- Start date: 2026-08-31
+- End date: 2026-08-31
+- Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；`publish-daily.sh` 只存在一套 Asia/Shanghai 发布日期，并由 shell 与 Python 共用。
+- Result: pass（发布脚本已固定并导出单一 Asia/Shanghai `DATE`，shell 文件/页面日期与 Python source-run matcher 共用该值；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交 `PENDING`；质量评分 29/30。）
+- Decision: scale（将 frozen Asia/Shanghai publish date 保留为日报自动发布基础约束，避免宿主机时区漂移和跨午夜执行导致日期分裂。）
+
 ## EXP-326 — Require a same-day source brief before daily page generation
 - Hypothesis: 最近24小时内容建设再次把 2026-08-26 五条 story 换日期发布为 2026-08-30，直接根因是 `publish-daily.sh` 在找不到同日成功摘要时 fallback 到最近一次旧摘要并套用当天日期；EXP-325 已能在 commit/push 前拦截重复，但仍会制造临时重复页面、浪费完整 build，并保留错误发布意图。
 - Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

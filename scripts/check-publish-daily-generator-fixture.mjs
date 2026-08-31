@@ -65,9 +65,27 @@ if (staleSummaryFallbacks.length > 0) {
   for (const phrase of staleSummaryFallbacks) console.error(`- ${phrase}`);
   process.exit(1);
 }
+const requiredFrozenPublishDateSignals = [
+  'export TZ=Asia/Shanghai',
+  'export DATE=$(date +%Y-%m-%d)',
+  "publish_date = os.environ.get('DATE', '')",
+  "if d == publish_date:",
+  'Missing frozen Asia/Shanghai publish DATE',
+];
+const missingFrozenPublishDateSignals = requiredFrozenPublishDateSignals.filter((signal) => !source.includes(signal));
+if (missingFrozenPublishDateSignals.length > 0) {
+  console.error('publish-daily.sh is missing the frozen Asia/Shanghai publish-date guard:');
+  for (const signal of missingFrozenPublishDateSignals) console.error(`- ${signal}`);
+  process.exit(1);
+}
+if (source.includes('if d == today:') || source.includes('datetime.datetime.now(')) {
+  console.error('publish-daily.sh recomputes the source-match date instead of reusing frozen DATE');
+  process.exit(1);
+}
+
 const requiredSameDaySummarySignals = [
-  "if d == today:",
-  "No usable same-day daily-ai-tech cron summary found for {today}",
+  "if d == publish_date:",
+  "No usable same-day daily-ai-tech cron summary found for {publish_date}",
   'refusing to relabel an older brief',
 ];
 const missingSameDaySummarySignals = requiredSameDaySummarySignals.filter((signal) => !source.includes(signal));
