@@ -6,7 +6,7 @@
 - Start date: 2026-08-31
 - End date: 2026-08-31
 - Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；`publish-daily.sh` 只存在一套 Asia/Shanghai 发布日期，并由 shell 与 Python 共用。
-- Result: pass（发布脚本已固定并导出单一 Asia/Shanghai `DATE`，shell 文件/页面日期与 Python source-run matcher 共用该值；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交 `PENDING`；质量评分 29/30。）
+- Result: pass（发布脚本已固定并导出单一 Asia/Shanghai `DATE`，shell 文件/页面日期与 Python source-run matcher 共用该值；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交 `f389c3f`；质量评分 29/30。）
 - Decision: scale（将 frozen Asia/Shanghai publish date 保留为日报自动发布基础约束，避免宿主机时区漂移和跨午夜执行导致日期分裂。）
 
 ## EXP-326 — Require a same-day source brief before daily page generation

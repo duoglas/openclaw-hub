@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-327: 冻结 `publish-daily.sh` 的 Asia/Shanghai 发布日期，并让文件名、源 run 匹配、frontmatter 与正文共用同一个 DATE，消费 EXP-326 同日 fail-closed 的跨时区/跨午夜后续假设 | ICE 8x9x10=720 — commit `PENDING`
+- [x] P1 Candidate / EXP-327: 冻结 `publish-daily.sh` 的 Asia/Shanghai 发布日期，并让文件名、源 run 匹配、frontmatter 与正文共用同一个 DATE，消费 EXP-326 同日 fail-closed 的跨时区/跨午夜后续假设 | ICE 8x9x10=720 — commit `f389c3f`
   - Hypothesis: EXP-326 已拒绝旧摘要，但 shell 文件日期仍继承宿主机时区，Python 又在摘要筛选时独立重算 Asia/Shanghai 日期；若运行环境时区漂移或任务跨过午夜，两套日期可能不一致，导致同日摘要被写到错误日期文件、错误判定“无同日摘要”或页面元数据跨日。
   - Metrics: 发布脚本启动时固定 `TZ=Asia/Shanghai` 并只计算/导出一次 `DATE`；Python source-run matcher 必须读取同一环境变量，禁止恢复 `datetime.now()` / `today` 独立重算；脚本语法、fixture 自检、跨日期重复、latest fixture freshness 与 build 通过。
   - Acceptance: 1) 文件名、slug、frontmatter、正文标题和 cron run 匹配共用一个冻结日期；2) 宿主机默认时区不影响发布日；3) 跨午夜执行不在中途切换日期；4) 质量评分 29/30。
