@@ -6,7 +6,7 @@
 - Start date: 2026-08-31
 - End date: 2026-08-31
 - Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；模拟 staged index 时脚本在生成页面与 commit/push 前 fail closed，并保留 staged 内容不变。
-- Result: pass（日报脚本已在生成页面前增加 staged-index fail-closed preflight；用 4 个 staged 实验文件实测返回 exit 2、完整列出 paths 且 index 内容未被 reset/stash；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交待回填；质量评分 29/30。）
+- Result: pass（日报脚本已在生成页面前增加 staged-index fail-closed preflight；用 4 个 staged 实验文件实测返回 exit 2、完整列出 paths 且 index 内容未被 reset/stash；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交 `0fad4e0`；质量评分 29/30。）
 - Decision: scale（将 clean staged index 作为自动日报发布前置条件；并行任务必须先自行提交或清理 index，日报任务不得夹带或改写其他任务的 staged 状态。）
 
 ## EXP-327 — Freeze one Asia/Shanghai publish date across the daily release

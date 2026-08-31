@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-328: 在 `publish-daily.sh` 写文件前拒绝任何预先 staged 的 Git index，防止日报 commit 静默夹带其他自动任务的未审阅改动，消费 EXP-327 自动发布原子性后续假设 | ICE 9x9x10=810 — commit `pending`
+- [x] P1 Candidate / EXP-328: 在 `publish-daily.sh` 写文件前拒绝任何预先 staged 的 Git index，防止日报 commit 静默夹带其他自动任务的未审阅改动，消费 EXP-327 自动发布原子性后续假设 | ICE 9x9x10=810 — commit `0fad4e0`
   - Hypothesis: 日报脚本末尾的 `git add` 只限制新增 staged 路径，但 `git commit` 会提交 index 中所有已 staged 内容；仓库存在并行内容/周报自动任务时，遗留 staged 改动可能被日报 commit 静默夹带并直接 push，污染内容发布边界与实验归因。
   - Metrics: 发布脚本在任何 EN/ZH 文件写入前检查 `git diff --cached --quiet --`；发现预先 staged 路径时列出文件并 exit 2；fixture 自检锁定 guard 文案、路径输出与执行顺序；脚本语法、自检、跨日期重复、latest fixture freshness 与 build 通过。
   - Acceptance: 1) clean index 正常通过；2) 非空 index 在页面生成和 commit/push 前 fail closed；3) 不自动 reset/stash/覆盖其他任务 staged 状态；4) 质量评分 29/30。
