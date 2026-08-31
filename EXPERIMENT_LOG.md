@@ -1,3 +1,14 @@
+## EXP-328 — Fail closed on a pre-staged Git index before daily generation
+- Hypothesis: EXP-327 已统一日报发布日期，但自动发布仍假设 Git index 为空；`git add` 只增加指定路径，而 `git commit` 会提交 index 中全部 staged 内容。若并行内容建设、周报或人工任务遗留 staged 改动，日报 commit 会静默夹带未审阅文件并直接 push，破坏发布原子性、内容质量边界与实验归因。
+- Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 在日报脚本写入 EN/ZH 页面前执行 staged-index preflight；index 非空时列出 staged paths 并 exit 2，不自动 reset/stash 或覆盖其他任务状态；扩展 publish generator fixture 自检，锁定 guard 信号及其必须位于首次生成文件写入之前。
+- ICE: 9x9x10=810
+- Start date: 2026-08-31
+- End date: 2026-08-31
+- Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm check:daily-cross-date-duplicate && pnpm check:latest-daily-real-cron-fixture && pnpm build` passes；模拟 staged index 时脚本在生成页面与 commit/push 前 fail closed，并保留 staged 内容不变。
+- Result: pass（日报脚本已在生成页面前增加 staged-index fail-closed preflight；用 4 个 staged 实验文件实测返回 exit 2、完整列出 paths 且 index 内容未被 reset/stash；脚本语法、publish fixture 自检、跨日期重复检查、latest fixture freshness 与 `pnpm build`（771 pages）全部通过；实现提交待回填；质量评分 29/30。）
+- Decision: scale（将 clean staged index 作为自动日报发布前置条件；并行任务必须先自行提交或清理 index，日报任务不得夹带或改写其他任务的 staged 状态。）
+
 ## EXP-327 — Freeze one Asia/Shanghai publish date across the daily release
 - Hypothesis: EXP-326 已让日报缺少同日源摘要时 fail closed，但 shell 的 `DATE` 仍继承宿主机默认时区，Python source-run matcher 又独立用 Asia/Shanghai `datetime.now()` 重算日期；若运行环境时区改变或任务恰好跨过午夜，文件名/frontmatter/正文日期与被选中的 cron run 日期会分裂，造成错误日期页面、误拒绝同日摘要或重复索引风险。
 - Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

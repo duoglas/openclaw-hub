@@ -39,6 +39,25 @@ if (!source.includes("import { generateZhDailyBody } from './scripts/lib/daily-z
   process.exit(1);
 }
 
+const stagedIndexGuardSignals = [
+  'git diff --cached --quiet --',
+  'Refusing daily publish: the Git index already contains staged changes from another task:',
+  'git diff --cached --name-only -- >&2',
+];
+const missingStagedIndexGuardSignals = stagedIndexGuardSignals.filter((signal) => !source.includes(signal));
+const stagedIndexGuardIndex = source.indexOf('git diff --cached --quiet --');
+const firstGeneratedFileWriteIndex = source.indexOf('cat > "$ZH_FILE"');
+if (
+  missingStagedIndexGuardSignals.length > 0
+  || stagedIndexGuardIndex < 0
+  || firstGeneratedFileWriteIndex < 0
+  || stagedIndexGuardIndex > firstGeneratedFileWriteIndex
+) {
+  console.error('publish-daily.sh is missing the pre-generation staged-index isolation guard:');
+  for (const signal of missingStagedIndexGuardSignals) console.error(`- ${signal}`);
+  process.exit(1);
+}
+
 const commitIndex = source.indexOf('git commit -m "content: sync daily site post');
 const requiredPreCommitChecks = [
   '"check:daily-cross-date-duplicate"',

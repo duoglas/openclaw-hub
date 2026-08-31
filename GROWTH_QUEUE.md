@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-08-31 11:22
+Last updated: 2026-08-31 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-328: 在 `publish-daily.sh` 写文件前拒绝任何预先 staged 的 Git index，防止日报 commit 静默夹带其他自动任务的未审阅改动，消费 EXP-327 自动发布原子性后续假设 | ICE 9x9x10=810 — commit `pending`
+  - Hypothesis: 日报脚本末尾的 `git add` 只限制新增 staged 路径，但 `git commit` 会提交 index 中所有已 staged 内容；仓库存在并行内容/周报自动任务时，遗留 staged 改动可能被日报 commit 静默夹带并直接 push，污染内容发布边界与实验归因。
+  - Metrics: 发布脚本在任何 EN/ZH 文件写入前检查 `git diff --cached --quiet --`；发现预先 staged 路径时列出文件并 exit 2；fixture 自检锁定 guard 文案、路径输出与执行顺序；脚本语法、自检、跨日期重复、latest fixture freshness 与 build 通过。
+  - Acceptance: 1) clean index 正常通过；2) 非空 index 在页面生成和 commit/push 前 fail closed；3) 不自动 reset/stash/覆盖其他任务 staged 状态；4) 质量评分 29/30。
 
 - [x] P1 Candidate / EXP-327: 冻结 `publish-daily.sh` 的 Asia/Shanghai 发布日期，并让文件名、源 run 匹配、frontmatter 与正文共用同一个 DATE，消费 EXP-326 同日 fail-closed 的跨时区/跨午夜后续假设 | ICE 8x9x10=720 — commit `f389c3f`
   - Hypothesis: EXP-326 已拒绝旧摘要，但 shell 文件日期仍继承宿主机时区，Python 又在摘要筛选时独立重算 Asia/Shanghai 日期；若运行环境时区漂移或任务跨过午夜，两套日期可能不一致，导致同日摘要被写到错误日期文件、错误判定“无同日摘要”或页面元数据跨日。

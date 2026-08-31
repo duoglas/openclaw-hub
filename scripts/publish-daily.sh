@@ -12,6 +12,15 @@ EN_FILE="src/content/blog/en/${SLUG}.md"
 ZH_FILE="src/content/blog/zh/${SLUG}.md"
 CRON_ID="fdc137d1-c50d-4686-9b1d-c6c923890cf8" # daily-ai-tech
 
+# A commit records every staged path, not only paths passed to the latest
+# `git add`. Fail before generation if another task left index changes behind,
+# otherwise the daily publisher could silently ship unrelated or unreviewed work.
+if ! git diff --cached --quiet --; then
+  echo "Refusing daily publish: the Git index already contains staged changes from another task:" >&2
+  git diff --cached --name-only -- >&2
+  exit 2
+fi
+
 # Skip if today's post already exists on origin/main
 git fetch origin main --quiet || true
 
