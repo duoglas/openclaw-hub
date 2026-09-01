@@ -6,7 +6,7 @@
 - Start date: 2026-09-01
 - End date: 2026-09-01
 - Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm build` passes；独立进程持锁时竞争获取必须立即失败，持锁进程退出后再次获取必须成功。
-- Result: pass（repository-scoped full-run lock 已位于 staged/worktree preflight 之前；并发竞争实测中第二个进程立即返回 busy/exit 2，持锁进程退出后新进程成功获取；脚本语法、publish fixture 自检、`git diff --check` 与 `astro build` 全部通过；实现提交 `PENDING`；质量评分 30/30。）
+- Result: pass（repository-scoped full-run lock 已位于 staged/worktree preflight 之前；并发竞争实测中第二个进程立即返回 busy/exit 2，持锁进程退出后新进程成功获取；脚本语法、publish fixture 自检、`git diff --check` 与 `astro build` 全部通过；实现提交 `1ca0103`；质量评分 30/30。）
 - Decision: scale（保留 staged-index guard、publish-owned worktree guard 与 full-run advisory lock 三层发布隔离；后续自动发布进程必须串行完成 weekly refresh、generation、quality gates、commit 与 push。）
 
 ## EXP-329 — Fail closed on dirty publish-owned paths before weekly refresh or daily generation

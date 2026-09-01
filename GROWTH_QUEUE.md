@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-330: 为 `publish-daily.sh` 增加覆盖完整发布生命周期的 repository-scoped `flock`，关闭 EXP-329 preflight 通过后到 commit/push 前的跨进程竞态窗口 | ICE 9x9x10=810 — commit `PENDING`
+- [x] P1 Candidate / EXP-330: 为 `publish-daily.sh` 增加覆盖完整发布生命周期的 repository-scoped `flock`，关闭 EXP-329 preflight 通过后到 commit/push 前的跨进程竞态窗口 | ICE 9x9x10=810 — commit `1ca0103`
   - Hypothesis: EXP-329 已拒绝启动时存在的 publish-owned 脏文件，但两个日报进程仍可能同时在 clean 仓库通过 staged/worktree preflight，随后并发刷新周报、生成页面、stage、commit 与 push；只靠点时检查无法保证自动发布原子性。
   - Metrics: 发布脚本在 staged/worktree preflight 前获取 `.git` 内 repository-scoped 非阻塞 advisory lock，并持有文件描述符直至进程退出；第二个并发进程必须立即 exit 2；fixture 自检锁定 lock 文件、`flock -n`、拒绝文案与执行顺序；脚本语法、竞争实测、自检、diff check 与 build 通过。
   - Acceptance: 1) 同仓库同一时刻最多一个 `publish-daily.sh` 进入 preflight 后流程；2) 竞争者 fail closed 且不写页面、不 stage/commit/push；3) 进程退出后内核自动释放锁，无 stale-lock 清理风险；4) 质量评分 30/30。
