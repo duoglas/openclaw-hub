@@ -21,6 +21,26 @@ if ! git diff --cached --quiet --; then
   exit 2
 fi
 
+# This publisher later stages the daily pages, weekly review/report artifacts,
+# and generator sources. A clean index alone is insufficient: pre-existing
+# unstaged or untracked changes in those paths would also be swept into the
+# automated commit. Refuse them before weekly refresh or page generation.
+PUBLISH_OWNED_PATHS=(
+  "$EN_FILE"
+  "$ZH_FILE"
+  "WEEKLY_REVIEW.md"
+  "reports/seo-weekly"
+  "scripts/publish-daily.sh"
+  "scripts/lib/daily-generator.mjs"
+  "scripts/lib/daily-zh-generator.mjs"
+)
+DIRTY_PUBLISH_PATHS=$(git status --porcelain=v1 --untracked-files=all -- "${PUBLISH_OWNED_PATHS[@]}")
+if [ -n "$DIRTY_PUBLISH_PATHS" ]; then
+  echo "Refusing daily publish: publish-owned paths already contain unstaged or untracked changes from another task:" >&2
+  printf '%s\n' "$DIRTY_PUBLISH_PATHS" >&2
+  exit 2
+fi
+
 # Skip if today's post already exists on origin/main
 git fetch origin main --quiet || true
 

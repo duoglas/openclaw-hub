@@ -58,6 +58,34 @@ if (
   process.exit(1);
 }
 
+const dirtyPublishPathGuardSignals = [
+  'PUBLISH_OWNED_PATHS=(',
+  '"$EN_FILE"',
+  '"$ZH_FILE"',
+  '"WEEKLY_REVIEW.md"',
+  '"reports/seo-weekly"',
+  '"scripts/publish-daily.sh"',
+  '"scripts/lib/daily-generator.mjs"',
+  '"scripts/lib/daily-zh-generator.mjs"',
+  'git status --porcelain=v1 --untracked-files=all -- "${PUBLISH_OWNED_PATHS[@]}"',
+  'Refusing daily publish: publish-owned paths already contain unstaged or untracked changes from another task:',
+];
+const missingDirtyPublishPathGuardSignals = dirtyPublishPathGuardSignals.filter((signal) => !source.includes(signal));
+const dirtyPublishPathGuardIndex = source.indexOf('PUBLISH_OWNED_PATHS=(');
+const weeklyRefreshIndex = source.indexOf('refresh_weekly_review_if_needed()');
+if (
+  missingDirtyPublishPathGuardSignals.length > 0
+  || dirtyPublishPathGuardIndex < 0
+  || weeklyRefreshIndex < 0
+  || firstGeneratedFileWriteIndex < 0
+  || dirtyPublishPathGuardIndex > weeklyRefreshIndex
+  || dirtyPublishPathGuardIndex > firstGeneratedFileWriteIndex
+) {
+  console.error('publish-daily.sh is missing the pre-generation dirty publish-path isolation guard:');
+  for (const signal of missingDirtyPublishPathGuardSignals) console.error(`- ${signal}`);
+  process.exit(1);
+}
+
 const commitIndex = source.indexOf('git commit -m "content: sync daily site post');
 const requiredPreCommitChecks = [
   '"check:daily-cross-date-duplicate"',

@@ -1,3 +1,14 @@
+## EXP-329 — Fail closed on dirty publish-owned paths before weekly refresh or daily generation
+- Hypothesis: EXP-328 已拒绝预先 staged 的 Git index，但 `publish-daily.sh` 随后会主动 stage 当日 EN/ZH 页面、`WEEKLY_REVIEW.md`、整个 `reports/seo-weekly` 与 generator sources。若并行周报、内容建设或人工任务在这些路径留下 unstaged/untracked 文件，index 仍是 clean，日报 commit 却会静默夹带未审阅产物；本轮开始时仓库正存在未提交的 weekly review 与两个 weekly report 文件，说明该风险不是理论场景。
+- Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 定义日报自动提交的 publish-owned pathspec，并在 weekly refresh、当日页面写入、build、commit/push 之前用 `git status --porcelain=v1 --untracked-files=all` 检查 tracked unstaged 与 untracked 状态；命中时逐行输出状态并 exit 2，不自动 add/reset/stash/覆盖；扩展 publish generator fixture 自检，锁定完整路径集合、guard 文案与执行顺序。
+- ICE: 9x10x10=900
+- Start date: 2026-09-01
+- End date: 2026-09-01
+- Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm build` passes；在 clean index + dirty publish-owned weekly artifacts 的当前实况下，脚本必须在 fetch/weekly refresh/page generation 前 exit 2 并列出全部相关状态，且文件保持不变。
+- Result: pass（publish-owned path guard 已覆盖当日 EN/ZH 页面、weekly review/report 与 generator sources；当前 clean index + dirty weekly artifacts 实测在 fetch/weekly refresh/page generation 前返回 exit 2，完整列出 1 个 tracked unstaged 与 2 个 untracked weekly artifacts，三文件 SHA-256 前后不变；脚本语法、publish fixture 自检、`git diff --check` 与 `astro build`（771 pages）全部通过；质量评分 30/30。）
+- Decision: scale（保留 staged-index 全局 guard 与 publish-owned 工作树 guard 两层隔离；日报自动提交不得吸收并行周报、内容任务或人工遗留的 unstaged/untracked 文件。下一步评估跨进程 repository lock，缩小 preflight 通过后到 commit 前的并发竞态窗口。）
+
 ## EXP-328 — Fail closed on a pre-staged Git index before daily generation
 - Hypothesis: EXP-327 已统一日报发布日期，但自动发布仍假设 Git index 为空；`git add` 只增加指定路径，而 `git commit` 会提交 index 中全部 staged 内容。若并行内容建设、周报或人工任务遗留 staged 改动，日报 commit 会静默夹带未审阅文件并直接 push，破坏发布原子性、内容质量边界与实验归因。
 - Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
