@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 
 const root = process.cwd();
 const scriptPath = path.join(root, 'scripts/publish-daily.sh');
@@ -39,13 +40,53 @@ if (!source.includes("import { generateZhDailyBody } from './scripts/lib/daily-z
   process.exit(1);
 }
 
+const repositoryLockSignals = [
+  'GIT_COMMON_DIR=$(git rev-parse --git-common-dir)',
+  'PUBLISH_LOCK_FILE="${GIT_COMMON_DIR}/openclaw-hub-publish-daily.lock"',
+  'exec 9>"$PUBLISH_LOCK_FILE"',
+  'flock -n 9',
+  'Refusing daily publish: another publish-daily process holds the repository release lock:',
+];
+const missingRepositoryLockSignals = repositoryLockSignals.filter((signal) => !source.includes(signal));
+const repositoryLockIndex = source.indexOf('GIT_COMMON_DIR=$(git rev-parse --git-common-dir)');
+const stagedIndexGuardIndex = source.indexOf('git diff --cached --quiet --');
+if (
+  missingRepositoryLockSignals.length > 0
+  || repositoryLockIndex < 0
+  || stagedIndexGuardIndex < 0
+  || repositoryLockIndex > stagedIndexGuardIndex
+) {
+  console.error('publish-daily.sh is missing the full-run repository release lock:');
+  for (const signal of missingRepositoryLockSignals) console.error(`- ${signal}`);
+  process.exit(1);
+}
+
+const lockFixturePath = path.join(root, '.git', 'openclaw-hub-publish-daily-fixture.lock');
+const lockFixture = spawnSync('bash', ['-c', `
+set -euo pipefail
+lock_file="$1"
+exec 8>"$lock_file"
+flock -n 8
+if flock -n "$lock_file" -c true; then
+  echo "competing process unexpectedly acquired the held release lock" >&2
+  exit 21
+fi
+flock -u 8
+flock -n "$lock_file" -c true
+`, 'bash', lockFixturePath], { encoding: 'utf8' });
+if (lockFixture.status !== 0) {
+  console.error('repository release lock contention fixture failed:');
+  if (lockFixture.stdout) console.error(lockFixture.stdout.trim());
+  if (lockFixture.stderr) console.error(lockFixture.stderr.trim());
+  process.exit(1);
+}
+
 const stagedIndexGuardSignals = [
   'git diff --cached --quiet --',
   'Refusing daily publish: the Git index already contains staged changes from another task:',
   'git diff --cached --name-only -- >&2',
 ];
 const missingStagedIndexGuardSignals = stagedIndexGuardSignals.filter((signal) => !source.includes(signal));
-const stagedIndexGuardIndex = source.indexOf('git diff --cached --quiet --');
 const firstGeneratedFileWriteIndex = source.indexOf('cat > "$ZH_FILE"');
 if (
   missingStagedIndexGuardSignals.length > 0

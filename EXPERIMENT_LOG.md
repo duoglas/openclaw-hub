@@ -1,3 +1,14 @@
+## EXP-330 — Serialize the full daily release with a repository-scoped advisory lock
+- Hypothesis: EXP-329 的 staged/worktree preflight 只观察检查瞬间；两个 `publish-daily.sh` 进程仍可在 clean 仓库同时通过检查，再并发刷新周报、生成页面、stage、commit 与 push，造成互相夹带、commit 归因错误或 push 竞态。完整发布生命周期需要跨进程互斥，而不是继续增加点时状态检查。
+- Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 在任何 staged/worktree preflight 前解析 repository `.git` 目录，打开固定 lock file 并用 `flock -n` 获取非阻塞 advisory lock；锁由 shell 文件描述符持有至进程退出，竞争者明确 exit 2；扩展 publish generator fixture 自检，锁定 lock path、拒绝文案和 lock-before-preflight 顺序。
+- ICE: 9x9x10=810
+- Start date: 2026-09-01
+- End date: 2026-09-01
+- Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm build` passes；独立进程持锁时竞争获取必须立即失败，持锁进程退出后再次获取必须成功。
+- Result: pass（repository-scoped full-run lock 已位于 staged/worktree preflight 之前；并发竞争实测中第二个进程立即返回 busy/exit 2，持锁进程退出后新进程成功获取；脚本语法、publish fixture 自检、`git diff --check` 与 `astro build` 全部通过；实现提交 `PENDING`；质量评分 30/30。）
+- Decision: scale（保留 staged-index guard、publish-owned worktree guard 与 full-run advisory lock 三层发布隔离；后续自动发布进程必须串行完成 weekly refresh、generation、quality gates、commit 与 push。）
+
 ## EXP-329 — Fail closed on dirty publish-owned paths before weekly refresh or daily generation
 - Hypothesis: EXP-328 已拒绝预先 staged 的 Git index，但 `publish-daily.sh` 随后会主动 stage 当日 EN/ZH 页面、`WEEKLY_REVIEW.md`、整个 `reports/seo-weekly` 与 generator sources。若并行周报、内容建设或人工任务在这些路径留下 unstaged/untracked 文件，index 仍是 clean，日报 commit 却会静默夹带未审阅产物；本轮开始时仓库正存在未提交的 weekly review 与两个 weekly report 文件，说明该风险不是理论场景。
 - Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

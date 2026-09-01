@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-01 11:20
+Last updated: 2026-09-01 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-330: 为 `publish-daily.sh` 增加覆盖完整发布生命周期的 repository-scoped `flock`，关闭 EXP-329 preflight 通过后到 commit/push 前的跨进程竞态窗口 | ICE 9x9x10=810 — commit `PENDING`
+  - Hypothesis: EXP-329 已拒绝启动时存在的 publish-owned 脏文件，但两个日报进程仍可能同时在 clean 仓库通过 staged/worktree preflight，随后并发刷新周报、生成页面、stage、commit 与 push；只靠点时检查无法保证自动发布原子性。
+  - Metrics: 发布脚本在 staged/worktree preflight 前获取 `.git` 内 repository-scoped 非阻塞 advisory lock，并持有文件描述符直至进程退出；第二个并发进程必须立即 exit 2；fixture 自检锁定 lock 文件、`flock -n`、拒绝文案与执行顺序；脚本语法、竞争实测、自检、diff check 与 build 通过。
+  - Acceptance: 1) 同仓库同一时刻最多一个 `publish-daily.sh` 进入 preflight 后流程；2) 竞争者 fail closed 且不写页面、不 stage/commit/push；3) 进程退出后内核自动释放锁，无 stale-lock 清理风险；4) 质量评分 30/30。
 
 - [x] P1 Candidate / EXP-329: 在 `publish-daily.sh` 刷新周报或生成页面前拒绝 publish-owned 路径中的预存 unstaged/untracked 改动，消费 EXP-328 clean-index 仍会夹带工作树文件的后续假设 | ICE 9x10x10=900 — commit `1f8dac4`
   - Hypothesis: EXP-328 只拒绝预先 staged 的 Git index，但日报脚本随后会主动 `git add` 当日 EN/ZH 页面、`WEEKLY_REVIEW.md`、整个 `reports/seo-weekly` 与 generator sources；若并行周报/内容任务留下 unstaged 或 untracked 文件，clean index 仍会让日报 commit 静默夹带这些未审阅产物。当前仓库已出现未提交的周报与报告文件，证明该路径可实际触发。

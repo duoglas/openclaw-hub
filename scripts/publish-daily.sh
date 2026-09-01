@@ -2,6 +2,18 @@
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
+# Hold one repository-scoped advisory lock for the entire release. The clean
+# index/worktree checks below are only a point-in-time snapshot; without a lock,
+# two publishers can both pass preflight and then race while refreshing weekly
+# artifacts, generating pages, staging, committing, or pushing.
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+PUBLISH_LOCK_FILE="${GIT_COMMON_DIR}/openclaw-hub-publish-daily.lock"
+exec 9>"$PUBLISH_LOCK_FILE"
+if ! flock -n 9; then
+  echo "Refusing daily publish: another publish-daily process holds the repository release lock: ${PUBLISH_LOCK_FILE}" >&2
+  exit 2
+fi
+
 # Freeze one Asia/Shanghai calendar date for filenames, source-run matching,
 # frontmatter, and headings. Inheriting the host timezone or recomputing the
 # date mid-run can split one publish across two dates around midnight.
