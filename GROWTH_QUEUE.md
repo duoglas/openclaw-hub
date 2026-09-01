@@ -21,7 +21,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-329: 在 `publish-daily.sh` 刷新周报或生成页面前拒绝 publish-owned 路径中的预存 unstaged/untracked 改动，消费 EXP-328 clean-index 仍会夹带工作树文件的后续假设 | ICE 9x10x10=900 — commit `PENDING`
+- [x] P1 Candidate / EXP-329: 在 `publish-daily.sh` 刷新周报或生成页面前拒绝 publish-owned 路径中的预存 unstaged/untracked 改动，消费 EXP-328 clean-index 仍会夹带工作树文件的后续假设 | ICE 9x10x10=900 — commit `1f8dac4`
   - Hypothesis: EXP-328 只拒绝预先 staged 的 Git index，但日报脚本随后会主动 `git add` 当日 EN/ZH 页面、`WEEKLY_REVIEW.md`、整个 `reports/seo-weekly` 与 generator sources；若并行周报/内容任务留下 unstaged 或 untracked 文件，clean index 仍会让日报 commit 静默夹带这些未审阅产物。当前仓库已出现未提交的周报与报告文件，证明该路径可实际触发。
   - Metrics: 发布脚本在 weekly refresh、页面生成、build、commit/push 前检查全部 publish-owned pathspec；发现 tracked unstaged 或 untracked 文件时逐行输出 porcelain 状态并 exit 2；fixture 自检锁定路径集合、guard 文案与执行顺序；脚本语法、自检、隔离实测与 build 通过。
   - Acceptance: 1) clean index 但 publish-owned 工作树非空时 fail closed；2) 不自动 add/reset/stash/覆盖其他任务文件；3) 非 publish-owned 工作树改动不阻塞日报；4) 质量评分 30/30。

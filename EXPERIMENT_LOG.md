@@ -6,7 +6,7 @@
 - Start date: 2026-09-01
 - End date: 2026-09-01
 - Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm build` passes；在 clean index + dirty publish-owned weekly artifacts 的当前实况下，脚本必须在 fetch/weekly refresh/page generation 前 exit 2 并列出全部相关状态，且文件保持不变。
-- Result: pass（publish-owned path guard 已覆盖当日 EN/ZH 页面、weekly review/report 与 generator sources；当前 clean index + dirty weekly artifacts 实测在 fetch/weekly refresh/page generation 前返回 exit 2，完整列出 1 个 tracked unstaged 与 2 个 untracked weekly artifacts，三文件 SHA-256 前后不变；脚本语法、publish fixture 自检、`git diff --check` 与 `astro build`（771 pages）全部通过；质量评分 30/30。）
+- Result: pass（publish-owned path guard 已覆盖当日 EN/ZH 页面、weekly review/report 与 generator sources；当前 clean index + dirty weekly artifacts 实测在 fetch/weekly refresh/page generation 前返回 exit 2，完整列出 1 个 tracked unstaged 与 2 个 untracked weekly artifacts，三文件 SHA-256 前后不变；脚本语法、publish fixture 自检、`git diff --check` 与 `astro build`（771 pages）全部通过；实现提交 `1f8dac4`；质量评分 30/30。）
 - Decision: scale（保留 staged-index 全局 guard 与 publish-owned 工作树 guard 两层隔离；日报自动提交不得吸收并行周报、内容任务或人工遗留的 unstaged/untracked 文件。下一步评估跨进程 repository lock，缩小 preflight 通过后到 commit 前的并发竞态窗口。）
 
 ## EXP-328 — Fail closed on a pre-staged Git index before daily generation
