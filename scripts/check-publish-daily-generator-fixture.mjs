@@ -81,6 +81,33 @@ if (lockFixture.status !== 0) {
   process.exit(1);
 }
 
+const branchSyncGuardSignals = [
+  'CURRENT_BRANCH=$(git branch --show-current)',
+  'if [ "$CURRENT_BRANCH" != "main" ]; then',
+  'Refusing daily publish: expected branch main, found',
+  'if ! git fetch origin main --quiet; then',
+  'Refusing daily publish: failed to fetch origin/main; remote freshness is unknown.',
+  'LOCAL_MAIN=$(git rev-parse main)',
+  'REMOTE_MAIN=$(git rev-parse origin/main)',
+  'if [ "$LOCAL_MAIN" != "$REMOTE_MAIN" ]; then',
+  'Refusing daily publish: local main must exactly match origin/main before generation',
+];
+const missingBranchSyncGuardSignals = branchSyncGuardSignals.filter((signal) => !source.includes(signal));
+const branchSyncGuardIndex = source.indexOf('CURRENT_BRANCH=$(git branch --show-current)');
+if (
+  missingBranchSyncGuardSignals.length > 0
+  || branchSyncGuardIndex < 0
+  || repositoryLockIndex < 0
+  || stagedIndexGuardIndex < 0
+  || branchSyncGuardIndex < repositoryLockIndex
+  || branchSyncGuardIndex > stagedIndexGuardIndex
+  || source.includes('git fetch origin main --quiet || true')
+) {
+  console.error('publish-daily.sh is missing the fail-closed main/origin synchronization guard:');
+  for (const signal of missingBranchSyncGuardSignals) console.error(`- ${signal}`);
+  process.exit(1);
+}
+
 const stagedIndexGuardSignals = [
   'git diff --cached --quiet --',
   'Refusing daily publish: the Git index already contains staged changes from another task:',

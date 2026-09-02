@@ -14,6 +14,27 @@ if ! flock -n 9; then
   exit 2
 fi
 
+# Publish only from an up-to-date main checkout. Running from another branch can
+# create the release commit off-main while `git push origin main` pushes a
+# different local ref; running while main is ahead/behind/diverged can also ship
+# unrelated commits or build from stale content. Fetch must succeed, then require
+# an exact local/remote match before any weekly refresh or page generation.
+CURRENT_BRANCH=$(git branch --show-current)
+if [ "$CURRENT_BRANCH" != "main" ]; then
+  echo "Refusing daily publish: expected branch main, found ${CURRENT_BRANCH:-detached HEAD}." >&2
+  exit 2
+fi
+if ! git fetch origin main --quiet; then
+  echo "Refusing daily publish: failed to fetch origin/main; remote freshness is unknown." >&2
+  exit 2
+fi
+LOCAL_MAIN=$(git rev-parse main)
+REMOTE_MAIN=$(git rev-parse origin/main)
+if [ "$LOCAL_MAIN" != "$REMOTE_MAIN" ]; then
+  echo "Refusing daily publish: local main must exactly match origin/main before generation (local=${LOCAL_MAIN}, remote=${REMOTE_MAIN})." >&2
+  exit 2
+fi
+
 # Freeze one Asia/Shanghai calendar date for filenames, source-run matching,
 # frontmatter, and headings. Inheriting the host timezone or recomputing the
 # date mid-run can split one publish across two dates around midnight.
@@ -52,9 +73,6 @@ if [ -n "$DIRTY_PUBLISH_PATHS" ]; then
   printf '%s\n' "$DIRTY_PUBLISH_PATHS" >&2
   exit 2
 fi
-
-# Skip if today's post already exists on origin/main
-git fetch origin main --quiet || true
 
 # The CI content gate requires WEEKLY_REVIEW.md to match the current
 # Asia/Shanghai week. Daily publishing is the most frequent automation path,
