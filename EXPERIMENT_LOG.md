@@ -1,3 +1,14 @@
+## EXP-331 — Fail closed unless the daily publisher starts from synchronized main
+- Hypothesis: EXP-330 已用 repository lock 消除同仓库并发发布，但 `publish-daily.sh` 仍把 `git fetch origin main --quiet || true` 当作可忽略步骤，也未检查当前 branch 与 local/remote ancestry。若定时任务落在 feature branch、detached HEAD，或 main ahead/behind/diverged，页面会基于错误/陈旧基线生成；更危险的是 commit 可创建在当前非 main branch，而后续 `git push origin main` 实际推送另一条 local main ref，形成“脚本显示已发布但 release commit 未进入 main”的静默失败。
+- Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 在 full-run repository lock 获取后、staged/worktree preflight 与任何内容写入前验证 current branch 必须为 `main`；将 origin/main fetch 改为 fail-closed；比较 local main 与 fetched origin/main SHA，ahead/behind/diverged 全部 exit 2；扩展 fixture 自检，锁定 branch/fetch/SHA guard、lock-before-sync-before-preflight 顺序，并禁止恢复 `git fetch ... || true`。
+- ICE: 9x9x10=810
+- Start date: 2026-09-02
+- End date: 2026-09-02
+- Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && pnpm build` passes；fixture 必须确认 branch/sync guard 位于 repository lock 后、staged/worktree guard 与生成写入前，且 fetch failure 不可被吞掉。
+- Result: pass（日报发布现仅允许 synchronized main：非 main/detached、fetch 失败、local ahead/behind/diverged 均在 weekly refresh/page generation/commit/push 前 fail closed；publish fixture 自检锁定 guard 与顺序并禁止 `fetch || true`；脚本语法、`git diff --check` 与 `astro build`（771 pages）全部通过；实现提交 `18f9932`；质量评分 30/30。）
+- Decision: scale（保留 repository lock + synchronized-main + clean index + clean publish-owned worktree 四层发布前置条件；下一步评估 commit 后 push 失败时的可恢复状态与显式 retry handoff，避免本地 main ahead 后永久阻塞后续发布。）
+
 ## EXP-330 — Serialize the full daily release with a repository-scoped advisory lock
 - Hypothesis: EXP-329 的 staged/worktree preflight 只观察检查瞬间；两个 `publish-daily.sh` 进程仍可在 clean 仓库同时通过检查，再并发刷新周报、生成页面、stage、commit 与 push，造成互相夹带、commit 归因错误或 push 竞态。完整发布生命周期需要跨进程互斥，而不是继续增加点时状态检查。
 - Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

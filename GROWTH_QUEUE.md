@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-01 17:20
+Last updated: 2026-09-02 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-331: 在日报生成前强制当前分支为 `main`、fetch 成功且 local main 与 origin/main 完全一致，关闭错误分支提交、陈旧基线构建与夹带未发布提交风险 | ICE 9x9x10=810 — commit `18f9932`
+  - Hypothesis: EXP-330 已串行化单仓库发布，但脚本仍容忍 `git fetch` 失败，并未验证当前 checkout 与 origin/main；在 feature branch、detached HEAD、local ahead/behind/diverged 状态下，脚本可能基于错误或陈旧内容生成页面，甚至把 release commit 建在非 main 分支而 `git push origin main` 推送另一条本地 ref。
+  - Metrics: repository lock 后、任何 weekly refresh/page generation 前验证 current branch=`main`；fetch origin/main 必须成功；local main SHA 必须与 origin/main 精确相等；fixture 自检锁定 guard 文案、执行顺序并禁止恢复 `fetch || true`；脚本语法、自检、diff check 与 build 通过。
+  - Acceptance: 1) 非 main/detached checkout fail closed；2) fetch 失败时不使用 stale remote-tracking ref；3) main ahead/behind/diverged 均拒绝生成、commit、push；4) 质量评分 30/30。
 
 - [x] P1 Candidate / EXP-330: 为 `publish-daily.sh` 增加覆盖完整发布生命周期的 repository-scoped `flock`，关闭 EXP-329 preflight 通过后到 commit/push 前的跨进程竞态窗口 | ICE 9x9x10=810 — commit `1ca0103`
   - Hypothesis: EXP-329 已拒绝启动时存在的 publish-owned 脏文件，但两个日报进程仍可能同时在 clean 仓库通过 staged/worktree preflight，随后并发刷新周报、生成页面、stage、commit 与 push；只靠点时检查无法保证自动发布原子性。
