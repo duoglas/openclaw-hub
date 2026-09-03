@@ -4,11 +4,16 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 TZ="Asia/Shanghai"
-TODAY=$(TZ="$TZ" date +%F)
-WEEKDAY=$(TZ="$TZ" date +%u) # 1=Mon..7=Sun
+TODAY="${WEEKLY_REPORT_DATE:-$(TZ="$TZ" date +%F)}"
+WEEKDAY=$(TZ="$TZ" date -d "$TODAY" +%u) # 1=Mon..7=Sun
 MONDAY=$(TZ="$TZ" date -d "$TODAY -$((WEEKDAY-1)) days" +%F)
 SUNDAY=$(TZ="$TZ" date -d "$MONDAY +6 days" +%F)
-NOW=$(TZ="$TZ" date '+%F %H:%M')
+NOW="${WEEKLY_REPORT_NOW:-$(TZ="$TZ" date '+%F %H:%M')}"
+AS_OF_DATE="$TODAY"
+if [[ "$AS_OF_DATE" > "$SUNDAY" ]]; then
+  AS_OF_DATE="$SUNDAY"
+fi
+ELAPSED_DAYS=$(( ( $(TZ="$TZ" date -d "$AS_OF_DATE" +%s) - $(TZ="$TZ" date -d "$MONDAY" +%s) ) / 86400 + 1 ))
 
 OUT_DIR="reports/seo-weekly"
 OUT_FILE="${OUT_DIR}/seo-weekly-${MONDAY}-to-${SUNDAY}.md"
@@ -107,9 +112,9 @@ collect_gsc_data_gap_alert() {
   local max_streak=0
   local current_streak=0
   local missing_days=0
-  local total_days=7
+  local total_days="$ELAPSED_DAYS"
 
-  for i in {0..6}; do
+  for ((i=0; i<ELAPSED_DAYS; i++)); do
     local d f
     d=$(TZ="$TZ" date -d "$MONDAY +${i} days" +%F)
     f="$dir/$d.md"
@@ -142,15 +147,15 @@ collect_gsc_data_gap_alert() {
   if [ "$max_streak" -ge 3 ]; then
     status="🔴 RED"
     level="alert"
-    note="连续 ${max_streak} 天 GSC 数据缺失（>=3 天触发标红）"
+    note="截至 ${AS_OF_DATE} 连续 ${max_streak} 个已过日期缺少 GSC 数据（>=3 天触发标红）"
   elif [ "$max_streak" -gt 0 ]; then
     status="🟡 WARN"
     level="warn"
-    note="最大连续缺失 ${max_streak} 天（未达标红阈值）"
+    note="截至 ${AS_OF_DATE} 最大连续缺失 ${max_streak} 个已过日期（未达标红阈值）"
   else
     status="🟢 OK"
     level="ok"
-    note="本周无连续缺失"
+    note="截至 ${AS_OF_DATE} 本周已过日期无连续缺失"
   fi
 
   printf "%s|||%s|||%s|||%s|||%s" "$status" "$max_streak" "$missing_days/$total_days" "$note" "$level"
@@ -163,7 +168,7 @@ collect_schema_risk_week_stats() {
   local peak_issues=-1
   local peak_date="N/A"
 
-  for i in {0..6}; do
+  for ((i=0; i<ELAPSED_DAYS; i++)); do
     local d f issue_count
     d=$(TZ="$TZ" date -d "$MONDAY +${i} days" +%F)
     f="$dir/$d.md"
@@ -209,6 +214,11 @@ collect_schema_risk_trend_placeholder() {
     schema_status=""
     issue_count=""
     source="no-snapshot"
+
+    if [[ "$d" > "$AS_OF_DATE" ]]; then
+      out+="| ${d} | ⚪ | future | N/A | not-observed | ${SCHEMA_WEEK_AVG_ISSUES} | ${week_peak_label} |\n"
+      continue
+    fi
 
     if [ -f "$f" ]; then
       schema_status=$(awk -F': *' '/^- Schema Risk Status:/{print $2; exit}' "$f" | tr -d '\r' | xargs)
@@ -734,7 +744,7 @@ SCHEMA_WEEK_PEAK_ISSUES=${SCHEMA_WEEK_STATS_RAW%%|||*}
 SCHEMA_WEEK_STATS_RAW=${SCHEMA_WEEK_STATS_RAW#*|||}
 SCHEMA_WEEK_PEAK_DATE=${SCHEMA_WEEK_STATS_RAW%%|||*}
 SCHEMA_WEEK_NUMERIC_DAYS=${SCHEMA_WEEK_STATS_RAW##*|||}
-SCHEMA_WEEK_COVERAGE_PCT=$(awk -v n="$SCHEMA_WEEK_NUMERIC_DAYS" 'BEGIN{printf "%.0f%%", (n/7)*100}')
+SCHEMA_WEEK_COVERAGE_PCT="$((SCHEMA_WEEK_NUMERIC_DAYS * 100 / ELAPSED_DAYS))%"
 SCHEMA_RISK_TREND_ROWS=$(collect_schema_risk_trend_placeholder)
 GSC_GAP_RAW=$(collect_gsc_data_gap_alert)
 GSC_GAP_STATUS=${GSC_GAP_RAW%%|||*}
@@ -883,7 +893,7 @@ ${SCHEMA_RISK_TREND_ROWS}
 |---|---|
 | Weekly Avg Issues | ${SCHEMA_WEEK_AVG_ISSUES} |
 | Weekly Peak Issues | ${SCHEMA_WEEK_PEAK_ISSUES} (${SCHEMA_WEEK_PEAK_DATE}) |
-| Numeric Data Coverage | ${SCHEMA_WEEK_NUMERIC_DAYS}/7 (${SCHEMA_WEEK_COVERAGE_PCT}) |
+| Numeric Data Coverage | ${SCHEMA_WEEK_NUMERIC_DAYS}/${ELAPSED_DAYS} elapsed days (${SCHEMA_WEEK_COVERAGE_PCT}) |
 
 ## 12) Domain Hygiene Guardrail (auto)
 
@@ -934,7 +944,7 @@ cat > "WEEKLY_REVIEW.md" <<EOF
 
 ### Observe (data)
 - GSC data completeness alert: ${GSC_GAP_STATUS} (${GSC_GAP_NOTE}).
-- Schema risk trend coverage: ${SCHEMA_WEEK_NUMERIC_DAYS}/7 (${SCHEMA_WEEK_COVERAGE_PCT}) days have numeric issue counts; keep daily schema snapshots running to avoid blind spots.
+- Schema risk trend coverage: ${SCHEMA_WEEK_NUMERIC_DAYS}/${ELAPSED_DAYS} elapsed days (${SCHEMA_WEEK_COVERAGE_PCT}) have numeric issue counts as of ${AS_OF_DATE}; future dates are excluded from completeness alerts.
 - Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
 - Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
 - Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.
