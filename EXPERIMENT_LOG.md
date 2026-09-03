@@ -3505,3 +3505,14 @@
 - Success metric: `pnpm check:latest-daily-real-cron-fixture && pnpm check:daily-source-projection-labels && pnpm check:daily-generator-real-cron-fixture && pnpm check:daily-zh-generator-real-cron-fixture && pnpm check:daily-case-signal-faq-links && pnpm check:daily-parser-guardrail-coverage && pnpm check:source-projection-rule-registry-health && pnpm check:source-projection-rule-taxonomy && pnpm build` passes; EN/ZH 2026-08-15 routes render the five fixture-backed signals without fallback leakage.
 - Result: pass（latest fixture freshness、daily EN/ZH generators、case-level FAQ、parser guardrails、source projection registry health/taxonomy 与 build 全部通过；实现提交 `2a80904`）。
 - Decision: scale（继续将"最新日报必须同日 fixture 覆盖 + source projection label/detail + case FAQ"作为增长执行默认门槛；新增规则需同步校验 parent category budget，超出时按既有 capacityPlan/budget 提升模式处理）。
+
+### EXP-332
+- Hypothesis: 最近24小时内容建设生成 2026-08-31~09-06 周报时，在 09-03 就把 09-04~09-06 三个未来日期计入 GSC 缺失与 schema 覆盖分母，输出 7/7 缺失和 0/7 覆盖；若不修复，周中报告会夸大数据质量告警、污染增长优先级并让自动执行追逐尚未发生的数据缺口。
+- Scope: `scripts/generate-seo-weekly-report.sh`, `scripts/check-weekly-observation-window.sh`, `package.json`, `WEEKLY_REVIEW.md`, `reports/seo-weekly/seo-weekly-2026-08-31-to-2026-09-06.md`, `reports/seo-weekly/stale-domain-alert-2026-08-31-to-2026-09-06.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 as-of date / elapsed-days 观察窗口；GSC 缺失率与连续缺失只统计已过日期；schema 聚合分母改为 elapsed days；趋势表中的未来日期标记 `future/not-observed`；新增 `check:weekly-observation-window` 动态自检并重生成本周周报与 review。
+- ICE: 9x10x10=900
+- Start date: 2026-09-03
+- End date: 2026-09-03
+- Success metric: 2026-09-03 周报显示 GSC missing ratio=4/4、schema numeric coverage=0/4 elapsed days，09-04~09-06 为 future/not-observed；`bash -n scripts/generate-seo-weekly-report.sh scripts/check-weekly-observation-window.sh`、`bash scripts/check-weekly-observation-window.sh`、`git diff --check` 与 Astro build 全部通过。
+- Result: pass（周中虚假 7/7 缺失已收敛为真实 4/4 已过日期；未来三天不再被计为缺失或 placeholder；动态自检通过；Astro build 771 pages 通过；实现提交 `7c74cee`；质量评分 30/30。）
+- Decision: scale（周报可在周中安全刷新；后续所有 completeness/coverage 指标统一使用 as-of observation window，未来日期只展示、不进入告警分母。）

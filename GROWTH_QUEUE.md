@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-02 17:20
+Last updated: 2026-09-03 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,11 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-332: 周中周报只以已过日期计算 GSC 缺失与 schema 覆盖，禁止把未来日期计为缺失并制造虚假 7/7 RED | ICE 9x10x10=900 — commit `7c74cee`
+  - Hypothesis: 最近24小时内容建设生成 2026-08-31~09-06 周报时，在 09-03 就把 09-04~09-06 三个未来日期计入 GSC 缺失与 schema 覆盖分母，输出 7/7 缺失和 0/7 覆盖；这会夸大数据质量告警、污染周中增长决策并让自动任务追逐尚未发生的缺口。
+  - Metrics: GSC missing ratio 与最大连续缺失仅覆盖 Monday~as-of date；schema 聚合分母仅覆盖 elapsed days；未来日期保留在趋势表但标记 `future/not-observed`；新增动态日期自检，脚本语法、自检、diff check 与 Astro build 通过。
+  - Acceptance: 1) 2026-09-03 周报显示 GSC 4/4 而非 7/7；2) schema coverage 显示 0/4 elapsed days 而非 0/7；3) 09-04~09-06 不标记为缺失/placeholder；4) 质量评分 30/30。
 
 - [x] P1 Candidate / EXP-331: 在日报生成前强制当前分支为 `main`、fetch 成功且 local main 与 origin/main 完全一致，关闭错误分支提交、陈旧基线构建与夹带未发布提交风险 | ICE 9x9x10=810 — commit `18f9932`
   - Hypothesis: EXP-330 已串行化单仓库发布，但脚本仍容忍 `git fetch` 失败，并未验证当前 checkout 与 origin/main；在 feature branch、detached HEAD、local ahead/behind/diverged 状态下，脚本可能基于错误或陈旧内容生成页面，甚至把 release commit 建在非 main 分支而 `git push origin main` 推送另一条本地 ref。
