@@ -49,7 +49,7 @@ const repositoryLockSignals = [
 ];
 const missingRepositoryLockSignals = repositoryLockSignals.filter((signal) => !source.includes(signal));
 const repositoryLockIndex = source.indexOf('GIT_COMMON_DIR=$(git rev-parse --git-common-dir)');
-const stagedIndexGuardIndex = source.indexOf('git diff --cached --quiet --');
+const stagedIndexGuardIndex = source.indexOf('if ! git diff --cached --quiet --; then', source.indexOf('export DATE=$(date +%Y-%m-%d)'));
 if (
   missingRepositoryLockSignals.length > 0
   || repositoryLockIndex < 0
@@ -90,7 +90,8 @@ const branchSyncGuardSignals = [
   'LOCAL_MAIN=$(git rev-parse main)',
   'REMOTE_MAIN=$(git rev-parse origin/main)',
   'if [ "$LOCAL_MAIN" != "$REMOTE_MAIN" ]; then',
-  'Refusing daily publish: local main must exactly match origin/main before generation',
+  'recover_pending_push',
+  'Refusing daily publish: local main differs from origin/main and no publisher retry handoff exists.',
 ];
 const missingBranchSyncGuardSignals = branchSyncGuardSignals.filter((signal) => !source.includes(signal));
 const branchSyncGuardIndex = source.indexOf('CURRENT_BRANCH=$(git branch --show-current)');
@@ -105,6 +106,40 @@ if (
 ) {
   console.error('publish-daily.sh is missing the fail-closed main/origin synchronization guard:');
   for (const signal of missingBranchSyncGuardSignals) console.error(`- ${signal}`);
+  process.exit(1);
+}
+
+const pushRetrySignals = [
+  'PUSH_RETRY_HANDOFF="${GIT_COMMON_DIR}/openclaw-hub-publish-daily-retry"',
+  'write_push_retry_handoff()',
+  'commit_and_push_release()',
+  'recover_pending_push()',
+  'ahead_count=$(git rev-list --count "${REMOTE_MAIN}..${LOCAL_MAIN}")',
+  'git merge-base --is-ancestor "$REMOTE_MAIN" "$LOCAL_MAIN"',
+  'retry handoff does not describe exactly one publisher commit ahead of origin/main',
+  'retry handoff commit contains non-publisher path',
+  'commit_and_push_release "weekly" "$week_line"',
+  'commit_and_push_release "daily" "$DATE"',
+  'handoff retained at ${PUSH_RETRY_HANDOFF}',
+  'Recovered pending ${release_kind} release ${release_label} without regenerating or recommitting.',
+];
+const missingPushRetrySignals = pushRetrySignals.filter((signal) => !source.includes(signal));
+const retryFunctionIndex = source.indexOf('recover_pending_push()');
+const syncMismatchIndex = source.indexOf('if [ "$LOCAL_MAIN" != "$REMOTE_MAIN" ]; then');
+const weeklyCommitIndex = source.indexOf('commit_and_push_release "weekly" "$week_line"');
+const dailyCommitIndex = source.indexOf('commit_and_push_release "daily" "$DATE"');
+if (
+  missingPushRetrySignals.length > 0
+  || retryFunctionIndex < 0
+  || syncMismatchIndex < 0
+  || retryFunctionIndex > syncMismatchIndex
+  || weeklyCommitIndex < 0
+  || dailyCommitIndex < 0
+  || source.includes('git commit -m "content: sync daily site post with Telegram AI/tech brief (${DATE})" || true')
+  || source.includes('git commit -m "chore: refresh weekly review (${week_line})" || true')
+) {
+  console.error('publish-daily.sh is missing the validated post-commit push retry handoff:');
+  for (const signal of missingPushRetrySignals) console.error(`- ${signal}`);
   process.exit(1);
 }
 
@@ -154,7 +189,7 @@ if (
   process.exit(1);
 }
 
-const commitIndex = source.indexOf('git commit -m "content: sync daily site post');
+const commitIndex = source.indexOf('commit_and_push_release "daily" "$DATE"');
 const requiredPreCommitChecks = [
   '"check:daily-cross-date-duplicate"',
   '"check:latest-daily-real-cron-fixture"',

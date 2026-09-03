@@ -14,6 +14,105 @@ if ! flock -n 9; then
   exit 2
 fi
 
+PUSH_RETRY_HANDOFF="${GIT_COMMON_DIR}/openclaw-hub-publish-daily-retry"
+
+write_push_retry_handoff() {
+  local release_kind="$1"
+  local release_label="$2"
+  local commit_sha="$3"
+  local handoff_tmp="${PUSH_RETRY_HANDOFF}.tmp.$$"
+
+  printf '%s\n%s\n%s\n' "$commit_sha" "$release_kind" "$release_label" >"$handoff_tmp"
+  mv "$handoff_tmp" "$PUSH_RETRY_HANDOFF"
+}
+
+commit_and_push_release() {
+  local release_kind="$1"
+  local release_label="$2"
+  local commit_message="$3"
+
+  if git diff --cached --quiet --; then
+    return 0
+  fi
+
+  git commit -m "$commit_message"
+  local commit_sha
+  commit_sha=$(git rev-parse HEAD)
+  write_push_retry_handoff "$release_kind" "$release_label" "$commit_sha"
+
+  if ! git push origin main; then
+    echo "Daily publish commit ${commit_sha} was created but push failed; retry handoff retained at ${PUSH_RETRY_HANDOFF}." >&2
+    return 1
+  fi
+
+  rm -f "$PUSH_RETRY_HANDOFF"
+}
+
+recover_pending_push() {
+  if [ ! -f "$PUSH_RETRY_HANDOFF" ]; then
+    echo "Refusing daily publish: local main differs from origin/main and no publisher retry handoff exists." >&2
+    exit 2
+  fi
+
+  local handoff=()
+  mapfile -t handoff <"$PUSH_RETRY_HANDOFF"
+  if [ "${#handoff[@]}" -ne 3 ]; then
+    echo "Refusing daily publish: malformed publisher retry handoff at ${PUSH_RETRY_HANDOFF}." >&2
+    exit 2
+  fi
+
+  local handoff_sha="${handoff[0]}"
+  local release_kind="${handoff[1]}"
+  local release_label="${handoff[2]}"
+  local ahead_count
+  ahead_count=$(git rev-list --count "${REMOTE_MAIN}..${LOCAL_MAIN}")
+
+  if [ "$handoff_sha" != "$LOCAL_MAIN" ] \
+    || ! git merge-base --is-ancestor "$REMOTE_MAIN" "$LOCAL_MAIN" \
+    || [ "$ahead_count" -ne 1 ]; then
+    echo "Refusing daily publish: retry handoff does not describe exactly one publisher commit ahead of origin/main." >&2
+    exit 2
+  fi
+
+  local expected_subject
+  case "$release_kind" in
+    daily)
+      expected_subject="content: sync daily site post with Telegram AI/tech brief (${release_label})"
+      ;;
+    weekly)
+      expected_subject="chore: refresh weekly review (${release_label})"
+      ;;
+    *)
+      echo "Refusing daily publish: unknown retry handoff release kind '${release_kind}'." >&2
+      exit 2
+      ;;
+  esac
+  if [ "$(git log -1 --format=%s "$LOCAL_MAIN")" != "$expected_subject" ]; then
+    echo "Refusing daily publish: retry handoff commit subject does not match the recorded publisher release." >&2
+    exit 2
+  fi
+
+  local changed_path
+  while IFS= read -r changed_path; do
+    case "$release_kind:$changed_path" in
+      daily:src/content/blog/en/openclaw-daily-${release_label}.md|daily:src/content/blog/zh/openclaw-daily-${release_label}.md|daily:WEEKLY_REVIEW.md|daily:reports/seo-weekly/*|daily:scripts/publish-daily.sh|daily:scripts/lib/daily-generator.mjs|daily:scripts/lib/daily-zh-generator.mjs|weekly:WEEKLY_REVIEW.md|weekly:reports/seo-weekly/*)
+        ;;
+      *)
+        echo "Refusing daily publish: retry handoff commit contains non-publisher path '${changed_path}'." >&2
+        exit 2
+        ;;
+    esac
+  done < <(git diff-tree --no-commit-id --name-only -r "$LOCAL_MAIN")
+
+  echo "Retrying previously committed ${release_kind} release ${release_label} (${LOCAL_MAIN})..."
+  if ! git push origin main; then
+    echo "Publisher retry push failed again; handoff retained at ${PUSH_RETRY_HANDOFF}." >&2
+    return 1
+  fi
+  rm -f "$PUSH_RETRY_HANDOFF"
+  echo "Recovered pending ${release_kind} release ${release_label} without regenerating or recommitting."
+}
+
 # Publish only from an up-to-date main checkout. Running from another branch can
 # create the release commit off-main while `git push origin main` pushes a
 # different local ref; running while main is ahead/behind/diverged can also ship
@@ -31,8 +130,14 @@ fi
 LOCAL_MAIN=$(git rev-parse main)
 REMOTE_MAIN=$(git rev-parse origin/main)
 if [ "$LOCAL_MAIN" != "$REMOTE_MAIN" ]; then
-  echo "Refusing daily publish: local main must exactly match origin/main before generation (local=${LOCAL_MAIN}, remote=${REMOTE_MAIN})." >&2
-  exit 2
+  recover_pending_push
+  exit 0
+fi
+# A successful push may be followed by termination before marker cleanup. Once
+# fetch confirms the recorded commit is already on origin/main, discard only the
+# matching delivered handoff; never use a stale marker to authorize another SHA.
+if [ -f "$PUSH_RETRY_HANDOFF" ] && [ "$(head -n 1 "$PUSH_RETRY_HANDOFF")" = "$LOCAL_MAIN" ]; then
+  rm -f "$PUSH_RETRY_HANDOFF"
 fi
 
 # Freeze one Asia/Shanghai calendar date for filenames, source-run matching,
@@ -101,8 +206,7 @@ commit_weekly_review_if_changed() {
   local week_line
   week_line=$(grep -m1 '^- Week:' WEEKLY_REVIEW.md | sed 's/^- Week: //')
   git add WEEKLY_REVIEW.md reports/seo-weekly
-  git commit -m "chore: refresh weekly review (${week_line})" || true
-  git push origin main
+  commit_and_push_release "weekly" "$week_line" "chore: refresh weekly review (${week_line})"
 }
 
 refresh_weekly_review_if_needed
@@ -252,7 +356,6 @@ for check in "${DAILY_QUALITY_CHECKS[@]}"; do
 done
 
 git add "$EN_FILE" "$ZH_FILE" WEEKLY_REVIEW.md reports/seo-weekly scripts/publish-daily.sh scripts/lib/daily-generator.mjs scripts/lib/daily-zh-generator.mjs
-git commit -m "content: sync daily site post with Telegram AI/tech brief (${DATE})" || true
-git push origin main
+commit_and_push_release "daily" "$DATE" "content: sync daily site post with Telegram AI/tech brief (${DATE})"
 
 echo "Published ${SLUG} (en+zh, structured from cron summary after quality gates)"
