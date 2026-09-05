@@ -17,12 +17,13 @@ fi
 PUSH_RETRY_HANDOFF="${GIT_COMMON_DIR}/openclaw-hub-publish-daily-retry"
 
 write_push_retry_handoff() {
-  local release_kind="$1"
-  local release_label="$2"
-  local commit_sha="$3"
+  local handoff_state="$1"
+  local release_kind="$2"
+  local release_label="$3"
+  local anchor_sha="$4"
   local handoff_tmp="${PUSH_RETRY_HANDOFF}.tmp.$$"
 
-  printf '%s\n%s\n%s\n' "$commit_sha" "$release_kind" "$release_label" >"$handoff_tmp"
+  printf '%s\n%s\n%s\n%s\n' "$handoff_state" "$release_kind" "$release_label" "$anchor_sha" >"$handoff_tmp"
   mv "$handoff_tmp" "$PUSH_RETRY_HANDOFF"
 }
 
@@ -35,10 +36,16 @@ commit_and_push_release() {
     return 0
   fi
 
+  # Persist intent before creating the commit. If the process dies after
+  # `git commit` but before it can record the new SHA, the prepared handoff's
+  # anchor still proves which synchronized origin/main the release started on.
+  local pre_commit_sha
+  pre_commit_sha=$(git rev-parse HEAD)
+  write_push_retry_handoff "prepared" "$release_kind" "$release_label" "$pre_commit_sha"
   git commit -m "$commit_message"
   local commit_sha
   commit_sha=$(git rev-parse HEAD)
-  write_push_retry_handoff "$release_kind" "$release_label" "$commit_sha"
+  write_push_retry_handoff "committed" "$release_kind" "$release_label" "$commit_sha"
 
   if ! git push origin main; then
     echo "Daily publish commit ${commit_sha} was created but push failed; retry handoff retained at ${PUSH_RETRY_HANDOFF}." >&2
@@ -56,23 +63,42 @@ recover_pending_push() {
 
   local handoff=()
   mapfile -t handoff <"$PUSH_RETRY_HANDOFF"
-  if [ "${#handoff[@]}" -ne 3 ]; then
+  if [ "${#handoff[@]}" -ne 4 ]; then
     echo "Refusing daily publish: malformed publisher retry handoff at ${PUSH_RETRY_HANDOFF}." >&2
     exit 2
   fi
 
-  local handoff_sha="${handoff[0]}"
+  local handoff_state="${handoff[0]}"
   local release_kind="${handoff[1]}"
   local release_label="${handoff[2]}"
+  local anchor_sha="${handoff[3]}"
   local ahead_count
   ahead_count=$(git rev-list --count "${REMOTE_MAIN}..${LOCAL_MAIN}")
 
-  if [ "$handoff_sha" != "$LOCAL_MAIN" ] \
-    || ! git merge-base --is-ancestor "$REMOTE_MAIN" "$LOCAL_MAIN" \
+  if ! git merge-base --is-ancestor "$REMOTE_MAIN" "$LOCAL_MAIN" \
     || [ "$ahead_count" -ne 1 ]; then
     echo "Refusing daily publish: retry handoff does not describe exactly one publisher commit ahead of origin/main." >&2
     exit 2
   fi
+
+  case "$handoff_state" in
+    prepared)
+      if [ "$anchor_sha" != "$REMOTE_MAIN" ]; then
+        echo "Refusing daily publish: prepared retry handoff does not match its synchronized origin/main anchor." >&2
+        exit 2
+      fi
+      ;;
+    committed)
+      if [ "$anchor_sha" != "$LOCAL_MAIN" ]; then
+        echo "Refusing daily publish: committed retry handoff does not match local main." >&2
+        exit 2
+      fi
+      ;;
+    *)
+      echo "Refusing daily publish: unknown retry handoff state '${handoff_state}'." >&2
+      exit 2
+      ;;
+  esac
 
   local expected_subject
   case "$release_kind" in
@@ -136,8 +162,20 @@ fi
 # A successful push may be followed by termination before marker cleanup. Once
 # fetch confirms the recorded commit is already on origin/main, discard only the
 # matching delivered handoff; never use a stale marker to authorize another SHA.
-if [ -f "$PUSH_RETRY_HANDOFF" ] && [ "$(head -n 1 "$PUSH_RETRY_HANDOFF")" = "$LOCAL_MAIN" ]; then
-  rm -f "$PUSH_RETRY_HANDOFF"
+if [ -f "$PUSH_RETRY_HANDOFF" ]; then
+  handoff=()
+  mapfile -t handoff <"$PUSH_RETRY_HANDOFF"
+  if [ "${#handoff[@]}" -ne 4 ]; then
+    echo "Refusing daily publish: malformed publisher retry handoff at ${PUSH_RETRY_HANDOFF}." >&2
+    exit 2
+  fi
+  if { [ "${handoff[0]}" = "prepared" ] || [ "${handoff[0]}" = "committed" ]; } \
+    && [ "${handoff[3]}" = "$LOCAL_MAIN" ]; then
+    rm -f "$PUSH_RETRY_HANDOFF"
+  else
+    echo "Refusing daily publish: stale publisher retry handoff does not match synchronized main." >&2
+    exit 2
+  fi
 fi
 
 # Freeze one Asia/Shanghai calendar date for filenames, source-run matching,

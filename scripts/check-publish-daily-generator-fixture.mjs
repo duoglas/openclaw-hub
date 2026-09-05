@@ -114,6 +114,12 @@ const pushRetrySignals = [
   'write_push_retry_handoff()',
   'commit_and_push_release()',
   'recover_pending_push()',
+  'write_push_retry_handoff "prepared" "$release_kind" "$release_label" "$pre_commit_sha"',
+  'write_push_retry_handoff "committed" "$release_kind" "$release_label" "$commit_sha"',
+  'if [ "${#handoff[@]}" -ne 4 ]; then',
+  'prepared retry handoff does not match its synchronized origin/main anchor',
+  'committed retry handoff does not match local main',
+  'stale publisher retry handoff does not match synchronized main',
   'ahead_count=$(git rev-list --count "${REMOTE_MAIN}..${LOCAL_MAIN}")',
   'git merge-base --is-ancestor "$REMOTE_MAIN" "$LOCAL_MAIN"',
   'retry handoff does not describe exactly one publisher commit ahead of origin/main',
@@ -128,6 +134,9 @@ const retryFunctionIndex = source.indexOf('recover_pending_push()');
 const syncMismatchIndex = source.indexOf('if [ "$LOCAL_MAIN" != "$REMOTE_MAIN" ]; then');
 const weeklyCommitIndex = source.indexOf('commit_and_push_release "weekly" "$week_line"');
 const dailyCommitIndex = source.indexOf('commit_and_push_release "daily" "$DATE"');
+const preparedHandoffIndex = source.indexOf('write_push_retry_handoff "prepared" "$release_kind" "$release_label" "$pre_commit_sha"');
+const releaseCommitIndex = source.indexOf('git commit -m "$commit_message"');
+const committedHandoffIndex = source.indexOf('write_push_retry_handoff "committed" "$release_kind" "$release_label" "$commit_sha"');
 if (
   missingPushRetrySignals.length > 0
   || retryFunctionIndex < 0
@@ -135,6 +144,11 @@ if (
   || retryFunctionIndex > syncMismatchIndex
   || weeklyCommitIndex < 0
   || dailyCommitIndex < 0
+  || preparedHandoffIndex < 0
+  || releaseCommitIndex < 0
+  || committedHandoffIndex < 0
+  || preparedHandoffIndex > releaseCommitIndex
+  || releaseCommitIndex > committedHandoffIndex
   || source.includes('git commit -m "content: sync daily site post with Telegram AI/tech brief (${DATE})" || true')
   || source.includes('git commit -m "chore: refresh weekly review (${week_line})" || true')
 ) {
