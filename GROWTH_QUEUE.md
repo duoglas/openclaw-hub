@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-03 11:24
+Last updated: 2026-09-05 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -20,6 +20,16 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-334: 在 release commit 前持久化 prepared push handoff，关闭 commit 成功但 committed marker 尚未写入时进程中断造成的不可恢复窗口 | ICE 9x9x9=729 — commit `743e970`
+  - Hypothesis: EXP-333 只在 `git commit` 成功后写入 commit SHA；若进程恰在 commit 创建后、marker 原子写入前终止，local main 会 ahead 但没有 retry handoff，下一轮仍会永久 fail closed。最近内容发布任务对自动发布恢复性的后续假设要求把意图记录前移到 commit 之前。
+  - Metrics: commit 前写入 `prepared/kind/label/pre-commit anchor`；commit 后升级为 `committed/kind/label/commit SHA`；恢复时 prepared 仅接受 anchor=origin/main，committed 仅接受 anchor=local main，且继续要求 exactly-one-ahead、subject 与 changed paths 白名单；同步 main 上只清理与当前 SHA 匹配的 prepared/committed marker。
+  - Acceptance: 1) commit 与 committed marker 之间中断仍可恢复 push；2) commit 前中断留下的 prepared marker 可在同步 main 上安全清理；3) malformed/stale/unknown-state marker fail closed；4) 脚本语法、fixture、diff check 与 Astro build 通过；5) 质量评分 29/30。
+
+- [x] P1 Candidate / EXP-333: 为日报/周报自动发布增加经验证的 push retry handoff，修复 commit 成功但 push 失败后 local main ahead 导致后续任务永久阻塞 | ICE 9x9x9=729 — commit `d2cc943`
+  - Hypothesis: EXP-331 要求 local main 与 origin/main 完全一致，但日报或周报在 commit 成功、push 暂时失败后会留下 local main ahead；下一轮缺少可验证恢复路径，只能永久 fail closed，导致已通过质量门禁的内容无法发布并阻断后续日报。
+  - Metrics: commit 后在 `.git` 写入 SHA/kind/label handoff；仅允许 exactly-one-ahead、remote 为祖先、commit subject 匹配且 changed paths 全在 publisher allowlist 时重试 push；成功后清理 marker，失败则保留；脚本语法、fixture、diff check 与 Astro build 通过。
+  - Acceptance: 1) push 失败不会丢失恢复上下文；2) 下一轮只重推已验证 commit，不重新生成或 recommit；3) 无 marker、多 commit ahead、diverged、subject/path 不匹配继续 fail closed；4) 质量评分 29/30。
 
 - [x] P1 Candidate / EXP-332: 周中周报只以已过日期计算 GSC 缺失与 schema 覆盖，禁止把未来日期计为缺失并制造虚假 7/7 RED | ICE 9x10x10=900 — commit `7c74cee`
   - Hypothesis: 最近24小时内容建设生成 2026-08-31~09-06 周报时，在 09-03 就把 09-04~09-06 三个未来日期计入 GSC 缺失与 schema 覆盖分母，输出 7/7 缺失和 0/7 覆盖；这会夸大数据质量告警、污染周中增长决策并让自动任务追逐尚未发生的缺口。

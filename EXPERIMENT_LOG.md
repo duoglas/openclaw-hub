@@ -1,3 +1,25 @@
+## EXP-334 — Persist release intent before commit to close the orphan-ahead crash window
+- Hypothesis: EXP-333 writes its retry marker only after `git commit` returns. If the publisher is terminated after the commit is created but before the commit SHA marker is atomically written, local main is exactly one release commit ahead with no handoff, so the synchronized-main guard still fails closed forever. Persisting a pre-commit intent anchored to synchronized origin/main can make that narrow crash window recoverable without authorizing arbitrary local commits.
+- Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Write a four-line `prepared/kind/label/pre-commit-anchor` handoff before creating a release commit, then atomically upgrade it to `committed/kind/label/commit-SHA`; recovery accepts a prepared marker only when its anchor equals fetched origin/main, accepts a committed marker only when its anchor equals local main, and retains the existing exactly-one-ahead, ancestry, subject, and changed-path checks; synchronized main removes only a matching prepared/committed marker and rejects malformed or stale state.
+- ICE: 9x9x9=729
+- Start date: 2026-09-05
+- End date: 2026-09-05
+- Success metric: `bash -n scripts/publish-daily.sh && pnpm check:publish-daily-generator-fixture && git diff --check && pnpm build` passes; fixture locks prepared-before-commit-before-committed ordering and four-line state validation.
+- Result: pass（pre-commit prepared handoff 与 post-commit committed handoff 已形成双阶段原子恢复协议；prepared/committed anchor、四行格式、unknown/stale state 均 fail closed；脚本语法、publish fixture、`git diff --check` 与 Astro build（771 pages）通过；实现提交 `743e970`；质量评分 29/30。）
+- Decision: scale（保留 prepared-before-commit-before-committed 顺序；下一步可增加临时 Git 仓库中的真实 crash-point recovery fixture，覆盖两个状态的端到端 push 恢复。）
+
+## EXP-333 — Validated retry handoff for failed publisher pushes
+- Hypothesis: EXP-331 requires local main to equal origin/main before generation, but a transient push failure after a successful daily or weekly commit leaves local main ahead and permanently blocks later runs. A narrowly validated handoff can retry that exact publisher commit without regenerating content or authorizing unrelated local history.
+- Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Record commit SHA, release kind, and release label in `.git` after a publisher commit; on the next run allow a retry only for exactly one commit ahead whose remote is an ancestor, subject matches the recorded release, and changed paths are entirely inside the publisher allowlist; clear a matching delivered marker after fetch.
+- ICE: 9x9x9=729
+- Start date: 2026-09-03
+- End date: 2026-09-03
+- Success metric: script syntax, publish fixture, diff check, and Astro build pass; missing marker, multiple commits, divergence, subject mismatch, or non-publisher paths fail closed.
+- Result: pass（validated retry handoff implemented and pushed in commit `d2cc943`; quality score 29/30.）
+- Decision: scale（retain exact-one-ahead, ancestry, subject, and path validation; close the remaining commit-before-marker crash window next.）
+
 ## EXP-331 — Fail closed unless the daily publisher starts from synchronized main
 - Hypothesis: EXP-330 已用 repository lock 消除同仓库并发发布，但 `publish-daily.sh` 仍把 `git fetch origin main --quiet || true` 当作可忽略步骤，也未检查当前 branch 与 local/remote ancestry。若定时任务落在 feature branch、detached HEAD，或 main ahead/behind/diverged，页面会基于错误/陈旧基线生成；更危险的是 commit 可创建在当前非 main branch，而后续 `git push origin main` 实际推送另一条 local main ref，形成“脚本显示已发布但 release commit 未进入 main”的静默失败。
 - Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
