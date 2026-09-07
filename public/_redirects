@@ -19,7 +19,7 @@ http://openhub.plzbite.top/* https://kuoo.uk/:splat 301!
 https://coding.kuoo.uk/* https://kuoo.uk/coding/:splat 200
 
 # Hexi 2026 trip moved to dedicated trip site (trip.kuoo.uk)
-# force: the old page is still a static asset, so 301! is required to shadow it
-/trips/hexi-2026 https://trip.kuoo.uk/trips/hexi-2026/ 301!
-/trips/hexi-2026/ https://trip.kuoo.uk/trips/hexi-2026/ 301!
-/trips/hexi-2026/* https://trip.kuoo.uk/trips/hexi-2026/:splat 301!
+# static asset removed, so plain 301 applies
+/trips/hexi-2026 https://trip.kuoo.uk/trips/hexi-2026/ 301
+/trips/hexi-2026/ https://trip.kuoo.uk/trips/hexi-2026/ 301
+/trips/hexi-2026/* https://trip.kuoo.uk/trips/hexi-2026/:splat 301
