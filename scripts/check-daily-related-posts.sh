@@ -30,6 +30,20 @@ for lang in en zh; do
   related_count="$(grep -o 'data-growth-link="related-post"' "$page" | wc -l | tr -d ' ')"
   [[ "$related_count" -ge 3 ]] || fail "${lang} latest daily has ${related_count} related links, expected at least 3"
 
+  mapfile -t related_hrefs < <(
+    grep -oE 'href="/[^"]+" data-growth-link="related-post"' "$page" \
+      | sed -E 's/^href="([^"]+)".*$/\1/'
+  )
+
+  unique_related_count="$(printf '%s\n' "${related_hrefs[@]}" | sort -u | wc -l | tr -d ' ')"
+  [[ "$unique_related_count" -eq "$related_count" ]] || \
+    fail "${lang} latest daily has duplicate related-post hrefs (${related_count} links, ${unique_related_count} unique)"
+
+  for href in "${related_hrefs[@]}"; do
+    [[ "$href" == "/${lang}/blog/"* ]] || \
+      fail "${lang} related-post href is not a same-language blog route: ${href}"
+  done
+
   if grep -oE '<a href="/[^"]+" data-growth-link="related-post"' "$page" | grep -Fq "/${lang}/blog/${slug}/"; then
     fail "${lang} related posts anchors link to itself: ${slug}"
   fi
