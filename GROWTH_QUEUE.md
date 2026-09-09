@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-08 17:20
+Last updated: 2026-09-09 17:22
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -21,6 +21,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-336: 强化日报相关文章内链增长门禁，阻止重复或跨语言 related-post 链接稀释最新日报的内部链接权重 | ICE 9x9x8=648 — commit `aa66c00`
+  - Status (2026-09-09 17:22): implementation and validation complete; latest EN/ZH daily each has 3 unique same-language related links; `bash -n`, `pnpm build`（771 pages）、`pnpm check:daily-related-posts` 与 `git diff --check` passed；实现提交 `aa66c00`；已 commit/push。质量评分 28/30。
+  - Hypothesis: 现有门禁只验证最新日报至少有 3 条相关文章链接且不自链，未阻止重复 href 或错误语言路由；重复/跨语言链接会浪费可爬取入口并稀释最新日报到 evergreen 指南与历史内容的内部链接信号。
+  - Metrics: latest EN/ZH built pages 的 `data-growth-link="related-post"` href 全部唯一、全部匹配当前语言 `/en/blog/` 或 `/zh/blog/`、数量仍不少于 3；CI 继续运行该门禁。
+  - Acceptance: 1) duplicate related href fail closed；2) cross-language/non-blog related href fail closed；3) 现有 3+ links、self-link guard、Astro build 与 diff check 通过；4) commit/push 后移至 Done。
 
 - [x] P1 Candidate / EXP-335: 增加真实 Git 仓库的 publisher push recovery 集成测试，消费 EXP-334 后续 crash-point recovery 假设 | ICE 9x9x8=648 — commit `0655a0f`
   - Status (2026-09-09 11:21): done；18 个真实 Git/file-remote 场景通过，`node --check`、`git diff --check` 与 `pnpm build`（771 pages）通过；已 commit/push。质量评分 29/30。

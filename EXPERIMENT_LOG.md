@@ -3563,3 +3563,14 @@
 - Success metric: 18 个真实 Git 场景通过；失败路径不改远端、成功恢复不 recommit；`bash -n` 与 `git diff --check` 通过；`pnpm build` 通过后 commit/push 并移至 Done。
 - Result: pass（`node scripts/check-publisher-recovery-integration.mjs` 通过 18/18；`node --check`、`git diff --check` 与 `pnpm build`（771 pages）通过；失败路径未改远端、成功恢复未 recommit；实现提交 `0655a0f`，metadata commit `56633f3` 已 push，质量评分 29/30。）
 - Decision: scale（将真实 Git/file-remote recovery fixture 保留为 publisher handoff 的发布前回归门禁；后续新增恢复状态或 marker 字段时必须同步扩展场景覆盖。）
+
+### EXP-336
+- Hypothesis: 现有 `check:daily-related-posts` 只验证最新日报至少有 3 条相关文章链接且不自链，未阻止重复 href 或错误语言路由；重复/跨语言链接会浪费可爬取入口并稀释最新日报到 evergreen 指南与历史内容的内部链接信号。
+- Scope: `scripts/check-daily-related-posts.sh`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 强化最新 EN/ZH 日报 built-page related-post 门禁：抽取带 `data-growth-link="related-post"` 的 href，要求全部唯一，并要求每条链接都是当前语言的 `/en/blog/` 或 `/zh/blog/` 路由；保留原有 3+ links、self-link 与 render-event 检查。该检查已在 Content Check CI 中运行。
+- ICE: 9x9x8=648
+- Start date: 2026-09-09
+- End date: 2026-09-09
+- Success metric: 最新 EN/ZH 日报各有 3 条唯一且同语言的 related-post 链接；`bash -n scripts/check-daily-related-posts.sh`、`pnpm build`（771 pages）、`pnpm check:daily-related-posts` 与 `git diff --check` 全部通过。
+- Result: pass（EN/ZH 最新日报均通过 3 条唯一同语言 related links、render event 与 self-link guard；Astro build 771 pages 通过；实现提交 `aa66c00` 已 push；质量评分 28/30。）
+- Decision: scale（将 duplicate/cross-language related-post guard 保留为日报发布前与 CI 增长门禁；后续若调整相关文章排序或推荐算法，必须同步验证唯一性与语言边界。）
