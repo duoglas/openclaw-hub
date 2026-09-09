@@ -47,6 +47,7 @@
     "check:daily-en-language": "node scripts/check-daily-en-language-consistency.mjs",
     "check:daily-action-sections": "bash scripts/check-daily-action-sections.sh",
     "check:daily-brief-specificity": "node scripts/check-daily-brief-specificity.mjs",
+    "check:publisher-recovery-integration": "node scripts/check-publisher-recovery-integration.mjs",
     "check:publish-daily-generator-fixture": "node scripts/check-publish-daily-generator-fixture.mjs",
     "check:latest-daily-real-cron-fixture": "node scripts/check-latest-daily-real-cron-fixture.mjs",
     "check:daily-case-signal-faq-links": "node scripts/check-daily-case-signal-faq-links.mjs",
