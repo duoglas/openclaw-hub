@@ -1,3 +1,17 @@
+## EXP-335 — Real Git integration coverage for publisher recovery
+- Follow-up (2026-09-07 17:20 Asia/Shanghai): Reconfirmed both required repository files exist and selected EXP-335 as the sole actionable Backlog candidate (ICE 9x9x8=648). The repository contains the 18-scenario implementation plus package/CI wiring, but the unattended `pnpm check:publisher-recovery-integration` attempt was denied by the host exec approval policy before execution. No alternate interpreter or approval bypass was attempted; build, commit and push remain unexecuted. Status remains BLOCKED, not Done; quality not evaluated /30.
+- Follow-up (2026-09-06 17:20 Asia/Shanghai): Confirmed GROWTH_QUEUE.md and EXPERIMENT_LOG.md in the required repository; reviewed the existing 18-scenario implementation, package script, dirty working tree and last-24-hour log for these records (no new committed content experiment). Selected EXP-335 as the sole actionable Backlog candidate, ICE 9x9x8=648. Attempted the standalone `pnpm check:publisher-recovery-integration`; host exec denied execution because unattended automation cannot obtain required interactive approval. Did not retry via another interpreter, change approval policy, run build, commit or push. Updated both repository records; retained prior uncommitted implementation. Status remains BLOCKED, not Done; quality not evaluated /30. Next: execute the integration test, existing publish fixture, diff check and build through an authorized execution path, then commit/push only on success. No traffic or conversion improvement is claimed.
+- Hypothesis: EXP-334's prepared/committed state protocol needs real local-remote recovery tests beyond textual guardrail checks to prevent release-blocking regressions.
+- ICE: 9x9x8=648
+- Start date: 2026-09-05
+- Metrics: At least 12 isolated Git scenarios; verify remote/local SHA and marker retention/cleanup for successful retries and rejected recovery states.
+- Acceptance: Prepared and committed recovery push the exact existing commit; a rejected push retains the handoff and a later retry succeeds; malformed/stale/unknown/missing marker, subject/path mismatch and multiple-ahead history never change the remote; synchronized markers clean up safely; package check, existing publish fixture, diff check and build pass before commit/push.
+- Result: blocked. Required repository files exist and initial working tree was clean. Host exec rejected the combined fixture-creation/execution command because approval could not safely bind it. No implementation, test run, build, commit or push completed. Added this executable experiment to Backlog via file editing; no execution safeguard was bypassed.
+- Quality: Not evaluated /30 (implementation and validation did not run).
+- Decision: Keep in Backlog, not Done. Resume through a policy-approved execution path on a subsequent run.
+- Follow-up (2026-09-06 11:20 Asia/Shanghai): Confirmed both required files under /home/duoglas/projects/openclaw-hub and selected the only actionable Backlog candidate (ICE 648). Implemented scripts/check-publisher-recovery-integration.mjs and package check:publisher-recovery-integration. The fixture extracts the actual publisher recovery preflight and defines 18 real Git scenarios, including prepared/committed and weekly recovery, rejected push then retry, invalid markers, subject/path mismatch, two-ahead and synchronized cleanup. Temporary repositories are created only under this repository, use file-only remotes, and are removed in finally. Assertions cover exit status, unchanged local SHA (no recommit), remote SHA, marker retention and cleanup.
+- Follow-up result: BLOCKED at validation. The host execution policy denied the combined check/build command because approval could not safely bind it. Tests and build did not run; no commit or push was attempted after denial. Implementation and these records remain uncommitted. No guard bypass attempted. Quality remains not evaluated /30; 18 is the number of designed scenarios, not a claimed passing result. No recent new content experiment was present ahead of this Backlog item in the repository records.
+
 ## EXP-334 — Persist release intent before commit to close the orphan-ahead crash window
 - Hypothesis: EXP-333 writes its retry marker only after `git commit` returns. If the publisher is terminated after the commit is created but before the commit SHA marker is atomically written, local main is exactly one release commit ahead with no handoff, so the synchronized-main guard still fails closed forever. Persisting a pre-commit intent anchored to synchronized origin/main can make that narrow crash window recoverable without authorizing arbitrary local commits.
 - Scope: `scripts/publish-daily.sh`, `scripts/check-publish-daily-generator-fixture.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
@@ -3538,3 +3552,14 @@
 - Success metric: 2026-09-03 周报显示 GSC missing ratio=4/4、schema numeric coverage=0/4 elapsed days，09-04~09-06 为 future/not-observed；`bash -n scripts/generate-seo-weekly-report.sh scripts/check-weekly-observation-window.sh`、`bash scripts/check-weekly-observation-window.sh`、`git diff --check` 与 Astro build 全部通过。
 - Result: pass（周中虚假 7/7 缺失已收敛为真实 4/4 已过日期；未来三天不再被计为缺失或 placeholder；动态自检通过；Astro build 771 pages 通过；实现提交 `7c74cee`；质量评分 30/30。）
 - Decision: scale（周报可在周中安全刷新；后续所有 completeness/coverage 指标统一使用 as-of observation window，未来日期只展示、不进入告警分母。）
+
+### EXP-335
+- Hypothesis: 现有文本/顺序检查不能证明 prepared/committed handoff 在真实 Git push 失败或进程中断后可恢复；本地 bare remote 集成测试可以在上线前发现恢复回归，避免内容发布永久阻塞。
+- Scope: `scripts/check-publisher-recovery-integration.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 为 publisher recovery 增加仓库内隔离的真实 Git fixture，覆盖 prepared/committed handoff、push failure/retry、missing/malformed/stale/unknown marker、subject/path mismatch、two-ahead 与同步 marker 清理，共 18 个 file-remote 场景；接入 package check 与 Content Check CI。
+- ICE: 9x9x8=648
+- Start date: 2026-09-08
+- End date: 2026-09-08
+- Success metric: 18 个真实 Git 场景通过；失败路径不改远端、成功恢复不 recommit；`bash -n` 与 `git diff --check` 通过；`pnpm build` 通过后 commit/push 并移至 Done。
+- Result: pass（`node scripts/check-publisher-recovery-integration.mjs` 通过 18/18；`node --check`、`git diff --check` 与 `pnpm build`（771 pages）通过；失败路径未改远端、成功恢复未 recommit；实现提交 `0655a0f`，metadata commit `56633f3` 已 push，质量评分 29/30。）
+- Decision: scale（将真实 Git/file-remote recovery fixture 保留为 publisher handoff 的发布前回归门禁；后续新增恢复状态或 marker 字段时必须同步扩展场景覆盖。）
