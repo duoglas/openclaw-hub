@@ -1,3 +1,15 @@
+## EXP-337 — Weekly report low-CTR data-integrity gate
+- Hypothesis: 当前周报生成器在 GSC query 数据缺失时仍可能输出“检测到的低 CTR 队列”和标题改写执行项；这会把占位数据误当增长信号，消耗内容执行资源并污染实验归因。只有在存在真实 query 行时才应生成改写行动，否则必须明确要求完成 7 天 GSC 回填。
+- Scope: `scripts/check-weekly-report-data-integrity.sh`, `scripts/generate-seo-weekly-report.sh`, `package.json`, `.github/workflows/content-check.yml`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 对 placeholder-only GSC 行强制输出 backfill-only guidance；真实 query 数据才允许生成标题/meta rewrite 行动；新增 synthetic self-test 并接入 Content Check CI。
+- ICE: 9x9x8=648
+- Start date: 2026-09-10
+- Metrics: placeholder report 不得出现 low-CTR detected queue 或 title/meta rewrite 执行项，且必须出现 7-day GSC query backfill；real-data report 保留 rewrite guidance。
+- Acceptance: synthetic self-test、bash syntax、weekly review check、diff check 与 `pnpm build` 通过后，commit/push 并回写 Done。
+- Result: pass（placeholder-only 报告在 `bash scripts/check-weekly-report-data-integrity.sh` 中 fail closed；real-data synthetic case 保留 title/meta rewrite guidance；`bash -n`、weekly review cadence check、`git diff --check` 与 Astro build（771 pages）通过；实现提交 `94c247f`，待 metadata 回写后 push。）
+- Quality: 29/30。
+- Decision: scale（保留 GSC query data-integrity gate 作为周报与 Content Check CI 的发布前门禁；后续只有真实 query 行才能触发标题/meta 改写实验。）<!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-335 — Real Git integration coverage for publisher recovery
 - Follow-up (2026-09-07 17:20 Asia/Shanghai): Reconfirmed both required repository files exist and selected EXP-335 as the sole actionable Backlog candidate (ICE 9x9x8=648). The repository contains the 18-scenario implementation plus package/CI wiring, but the unattended `pnpm check:publisher-recovery-integration` attempt was denied by the host exec approval policy before execution. No alternate interpreter or approval bypass was attempted; build, commit and push remain unexecuted. Status remains BLOCKED, not Done; quality not evaluated /30.
 - Follow-up (2026-09-06 17:20 Asia/Shanghai): Confirmed GROWTH_QUEUE.md and EXPERIMENT_LOG.md in the required repository; reviewed the existing 18-scenario implementation, package script, dirty working tree and last-24-hour log for these records (no new committed content experiment). Selected EXP-335 as the sole actionable Backlog candidate, ICE 9x9x8=648. Attempted the standalone `pnpm check:publisher-recovery-integration`; host exec denied execution because unattended automation cannot obtain required interactive approval. Did not retry via another interpreter, change approval policy, run build, commit or push. Updated both repository records; retained prior uncommitted implementation. Status remains BLOCKED, not Done; quality not evaluated /30. Next: execute the integration test, existing publish fixture, diff check and build through an authorized execution path, then commit/push only on success. No traffic or conversion improvement is claimed.
