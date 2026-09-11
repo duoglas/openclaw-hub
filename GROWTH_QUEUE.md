@@ -23,6 +23,12 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-338: 在双语文章索引卡片展示发布日期与内容类型，强化新鲜度与主题选择信号 | ICE 8x8x8=512 — commit `2e7330c`
+  - Status (2026-09-11 17:20): implementation complete and pushed; EN/ZH `/blog/` index cards now expose machine-readable publication dates, visible freshness metadata, localized category labels, and `data-growth-link="article-index-card"` instrumentation. `git diff --check` passed before commit. `pnpm build` was attempted but unattended host approval denied the interactive execution; no bypass attempted. Quality score 25/30.
+  - Hypothesis: 文章索引目前只展示标题和摘要，用户无法快速判断内容新鲜度或主题类型；在双语卡片补充发布日期与分类，可降低选择成本并提高高意图文章的索引点击率，同时为后续 CTR 分层分析提供稳定 link instrumentation。
+  - Metrics: EN/ZH 非日报文章索引卡片 100% 输出 `<time datetime>`、可见发布日期、对应语言分类标签与 `data-growth-link="article-index-card"`；后续按该事件比较索引卡片 CTR 与文章进入率。
+  - Acceptance: 1) EN/ZH blog index cards render date and category; 2) date is machine-readable; 3) daily/weekly posts remain excluded; 4) `git diff --check` passes; 5) `pnpm build` and Content Check pass before considering scale. Build validation is pending host policy approval.
+
 - [x] P1 Candidate / EXP-337: 为周报低 CTR 决策增加真实数据完整性门禁，阻止占位 GSC 行生成无依据的标题改写任务 | ICE 9x9x8=648 — commit `94c247f`
   - Status (2026-09-11 11:22): implementation and validation complete; placeholder-only report is fail-closed, real-data report retains rewrite guidance; synthetic self-test, `bash -n`, weekly review cadence check, `git diff --check` and Astro build（771 pages）passed; committed locally as `94c247f` and ready to push. Quality score 29/30.
   - Hypothesis: 当前周报生成器在 GSC query 数据缺失时仍可能输出“检测到的低 CTR 队列”和标题改写执行项；这会把占位数据误当增长信号，消耗内容执行资源并污染实验归因。只有在存在真实 query 行时才应生成改写行动，否则必须明确要求完成 7 天 GSC 回填。

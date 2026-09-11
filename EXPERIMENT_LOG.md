@@ -1,3 +1,15 @@
+## EXP-338 — Bilingual article-index freshness and category metadata surface
+- Hypothesis: EN/ZH article index cards currently show only title and description, so visitors cannot quickly judge freshness or topic fit. Adding a machine-readable publication date, visible localized category, and stable card instrumentation should reduce selection friction and improve high-intent article click-through and entry rate.
+- Scope: `src/pages/en/blog/index.astro`, `src/pages/zh/blog/index.astro`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Added `<time datetime>` plus visible ISO publication date to both article indexes; added English title-case and Chinese localized category labels; added `data-growth-link="article-index-card"` to index-card anchors. Existing daily and weekly exclusion filters remain unchanged.
+- ICE: 8x8x8=512
+- Start date: 2026-09-11
+- Metrics: 100% of non-daily/non-weekly EN/ZH index cards expose date, category, and instrumentation; future comparison should segment index CTR and article-entry rate by card metadata.
+- Acceptance: Both index templates render date/category, date is machine-readable, daily/weekly posts remain excluded, `git diff --check` passes, and build/Content Check pass before scale.
+- Result: implementation pass and pushed in commit `2e7330c`; `git diff --check` passed. `pnpm build` was attempted but blocked by unattended host exec approval policy before execution; no approval bypass or alternate interpreter was used. No traffic or conversion lift is claimed yet.
+- Quality: 25/30 (implementation and diff validation passed; build/Content Check pending policy-approved execution).
+- Decision: ship guarded experiment; keep the metadata surface and instrumentation, then compare CTR/entry-rate cohorts after enough traffic. Re-run build and Content Check through an authorized execution path before declaring scale. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-337 — Weekly report low-CTR data-integrity gate
 - Hypothesis: 当前周报生成器在 GSC query 数据缺失时仍可能输出“检测到的低 CTR 队列”和标题改写执行项；这会把占位数据误当增长信号，消耗内容执行资源并污染实验归因。只有在存在真实 query 行时才应生成改写行动，否则必须明确要求完成 7 天 GSC 回填。
 - Scope: `scripts/check-weekly-report-data-integrity.sh`, `scripts/generate-seo-weekly-report.sh`, `package.json`, `.github/workflows/content-check.yml`, `WEEKLY_REVIEW.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
