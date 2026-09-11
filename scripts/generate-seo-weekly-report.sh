@@ -776,6 +776,21 @@ if [ -z "$TITLE_REWRITE_ROWS" ]; then
 fi
 TITLE_REWRITE_ACT_ITEMS=$(build_title_rewrite_act_items "$TITLE_REWRITE_ROWS")
 
+TITLE_REWRITE_HAS_DATA=1
+if printf "%s\n" "$TITLE_REWRITE_ROWS" | grep -Eq '^[|][[:space:]]*-[[:space:]]*[|]'; then
+  TITLE_REWRITE_HAS_DATA=0
+fi
+
+if [ "$TITLE_REWRITE_HAS_DATA" -eq 1 ]; then
+  LOW_CTR_PROBLEM="- Low-CTR opportunities are in the detected queue; execute title/meta rewrites after validating the top-ranked rows."
+  TITLE_REWRITE_ACTION="- [ ] P1: Execute title/meta rewrites for top 3 items from Section 6 and publish EN/ZH updates | owner: hub-growth-worker | due: ${SUNDAY}"
+  REVIEW_LOW_CTR_LINE="- Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites."
+else
+  LOW_CTR_PROBLEM="- No computable low-CTR query opportunities are available; complete the 7-day GSC query backfill before making title/meta rewrite decisions."
+  TITLE_REWRITE_ACTION="- [ ] P1: Backfill 7 days of GSC query data, then regenerate Section 6 before scheduling title/meta rewrites | owner: hub-growth-worker | due: ${SUNDAY}"
+  REVIEW_LOW_CTR_LINE="- Top queries by impressions but low CTR: unavailable until the 7-day GSC query backfill is complete; do not treat the placeholder queue as an optimization signal."
+fi
+
 HIGH_BOUNCE_RETRO_ROWS=$(collect_high_bounce_retro_queue)
 if [ -z "$HIGH_BOUNCE_RETRO_ROWS" ]; then
   HIGH_BOUNCE_RETRO_ROWS="| - | 0 | 0.00% | 无可执行数据，先补齐行为指标后复盘 | owner: hub-growth-worker; due: ${SUNDAY} |"
@@ -910,13 +925,13 @@ ${DOMAIN_GROUP_SECTION}
 
 ### Problems / Blockers
 - GSC completeness status this week: ${GSC_GAP_STATUS} — ${GSC_GAP_NOTE}.
-- Several low-CTR opportunities are still in “detected” state and not yet converted into title/meta rewrite commits.
+${LOW_CTR_PROBLEM}
 - High-bounce-risk proxy queue still requires execution and validation against real behavior metrics (GA4/Clarity) before scaling.
 
 ## 14) Action Plan (Next Week)
 
 - [ ] P0: Backfill latest 7 daily snapshots with real GSC clicks/impressions/CTR/position data (priority raised if Section 10 is 🔴) | owner: hub-growth-worker | due: ${SUNDAY}
-- [ ] P1: Execute title/meta rewrites for top 3 items from Section 6 and publish EN/ZH updates | owner: hub-growth-worker | due: ${SUNDAY}
+${TITLE_REWRITE_ACTION}
 - [ ] P1: Execute top 2 pages from Section 7 high-bounce proxy queue and compare pre/post engagement metrics | owner: hub-growth-worker | due: ${SUNDAY}
 - [ ] P2: Add schema risk metrics ('Schema Risk Status/Issues') into 'daily:seo' output so Section 11 can auto-trend real values | owner: hub-growth-worker | due: ${SUNDAY}
 
@@ -947,7 +962,7 @@ cat > "WEEKLY_REVIEW.md" <<EOF
 - Schema risk trend coverage: ${SCHEMA_WEEK_NUMERIC_DAYS}/${ELAPSED_DAYS} elapsed days (${SCHEMA_WEEK_COVERAGE_PCT}) have numeric issue counts as of ${AS_OF_DATE}; future dates are excluded from completeness alerts.
 - Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
 - Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
-- Top queries by impressions but low CTR: Source from weekly report Section 5/6 (auto-generated queue), execute top 3 rewrites.
+${REVIEW_LOW_CTR_LINE}
 - High-bounce-risk pages (proxy): Source from weekly report Section 7 (high impressions + low CTR proxy queue) and execute top 2 retro actions.
 - New pages indexed: Verify newly published URLs in Search Console; if data unavailable, create one indexing check task in Action Plan.
 - Published posts (auto): ${PUBLISHED_POSTS}
