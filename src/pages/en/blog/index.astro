@@ -51,11 +51,17 @@ const breadcrumbSchema = {
   <h1>Guides</h1>
   {posts.map(post => {
     const slug = post.id.replace(/^en\//, '').replace(/\.md$/, '');
+    const published = post.data.pubDate.toISOString().slice(0, 10);
+    const categoryLabel = post.data.category.charAt(0).toUpperCase() + post.data.category.slice(1);
     return (
-      <a href={`/en/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;">
+      <a href={`/en/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;" data-growth-link="article-index-card">
         <div class="card" style="cursor:pointer;">
           <h3 style="margin-top:0;">{post.data.title}</h3>
           <p style="color:#999; margin:0.3rem 0;">{post.data.description}</p>
+          <p style="color:#64748b; font-size:0.82rem; margin:0.8rem 0 0;">
+            <time datetime={post.data.pubDate.toISOString()}>{published}</time>
+            <span aria-hidden="true"> · </span>{categoryLabel}
+          </p>
         </div>
       </a>
     );

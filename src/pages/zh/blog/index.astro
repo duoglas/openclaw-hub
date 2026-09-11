@@ -51,11 +51,24 @@ const breadcrumbSchema = {
   <h1>教程库</h1>
   {posts.map(post => {
     const slug = post.id.replace(/^zh\//, '').replace(/\.md$/, '');
+    const published = post.data.pubDate.toISOString().slice(0, 10);
+    const categoryLabels = {
+      guide: '指南',
+      comparison: '对比',
+      tutorial: '教程',
+      news: '新闻',
+      review: '评测',
+      analysis: '分析',
+    };
     return (
-      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;">
+      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;" data-growth-link="article-index-card">
         <div class="card" style="cursor:pointer;">
           <h3 style="margin-top:0;">{post.data.title}</h3>
           <p style="color:#999; margin:0.3rem 0;">{post.data.description}</p>
+          <p style="color:#64748b; font-size:0.82rem; margin:0.8rem 0 0;">
+            <time datetime={post.data.pubDate.toISOString()}>{published}</time>
+            <span aria-hidden="true"> · </span>{categoryLabels[post.data.category]}
+          </p>
         </div>
       </a>
     );
