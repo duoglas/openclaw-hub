@@ -42,6 +42,7 @@
     "check:daily-cross-date-duplicate": "node scripts/check-daily-cross-date-duplicate.mjs",
     "check:daily-fresh-completeness": "bash scripts/check-daily-fresh-completeness.sh",
     "check:daily-index-growth": "bash scripts/check-daily-index-growth.sh",
+    "check:article-index-growth": "bash scripts/check-article-index-growth.sh",
     "check:latest-daily-surface": "bash scripts/check-latest-daily-surface.sh",
     "check:daily-related-posts": "bash scripts/check-daily-related-posts.sh",
     "check:daily-evidence-matrix": "node scripts/check-daily-evidence-matrix.mjs",

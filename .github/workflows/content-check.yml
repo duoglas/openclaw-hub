@@ -103,6 +103,9 @@ jobs:
       - name: Daily index growth check
         run: pnpm check:daily-index-growth
 
+      - name: Article index growth metadata check
+        run: pnpm check:article-index-growth
+
       - name: Latest daily surface alignment check
         run: pnpm check:latest-daily-surface
 

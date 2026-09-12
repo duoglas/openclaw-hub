@@ -54,7 +54,7 @@ const breadcrumbSchema = {
     const published = post.data.pubDate.toISOString().slice(0, 10);
     const categoryLabel = post.data.category.charAt(0).toUpperCase() + post.data.category.slice(1);
     return (
-      <a href={`/en/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;" data-growth-link="article-index-card">
+      <a href={`/en/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;" data-growth-link="article-index-card" data-growth-category={post.data.category}>
         <div class="card" style="cursor:pointer;">
           <h3 style="margin-top:0;">{post.data.title}</h3>
           <p style="color:#999; margin:0.3rem 0;">{post.data.description}</p>

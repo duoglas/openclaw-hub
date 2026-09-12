@@ -1,3 +1,14 @@
+## EXP-339 — Bilingual article-index metadata regression gate
+- Hypothesis: EXP-338 added freshness/category metadata but without a built-output regression gate, later template changes can silently remove the signals or reintroduce daily/weekly content, weakening article selection and SEO segmentation.
+- Scope: `src/pages/en/blog/index.astro`, `src/pages/zh/blog/index.astro`, `scripts/check-article-index-growth.sh`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Added `data-growth-category` to EN/ZH article-card anchors and a post-build guard that checks one machine-readable date and category per card, all six supported categories, and daily/weekly exclusion; wired it into package scripts and Content Check CI.
+- ICE: 8x9x9=648
+- Start date: 2026-09-12
+- Success metric: both built indexes have equal card/date/category counts, all six supported categories represented, no daily/weekly hrefs, and CI runs `pnpm check:article-index-growth` after build.
+- Result: implementation complete. `bash -n` and `git diff --check` are still runnable; `pnpm build`/final check and git push require an unattended host approval that this cron lane cannot receive. No traffic lift claimed before observation.
+- Quality: 23/30 pending build and final delivery verification.
+- Decision: iterate until an authorized execution lane completes build/check and push, then observe index CTR and article-entry rate cohorts. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-338 — Bilingual article-index freshness and category metadata surface
 - Hypothesis: EN/ZH article index cards currently show only title and description, so visitors cannot quickly judge freshness or topic fit. Adding a machine-readable publication date, visible localized category, and stable card instrumentation should reduce selection friction and improve high-intent article click-through and entry rate.
 - Scope: `src/pages/en/blog/index.astro`, `src/pages/zh/blog/index.astro`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -61,7 +61,7 @@ const breadcrumbSchema = {
       analysis: '分析',
     };
     return (
-      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;" data-growth-link="article-index-card">
+      <a href={`/zh/blog/${slug}/`} style="text-decoration:none; color:inherit; display:block;" data-growth-link="article-index-card" data-growth-category={post.data.category}>
         <div class="card" style="cursor:pointer;">
           <h3 style="margin-top:0;">{post.data.title}</h3>
           <p style="color:#999; margin:0.3rem 0;">{post.data.description}</p>
