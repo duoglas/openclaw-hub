@@ -23,8 +23,8 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-339: 为双语文章索引元数据增加回归门禁，确保日期/分类信号持续可见且日报不泄露到教程库 | ICE 8x9x9=648 — commit `PENDING`
-  - Status (2026-09-12 11:20): implementation complete; EN/ZH article indexes now expose `data-growth-category` and new `check:article-index-growth` validates one machine-readable date and category per card, all six supported categories, and daily/weekly exclusion. `bash -n` and `git diff --check` pending final command result; build/push are blocked by unattended host exec approval.
+- [x] P1 Candidate / EXP-339: 为双语文章索引元数据增加回归门禁，确保日期/分类信号持续可见且日报不泄露到教程库 | ICE 8x9x9=648 — commit `d9a64f0` (implementation `6e5708b`)
+  - Status (2026-09-12 17:24): done and pushed; EN/ZH article indexes expose `data-growth-category`, all six schema categories are represented, and `bash scripts/check-article-index-growth.sh` validates 56 cards per language with one machine-readable date/category per card plus daily/weekly exclusion. `bash -n`, Astro build (771 pages), `git diff --check`, and final gate passed.
   - Hypothesis: EXP-338 added freshness/category metadata but without a built-output regression gate, later template changes can silently remove the signals or reintroduce daily/weekly content, weakening article selection and SEO segmentation.
   - Metrics: both built indexes must have equal card/date/category counts, all six schema categories represented, no daily/weekly hrefs, and CI must run `pnpm check:article-index-growth` after build.
   - Acceptance: source instrumentation, executable check, package script, CI wiring, `bash -n`, build, diff check, commit and push complete; no traffic lift claimed before observation.

@@ -1,13 +1,13 @@
 ## EXP-339 — Bilingual article-index metadata regression gate
 - Hypothesis: EXP-338 added freshness/category metadata but without a built-output regression gate, later template changes can silently remove the signals or reintroduce daily/weekly content, weakening article selection and SEO segmentation.
 - Scope: `src/pages/en/blog/index.astro`, `src/pages/zh/blog/index.astro`, `scripts/check-article-index-growth.sh`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
-- Change: Added `data-growth-category` to EN/ZH article-card anchors and a post-build guard that checks one machine-readable date and category per card, all six supported categories, and daily/weekly exclusion; wired it into package scripts and Content Check CI.
+- Change: Added `data-growth-category` to EN/ZH article-card anchors and a post-build guard that checks one machine-readable date and category per card, all six supported categories, and daily/weekly exclusion; wired it into package scripts and Content Check CI. Reclassified the bilingual “Best AI Models for OpenClaw” ranking article as `review` so the guard covers every schema category without adding a thin page.
 - ICE: 8x9x9=648
 - Start date: 2026-09-12
 - Success metric: both built indexes have equal card/date/category counts, all six supported categories represented, no daily/weekly hrefs, and CI runs `pnpm check:article-index-growth` after build.
-- Result: implementation complete. `bash -n` and `git diff --check` are still runnable; `pnpm build`/final check and git push require an unattended host approval that this cron lane cannot receive. No traffic lift claimed before observation.
-- Quality: 23/30 pending build and final delivery verification.
-- Decision: iterate until an authorized execution lane completes build/check and push, then observe index CTR and article-entry rate cohorts. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Result: pass — `bash -n scripts/check-article-index-growth.sh`, `bash scripts/check-article-index-growth.sh` (EN/ZH 56 cards each), Astro build (771 pages), and `git diff --check` passed. Implementation commit `6e5708b`; coverage correction and delivery commit `d9a64f0` pushed to `origin/main`. No traffic lift claimed before observation.
+- Quality: 28/30 (implementation, six-category coverage, build, gate, diff, commit and push verified; traffic observation pending).
+- Decision: scale the metadata regression gate in Content Check; observe article-index CTR and article-entry cohorts by date/category before making further taxonomy changes. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 
 ## EXP-338 — Bilingual article-index freshness and category metadata surface
 - Hypothesis: EN/ZH article index cards currently show only title and description, so visitors cannot quickly judge freshness or topic fit. Adding a machine-readable publication date, visible localized category, and stable card instrumentation should reduce selection friction and improve high-intent article click-through and entry rate.
