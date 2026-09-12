@@ -3,7 +3,7 @@ title: "Best AI Models for OpenClaw in 2026: Complete Ranking & Guide"
 description: "Which AI model should you use with OpenClaw? We rank Claude Opus 4.6, GPT-5.3 Codex, Gemini 3, MiniMax M2.1, and more for cost, speed, and quality."
 pubDate: 2026-02-10
 tags: ["guide", "models", "openclaw"]
-category: "guide"
+category: "review"
 lang: "en"
 ---
 
