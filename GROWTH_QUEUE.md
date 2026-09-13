@@ -23,7 +23,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-340: 为双语文章索引增加唯一同语言 href 增长门禁，阻止重复或跨语言入口稀释文章发现 | ICE 9x9x9=729 — commit `f933c36`
+- [x] P1 Candidate / EXP-340: 为双语文章索引增加唯一同语言 href 增长门禁，阻止重复或跨语言入口稀释文章发现 | ICE 9x9x9=729 — commit `8d571b4`
   - Status (2026-09-13 11:20): done and pushed; direct Astro build produced 771 pages; EN/ZH article-index growth gate passed with 56 unique same-language cards each; `bash -n` and `git diff --check` passed.
   - Hypothesis: EXP-339 verifies article-index date/category metadata but still allows a future template or content regression to duplicate card hrefs or point cards into the wrong language route, wasting crawlable entry points and weakening bilingual article discovery.
   - Metrics: each built EN/ZH index must have exactly one href per card, all hrefs unique, all hrefs under the current language `/blog/` route, while existing date/category coverage and daily/weekly exclusion remain intact.
