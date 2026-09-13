@@ -1,3 +1,15 @@
+## EXP-340 — Bilingual article-index unique same-language href gate
+- Hypothesis: EXP-339 verifies article-index date/category metadata but still allows a future template or content regression to duplicate card hrefs or point cards into the wrong language route, wasting crawlable entry points and weakening bilingual article discovery.
+- Scope: `scripts/check-article-index-growth.sh`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Extended the existing post-build article-index gate to extract each instrumented card href, require one href per card, reject duplicate hrefs, and reject hrefs outside the current language's `/en/blog/` or `/zh/blog/` route. Existing date/category coverage and daily/weekly exclusion remain active.
+- ICE: 9x9x9=729
+- Start date: 2026-09-13
+- End date: 2026-09-13
+- Success metric: EN/ZH built indexes each pass 56 unique same-language card hrefs with one machine-readable date/category per card; daily/weekly content remains excluded; syntax, build and diff checks pass.
+- Result: pass — direct `./node_modules/.bin/astro build` generated 771 pages; `bash scripts/check-article-index-growth.sh` passed for EN/ZH with 56 unique same-language cards each; `bash -n scripts/check-article-index-growth.sh` and `git diff --check` passed. No traffic lift claimed before observation.
+- Quality: 28/30 (guard added to existing CI-connected gate, direct build and built-output validation passed; traffic observation pending).
+- Decision: scale the href integrity guard with the existing article-index metadata gate; observe article-index CTR and entry cohorts by language/category before further routing changes. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-339 — Bilingual article-index metadata regression gate
 - Hypothesis: EXP-338 added freshness/category metadata but without a built-output regression gate, later template changes can silently remove the signals or reintroduce daily/weekly content, weakening article selection and SEO segmentation.
 - Scope: `src/pages/en/blog/index.astro`, `src/pages/zh/blog/index.astro`, `scripts/check-article-index-growth.sh`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

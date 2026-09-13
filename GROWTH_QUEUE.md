@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-12 11:20
+Last updated: 2026-09-13 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -22,6 +22,12 @@ Manager: main session
 - [ ] N/A
 
 ## Done
+
+- [x] P1 Candidate / EXP-340: 为双语文章索引增加唯一同语言 href 增长门禁，阻止重复或跨语言入口稀释文章发现 | ICE 9x9x9=729 — commit `f933c36`
+  - Status (2026-09-13 11:20): done and pushed; direct Astro build produced 771 pages; EN/ZH article-index growth gate passed with 56 unique same-language cards each; `bash -n` and `git diff --check` passed.
+  - Hypothesis: EXP-339 verifies article-index date/category metadata but still allows a future template or content regression to duplicate card hrefs or point cards into the wrong language route, wasting crawlable entry points and weakening bilingual article discovery.
+  - Metrics: each built EN/ZH index must have exactly one href per card, all hrefs unique, all hrefs under the current language `/blog/` route, while existing date/category coverage and daily/weekly exclusion remain intact.
+  - Acceptance: 1) duplicate card hrefs fail closed; 2) cross-language/non-blog card hrefs fail closed; 3) 56 EN + 56 ZH cards, metadata, build and diff checks pass; 4) commit/push and experiment log recorded.
 
 - [x] P1 Candidate / EXP-339: 为双语文章索引元数据增加回归门禁，确保日期/分类信号持续可见且日报不泄露到教程库 | ICE 8x9x9=648 — commit `d9a64f0` (implementation `6e5708b`)
   - Status (2026-09-12 17:24): done and pushed; EN/ZH article indexes expose `data-growth-category`, all six schema categories are represented, and `bash scripts/check-article-index-growth.sh` validates 56 cards per language with one machine-readable date/category per card plus daily/weekly exclusion. `bash -n`, Astro build (771 pages), `git diff --check`, and final gate passed.

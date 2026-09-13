@@ -27,9 +27,30 @@ check_lang() {
   dates="$(grep -o '<time datetime="[^"]*"' "$file" | wc -l | tr -d ' ')"
   local categories
   categories="$(grep -o 'data-growth-category="[^"]*"' "$file" | wc -l | tr -d ' ')"
+  local card_hrefs
+  card_hrefs="$(grep -o 'href="/[^\"]*"[^>]*data-growth-link="article-index-card"' "$file" | sed -E 's/^href="([^"]*)".*/\1/' || true)"
+  local href_count
+  href_count="$(printf '%s\n' "$card_hrefs" | sed '/^$/d' | wc -l | tr -d ' ')"
 
   if [ "$cards" -lt 1 ] || [ "$dates" -ne "$cards" ] || [ "$categories" -ne "$cards" ]; then
     echo "[article-index-growth] ${lang}: cards=${cards}, dates=${dates}, categories=${categories}; expected one date/category per card"
+    return 1
+  fi
+
+  if [ "$href_count" -ne "$cards" ]; then
+    echo "[article-index-growth] ${lang}: card href count=${href_count}, cards=${cards}; expected one internal href per card"
+    return 1
+  fi
+
+  local duplicate_hrefs
+  duplicate_hrefs="$(printf '%s\n' "$card_hrefs" | sed '/^$/d' | sort | uniq -d || true)"
+  if [ -n "$duplicate_hrefs" ]; then
+    echo "[article-index-growth] ${lang}: duplicate article-index-card hrefs: ${duplicate_hrefs//$'\n'/, }"
+    return 1
+  fi
+
+  if printf '%s\n' "$card_hrefs" | sed '/^$/d' | grep -Ev '^/'"$lang"'/blog/[^/]+/$' >/dev/null; then
+    echo "[article-index-growth] ${lang}: article-index-card href escaped the ${lang}/blog route"
     return 1
   fi
 
@@ -45,7 +66,7 @@ check_lang() {
     return 1
   fi
 
-  echo "[article-index-growth] PASS ${lang}: ${cards} cards with machine-readable date/category metadata"
+  echo "[article-index-growth] PASS ${lang}: ${cards} unique same-language cards with machine-readable date/category metadata"
 }
 
 check_lang en
