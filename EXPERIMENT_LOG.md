@@ -1,3 +1,15 @@
+## EXP-342 — Value-led bilingual daily RSS CTA
+- Hypothesis: 明确“每日 AI/科技日报”价值的双语 CTA 比单独显示“RSS”更容易让非技术读者理解订阅收益并点击。
+- Scope: `src/pages/en/daily/index.astro`, `src/pages/zh/daily/index.astro`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: EN CTA changed from “Subscribe via RSS” to “Subscribe to the daily AI & tech brief”; ZH CTA changed from “订阅 RSS” to “订阅每日 AI / 科技日报”. Preserved `/en/daily/rss.xml` and `/zh/daily/rss.xml`, `data-daily-index-growth="rss"`, and `data-lang` event fields.
+- ICE: 7x8x7=392
+- Start date: 2026-09-14
+- End date: 2026-09-21 (observation window)
+- Success metric: Compare `daily_index_click` events for `kind=rss` by EN/ZH over 7 days; treatment target is >=10% click-through lift with no decline in RSS feed requests or daily-index return visits.
+- Result: shipped treatment; no lift claimed before the 7-day observation window. Build and growth checks are recorded after validation below.
+- Quality: 28/30 (low-risk copy-only treatment, stable URLs/canonical behavior and event instrumentation retained; traffic observation pending).
+- Decision: observe for 7 days, then scale or iterate based on language-segmented click and feed-request data. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-341 — Bilingual daily RSS feed integrity regression gate
 - Hypothesis: Existing RSS autodiscovery only checks HTML head tags; a future feed regression could still publish malformed XML, an empty channel, duplicate/cross-language item links, or links to pages absent from the built output, weakening recurring daily discovery through feed readers.
 - Scope: `scripts/check-rss-feed-integrity.sh`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
