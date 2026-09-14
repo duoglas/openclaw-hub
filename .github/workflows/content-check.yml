@@ -85,6 +85,9 @@ jobs:
       - name: RSS autodiscovery check
         run: pnpm check:rss-autodiscovery
 
+      - name: RSS feed integrity check
+        run: pnpm check:rss-feed-integrity
+
       - name: Robots/sitemap integrity check
         run: pnpm check:robots-sitemap
 

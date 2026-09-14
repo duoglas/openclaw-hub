@@ -30,6 +30,7 @@
     "check:redirect-rules": "bash scripts/check-redirect-rules.sh",
     "check:noindex-leak": "bash scripts/check-noindex-leak.sh",
     "check:rss-autodiscovery": "bash scripts/check-rss-autodiscovery.sh",
+    "check:rss-feed-integrity": "bash scripts/check-rss-feed-integrity.sh",
     "check:social-image-absolute": "bash scripts/check-social-image-absolute.sh",
     "check:website-schema": "bash scripts/check-website-schema-integrity.sh",
     "check:tag-case": "bash scripts/check-tag-case-collision.sh",

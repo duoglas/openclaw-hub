@@ -1,3 +1,15 @@
+## EXP-341 — Bilingual daily RSS feed integrity regression gate
+- Hypothesis: Existing RSS autodiscovery only checks HTML head tags; a future feed regression could still publish malformed XML, an empty channel, duplicate/cross-language item links, or links to pages absent from the built output, weakening recurring daily discovery through feed readers.
+- Scope: `scripts/check-rss-feed-integrity.sh`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Added a post-build Python XML gate for EN/ZH RSS feeds. It verifies feed existence and parseability, expected channel metadata/language, non-empty items, unique same-language blog links, link=guid, pubDate/title presence, and every item link resolving to a built `index.html`; wired it into package checks and Content Check CI.
+- ICE: 9x9x8=648
+- Start date: 2026-09-13
+- End date: 2026-09-13
+- Success metric: EN/ZH feeds pass all structural and built-page correspondence checks after Astro build; no duplicate, cross-language, stale-domain, or broken item links reach CI.
+- Result: pass — direct `./node_modules/.bin/astro build` generated 771 pages; the RSS integrity gate passed for EN/ZH with 172 items each, unique same-language built-page links, valid XML, matching GUIDs, and required metadata. The gate caught and the generators fixed an unescaped English `&` in channel metadata; `bash -n` and `git diff --check` passed. Commit and push completed below.
+- Quality: 29/30 (post-build XML and built-page regression coverage, CI/package wiring, real 771-page build and 344-item validation passed; traffic/subscriber observation pending).
+- Decision: scale — retain the RSS integrity gate as a release and CI guard; observe feed requests, subscriber clicks, and broken-item alerts by language before iterating CTA copy. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-340 — Bilingual article-index unique same-language href gate
 - Hypothesis: EXP-339 verifies article-index date/category metadata but still allows a future template or content regression to duplicate card hrefs or point cards into the wrong language route, wasting crawlable entry points and weakening bilingual article discovery.
 - Scope: `scripts/check-article-index-growth.sh`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
