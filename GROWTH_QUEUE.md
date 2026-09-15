@@ -62,7 +62,7 @@ Manager: main session
   - Acceptance: 1) duplicate related href fail closed；2) cross-language/non-blog related href fail closed；3) 现有 3+ links、self-link guard、Astro build 与 diff check 通过；4) commit/push 后移至 Done。
 
 - [x] P1 Candidate / EXP-335: 增加真实 Git 仓库的 publisher push recovery 集成测试，消费 EXP-334 后续 crash-point recovery 假设 | ICE 9x9x8=648 — commit `0655a0f`
-  - Status (2026-09-09 11:21): done；18 个真实 Git/file-remote 场景通过，`node --check`、`git diff --check` 与 `pnpm build`（771 pages）通过；已 commit/push。质量评分 29/30。
+  - Status (2026-09-15 17:20): done；本轮复核 18 个真实 Git/file-remote 场景全部通过，现有 publish fixture、`git diff --check` 与 Astro build（771 pages）通过；实现已由 `0655a0f` commit/push。本轮质量评分 29/30。
   - Hypothesis: 现有文本/顺序检查不能证明 prepared/committed handoff 在真实 Git push 失败或进程中断后可恢复；本地 bare remote 集成测试可以在上线前发现恢复回归，避免内容发布永久阻塞。
   - Metrics: 仓库内隔离 fixture 覆盖 prepared、committed、push failure/retry、missing/malformed/stale/unknown marker、subject/path mismatch、two-ahead、synchronized marker cleanup；验证 remote SHA、local SHA 与 marker 保留/清理行为。
   - Acceptance: 1) 至少 12 个真实 Git 场景通过；2) 失败路径不改远端、成功恢复不 recommit；3) fixture 仅在本仓库内创建本地 remote，不接触生产远端；4) 接入 package check，原 publish fixture、diff check 与 pnpm build 通过；5) commit/push 后移至 Done。

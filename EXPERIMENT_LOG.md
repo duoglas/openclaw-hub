@@ -1,3 +1,10 @@
+## EXP-335 — Publisher recovery integration follow-up (2026-09-15 17:20 Asia/Shanghai)
+- Selection: Highest actionable Backlog candidate, ICE 9x9x8=648; the repository already contains the 18-scenario implementation and package wiring.
+- Result: PASS. `node scripts/check-publisher-recovery-integration.mjs` passed all 18 real Git/file-remote scenarios; `node scripts/check-publish-daily-generator-fixture.mjs`, `git diff --check`, and Astro build passed with 771 pages. No unrelated working-tree files were staged.
+- Commit: implementation `0655a0f` was already present and pushed; this run completed the previously blocked validation and moved EXP-335 to Done in `GROWTH_QUEUE.md`.
+- Next: retain the integration gate in CI; extend scenarios whenever publisher handoff states or marker fields change. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Quality: 29/30 (18 isolated recovery scenarios, failure-path remote immutability, no-recommit recovery, fixture/build/diff validation all passed; no traffic lift claimed).
+
 ## EXP-342 — Value-led bilingual daily RSS CTA
 - Hypothesis: 明确“每日 AI/科技日报”价值的双语 CTA 比单独显示“RSS”更容易让非技术读者理解订阅收益并点击。
 - Scope: `src/pages/en/daily/index.astro`, `src/pages/zh/daily/index.astro`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
