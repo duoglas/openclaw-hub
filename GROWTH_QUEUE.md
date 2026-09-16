@@ -19,6 +19,12 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-344: 为双语文章 hreflang 增加 built-target parity 门禁，阻止已生成页面指向不存在的同语言/跨语言文章目标，消费 EXP-343 sitemap parity 后续假设 | ICE 8x9x9=648 — commit `PENDING`
+  - Hypothesis: 现有 hreflang 门禁只验证标签数量、绝对 URL 与路径格式，无法发现文章 alternate URL 对应的 built HTML 已缺失；这会让搜索引擎收到断开的语言替代入口，削弱双语文章发现和索引迁移。
+  - Metrics: 对存在 EN/ZH 同 slug 配对的 built blog article，EN/ZH/x-default alternate URL 必须精确互指，且每个目标都映射到已生成 HTML；检查在 build 后进入 Content Check CI。
+  - Acceptance: 1) 缺少 built target、重复 hreflang、错误 host/path 时 fail closed；2) URL 编码文章 slug 可正确解析；3) `node --check`、Astro build、hreflang pair/sitewide、new parity check 与 `git diff --check` 通过；4) commit/push 后移至 Done 并回写实验结果。
+  - Status (2026-09-16 17:20): implementation and validation complete; direct Astro build produced 771 pages, 2 bilingual same-slug article pairs passed reciprocal built-target parity; existing hreflang pair/sitewide gates and diff check passed. Quality score 27/30.
+
 - [x] P1 Candidate / EXP-343: 为 sitemap 增加 built-page parity 门禁，阻止 XML 收录不存在页面、noindex 页面、重复 URL 或漏收录双语博客页 | ICE 9x9x9=729 — commit `0876818`
   - Status (2026-09-16 11:28): done and pushed; added `check:sitemap-built-page-parity` and wired it into Content Check after build. The gate validates sitemap-index child files, canonical kuoo.uk URL shape, duplicate URLs, built HTML existence, noindex exclusion, and complete EN/ZH blog coverage. Build produced 771 pages; 771 sitemap URLs and 763 bilingual blog pages passed, alongside robots/sitemap and diff checks.
   - Hypothesis: Existing robots/sitemap checks only verify that sitemap files exist and advertise a non-empty location; a future route rename, stale noindex page, duplicate URL, or sitemap omission could still waste crawl budget and hide bilingual blog pages from discovery. Built-output parity should fail closed before release.

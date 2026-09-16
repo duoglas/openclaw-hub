@@ -3663,3 +3663,14 @@
 - Success metric: every sitemap URL maps to an existing built HTML file, no sitemap URL carries noindex, no duplicates exist, all built EN/ZH blog pages appear exactly once, and the gate runs in CI after `pnpm build`.
 - Result: pass（`node --check scripts/check-sitemap-built-page-parity.mjs`、Astro build（771 pages）、`node scripts/check-sitemap-built-page-parity.mjs`（771 sitemap URLs / 763 bilingual blog pages）、`bash scripts/check-robots-sitemap-integrity.sh` 与 `git diff --check` 全部通过；实现提交 `0876818`；质量评分 29/30。）
 - Decision: scale（将 built-output sitemap parity 作为发布前与 CI 固定门禁；后续新增路由、noindex 策略或 sitemap 分片时必须同步验证 URL 与 HTML 对应性。）
+
+### EXP-344
+- Hypothesis: 现有 hreflang 门禁只验证标签数量、绝对 URL 与路径格式，无法发现文章 alternate URL 对应的 built HTML 已缺失；这会让搜索引擎收到断开的语言替代入口，削弱双语文章发现和索引迁移。
+- Scope: `scripts/check-hreflang-built-target-parity.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 build 后 hreflang built-target parity 门禁，针对存在 EN/ZH 同 slug 配对的 blog article，校验 EN/ZH/x-default alternate URL 的互指关系、唯一性、kuoo.uk 绝对 URL、URL 编码解析及目标 HTML 是否存在；接入 Content Check CI。
+- ICE: 8x9x9=648
+- Start date: 2026-09-16
+- End date: 2026-09-16
+- Success metric: 每个双语同 slug 文章配对的 3 个 alternate URL 都准确互指并映射到已生成 HTML；缺失 target、重复 hreflang、错误 host/path 在 build 后 fail closed。
+- Result: pass（`node --check scripts/check-hreflang-built-target-parity.mjs`、direct Astro build（771 pages）、`node scripts/check-hreflang-built-target-parity.mjs`（2 个双语同 slug article pairs）、现有 hreflang pair/sitewide checks 与 `git diff --check` 全部通过；质量评分 27/30。）
+- Decision: scale（将 built-target parity 保留为双语文章发布前门禁；后续新增同 slug 双语文章或修改 hreflang URL 编码逻辑时必须同步扩展配对覆盖。）

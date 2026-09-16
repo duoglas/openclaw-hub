@@ -94,6 +94,9 @@ jobs:
       - name: Sitemap built-page parity check
         run: pnpm check:sitemap-built-page-parity
 
+      - name: Hreflang built-target parity check
+        run: pnpm check:hreflang-built-target-parity
+
       - name: Daily 2026-03-11 duplicate/source integrity check
         run: pnpm check:daily-0311
 
