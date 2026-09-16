@@ -3652,3 +3652,14 @@
 - Success metric: 最新 EN/ZH 日报各有 3 条唯一且同语言的 related-post 链接；`bash -n scripts/check-daily-related-posts.sh`、`pnpm build`（771 pages）、`pnpm check:daily-related-posts` 与 `git diff --check` 全部通过。
 - Result: pass（EN/ZH 最新日报均通过 3 条唯一同语言 related links、render event 与 self-link guard；Astro build 771 pages 通过；实现提交 `aa66c00` 已 push；质量评分 28/30。）
 - Decision: scale（将 duplicate/cross-language related-post guard 保留为日报发布前与 CI 增长门禁；后续若调整相关文章排序或推荐算法，必须同步验证唯一性与语言边界。）
+
+### EXP-343
+- Hypothesis: Existing robots/sitemap checks only verify that sitemap files exist and advertise a non-empty location; a future route rename, stale noindex page, duplicate URL, or sitemap omission could still waste crawl budget and hide bilingual blog pages from discovery. Built-output parity should fail closed before release.
+- Scope: `scripts/check-sitemap-built-page-parity.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Added a post-build sitemap parity gate that validates sitemap-index child files, canonical kuoo.uk URL shape, duplicate URLs, built HTML existence, noindex exclusion, and complete EN/ZH blog coverage. Wired it into Content Check after the build step.
+- ICE: 9x9x9=729
+- Start date: 2026-09-16
+- End date: 2026-09-16
+- Success metric: every sitemap URL maps to an existing built HTML file, no sitemap URL carries noindex, no duplicates exist, all built EN/ZH blog pages appear exactly once, and the gate runs in CI after `pnpm build`.
+- Result: pass（`node --check scripts/check-sitemap-built-page-parity.mjs`、Astro build（771 pages）、`node scripts/check-sitemap-built-page-parity.mjs`（771 sitemap URLs / 763 bilingual blog pages）、`bash scripts/check-robots-sitemap-integrity.sh` 与 `git diff --check` 全部通过；实现提交 `0876818`；质量评分 29/30。）
+- Decision: scale（将 built-output sitemap parity 作为发布前与 CI 固定门禁；后续新增路由、noindex 策略或 sitemap 分片时必须同步验证 URL 与 HTML 对应性。）

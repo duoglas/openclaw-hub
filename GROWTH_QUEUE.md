@@ -19,6 +19,12 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-343: 为 sitemap 增加 built-page parity 门禁，阻止 XML 收录不存在页面、noindex 页面、重复 URL 或漏收录双语博客页 | ICE 9x9x9=729 — commit `0876818`
+  - Status (2026-09-16 11:28): done and pushed; added `check:sitemap-built-page-parity` and wired it into Content Check after build. The gate validates sitemap-index child files, canonical kuoo.uk URL shape, duplicate URLs, built HTML existence, noindex exclusion, and complete EN/ZH blog coverage. Build produced 771 pages; 771 sitemap URLs and 763 bilingual blog pages passed, alongside robots/sitemap and diff checks.
+  - Hypothesis: Existing robots/sitemap checks only verify that sitemap files exist and advertise a non-empty location; a future route rename, stale noindex page, duplicate URL, or sitemap omission could still waste crawl budget and hide bilingual blog pages from discovery. Built-output parity should fail closed before release.
+  - Metrics: every sitemap URL maps to an existing built HTML file, no sitemap URL carries noindex, no duplicates exist, all built EN/ZH blog pages appear exactly once, and the gate runs in CI after `pnpm build`.
+  - Acceptance: 1) missing built target fails closed; 2) duplicate/noindex/invalid-domain URLs fail closed; 3) all 763 EN/ZH blog pages are covered by the 771-URL sitemap set; 4) `node --check`, build, sitemap/robots checks and `git diff --check` pass; 5) commit/push and experiment log recorded.
+
 - [x] P2 Candidate / EXP-342: 对双语日报 RSS 订阅入口做 CTA 文案 A/B 观察，验证“订阅日报”相对“RSS”是否提升订阅点击 | ICE 7x8x7=392 — commit `9824b38`
   - Status (2026-09-14 17:20): treatment shipped; EN/ZH daily-index RSS links now lead with the daily-brief value proposition while preserving the `/daily/rss.xml` URLs and `data-daily-index-growth="rss"` / language event fields. Observe clicks by language for 7 days before declaring a winner.
   - Hypothesis: 明确“每日 AI/科技日报”价值的双语 CTA 比单独显示“RSS”更容易让非技术读者理解订阅收益并点击。
