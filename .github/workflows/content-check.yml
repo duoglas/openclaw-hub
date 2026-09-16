@@ -91,6 +91,9 @@ jobs:
       - name: Robots/sitemap integrity check
         run: pnpm check:robots-sitemap
 
+      - name: Sitemap built-page parity check
+        run: pnpm check:sitemap-built-page-parity
+
       - name: Daily 2026-03-11 duplicate/source integrity check
         run: pnpm check:daily-0311
 
