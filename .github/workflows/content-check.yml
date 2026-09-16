@@ -25,9 +25,7 @@ jobs:
           version: 11.22.0
 
       - name: Install dependencies
-        # Re-resolve the lockfile in CI so dependency metadata drift cannot
-        # prevent the actual content checks from running.
-        run: pnpm install --no-frozen-lockfile --reporter=append-only
+        run: pnpm install --frozen-lockfile --reporter=append-only
 
       - name: Build check
         run: pnpm build
