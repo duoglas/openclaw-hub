@@ -19,7 +19,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-345: 为 built HTML 增加 canonical-to-sitemap parity 门禁，阻止 canonical 指向未生成页面或未进入 sitemap 的 URL | ICE 9x9x9=729 — commit `311c4c2`
+- [x] P1 Candidate / EXP-345: 为 built HTML 增加 canonical-to-sitemap parity 门禁，阻止 canonical 指向未生成页面或未进入 sitemap 的 URL | ICE 9x9x9=729 — commit `6238a47`
   - Hypothesis: 现有 canonical 门禁验证 URL 格式、唯一性与语言路径，但未证明 canonical URL 已进入最终 sitemap；canonical 与 sitemap 漂移会削弱抓取入口一致性并浪费索引信号。
   - Metrics: 每个 built HTML 恰有一个 canonical，canonical 精确匹配页面路由、映射到已生成 HTML 且存在于 sitemap URL 集合；检查在 build 后进入 Content Check CI。
   - Acceptance: 1) canonical 缺失/重复/错路由/未建 target/未入 sitemap 时 fail closed；2) URL 编码路径正确处理；3) `node --check`、Astro build、canonical、sitemap、new parity checks 与 `git diff --check` 通过；4) commit/push 后移至 Done 并回写实验结果。

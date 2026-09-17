@@ -3683,5 +3683,5 @@
 - Start date: 2026-09-17
 - End date: 2026-09-17
 - Success metric: 每个 built HTML 的 canonical 都精确映射到已生成页面并出现在最终 sitemap URL 集合，漂移时 fail closed。
-- Result: pass（`node --check scripts/check-canonical-sitemap-parity.mjs`、direct Astro build（771 pages）、`node scripts/check-canonical-sitemap-parity.mjs`（771 built pages / 772 sitemap URLs）、现有 canonical、sitemap built-page、hreflang built-target parity checks 与 `git diff --check` 全部通过；commit `a4f5de0`；质量评分 29/30。）
+- Result: pass（`node --check scripts/check-canonical-sitemap-parity.mjs`、direct Astro build（771 pages）、`node scripts/check-canonical-sitemap-parity.mjs`（771 built pages / 772 sitemap URLs）、现有 canonical、sitemap built-page、hreflang built-target parity checks 与 `git diff --check` 全部通过；commit `6238a47`；质量评分 29/30。）
 - Decision: scale（将 canonical-to-sitemap parity 保留为 build 后 SEO 发布门禁；后续新增路由、canonical 生成逻辑或 sitemap 分片时必须同步验证 canonical 与 sitemap 的双向一致性。）
