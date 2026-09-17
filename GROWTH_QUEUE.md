@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-14 17:20
+Last updated: 2026-09-17 11:24
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -19,7 +19,13 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-344: 为双语文章 hreflang 增加 built-target parity 门禁，阻止已生成页面指向不存在的同语言/跨语言文章目标，消费 EXP-343 sitemap parity 后续假设 | ICE 8x9x9=648 — commit `PENDING`
+- [x] P1 Candidate / EXP-345: 为 built HTML 增加 canonical-to-sitemap parity 门禁，阻止 canonical 指向未生成页面或未进入 sitemap 的 URL | ICE 9x9x9=729 — commit `311c4c2`
+  - Hypothesis: 现有 canonical 门禁验证 URL 格式、唯一性与语言路径，但未证明 canonical URL 已进入最终 sitemap；canonical 与 sitemap 漂移会削弱抓取入口一致性并浪费索引信号。
+  - Metrics: 每个 built HTML 恰有一个 canonical，canonical 精确匹配页面路由、映射到已生成 HTML 且存在于 sitemap URL 集合；检查在 build 后进入 Content Check CI。
+  - Acceptance: 1) canonical 缺失/重复/错路由/未建 target/未入 sitemap 时 fail closed；2) URL 编码路径正确处理；3) `node --check`、Astro build、canonical、sitemap、new parity checks 与 `git diff --check` 通过；4) commit/push 后移至 Done 并回写实验结果。
+  - Status (2026-09-17 11:24): implementation and validation complete; direct Astro build produced 771 pages, canonical-to-sitemap parity validated 771 built pages against 772 sitemap URLs, existing canonical/sitemap/hreflang gates and diff check passed. Quality score 29/30.
+
+- [x] P1 Candidate / EXP-344: 为双语文章 hreflang 增加 built-target parity 门禁，阻止已生成页面指向不存在的同语言/跨语言文章目标，消费 EXP-343 sitemap parity 后续假设 | ICE 8x9x9=648 — commit `a0d165f`
   - Hypothesis: 现有 hreflang 门禁只验证标签数量、绝对 URL 与路径格式，无法发现文章 alternate URL 对应的 built HTML 已缺失；这会让搜索引擎收到断开的语言替代入口，削弱双语文章发现和索引迁移。
   - Metrics: 对存在 EN/ZH 同 slug 配对的 built blog article，EN/ZH/x-default alternate URL 必须精确互指，且每个目标都映射到已生成 HTML；检查在 build 后进入 Content Check CI。
   - Acceptance: 1) 缺少 built target、重复 hreflang、错误 host/path 时 fail closed；2) URL 编码文章 slug 可正确解析；3) `node --check`、Astro build、hreflang pair/sitewide、new parity check 与 `git diff --check` 通过；4) commit/push 后移至 Done 并回写实验结果。

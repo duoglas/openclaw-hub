@@ -3674,3 +3674,14 @@
 - Success metric: 每个双语同 slug 文章配对的 3 个 alternate URL 都准确互指并映射到已生成 HTML；缺失 target、重复 hreflang、错误 host/path 在 build 后 fail closed。
 - Result: pass（`node --check scripts/check-hreflang-built-target-parity.mjs`、direct Astro build（771 pages）、`node scripts/check-hreflang-built-target-parity.mjs`（2 个双语同 slug article pairs）、现有 hreflang pair/sitewide checks 与 `git diff --check` 全部通过；质量评分 27/30。）
 - Decision: scale（将 built-target parity 保留为双语文章发布前门禁；后续新增同 slug 双语文章或修改 hreflang URL 编码逻辑时必须同步扩展配对覆盖。）
+
+### EXP-345
+- Hypothesis: 现有 canonical 门禁验证 URL 格式、唯一性与语言路径，但未证明 canonical URL 已进入最终 sitemap；canonical 与 sitemap 漂移会削弱抓取入口一致性并浪费索引信号。
+- Scope: `scripts/check-canonical-sitemap-parity.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 build 后 canonical-to-sitemap parity 门禁，遍历全部 built `index.html`，校验恰有一个 canonical、canonical 精确匹配页面路由、目标 HTML 已生成且 canonical URL 存在于 sitemap 集合；接入 Content Check CI。
+- ICE: 9x9x9=729
+- Start date: 2026-09-17
+- End date: 2026-09-17
+- Success metric: 每个 built HTML 的 canonical 都精确映射到已生成页面并出现在最终 sitemap URL 集合，漂移时 fail closed。
+- Result: pass（`node --check scripts/check-canonical-sitemap-parity.mjs`、direct Astro build（771 pages）、`node scripts/check-canonical-sitemap-parity.mjs`（771 built pages / 772 sitemap URLs）、现有 canonical、sitemap built-page、hreflang built-target parity checks 与 `git diff --check` 全部通过；commit `a4f5de0`；质量评分 29/30。）
+- Decision: scale（将 canonical-to-sitemap parity 保留为 build 后 SEO 发布门禁；后续新增路由、canonical 生成逻辑或 sitemap 分片时必须同步验证 canonical 与 sitemap 的双向一致性。）
