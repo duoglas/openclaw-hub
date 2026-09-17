@@ -1,3 +1,12 @@
+## EXP-346 — Weekly report freshness and generated-at consistency gate (Backlog, 2026-09-17)
+- Hypothesis: 当前周报文件可在新观察窗口生成后继续保留旧的 `Prepared At`、报告周范围或数据快照，导致低 CTR、GSC 缺失与 schema 风险决策基于过期窗口；将报告路径、Asia/Shanghai 生成日期、周范围和 elapsed-day 分母绑定，可在 CI/发布前 fail closed，减少 stale SEO action 的误执行。
+- Scope: `scripts/generate-seo-weekly-report.sh`, new weekly freshness checker, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- ICE: 8x9x9=648
+- Metrics: 当前周报文件名、`Report Week`、`Prepared At` 与生成器计算的 Asia/Shanghai 周窗口一致；`Prepared At` 不早于观察窗口起点；GSC/schema elapsed-day 分母等于 as-of weekday；旧周报或跨周 fixture 必须被 synthetic self-test 拦截。
+- Acceptance: 新增可执行 freshness check 与 package script 并接入 Content Check；覆盖旧 `Prepared At`、错误文件名、跨周范围、未来日期分母的 fail-closed fixtures；现有 weekly review/data-integrity/observation-window、`pnpm build` 与 `git diff --check` 通过；完成后回写实现结果与质量评分。
+- Result: pending implementation.
+- Decision: backlog（当前队列无可执行 Doing 项；优先消费最近周报生成结果暴露的 freshness 风险）。
+
 ## EXP-335 — Publisher recovery integration follow-up (2026-09-15 17:20 Asia/Shanghai)
 - Selection: Highest actionable Backlog candidate, ICE 9x9x8=648; the repository already contains the 18-scenario implementation and package wiring.
 - Result: PASS. `node scripts/check-publisher-recovery-integration.mjs` passed all 18 real Git/file-remote scenarios; `node scripts/check-publish-daily-generator-fixture.mjs`, `git diff --check`, and Astro build passed with 771 pages. No unrelated working-tree files were staged.
