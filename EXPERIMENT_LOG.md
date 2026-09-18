@@ -5,7 +5,7 @@
 - Metrics: 当前周报文件名、`Report Week`、`Prepared At` 与生成器计算的 Asia/Shanghai 周窗口一致；`Prepared At` 不早于观察窗口起点；GSC/schema elapsed-day 分母等于 as-of weekday；旧周报或跨周 fixture 必须被 synthetic self-test 拦截。
 - Acceptance: 新增可执行 freshness check 与 package script 并接入 Content Check；覆盖旧 `Prepared At`、错误文件名、跨周范围、未来日期分母的 fail-closed fixtures；现有 weekly review/data-integrity/observation-window、`pnpm build` 与 `git diff --check` 通过；完成后回写实现结果与质量评分。
 - Result: PASS for implementation and targeted validation. Added `scripts/check-weekly-report-freshness.sh`, package script, and Content Check step. Synthetic fixtures fail closed for old `Prepared At`, wrong filename, cross-week range, and future-date denominator. The live Asia/Shanghai report for 2026-09-14~2026-09-20 validated with elapsed=5/7; `bash -n`, the freshness gate, and `git diff --check` passed. Full Astro build was blocked by unattended host approval policy before execution; no bypass attempted.
-- Commit: pending commit verification.
+- Commit: `5a2a532` pushed to `origin/main`.
 - Quality: 26/30 (freshness guard, four fail-closed fixtures, package/CI wiring, live report validation, syntax and diff checks passed; full build not runnable in unattended policy; traffic observation pending).
 - Decision: scale the freshness gate with weekly report generation and Content Check; keep report filename, Report Week, Asia/Shanghai Prepared At, and elapsed-day denominator coupled before using weekly SEO decisions. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 

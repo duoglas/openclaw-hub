@@ -19,8 +19,8 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-346: 为周报生成增加 report freshness 与 generated-at 一致性门禁，阻止旧周报或跨周报告被误当作当前增长决策依据 | ICE 8x9x9=648 — commit `PENDING`
-  - Status (2026-09-18 11:20): implementation and targeted validation complete; added executable freshness gate with package/Content Check wiring and synthetic fail-closed fixtures for old `Prepared At`, wrong filename, cross-week range, and future-date denominator. The gate generated and validated the Asia/Shanghai 2026-09-14~2026-09-20 report with elapsed=5/7. Full Astro build was blocked by unattended host approval policy; no bypass attempted. Quality score pending commit verification.
+- [x] P1 Candidate / EXP-346: 为周报生成增加 report freshness 与 generated-at 一致性门禁，阻止旧周报或跨周报告被误当作当前增长决策依据 | ICE 8x9x9=648 — commit `5a2a532`
+  - Status (2026-09-18 11:20): implementation and targeted validation complete; added executable freshness gate with package/Content Check wiring and synthetic fail-closed fixtures for old `Prepared At`, wrong filename, cross-week range, and future-date denominator. The gate generated and validated the Asia/Shanghai 2026-09-14~2026-09-20 report with elapsed=5/7. Full Astro build was blocked by unattended host approval policy; no bypass attempted. Quality score 26/30; implementation commit `5a2a532` pushed to `origin/main`.
 
 - [x] P1 Candidate / EXP-345: 为 built HTML 增加 canonical-to-sitemap parity 门禁，阻止 canonical 指向未生成页面或未进入 sitemap 的 URL | ICE 9x9x9=729 — commit `6238a47`
   - Hypothesis: 现有 canonical 门禁验证 URL 格式、唯一性与语言路径，但未证明 canonical URL 已进入最终 sitemap；canonical 与 sitemap 漂移会削弱抓取入口一致性并浪费索引信号。
