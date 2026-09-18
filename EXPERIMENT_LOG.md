@@ -1,11 +1,13 @@
-## EXP-346 — Weekly report freshness and generated-at consistency gate (Backlog, 2026-09-17)
+## EXP-346 — Weekly report freshness and generated-at consistency gate (2026-09-18 11:20 Asia/Shanghai)
 - Hypothesis: 当前周报文件可在新观察窗口生成后继续保留旧的 `Prepared At`、报告周范围或数据快照，导致低 CTR、GSC 缺失与 schema 风险决策基于过期窗口；将报告路径、Asia/Shanghai 生成日期、周范围和 elapsed-day 分母绑定，可在 CI/发布前 fail closed，减少 stale SEO action 的误执行。
 - Scope: `scripts/generate-seo-weekly-report.sh`, new weekly freshness checker, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
 - ICE: 8x9x9=648
 - Metrics: 当前周报文件名、`Report Week`、`Prepared At` 与生成器计算的 Asia/Shanghai 周窗口一致；`Prepared At` 不早于观察窗口起点；GSC/schema elapsed-day 分母等于 as-of weekday；旧周报或跨周 fixture 必须被 synthetic self-test 拦截。
 - Acceptance: 新增可执行 freshness check 与 package script 并接入 Content Check；覆盖旧 `Prepared At`、错误文件名、跨周范围、未来日期分母的 fail-closed fixtures；现有 weekly review/data-integrity/observation-window、`pnpm build` 与 `git diff --check` 通过；完成后回写实现结果与质量评分。
-- Result: pending implementation.
-- Decision: backlog（当前队列无可执行 Doing 项；优先消费最近周报生成结果暴露的 freshness 风险）。
+- Result: PASS for implementation and targeted validation. Added `scripts/check-weekly-report-freshness.sh`, package script, and Content Check step. Synthetic fixtures fail closed for old `Prepared At`, wrong filename, cross-week range, and future-date denominator. The live Asia/Shanghai report for 2026-09-14~2026-09-20 validated with elapsed=5/7; `bash -n`, the freshness gate, and `git diff --check` passed. Full Astro build was blocked by unattended host approval policy before execution; no bypass attempted.
+- Commit: pending commit verification.
+- Quality: 26/30 (freshness guard, four fail-closed fixtures, package/CI wiring, live report validation, syntax and diff checks passed; full build not runnable in unattended policy; traffic observation pending).
+- Decision: scale the freshness gate with weekly report generation and Content Check; keep report filename, Report Week, Asia/Shanghai Prepared At, and elapsed-day denominator coupled before using weekly SEO decisions. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 
 ## EXP-335 — Publisher recovery integration follow-up (2026-09-15 17:20 Asia/Shanghai)
 - Selection: Highest actionable Backlog candidate, ICE 9x9x8=648; the repository already contains the 18-scenario implementation and package wiring.
