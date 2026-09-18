@@ -3,10 +3,11 @@
 - Scope: `scripts/check-weekly-action-plan-integrity.sh`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
 - Change: 新增 Action Plan integrity checker；要求 Section 14 至少有一条 checkbox，每条 action 必须含 `owner:` 与 `due: YYYY-MM-DD`，due 位于当前报告周且不早于 Asia/Shanghai Prepared At；加入缺 owner、跨周、过期和空计划 synthetic self-test，并接入 package/Content Check。
 - ICE: 8x9x8=576
+- Implementation commit: `3d04197` (pushed to `origin/main`)
 - Metrics: 当前周报 Action Plan 的 owner/due 完整率 100%；非法 action 在 CI 中 fail closed。
-- Result: PASS — current 2026-09-14~2026-09-20 report passed; synthetic fixtures rejected missing owner, out-of-range due date, stale due date, and empty Action Plan; `bash -n`, targeted checker, `git diff --check`, and Astro build validation completed below.
-- Quality: 28/30 (field/date fail-closed coverage, package/CI wiring, current report validation and build passed; downstream task completion lift pending observation).
-- Decision: scale the owner/due gate with weekly report generation; use the validated Action Plan as the executable handoff for the next growth run. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Result: IMPLEMENTED — synthetic fixture logic covers missing owner, out-of-range due date, stale due date, and empty Action Plan; `bash -n` and `git diff --check` passed. Targeted checker and Astro build were blocked by unattended host approval policy; no bypass attempted. Implementation commit `3d04197` pushed to `origin/main`; current-report and build validation remain pending.
+- Quality: 24/30 (field/date fail-closed coverage, package/CI wiring, syntax and diff checks passed; current-report execution, Astro build, and downstream task-completion lift pending).
+- Decision: keep the gate in Content Check, then complete current-report and build validation through a policy-approved execution path before declaring scale. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 
 ## EXP-346 — Weekly report freshness and generated-at consistency gate (2026-09-18 11:20 Asia/Shanghai)
 - Hypothesis: 当前周报文件可在新观察窗口生成后继续保留旧的 `Prepared At`、报告周范围或数据快照，导致低 CTR、GSC 缺失与 schema 风险决策基于过期窗口；将报告路径、Asia/Shanghai 生成日期、周范围和 elapsed-day 分母绑定，可在 CI/发布前 fail closed，减少 stale SEO action 的误执行。
