@@ -16,6 +16,7 @@
     "check:weekly-content": "bash scripts/check-weekly-content-quality.sh",
     "check:weekly-report-data-integrity": "bash scripts/check-weekly-report-data-integrity.sh",
     "check:weekly-report-freshness": "bash scripts/check-weekly-report-freshness.sh",
+    "check:weekly-action-plan-integrity": "bash scripts/check-weekly-action-plan-integrity.sh",
     "check:weekly-scorecard": "bash scripts/check-weekly-scorecard.sh",
     "check:weekly-external-evidence": "bash scripts/check-weekly-external-evidence.sh",
     "check:weekly-observation-window": "bash scripts/check-weekly-observation-window.sh",

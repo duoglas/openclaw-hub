@@ -44,6 +44,9 @@ jobs:
       - name: Weekly report freshness gate
         run: pnpm check:weekly-report-freshness
 
+      - name: Weekly action-plan integrity gate
+        run: pnpm check:weekly-action-plan-integrity
+
       - name: Weekly scorecard gate
         run: pnpm check:weekly-scorecard
 

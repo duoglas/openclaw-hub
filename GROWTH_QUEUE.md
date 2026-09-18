@@ -19,6 +19,9 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-347: 为周报 Action Plan 增加 owner/due 可执行性门禁，阻止已过期或脱离报告周范围的增长任务继续进入执行队列 | ICE 8x9x8=576 — implementation ready; commit pending validation
+  - Status (2026-09-18 17:20): checker, package script, CI wiring, and synthetic fixture logic implemented; `bash -n` and `git diff --check` passed. The targeted checker and Astro build were blocked by unattended host approval policy; no bypass attempted. Not claiming build or push completion.
+
 - [x] P1 Candidate / EXP-346: 为周报生成增加 report freshness 与 generated-at 一致性门禁，阻止旧周报或跨周报告被误当作当前增长决策依据 | ICE 8x9x9=648 — commit `5a2a532`
   - Status (2026-09-18 11:20): implementation and targeted validation complete; added executable freshness gate with package/Content Check wiring and synthetic fail-closed fixtures for old `Prepared At`, wrong filename, cross-week range, and future-date denominator. The gate generated and validated the Asia/Shanghai 2026-09-14~2026-09-20 report with elapsed=5/7. Full Astro build was blocked by unattended host approval policy; no bypass attempted. Quality score 26/30; implementation commit `5a2a532` pushed to `origin/main`.
 

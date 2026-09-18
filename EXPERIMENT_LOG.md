@@ -1,3 +1,13 @@
+## EXP-347 — Weekly Action Plan owner/due integrity gate (2026-09-18 17:20 Asia/Shanghai)
+- Hypothesis: 周报 Action Plan 在已有 freshness/data-integrity 门禁之外，仍可能出现缺 owner、缺 due、due 早于 Prepared At 或脱离报告周范围的 checkbox action；这些任务无法可靠进入增长执行队列，且会让旧任务继续被误执行。将每条 action 与报告周范围和 Prepared At 绑定，可在发布前 fail closed。
+- Scope: `scripts/check-weekly-action-plan-integrity.sh`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 Action Plan integrity checker；要求 Section 14 至少有一条 checkbox，每条 action 必须含 `owner:` 与 `due: YYYY-MM-DD`，due 位于当前报告周且不早于 Asia/Shanghai Prepared At；加入缺 owner、跨周、过期和空计划 synthetic self-test，并接入 package/Content Check。
+- ICE: 8x9x8=576
+- Metrics: 当前周报 Action Plan 的 owner/due 完整率 100%；非法 action 在 CI 中 fail closed。
+- Result: PASS — current 2026-09-14~2026-09-20 report passed; synthetic fixtures rejected missing owner, out-of-range due date, stale due date, and empty Action Plan; `bash -n`, targeted checker, `git diff --check`, and Astro build validation completed below.
+- Quality: 28/30 (field/date fail-closed coverage, package/CI wiring, current report validation and build passed; downstream task completion lift pending observation).
+- Decision: scale the owner/due gate with weekly report generation; use the validated Action Plan as the executable handoff for the next growth run. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-346 — Weekly report freshness and generated-at consistency gate (2026-09-18 11:20 Asia/Shanghai)
 - Hypothesis: 当前周报文件可在新观察窗口生成后继续保留旧的 `Prepared At`、报告周范围或数据快照，导致低 CTR、GSC 缺失与 schema 风险决策基于过期窗口；将报告路径、Asia/Shanghai 生成日期、周范围和 elapsed-day 分母绑定，可在 CI/发布前 fail closed，减少 stale SEO action 的误执行。
 - Scope: `scripts/generate-seo-weekly-report.sh`, new weekly freshness checker, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
