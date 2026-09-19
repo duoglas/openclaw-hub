@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-18 11:20
+Last updated: 2026-09-19 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -18,6 +18,12 @@ Manager: main session
 ## Doing
 
 ## Done
+
+- [x] P1 Candidate / EXP-348: 为周报 stale-domain 告警增加报告与告警文件 parity 门禁，阻止状态漂移或跨周告警被当作当前域名卫生结论 | ICE 8x9x8=576 — commit `5090443`
+  - Hypothesis: 周报已生成 stale-domain scanner 状态和独立告警文件，但缺少二者的当前周、路径与 OK/ALERT 一致性校验；状态漂移会让域名卫生结论失真，延迟发现 canonical/redirect 旧域名回流。
+  - Metrics: 当前周报的告警路径、告警 Week 和 scanner status 与当前 Asia/Shanghai 周窗口及告警状态 100% 一致；缺文件、跨周文件或状态不一致在 CI 中 fail closed。
+  - Acceptance: 1) 新增 parity checker 与 package script；2) 覆盖 OK/ALERT mismatch synthetic self-test；3) 接入 Content Check；4) 当前周报、Astro build、bash syntax 与 diff check 通过；5) commit/push 后回写实验结果。
+  - Status (2026-09-19 17:20): checker self-test/current report、Astro build（771 pages）、`bash -n` 与 `git diff --check` 通过；commit `5090443` 已完成并已 push。
 
 - [x] P1 Candidate / EXP-347: 为周报 Action Plan 增加 owner/due 可执行性门禁，阻止已过期或脱离报告周范围的增长任务继续进入执行队列 | ICE 8x9x8=576 — commit `3d04197`
   - Status (2026-09-18 17:20): checker, package script, CI wiring, and synthetic fixture logic implemented; `bash -n` and `git diff --check` passed. Targeted checker and Astro build were blocked by unattended host approval policy; no bypass attempted. Implementation commit `3d04197` pushed to `origin/main`; build remains pending policy-approved execution. Quality score 24/30.

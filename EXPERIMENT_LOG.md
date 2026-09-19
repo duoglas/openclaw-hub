@@ -1,3 +1,14 @@
+## EXP-348 — Weekly stale-domain alert/report parity gate (2026-09-19 17:20 Asia/Shanghai)
+- Hypothesis: 周报已生成 stale-domain scanner 状态和独立告警文件，但缺少二者的当前周、路径与 OK/ALERT 一致性校验；状态漂移会让域名卫生结论失真，延迟发现 canonical/redirect 旧域名回流。将报告与告警文件绑定到同一 Asia/Shanghai 周窗口并 fail closed，可降低 stale-domain 决策误用风险。
+- Scope: `scripts/check-weekly-domain-alert-parity.sh`, `package.json`, `.github/workflows/content-check.yml`, `reports/seo-weekly/seo-weekly-2026-09-14-to-2026-09-20.md`, `reports/seo-weekly/stale-domain-alert-2026-09-14-to-2026-09-20.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 weekly domain-alert parity checker；校验周报中的 alert path 指向当前周文件、告警 Week 与当前周一致、报告 scanner status 与告警 OK/ALERT 一致，并加入状态错配 synthetic self-test；接入 package script 与 Content Check CI。
+- ICE: 8x9x8=576
+- Metrics: 当前周报告与告警文件路径、周范围、状态一致；缺失/错周/状态漂移在构建后 fail closed。
+- Result: pass（`bash scripts/check-weekly-domain-alert-parity.sh`、Astro build（771 pages）、`bash -n scripts/check-weekly-domain-alert-parity.sh` 与 `git diff --check` 全部通过；commit `5090443` 已完成并已 push。）
+- Quality: 28/30（当前周路径/周范围/状态 parity、错配 synthetic self-test、package/CI wiring、构建与 diff 验证通过；尚无流量或告警趋势观测。）
+- Commit: `5090443`
+- Decision: scale（将报告-告警 parity 作为周报与 Content Check 固定门禁；后续变更周报生成器或 stale-domain 输出格式时同步更新 checker。） <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-347 — Weekly Action Plan owner/due integrity gate (2026-09-18 17:20 Asia/Shanghai)
 - Hypothesis: 周报 Action Plan 在已有 freshness/data-integrity 门禁之外，仍可能出现缺 owner、缺 due、due 早于 Prepared At 或脱离报告周范围的 checkbox action；这些任务无法可靠进入增长执行队列，且会让旧任务继续被误执行。将每条 action 与报告周范围和 Prepared At 绑定，可在发布前 fail closed。
 - Scope: `scripts/check-weekly-action-plan-integrity.sh`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

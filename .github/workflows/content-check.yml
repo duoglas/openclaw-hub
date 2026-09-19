@@ -47,6 +47,9 @@ jobs:
       - name: Weekly action-plan integrity gate
         run: pnpm check:weekly-action-plan-integrity
 
+      - name: Weekly domain-alert parity gate
+        run: pnpm check:weekly-domain-alert-parity
+
       - name: Weekly scorecard gate
         run: pnpm check:weekly-scorecard
 
