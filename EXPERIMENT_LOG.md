@@ -1,3 +1,14 @@
+## EXP-350 — Built internal-link fragment-anchor parity gate (2026-09-20 17:20 Asia/Shanghai)
+- Hypothesis: EXP-349 blocked hrefs pointing to missing pages but ignored `#fragment`, leaving TOC, FAQ, and step-navigation links able to target missing `id/name` anchors. Built-output anchor parity for same-page and cross-page fragments should close this remaining internal-link accessibility gap and fail closed on invalid encoded fragments.
+- Scope: `scripts/check-built-internal-links.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: extended the existing built internal-link checker to validate same-page fragments, cross-page fragments, `id/name` anchors, URL-decoded fragments, and invalid encoded fragments; expanded the synthetic self-test to cover valid, missing-target, and missing-anchor cases.
+- ICE: 8x9x8=576
+- Start date: 2026-09-20
+- End date: 2026-09-20
+- Success metric: `node --check scripts/check-built-internal-links.mjs`, `node scripts/check-built-internal-links.mjs --self-test`, `pnpm build`, `pnpm check:built-internal-links`, and `git diff --check` pass; zero missing built anchors.
+- Result: pending validation.
+- Decision: pending build and gate results.
+
 ## EXP-349 — Built internal-link parity gate (2026-09-20 11:20 Asia/Shanghai)
 - Hypothesis: 现有 canonical、sitemap 与 RSS 门禁无法发现正文中的失效内部 href；断链会浪费已发布页面的内部链接信号并降低文章与订阅入口的可达性。对构建 HTML 的站内页面链接做 parity 检查，并修复已发现的三条历史日报断链，可在发布前 fail closed。
 - Scope: `scripts/check-built-internal-links.mjs`, `package.json`, `.github/workflows/content-check.yml`, `src/content/blog/en/openclaw-daily-2026-08-14.md`, `src/content/blog/en/openclaw-daily-2026-08-15.md`, `src/content/blog/en/openclaw-daily-2026-08-16.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
