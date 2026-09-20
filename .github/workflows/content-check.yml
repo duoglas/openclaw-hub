@@ -107,6 +107,9 @@ jobs:
       - name: Sitemap built-page parity check
         run: pnpm check:sitemap-built-page-parity
 
+      - name: Built internal-link parity check
+        run: pnpm check:built-internal-links
+
       - name: Hreflang built-target parity check
         run: pnpm check:hreflang-built-target-parity
 

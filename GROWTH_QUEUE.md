@@ -19,6 +19,11 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-349: 为构建产物增加内部链接可达性门禁，阻止文章、RSS 与增长入口指向不存在页面，修复 08-14~08-16 英文日报失效 workflow 内链 | ICE 9x9x9=729 — commit `PENDING`
+  - Hypothesis: 现有 canonical、sitemap 与 RSS 门禁无法发现正文中的失效内部 href；断链会浪费已发布页面的内部链接信号并降低文章与订阅入口的可达性。对构建 HTML 的站内页面链接做 parity 检查，并修复已发现的三条历史日报断链，可在发布前 fail closed。
+  - Metrics: 构建 HTML 中纳入检查范围的内部链接 100% 映射到已生成页面或 XML 资源；缺失 target、路径穿越与无效 href 在 synthetic self-test 中 fail closed；CI 在 build 后运行门禁。
+  - Acceptance: 1) 新增 checker、package script 与 Content Check step；2) 缺失 target synthetic self-test 通过；3) 修复 08-14~08-16 三条失效 EN workflow href；4) build、checker、diff check 通过；5) commit/push 后回写实验结果。
+
 - [x] P1 Candidate / EXP-348: 为周报 stale-domain 告警增加报告与告警文件 parity 门禁，阻止状态漂移或跨周告警被当作当前域名卫生结论 | ICE 8x9x8=576 — commit `1839519`
   - Hypothesis: 周报已生成 stale-domain scanner 状态和独立告警文件，但缺少二者的当前周、路径与 OK/ALERT 一致性校验；状态漂移会让域名卫生结论失真，延迟发现 canonical/redirect 旧域名回流。
   - Metrics: 当前周报的告警路径、告警 Week 和 scanner status 与当前 Asia/Shanghai 周窗口及告警状态 100% 一致；缺文件、跨周文件或状态不一致在 CI 中 fail closed。

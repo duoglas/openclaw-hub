@@ -64,7 +64,7 @@ Treat Spectrum-6 as a network bandwidth and operations signal, not just a switch
 A serious robotaxi plan needs a certified OS path, standard interface contracts, AI guardrail tests, simulation validation, an audit trail, and explicit failure mode handling. Do not scale a fleet just because model demos look strong; require safety evidence, rollback ownership, and human escalation before public-road expansion. Use [OpenClaw Security Hardening 2026](/en/blog/openclaw-security-hardening-2026/) as a lightweight checklist mindset for permissions, logs, and recovery paths.
 
 ### How should a user choose between Instant, Medium, and High in the simplified ChatGPT model picker?
-Use Instant or Medium for low-risk writing, summarization, translation, and everyday comparison tasks where speed matters more than deep reasoning. Move to High only when the task has complex planning, code review, or long reasoning value that justifies extra cost and latency. Keep a fallback path and prompt checklist using [OpenClaw AI Writing Workflow](/en/blog/openclaw-ai-writing-workflow/) and [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/).
+Use Instant or Medium for low-risk writing, summarization, translation, and everyday comparison tasks where speed matters more than deep reasoning. Move to High only when the task has complex planning, code review, or long reasoning value that justifies extra cost and latency. Keep a fallback path and prompt checklist using [OpenClaw AI Writing Workflow](/en/blog/openclaw-model-fallback-strategy/) and [OpenClaw Model Fallback Strategy](/en/blog/openclaw-model-fallback-strategy/).
 
 ## Today's Bottom Line
 

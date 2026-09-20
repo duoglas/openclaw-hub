@@ -1,3 +1,11 @@
+## EXP-349 — Built internal-link parity gate (2026-09-20 11:20 Asia/Shanghai)
+- Hypothesis: 现有 canonical、sitemap 与 RSS 门禁无法发现正文中的失效内部 href；断链会浪费已发布页面的内部链接信号并降低文章与订阅入口的可达性。对构建 HTML 的站内页面链接做 parity 检查，并修复已发现的三条历史日报断链，可在发布前 fail closed。
+- Scope: `scripts/check-built-internal-links.mjs`, `package.json`, `.github/workflows/content-check.yml`, `src/content/blog/en/openclaw-daily-2026-08-14.md`, `src/content/blog/en/openclaw-daily-2026-08-15.md`, `src/content/blog/en/openclaw-daily-2026-08-16.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增构建 HTML 内部链接 parity checker，支持 trailing slash、query/hash、XML 资源与根路径，排除旧 `/blog/` 别名和不保证双语同 slug 的 tag alternate；加入缺失 target synthetic self-test、package script 与 Content Check build 后门禁；将三条失效 workflow 内链改为现有 Model Fallback Strategy 页面。
+- ICE: 9x9x9=729
+- Result: partial pass（`node --check`、synthetic self-test 与 `git diff --check` 通过；现有旧 dist 在修复前发现 3 条失效链接，源文件已全部修复。Astro build 与 package-script gate 受无人值守 host approval policy 阻塞，未绕过审批；质量评分 24/30。）
+- Decision: scale（构建审批恢复后执行 `pnpm build && pnpm check:built-internal-links`；继续将缺失 target 作为发布前 fail-closed 条件。）
+
 ## EXP-348 — Weekly stale-domain alert/report parity gate (2026-09-19 17:20 Asia/Shanghai)
 - Hypothesis: 周报已生成 stale-domain scanner 状态和独立告警文件，但缺少二者的当前周、路径与 OK/ALERT 一致性校验；状态漂移会让域名卫生结论失真，延迟发现 canonical/redirect 旧域名回流。将报告与告警文件绑定到同一 Asia/Shanghai 周窗口并 fail closed，可降低 stale-domain 决策误用风险。
 - Scope: `scripts/check-weekly-domain-alert-parity.sh`, `package.json`, `.github/workflows/content-check.yml`, `reports/seo-weekly/seo-weekly-2026-09-14-to-2026-09-20.md`, `reports/seo-weekly/stale-domain-alert-2026-09-14-to-2026-09-20.md`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
