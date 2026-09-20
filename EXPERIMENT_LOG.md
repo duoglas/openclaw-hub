@@ -6,8 +6,8 @@
 - Start date: 2026-09-20
 - End date: 2026-09-20
 - Success metric: `node --check scripts/check-built-internal-links.mjs`, `node scripts/check-built-internal-links.mjs --self-test`, `pnpm build`, `pnpm check:built-internal-links`, and `git diff --check` pass; zero missing built anchors.
-- Result: pending validation.
-- Decision: pending build and gate results.
+- Result: pass（`node --check`、synthetic self-test、direct Astro build（771 pages）、built-output gate（772 HTML files / 13,945 internal links / 27 fragment links）与 `git diff --check` 全部通过；实测发现并阻断 10 条此前未覆盖的中文 URL-encoded fragment 假阳性，修正解码后归零。`pnpm build` wrapper 受 unattended host approval policy 阻塞，未绕过审批；commit `0ab8a7f` 已完成并已 push。质量评分 28/30。）
+- Decision: scale（将 same-page/cross-page fragment anchor parity 保留为 `pnpm check:built-internal-links` 的发布前门禁；后续若新增目录或 FAQ 模板，必须继续通过 built-output anchor parity。）
 
 ## EXP-349 — Built internal-link parity gate (2026-09-20 11:20 Asia/Shanghai)
 - Hypothesis: 现有 canonical、sitemap 与 RSS 门禁无法发现正文中的失效内部 href；断链会浪费已发布页面的内部链接信号并降低文章与订阅入口的可达性。对构建 HTML 的站内页面链接做 parity 检查，并修复已发现的三条历史日报断链，可在发布前 fail closed。

@@ -19,10 +19,11 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-350: 为构建产物内部链接门禁补齐 fragment anchor parity，阻止目录、FAQ 与步骤导航指向不存在的页面锚点，消费 EXP-349 的构建链接可达性后续假设 | ICE 8x9x8=576 — pending commit
+- [x] P1 Candidate / EXP-350: 为构建产物内部链接门禁补齐 fragment anchor parity，阻止目录、FAQ 与步骤导航指向不存在的页面锚点，消费 EXP-349 的构建链接可达性后续假设 | ICE 8x9x8=576 — commit `0ab8a7f`
   - Hypothesis: EXP-349 已阻止 href 指向不存在页面，但忽略 `#fragment` 会让目录、FAQ 与步骤导航继续指向不存在的 `id/name` 锚点；这会造成用户落地后无法跳转，也削弱搜索引擎对具体段落的可达性。对同页与跨页 fragment 做 built-output anchor parity，并对非法编码 fragment fail closed，可补齐内部链接可达性门禁。
   - Metrics: 构建 HTML 中所有站内 fragment 100% 映射到目标页面 `id` 或 `name`；缺失 anchor、非法编码 fragment 在 synthetic self-test 中 fail closed；CI 复用 `pnpm check:built-internal-links`。
   - Acceptance: 1) same-page 与 cross-page fragment 均校验；2) URL-encoded fragment 正确解码；3) missing target 与 missing anchor 均 fail closed；4) `node --check`、self-test、Astro build、gate 与 `git diff --check` 通过；5) commit/push 后回写实验结果。
+  - Status (2026-09-20 17:24): checker self-test、direct Astro build（771 pages）、built-output gate（772 HTML files / 13,945 internal links / 27 fragment links）与 `git diff --check` 通过；`pnpm build` wrapper 受 unattended host approval policy 阻塞，未绕过审批；commit `0ab8a7f` 已 push。Quality score 28/30.
 
 - [x] P1 Candidate / EXP-349: 为构建产物增加内部链接可达性门禁，阻止文章、RSS 与增长入口指向不存在页面，修复 08-14~08-16 英文日报失效 workflow 内链 | ICE 9x9x9=729 — commit `be7eb0b`
   - Hypothesis: 现有 canonical、sitemap 与 RSS 门禁无法发现正文中的失效内部 href；断链会浪费已发布页面的内部链接信号并降低文章与订阅入口的可达性。对构建 HTML 的站内页面链接做 parity 检查，并修复已发现的三条历史日报断链，可在发布前 fail closed。
