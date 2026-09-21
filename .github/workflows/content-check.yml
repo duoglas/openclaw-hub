@@ -110,6 +110,9 @@ jobs:
       - name: Built internal-link parity check
         run: pnpm check:built-internal-links
 
+      - name: Built external-link hygiene check
+        run: pnpm check:built-external-link-hygiene
+
       - name: Hreflang built-target parity check
         run: pnpm check:hreflang-built-target-parity
 

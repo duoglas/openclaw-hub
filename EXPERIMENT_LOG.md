@@ -3737,3 +3737,14 @@
 - Success metric: 每个 built HTML 的 canonical 都精确映射到已生成页面并出现在最终 sitemap URL 集合，漂移时 fail closed。
 - Result: pass（`node --check scripts/check-canonical-sitemap-parity.mjs`、direct Astro build（771 pages）、`node scripts/check-canonical-sitemap-parity.mjs`（771 built pages / 772 sitemap URLs）、现有 canonical、sitemap built-page、hreflang built-target parity checks 与 `git diff --check` 全部通过；commit `6238a47`；质量评分 29/30。）
 - Decision: scale（将 canonical-to-sitemap parity 保留为 build 后 SEO 发布门禁；后续新增路由、canonical 生成逻辑或 sitemap 分片时必须同步验证 canonical 与 sitemap 的双向一致性。）
+
+### EXP-351
+- Hypothesis: EXP-350 已覆盖站内页面与 fragment 可达性，但 built HTML 中的外部增长入口仍可能回退到 HTTP，或 `target="_blank"` 缺少 `rel="noopener"`；这会造成浏览器安全降级、降低推荐/反馈 CTA 信任，并让发布前门禁遗漏可直接修复的外链质量问题。
+- Scope: `scripts/check-built-external-link-hygiene.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 build 后外部链接卫生门禁，遍历最终 HTML，要求非 kuoo.uk 外部 HTTP(S) href 使用 HTTPS，并要求 `target="_blank"` 外链含 `rel=noopener`；加入 valid/insecure/missing-noopener synthetic self-test 与 Content Check CI。
+- ICE: 8x8x8=512
+- Start date: 2026-09-21
+- End date: 2026-09-21
+- Success metric: built HTML 中外部链接 HTTPS 与新窗口 noopener 覆盖率 100%；不安全协议与缺失 noopener 在 self-test 中 fail closed；Astro build 与 gate 通过。
+- Result: pass（`node --check`、synthetic self-test、direct Astro build（771 pages）、built external-link hygiene gate（772 HTML files / 1,635 external HTTPS links / 1,247 target=_blank links）、built internal-link parity（13,945 internal links / 27 fragments）与 `git diff --check` 全部通过；local loopback URLs are excluded as documentation examples. `pnpm` wrapper invocation was blocked by unattended host approval policy; no bypass attempted. Quality score 28/30.）
+- Decision: scale（将外部 HTTPS 与 target=_blank noopener 继续作为 built-output 发布前门禁；新增外部 CTA、反馈入口或推荐链接时，local loopback 示例必须保持非生产豁免，真实外部 URL 必须通过该门禁。）

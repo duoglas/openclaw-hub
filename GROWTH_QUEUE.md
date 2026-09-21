@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-19 17:20
+Last updated: 2026-09-21 13:37
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -18,6 +18,12 @@ Manager: main session
 ## Doing
 
 ## Done
+
+- [x] P1 Candidate / EXP-351: 为构建产物增加外部链接 HTTPS 与新窗口安全属性门禁，阻止增长 CTA、推荐栈与反馈入口因不安全协议或缺失 noopener 造成信任与安全回退，消费 EXP-350 构建链接可达性后续假设 | ICE 8x8x8=512 — commit `df7bcff`
+  - Hypothesis: EXP-350 已覆盖站内页面与 fragment 可达性，但 built HTML 中的外部增长入口仍可能回退到 HTTP，或 `target="_blank"` 缺少 `rel="noopener"`；这会造成浏览器安全降级、降低推荐/反馈 CTA 信任，并让发布前门禁遗漏可直接修复的外链质量问题。
+  - Metrics: built HTML 中所有非 kuoo.uk 外部 `http(s)` href 100% 使用 HTTPS；所有 `target="_blank"` 外链 100% 含 `rel=noopener`；不安全协议与缺失属性在 synthetic self-test 中 fail closed；CI 复用 `pnpm check:built-external-link-hygiene`。
+  - Acceptance: 1) 外部 HTTPS 与 noopener 均校验；2) kuoo.uk 内链不误报；3) insecure external href 与 missing noopener 均 fail closed；4) `node --check`、self-test、Astro build、gate 与 `git diff --check` 通过；5) commit/push 后回写实验结果。
+  - Status (2026-09-21 13:37): implementation and validation complete; commit `df7bcff` pushed to `origin/main`. Quality score 28/30.
 
 - [x] P1 Candidate / EXP-350: 为构建产物内部链接门禁补齐 fragment anchor parity，阻止目录、FAQ 与步骤导航指向不存在的页面锚点，消费 EXP-349 的构建链接可达性后续假设 | ICE 8x9x8=576 — commit `0ab8a7f`
   - Hypothesis: EXP-349 已阻止 href 指向不存在页面，但忽略 `#fragment` 会让目录、FAQ 与步骤导航继续指向不存在的 `id/name` 锚点；这会造成用户落地后无法跳转，也削弱搜索引擎对具体段落的可达性。对同页与跨页 fragment 做 built-output anchor parity，并对非法编码 fragment fail closed，可补齐内部链接可达性门禁。

@@ -43,6 +43,7 @@
     "check:robots-sitemap": "bash scripts/check-robots-sitemap-integrity.sh",
     "check:sitemap-built-page-parity": "node scripts/check-sitemap-built-page-parity.mjs",
     "check:built-internal-links": "node scripts/check-built-internal-links.mjs",
+    "check:built-external-link-hygiene": "node scripts/check-built-external-link-hygiene.mjs",
     "check:hreflang-built-target-parity": "node scripts/check-hreflang-built-target-parity.mjs",
     "check:canonical-sitemap-parity": "node scripts/check-canonical-sitemap-parity.mjs",
     "check:daily-0311": "bash scripts/check-daily-0311-integrity.sh",
