@@ -1,3 +1,15 @@
+## EXP-352 — Built social-image target parity gate (2026-09-21 17:20 Asia/Shanghai)
+- Hypothesis: EXP-351 前序门禁已保证社交图片使用 `https://kuoo.uk` 绝对 URL，但无法证明目标资源实际进入 built output；图片 404 会降低社交分享点击与品牌可信度。对 EN/ZH 全部 built HTML 做 metadata-to-file parity，可在发布前 fail closed。
+- Scope: `scripts/check-built-social-image-targets.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 built-output checker，扫描 EN/ZH 全部 HTML 的 `og:image` 与 `twitter:image`，校验 HTTPS/kuoo.uk clean URL、URL 解码与 dist 目标文件存在；加入 invalid URL/mapping synthetic self-test、package script 与 Content Check CI。
+- ICE: 8x9x9=576
+- Start date: 2026-09-21
+- End date: 2026-09-21
+- Success metric: `node --check scripts/check-built-social-image-targets.mjs`、self-test、Astro build、两个 social-image gate 与 `git diff --check` 全部通过；零缺失社交图片目标。
+- Result: pass（Astro build 771 pages；built target parity 通过 382 个 EN 与 387 个 ZH 页面；absolute URL gate、target parity gate 与 diff check 全部通过）。质量评分 28/30。
+- Decision: scale（保留为发布前门禁；后续若模板支持文章级 og:image，必须继续满足 metadata-to-file parity。）
+- Commit: `10f943c`
+
 ## EXP-350 — Built internal-link fragment-anchor parity gate (2026-09-20 17:20 Asia/Shanghai)
 - Hypothesis: EXP-349 blocked hrefs pointing to missing pages but ignored `#fragment`, leaving TOC, FAQ, and step-navigation links able to target missing `id/name` anchors. Built-output anchor parity for same-page and cross-page fragments should close this remaining internal-link accessibility gap and fail closed on invalid encoded fragments.
 - Scope: `scripts/check-built-internal-links.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

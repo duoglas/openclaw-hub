@@ -35,6 +35,7 @@
     "check:rss-autodiscovery": "bash scripts/check-rss-autodiscovery.sh",
     "check:rss-feed-integrity": "bash scripts/check-rss-feed-integrity.sh",
     "check:social-image-absolute": "bash scripts/check-social-image-absolute.sh",
+    "check:built-social-image-targets": "node scripts/check-built-social-image-targets.mjs",
     "check:website-schema": "bash scripts/check-website-schema-integrity.sh",
     "check:tag-case": "bash scripts/check-tag-case-collision.sh",
     "check:tag-surface-compactness": "node scripts/check-tag-surface-compactness.mjs",

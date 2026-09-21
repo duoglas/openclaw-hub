@@ -19,6 +19,12 @@ Manager: main session
 
 ## Done
 
+- [x] P1 Candidate / EXP-352: 为 built HTML 增加社交分享图片目标存在性门禁，阻止 og:image/twitter:image 指向部署后 404 资源，消费社交图片绝对 URL 门禁后的可达性假设 | ICE 8x9x9=576 — commit `10f943c`
+  - Hypothesis: EXP-351 前序门禁已保证社交图片使用 `https://kuoo.uk` 绝对 URL，但无法证明目标资源实际进入 built output；图片 404 会降低社交分享点击与品牌可信度。对 EN/ZH 全部 built HTML 做 metadata-to-file parity，可在发布前 fail closed。
+  - Metrics: 所有 built EN/ZH HTML 的 `og:image` 与 `twitter:image` 100% 映射到 dist 中存在的文件；错误 host/protocol、query/hash 与缺失目标在 synthetic self-test 或 gate 中 fail closed；CI 复用 `pnpm check:built-social-image-targets`。
+  - Acceptance: 1) EN/ZH 全量目标存在性校验；2) URL 编码路径正确解析；3) invalid URL 与 missing target fail closed；4) `node --check`、self-test、Astro build、两个 social-image gate 与 `git diff --check` 通过；5) commit/push 后回写实验结果。
+  - Status (2026-09-21 17:20): implementation and validation complete; Astro build 771 pages, built target parity 382 EN + 387 ZH pages, absolute URL gate and diff check passed. Quality score 28/30.
+
 - [x] P1 Candidate / EXP-351: 为构建产物增加外部链接 HTTPS 与新窗口安全属性门禁，阻止增长 CTA、推荐栈与反馈入口因不安全协议或缺失 noopener 造成信任与安全回退，消费 EXP-350 构建链接可达性后续假设 | ICE 8x8x8=512 — commit `df7bcff`
   - Hypothesis: EXP-350 已覆盖站内页面与 fragment 可达性，但 built HTML 中的外部增长入口仍可能回退到 HTTP，或 `target="_blank"` 缺少 `rel="noopener"`；这会造成浏览器安全降级、降低推荐/反馈 CTA 信任，并让发布前门禁遗漏可直接修复的外链质量问题。
   - Metrics: built HTML 中所有非 kuoo.uk 外部 `http(s)` href 100% 使用 HTTPS；所有 `target="_blank"` 外链 100% 含 `rel=noopener`；不安全协议与缺失属性在 synthetic self-test 中 fail closed；CI 复用 `pnpm check:built-external-link-hygiene`。

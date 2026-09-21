@@ -209,6 +209,9 @@ jobs:
       - name: Social image absolute URL check
         run: pnpm check:social-image-absolute
 
+      - name: Built social-image target parity check
+        run: pnpm check:built-social-image-targets
+
       - name: WebSite schema integrity check
         run: pnpm check:website-schema
 
