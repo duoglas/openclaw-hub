@@ -8,7 +8,7 @@
 - Success metric: `node --check scripts/check-built-social-image-targets.mjs`、self-test、Astro build、两个 social-image gate 与 `git diff --check` 全部通过；零缺失社交图片目标。
 - Result: pass（Astro build 771 pages；built target parity 通过 382 个 EN 与 387 个 ZH 页面；absolute URL gate、target parity gate 与 diff check 全部通过）。质量评分 28/30。
 - Decision: scale（保留为发布前门禁；后续若模板支持文章级 og:image，必须继续满足 metadata-to-file parity。）
-- Commit: `10f943c`
+- Commit: `ee798d2`
 
 ## EXP-350 — Built internal-link fragment-anchor parity gate (2026-09-20 17:20 Asia/Shanghai)
 - Hypothesis: EXP-349 blocked hrefs pointing to missing pages but ignored `#fragment`, leaving TOC, FAQ, and step-navigation links able to target missing `id/name` anchors. Built-output anchor parity for same-page and cross-page fragments should close this remaining internal-link accessibility gap and fail closed on invalid encoded fragments.

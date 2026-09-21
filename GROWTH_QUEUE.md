@@ -19,7 +19,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-352: 为 built HTML 增加社交分享图片目标存在性门禁，阻止 og:image/twitter:image 指向部署后 404 资源，消费社交图片绝对 URL 门禁后的可达性假设 | ICE 8x9x9=576 — commit `10f943c`
+- [x] P1 Candidate / EXP-352: 为 built HTML 增加社交分享图片目标存在性门禁，阻止 og:image/twitter:image 指向部署后 404 资源，消费社交图片绝对 URL 门禁后的可达性假设 | ICE 8x9x9=576 — commit `ee798d2`
   - Hypothesis: EXP-351 前序门禁已保证社交图片使用 `https://kuoo.uk` 绝对 URL，但无法证明目标资源实际进入 built output；图片 404 会降低社交分享点击与品牌可信度。对 EN/ZH 全部 built HTML 做 metadata-to-file parity，可在发布前 fail closed。
   - Metrics: 所有 built EN/ZH HTML 的 `og:image` 与 `twitter:image` 100% 映射到 dist 中存在的文件；错误 host/protocol、query/hash 与缺失目标在 synthetic self-test 或 gate 中 fail closed；CI 复用 `pnpm check:built-social-image-targets`。
   - Acceptance: 1) EN/ZH 全量目标存在性校验；2) URL 编码路径正确解析；3) invalid URL 与 missing target fail closed；4) `node --check`、self-test、Astro build、两个 social-image gate 与 `git diff --check` 通过；5) commit/push 后回写实验结果。
