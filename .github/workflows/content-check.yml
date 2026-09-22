@@ -215,6 +215,9 @@ jobs:
       - name: Built meta-description quality check
         run: pnpm check:built-meta-description-quality
 
+      - name: Built title quality check
+        run: pnpm check:built-title-quality
+
       - name: WebSite schema integrity check
         run: pnpm check:website-schema
 

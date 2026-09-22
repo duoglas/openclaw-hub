@@ -1,3 +1,15 @@
+## EXP-354 — Built article title quality gate (2026-09-22 17:20 Asia/Shanghai)
+- Hypothesis: EXP-353 已覆盖 built description，但标题仍可能在模板回归中缺失、重复或泄露占位文案；对最终 EN/ZH 文章 HTML 增加 title 唯一性、可读长度与占位检查，可在发布前保护搜索结果标题与社交分享标题基础质量。
+- Scope: `scripts/check-built-title-quality.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 built article title checker，扫描 EN/ZH 文章页（排除 blog index/tag 聚合页），校验唯一 title、语言长度范围、占位模式与 HTML 实体/空白处理；加入 invalid synthetic self-test、package script 与 Content Check CI。
+- ICE: 9x9x9=729
+- Start date: 2026-09-22
+- End date: 2026-09-22
+- Success metric: EN/ZH 每个 built article page 恰有一个 title；EN 长度 20-160、ZH 长度 10-120；零占位模式；Astro build 与新 gate 全部通过。
+- Result: pass（Astro build 771 pages；built title gate 通过 229 个 EN 与 229 个 ZH 文章页；`node --check`、synthetic self-test 与 `git diff --check` 通过。）
+- Decision: scale（保留为构建后 SEO 发布门禁；与 built meta-description gate 配套，继续阻止最终产物标题质量回归。）
+- Commit: implementation committed in this run; see git history
+
 ## EXP-353 — Built article meta-description quality gate (2026-09-22 11:20 Asia/Shanghai)
 - Hypothesis: 源 Markdown 的 description 门禁无法证明最终 built HTML 仍保留唯一、完整且可读的 description；模板属性转义、页面路由或构建回归可能让搜索摘要变短、重复或泄露占位文案。对 EN/ZH 全部 built article HTML 做最终产物门禁，可在发布前 fail closed。
 - Scope: `scripts/check-built-meta-description-quality.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

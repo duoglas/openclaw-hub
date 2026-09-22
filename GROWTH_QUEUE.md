@@ -12,6 +12,11 @@ Manager: main session
 
 ## Backlog
 
+- [x] P1 Candidate / EXP-354: 为 EN/ZH 已构建文章页增加 title 质量门禁，阻止标题缺失、重复、占位或超出可读长度，消费 EXP-353 后续“最终摘要质量应与标题质量一起 fail closed”假设 | ICE 9x9x9=729 — promoted to Done in this run
+  - Hypothesis: EXP-353 已覆盖 built description，但标题仍可能在模板回归中缺失、重复或泄露占位文案；对最终 EN/ZH 文章 HTML 增加 title 唯一性、可读长度与占位检查，可在发布前保护搜索结果标题与社交分享标题基础质量。
+  - Metrics: EN/ZH 每个 built article page 恰有一个 title；EN 长度 20-160、ZH 长度 10-120；零占位模式；synthetic invalid fixtures fail closed；CI 复用 `pnpm check:built-title-quality`。
+  - Acceptance: 1) 扫描 EN/ZH built article pages 且排除 tag/index 聚合页；2) 正确处理 HTML 实体和空白；3) 缺失、重复、过短、占位标题在 self-test 中 fail closed；4) `node --check`、self-test、Astro build、门禁与 `git diff --check` 通过；5) commit/push 后回写实验结果。
+
 - [x] P1 Candidate / EXP-353: 为 EN/ZH 已构建文章页增加元描述质量门禁，阻止 Astro 构建后 description 缺失、重复、占位或超出可读长度，消费最近24小时内容建设持续强调“可检索摘要质量”假设 | ICE 9x9x9=729 — promoted to Done in this run
   - Hypothesis: 源 Markdown 的 description 门禁无法证明最终 built HTML 仍保留唯一、完整且可读的 description；模板属性转义、页面路由或构建回归可能让搜索摘要变短、重复或泄露占位文案，削弱文章检索匹配与点击意愿。对 EN/ZH 全部 built article HTML 做最终产物门禁，可在发布前 fail closed。
   - Metrics: EN/ZH 每个 built article page 恰有一个 description meta；EN 长度 45-280、ZH 长度 25-150；零占位模式；synthetic invalid fixtures fail closed；CI 复用 `pnpm check:built-meta-description-quality`。
@@ -23,6 +28,9 @@ Manager: main session
 ## Doing
 
 ## Done
+
+- [x] P1 Candidate / EXP-354: 为 EN/ZH 已构建文章页增加 title 质量门禁，阻止标题缺失、重复、占位或超出可读长度，消费 EXP-353 后续“最终摘要质量应与标题质量一起 fail closed”假设 | ICE 9x9x9=729 — implementation committed in this run
+  - Status (2026-09-22 17:20): added `scripts/check-built-title-quality.mjs`, package script, Content Check CI step, and fail-closed synthetic self-test. Existing Astro build produced 771 pages; title gate passed for 229 EN + 229 ZH article pages; `node --check`, self-test, and `git diff --check` passed. Quality score 28/30.
 
 - [x] P1 Candidate / EXP-353: 为 EN/ZH 已构建文章页增加元描述质量门禁，阻止 Astro 构建后 description 缺失、重复、占位或超出可读长度，消费最近24小时内容建设持续强调“可检索摘要质量”假设 | ICE 9x9x9=729 — commit `14d7a82`
   - Status (2026-09-22 11:20): implementation and validation complete; added built article meta-description checker, package script, Content Check CI step, and fail-closed synthetic self-test. Astro build produced 771 pages; gate passed for 229 EN + 229 ZH article pages; `node --check`, self-test and `git diff --check` passed. Commit `14d7a82` committed and pushed to `origin/main`.
