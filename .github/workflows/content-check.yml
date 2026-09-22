@@ -212,6 +212,9 @@ jobs:
       - name: Built social-image target parity check
         run: pnpm check:built-social-image-targets
 
+      - name: Built meta-description quality check
+        run: pnpm check:built-meta-description-quality
+
       - name: WebSite schema integrity check
         run: pnpm check:website-schema
 

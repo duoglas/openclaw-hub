@@ -1,3 +1,15 @@
+## EXP-353 — Built article meta-description quality gate (2026-09-22 11:20 Asia/Shanghai)
+- Hypothesis: 源 Markdown 的 description 门禁无法证明最终 built HTML 仍保留唯一、完整且可读的 description；模板属性转义、页面路由或构建回归可能让搜索摘要变短、重复或泄露占位文案。对 EN/ZH 全部 built article HTML 做最终产物门禁，可在发布前 fail closed。
+- Scope: `scripts/check-built-meta-description-quality.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 built article checker，扫描 EN/ZH 文章页（排除 blog index/tag 聚合页），校验唯一 description、语言长度范围、占位模式与 HTML 属性引号/实体处理；加入 invalid synthetic self-test、package script 与 Content Check CI。
+- ICE: 9x9x9=729
+- Start date: 2026-09-22
+- End date: 2026-09-22
+- Success metric: EN/ZH 每个 built article page 恰有一个 description meta；EN 长度 45-280、ZH 长度 25-150；零占位模式；Astro build 与新 gate 全部通过。
+- Result: pass（Astro build 771 pages；built meta-description gate 通过 229 个 EN 与 229 个 ZH 文章页；`node --check`、synthetic self-test 与 `git diff --check` 通过。）
+- Decision: scale（保留为构建后 SEO 发布门禁；继续以源内容质量检查作为前置，最终产物检查作为发布前兜底。）
+- Commit: `14d7a82`
+
 ## EXP-352 — Built social-image target parity gate (2026-09-21 17:20 Asia/Shanghai)
 - Hypothesis: EXP-351 前序门禁已保证社交图片使用 `https://kuoo.uk` 绝对 URL，但无法证明目标资源实际进入 built output；图片 404 会降低社交分享点击与品牌可信度。对 EN/ZH 全部 built HTML 做 metadata-to-file parity，可在发布前 fail closed。
 - Scope: `scripts/check-built-social-image-targets.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
