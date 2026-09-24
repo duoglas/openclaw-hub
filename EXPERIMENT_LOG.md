@@ -9,7 +9,7 @@
 - Result: pass（`node --check`、synthetic self-test、Astro build（771 pages）、distinctness gate（229 EN + 229 ZH article pages）、meta-description quality gate、title quality gate 与 `git diff --check` 全部通过。）
 - Quality: 28/30（覆盖最终产物、双语 458 页、实体/大小写/空白归一化与 fail-closed self-test，并接入 Content Check；尚无 CTR/流量观察，不宣称增长 lift。）
 - Decision: scale（保留为构建后 SEO 门禁，与 title/description 独立质量检查配套；后续观察搜索摘要点击数据，不把技术门禁通过等同于流量提升。）
-- Commit: pending <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `854ffaa` (pushed to `origin/main`) <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 
 ## EXP-354 — Built article title quality gate (2026-09-22 17:20 Asia/Shanghai)
 - Hypothesis: EXP-353 已覆盖 built description，但标题仍可能在模板回归中缺失、重复或泄露占位文案；对最终 EN/ZH 文章 HTML 增加 title 唯一性、可读长度与占位检查，可在发布前保护搜索结果标题与社交分享标题基础质量。

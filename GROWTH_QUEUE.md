@@ -34,8 +34,8 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-355: 为 EN/ZH 已构建文章页增加 title 与 meta description 差异门禁，阻止两项 SEO 摘要字段重复而浪费搜索摘要空间 | ICE 9x9x9=729 — implementation complete; commit pending
-  - Status (2026-09-24 17:20): built metadata distinctness checker、package script 与 Content Check CI step 已实现；Astro build 771 pages；EN/ZH 共 458 个文章页通过；synthetic self-test、description/title 质量门禁与 `git diff --check` 均通过。质量评分 28/30。
+- [x] P1 Candidate / EXP-355: 为 EN/ZH 已构建文章页增加 title 与 meta description 差异门禁，阻止两项 SEO 摘要字段重复而浪费搜索摘要空间 | ICE 9x9x9=729 — commit `854ffaa`
+  - Status (2026-09-24 17:20): built metadata distinctness checker、package script 与 Content Check CI step 已实现；Astro build 771 pages；EN/ZH 共 458 个文章页通过；synthetic self-test、description/title 质量门禁与 `git diff --check` 均通过。`854ffaa` 已推送至 `origin/main`。质量评分 28/30。
 
 - [x] P1 Candidate / EXP-354: 为 EN/ZH 已构建文章页增加 title 质量门禁，阻止标题缺失、重复、占位或超出可读长度，消费 EXP-353 后续“最终摘要质量应与标题质量一起 fail closed”假设 | ICE 9x9x9=729 — implementation committed in this run
   - Status (2026-09-22 17:20): added `scripts/check-built-title-quality.mjs`, package script, Content Check CI step, and fail-closed synthetic self-test. Existing Astro build produced 771 pages; title gate passed for 229 EN + 229 ZH article pages; `node --check`, self-test, and `git diff --check` passed. Quality score 28/30.
