@@ -1,3 +1,16 @@
+## EXP-355 — Built article title/description distinctness gate (2026-09-24 17:20 Asia/Shanghai)
+- Hypothesis: EXP-353/354 分别保证 built description 与 title 的独立质量，但模板回归仍可能把两者渲染成相同文案；搜索结果和分享入口因此失去补充信息。对最终 EN/ZH 文章 HTML 做归一化后的字段差异校验，可在发布前 fail closed。
+- Scope: `scripts/check-built-article-metadata-distinctness.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 built article metadata distinctness checker，扫描 EN/ZH 文章页（排除 blog index/tag 聚合页），校验唯一 title/description 在解码 HTML 实体、折叠空白并忽略大小写后不相同；加入重复文本与大小写/实体归一化的 synthetic self-test、package script 与 Content Check CI step。
+- ICE: 9x9x9=729
+- Start date: 2026-09-24
+- End date: 2026-09-24
+- Success metric: EN/ZH 所有 built article page 的 title 与 description 唯一且归一化后不同；重复字段 synthetic fixtures fail closed；Astro build 与相邻 SEO 门禁全部通过。
+- Result: pass（`node --check`、synthetic self-test、Astro build（771 pages）、distinctness gate（229 EN + 229 ZH article pages）、meta-description quality gate、title quality gate 与 `git diff --check` 全部通过。）
+- Quality: 28/30（覆盖最终产物、双语 458 页、实体/大小写/空白归一化与 fail-closed self-test，并接入 Content Check；尚无 CTR/流量观察，不宣称增长 lift。）
+- Decision: scale（保留为构建后 SEO 门禁，与 title/description 独立质量检查配套；后续观察搜索摘要点击数据，不把技术门禁通过等同于流量提升。）
+- Commit: pending <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-354 — Built article title quality gate (2026-09-22 17:20 Asia/Shanghai)
 - Hypothesis: EXP-353 已覆盖 built description，但标题仍可能在模板回归中缺失、重复或泄露占位文案；对最终 EN/ZH 文章 HTML 增加 title 唯一性、可读长度与占位检查，可在发布前保护搜索结果标题与社交分享标题基础质量。
 - Scope: `scripts/check-built-title-quality.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

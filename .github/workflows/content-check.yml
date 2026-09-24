@@ -218,6 +218,9 @@ jobs:
       - name: Built title quality check
         run: pnpm check:built-title-quality
 
+      - name: Built article metadata distinctness check
+        run: pnpm check:built-article-metadata-distinctness
+
       - name: WebSite schema integrity check
         run: pnpm check:website-schema
 

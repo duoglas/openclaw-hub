@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-21 13:37
+Last updated: 2026-09-24 17:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -11,6 +11,11 @@ Manager: main session
 - Focus scope: SEO/content/internal links/technical hygiene for openclaw-hub.
 
 ## Backlog
+
+- [x] P1 Candidate / EXP-355: 为 EN/ZH 已构建文章页增加 title 与 meta description 差异门禁，阻止两项 SEO 摘要字段重复而浪费搜索摘要空间 | ICE 9x9x9=729 — promoted to Done in this run
+  - Hypothesis: EXP-353/354 分别保证 built description 与 title 的独立质量，但模板回归仍可能把两者渲染成相同文案；搜索结果和分享入口因此失去补充信息。对最终 EN/ZH 文章 HTML 做归一化后的字段差异校验，可在发布前 fail closed。
+  - Metrics: 所有 EN/ZH built article page 的 title 与 description 均唯一存在且归一化后不相同；实体、大小写与空白归一化生效；重复字段 synthetic fixtures fail closed；CI 运行 `pnpm check:built-article-metadata-distinctness`。
+  - Acceptance: 1) 扫描 EN/ZH built article pages 并排除 index/tag 聚合页；2) HTML 实体/空白/大小写归一化后识别重复；3) synthetic invalid fixtures fail closed；4) `node --check`、self-test、Astro build、相邻 title/description gates 与 `git diff --check` 通过；5) commit/push 并回写结果。
 
 - [x] P1 Candidate / EXP-354: 为 EN/ZH 已构建文章页增加 title 质量门禁，阻止标题缺失、重复、占位或超出可读长度，消费 EXP-353 后续“最终摘要质量应与标题质量一起 fail closed”假设 | ICE 9x9x9=729 — promoted to Done in this run
   - Hypothesis: EXP-353 已覆盖 built description，但标题仍可能在模板回归中缺失、重复或泄露占位文案；对最终 EN/ZH 文章 HTML 增加 title 唯一性、可读长度与占位检查，可在发布前保护搜索结果标题与社交分享标题基础质量。
@@ -28,6 +33,9 @@ Manager: main session
 ## Doing
 
 ## Done
+
+- [x] P1 Candidate / EXP-355: 为 EN/ZH 已构建文章页增加 title 与 meta description 差异门禁，阻止两项 SEO 摘要字段重复而浪费搜索摘要空间 | ICE 9x9x9=729 — implementation complete; commit pending
+  - Status (2026-09-24 17:20): built metadata distinctness checker、package script 与 Content Check CI step 已实现；Astro build 771 pages；EN/ZH 共 458 个文章页通过；synthetic self-test、description/title 质量门禁与 `git diff --check` 均通过。质量评分 28/30。
 
 - [x] P1 Candidate / EXP-354: 为 EN/ZH 已构建文章页增加 title 质量门禁，阻止标题缺失、重复、占位或超出可读长度，消费 EXP-353 后续“最终摘要质量应与标题质量一起 fail closed”假设 | ICE 9x9x9=729 — implementation committed in this run
   - Status (2026-09-22 17:20): added `scripts/check-built-title-quality.mjs`, package script, Content Check CI step, and fail-closed synthetic self-test. Existing Astro build produced 771 pages; title gate passed for 229 EN + 229 ZH article pages; `node --check`, self-test, and `git diff --check` passed. Quality score 28/30.

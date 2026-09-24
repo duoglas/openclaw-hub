@@ -38,6 +38,7 @@
     "check:built-social-image-targets": "node scripts/check-built-social-image-targets.mjs",
       "check:built-meta-description-quality": "node scripts/check-built-meta-description-quality.mjs",
     "check:built-title-quality": "node scripts/check-built-title-quality.mjs",
+    "check:built-article-metadata-distinctness": "node scripts/check-built-article-metadata-distinctness.mjs",
     "check:website-schema": "bash scripts/check-website-schema-integrity.sh",
     "check:tag-case": "bash scripts/check-tag-case-collision.sh",
     "check:tag-surface-compactness": "node scripts/check-tag-surface-compactness.mjs",
