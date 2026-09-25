@@ -12,6 +12,11 @@ Manager: main session
 
 ## Backlog
 
+- [ ] P1 Candidate / EXP-356: 为 built 页面增长 CTA 增加链接事件覆盖门禁，确保 EN/ZH 核心转化入口都有稳定、可区分的点击标记 | ICE 8x8x8=512
+  - Hypothesis: 站点已有首页 Spotlight、日报归档、相关文章等增长入口，但如果主要 CTA 在 Astro 模板重构后丢失 data-growth-link / 对应事件标记，流量仍会到达页面却无法按入口归因，实验将难以判断哪些内容真正带来下一跳。扫描最终 built HTML 并按入口类别与语言校验 CTA 标记，可在发布前阻断测量盲区。
+  - Metrics: EN/ZH 首页最新日报、日报归档 latest/RSS、文章页相关文章与核心指南 CTA 的 built 链接均有稳定、唯一的可观测标记；事件不包含用户文本；缺失、重复或跨语言标记由 synthetic fixture fail closed。
+  - Acceptance: 1) 盘点现有稳定增长标记并明确最小受检入口集合；2) 新增 built-output checker 与 invalid synthetic self-test；3) 接入 package script 与 Content Check CI；4) Astro build 与专项门禁通过；5) 回写实验结果、质量评分及 commit。
+
 - [x] P1 Candidate / EXP-355: 为 EN/ZH 已构建文章页增加 title 与 meta description 差异门禁，阻止两项 SEO 摘要字段重复而浪费搜索摘要空间 | ICE 9x9x9=729 — promoted to Done in this run
   - Hypothesis: EXP-353/354 分别保证 built description 与 title 的独立质量，但模板回归仍可能把两者渲染成相同文案；搜索结果和分享入口因此失去补充信息。对最终 EN/ZH 文章 HTML 做归一化后的字段差异校验，可在发布前 fail closed。
   - Metrics: 所有 EN/ZH built article page 的 title 与 description 均唯一存在且归一化后不相同；实体、大小写与空白归一化生效；重复字段 synthetic fixtures fail closed；CI 运行 `pnpm check:built-article-metadata-distinctness`。
