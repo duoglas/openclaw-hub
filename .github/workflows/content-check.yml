@@ -113,6 +113,9 @@ jobs:
       - name: Built external-link hygiene check
         run: pnpm check:built-external-link-hygiene
 
+      - name: Built growth CTA coverage check
+        run: pnpm check:built-growth-cta-coverage
+
       - name: Hreflang built-target parity check
         run: pnpm check:hreflang-built-target-parity
 

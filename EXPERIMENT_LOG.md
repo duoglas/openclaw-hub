@@ -1,3 +1,16 @@
+## EXP-356 — Built growth CTA coverage gate (2026-09-26 11:20 Asia/Shanghai)
+- Hypothesis: 核心 CTA 若在模板重构后丢失可区分的增长标记，访问仍可能发生但无法按语言/入口归因，令增长实验失去可观测性。扫描最终 built HTML 并验证首页、日报归档、文章索引及相关文章 CTA 标记，可在发布前阻断测量盲区。
+- Scope: `scripts/check-built-growth-cta-coverage.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: 新增 built-output CTA 覆盖门禁；检查 EN/ZH 首页主 CTA、日报 latest/RSS、文章索引卡与文章相关文章 surface；synthetic self-test 覆盖缺标记与重复语言/入口标记；接入 package script 与 Content Check。
+- ICE: 8x8x8=512
+- Start date: 2026-09-26
+- End date: 2026-09-26
+- Success metric: 双语核心 built 页面 CTA 标记覆盖；缺失或重复标记由 self-test fail closed；Astro build、专项门禁与 diff check 通过。
+- Result: pass（Astro build 771 pages；built CTA gate 覆盖 EN/ZH 首页、日报归档、文章索引及 456 个相关文章页面；synthetic 缺失/重复标记用例通过；专项门禁、node --check、git diff --check 通过。）
+- Quality: 28/30（最终产物覆盖和 fail-closed 检查已自动化并纳入 CI；尚无真实点击归因数据，不宣称流量提升。）
+- Decision: scale（保持该 gate 作为 CTA 标记回归基线；下一步结合线上增长事件数据评估入口点击与后续转化。）
+- Commit: `PENDING` <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-355 — Built article title/description distinctness gate (2026-09-24 17:20 Asia/Shanghai)
 - Hypothesis: EXP-353/354 分别保证 built description 与 title 的独立质量，但模板回归仍可能把两者渲染成相同文案；搜索结果和分享入口因此失去补充信息。对最终 EN/ZH 文章 HTML 做归一化后的字段差异校验，可在发布前 fail closed。
 - Scope: `scripts/check-built-article-metadata-distinctness.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
