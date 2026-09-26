@@ -9,7 +9,7 @@
 - Result: pass（Astro build 771 pages；built CTA gate 覆盖 EN/ZH 首页、日报归档、文章索引及 456 个相关文章页面；synthetic 缺失/重复标记用例通过；专项门禁、node --check、git diff --check 通过。）
 - Quality: 28/30（最终产物覆盖和 fail-closed 检查已自动化并纳入 CI；尚无真实点击归因数据，不宣称流量提升。）
 - Decision: scale（保持该 gate 作为 CTA 标记回归基线；下一步结合线上增长事件数据评估入口点击与后续转化。）
-- Commit: `PENDING` <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `d6a8ea1` (pushed to `origin/main`) <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 
 ## EXP-355 — Built article title/description distinctness gate (2026-09-24 17:20 Asia/Shanghai)
 - Hypothesis: EXP-353/354 分别保证 built description 与 title 的独立质量，但模板回归仍可能把两者渲染成相同文案；搜索结果和分享入口因此失去补充信息。对最终 EN/ZH 文章 HTML 做归一化后的字段差异校验，可在发布前 fail closed。

@@ -1,6 +1,6 @@
 # GROWTH_QUEUE.md
 
-Last updated: 2026-09-24 17:20
+Last updated: 2026-09-26 11:20
 Owner: hub-growth-runner (sub-agent)
 Manager: main session
 
@@ -12,7 +12,7 @@ Manager: main session
 
 ## Backlog
 
-- [x] P1 Candidate / EXP-356: 为 built 页面增长 CTA 增加链接事件覆盖门禁，确保 EN/ZH 核心转化入口都有稳定、可区分的点击标记 | ICE 8x8x8=512 — commit `PENDING`
+- [x] P1 Candidate / EXP-356: 为 built 页面增长 CTA 增加链接事件覆盖门禁，确保 EN/ZH 核心转化入口都有稳定、可区分的点击标记 | ICE 8x8x8=512 — commit `d6a8ea1`
   - Hypothesis: 站点已有首页 Spotlight、日报归档、相关文章等增长入口，但如果主要 CTA 在 Astro 模板重构后丢失 data-growth-link / 对应事件标记，流量仍会到达页面却无法按入口归因，实验将难以判断哪些内容真正带来下一跳。扫描最终 built HTML 并按入口类别与语言校验 CTA 标记，可在发布前阻断测量盲区。
   - Metrics: EN/ZH 首页最新日报、日报归档 latest/RSS、文章页相关文章与核心指南 CTA 的 built 链接均有稳定、唯一的可观测标记；事件不包含用户文本；缺失、重复或跨语言标记由 synthetic fixture fail closed。
   - Acceptance: 1) 盘点现有稳定增长标记并明确最小受检入口集合；2) 新增 built-output checker 与 invalid synthetic self-test；3) 接入 package script 与 Content Check CI；4) Astro build 与专项门禁通过；5) 回写实验结果、质量评分及 commit。
@@ -39,7 +39,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-356: 为 built 页面增长 CTA 增加链接事件覆盖门禁，确保 EN/ZH 核心转化入口都有稳定、可区分的点击标记 | ICE 8x8x8=512 — commit `PENDING`
+- [x] P1 Candidate / EXP-356: 为 built 页面增长 CTA 增加链接事件覆盖门禁，确保 EN/ZH 核心转化入口都有稳定、可区分的点击标记 | ICE 8x8x8=512 — commit `d6a8ea1`
   - Status (2026-09-26 11:20): 新增 built HTML CTA 覆盖 checker、synthetic fail-closed self-test、package script 与 Content Check CI；检查 EN/ZH 首页、日报归档、文章索引，以及 456 个文章页相关文章 surface；Astro build（771 pages）、专项检查、node --check 与 git diff --check 通过。质量评分 28/30。
 
 - [x] P1 Candidate / EXP-355: 为 EN/ZH 已构建文章页增加 title 与 meta description 差异门禁，阻止两项 SEO 摘要字段重复而浪费搜索摘要空间 | ICE 9x9x9=729 — commit `854ffaa`
