@@ -12,6 +12,11 @@ Manager: main session
 
 ## Backlog
 
+- [ ] P1 Candidate / EXP-357: 为日报 RSS 与首页主 CTA 建立匿名点击归因基线，验证价值型入口是否带来有效订阅访问 | ICE 8x8x7=448
+  - Hypothesis: EXP-356 已保证核心 CTA 有稳定可区分标记，但目前只有可观测性门禁、没有可复核的点击/后续访问数据；在不采集用户文本或身份的前提下，按语言与入口记录匿名点击及 RSS feed 到达事件，可识别真正带来订阅访问的入口并避免把“标记存在”误判为增长。
+  - Metrics: EN/ZH 首页主 CTA 与日报 RSS CTA 的事件按入口/语言计数；RSS 页面请求量作为下游代理指标；不记录用户文本、稳定个人标识或敏感信息；上线后连续 14 天获得可对照基线，事件丢失率低于 5%。
+  - Acceptance: 1) 先审查现有分析栈与隐私边界，复用现有方案，不引入新第三方或个人标识；2) 添加匿名事件实现及 built-output/fixture 覆盖；3) CI 检查标记到事件映射，EN/ZH 分开且无自由文本字段；4) build、专项自检与 diff check 通过；5) 实测数据不足时明确标注观察中，不宣称 CTR lift；执行后记录结果与质量评分。
+
 - [x] P1 Candidate / EXP-356: 为 built 页面增长 CTA 增加链接事件覆盖门禁，确保 EN/ZH 核心转化入口都有稳定、可区分的点击标记 | ICE 8x8x8=512 — commit `d6a8ea1`
   - Hypothesis: 站点已有首页 Spotlight、日报归档、相关文章等增长入口，但如果主要 CTA 在 Astro 模板重构后丢失 data-growth-link / 对应事件标记，流量仍会到达页面却无法按入口归因，实验将难以判断哪些内容真正带来下一跳。扫描最终 built HTML 并按入口类别与语言校验 CTA 标记，可在发布前阻断测量盲区。
   - Metrics: EN/ZH 首页最新日报、日报归档 latest/RSS、文章页相关文章与核心指南 CTA 的 built 链接均有稳定、唯一的可观测标记；事件不包含用户文本；缺失、重复或跨语言标记由 synthetic fixture fail closed。
