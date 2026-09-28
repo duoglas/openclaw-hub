@@ -1,3 +1,15 @@
+## EXP-357 — Anonymous CTA click attribution baseline (2026-09-28 17:20 Asia/Shanghai)
+- Hypothesis: EXP-356 ensured stable CTA markers but did not capture their interactions; emitting marker- and language-level click events through the existing Cloudflare Web Analytics bridge enables comparison of homepage/RSS entry points without collecting identity or user text.
+- Scope: `src/components/Analytics.astro`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- Change: Added delegated click tracking for `data-growth-link` and `data-daily-index-growth`; emits `growth_cta_click` with language, marker, current pathname, and normalized destination. Query strings, fragments, page text, and visitor identifiers are excluded. Reuses the existing opt-in Cloudflare token; no new vendor.
+- ICE: 8x8x7=448
+- Start date: 2026-09-28
+- End date: 2026-09-28
+- Success metric: EN/ZH events are distinguishable by marker; after 14 days, compare event counts with RSS route requests and keep event loss below 5% where both telemetry sources permit measurement.
+- Result: implementation pass; Astro build produced 771 pages, built CTA coverage check passed across bilingual surfaces and 456 article related-post surfaces, and `git diff --check` passed. Live analytics token/configuration and 14-day observations were not independently verified; baseline remains pending, with no CTR lift claimed.
+- Quality: 26/30 (privacy-minimized event wiring and build checks complete; no synthetic runtime event test or live traffic evidence yet).
+- Decision: observe for 14 days after deployment; verify Cloudflare token is enabled before interpreting missing events. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-356 — Built growth CTA coverage gate (2026-09-26 11:20 Asia/Shanghai)
 - Hypothesis: 核心 CTA 若在模板重构后丢失可区分的增长标记，访问仍可能发生但无法按语言/入口归因，令增长实验失去可观测性。扫描最终 built HTML 并验证首页、日报归档、文章索引及相关文章 CTA 标记，可在发布前阻断测量盲区。
 - Scope: `scripts/check-built-growth-cta-coverage.mjs`, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

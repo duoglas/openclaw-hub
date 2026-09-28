@@ -71,6 +71,17 @@ const cfToken = import.meta.env.CF_WEB_ANALYTICS_TOKEN || '';
             var anchor = target && target.closest ? target.closest("a[href]") : null;
             if (!anchor) return;
             var url = new URL(anchor.href, location.href);
+            var marker = anchor.getAttribute("data-growth-link") || anchor.getAttribute("data-daily-index-growth");
+            if (marker && /^[a-z0-9_-]{1,64}$/i.test(marker)) {
+              send({
+                name: "growth_cta_click",
+                lang: anchor.getAttribute("data-lang") || document.documentElement.lang || "",
+                path: location.pathname,
+                kind: marker,
+                href: url.origin === location.origin ? url.pathname : url.origin + url.pathname,
+                label: "cta"
+              });
+            }
             var provider = getAffiliateProvider(url);
             if (!provider) return;
             send({
