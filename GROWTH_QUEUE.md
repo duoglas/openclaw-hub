@@ -49,8 +49,8 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-358: 为匿名 CTA 归因桥接增加无浏览器 synthetic runtime 测试，证明真实 click 可产生隐私最小化事件 | ICE 8x9x8=576 — commit pending
-  - Status (2026-09-30 17:20): 实际 Analytics.astro inline bridge 的 Node vm 测试通过，覆盖有效点击 exactly-one、嵌套 target、未标记/非法/超长 marker 与 query/hash 隐私；Astro build 771 pages、built CTA coverage（456 个相关文章 surfaces）、node --check 与 git diff --check 通过；CI 已接入。质量评分 28/30。
+- [x] P1 Candidate / EXP-358: 为匿名 CTA 归因桥接增加无浏览器 synthetic runtime 测试，证明真实 click 可产生隐私最小化事件 | ICE 8x9x8=576 — commit `19e6752`
+  - Status (2026-09-30 17:20): 实际 Analytics.astro inline bridge 的 Node vm 测试通过，覆盖有效点击 exactly-one、嵌套 target、未标记/非法/超长 marker 与 query/hash 隐私；Astro build 771 pages、built CTA coverage（456 个相关文章 surfaces）、node --check 与 git diff --check 通过；CI 已接入并已推送。质量评分 28/30。
 
 - [x] P1 Candidate / EXP-357: 为日报 RSS 与首页主 CTA 建立匿名点击归因基线，验证价值型入口是否带来有效订阅访问 | ICE 8x8x7=448 — commit `3ece57e`
   - Status (2026-09-28 17:20): Cloudflare Web Analytics bridge now captures marked CTA clicks as `growth_cta_click`, split by language and marker; forwards only pathname and normalized destination without query/hash or user data. Build (771 pages), existing built CTA coverage gate and diff check passed. 14-day live baseline remains pending; no lift claimed. Quality score 26/30.
