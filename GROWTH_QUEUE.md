@@ -12,7 +12,7 @@ Manager: main session
 
 ## Backlog
 
-- [ ] P1 Candidate / EXP-358: 为匿名 CTA 归因桥接增加无浏览器 synthetic runtime 测试，证明真实 click 可产生隐私最小化事件 | ICE 8x9x8=576
+- [x] P1 Candidate / EXP-358: 为匿名 CTA 归因桥接增加无浏览器 synthetic runtime 测试，证明真实 click 可产生隐私最小化事件 | ICE 8x9x8=576 — completed this run
   - Hypothesis: EXP-357 当前只验证静态 built CTA 标记，没有执行 Analytics.astro 内联桥接；选择器变化、点击目标嵌套或 beacon API 漂移可能让线上事件静默丢失，且静态检查无法发现 query/hash 或用户内容泄漏。用 Node vm 和最小 DOM/beacon mock 执行实际桥接脚本，可在 CI 中验证事件触发与隐私边界，而不依赖浏览器或真实账号。
   - Metrics: 标记 CTA 点击恰产生一个 `growth_cta_click`，含语言、入口 kind 与路径；query/hash、链接文字、referrer 与用户字段不外发；无标记链接不产生该事件；测试可离线重复运行。
   - Acceptance: 1) 从 Analytics.astro 提取真实 inline bridge 并在隔离 vm 中运行；2) mock click target、anchor、location 与 Cloudflare beacon；3) 覆盖嵌套 target、缺标记、恶意/过长标记和 query/hash 隐私断言；4) 接入 package script 与 Content Check CI；5) `node --check`、专项 synthetic 测试、Astro build、CTA coverage gate、`git diff --check` 通过；6) 回写实验结果及质量评分。
@@ -48,6 +48,9 @@ Manager: main session
 ## Doing
 
 ## Done
+
+- [x] P1 Candidate / EXP-358: 为匿名 CTA 归因桥接增加无浏览器 synthetic runtime 测试，证明真实 click 可产生隐私最小化事件 | ICE 8x9x8=576 — commit pending
+  - Status (2026-09-30 17:20): 实际 Analytics.astro inline bridge 的 Node vm 测试通过，覆盖有效点击 exactly-one、嵌套 target、未标记/非法/超长 marker 与 query/hash 隐私；Astro build 771 pages、built CTA coverage（456 个相关文章 surfaces）、node --check 与 git diff --check 通过；CI 已接入。质量评分 28/30。
 
 - [x] P1 Candidate / EXP-357: 为日报 RSS 与首页主 CTA 建立匿名点击归因基线，验证价值型入口是否带来有效订阅访问 | ICE 8x8x7=448 — commit `3ece57e`
   - Status (2026-09-28 17:20): Cloudflare Web Analytics bridge now captures marked CTA clicks as `growth_cta_click`, split by language and marker; forwards only pathname and normalized destination without query/hash or user data. Build (771 pages), existing built CTA coverage gate and diff check passed. 14-day live baseline remains pending; no lift claimed. Quality score 26/30.

@@ -116,6 +116,9 @@ jobs:
       - name: Built growth CTA coverage check
         run: pnpm check:built-growth-cta-coverage
 
+      - name: Growth CTA bridge runtime check
+        run: pnpm check:growth-cta-bridge-runtime
+
       - name: Hreflang built-target parity check
         run: pnpm check:hreflang-built-target-parity
 

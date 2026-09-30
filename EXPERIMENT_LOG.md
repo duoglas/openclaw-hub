@@ -1,10 +1,16 @@
-## EXP-358 — Synthetic runtime validation for anonymous CTA attribution (queued 2026-09-30 11:20 Asia/Shanghai)
+## EXP-358 — Synthetic runtime validation for anonymous CTA attribution (2026-09-30 17:20 Asia/Shanghai)
 - Hypothesis: EXP-357 has static CTA marker coverage but no execution test for the inline analytics bridge; selector drift, nested click targets, or beacon API changes could silently drop events, while static checks cannot prove query/hash and user-content privacy. Executing the actual bridge in an isolated Node vm with minimal DOM/beacon mocks can validate event behavior offline.
 - Scope: `src/components/Analytics.astro`, new synthetic runtime test, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
 - ICE: 8x9x8=576
 - Success metric: marked CTA click emits exactly one `growth_cta_click` with language, marker, and pathname; query/hash and user content are absent; unmarked links emit no CTA event; test runs offline.
 - Acceptance: exercise the real inline bridge with nested click target, missing marker, invalid/long marker, query/hash privacy assertions; wire to package and Content Check; pass `node --check`, synthetic test, Astro build, CTA coverage gate, and `git diff --check`.
-- Status: Backlog; not implemented in this run because no queued high-value implementation was immediately executable without a scoped task selection. No growth lift is claimed. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Change: Added `scripts/check-growth-cta-bridge-runtime.mjs`; extracts and executes the actual `Analytics.astro` inline bridge in an isolated Node vm with DOM/location/Cloudflare beacon mocks. Covers nested click targets, unmarked links, malformed and overlong markers, exactly-one event, and omission of query/hash and visitor text. Wired as `check:growth-cta-bridge-runtime` and into Content Check CI.
+- Start date: 2026-09-30
+- End date: 2026-09-30
+- Result: pass（`node --check`、实际 inline bridge 的 vm synthetic runtime（有效点击 exactly-one、嵌套 target、未标记、非法/超长 marker、query/hash 隐私）、Astro build（771 pages）、built CTA coverage（456 个相关文章 surfaces）与 `git diff --check` 全部通过；未测线上点击或增长 lift。）
+- Quality: 28/30（真实桥接执行与隐私断言、构建、现有覆盖门禁及 CI 接入完成；尚无线上点击归因数据。）
+- Decision: scale（保留为匿名 CTA 事件桥接回归门禁；后续以线上数据观察事件完整性，不把测试通过等同于增长提升。）
+- Commit: pending <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 
 ## EXP-357 — Anonymous CTA click attribution baseline (2026-09-28 17:20 Asia/Shanghai)
 - Hypothesis: EXP-356 ensured stable CTA markers but did not capture their interactions; emitting marker- and language-level click events through the existing Cloudflare Web Analytics bridge enables comparison of homepage/RSS entry points without collecting identity or user text.
