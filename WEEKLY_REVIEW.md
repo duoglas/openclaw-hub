@@ -1,15 +1,15 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: 2026-09-21 to 2026-09-27
+- Week: 2026-09-28 to 2026-10-04
 - Owner: hub-growth-worker
-- Reviewed at: 2026-09-21 13:37 (Asia/Shanghai)
+- Reviewed at: 2026-09-30 08:45 (Asia/Shanghai)
 
 ## OODA / PDCA Review
 
 ### Observe (data)
-- GSC data completeness alert: 🟡 WARN (截至 2026-09-21 最大连续缺失 1 个已过日期（未达标红阈值）).
-- Schema risk trend coverage: 0/1 elapsed days (0%) have numeric issue counts as of 2026-09-21; future dates are excluded from completeness alerts.
+- GSC data completeness alert: 🔴 RED (截至 2026-09-30 连续 3 个已过日期缺少 GSC 数据（>=3 天触发标红）).
+- Schema risk trend coverage: 0/3 elapsed days (0%) have numeric issue counts as of 2026-09-30; future dates are excluded from completeness alerts.
 - Top gaining pages: Prioritize pages with rising impressions from latest daily snapshots; if missing GSC, use Section 6 top rewrite candidates as proxy.
 - Top losing pages: Flag pages with sustained low CTR (<3%) and falling impressions from weekly snapshots.
 - Top queries by impressions but low CTR: unavailable until the 7-day GSC query backfill is complete; do not treat the placeholder queue as an optimization signal.
@@ -17,7 +17,7 @@
 - New pages indexed: Verify newly published URLs in Search Console; if data unavailable, create one indexing check task in Action Plan.
 - Published posts (auto): 0
 - Updated posts (git-tracked): 0
-- Technical SEO commits (git-tracked): 0
+- Technical SEO commits (git-tracked): 1
 
 ### Orient (diagnosis)
 - Why did winners win?
@@ -36,7 +36,7 @@
   - status: done
 
 - [ ] 当前缺少可计算的高展现低CTR query 数据，先完成 7 天 GSC query 回填后再生成标题改写清单。
-  - owner: hub-growth-worker | due: 2026-09-27
+  - owner: hub-growth-worker | due: 2026-10-04
 
 ## Postmortem
 - What was low-value busy work this week?
