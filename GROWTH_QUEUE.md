@@ -12,6 +12,11 @@ Manager: main session
 
 ## Backlog
 
+- [ ] P1 Candidate / EXP-358: 为匿名 CTA 归因桥接增加无浏览器 synthetic runtime 测试，证明真实 click 可产生隐私最小化事件 | ICE 8x9x8=576
+  - Hypothesis: EXP-357 当前只验证静态 built CTA 标记，没有执行 Analytics.astro 内联桥接；选择器变化、点击目标嵌套或 beacon API 漂移可能让线上事件静默丢失，且静态检查无法发现 query/hash 或用户内容泄漏。用 Node vm 和最小 DOM/beacon mock 执行实际桥接脚本，可在 CI 中验证事件触发与隐私边界，而不依赖浏览器或真实账号。
+  - Metrics: 标记 CTA 点击恰产生一个 `growth_cta_click`，含语言、入口 kind 与路径；query/hash、链接文字、referrer 与用户字段不外发；无标记链接不产生该事件；测试可离线重复运行。
+  - Acceptance: 1) 从 Analytics.astro 提取真实 inline bridge 并在隔离 vm 中运行；2) mock click target、anchor、location 与 Cloudflare beacon；3) 覆盖嵌套 target、缺标记、恶意/过长标记和 query/hash 隐私断言；4) 接入 package script 与 Content Check CI；5) `node --check`、专项 synthetic 测试、Astro build、CTA coverage gate、`git diff --check` 通过；6) 回写实验结果及质量评分。
+
 - [x] P1 Candidate / EXP-357: 为日报 RSS 与首页主 CTA 建立匿名点击归因基线，验证价值型入口是否带来有效订阅访问 | ICE 8x8x7=448 — commit `3ece57e`
   - Hypothesis: EXP-356 已保证核心 CTA 有稳定可区分标记，但目前只有可观测性门禁、没有可复核的点击/后续访问数据；在不采集用户文本或身份的前提下，按语言与入口记录匿名点击及 RSS feed 到达事件，可识别真正带来订阅访问的入口并避免把“标记存在”误判为增长。
   - Metrics: EN/ZH 首页主 CTA 与日报 RSS CTA 的事件按入口/语言计数；RSS 页面请求量作为下游代理指标；不记录用户文本、稳定个人标识或敏感信息；上线后连续 14 天获得可对照基线，事件丢失率低于 5%。

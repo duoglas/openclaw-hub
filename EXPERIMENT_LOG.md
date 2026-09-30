@@ -1,3 +1,11 @@
+## EXP-358 — Synthetic runtime validation for anonymous CTA attribution (queued 2026-09-30 11:20 Asia/Shanghai)
+- Hypothesis: EXP-357 has static CTA marker coverage but no execution test for the inline analytics bridge; selector drift, nested click targets, or beacon API changes could silently drop events, while static checks cannot prove query/hash and user-content privacy. Executing the actual bridge in an isolated Node vm with minimal DOM/beacon mocks can validate event behavior offline.
+- Scope: `src/components/Analytics.astro`, new synthetic runtime test, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- ICE: 8x9x8=576
+- Success metric: marked CTA click emits exactly one `growth_cta_click` with language, marker, and pathname; query/hash and user content are absent; unmarked links emit no CTA event; test runs offline.
+- Acceptance: exercise the real inline bridge with nested click target, missing marker, invalid/long marker, query/hash privacy assertions; wire to package and Content Check; pass `node --check`, synthetic test, Astro build, CTA coverage gate, and `git diff --check`.
+- Status: Backlog; not implemented in this run because no queued high-value implementation was immediately executable without a scoped task selection. No growth lift is claimed. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-357 — Anonymous CTA click attribution baseline (2026-09-28 17:20 Asia/Shanghai)
 - Hypothesis: EXP-356 ensured stable CTA markers but did not capture their interactions; emitting marker- and language-level click events through the existing Cloudflare Web Analytics bridge enables comparison of homepage/RSS entry points without collecting identity or user text.
 - Scope: `src/components/Analytics.astro`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
