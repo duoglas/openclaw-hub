@@ -9,7 +9,7 @@
 - Result: pass — `node --check`, synthetic runtime tests, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and `git diff --check` all passed. First assertion run exposed only an incorrect fixture expectation (same-origin href is pathname-only); corrected the fixture, reran successfully. No live traffic lift claimed.
 - Quality: 29/30 (actual bridge policy and privacy-preserving destination cases verified; no production traffic measurement).
 - Decision: retain policy and regression coverage; continue observing live event quality, without claiming growth lift.
-- Commit: pending <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `9a5b721` (pushed to `origin/main`) <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 
 ## EXP-358 — Synthetic runtime validation for anonymous CTA attribution (2026-09-30 17:20 Asia/Shanghai)
 - Hypothesis: EXP-357 has static CTA marker coverage but no execution test for the inline analytics bridge; selector drift, nested click targets, or beacon API changes could silently drop events, while static checks cannot prove query/hash and user-content privacy. Executing the actual bridge in an isolated Node vm with minimal DOM/beacon mocks can validate event behavior offline.

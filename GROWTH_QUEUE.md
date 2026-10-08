@@ -54,7 +54,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-359: 校验归因桥接只接受本站与 HTTPS 目的地，防止 CTA 点击事件被伪造链接污染 | ICE 8x8x8=512 — implementation completed; commit pending
+- [x] P1 Candidate / EXP-359: 校验归因桥接只接受本站与 HTTPS 目的地，防止 CTA 点击事件被伪造链接污染 | ICE 8x8x8=512 — commit `9a5b721` pushed
   - Status (2026-10-08 11:22): inline bridge only emits marked CTA attribution for same-origin destinations or HTTPS; unsafe schemes, non-HTTPS external links, and malformed URLs are rejected for CTA tracking. Same-origin relative/HTTP development links and valid HTTPS external links retain pathname attribution; affiliate tracking path is unchanged. Synthetic runtime tests, node --check, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and git diff --check passed. Quality score 29/30.
 
 - [x] P1 Candidate / EXP-358: 为匿名 CTA 归因桥接增加无浏览器 synthetic runtime 测试，证明真实 click 可产生隐私最小化事件 | ICE 8x9x8=576 — commit `19e6752`
