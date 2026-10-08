@@ -10,3 +10,6 @@ node_modules/
 .env
 .env.local
 .env.*.local
+
+# GSC data fetched from M5 (not part of site source)
+data/gsc/
