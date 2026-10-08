@@ -1,3 +1,16 @@
+## EXP-359 — Restrict CTA attribution to same-origin or HTTPS destinations (2026-10-08 11:22 Asia/Shanghai)
+- Hypothesis: EXP-358 validates event execution and privacy but did not constrain destination schemes/hosts; marked links using javascript/data or insecure external HTTP could contaminate attribution. Enforcing same-origin or HTTPS destinations for CTA events protects event quality without collecting additional user data.
+- Scope: `src/components/Analytics.astro`, `scripts/check-growth-cta-bridge-runtime.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- ICE: 8x8x8=512
+- Success metric: marked CTA emits exactly one event only for same-origin destinations or HTTPS; malformed, unsafe-scheme and non-HTTPS external destinations emit no CTA event; valid relative and HTTPS destinations retain pathname-only attribution, with query/hash excluded.
+- Change: Added a CTA-only destination condition to the actual inline bridge. Left affiliate event handling unchanged. Extended vm runtime coverage for javascript/data/http external URLs, malformed URL, same-origin relative and HTTP development route, and valid HTTPS external route.
+- Start date: 2026-10-08
+- End date: 2026-10-08
+- Result: pass — `node --check`, synthetic runtime tests, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and `git diff --check` all passed. First assertion run exposed only an incorrect fixture expectation (same-origin href is pathname-only); corrected the fixture, reran successfully. No live traffic lift claimed.
+- Quality: 29/30 (actual bridge policy and privacy-preserving destination cases verified; no production traffic measurement).
+- Decision: retain policy and regression coverage; continue observing live event quality, without claiming growth lift.
+- Commit: pending <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-358 — Synthetic runtime validation for anonymous CTA attribution (2026-09-30 17:20 Asia/Shanghai)
 - Hypothesis: EXP-357 has static CTA marker coverage but no execution test for the inline analytics bridge; selector drift, nested click targets, or beacon API changes could silently drop events, while static checks cannot prove query/hash and user-content privacy. Executing the actual bridge in an isolated Node vm with minimal DOM/beacon mocks can validate event behavior offline.
 - Scope: `src/components/Analytics.astro`, new synthetic runtime test, `package.json`, `.github/workflows/content-check.yml`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

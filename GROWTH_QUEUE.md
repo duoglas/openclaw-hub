@@ -12,7 +12,7 @@ Manager: main session
 
 ## Backlog
 
-- [ ] P1 Candidate / EXP-359: 校验归因桥接只接受本站与 HTTPS 目的地，防止 CTA 点击事件被伪造链接污染 | ICE 8x8x8=512
+- [x] P1 Candidate / EXP-359: 校验归因桥接只接受本站与 HTTPS 目的地，防止 CTA 点击事件被伪造链接污染 | ICE 8x8x8=512 — completed this run
   - Hypothesis: EXP-358 已验证隐私字段及事件触发，但对标记链接的 URL scheme/host 未设定允许边界；`javascript:`、伪造同源地址或异常协议可能污染归因，甚至使 beacon metadata 带入非预期目标。为真实桥接增加目的地规范化与拒绝策略，并用 vm synthetic cases 锁定边界，可提高事件数据可信度且不收集额外个人信息。
   - Metrics: 标记 CTA 仅在 URL 为 HTTPS 或与当前页面同源时产生一个事件；协议/主机不允许或 URL malformed 时不产生事件；合法站内、合法 HTTPS 外链仍保留 pathname 归因，query/hash 始终剔除。
   - Acceptance: 1) 扩展真实 inline bridge runtime tests，覆盖 javascript/data/非 HTTPS 外链、同源相对路径、合法 HTTPS 外链与 malformed URL；2) 仅拒绝 CTA 路径，不改变已知 affiliate click 的既有行为；3) 接入 package 与 CI（若需新增 gate）；4) node --check、专项 synthetic、Astro build、built CTA coverage、git diff --check 通过；5) 回写结果与质量评分。
@@ -53,6 +53,9 @@ Manager: main session
 ## Doing
 
 ## Done
+
+- [x] P1 Candidate / EXP-359: 校验归因桥接只接受本站与 HTTPS 目的地，防止 CTA 点击事件被伪造链接污染 | ICE 8x8x8=512 — implementation completed; commit pending
+  - Status (2026-10-08 11:22): inline bridge only emits marked CTA attribution for same-origin destinations or HTTPS; unsafe schemes, non-HTTPS external links, and malformed URLs are rejected for CTA tracking. Same-origin relative/HTTP development links and valid HTTPS external links retain pathname attribution; affiliate tracking path is unchanged. Synthetic runtime tests, node --check, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and git diff --check passed. Quality score 29/30.
 
 - [x] P1 Candidate / EXP-358: 为匿名 CTA 归因桥接增加无浏览器 synthetic runtime 测试，证明真实 click 可产生隐私最小化事件 | ICE 8x9x8=576 — commit `19e6752`
   - Status (2026-09-30 17:20): 实际 Analytics.astro inline bridge 的 Node vm 测试通过，覆盖有效点击 exactly-one、嵌套 target、未标记/非法/超长 marker 与 query/hash 隐私；Astro build 771 pages、built CTA coverage（456 个相关文章 surfaces）、node --check 与 git diff --check 通过；CI 已接入并已推送。质量评分 28/30。
