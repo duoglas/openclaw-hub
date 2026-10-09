@@ -1,3 +1,16 @@
+## EXP-360 — Fail-safe and deduplicated anonymous CTA beacon events (2026-10-09 17:20 Asia/Shanghai)
+- Hypothesis: The CTA bridge had no explicit tests for missing/throwing beacon APIs or duplicate dispatch of the same DOM click event; failures could silently disrupt tracking and repeated dispatch could inflate counts. Fail-safe beacon handling plus event-object deduplication should protect event integrity without adding personal data.
+- Scope: `src/components/Analytics.astro`, `scripts/check-growth-cta-bridge-runtime.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`
+- ICE: 8x8x7=448
+- Success metric: one click Event produces at most one `growth_cta_click`; missing/throwing beacon emits no unhandled exception, blocks no navigation, and causes no retry; non-CTA clicks remain untracked; no query/hash or personal fields are sent.
+- Change: Wrapped the Cloudflare beacon invocation in a fail-safe catch and deduplicated click Event objects with WeakSet. Extended the actual inline bridge vm test for missing beacon, throwing beacon, and redispatch of the same event. Affiliate click behavior unchanged.
+- Start date: 2026-10-09
+- End date: 2026-10-09
+- Result: pass — `node --check scripts/check-growth-cta-bridge-runtime.mjs`, `pnpm check:growth-cta-bridge-runtime`, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and `git diff --check` passed. Synthetic checks confirm no event for missing/throwing beacon and exactly one event for same-object redispatch. No live traffic lift claimed.
+- Quality: 29/30 (actual bridge behavior, fail-safe paths, deduplication, build and built-output coverage verified; no production traffic experiment).
+- Decision: retain fail-safe handling and event deduplication; continue observing live event quality without claiming growth lift.
+- Commit: pending metadata commit. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+
 ## EXP-359 — Restrict CTA attribution to same-origin or HTTPS destinations (2026-10-08 11:22 Asia/Shanghai)
 - Hypothesis: EXP-358 validates event execution and privacy but did not constrain destination schemes/hosts; marked links using javascript/data or insecure external HTTP could contaminate attribution. Enforcing same-origin or HTTPS destinations for CTA events protects event quality without collecting additional user data.
 - Scope: `src/components/Analytics.astro`, `scripts/check-growth-cta-bridge-runtime.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

@@ -7,7 +7,7 @@ const match = analytics.match(/<script\s+is:inline\s+define:vars=\{\{\s*cfToken\
 assert.ok(match, 'could not find the actual inline analytics bridge');
 const bridge = match[1];
 
-function executeClick({ marker, href = 'https://example.test/feed?secret=***#private', targetHasClosest = true, pageHref = 'https://example.test/en/?page-secret=2#fragment' } = {}) {
+function executeClick({ marker, href = 'https://example.test/feed?secret=***#private', targetHasClosest = true, pageHref = 'https://example.test/en/?page-secret=2#fragment', beacon = 'ok', repeatSameEvent = false } = {}) {
   const sent = [];
   const handlers = {};
   const anchor = {
@@ -24,14 +24,15 @@ function executeClick({ marker, href = 'https://example.test/feed?secret=***#pri
     documentElement: { lang: 'en' },
     addEventListener(name, callback) { handlers[name] = callback; }
   };
-  const window = {
-    addEventListener() {},
-    cloudflareinsights(...args) { sent.push(args); }
-  };
+  const window = { addEventListener() {} };
+  if (beacon === 'ok') window.cloudflareinsights = (...args) => { sent.push(args); };
+  if (beacon === 'throws') window.cloudflareinsights = () => { throw new Error('synthetic beacon failure'); };
   const page = new URL(pageHref);
   const context = { window, document, location: { pathname: page.pathname, href: page.href, origin: page.origin }, URL, Object, String };
   vm.runInNewContext(bridge, context, { timeout: 1000 });
-  handlers.click({ target });
+  const event = { target };
+  handlers.click(event);
+  if (repeatSameEvent) handlers.click(event);
   return sent;
 }
 
@@ -42,6 +43,9 @@ assert.equal(valid[0][1], 'growth_cta_click');
 assert.deepEqual(JSON.parse(JSON.stringify(valid[0][2])), { lang: 'en', path: '/en/', kind: 'daily-rss', href: '/feed', label: 'cta' });
 assert.ok(!JSON.stringify(valid).includes('secret'));
 assert.ok(!JSON.stringify(valid).includes('private'));
+assert.equal(executeClick({ marker: 'beacon-missing', beacon: 'missing' }).length, 0, 'missing beacon must fail safely without events');
+assert.equal(executeClick({ marker: 'beacon-throws', beacon: 'throws' }).length, 0, 'throwing beacon must not escape or trigger retries');
+assert.equal(executeClick({ marker: 'repeat', repeatSameEvent: true }).length, 1, 'redispatching the same DOM event must not duplicate attribution');
 assert.equal(executeClick({ marker: '', targetHasClosest: true }).length, 0, 'unmarked click must not emit a CTA event');
 assert.equal(executeClick({ marker: 'bad marker' }).length, 0, 'invalid marker must not emit a CTA event');
 assert.equal(executeClick({ marker: 'x'.repeat(65) }).length, 0, 'overlong marker must not emit a CTA event');

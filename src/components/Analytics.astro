@@ -46,7 +46,9 @@ const cfToken = import.meta.env.CF_WEB_ANALYTICS_TOKEN || '';
             }
           }
           if (typeof window.cloudflareinsights === "function") {
-            window.cloudflareinsights("track", detail.name, props);
+            try {
+              window.cloudflareinsights("track", detail.name, props);
+            } catch (_) {}
           }
         };
 
@@ -65,8 +67,13 @@ const cfToken = import.meta.env.CF_WEB_ANALYTICS_TOKEN || '';
 
         // Track monetization intent without sending affiliate IDs, query strings,
         // page text, or any visitor-provided data.
+        var handledClickEvents = typeof WeakSet === "function" ? new WeakSet() : null;
         document.addEventListener("click", function (e) {
           try {
+            if (handledClickEvents && e && typeof e === "object") {
+              if (handledClickEvents.has(e)) return;
+              handledClickEvents.add(e);
+            }
             var target = e && e.target;
             var anchor = target && target.closest ? target.closest("a[href]") : null;
             if (!anchor) return;

@@ -12,7 +12,7 @@ Manager: main session
 
 ## Backlog
 
-- [ ] P1 Candidate / EXP-360: 验证匿名 CTA 归因 beacon 失败与重复触发时的事件可靠性，避免浏览器 API 异常造成静默丢数或重复计数 | ICE 8x8x7=448
+- [x] P1 Candidate / EXP-360: 验证匿名 CTA 归因 beacon 失败与重复触发时的事件可靠性，避免浏览器 API 异常造成静默丢数或重复计数 | ICE 8x8x7=448 — completed this run
   - Hypothesis: EXP-358/359 已验证合法点击与目的地边界，但尚未锁定 beacon 不可用、抛错或同一 DOM 事件重复派发时的失败行为；明确 fail-safe 行为并用真实 inline bridge synthetic tests 覆盖，可减少归因数据质量漂移且不新增个人信息。
   - Metrics: 一次合法 click 最多发出一个 `growth_cta_click`；beacon 缺失或抛错不导致未处理异常、导航阻断或额外重试；非 CTA click 仍不产生事件；测试全程离线且不包含 query/hash/个人字段。
   - Acceptance: 1) 扩展实际 Analytics.astro bridge vm 测试，覆盖 beacon 缺失、beacon 抛错及重复派发；2) 若发现实现缺陷，仅对 CTA attribution 做最小修复，不改变 affiliate 路径；3) 接入现有专项测试和 Content Check（如无需改动则沿用）；4) `node --check`、专项测试、Astro build、built CTA coverage 与 `git diff --check` 通过；5) 回写实验结果与质量评分后 commit/push。
@@ -58,6 +58,9 @@ Manager: main session
 ## Doing
 
 ## Done
+
+- [x] P1 Candidate / EXP-360: 验证匿名 CTA 归因 beacon 失败与重复触发时的事件可靠性，避免浏览器 API 异常造成静默丢数或重复计数 | ICE 8x8x7=448 — implementation complete
+  - Status (2026-10-09 17:20): hardened the actual inline CTA bridge so missing/throwing beacon APIs fail safely and the same click Event is processed at most once using WeakSet deduplication; affiliate path is unchanged. Extended vm tests for missing/throwing beacon and same-event redispatch. node --check, bridge runtime synthetic, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and git diff --check passed. Quality score 29/30; no live traffic lift claimed.
 
 - [x] P1 Candidate / EXP-359: 校验归因桥接只接受本站与 HTTPS 目的地，防止 CTA 点击事件被伪造链接污染 | ICE 8x8x8=512 — commit `9a5b721` pushed
   - Status (2026-10-08 11:22): inline bridge only emits marked CTA attribution for same-origin destinations or HTTPS; unsafe schemes, non-HTTPS external links, and malformed URLs are rejected for CTA tracking. Same-origin relative/HTTP development links and valid HTTPS external links retain pathname attribution; affiliate tracking path is unchanged. Synthetic runtime tests, node --check, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and git diff --check passed. Quality score 29/30.
