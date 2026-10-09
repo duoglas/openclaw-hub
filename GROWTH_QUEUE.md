@@ -12,6 +12,11 @@ Manager: main session
 
 ## Backlog
 
+- [ ] P1 Candidate / EXP-360: 验证匿名 CTA 归因 beacon 失败与重复触发时的事件可靠性，避免浏览器 API 异常造成静默丢数或重复计数 | ICE 8x8x7=448
+  - Hypothesis: EXP-358/359 已验证合法点击与目的地边界，但尚未锁定 beacon 不可用、抛错或同一 DOM 事件重复派发时的失败行为；明确 fail-safe 行为并用真实 inline bridge synthetic tests 覆盖，可减少归因数据质量漂移且不新增个人信息。
+  - Metrics: 一次合法 click 最多发出一个 `growth_cta_click`；beacon 缺失或抛错不导致未处理异常、导航阻断或额外重试；非 CTA click 仍不产生事件；测试全程离线且不包含 query/hash/个人字段。
+  - Acceptance: 1) 扩展实际 Analytics.astro bridge vm 测试，覆盖 beacon 缺失、beacon 抛错及重复派发；2) 若发现实现缺陷，仅对 CTA attribution 做最小修复，不改变 affiliate 路径；3) 接入现有专项测试和 Content Check（如无需改动则沿用）；4) `node --check`、专项测试、Astro build、built CTA coverage 与 `git diff --check` 通过；5) 回写实验结果与质量评分后 commit/push。
+
 - [x] P1 Candidate / EXP-359: 校验归因桥接只接受本站与 HTTPS 目的地，防止 CTA 点击事件被伪造链接污染 | ICE 8x8x8=512 — completed this run
   - Hypothesis: EXP-358 已验证隐私字段及事件触发，但对标记链接的 URL scheme/host 未设定允许边界；`javascript:`、伪造同源地址或异常协议可能污染归因，甚至使 beacon metadata 带入非预期目标。为真实桥接增加目的地规范化与拒绝策略，并用 vm synthetic cases 锁定边界，可提高事件数据可信度且不收集额外个人信息。
   - Metrics: 标记 CTA 仅在 URL 为 HTTPS 或与当前页面同源时产生一个事件；协议/主机不允许或 URL malformed 时不产生事件；合法站内、合法 HTTPS 外链仍保留 pathname 归因，query/hash 始终剔除。
