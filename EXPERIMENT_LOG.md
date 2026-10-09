@@ -9,7 +9,7 @@
 - Result: pass — `node --check scripts/check-growth-cta-bridge-runtime.mjs`, `pnpm check:growth-cta-bridge-runtime`, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and `git diff --check` passed. Synthetic checks confirm no event for missing/throwing beacon and exactly one event for same-object redispatch. No live traffic lift claimed.
 - Quality: 29/30 (actual bridge behavior, fail-safe paths, deduplication, build and built-output coverage verified; no production traffic experiment).
 - Decision: retain fail-safe handling and event deduplication; continue observing live event quality without claiming growth lift.
-- Commit: pending metadata commit. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `90aba74` (pushed to `origin/main`). <!-- project: path:/home/duoglas/projects/openclaw-hub -->
 
 ## EXP-359 — Restrict CTA attribution to same-origin or HTTPS destinations (2026-10-08 11:22 Asia/Shanghai)
 - Hypothesis: EXP-358 validates event execution and privacy but did not constrain destination schemes/hosts; marked links using javascript/data or insecure external HTTP could contaminate attribution. Enforcing same-origin or HTTPS destinations for CTA events protects event quality without collecting additional user data.

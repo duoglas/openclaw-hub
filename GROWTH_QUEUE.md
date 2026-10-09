@@ -59,7 +59,7 @@ Manager: main session
 
 ## Done
 
-- [x] P1 Candidate / EXP-360: 验证匿名 CTA 归因 beacon 失败与重复触发时的事件可靠性，避免浏览器 API 异常造成静默丢数或重复计数 | ICE 8x8x7=448 — implementation complete
+- [x] P1 Candidate / EXP-360: 验证匿名 CTA 归因 beacon 失败与重复触发时的事件可靠性，避免浏览器 API 异常造成静默丢数或重复计数 | ICE 8x8x7=448 — commit `90aba74` pushed
   - Status (2026-10-09 17:20): hardened the actual inline CTA bridge so missing/throwing beacon APIs fail safely and the same click Event is processed at most once using WeakSet deduplication; affiliate path is unchanged. Extended vm tests for missing/throwing beacon and same-event redispatch. node --check, bridge runtime synthetic, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and git diff --check passed. Quality score 29/30; no live traffic lift claimed.
 
 - [x] P1 Candidate / EXP-359: 校验归因桥接只接受本站与 HTTPS 目的地，防止 CTA 点击事件被伪造链接污染 | ICE 8x8x8=512 — commit `9a5b721` pushed
