@@ -1,3 +1,11 @@
+## EXP-361 — Anonymous CTA-to-RSS aggregate measurement report (Backlog)
+- Hypothesis: EXP-357/360 provide anonymous CTA click events segmented by language and marker, but no repeatable same-window comparison with RSS feed requests exists. A local-only report over sanitized aggregate exports can expose measurement gaps without user-level tracking.
+- Scope: new offline report script and synthetic fixtures; no live analytics API, no GSC API, no raw data committed.
+- ICE: 7x8x6=336
+- Metrics: EN/ZH windowed CTA click totals and RSS request totals, data source and completeness status; never infer causal click-to-subscription conversion or CTR lift.
+- Acceptance: fixtures for complete, missing, zero-count and mismatched-window inputs; fail closed on missing/mismatched data; report excludes identifiers, query/hash; build, focused checks and diff validation pass.
+- Status: Backlog only. No implementation or outcome claimed this run.
+
 ## EXP-360 — Fail-safe and deduplicated anonymous CTA beacon events (2026-10-09 17:20 Asia/Shanghai)
 - Hypothesis: The CTA bridge had no explicit tests for missing/throwing beacon APIs or duplicate dispatch of the same DOM click event; failures could silently disrupt tracking and repeated dispatch could inflate counts. Fail-safe beacon handling plus event-object deduplication should protect event integrity without adding personal data.
 - Scope: `src/components/Analytics.astro`, `scripts/check-growth-cta-bridge-runtime.mjs`, `GROWTH_QUEUE.md`, `EXPERIMENT_LOG.md`

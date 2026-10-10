@@ -59,6 +59,11 @@ Manager: main session
 
 ## Done
 
+- [ ] P2 Candidate / EXP-361: 建立匿名 CTA 事件与 RSS 到达的可复核对照报告，验证入口点击是否对应订阅访问 | ICE 7x8x6=336 — Backlog
+  - Hypothesis: EXP-357/360 已具备按语言与 CTA marker 记录匿名点击，但缺少将点击与 RSS feed 请求进行同窗对照的可重复分析；只读现有脱敏事件导出与站点请求快照、报告覆盖和差异，可识别测量缺口，不引入用户级追踪。
+  - Metrics: EN/ZH 分语言列出窗口、CTA 点击数、RSS 请求数、来源及数据缺失状态；不声称点击到达因果或 CTR lift，不包含用户标识、query/hash。
+  - Acceptance: 新增离线报告脚本与 synthetic fixtures（完整、缺失、零值、日期不匹配）；只读取已有导出文件，不访问 GSC API、不提交原始数据；缺失/窗口错配 fail closed；build、专项检查、diff check 通过后记录结果及质量评分。
+
 - [x] P1 Candidate / EXP-360: 验证匿名 CTA 归因 beacon 失败与重复触发时的事件可靠性，避免浏览器 API 异常造成静默丢数或重复计数 | ICE 8x8x7=448 — commit `90aba74` pushed
   - Status (2026-10-09 17:20): hardened the actual inline CTA bridge so missing/throwing beacon APIs fail safely and the same click Event is processed at most once using WeakSet deduplication; affiliate path is unchanged. Extended vm tests for missing/throwing beacon and same-event redispatch. node --check, bridge runtime synthetic, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and git diff --check passed. Quality score 29/30; no live traffic lift claimed.
 
