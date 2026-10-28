@@ -32,6 +32,9 @@ jobs:
       - name: Build check
         run: pnpm build
 
+      - name: Sitewide AdSense head check
+        run: pnpm check:adsense
+
       - name: Weekly review cadence check
         run: pnpm check:weekly-review
 

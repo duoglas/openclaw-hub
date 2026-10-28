@@ -34,6 +34,19 @@ pnpm build
 pnpm preview
 ```
 
+## AdSense 自动广告
+
+`src/components/AdSenseHead.astro` 在全站 HTML 页面的 `<head>` 内加载一次
+`ca-pub-8837835283235973` 的官方异步脚本。公共布局、根目录语言选择页与
+`/coding/` 独立页共用此组件；Google 验证文件不修改。
+
+自动广告脚本不依赖旧的 `PUBLIC_ADSENSE_ENABLED` 开关；该开关和
+`PUBLIC_ADSENSE_SLOT_*` 仍仅控制旧的手动广告位，本次不启用这些广告位。
+广告是否展示取决于 AdSense 后台的站点状态、自动广告设置及适用的同意要求，
+部署脚本本身不代表审核通过。
+
+构建后运行 `pnpm check:adsense`，检查每页脚本的位置、发布商 ID、异步属性与重复加载。
+
 ## 📁 目录结构
 
 ```text
