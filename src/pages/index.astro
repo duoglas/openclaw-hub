@@ -1,5 +1,7 @@
 ---
 import AdSenseHead from '../components/AdSenseHead.astro';
+import HomeHero from '../components/HomeHero.astro';
+import SiteLinks from '../components/SiteLinks.astro';
 ---
 <!doctype html>
 <html lang="en">
@@ -7,8 +9,8 @@ import AdSenseHead from '../components/AdSenseHead.astro';
   <meta charset="UTF-8" />
   <AdSenseHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OpenClaw Guide | Choose Language</title>
-  <meta name="description" content="OpenClaw Guide bilingual portal. Choose English or 中文." />
+  <title>AI Agent Hub | OpenClaw Guides &amp; Troubleshooting</title>
+  <meta name="description" content="Practical OpenClaw deployment and troubleshooting guides, AI development tools, and news briefs. Read AI Agent Hub in English or Chinese." />
   <link rel="canonical" href="https://kuoo.uk/" />
   <link rel="alternate" hreflang="en" href="https://kuoo.uk/en/" />
   <link rel="alternate" hreflang="zh" href="https://kuoo.uk/zh/" />
@@ -30,14 +32,15 @@ import AdSenseHead from '../components/AdSenseHead.astro';
 <body>
   <main>
     <div class="card">
-      <h1>🦞 OpenClaw Guide</h1>
+      <h1>AI Agent Hub</h1>
       <p>Select your language / 选择语言</p>
-      <img src="/images/home-hero-cartoon.png" alt="OpenClaw Hub hand-drawn infographic" style="width:100%; border-radius:12px; margin: 8px 0 16px; display:block;" />
+      <HomeHero alt="OpenClaw Hub hand-drawn infographic" />
       <div class="actions">
         <a class="btn en" href="/en/">Enter English Site</a>
         <a class="btn zh" href="/zh/">进入中文站点</a>
       </div>
     </div>
   </main>
+  <footer><SiteLinks lang="en" /><SiteLinks lang="zh" /></footer>
 </body>
 </html>

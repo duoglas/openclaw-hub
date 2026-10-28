@@ -7,6 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "check:adsense": "node scripts/check-built-adsense.mjs",
+    "images:home": "node scripts/build-home-images.mjs",
+    "check:site-foundations": "node scripts/check-site-foundations.mjs",
     "preview": "astro preview",
     "daily:seo": "bash scripts/generate-seo-daily-snapshot.sh",
     "weekly:roundup": "bash scripts/generate-weekly-roundup.sh",

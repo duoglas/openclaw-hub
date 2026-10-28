@@ -1,0 +1,15 @@
+---
+interface Props { lang?: 'en' | 'zh'; }
+const { lang = 'en' } = Astro.props;
+const isZh = lang === 'zh';
+---
+<nav class="site-links" aria-label={isZh ? '本站信息' : 'Site information'}>
+  <a href={`/${lang}/about/`}>{isZh ? '关于本站' : 'About'}</a>
+  <a href={`/${lang}/privacy/`}>{isZh ? '隐私与广告' : 'Privacy & ads'}</a>
+  <a href={`/${lang}/contact/`}>{isZh ? '联系与纠错' : 'Contact & corrections'}</a>
+</nav>
+<style>
+  .site-links { display:flex; flex-wrap:wrap; justify-content:center; gap:0.5rem 1.25rem; padding:1rem; margin:0.5rem auto; font-size:0.9rem; }
+  .site-links a { color:inherit; text-decoration:underline; text-underline-offset:3px; padding:0.35rem 0; }
+  .site-links a:hover { text-decoration-thickness:2px; }
+</style>

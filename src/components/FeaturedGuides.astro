@@ -1,0 +1,23 @@
+---
+interface Props { lang: 'en' | 'zh'; }
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+const guides = [
+  { slug: 'openclaw-telegram-409-conflict-getupdates-fix-2026', title: isZh ? 'Telegram 409 冲突：排查重复轮询与 webhook' : 'Telegram 409 conflict: duplicate polling and webhooks' },
+  { slug: 'claude-code-cursor-plugin-broken-fix-2026', title: isZh ? 'Claude Code / Cursor 插件故障排查' : 'Troubleshoot Claude Code / Cursor plugin failures' },
+  { slug: 'openclaw-vps-deployment-complete-guide', title: isZh ? 'OpenClaw VPS 部署指南' : 'Deploy OpenClaw on a VPS' },
+];
+---
+<section class="featured-guides" aria-label={isZh ? '常用指南' : 'Practical guides'}>
+  <h2>{isZh ? '遇到问题，先从这里找' : 'Start with a practical guide'}</h2>
+  <ul>
+    {guides.map(guide => <li><a href={`/${lang}/blog/${guide.slug}/`} data-growth-link="home-practical-guide" data-lang={lang}>{guide.title}</a></li>)}
+  </ul>
+</section>
+<style>
+  .featured-guides { border:1px solid var(--border); border-radius:12px; background:var(--card); padding:1.1rem 1.3rem; margin:0 0 1.25rem; }
+  .featured-guides h2 { margin:0 0 0.6rem; border:0; padding:0; font-size:1.2rem; }
+  .featured-guides ul { padding-left:1.2rem; }
+  .featured-guides li { margin:0.5rem 0; }
+  .featured-guides a { color:#3730a3; text-decoration:underline; text-underline-offset:3px; }
+</style>

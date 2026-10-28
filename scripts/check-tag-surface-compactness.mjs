@@ -26,7 +26,7 @@ const checks = [
       ['article visibleTags capped at 5', /visibleTags\s*=\s*tags\.slice\(0,\s*5\)/],
       ['article computes hiddenTagCount', /hiddenTagCount\s*=\s*Math\.max\(tags\.length\s*-\s*visibleTags\.length,\s*0\)/],
       ['article renders overflow count pill', /hiddenTagCount\s*>\s*0[\s\S]*tag tag--more[\s\S]*\+\{hiddenTagCount\}/],
-      ['article tag links URI-encode tag slugs', /blog\/tag\/\$\{encodeURIComponent\(tag\)\}\//],
+      ['article tag links normalize and URI-encode tag slugs', /blog\/tag\/\$\{encodeURIComponent\(tagRouteSlug\(tag\)\)\}\//],
     ],
   },
   {

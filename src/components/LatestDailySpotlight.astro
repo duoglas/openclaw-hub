@@ -13,11 +13,11 @@ interface Props {
 const { lang, title, description, href, dateLabel, rssHref } = Astro.props;
 const isZh = lang === 'zh';
 
-const eyebrow = isZh ? '今日 AI 速读' : 'Today in AI';
+const eyebrow = isZh ? '最新一期 · AI 简报' : 'Latest published AI brief';
 const headline = isZh ? '先读最新日报，再继续看教程' : 'Read the latest brief before the guides';
 const body = isZh
-  ? '把最新政策、算力、企业 Agent 与办公 AI 信号放到首页首屏后段，减少新日报只能依赖列表自然曝光的问题。'
-  : 'Surface the newest policy, compute, enterprise-agent, and productivity-AI signals near the top of the homepage instead of relying only on the article list.';
+  ? '查看最近发布的 AI 新闻摘要、原文链接与影响分析。请留意发布日期，最新一期不一定是今天的新闻。'
+  : 'Read the most recently published brief, its source links, and practical implications. Check the publication date: the latest edition may not be from today.';
 const primaryText = isZh ? '打开最新日报 →' : 'Open latest brief →';
 const rssText = isZh ? '订阅日报 RSS →' : 'Subscribe to daily RSS →';
 const listText = isZh ? '连续阅读日报 →' : 'Browse all daily briefs →';

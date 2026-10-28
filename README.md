@@ -47,6 +47,15 @@ pnpm preview
 
 构建后运行 `pnpm check:adsense`，检查每页脚本的位置、发布商 ID、异步属性与重复加载。
 
+## 站点基础页面与首页资源
+
+- `/en/`、`/zh/` 下提供 `about/`、`privacy/`、`contact/` 双语页面；全站信息链接统一由 `SiteLinks.astro` 渲染。
+- 联系方式沿用公开 GitHub Issues；不公开维护者私人邮箱或收款资料。隐私说明不是 CMP，也不代表广告审核或地区合规检查已完成。
+- `public/ads.txt` 声明当前 Google 发布商的 DIRECT 授权。
+- 首页使用 `HomeHero.astro` 的 640/1280 宽 WebP 及固有尺寸，保留原 PNG 供既有分享图链接使用。更换原图后运行 `pnpm images:home`，提交两份 WebP 并核对显示效果。
+- `pnpm check:site-foundations` 在构建后校验信息链接、六个双语页面、ads.txt 与首页图片预算；CI 同步执行。
+- 2026-10-29 首页排障入口参考 GSC 2026-09-27 至 2026-10-26 窗口（1,707 展示、8 点击）。这些是历史搜索数据，不是访问总量或收益；不得据此宣称优化已带来增长。
+
 ## 📁 目录结构
 
 ```text

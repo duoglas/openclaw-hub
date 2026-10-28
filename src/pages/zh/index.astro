@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import HomeQuickstartCTA from '../../components/HomeQuickstartCTA.astro';
 import HomeCreatorCTA from '../../components/HomeCreatorCTA.astro';
 import LatestDailySpotlight from '../../components/LatestDailySpotlight.astro';
+import HomeHero from '../../components/HomeHero.astro';
+import FeaturedGuides from '../../components/FeaturedGuides.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
@@ -12,11 +14,12 @@ const posts = (await getCollection('blog'))
 const latestDaily = posts.find(post => post.id.includes('openclaw-daily-'));
 const latestDailySlug = latestDaily?.id.replace(/^zh\//, '').replace(/\.md$/, '');
 ---
-<BaseLayout title="首页" lang="zh">
+<BaseLayout title="OpenClaw 部署排障与 AI 智能体资讯" description="查找 OpenClaw 部署与排障指南，处理 Telegram 冲突和 AI 编程工具问题，阅读附来源与日期的 AI 新闻简报。本站提供中英双语教程与实用工具说明。" lang="zh">
   <h1>🤖 AI 智能体资讯站</h1>
   <p style="font-size:1.1rem; margin:1rem 0;">聚焦 AI 智能体相关资讯、实操教程与工具指南。当前会有较多 OpenClaw 内容，但不局限于 OpenClaw。</p>
 
-  <img src="/images/home-hero-cartoon.png" alt="OpenClaw Hub 手绘介绍图" style="width:100%; max-width:1100px; border-radius:16px; margin:0.5rem 0 1.25rem; display:block;" />
+  <HomeHero alt="OpenClaw Hub 手绘介绍图" />
+  <FeaturedGuides lang="zh" />
   
   <HomeCreatorCTA lang="zh" />
   <HomeQuickstartCTA lang="zh" />

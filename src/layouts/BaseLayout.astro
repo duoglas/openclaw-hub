@@ -1,6 +1,7 @@
 ---
 import Analytics from '../components/Analytics.astro';
 import AdSenseHead from '../components/AdSenseHead.astro';
+import SiteLinks from '../components/SiteLinks.astro';
 
 interface Props {
   title: string;
@@ -363,6 +364,7 @@ const showAdSlot = (slot: string) => AD_ENABLED && AD_CLIENT && slot;
         {isZh ? 'Skill 安全指南' : 'Skill security guide'}
       </a>
     </div>
+    <SiteLinks lang={lang} />
     <p>© 2026 AI Agent Hub · Built with 🤖 and AI</p>
   </footer>
   <script type="module">

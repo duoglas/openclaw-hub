@@ -1,0 +1,18 @@
+---
+interface Props { alt: string; }
+const { alt } = Astro.props;
+---
+<img
+  class="home-hero"
+  src="/images/home-hero-1280.webp"
+  srcset="/images/home-hero-640.webp 640w, /images/home-hero-1280.webp 1280w"
+  sizes="(max-width: 900px) calc(100vw - 48px), 852px"
+  width="1280"
+  height="714"
+  alt={alt}
+  fetchpriority="high"
+  decoding="async"
+/>
+<style>
+  .home-hero { display:block; width:100%; height:auto; border-radius:14px; margin:0.5rem 0 1.25rem; }
+</style>
