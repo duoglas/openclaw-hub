@@ -2,47 +2,24 @@
 import AdSenseHead from '../components/AdSenseHead.astro';
 import HomeHero from '../components/HomeHero.astro';
 import SiteLinks from '../components/SiteLinks.astro';
-import RecentAnalysis from '../components/RecentAnalysis.astro';
 ---
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <AdSenseHead />
+  <meta charset="UTF-8" /><AdSenseHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Agent Hub | OpenClaw Guides &amp; Troubleshooting</title>
-  <meta name="description" content="Practical OpenClaw deployment and troubleshooting guides, AI development tools, and news briefs. Read AI Agent Hub in English or Chinese." />
+  <title>Kuoo | AI Tools, Agent Harnesses &amp; Local Models</title>
+  <meta name="description" content="Choose AI tools, understand agent harnesses and deploy local models. Source-based guides on workflows, permissions and verification, in English and Chinese." />
   <link rel="canonical" href="https://kuoo.uk/" />
-  <link rel="alternate" hreflang="en" href="https://kuoo.uk/en/" />
-  <link rel="alternate" hreflang="zh" href="https://kuoo.uk/zh/" />
-  <link rel="alternate" hreflang="x-default" href="https://kuoo.uk/" />
+  <link rel="alternate" hreflang="en" href="https://kuoo.uk/en/" /><link rel="alternate" hreflang="zh" href="https://kuoo.uk/zh/" /><link rel="alternate" hreflang="x-default" href="https://kuoo.uk/" />
+  <meta property="og:title" content="Kuoo — AI Tools &amp; Model Guides" /><meta property="og:image" content="https://kuoo.uk/images/kuoo-social.png" />
   <style>
-    :root { --accent: #e74c3c; --bg: #0f0f0f; --text: #e0e0e0; --card: #1a1a2e; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); }
-    main { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-    .card { width: 100%; max-width: 820px; background: var(--card); border-radius: 14px; padding: 28px; }
-    h1 { margin: 0 0 10px; color: #fff; }
-    p { margin: 0 0 18px; color: #bfbfbf; }
-    .actions { display: grid; gap: 12px; }
-    a.btn { display: block; text-decoration: none; text-align: center; padding: 12px 14px; border-radius: 10px; font-weight: 700; }
-    a.en { background: var(--accent); color: #fff; }
-    a.zh { border: 1px solid #555; color: #fff; }
+    * { box-sizing:border-box; } body { margin:0; background:#f6f8fb; color:#193042; font:16px/1.75 system-ui,sans-serif; }
+    main { max-width:1080px; margin:0 auto; padding:45px 24px; } .brand { font-size:1.55rem; font-weight:800; color:#203448; margin-bottom:36px; }
+    .languages { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:28px; } .languages a { padding:10px 20px; border:1px solid #cfd9e4; border-radius:8px; text-decoration:none; color:#4338ca; font-weight:650; background:white; }
+    .languages a:first-child { background:#4338ca; color:white; } .intro-zh { color:#526574; max-width:65ch; }
+    footer { max-width:1080px; margin:0 auto; padding:0 24px 30px; }
   </style>
 </head>
-<body>
-  <main>
-    <div class="card">
-      <h1>AI Agent Hub</h1>
-      <p>Select your language / 选择语言</p>
-      <HomeHero alt="OpenClaw Hub hand-drawn infographic" />
-      <div class="actions">
-        <a class="btn en" href="/en/">Enter English Site</a>
-        <a class="btn zh" href="/zh/">进入中文站点</a>
-      </div>
-      <RecentAnalysis lang="en" />
-    </div>
-  </main>
-  <footer><SiteLinks lang="en" /><SiteLinks lang="zh" /></footer>
-</body>
+<body><main><div class="brand">Kuoo</div><div class="languages"><a href="/en/">Explore in English</a><a href="/zh/">进入中文站点</a></div><HomeHero lang="en" /><p class="intro-zh" lang="zh">AI 工具与模型的选择、接入和验证。了解 Harness，配置本地模型，检查自动化流程；写清方法、成本与适用条件。</p></main><footer><SiteLinks lang="en" /><SiteLinks lang="zh" /></footer></body>
 </html>

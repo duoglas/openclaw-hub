@@ -14,7 +14,7 @@ interface Props {
 }
 const {
   title,
-  description = 'AI Agent Hub - News, tutorials, and practical guides for the AI agent ecosystem.',
+  description = 'Kuoo — practical guides to AI tools, agent harnesses, local models and reliable automation.',
   lang = 'en',
   alternateUrl,
   alternateLang,
@@ -31,7 +31,7 @@ const zhUrl = currentPath.replace(`/${lang}/`, '/zh/');
 const siteUrl = 'https://kuoo.uk';
 const resolvedAlternateLang = alternateLang ?? otherLang;
 const resolvedAlternateUrl = alternateUrl ?? `${siteUrl}${currentPath.replace(`/${lang}/`, `/${resolvedAlternateLang}/`)}`;
-const siteLogo = `${siteUrl}/images/home-hero-cartoon.png`;
+const siteLogo = `${siteUrl}/images/kuoo-social.png`;
 const dailyRssUrl = `${siteUrl}/${lang}/daily/rss.xml`;
 const defaultOgImage = siteLogo;
 const resolvedOgImage = ogImage
@@ -39,14 +39,14 @@ const resolvedOgImage = ogImage
   : defaultOgImage;
 const organizationSchema = {
   '@type': 'Organization',
-  name: 'AI Agent Hub',
+  name: 'Kuoo',
   url: siteUrl,
   logo: siteLogo,
 };
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: isZh ? 'AI 智能体资讯站' : 'AI Agent Hub',
+  name: isZh ? 'Kuoo｜AI 工具与模型实践' : 'Kuoo — AI Tools & Model Guides',
   url: `${siteUrl}${prefix}/`,
   inLanguage: lang,
   description,
@@ -72,22 +72,22 @@ const showAdSlot = (slot: string) => AD_ENABLED && AD_CLIENT && slot;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <meta name="generator" content={Astro.generator} />
-  <title>{title} | AI Agent Hub</title>
+  <title>{title} | Kuoo</title>
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
-  <meta property="og:title" content={`${title} | AI Agent Hub`} />
+  <meta property="og:title" content={`${title} | Kuoo`} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={Astro.url.href} />
-  <meta property="og:site_name" content="AI Agent Hub" />
+  <meta property="og:site_name" content="Kuoo" />
   <meta property="og:locale" content={lang === 'zh' ? 'zh_CN' : 'en_US'} />
   <meta property="og:image" content={resolvedOgImage} />
-  <meta property="og:image:alt" content={`${title} | AI Agent Hub`} />
+  <meta property="og:image:alt" content={`${title} | Kuoo`} />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={`${title} | AI Agent Hub`} />
+  <meta name="twitter:title" content={`${title} | Kuoo`} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={resolvedOgImage} />
-  <meta name="twitter:image:alt" content={`${title} | AI Agent Hub`} />
+  <meta name="twitter:image:alt" content={`${title} | Kuoo`} />
   <!-- Canonical -->
   <link rel="canonical" href={Astro.url.href} />
   <link rel="alternate" hreflang={resolvedAlternateLang} href={resolvedAlternateUrl} />
@@ -284,13 +284,13 @@ const showAdSlot = (slot: string) => AD_ENABLED && AD_CLIENT && slot;
 <body>
   <header>
     <nav>
-      <a href={prefix + '/'}>{isZh ? '🤖 AI 智能体资讯站' : '🤖 AI Agent Hub'}</a>
-      <a href={prefix + '/daily/'}>{isZh ? '日报' : 'Daily'}</a>
-      <a href={prefix + '/blog/'}>{isZh ? '教程库' : 'Guides'}</a>
-      <a href={prefix + '/blog/tag/troubleshooting/'}>{isZh ? '故障排查' : 'Troubleshoot'}</a>
-      <a href={prefix + '/blog/tag/deployment/'}>{isZh ? '部署' : 'Deploy'}</a>
-      <a href={prefix + '/recommended-stack/'}>{isZh ? '工具栈' : 'Stack'}</a>
-      <a href={prefix + '/daily/rss.xml'}>{isZh ? 'RSS' : 'RSS'}</a>
+      <a href={prefix + '/'} aria-label={isZh ? 'Kuoo 首页' : 'Kuoo home'}>Kuoo</a>
+      <a href={prefix + '/topics/agents/'}>{isZh ? '编程与 Harness' : 'Agents'}</a>
+      <a href={prefix + '/topics/models/'}>{isZh ? '模型部署' : 'Models'}</a>
+      <a href={prefix + '/topics/workflows/'}>{isZh ? '工程方法' : 'Workflows'}</a>
+      <a href={prefix + '/blog/tag/troubleshooting/'}>{isZh ? '排障库' : 'Troubleshoot'}</a>
+      <a href={prefix + '/blog/'}>{isZh ? '全部文章' : 'Articles'}</a>
+      <a href={prefix + '/daily/'}>{isZh ? '简报' : 'Briefs'}</a>
       <div class="lang-switch">
         <a href={enUrl} class={lang === 'en' ? 'active' : ''}>EN</a>
         <a href={zhUrl} class={lang === 'zh' ? 'active' : ''}>中文</a>
@@ -365,7 +365,7 @@ const showAdSlot = (slot: string) => AD_ENABLED && AD_CLIENT && slot;
       </a>
     </div>
     <SiteLinks lang={lang} />
-    <p>© 2026 AI Agent Hub · Built with 🤖 and AI</p>
+    <p>© 2026 Kuoo · {isZh ? 'AI 工具与模型实践' : 'AI Tools & Model Guides'}</p>
   </footer>
   <script type="module">
     const onFooterGrowthClick = (e) => {

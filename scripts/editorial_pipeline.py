@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Evidence-first editorial pipeline. No model tools, no scraping, no upstream keys.
 
-Public Tavily research was authorized on 2026-10-29. Automated publication still
-consumes verified local news archives until its independent collector is integrated.
+Public Tavily research was authorized on 2026-10-29. Current news uses independent
+public research; task guides use an explicit public-source queue and bounded cache.
+Historical backfills still consume verified local news archives.
 Research failures,
 review failures, dirty trees and failed builds fail closed. This module uses
 stdlib only; the publishing host must provide git, pnpm and installed site deps.
@@ -37,7 +38,8 @@ CHECKS = ('factual_support', 'freshness', 'novelty', 'usefulness', 'translation'
 GATES = ('test:editorial', 'check:editorial', 'check:frontmatter-dates', 'check:duplicate-slug-id',
          'check:taxonomy', 'check:tag-case', 'check:tag-canonical-aliases',
          'check:daily-index-growth', 'check:article-index-growth',
-         'check:adsense', 'check:site-foundations', 'check:canonical-integrity',
+         'check:adsense', 'check:site-foundations', 'check:editorial-surface',
+         'check:tag-surface-compactness', 'check:canonical-integrity',
          'check:sitewide-hreflang', 'check:noindex-leak', 'check:rss-feed-integrity',
          'check:latest-daily-surface', 'check:daily-related-posts',
          'check:built-internal-links', 'check:sitemap-built-page-parity',
@@ -308,7 +310,13 @@ Output schema (all strings are plain Markdown, no HTML, no raw URLs or Markdown 
 Every factual section must cite its supporting source IDs. Use no URLs in body text;
 software code identifiers are fine. Extracted code can be damaged: do not reconstruct
 runnable commands from partial snippets; describe checks and cite the official source.
-Daily: organize 1-6 event sections with event dates
+Guides: answer research_question and required_points using current public documents.
+Give selection criteria, prerequisites, limitations and concrete verification steps.
+A document's old publication date is allowed when its CURRENT version is checked;
+read_at is a retrieval date, never a release date. State versions or branch scope.
+Do not infer tested performance, memory requirements or production suitability.
+Separate model weights, coding agents, harnesses and inference servers explicitly.
+Daily: organize 1-3 event sections with event dates
 and qualified implications. Analysis: normally 4-7 sections covering scope, what is
 available, adoption/upgrade risks, who should use it and a concrete verification checklist.
 No minimum word count. Source dates are not the same as event/publication dates.
@@ -324,7 +332,11 @@ labelled and bounded. Check dates, novelty against publication history, actual u
 source-to-section attribution, translation parity, public availability, testing claims,
 unsafe/private disclosures, and distinction between official claims and independent results.
 Reject weak/invented comparisons, arbitrary rankings, generic filler, date-only updates,
-or copying an old news item under today's date. A dated backfill is allowed when explicitly
+or copying an old news item under today's date. For guides, judge freshness by checked
+current documentation, version/branch scope and retrieval date, not news-event recency.
+Check the research question and required_points were meaningfully answered; documentation
+alone cannot establish tested hardware fit, runtime compatibility or production readiness.
+A dated backfill is allowed when explicitly
 labelled and its event dates fit the original edition window. Do not impose minimum counts.
 Quote a concrete defect if rejecting. Do not rewrite the article or accept its self-review.
 Return {"verdict":"pass|reject","checks":{"factual_support":true,"freshness":true,
@@ -443,7 +455,20 @@ def validate_review(review):
         raise Blocked('review lacks a reasoned decision')
 
 
+def receipt_path(packet):
+    suffix = ''
+    if packet['kind'] == 'guide':
+        topic = packet.get('topic_id', '')
+        if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+){1,10}', topic):
+            raise Blocked('invalid guide topic id')
+        suffix = '-' + topic
+    return f'editorial/receipts/{packet["date"]}-{packet["kind"]}{suffix}.json'
+
+
 def article_slug(draft, packet):
+    if packet['kind'] == 'guide':
+        receipt_path(packet)
+        return 'ai-guide-' + packet['topic_id']
     if packet['kind'] == 'daily':
         return 'ai-daily-' + packet['date']
     if packet['kind'] == 'refresh':
@@ -482,6 +507,8 @@ def render(draft, packet, lang, backfill=False):
                 'tags': ['ai', 'tech', 'daily', 'news'] if packet['kind']=='daily' else ['ai', 'analysis'],
                 'category': 'news' if packet['kind']=='daily' else 'analysis',
                 'lang': lang, 'editorialVersion': 2}
+        if packet['kind'] == 'guide':
+            meta.update(category='guide', tags=['ai', 'guide'], pillar=packet['pillar'], reviewedAt=day)
         if backfill:
             meta['updatedDate'] = now().date().isoformat()
         lines = ['---'] + [k + ': ' + json.dumps(v, ensure_ascii=False) for k, v in meta.items()] + ['---', '']
@@ -499,6 +526,9 @@ def render(draft, packet, lang, backfill=False):
     if backfill:
         lines += [('> 本期为历史补录：取材日期 ' + day + '，补录于 ' + now().date().isoformat() + '；不代表今日新消息。') if lang=='zh' else
                   ('> Archive backfill: evidence edition ' + day + ', added on ' + now().date().isoformat() + '. These are not today’s announcements.'), '']
+    if packet['kind'] == 'guide':
+        lines += [('> 文档核对日期：' + day + '。本文为公开资料分析，不代表完成安装或性能测试。') if lang=='zh' else
+                  ('> Documentation checked: ' + day + '. Public-source analysis, not an installation or performance test.'), '']
     for section in draft['sections']:
         lines += ['## ' + section['heading_' + lang], '', readable_markdown(section[lang]), '']
         links = []
@@ -535,7 +565,8 @@ def publish(root, run, packet, draft, review, writer_meta, reviewer_meta, backfi
     log = run / 'publish.log'
     base = verify_repo(root, log)
     slug = article_slug(draft, packet)
-    if any(r['kind']==packet['kind'] and r['date']==packet['date'] for r in receipts(root)):
+    if any((r.get('topic_id')==packet['topic_id'] if packet['kind']=='guide' else
+            r['kind']==packet['kind'] and r['date']==packet['date']) for r in receipts(root)):
         raise Skip('edition was published by another run')
     work = run / 'worktree'
     command(['git', 'worktree', 'add', '--detach', str(work), base], root, log=log)
@@ -561,7 +592,9 @@ def publish(root, run, packet, draft, review, writer_meta, reviewer_meta, backfi
                'review': review, 'writer': writer_meta, 'reviewer': reviewer_meta,
                'sources': [{k: v for k,v in s.items() if k not in ('excerpt', 'excerpted', 'quotes')}
                            for s in packet['sources'] if s['id'] in cited], 'files': files}
-    relative_receipt = f'editorial/receipts/{packet["date"]}-{packet["kind"]}.json'
+    if packet['kind'] == 'guide':
+        receipt.update(topic_id=packet['topic_id'], pillar=packet['pillar'], source_method=packet['source_method'])
+    relative_receipt = receipt_path(packet)
     save(work / relative_receipt, receipt)
     command(['pnpm', 'build'], work, timeout=300, log=log)
     for gate in GATES:
@@ -578,6 +611,8 @@ def publish(root, run, packet, draft, review, writer_meta, reviewer_meta, backfi
     pending = {'commit': commit, 'base': base, 'worktree': str(work), 'paths': allowed,
                'date': packet['date'], 'kind': packet['kind'], 'slug': slug, 'stage': 'committed',
                'created_at': now().isoformat()}
+    if packet['kind'] == 'guide':
+        pending['topic_id'] = packet['topic_id']
     save(run / 'pending-push.json', pending)
     command(['git', 'push', 'origin', 'HEAD:main'], work, timeout=180, log=log)
     pending['stage'] = 'pushed'
@@ -617,7 +652,7 @@ def recover_pending(root, state, log):
         if command(['git','show','-s','--format=%P',commit], work) != base:
             raise Blocked('retry commit does not have exactly the recorded parent')
         expected = sorted([f'src/content/blog/{lang}/{pending["slug"]}.md' for lang in ('zh','en')] +
-                          [f'editorial/receipts/{pending["date"]}-{pending["kind"]}.json'])
+                          [receipt_path(pending)])
         changed = sorted(command(['git','diff-tree','--no-commit-id','--name-only','-r',commit],work).splitlines())
         if sorted(pending['paths']) != expected or changed != expected:
             raise Blocked('retry contains unexpected paths')
@@ -644,9 +679,13 @@ def validate_published(root=ROOT):
     latest = {}
     covered = set()
     for receipt in all_receipts:
-        if receipt.get('version') != 2 or receipt['kind'] not in ('daily','analysis','refresh'):
+        if receipt.get('version') != 2 or receipt['kind'] not in ('daily','analysis','refresh','guide'):
             raise Blocked('invalid publication receipt')
         validate_review(receipt['review'])
+        if receipt['kind'] == 'guide':
+            receipt_path(receipt)
+            if receipt['slug'] != 'ai-guide-' + receipt['topic_id'] or receipt.get('pillar') not in ('agents','models','workflows'):
+                raise Blocked('guide receipt topic/slug/category mismatch')
         if not receipt.get('sources') or not re.fullmatch(r'[a-f0-9]{64}', receipt.get('draft_sha256','')):
             raise Blocked('receipt missing evidence or draft binding')
         for source in receipt['sources']:
@@ -672,7 +711,7 @@ def validate_published(root=ROOT):
         if not any(source['url'] in text for source in receipt['sources']):
             raise Blocked('published article missing source links')
     for lang in ('zh','en'):
-        for pattern in ('ai-daily-*.md', 'ai-analysis-*.md'):
+        for pattern in ('ai-daily-*.md', 'ai-analysis-*.md', 'ai-guide-*.md'):
             for path in (root / 'src/content/blog' / lang).glob(pattern):
                 if path.relative_to(root).as_posix() not in covered:
                     raise Blocked('new-series article has no publication receipt')
@@ -688,12 +727,19 @@ def status(root=ROOT, state=STATE):
             'stale': latest is None or (now().date()-dt.date.fromisoformat(latest)).days >= 2,
             'receipts': [{'date':r['date'],'kind':r['kind'],'slug':r['slug']} for r in records[-20:]],
             'recent_runs': [load(p) for p in sorted((state / 'runs').glob('*/result.json'))[-16:]],
-            'source_method': 'verified-news-archive-only', 'independent_tavily_research': 'authorized',
-            'research_authorized_on': '2026-10-29', 'independent_collector': 'not_integrated'}
+            'source_method': 'independent-public-research-with-verified-archive-backfills',
+            'independent_tavily_research': 'authorized', 'research_authorized_on': '2026-10-29',
+            'independent_collector': 'integrated',
+            'last_collection': load(state/'research/latest-collection.json') if (state/'research/latest-collection.json').is_file() else None,
+            'collector_health': 'not_inferred_from_authorization_or_integration'}
 
 
-def run_pipeline(kind, date, backfill=False):
+def run_pipeline(kind, date, backfill=False, topic=None):
     today = now().date()
+    if topic and kind not in ('analysis','guide'):
+        raise Blocked('--topic is only valid for a public guide')
+    if kind == 'guide' and backfill:
+        raise Blocked('current-document guides cannot masquerade as historical editions')
     day = dt.date.fromisoformat(date)
     if day > today or (day != today and not backfill):
         raise Blocked('historical dates require explicit --backfill; future dates forbidden')
@@ -712,7 +758,17 @@ def run_pipeline(kind, date, backfill=False):
         try:
             verify_repo(ROOT, run / 'preflight.log')
             recovered = recover_pending(ROOT, STATE, run / 'preflight.log')
-            packet = prepare(kind, date)
+            if not backfill and kind in ('analysis','guide','daily'):
+                import editorial_research as research
+                module = sys.modules[__name__]
+                if kind in ('analysis','guide'):
+                    packet = research.prepare_guide(module, ROOT, STATE, date, run, topic)
+                else:
+                    if any(r['kind']=='daily' and r['date']==date for r in receipts(ROOT)):
+                        raise Skip('edition was already published')
+                    packet = research.collect_daily(module, ROOT, STATE, date, run)
+            else:
+                packet = prepare(kind, date)
             packet['backfill'] = backfill
             save(run / 'packet.json', packet)
             draft, writer_meta = model_json(WRITER, packet, ['gpt-6-astra','gpt-6-luna'], run, 'writer')
@@ -724,8 +780,11 @@ def run_pipeline(kind, date, backfill=False):
             result = publish(ROOT, run, packet, draft, review, writer_meta, reviewer_meta, backfill)
         except Skip as error:
             result = {'status':'skipped','reason':str(error),'date':date,'kind':kind}
-        except (Blocked, OSError, ValueError, subprocess.TimeoutExpired) as error:
+        except (Blocked, OSError, ValueError, KeyError, TypeError, subprocess.TimeoutExpired) as error:
             result = {'status':'blocked','reason':str(error),'date':date,'kind':kind}
+            if not (run/'packet.json').exists():
+                save(STATE/'research/latest-collection.json', {'status':'blocked','checked_at':now().isoformat(),
+                     'reason':str(error),'network_success':False})
         result['recovered_publications'] = locals().get('recovered', [])
         result['finished_at'] = now().isoformat()
         result['run_directory'] = str(run)
@@ -737,14 +796,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
     run = sub.add_parser('run')
-    run.add_argument('kind', choices=['daily','analysis','refresh'])
+    run.add_argument('kind', choices=['daily','analysis','refresh','guide'])
+    run.add_argument('--topic', help='Explicit public topic id; guides only')
     run.add_argument('--date', default=now().date().isoformat())
     run.add_argument('--backfill', action='store_true')
     sub.add_parser('check')
     sub.add_parser('status')
     args = parser.parse_args()
     try:
-        result = run_pipeline(args.kind,args.date,args.backfill) if args.command=='run' else validate_published() if args.command=='check' else status()
+        result = run_pipeline(args.kind,args.date,args.backfill,args.topic) if args.command=='run' else validate_published() if args.command=='check' else status()
         print(json.dumps(result,ensure_ascii=False,indent=2))
         return 2 if result.get('status')=='blocked' else 0
     except (Blocked, OSError, ValueError) as error:

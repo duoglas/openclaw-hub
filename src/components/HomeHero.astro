@@ -1,18 +1,30 @@
 ---
-interface Props { alt: string; }
-const { alt } = Astro.props;
+import { topics, type SiteLanguage } from '../utils/editorialTopics';
+interface Props { lang?: SiteLanguage; }
+const { lang = 'en' } = Astro.props;
+const zh = lang === 'zh';
 ---
-<img
-  class="home-hero"
-  src="/images/home-hero-1280.webp"
-  srcset="/images/home-hero-640.webp 640w, /images/home-hero-1280.webp 1280w"
-  sizes="(max-width: 900px) calc(100vw - 48px), 852px"
-  width="1280"
-  height="714"
-  alt={alt}
-  fetchpriority="high"
-  decoding="async"
-/>
+<section class="home-hero" data-kuoo-hero>
+  <p class="eyebrow">KUOO / {zh ? '工具 · 模型 · 工程实践' : 'TOOLS · MODELS · ENGINEERING'}</p>
+  <h1>{zh ? '把 AI 用到具体任务中' : 'AI tools for the work in front of you.'}</h1>
+  <p class="intro">{zh ? '从工具与模型的选择，到接入、验证和排障。写清方法、成本和适用条件，保留来源与核对日期。' : 'Choose tools and models, connect them, and verify the results. Practical guides with sources, dates, costs and clear limits.'}</p>
+  <div class="topic-grid">
+    {topics.map((topic, i) => <a href={`/${lang}/topics/${topic.id}/`} class="topic-card" data-growth-link="home-topic">
+      <span class="number">0{i + 1}</span><h2>{topic.label[lang]}</h2><p>{topic.description[lang]}</p><span class="browse">{zh ? '浏览主题' : 'Explore topic'} →</span>
+    </a>)}
+  </div>
+</section>
 <style>
-  .home-hero { display:block; width:100%; height:auto; border-radius:14px; margin:0.5rem 0 1.25rem; }
+  .home-hero { margin:0 0 2.5rem; }
+  .eyebrow { color:#4f46e5; font-size:.75rem; font-weight:750; letter-spacing:.13em; margin-bottom:1rem; }
+  h1 { font-size:clamp(2rem,5vw,3.35rem); line-height:1.18; max-width:19ch; letter-spacing:-.04em; color:#102738; }
+  .intro { max-width:65ch; color:#516475; font-size:1.05rem; margin:1.2rem 0 1.8rem; }
+  .topic-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+  .topic-card { display:flex; flex-direction:column; padding:22px; border:1px solid #dce4ec; background:white; border-radius:14px; color:#213547; text-decoration:none; }
+  .topic-card:hover { border-color:#4f46e5; background:#f8faff; }
+  .number { font:700 .8rem/1.4 system-ui; color:#5a65a5; }
+  h2 { margin:.7rem 0 .6rem; padding:0; border:0; font-size:1.1rem; color:#172f43; }
+  .topic-card p { font-size:.88rem; color:#526574; line-height:1.7; margin:0 0 1rem; }
+  .browse { margin-top:auto; font-size:.84rem; color:#4338ca; font-weight:650; }
+  @media(max-width:700px) { .topic-grid { grid-template-columns:1fr; } .topic-card { padding:18px; } h1 { max-width:22ch; } }
 </style>

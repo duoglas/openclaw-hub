@@ -14,14 +14,14 @@ base = 'https://kuoo.uk'
 feeds = {
     'en': {
         'path': root / 'en/daily/rss.xml',
-        'channel_title': 'OpenClaw Hub - AI & Tech Daily',
+        'channel_title': 'Kuoo — AI Tools & Model Briefs',
         'channel_link': f'{base}/en/daily/',
         'language': 'en-us',
         'blog_prefix': '/en/blog/',
     },
     'zh': {
         'path': root / 'zh/daily/rss.xml',
-        'channel_title': 'OpenClaw Hub - AI/科技日报',
+        'channel_title': 'Kuoo — AI 工具与模型简报',
         'channel_link': f'{base}/zh/daily/',
         'language': 'zh-cn',
         'blog_prefix': '/zh/blog/',

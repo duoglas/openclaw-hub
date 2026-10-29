@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from './HomeHero.astro';
+import FeaturedGuides from './FeaturedGuides.astro';
+import HomeQuickstartCTA from './HomeQuickstartCTA.astro';
+import HomeCreatorCTA from './HomeCreatorCTA.astro';
+import LatestDailySpotlight from './LatestDailySpotlight.astro';
+import { getCollection } from 'astro:content';
+import { isDailySlug } from '../utils/contentSeries';
+import { articleSlug, type SiteLanguage } from '../utils/editorialTopics';
+interface Props { lang: SiteLanguage; }
+const { lang } = Astro.props;
+const zh = lang === 'zh';
+const posts = (await getCollection('blog')).filter(p => p.data.lang === lang);
+const newest = [...posts].sort((a,b) => b.data.pubDate.valueOf()-a.data.pubDate.valueOf());
+const daily = newest.find(p => isDailySlug(p.id));
+const guides = posts.filter(p => !isDailySlug(p.id) && !articleSlug(p.id).startsWith('openclaw-weekly-'))
+  .sort((a,b) => (b.data.updatedDate ?? b.data.pubDate).valueOf()-(a.data.updatedDate ?? a.data.pubDate).valueOf()).slice(0,9);
+---
+<BaseLayout lang={lang} title={zh ? 'AI 工具与模型实践' : 'AI Tools & Model Guides'} description={zh ? '面向开发者和小型团队的 AI 工具与模型指南：了解 Agent Harness，选择本地模型，检查上下文、权限和自动化流程。保留来源、核对日期和适用限制。' : 'Practical AI tools, agent harnesses and local-model guides. Compare workflows, check permissions and verify automation with sources, dates and explicit limits.'}>
+  <HomeHero lang={lang} />
+  <FeaturedGuides lang={lang} />
+  <section aria-labelledby="latest-guides">
+    <div class="section-heading"><h2 id="latest-guides">{zh ? '最新指南与分析' : 'Guides & analysis'}</h2><a href={`/${lang}/blog/`}>{zh ? '全部文章' : 'All articles'} →</a></div>
+    <p class="section-note">{zh ? '按发布或修订日期排列。旧文章保留原地址，版本条件以文内说明为准。' : 'Ordered by publication or revision date. Older guides keep their URLs; check the version and scope stated in each article.'}</p>
+    <div class="article-grid">{guides.map(post => <article class="entry">
+      <p class="date">{post.data.updatedDate ? (zh ? '修订于 ' : 'Updated ') : ''}<time datetime={(post.data.updatedDate ?? post.data.pubDate).toISOString().slice(0,10)}>{(post.data.updatedDate ?? post.data.pubDate).toISOString().slice(0,10)}</time></p>
+      <h3><a href={`/${lang}/blog/${articleSlug(post.id)}/`}>{post.data.title}</a></h3>
+      <p>{post.data.description}</p>
+    </article>)}</div>
+  </section>
+  <section class="news-area" aria-label={zh ? '最新简报与订阅' : 'Latest briefing and subscriptions'}>
+    <h2>{zh ? '值得跟进的变化' : 'Changes worth following'}</h2>
+    <p class="section-note">{zh ? '关注会影响工具使用、兼容性、安全与成本的变化；资料不足时不凑篇数。' : 'Updates that affect tools, compatibility, security and cost. No filler when the evidence is insufficient.'}</p>
+    {daily && <LatestDailySpotlight lang={lang} title={daily.data.title} description={daily.data.description} href={`/${lang}/blog/${articleSlug(daily.id)}/`} dateLabel={daily.data.pubDate.toISOString().slice(0,10)} rssHref={`/${lang}/daily/rss.xml`} />}
+    <p><a href={`/${lang}/daily/`}>{zh ? '简报归档' : 'Briefing archive'}</a> · <a href={`/${lang}/daily/rss.xml`}>RSS</a></p>
+  </section>
+  <details class="legacy"><summary>{zh ? 'OpenClaw 入门与 Skill 发布' : 'OpenClaw quickstart & skill publishing'}</summary><HomeQuickstartCTA lang={lang} /><HomeCreatorCTA lang={lang} /></details>
+</BaseLayout>
+<style>
+  .section-heading { display:flex; gap:12px; align-items:baseline; justify-content:space-between; flex-wrap:wrap; }
+  .section-heading h2 { margin:0; border:0; }
+  .section-note { color:#526574; font-size:.93rem; margin:.6rem 0 1.1rem; }
+  .article-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+  .entry { padding:21px; background:#fff; border:1px solid #dce4ec; border-radius:12px; }
+  .date { color:#657488; font-size:.78rem; }
+  .entry h3 { margin:.45rem 0 .65rem; font-size:1.12rem; line-height:1.5; }
+  .entry h3 a { color:#223b54; }
+  .entry h3 a:hover { color:#4338ca; }
+  .entry>p:last-child { color:#526574; font-size:.88rem; line-height:1.8; }
+  .news-area { margin-top:2.5rem; padding-top:1rem; border-top:1px solid #dce4ec; }
+  .legacy { margin-top:2rem; font-size:.9rem; color:#526574; }
+  summary { cursor:pointer; }
+  @media(max-width:650px) { .article-grid { grid-template-columns:1fr; } }
+</style>

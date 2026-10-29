@@ -35,7 +35,7 @@ jobs:
       - name: Sitewide AdSense head check
         run: pnpm check:adsense
 
-      - name: Site information, ads.txt and homepage image check
+      - name: Site information, ads.txt and task-oriented homepage check
         run: pnpm check:site-foundations
 
       - name: Evidence-driven editorial regression tests
@@ -43,6 +43,9 @@ jobs:
 
       - name: Bilingual editorial receipts and evidence check
         run: pnpm check:editorial
+
+      - name: Task topics, curated links and guide discovery
+        run: pnpm check:editorial-surface
 
       - name: Weekly review cadence check
         run: pnpm check:weekly-review

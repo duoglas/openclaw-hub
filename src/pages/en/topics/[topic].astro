@@ -1,0 +1,7 @@
+---
+import TopicHub from '../../../components/TopicHub.astro';
+import { topics } from '../../../utils/editorialTopics';
+export function getStaticPaths() { return topics.map(t => ({ params: { topic: t.id }, props: { topicId: t.id } })); }
+const { topicId } = Astro.props;
+---
+<TopicHub lang="en" topicId={topicId} />

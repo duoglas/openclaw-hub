@@ -217,8 +217,9 @@ class EditorialTests(unittest.TestCase):
             result=e.status(Path(tmp),Path(tmp))
             self.assertEqual(result['independent_tavily_research'],'authorized')
             self.assertEqual(result['research_authorized_on'],'2026-10-29')
-            self.assertEqual(result['independent_collector'],'not_integrated')
-            self.assertEqual(result['source_method'],'verified-news-archive-only')
+            self.assertEqual(result['independent_collector'],'integrated')
+            self.assertIsNone(result['last_collection'])
+            self.assertEqual(result['collector_health'],'not_inferred_from_authorization_or_integration')
             self.assertTrue(result['stale'])
 
     def test_unreceipted_new_article_fails(self):

@@ -11,6 +11,8 @@
     "editorial:status": "python3 -B scripts/editorial_pipeline.py status",
     "check:adsense": "node scripts/check-built-adsense.mjs",
     "images:home": "node scripts/build-home-images.mjs",
+    "images:brand": "node scripts/build-brand-image.mjs",
+    "check:editorial-surface": "node scripts/check-editorial-surface.mjs",
     "check:site-foundations": "node scripts/check-site-foundations.mjs",
     "preview": "astro preview",
     "daily:seo": "bash scripts/generate-seo-daily-snapshot.sh",

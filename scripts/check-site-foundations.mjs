@@ -48,11 +48,12 @@ if (!process.argv.includes('--self-test')) {
   }
   for (const page of ['index.html', 'en/index.html', 'zh/index.html']) {
     const html = readFileSync(join('dist', page), 'utf8');
-    const hero = [...html.matchAll(/<img\b[^>]*>/g)].map(match => match[0]).find(tag => tag.includes('home-hero-1280.webp'));
-    assert.ok(hero, `${page}: missing responsive hero`);
-    for (const token of ['home-hero-640.webp 640w', 'home-hero-1280.webp 1280w', 'width="1280"', 'height="714"', 'fetchpriority="high"']) {
-      assert.ok(hero.includes(token), `${page}: missing image attribute ${token}`);
+    assert.ok(html.includes('data-kuoo-hero'), `${page}: missing task-oriented hero`);
+    const lang = page.startsWith('zh/') ? 'zh' : 'en';
+    for (const topic of ['agents', 'models', 'workflows']) {
+      assert.ok(html.includes(`href="/${lang}/topics/${topic}/"`), `${page}: missing ${topic} entry`);
     }
+    assert.ok(!html.includes('src="/images/home-hero-1280.webp"'), `${page}: outdated OpenClaw-only brand image`);
   }
   const images = [640, 1280].map(width => {
     const path = `dist/images/home-hero-${width}.webp`;

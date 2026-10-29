@@ -29,8 +29,8 @@ const isZh = lang === 'zh';
 const dateLocale = isZh ? 'zh-CN' : 'en-US';
 const isDailyPost = isDailySlug(slug || '');
 const canonicalUrl = Astro.url.href;
-const siteName = 'AI Agent Hub';
-const defaultImage = `${Astro.url.origin}/images/home-hero-cartoon.png`;
+const siteName = 'Kuoo';
+const defaultImage = `${Astro.url.origin}/images/kuoo-social.png`;
 const resolvedImage = heroImage
   ? (heroImage.startsWith('http') ? heroImage : `${Astro.url.origin}${heroImage.startsWith('/') ? '' : '/'}${heroImage}`)
   : defaultImage;
@@ -59,7 +59,7 @@ const organizationSchema = {
   '@type': 'Organization',
   name: siteName,
   url: Astro.url.origin,
-  logo: `${Astro.url.origin}/images/home-hero-cartoon.png`,
+  logo: `${Astro.url.origin}/images/kuoo-social.png`,
 };
 
 const articleSchema = {

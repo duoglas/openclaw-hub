@@ -26,9 +26,9 @@ export async function GET() {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel>
-<title>${escapeXmlText('OpenClaw Hub - AI/科技日报')}</title>
+<title>${escapeXmlText('Kuoo — AI 工具与模型简报')}</title>
 <link>${escapeXmlText(`${site}/zh/daily/`)}</link>
-<description>${escapeXmlText('OpenClaw Hub 中文 AI/科技日报 RSS')}</description>
+<description>${escapeXmlText('Kuoo 中文简报：AI 工具、模型与工程方法的实际变化')}</description>
 <language>zh-cn</language>
 ${items}
 </channel></rss>`;

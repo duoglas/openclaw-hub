@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { topics, belongsToTopic, articleSlug, type SiteLanguage, type TopicId } from '../utils/editorialTopics';
+interface Props { lang: SiteLanguage; topicId: TopicId; }
+const { lang, topicId } = Astro.props;
+const topic = topics.find(t => t.id === topicId)!;
+const zh = lang === 'zh';
+const posts = (await getCollection('blog')).filter(p => p.data.lang === lang && belongsToTopic(p,topicId))
+ .sort((a,b) => (b.data.updatedDate ?? b.data.pubDate).valueOf()-(a.data.updatedDate ?? a.data.pubDate).valueOf());
+---
+<BaseLayout lang={lang} title={topic.label[lang]} description={topic.description[lang]}>
+  <p><a href={`/${lang}/`}>{zh ? '首页' : 'Home'}</a> / {topic.label[lang]}</p>
+  <h1>{topic.label[lang]}</h1><p class="intro">{topic.description[lang]}</p>
+  <nav class="topics" aria-label={zh ? '内容主题' : 'Content topics'}>{topics.map(t => <a href={`/${lang}/topics/${t.id}/`} aria-current={t.id === topicId ? 'page' : undefined}>{t.label[lang]}</a>)}</nav>
+  <p class="note">{zh ? '新分析与已有指南按日期组织。工具版本和测试范围请以文章内说明为准；收录旧指南不代表重新实测。' : 'New analysis and existing guides, ordered by date. Check each article’s versions and testing limits; inclusion here does not mean an older guide was retested.'}</p>
+  {posts.map(post => <article class="card"><p class="date">{post.data.updatedDate ? (zh ? '修订于 ' : 'Updated ') : ''}{(post.data.updatedDate ?? post.data.pubDate).toISOString().slice(0,10)}</p><h2><a href={`/${lang}/blog/${articleSlug(post.id)}/`}>{post.data.title}</a></h2><p>{post.data.description}</p></article>)}
+</BaseLayout>
+<style>
+  .intro { color:#526574; margin:1rem 0; }
+  .topics { display:flex; flex-wrap:wrap; gap:8px; margin:1.5rem 0; }
+  .topics a { padding:7px 12px; border:1px solid #cfd9e4; border-radius:8px; color:#4338ca; font-size:.85rem; }
+  .topics a[aria-current] { background:#eef2ff; border-color:#6366f1; }
+  .note,.date { color:#607083; font-size:.85rem; }
+  .card h2 { margin:.4rem 0 .6rem; padding:0; border:0; font-size:1.3rem; }
+  .card h2 a { color:#263c51; }
+</style>

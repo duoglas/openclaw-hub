@@ -33,16 +33,14 @@ const checks = [
     file: files.enIndex,
     label: 'English homepage article cards cap tag chips',
     tests: [
-      ['EN index visibleTags capped at 3', /visibleTags\s*=\s*post\.data\.tags\.slice\(0,\s*3\)/],
-      ['EN index renders overflow count pill', /hiddenTagCount\s*>\s*0[\s\S]*tag tag--more[\s\S]*\+\{hiddenTagCount\}/],
+      ['EN homepage delegates to shared editorial component', /<EditorialHome lang="en"\s*\/>/],
     ],
   },
   {
     file: files.zhIndex,
     label: 'Chinese homepage article cards cap tag chips',
     tests: [
-      ['ZH index visibleTags capped at 3', /visibleTags\s*=\s*post\.data\.tags\.slice\(0,\s*3\)/],
-      ['ZH index renders overflow count pill', /hiddenTagCount\s*>\s*0[\s\S]*tag tag--more[\s\S]*\+\{hiddenTagCount\}/],
+      ['ZH homepage delegates to shared editorial component', /<EditorialHome lang="zh"\s*\/>/],
     ],
   },
 ];
@@ -54,6 +52,17 @@ for (const group of checks) {
     if (!pattern.test(source)) {
       failures.push(`${group.file}: missing ${name} (${group.label})`);
     }
+  }
+}
+
+// The new homepage deliberately shows no per-card tag chips (zero is compact).
+// Verify the rendered cards, not obsolete variables in the route wrappers.
+for (const lang of ['en', 'zh']) {
+  const html = read(`dist/${lang}/index.html`);
+  const cards = [...html.matchAll(/<article\b[^>]*class="[^"]*\bentry\b[^"]*"[^>]*>([\s\S]*?)<\/article>/g)];
+  if (!cards.length) failures.push(`${lang}: no editorial cards found`);
+  if (cards.some((card) => /class="[^"]*\btag\b|\/blog\/tag\//.test(card[1]))) {
+    failures.push(`${lang}: homepage tag chips were reintroduced without a compactness policy`);
   }
 }
 

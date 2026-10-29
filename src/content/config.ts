@@ -5,6 +5,8 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     editorialVersion: z.literal(2).optional(),
+    pillar: z.enum(['agents', 'models', 'workflows']).optional(),
+    reviewedAt: z.coerce.date().optional(),
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
