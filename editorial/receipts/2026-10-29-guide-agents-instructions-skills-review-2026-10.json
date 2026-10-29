@@ -1,0 +1,241 @@
+{
+  "version": 2,
+  "date": "2026-10-29",
+  "kind": "guide",
+  "slug": "agents-md-team-guide",
+  "created_at": "2026-10-29T22:13:49.136069+08:00",
+  "backfill": false,
+  "base_commit": "6b6caed35b87f1dfb293e69731b4cf85eff51993",
+  "event_keys": [
+    "guide:agents-instructions-skills-review-2026-10"
+  ],
+  "packet_sha256": "d0ee1fc292e6572ce406b25562b438b94ad969a0b71a67b380520d1652b3e828",
+  "draft_sha256": "38c23c8063977a157e8fcc0d169c1e126dc3e7c3af3657887ab6df7657e9d542",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The guide distinguishes Codex discovery, Claude’s concatenated context and explicit imports, and Cursor’s rule triggers using the supplied official documentation; it avoids treating one client’s precedence as universal.",
+      "It substantively corrects the original guide’s unsupported guarantees and savings claims, updates Cursor’s recommended formats, and gives a concrete verification and CI checklist while clearly stating that client experiments were not run.",
+      "The Chinese and English versions are materially aligned, bound claims to documented behavior or labeled recommendations, and avoid reconstructing damaged commands or advising expanded permissions or bypassed approvals."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "resolved_model": "gpt-6-astra",
+    "response_id": "resp_076c3bbe8dd16931016ae3512c272487d18e80fdf94f65364d",
+    "input_sha256": "d0ee1fc292e6572ce406b25562b438b94ad969a0b71a67b380520d1652b3e828",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_076c3bbe8dd16931016ae3512c410487d192403ab5ada11dd8": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 724,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 724,
+            "output_tokens": 0
+          },
+          "msg_076c3bbe8dd16931016ae3512c412487d1b8ff0dba245d1b16": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 25184,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 25184,
+            "output_tokens": 0
+          },
+          "msg_076c3bbe8dd16931016ae3512f728c87d1b5b7dd5da8c72168": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2,
+                "output_tokens": 6019
+              }
+            ],
+            "input_tokens": 2,
+            "output_tokens": 6019
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 26206,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 6019,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 32225
+    },
+    "completed_at": "2026-10-29T22:03:26.656689+08:00",
+    "prior_errors": [],
+    "execution_context": "one-off operator workstation; production scheduler unchanged",
+    "transport": "existing CPA direct connection",
+    "post_generation_edit": {
+      "reason": "Clarified the Codex project-guidance scope against the same verified source; a new independent review followed.",
+      "original_draft_sha256": "66c14c26fd1d47e4f617511b55d5bf90d29dfcdc03ad4bcfc19e5d46943ddea7",
+      "reviewed_draft_sha256": "38c23c8063977a157e8fcc0d169c1e126dc3e7c3af3657887ab6df7657e9d542"
+    }
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "resolved_model": "gpt-6-luna",
+    "response_id": "resp_0eaf5ab8641913b1016ae35368f8fc87d1bb0e4f6b2294fd9c",
+    "input_sha256": "ef477c38878ec9698d86953ae7e489d01df53da15e5c5365a479fa42f431e286",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0eaf5ab8641913b1016ae35369273087d188a4025b455197e2": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 397,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 397,
+            "output_tokens": 0
+          },
+          "msg_0eaf5ab8641913b1016ae35369274887d1b195bf52040f9469": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 31197,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 31197,
+            "output_tokens": 0
+          },
+          "rs_0eaf5ab8641913b1016ae35369cce087d1aefe881901b8d31a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 251
+          },
+          "msg_0eaf5ab8641913b1016ae3536e681887d1aaa539e26a3f889c": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 166
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 166
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 31892,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 417,
+      "output_tokens_details": {
+        "reasoning_tokens": 251
+      },
+      "total_tokens": 32309
+    },
+    "completed_at": "2026-10-29T22:08:49.288094+08:00",
+    "prior_errors": [],
+    "execution_context": "one-off operator workstation; production scheduler unchanged",
+    "transport": "existing CPA direct connection"
+  },
+  "sources": [
+    {
+      "url": "https://developers.openai.com/codex/agent-configuration/agents-md",
+      "sha256": "32ed33eaf08a93e43eefda3c430ef0c22a5e32fa9e07f4b6edc0a56c5ddba396",
+      "read_at": "2026-10-29T18:58:19.803518+08:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S01"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/memory",
+      "sha256": "9664e8876ae2e9b5e68f71b7261671084d76a06c4165caf98d83d7fc3f3b29a4",
+      "read_at": "2026-10-29T18:58:19.805234+08:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S02"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/skills",
+      "sha256": "5c4d6bb0cfdc643adf6552040076c6cb8ed9f62f6f4dee72be5de90fa123028a",
+      "read_at": "2026-10-29T18:58:19.806712+08:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S03"
+    },
+    {
+      "url": "https://cursor.com/docs/context/rules",
+      "sha256": "62059fd9448e5647ebe48c2c00ea52d58017e3fad5fb28c751217a41b5c55582",
+      "read_at": "2026-10-29T18:58:19.809556+08:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S04"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/agents-md-team-guide.md": "98a36821940152d9a4cc8f9eac7609cbf172a8c0c6218d02f29b64062af62586",
+    "src/content/blog/en/agents-md-team-guide.md": "5bab2b4cdc9c3d927c5909b5bb427854159d167052755394a260159b37a065ee"
+  },
+  "topic_id": "agents-instructions-skills-review-2026-10",
+  "pillar": "agents",
+  "source_method": "verified-public-documents",
+  "operation": "revise",
+  "target_slug": "agents-md-team-guide",
+  "previous_files": {
+    "src/content/blog/zh/agents-md-team-guide.md": "5bf427c8f4937a50b58d159d1491145471743ae3ee9aa0eb63aa71b439461f9d",
+    "src/content/blog/en/agents-md-team-guide.md": "6919e8d73f8300f134320ca3727484613986ddfa83850a09b7bd9c55fee238e8"
+  }
+}

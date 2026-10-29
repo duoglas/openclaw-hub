@@ -1,350 +1,118 @@
 ---
-title: "AGENTS.md 团队规范指南：统一 AI 编程工具的配置"
-description: "详解 AGENTS.md、CLAUDE.md 和 .cursorrules 三大 AI 配置文件的关系与用法。包含文件结构、模板示例、团队共享方案和最佳实践，助你统一团队的 AI 编程规范。"
+title: "Codex、Claude Code 与 Cursor 团队指南：指令文件、Rules 和 Skills 的职责与核验"
+description: "同时使用三种编程智能体时，团队可以共享项目约定，但不能假设加载顺序和权限语义相同。本文分别核对指令发现、导入、规则触发与技能预授权，并给出迁移和 CI 检查清单。"
 pubDate: 2026-02-11
 tags: ["agentic-engineering", "guide", "agents-md", "claude-md", "cursorrules", "team-workflow"]
 category: "tutorial"
 lang: "zh"
+updatedDate: "2026-10-29"
+reviewedAt: "2026-10-29"
+editorialVersion: 2
+pillar: "agents"
+faq: []
 ---
 
-## 📋 为什么需要 AI 配置文件？
+> 本次修订：删除指令文件可保证行为一致、强制质量与安全、所有工具自动支持及节省几百小时的承诺。保留简短明确、版本控制和避免重复维护的建议；按当前文档重写三种客户端的加载机制，补充显式导入与 Skills 权限边界，并将 Cursor 新项目建议改为 AGENTS.md 或 .cursor/rules/*.mdc。此次修订依据文档，没有重新实测客户端。
 
-在智能体工程（Agentic Engineering）中，AI 是你的执行者。但就像新员工入职需要了解团队规范一样，AI 智能体也需要"入职培训"。
+> 文档核对日期：2026-10-29。本文为公开资料分析，不代表完成安装或性能测试。
 
-没有配置文件的 AI 就像没有 README 的项目——**能跑，但不可控**。
+## 1. 先分工：共享约定、条件上下文、任务流程与执行控制
 
-AI 配置文件解决的核心问题：
-- 🎯 **一致性**：团队所有人的 AI 行为一致
-- 📏 **质量**：强制执行编码标准
-- 🧠 **上下文**：让 AI 了解项目的架构和约定
-- 🔒 **安全**：限制 AI 的操作范围
+**文档事实：** Claude Code 明确将 `CLAUDE.md` 视为上下文，而非强制配置；Cursor 将 Rules 描述为提示层的持久上下文，并提醒不要将 AI 指导作为唯一安全控制。文件能被读取，不代表约定必然被遵守，也不证明所有工具都会自动发现它。
 
-## 🗂️ 三大配置文件的关系
-
-目前主流的 AI 配置文件有三种：
-
-| 文件 | 所属工具 | 作用范围 | 标准化程度 |
-|------|---------|---------|-----------|
-| **AGENTS.md** | 通用（OpenAI Codex 等） | 所有 AI 工具 | 🟢 新兴标准 |
-| **CLAUDE.md** | Claude Code | Anthropic 生态 | 🟡 专属格式 |
-| **.cursorrules** | Cursor | Cursor IDE | 🟡 专属格式 |
-
-### AGENTS.md — 通用 AI 行为规范
-
-AGENTS.md 是 2025 年下半年兴起的**通用标准**。它不绑定任何特定工具，而是为所有 AI 编程助手提供项目上下文和行为指南。
-
-```
-项目根目录/
-├── AGENTS.md          ← 顶层：全局规范
-├── src/
-│   ├── AGENTS.md      ← 子目录：特定模块规范
-│   ├── frontend/
-│   │   └── AGENTS.md  ← 更具体的前端规范
-│   └── backend/
-│       └── AGENTS.md  ← 更具体的后端规范
-└── tests/
-    └── AGENTS.md      ← 测试相关规范
-```
-
-**特点**：
-- 📂 支持目录级别的层次化配置
-- 🔓 工具无关，任何 AI 助手都可以读取
-- 📖 Markdown 格式，人类也很容易阅读
-
-### CLAUDE.md — Claude Code 专属
-
-CLAUDE.md 是 Anthropic 的 Claude Code 读取的配置文件。与 AGENTS.md 类似，但有一些 Claude 特有的特性。
-
-```
-项目根目录/
-├── CLAUDE.md           ← 项目级配置
-├── ~/.claude/CLAUDE.md ← 用户级全局配置
-└── src/
-    └── CLAUDE.md       ← 子目录级配置
-```
-
-**特点**：
-- 🧠 Claude Code 自动读取
-- 🔧 支持全局（用户级）+ 项目级 + 目录级
-- 📋 可包含 bash 命令（如构建、测试命令）
-
-### .cursorrules — Cursor IDE 专属
-
-`.cursorrules` 是 Cursor 读取的项目级配置文件，放在项目根目录。
-
-```
-项目根目录/
-└── .cursorrules        ← Cursor 配置
-```
-
-**特点**：
-- 🖥️ 仅 Cursor IDE 读取
-- 📄 单文件，不支持层次化
-- 🎨 适合定义编码风格和项目约定
-
-## 📝 模板示例
-
-### AGENTS.md 通用模板
-
-```markdown
-# AGENTS.md
-
-## Project Overview
-This is a Next.js 15 + TypeScript web application for [项目描述].
-
-## Tech Stack
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript (strict mode)
-- **Styling**: Tailwind CSS v4
-- **Database**: PostgreSQL + Drizzle ORM
-- **Testing**: Vitest + Playwright
-
-## Coding Standards
-
-### TypeScript
-- Use `interface` over `type` for object shapes
-- Always use explicit return types on exported functions
-- Prefer `const` assertions where applicable
-- No `any` — use `unknown` + type guards instead
-
-### File Organization
-- Components: `src/components/[feature]/[ComponentName].tsx`
-- Hooks: `src/hooks/use[HookName].ts`
-- Utils: `src/lib/[domain].ts`
-
-### Naming Conventions
-- Components: PascalCase
-- Files: kebab-case (except components)
-- Constants: UPPER_SNAKE_CASE
-- Database tables: snake_case
-
-## Build & Test Commands
-- `pnpm dev` — Start development server
-- `pnpm build` — Production build
-- `pnpm test` — Run unit tests
-- `pnpm test:e2e` — Run E2E tests
-- `pnpm lint` — Lint check
-
-## Important Rules
-1. Never modify migration files directly
-2. Always run `pnpm test` before committing
-3. All API routes must have input validation (zod)
-4. No secrets in code — use environment variables
-5. All public functions must have JSDoc comments
-```
-
-### CLAUDE.md 模板
-
-```markdown
-# CLAUDE.md
-
-## Project Context
-[与 AGENTS.md 类似的项目描述]
-
-## Claude-Specific Instructions
-
-### Thinking Style
-- Think step-by-step before making changes
-- Always explain WHY before making a change
-- When unsure, ask rather than guess
-
-### File Operations
-- Read the full file before editing
-- Make minimal, focused changes
-- Always verify changes compile: `pnpm tsc --noEmit`
-
-### Git Workflow
-- Commit messages follow Conventional Commits
-- One logical change per commit
-- Run tests before suggesting commit
-
-### Off Limits
-- Do NOT modify: `.env`, `*.lock`, `migrations/`
-- Do NOT run: `rm -rf`, `DROP TABLE`, `git push --force`
-
-## Common Tasks
-- "Add a new API endpoint": Create route in `src/app/api/`, add zod schema, add tests
-- "Fix a bug": Read error, find root cause, write test first, then fix
-- "Refactor": Ensure tests pass before AND after
-```
-
-### .cursorrules 模板
-
-```
-You are a senior TypeScript developer working on a Next.js 15 project.
-
-## Style
-- Use functional components with hooks
-- Prefer server components by default, add "use client" only when needed
-- Use Tailwind CSS for styling, no CSS modules
-- Write concise, readable code
-
-## Patterns
-- Error handling: use Result pattern (ok/err) instead of try/catch for business logic
-- API responses: always return typed responses using the ApiResponse<T> type
-- Database queries: always use prepared statements via Drizzle
-
-## Testing
-- Write tests for all new functions
-- Use describe/it blocks with clear test names
-- Mock external services, don't mock internal modules
-
-## Don't
-- Don't use default exports (except pages and layouts)
-- Don't add console.log (use the logger utility)
-- Don't use string concatenation for SQL
-- Don't skip TypeScript types
-```
-
-## 🔄 团队共享方案
-
-### 方案 1：全部提交到 Git（推荐）
-
-```bash
-# .gitignore 中确保这些文件 NOT 被忽略
-# 以下文件应该被版本控制：
-AGENTS.md
-CLAUDE.md
-.cursorrules
-```
-
-**优点**：所有人自动同步，版本可追踪
-**缺点**：个人偏好需要放在全局配置中
-
-### 方案 2：分层配置
-
-```
-# 团队共享（提交到 Git）
-AGENTS.md          ← 团队标准
-.cursorrules       ← 团队标准
-
-# 个人配置（不提交）
-~/.claude/CLAUDE.md  ← 个人的 Claude 全局配置
-```
-
-在 `.gitignore` 中：
-```
-# 不忽略团队配置
-!AGENTS.md
-!CLAUDE.md
-!.cursorrules
-```
-
-### 方案 3：Monorepo 多项目
-
-```
-monorepo/
-├── AGENTS.md              ← 全局规范
-├── .cursorrules           ← 全局 Cursor 规范
-├── packages/
-│   ├── web/
-│   │   ├── AGENTS.md      ← Web 前端特定规范
-│   │   └── CLAUDE.md
-│   ├── api/
-│   │   ├── AGENTS.md      ← API 后端特定规范
-│   │   └── CLAUDE.md
-│   └── shared/
-│       └── AGENTS.md      ← 共享库规范
-```
-
-## ✅ 最佳实践
-
-### 1. 从小开始，逐步丰富 📈
-
-不要一开始就写一个 500 行的配置文件。从这些开始：
-- 项目技术栈描述
-- 3-5 条最重要的编码规范
-- 构建和测试命令
-
-然后根据实际使用中发现的问题逐步添加。
-
-### 2. 用具体例子，不要抽象描述 🎯
-
-```markdown
-# ❌ 不好
-Write clean code.
-
-# ✅ 好
-## Error Handling
-Use the Result pattern:
-​```typescript
-type Result<T> = { ok: true; data: T } | { ok: false; error: string };
-
-// Good
-function getUser(id: string): Result<User> { ... }
-
-// Bad — don't throw for business logic errors
-function getUser(id: string): User { throw new Error(...) }
-​```
-```
-
-### 3. 保持同步更新 🔄
-
-配置文件不是写了就完了，需要：
-- 📅 每月 review 一次，删除过时内容
-- 🐛 发现 AI 反复犯某个错误 → 添加相应规则
-- 🆕 技术栈变化 → 及时更新
-
-### 4. 统一三个文件的核心内容 🤝
-
-如果团队同时使用 Cursor 和 Claude Code：
-```markdown
-# AGENTS.md — 包含完整的项目规范（这是主文件 source of truth）
-
-# CLAUDE.md — 引用 AGENTS.md + 添加 Claude 特有配置
-See AGENTS.md for project standards.
-[Claude-specific additions here]
-
-# .cursorrules — 摘要版本，适合 Cursor 的格式
-[Condensed version of AGENTS.md rules]
-```
-
-### 5. 添加"禁止"清单 🚫
-
-明确告诉 AI 什么不能做：
-```markdown
-## Forbidden Actions
-- Never delete or modify migration files
-- Never commit .env files
-- Never use `rm -rf` without explicit confirmation
-- Never bypass TypeScript strict mode
-- Never add dependencies without checking bundle size
-```
-
-### 6. 包含常见任务的流程 📋
-
-```markdown
-## Standard Workflows
-
-### Adding a New Feature
-1. Create feature branch from `main`
-2. Write failing tests first (TDD)
-3. Implement the feature
-4. Ensure all tests pass: `pnpm test`
-5. Run linting: `pnpm lint`
-6. Create PR with description template
-
-### Database Changes
-1. Create migration: `pnpm drizzle-kit generate`
-2. Review generated SQL
-3. Test migration: `pnpm drizzle-kit push`
-4. Never modify existing migrations
-```
-
-## 🚀 快速上手清单
-
-- [ ] 在项目根目录创建 `AGENTS.md`
-- [ ] 添加项目概述和技术栈
-- [ ] 添加 3-5 条核心编码规范
-- [ ] 添加构建/测试命令
-- [ ] 添加"禁止"清单
-- [ ] 如果用 Cursor：创建 `.cursorrules`
-- [ ] 如果用 Claude Code：创建 `CLAUDE.md`
-- [ ] 提交到 Git，团队同步
-- [ ] 每月 review 并更新
-
----
-
-配置文件是智能体工程的"基础设施"。花 30 分钟建好它，能省下团队几百小时的返工时间。🏗️
-
-*想了解如何在团队中推广智能体工程？请阅读 [团队落地智能体工程：四步走实战指南](/blog/zh/agentic-engineering-team-adoption)。*
+**团队建议，尚未实测：** 按内容的生命周期分工，而不要为每个客户端维护一份完整副本。
+
+| 载体 | 建议职责 | 选择条件与代价 |
+| --- | --- | --- |
+| `AGENTS.md` | 项目结构、实际构建与测试入口、少量共同约定 | 适合共享内容；必须逐客户端核对发现机制 |
+| `CLAUDE.md` | Claude 会话所需的稳定上下文、显式导入和专属补充 | 保持简短，避免与共享文件重复或冲突 |
+| 路径规则、Cursor `.mdc` Rules | 只针对特定文件、目录或任务的约定 | 减少无关上下文，但需要验证触发条件 |
+| Skills | 重复使用的检查清单、多步骤工作流 | 本文仅有 Claude Skills 的详细证据；迁移到其他宿主需另查字段和执行语义 |
+| 权限设置、执行拦截与 CI | 审批、阻止操作、检查产物 | 与文字指令分别配置和核验 |
+
+本文讨论编程智能体客户端及其上下文加载、工具执行层，不涉及模型权重或推理服务器选型。建议先在一个仓库试行共享内容与客户端适配层；只有加载记录、权限检查和 CI 均满足要求后，再推广。这里不承诺质量、安全或工时收益。
+
+[来源 S01](<https://developers.openai.com/codex/agent-configuration/agents-md>) · [来源 S02](<https://code.claude.com/docs/en/memory>) · [来源 S03](<https://code.claude.com/docs/en/skills>) · [来源 S04](<https://cursor.com/docs/context/rules>)
+
+## 2. Codex：启动目录决定发现链
+
+**文档事实：** Codex 每次运行开始时构建指令链；TUI 通常对应每次启动会话。
+
+1. 全局层从 Codex home 读取：先选 `AGENTS.override.md`，否则选 `AGENTS.md`，只使用该层第一个非空文件。`CODEX_HOME` 可改变 home 位置。
+2. 项目级指导的查找范围，是项目根目录（通常为 Git 根目录）向下到当前工作目录的这段目录链。这不表示项目根以外的所有祖先目录也会被搜索；找不到项目根时，只检查当前目录。
+3. 每个目录依次查找 `AGENTS.override.md`、`AGENTS.md`、`project_doc_fallback_filenames` 配置的备用名称，每个目录最多加入一个文件。
+4. 按从根到当前目录的顺序拼接；文档说明，靠近当前目录的指导因排在后面而覆盖前面的指导。
+
+空文件被跳过；合并大小达到 `project_doc_max_bytes` 后停止加入，默认上限为 32 KiB。因此，增加嵌套文件不等于绕过总量限制，也不能假设从仓库根启动后会自动发现所有子目录指令。
+
+**核验建议：** 记录工作目录、识别出的项目根、Codex home、备用文件名与大小上限。从根目录和目标子目录分别启动新会话，要求列出指令来源；如需审计，以官方文档说明的 TUI 或会话日志交叉核对，并对日志做访问控制和脱敏。修改文件或配置后重启核验。无需关闭审批或提高工具权限。
+
+[来源 S01](<https://developers.openai.com/codex/agent-configuration/agents-md>)
+
+## 3. Claude Code：拼接上下文，区分显式导入与普通提示
+
+**文档事实：** Claude 的作用域加载顺序由广到窄，包括组织管理、用户和项目指导。目录树内，当前工作目录及其祖先目录的 `CLAUDE.md` 与 `CLAUDE.local.md` 被拼接到上下文，从文件系统根向工作目录排序；同一目录中，local 文件在 `CLAUDE.md` 之后。所有发现的文件共同进入上下文，不能套用 Codex 的覆盖规则。文档警告，互相矛盾的指令可能被任意择一。
+
+工作目录下更深层的指令文件不会在启动时全部加载：Claude 读取、写入或编辑该子目录内另一个文件时，才加载对应指令。这意味着“从哪里启动”与“随后访问哪些文件”都需要纳入核验。
+
+`CLAUDE.md` 中的 `@path/to/import` 是文档支持的显式导入，文件会展开到上下文。相对路径基于包含导入的文件，递归最多四跳；代码行内标记和代码块中的内容不会被当作导入解析。项目文件中的外部导入首次遇到时会请求批准；被拒绝的导入保持禁用。
+
+普通文字 `See AGENTS.md` 没有相同的已验证导入语义。它可能促使模型主动读取文件，但不能据此认定启动时已自动导入，也不应断言它在任何情况下都无效。当前文档还明确提到 Claude 可用 `AGENTS.md` 代替 `CLAUDE.md`；所给摘录没有展开两者共存时的完整选择规则，因此不能推导所有版本都自动读取两份文件。
+
+**核验建议：** 在 `/context` 的 **Memory files** 中检查实际来源；访问目标子目录文件后再查一次。若选择 `CLAUDE.md` 显式导入共享文件，核对导入解析、审批状态及重复加载。不要用“后写的必定赢”解决冲突，应直接删除或明确改写矛盾条目。
+
+[来源 S02](<https://code.claude.com/docs/en/memory>)
+
+## 4. Cursor：按触发条件选择 Rules 或 AGENTS.md
+
+**文档事实：** 新项目的结构化项目规则放在 `.cursor/rules` 中，必须使用 `.mdc` 扩展名；该目录中的普通 `.md` 文件被规则系统忽略。
+
+| 条件 | 当前文档描述的行为 |
+| --- | --- |
+| `alwaysApply: true` | 始终加入，忽略 description 和 globs |
+| `alwaysApply: false`，提供 globs | 匹配文件进入上下文时自动附加 |
+| `alwaysApply: false`，仅提供 description | Agent 根据描述判断相关性后引入 |
+| `alwaysApply: false`，两者均无 | 在聊天中通过 @ 提及规则才引入 |
+
+简单 Markdown 指令可用项目根或子目录中的 `AGENTS.md`。子目录文件在处理该目录及其后代文件时自动应用，与父目录指导合并，更具体的指导优先。
+
+另一个独立层次是 Team、Project、User Rules：文档给出的顺序为 **Team → Project → User**，所有适用规则合并，发生冲突时前面的来源优先。不要将这个顺序扩展为文档未说明的所有机制之间的完整优先级。规则不影响 Cursor Tab；User Rules 也不适用于 Inline Edit，仅用于 Agent Chat。
+
+**选择建议：** 共享、简单的目录约定优先考虑 `AGENTS.md`；需要文件匹配、相关性判断或手动调用时使用 `.mdc`。重要步骤若依赖相关性判断，应额外验证是否触发。当前页面未提及 `.cursorrules`，这不足以证明旧格式在所有版本失效；已有项目应先记录客户端版本与实际行为，再决定迁移，不要直接删除旧文件。
+
+[来源 S04](<https://cursor.com/docs/context/rules>)
+
+## 5. Skills：正文是流程，frontmatter 由宿主解释
+
+**文档事实，仅限 Claude Code：** 技能正文在使用时才加载，适合从常驻指导中移出较长流程。正文加载后可跨轮次保留，但权限授权有不同生命周期。`SKILL.md` 顶部 YAML frontmatter 由宿主解析；开头分隔符必须位于第一行。YAML 解析失败时，技能仍可能加载，但不设置这些字段，因此“正文可见”不能证明配置已生效。
+
+`disable-model-invocation: true` 阻止 Claude 自动加载该技能，适合要求人工发起的工作流。它本身不提供工具隔离。
+
+**`allowed-tools` 是调用该技能的当轮预授权。**列出的工具可以在这一轮免逐次询问；下一条用户消息会清除授权，即使技能正文仍在上下文中。该字段本身不缩减可调用工具集合，未列出的工具仍由权限设置管理。因此它既不是独占工具清单，也不是沙箱。文档还提醒，项目技能可以携带宽泛授权，不能仅凭工作区信任状态推断该字段不会生效；组织管理设置也可能限制或忽略这些授权。
+
+Claude Code 支持标准之外的扩展字段；文档说明，claude.ai 上传和相关打包路径只接受指定标准字段，额外字段可能导致硬错误。不能将 Claude 的字段支持或单轮权限语义推广到 Codex、Cursor 或其他宿主。
+
+**审查建议：** 将技能正文、frontmatter、附带脚本和实际权限设置分别审查。优先不添加额外预授权；若任务确有需要，再按最小范围审议。对部署等有副作用的流程，可考虑手动触发，但仍保留执行审批和外部控制。
+
+[来源 S03](<https://code.claude.com/docs/en/skills>)
+
+## 6. 上线前检查：记录来源与证据，不只询问模型是否遵守
+
+**以下为建议的核验方案，本文没有运行这些测试。**前提是可审查的仓库副本、现有审批策略、可读取的客户端配置，以及不含秘密或生产副作用的测试任务。
+
+- **版本与入口：** 记录三个客户端的实际版本、运行模式、仓库提交和启动工作目录。本文依据 2026-10-29 读取的当前文档，不代表这些功能当日发布，也不保证旧版本一致。Claude `/doctor prompt-audit` 文档要求 v2.1.283 或更高版本，且依赖相应内置技能可用。
+- **实际加载来源：** Codex 检查 home、override、备用名、项目根和大小限制，并对照可用日志；Claude 对照 `/context` 的 Memory files、导入审批及子目录访问前后变化；Cursor 检查 Customize 中的规则、触发类型、匹配文件是否进入上下文，并验证手动提及路径。模型自述只作辅助证据。
+- **冲突：** 列出全局、组织、项目、个人与嵌套来源中的同一条约定。在测试副本中使用无副作用的格式差异检查冲突表现；分别按照各产品文档解释结果。Claude 的矛盾项应直接消除。若来源或结果仍不清楚，暂停扩展部署。
+- **工具权限：** 静态审查技能 frontmatter、权限设置和组织控制；如要验证单轮授权生命周期，仅使用已批准的无副作用操作，分别观察调用轮与下一条用户消息后的审批行为。不要为了复现而扩大授权、关闭沙箱或跳过审批。
+- **CI：** 将需要强制验证的项目约定映射到实际 lint、类型检查、测试或其他仓库检查。用无害的故意失败样例确认 CI 会失败，并检查合并策略是否要求通过；不能把智能体说“已测试”当作日志证据。
+- **变更维护：** 共享文件提交版本控制，个人文件按工具机制单独管理；每次客户端升级、工作目录变化或规则迁移后重做相关检查。保留短而具体的约定，删除重复副本和过期入口。
+
+**有界决策：** 简单仓库可先采用简短共享 `AGENTS.md`，按核验结果补充 Claude 导入或专属指导；只有存在条件触发需求时再增加 Cursor Rules，出现可重复流程时再引入 Skills。加载可见、冲突消除与权限明确，是扩大使用范围的前提，不是安全认证。
+
+[来源 S01](<https://developers.openai.com/codex/agent-configuration/agents-md>) · [来源 S02](<https://code.claude.com/docs/en/memory>) · [来源 S03](<https://code.claude.com/docs/en/skills>) · [来源 S04](<https://cursor.com/docs/context/rules>)
+
+## 证据与适用范围
+
+本文依据所提供的四份当前官方文档摘录，读取日期为 2026-10-29，未浏览补充页面，也未运行 Codex、Claude Code 与 Cursor 的客户端对照实验。摘录未提供所有客户端的统一版本基线、Claude 两种项目指令文件共存的完整选择规则，或 Codex/Cursor Skills 的详细语义；这些范围不作推断。抓取中的部分代码已损坏，本文未重建可执行命令。核验和 CI 方案属于未实测建议，不构成性能、节省工时或安全保证。
+
+本文使用 AI 辅助起草，并经过独立模型审稿；属于来源分析，未进行独立性能测试。
