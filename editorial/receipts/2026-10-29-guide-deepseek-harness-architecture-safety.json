@@ -1,0 +1,216 @@
+{
+  "version": 2,
+  "date": "2026-10-29",
+  "kind": "guide",
+  "slug": "ai-guide-deepseek-harness-architecture-safety",
+  "created_at": "2026-10-29T15:10:03.340499+08:00",
+  "backfill": false,
+  "base_commit": "0bf868f5942fe27ac405d6c1a8134e52f0e27a5c",
+  "event_keys": [
+    "guide:deepseek-harness-architecture-safety"
+  ],
+  "packet_sha256": "244a9211f5f3ec821390c6542c541f3e784c03264332077be3452f2a9abe0480",
+  "draft_sha256": "2adbc83c3d1b4cf0273bb187d29b5fe53f5bbd8f9db1839e56c708362be292ec",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The documented claims are supported by the supplied official README and safety notice; interpretation and trial recommendations are clearly labelled, and the guide does not claim installation or security testing.",
+      "It is a practical, bounded preflight guide: it covers the developer-preview and audit status, documented run paths, permissions, isolation, version recording and recovery while explicitly noting missing version and architecture details.",
+      "The English and Chinese sections are materially aligned, and neither presents the project as production-ready or treats sandboxing as a security guarantee."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0c423d69a3cf78f1016ae2ed3842c487d29f93d58664d57f38",
+    "input_sha256": "244a9211f5f3ec821390c6542c541f3e784c03264332077be3452f2a9abe0480",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0c423d69a3cf78f1016ae2ed385fd087d2a3dead7ef21aea8b": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 654,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 654,
+            "output_tokens": 0
+          },
+          "msg_0c423d69a3cf78f1016ae2ed385fec87d2b63fb7a0c6ce2cfc": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 7071,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 7071,
+            "output_tokens": 0
+          },
+          "rs_0c423d69a3cf78f1016ae2ed3a47f487d2bd5599109366c104": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 36
+          },
+          "msg_0c423d69a3cf78f1016ae2ed3dc90887d2ad1e7a27d1e34b09": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 3462
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 3462
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 8023,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 3498,
+      "output_tokens_details": {
+        "reasoning_tokens": 36
+      },
+      "total_tokens": 11521
+    },
+    "completed_at": "2026-10-29T14:55:11.266045+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_06d4b617241fc283016ae2edd33ff087d19d39e759b5e22e97",
+    "input_sha256": "8425e71c494cea68d4fc79b0c62e6986c5173f8e6db26181f88bdf33da4c56c7",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_06d4b617241fc283016ae2edd3675087d1bb91a6670ed4f520": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 348,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 348,
+            "output_tokens": 0
+          },
+          "msg_06d4b617241fc283016ae2edd3677c87d1b73ab7030aedb29a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 10483,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 10483,
+            "output_tokens": 0
+          },
+          "rs_06d4b617241fc283016ae2edd3f9f087d19779209bb04d9c42": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 177
+          },
+          "msg_06d4b617241fc283016ae2edd7400487d1a76f71d9fc1fc2cc": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 156
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 156
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 11129,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 333,
+      "output_tokens_details": {
+        "reasoning_tokens": 177
+      },
+      "total_tokens": 11462
+    },
+    "completed_at": "2026-10-29T14:55:23.169757+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "sha256": "8336c3b114b1963ae75c78f73b8cd9816c0a06a7ac26ee4065512e37e2174aca",
+      "read_at": "2026-10-29T06:33:51.566632+00:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S01"
+    },
+    {
+      "url": "https://github.com/deepseek-ai/deepseek-harness/blob/master/SAFETY.md",
+      "sha256": "cee24ca4f3c535bdf1dd600d4d5a55f4f88979c08612414e5ac13230514125e5",
+      "read_at": "2026-10-29T06:33:51.566632+00:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S02"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-guide-deepseek-harness-architecture-safety.md": "11c08e37fe6ca80acf79a254cb0ea7148c06769568316c0a8f85bed7448ae79b",
+    "src/content/blog/en/ai-guide-deepseek-harness-architecture-safety.md": "377d3351f5181ec703c605e624c0f894dc95d2c9db3a3b455dde9fe3ce9b07d0"
+  },
+  "topic_id": "deepseek-harness-architecture-safety",
+  "pillar": "agents",
+  "source_method": "verified-public-documents"
+}
