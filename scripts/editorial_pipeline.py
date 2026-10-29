@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Evidence-first editorial pipeline. No model tools, no scraping, no upstream keys.
 
-Only verified local news archives are currently authorized. Research failures,
+Public Tavily research was authorized on 2026-10-29. Automated publication still
+consumes verified local news archives until its independent collector is integrated.
+Research failures,
 review failures, dirty trees and failed builds fail closed. This module uses
 stdlib only; the publishing host must provide git, pnpm and installed site deps.
 """
@@ -686,7 +688,8 @@ def status(root=ROOT, state=STATE):
             'stale': latest is None or (now().date()-dt.date.fromisoformat(latest)).days >= 2,
             'receipts': [{'date':r['date'],'kind':r['kind'],'slug':r['slug']} for r in records[-20:]],
             'recent_runs': [load(p) for p in sorted((state / 'runs').glob('*/result.json'))[-16:]],
-            'source_method': 'verified-news-archive-only', 'independent_tavily_research': 'not_authorized'}
+            'source_method': 'verified-news-archive-only', 'independent_tavily_research': 'authorized',
+            'research_authorized_on': '2026-10-29', 'independent_collector': 'not_integrated'}
 
 
 def run_pipeline(kind, date, backfill=False):

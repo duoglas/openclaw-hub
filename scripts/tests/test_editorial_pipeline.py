@@ -212,6 +212,15 @@ class EditorialTests(unittest.TestCase):
             self.assertTrue(result['stale'])
             self.assertIsNone(result['last_daily'])
 
+    def test_research_authorization_is_not_collector_readiness(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result=e.status(Path(tmp),Path(tmp))
+            self.assertEqual(result['independent_tavily_research'],'authorized')
+            self.assertEqual(result['research_authorized_on'],'2026-10-29')
+            self.assertEqual(result['independent_collector'],'not_integrated')
+            self.assertEqual(result['source_method'],'verified-news-archive-only')
+            self.assertTrue(result['stale'])
+
     def test_unreceipted_new_article_fails(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);e.save(root/'src/content/blog/en/ai-daily-2026-10-26.md','unreviewed')
