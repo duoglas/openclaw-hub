@@ -235,7 +235,15 @@
     }
   ],
   "files": {
-    "src/content/blog/zh/ai-daily-2026-10-26.md": "ff8223b5317ba258acd6ad24a97809f934531f515584eb349da6714e82062733",
+    "src/content/blog/zh/ai-daily-2026-10-26.md": "143dadb2ee2cb3825ee244e0c303e77e1681bc9fffdf974b05924625b1b441de",
     "src/content/blog/en/ai-daily-2026-10-26.md": "e2afe43cf12f0fd09fc03831949b663788f6ef3dfe7f3578a105abaa8d44c4ba"
+  },
+  "render_correction": {
+    "at": "2026-10-29T10:15:11.030439+08:00",
+    "reason": "CommonMark CJK bold-label spacing; non-whitespace content unchanged",
+    "previous_files": {
+      "src/content/blog/zh/ai-daily-2026-10-26.md": "ff8223b5317ba258acd6ad24a97809f934531f515584eb349da6714e82062733",
+      "src/content/blog/en/ai-daily-2026-10-26.md": "e2afe43cf12f0fd09fc03831949b663788f6ef3dfe7f3578a105abaa8d44c4ba"
+    }
   }
 }

@@ -452,6 +452,23 @@ def article_slug(draft, packet):
     return 'ai-analysis-' + hint + '-' + packet['date']
 
 
+def readable_markdown(text):
+    # CommonMark does not close **标签：** immediately before a CJK letter/digit.
+    # Add a separator only to paragraph/list labels; leave code fences untouched.
+    output, fence = [], None
+    for line in text.splitlines(keepends=True):
+        marker = re.match(r'^ {0,3}(`{3,}|~{3,})(.*)', line)
+        if marker:
+            if fence is None:
+                fence = (marker[1][0], len(marker[1]))
+            elif marker[1][0] == fence[0] and len(marker[1]) >= fence[1] and not marker[2].strip():
+                fence = None
+        elif fence is None:
+            line = re.sub(r'^( {0,3}(?:(?:[-*]|\d+\.)\s+)?\*\*[^*\n]+[：:]\*\*)(?=\S)', r'\1 ', line)
+        output.append(line)
+    return ''.join(output)
+
+
 def render(draft, packet, lang, backfill=False):
     day = packet['date']
     lines = []
@@ -481,13 +498,13 @@ def render(draft, packet, lang, backfill=False):
         lines += [('> 本期为历史补录：取材日期 ' + day + '，补录于 ' + now().date().isoformat() + '；不代表今日新消息。') if lang=='zh' else
                   ('> Archive backfill: evidence edition ' + day + ', added on ' + now().date().isoformat() + '. These are not today’s announcements.'), '']
     for section in draft['sections']:
-        lines += ['## ' + section['heading_' + lang], '', section[lang], '']
+        lines += ['## ' + section['heading_' + lang], '', readable_markdown(section[lang]), '']
         links = []
         for sid in section['source_ids']:
             source = next(s for s in packet['sources'] if s['id'] == sid)
             links.append('[' + ('来源 ' if lang=='zh' else 'Source ') + sid + '](<' + source['url'] + '>)')
         lines += [' · '.join(links), '']
-    lines += ['## ' + ('证据与适用范围' if lang=='zh' else 'Evidence and limits'), '', draft['limitations_' + lang], '',
+    lines += ['## ' + ('证据与适用范围' if lang=='zh' else 'Evidence and limits'), '', readable_markdown(draft['limitations_' + lang]), '',
               ('本文使用 AI 辅助起草，并经过独立模型审稿；属于来源分析，未进行独立性能测试。' if lang=='zh' else
                'AI-assisted drafting with a separate model review. This is source-based analysis, not independent performance testing.'), '']
     return '\n'.join(lines).strip() + '\n'

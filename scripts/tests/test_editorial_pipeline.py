@@ -198,6 +198,14 @@ class EditorialTests(unittest.TestCase):
         self.assertIn('历史补录',e.render(draft(),packet(),'zh',True))
         self.assertIn('not today',e.render(draft(),packet(),'en',True))
 
+    def test_cjk_bold_labels_without_rewriting_code(self):
+        text='**事实：**内容\n- **边界：**条件\n```markdown\n**字面：**保留\n```\n`**字面：**保留`\n'
+        fixed=e.readable_markdown(text)
+        self.assertIn('**事实：** 内容',fixed)
+        self.assertIn('- **边界：** 条件',fixed)
+        self.assertIn('```markdown\n**字面：**保留\n```',fixed)
+        self.assertIn('`**字面：**保留`',fixed)
+
     def test_freshness_status_is_not_cron_success(self):
         with tempfile.TemporaryDirectory() as tmp:
             result=e.status(Path(tmp),Path(tmp))

@@ -204,7 +204,15 @@
     }
   ],
   "files": {
-    "src/content/blog/zh/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "114f2d7f607fe37aa2011bfad21d28cdd843d45f869b774451105961e15e4bf2",
+    "src/content/blog/zh/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "d52ee197665d950292b43528a6e9083f738973282a7bdbb783019121dab4358d",
     "src/content/blog/en/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "e55023213aa41e95240c90910a20249c915e5fd88ebd427381aceda0e48bbe9f"
+  },
+  "render_correction": {
+    "at": "2026-10-29T10:15:11.026025+08:00",
+    "reason": "CommonMark CJK bold-label spacing; non-whitespace content unchanged",
+    "previous_files": {
+      "src/content/blog/zh/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "114f2d7f607fe37aa2011bfad21d28cdd843d45f869b774451105961e15e4bf2",
+      "src/content/blog/en/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "e55023213aa41e95240c90910a20249c915e5fd88ebd427381aceda0e48bbe9f"
+    }
   }
 }
