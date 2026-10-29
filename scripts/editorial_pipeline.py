@@ -328,6 +328,9 @@ Quote a concrete defect if rejecting. Do not rewrite the article or accept its s
 Return {"verdict":"pass|reject","checks":{"factual_support":true,"freshness":true,
 "novelty":true,"usefulness":true,"translation":true,"scope":true,"safety":true},
 "reasons":["specific reasons for the decision"]}. Each check must be boolean.
+Even a PASS must include 1-3 specific positive reasons explaining the evidence and
+limits that justify approval. Never return an empty reasons array; this is a required
+audit explanation, not merely a list of defects.
 '''
 
 
