@@ -51,7 +51,7 @@ def topics(e, root):
             raise e.Blocked('invalid topic category')
         dt.date.fromisoformat(row['not_before'])
         text = json.dumps(row, ensure_ascii=False)
-        if re.search(r'/Users/|/home/|mind-palace|\.jsonl|private_references|api[_-]?key|\bsk-[A-Za-z0-9]{12}', text, re.I):
+        if re.search(r'/Users/|/home/|\.jsonl|private_references|private[_-](?:notes|archives)|api[_-]?key|\bsk-[A-Za-z0-9]{12}', text, re.I):
             raise e.Blocked('private/credential-like registry data')
         if not isinstance(row['question'], str) or not 15 <= len(row['question']) <= 1000:
             raise e.Blocked('invalid public research question')
