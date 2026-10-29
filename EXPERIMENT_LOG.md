@@ -17,7 +17,7 @@
 - Result: pass — `node --check scripts/check-growth-cta-bridge-runtime.mjs`, `pnpm check:growth-cta-bridge-runtime`, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and `git diff --check` passed. Synthetic checks confirm no event for missing/throwing beacon and exactly one event for same-object redispatch. No live traffic lift claimed.
 - Quality: 29/30 (actual bridge behavior, fail-safe paths, deduplication, build and built-output coverage verified; no production traffic experiment).
 - Decision: retain fail-safe handling and event deduplication; continue observing live event quality without claiming growth lift.
-- Commit: `90aba74` (pushed to `origin/main`). <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `90aba74` (pushed to `origin/main`).
 
 ## EXP-359 — Restrict CTA attribution to same-origin or HTTPS destinations (2026-10-08 11:22 Asia/Shanghai)
 - Hypothesis: EXP-358 validates event execution and privacy but did not constrain destination schemes/hosts; marked links using javascript/data or insecure external HTTP could contaminate attribution. Enforcing same-origin or HTTPS destinations for CTA events protects event quality without collecting additional user data.
@@ -30,7 +30,7 @@
 - Result: pass — `node --check`, synthetic runtime tests, Astro build (771 pages), built CTA coverage (456 related-post surfaces), and `git diff --check` all passed. First assertion run exposed only an incorrect fixture expectation (same-origin href is pathname-only); corrected the fixture, reran successfully. No live traffic lift claimed.
 - Quality: 29/30 (actual bridge policy and privacy-preserving destination cases verified; no production traffic measurement).
 - Decision: retain policy and regression coverage; continue observing live event quality, without claiming growth lift.
-- Commit: `9a5b721` (pushed to `origin/main`) <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `9a5b721` (pushed to `origin/main`)
 
 ## EXP-358 — Synthetic runtime validation for anonymous CTA attribution (2026-09-30 17:20 Asia/Shanghai)
 - Hypothesis: EXP-357 has static CTA marker coverage but no execution test for the inline analytics bridge; selector drift, nested click targets, or beacon API changes could silently drop events, while static checks cannot prove query/hash and user-content privacy. Executing the actual bridge in an isolated Node vm with minimal DOM/beacon mocks can validate event behavior offline.
@@ -44,7 +44,7 @@
 - Result: pass（`node --check`、实际 inline bridge 的 vm synthetic runtime（有效点击 exactly-one、嵌套 target、未标记、非法/超长 marker、query/hash 隐私）、Astro build（771 pages）、built CTA coverage（456 个相关文章 surfaces）与 `git diff --check` 全部通过；未测线上点击或增长 lift。）
 - Quality: 28/30（真实桥接执行与隐私断言、构建、现有覆盖门禁及 CI 接入完成；尚无线上点击归因数据。）
 - Decision: scale（保留为匿名 CTA 事件桥接回归门禁；后续以线上数据观察事件完整性，不把测试通过等同于增长提升。）
-- Commit: `19e6752` (pushed to `origin/main`) <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `19e6752` (pushed to `origin/main`)
 
 ## EXP-357 — Anonymous CTA click attribution baseline (2026-09-28 17:20 Asia/Shanghai)
 - Hypothesis: EXP-356 ensured stable CTA markers but did not capture their interactions; emitting marker- and language-level click events through the existing Cloudflare Web Analytics bridge enables comparison of homepage/RSS entry points without collecting identity or user text.
@@ -56,7 +56,7 @@
 - Success metric: EN/ZH events are distinguishable by marker; after 14 days, compare event counts with RSS route requests and keep event loss below 5% where both telemetry sources permit measurement.
 - Result: implementation pass; Astro build produced 771 pages, built CTA coverage check passed across bilingual surfaces and 456 article related-post surfaces, and `git diff --check` passed. Live analytics token/configuration and 14-day observations were not independently verified; baseline remains pending, with no CTR lift claimed.
 - Quality: 26/30 (privacy-minimized event wiring and build checks complete; no synthetic runtime event test or live traffic evidence yet).
-- Decision: observe for 14 days after deployment; verify Cloudflare token is enabled before interpreting missing events. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: observe for 14 days after deployment; verify Cloudflare token is enabled before interpreting missing events.
 
 ## EXP-356 — Built growth CTA coverage gate (2026-09-26 11:20 Asia/Shanghai)
 - Hypothesis: 核心 CTA 若在模板重构后丢失可区分的增长标记，访问仍可能发生但无法按语言/入口归因，令增长实验失去可观测性。扫描最终 built HTML 并验证首页、日报归档、文章索引及相关文章 CTA 标记，可在发布前阻断测量盲区。
@@ -69,7 +69,7 @@
 - Result: pass（Astro build 771 pages；built CTA gate 覆盖 EN/ZH 首页、日报归档、文章索引及 456 个相关文章页面；synthetic 缺失/重复标记用例通过；专项门禁、node --check、git diff --check 通过。）
 - Quality: 28/30（最终产物覆盖和 fail-closed 检查已自动化并纳入 CI；尚无真实点击归因数据，不宣称流量提升。）
 - Decision: scale（保持该 gate 作为 CTA 标记回归基线；下一步结合线上增长事件数据评估入口点击与后续转化。）
-- Commit: `d6a8ea1` (pushed to `origin/main`) <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `d6a8ea1` (pushed to `origin/main`)
 
 ## EXP-355 — Built article title/description distinctness gate (2026-09-24 17:20 Asia/Shanghai)
 - Hypothesis: EXP-353/354 分别保证 built description 与 title 的独立质量，但模板回归仍可能把两者渲染成相同文案；搜索结果和分享入口因此失去补充信息。对最终 EN/ZH 文章 HTML 做归一化后的字段差异校验，可在发布前 fail closed。
@@ -82,7 +82,7 @@
 - Result: pass（`node --check`、synthetic self-test、Astro build（771 pages）、distinctness gate（229 EN + 229 ZH article pages）、meta-description quality gate、title quality gate 与 `git diff --check` 全部通过。）
 - Quality: 28/30（覆盖最终产物、双语 458 页、实体/大小写/空白归一化与 fail-closed self-test，并接入 Content Check；尚无 CTR/流量观察，不宣称增长 lift。）
 - Decision: scale（保留为构建后 SEO 门禁，与 title/description 独立质量检查配套；后续观察搜索摘要点击数据，不把技术门禁通过等同于流量提升。）
-- Commit: `854ffaa` (pushed to `origin/main`) <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Commit: `854ffaa` (pushed to `origin/main`)
 
 ## EXP-354 — Built article title quality gate (2026-09-22 17:20 Asia/Shanghai)
 - Hypothesis: EXP-353 已覆盖 built description，但标题仍可能在模板回归中缺失、重复或泄露占位文案；对最终 EN/ZH 文章 HTML 增加 title 唯一性、可读长度与占位检查，可在发布前保护搜索结果标题与社交分享标题基础质量。
@@ -148,7 +148,7 @@
 - Result: pass（`bash scripts/check-weekly-domain-alert-parity.sh`、Astro build（771 pages）、`bash -n scripts/check-weekly-domain-alert-parity.sh` 与 `git diff --check` 全部通过；commit `1839519` 已完成并已 push。）
 - Quality: 28/30（当前周路径/周范围/状态 parity、错配 synthetic self-test、package/CI wiring、构建与 diff 验证通过；尚无流量或告警趋势观测。）
 - Commit: `1839519`
-- Decision: scale（将报告-告警 parity 作为周报与 Content Check 固定门禁；后续变更周报生成器或 stale-domain 输出格式时同步更新 checker。） <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: scale（将报告-告警 parity 作为周报与 Content Check 固定门禁；后续变更周报生成器或 stale-domain 输出格式时同步更新 checker。）
 
 ## EXP-347 — Weekly Action Plan owner/due integrity gate (2026-09-18 17:20 Asia/Shanghai)
 - Hypothesis: 周报 Action Plan 在已有 freshness/data-integrity 门禁之外，仍可能出现缺 owner、缺 due、due 早于 Prepared At 或脱离报告周范围的 checkbox action；这些任务无法可靠进入增长执行队列，且会让旧任务继续被误执行。将每条 action 与报告周范围和 Prepared At 绑定，可在发布前 fail closed。
@@ -159,7 +159,7 @@
 - Metrics: 当前周报 Action Plan 的 owner/due 完整率 100%；非法 action 在 CI 中 fail closed。
 - Result: IMPLEMENTED — synthetic fixture logic covers missing owner, out-of-range due date, stale due date, and empty Action Plan; `bash -n` and `git diff --check` passed. Targeted checker and Astro build were blocked by unattended host approval policy; no bypass attempted. Implementation commit `3d04197` pushed to `origin/main`; current-report and build validation remain pending.
 - Quality: 24/30 (field/date fail-closed coverage, package/CI wiring, syntax and diff checks passed; current-report execution, Astro build, and downstream task-completion lift pending).
-- Decision: keep the gate in Content Check, then complete current-report and build validation through a policy-approved execution path before declaring scale. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: keep the gate in Content Check, then complete current-report and build validation through a policy-approved execution path before declaring scale.
 
 ## EXP-346 — Weekly report freshness and generated-at consistency gate (2026-09-18 11:20 Asia/Shanghai)
 - Hypothesis: 当前周报文件可在新观察窗口生成后继续保留旧的 `Prepared At`、报告周范围或数据快照，导致低 CTR、GSC 缺失与 schema 风险决策基于过期窗口；将报告路径、Asia/Shanghai 生成日期、周范围和 elapsed-day 分母绑定，可在 CI/发布前 fail closed，减少 stale SEO action 的误执行。
@@ -170,13 +170,13 @@
 - Result: PASS for implementation and targeted validation. Added `scripts/check-weekly-report-freshness.sh`, package script, and Content Check step. Synthetic fixtures fail closed for old `Prepared At`, wrong filename, cross-week range, and future-date denominator. The live Asia/Shanghai report for 2026-09-14~2026-09-20 validated with elapsed=5/7; `bash -n`, the freshness gate, and `git diff --check` passed. Full Astro build was blocked by unattended host approval policy before execution; no bypass attempted.
 - Commit: `5a2a532` pushed to `origin/main`.
 - Quality: 26/30 (freshness guard, four fail-closed fixtures, package/CI wiring, live report validation, syntax and diff checks passed; full build not runnable in unattended policy; traffic observation pending).
-- Decision: scale the freshness gate with weekly report generation and Content Check; keep report filename, Report Week, Asia/Shanghai Prepared At, and elapsed-day denominator coupled before using weekly SEO decisions. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: scale the freshness gate with weekly report generation and Content Check; keep report filename, Report Week, Asia/Shanghai Prepared At, and elapsed-day denominator coupled before using weekly SEO decisions.
 
 ## EXP-335 — Publisher recovery integration follow-up (2026-09-15 17:20 Asia/Shanghai)
 - Selection: Highest actionable Backlog candidate, ICE 9x9x8=648; the repository already contains the 18-scenario implementation and package wiring.
 - Result: PASS. `node scripts/check-publisher-recovery-integration.mjs` passed all 18 real Git/file-remote scenarios; `node scripts/check-publish-daily-generator-fixture.mjs`, `git diff --check`, and Astro build passed with 771 pages. No unrelated working-tree files were staged.
 - Commit: implementation `0655a0f` was already present and pushed; this run completed the previously blocked validation and moved EXP-335 to Done in `GROWTH_QUEUE.md`.
-- Next: retain the integration gate in CI; extend scenarios whenever publisher handoff states or marker fields change. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Next: retain the integration gate in CI; extend scenarios whenever publisher handoff states or marker fields change.
 - Quality: 29/30 (18 isolated recovery scenarios, failure-path remote immutability, no-recommit recovery, fixture/build/diff validation all passed; no traffic lift claimed).
 
 ## EXP-342 — Value-led bilingual daily RSS CTA
@@ -189,7 +189,7 @@
 - Success metric: Compare `daily_index_click` events for `kind=rss` by EN/ZH over 7 days; treatment target is >=10% click-through lift with no decline in RSS feed requests or daily-index return visits.
 - Result: shipped treatment; no lift claimed before the 7-day observation window. Build and growth checks are recorded after validation below.
 - Quality: 28/30 (low-risk copy-only treatment, stable URLs/canonical behavior and event instrumentation retained; traffic observation pending).
-- Decision: observe for 7 days, then scale or iterate based on language-segmented click and feed-request data. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: observe for 7 days, then scale or iterate based on language-segmented click and feed-request data.
 
 ## EXP-341 — Bilingual daily RSS feed integrity regression gate
 - Hypothesis: Existing RSS autodiscovery only checks HTML head tags; a future feed regression could still publish malformed XML, an empty channel, duplicate/cross-language item links, or links to pages absent from the built output, weakening recurring daily discovery through feed readers.
@@ -201,7 +201,7 @@
 - Success metric: EN/ZH feeds pass all structural and built-page correspondence checks after Astro build; no duplicate, cross-language, stale-domain, or broken item links reach CI.
 - Result: pass — direct `./node_modules/.bin/astro build` generated 771 pages; the RSS integrity gate passed for EN/ZH with 172 items each, unique same-language built-page links, valid XML, matching GUIDs, and required metadata. The gate caught and the generators fixed an unescaped English `&` in channel metadata; `bash -n` and `git diff --check` passed. Commit and push completed below.
 - Quality: 29/30 (post-build XML and built-page regression coverage, CI/package wiring, real 771-page build and 344-item validation passed; traffic/subscriber observation pending).
-- Decision: scale — retain the RSS integrity gate as a release and CI guard; observe feed requests, subscriber clicks, and broken-item alerts by language before iterating CTA copy. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: scale — retain the RSS integrity gate as a release and CI guard; observe feed requests, subscriber clicks, and broken-item alerts by language before iterating CTA copy.
 
 ## EXP-340 — Bilingual article-index unique same-language href gate
 - Hypothesis: EXP-339 verifies article-index date/category metadata but still allows a future template or content regression to duplicate card hrefs or point cards into the wrong language route, wasting crawlable entry points and weakening bilingual article discovery.
@@ -213,7 +213,7 @@
 - Success metric: EN/ZH built indexes each pass 56 unique same-language card hrefs with one machine-readable date/category per card; daily/weekly content remains excluded; syntax, build and diff checks pass.
 - Result: pass — direct `./node_modules/.bin/astro build` generated 771 pages; `bash scripts/check-article-index-growth.sh` passed for EN/ZH with 56 unique same-language cards each; `bash -n scripts/check-article-index-growth.sh` and `git diff --check` passed. No traffic lift claimed before observation.
 - Quality: 28/30 (guard added to existing CI-connected gate, direct build and built-output validation passed; traffic observation pending).
-- Decision: scale the href integrity guard with the existing article-index metadata gate; observe article-index CTR and entry cohorts by language/category before further routing changes. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: scale the href integrity guard with the existing article-index metadata gate; observe article-index CTR and entry cohorts by language/category before further routing changes.
 
 ## EXP-339 — Bilingual article-index metadata regression gate
 - Hypothesis: EXP-338 added freshness/category metadata but without a built-output regression gate, later template changes can silently remove the signals or reintroduce daily/weekly content, weakening article selection and SEO segmentation.
@@ -224,7 +224,7 @@
 - Success metric: both built indexes have equal card/date/category counts, all six supported categories represented, no daily/weekly hrefs, and CI runs `pnpm check:article-index-growth` after build.
 - Result: pass — `bash -n scripts/check-article-index-growth.sh`, `bash scripts/check-article-index-growth.sh` (EN/ZH 56 cards each), Astro build (771 pages), and `git diff --check` passed. Implementation commit `6e5708b`; coverage correction and delivery commit `d9a64f0` pushed to `origin/main`. No traffic lift claimed before observation.
 - Quality: 28/30 (implementation, six-category coverage, build, gate, diff, commit and push verified; traffic observation pending).
-- Decision: scale the metadata regression gate in Content Check; observe article-index CTR and article-entry cohorts by date/category before making further taxonomy changes. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: scale the metadata regression gate in Content Check; observe article-index CTR and article-entry cohorts by date/category before making further taxonomy changes.
 
 ## EXP-338 — Bilingual article-index freshness and category metadata surface
 - Hypothesis: EN/ZH article index cards currently show only title and description, so visitors cannot quickly judge freshness or topic fit. Adding a machine-readable publication date, visible localized category, and stable card instrumentation should reduce selection friction and improve high-intent article click-through and entry rate.
@@ -236,7 +236,7 @@
 - Acceptance: Both index templates render date/category, date is machine-readable, daily/weekly posts remain excluded, `git diff --check` passes, and build/Content Check pass before scale.
 - Result: implementation pass and pushed in commit `2e7330c`; `git diff --check` passed. `pnpm build` was attempted but blocked by unattended host exec approval policy before execution; no approval bypass or alternate interpreter was used. No traffic or conversion lift is claimed yet.
 - Quality: 25/30 (implementation and diff validation passed; build/Content Check pending policy-approved execution).
-- Decision: ship guarded experiment; keep the metadata surface and instrumentation, then compare CTR/entry-rate cohorts after enough traffic. Re-run build and Content Check through an authorized execution path before declaring scale. <!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: ship guarded experiment; keep the metadata surface and instrumentation, then compare CTR/entry-rate cohorts after enough traffic. Re-run build and Content Check through an authorized execution path before declaring scale.
 
 ## EXP-337 — Weekly report low-CTR data-integrity gate
 - Hypothesis: 当前周报生成器在 GSC query 数据缺失时仍可能输出“检测到的低 CTR 队列”和标题改写执行项；这会把占位数据误当增长信号，消耗内容执行资源并污染实验归因。只有在存在真实 query 行时才应生成改写行动，否则必须明确要求完成 7 天 GSC 回填。
@@ -248,7 +248,7 @@
 - Acceptance: synthetic self-test、bash syntax、weekly review check、diff check 与 `pnpm build` 通过后，commit/push 并回写 Done。
 - Result: pass（placeholder-only 报告在 `bash scripts/check-weekly-report-data-integrity.sh` 中 fail closed；real-data synthetic case 保留 title/meta rewrite guidance；`bash -n`、weekly review cadence check、`git diff --check` 与 Astro build（771 pages）通过；实现提交 `94c247f`，待 metadata 回写后 push。）
 - Quality: 29/30。
-- Decision: scale（保留 GSC query data-integrity gate 作为周报与 Content Check CI 的发布前门禁；后续只有真实 query 行才能触发标题/meta 改写实验。）<!-- project: path:/home/duoglas/projects/openclaw-hub -->
+- Decision: scale（保留 GSC query data-integrity gate 作为周报与 Content Check CI 的发布前门禁；后续只有真实 query 行才能触发标题/meta 改写实验。）
 
 ## EXP-335 — Real Git integration coverage for publisher recovery
 - Follow-up (2026-09-07 17:20 Asia/Shanghai): Reconfirmed both required repository files exist and selected EXP-335 as the sole actionable Backlog candidate (ICE 9x9x8=648). The repository contains the 18-scenario implementation plus package/CI wiring, but the unattended `pnpm check:publisher-recovery-integration` attempt was denied by the host exec approval policy before execution. No alternate interpreter or approval bypass was attempted; build, commit and push remain unexecuted. Status remains BLOCKED, not Done; quality not evaluated /30.
@@ -261,7 +261,7 @@
 - Result: blocked. Required repository files exist and initial working tree was clean. Host exec rejected the combined fixture-creation/execution command because approval could not safely bind it. No implementation, test run, build, commit or push completed. Added this executable experiment to Backlog via file editing; no execution safeguard was bypassed.
 - Quality: Not evaluated /30 (implementation and validation did not run).
 - Decision: Keep in Backlog, not Done. Resume through a policy-approved execution path on a subsequent run.
-- Follow-up (2026-09-06 11:20 Asia/Shanghai): Confirmed both required files under /home/duoglas/projects/openclaw-hub and selected the only actionable Backlog candidate (ICE 648). Implemented scripts/check-publisher-recovery-integration.mjs and package check:publisher-recovery-integration. The fixture extracts the actual publisher recovery preflight and defines 18 real Git scenarios, including prepared/committed and weekly recovery, rejected push then retry, invalid markers, subject/path mismatch, two-ahead and synchronized cleanup. Temporary repositories are created only under this repository, use file-only remotes, and are removed in finally. Assertions cover exit status, unchanged local SHA (no recommit), remote SHA, marker retention and cleanup.
+- Follow-up (2026-09-06 11:20 Asia/Shanghai): Confirmed both required files in the repository and selected the only actionable Backlog candidate (ICE 648). Implemented scripts/check-publisher-recovery-integration.mjs and package check:publisher-recovery-integration. The fixture extracts the actual publisher recovery preflight and defines 18 real Git scenarios, including prepared/committed and weekly recovery, rejected push then retry, invalid markers, subject/path mismatch, two-ahead and synchronized cleanup. Temporary repositories are created only under this repository, use file-only remotes, and are removed in finally. Assertions cover exit status, unchanged local SHA (no recommit), remote SHA, marker retention and cleanup.
 - Follow-up result: BLOCKED at validation. The host execution policy denied the combined check/build command because approval could not safely bind it. Tests and build did not run; no commit or push was attempted after denial. Implementation and these records remain uncommitted. No guard bypass attempted. Quality remains not evaluated /30; 18 is the number of designed scenarios, not a claimed passing result. No recent new content experiment was present ahead of this Backlog item in the repository records.
 
 ## EXP-334 — Persist release intent before commit to close the orphan-ahead crash window

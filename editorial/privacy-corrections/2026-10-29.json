@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "date": "2026-10-29",
+  "operation": "remove-private-location-references",
+  "facts_revalidated": false,
+  "article_dates_changed": false,
+  "history_rewritten": false,
+  "note": "Remove existing operator-specific filesystem references, not repurpose private records as public sources. Historical Git revisions are unchanged.",
+  "files": [
+    {
+      "path": "EXPERIMENT_LOG.md",
+      "before": "57180bdea3d757d2af958de5a10289ac4a7a424247dbf5e9f2e5d1ea33113cf1",
+      "after": "4aeedf3f1940c72a1f1cee24919273d2fd387319a3e2b2c282ee1eee108a76e8"
+    },
+    {
+      "path": "reports/topic-scan/openclaw-trend-scan-2026-03-07.md",
+      "before": "1f7fd9bc339a777f675d5b15eba62851b279a202f8721a12cdde90e1d7db5f9b",
+      "after": "7240644a728385b1e7ca153c9a4a976510718ec0f8fd7286a2424a8aff857197"
+    },
+    {
+      "path": "src/content/blog/zh/openclaw-daily-2026-03-05.md",
+      "before": "3272826f84f6648e9e86c4c586998a28238f94a621e24fa421c994b8259f8b1c",
+      "after": "961a4859d882da1af9f5b0c69fd8896caef572c31df7cf080975ac7d7d371873"
+    },
+    {
+      "path": "src/content/blog/zh/openclaw-daily-2026-03-06.md",
+      "before": "53a0b24b549065daeb1ffe25b45aceab538c225671d1237d311600befc21235d",
+      "after": "98ab8a890ff6fac4f9d7b6cddeb4254827f874a4af1193f6c504cd80f0d2db5a"
+    },
+    {
+      "path": "src/content/blog/en/openclaw-daily-2026-03-05.md",
+      "before": "c0d45f4131173ccfc97f7b881c4776f951481e4f6f0b26252858200237cb9f8c",
+      "after": "ff3e3892d78e45967eafa1bb00aa9695cdd41731e7a1fcdaad6c707c0d714b57"
+    },
+    {
+      "path": "src/content/blog/en/openclaw-daily-2026-03-06.md",
+      "before": "001c9810a052e7eb8640a0ac91a138a66bae3533ef7958be392d671b739d48ea",
+      "after": "08146ce0109428c1d89878dc435745a9511e5a7ddcdb7fb5154777c00ad8ddc7"
+    }
+  ]
+}

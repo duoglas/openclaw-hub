@@ -69,9 +69,7 @@ lang: "zh"
 2) 半导体（尤其模拟/存储）是否出现更广泛提价确认；
 3) 中国头部科技公司是否有新的AI落地/出海动作。
 
-证据/文件路径
-- /home/duoglas/.openclaw/workspace-zaochao/data_ai_tech_raw.json
-- /home/duoglas/.openclaw/workspace-zaochao/data_ai_tech_scan2.json
+资料说明：旧稿列出的本机路径不是读者可访问的来源，现已移除；本次未重新核验本期新闻事实。
 
 阻塞项
 - 可直接访问的一手英文原始稿源有限，部分条目主要来自中文二次转引；已按规范标注“待确认”。

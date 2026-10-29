@@ -16,6 +16,49 @@
     "not_before": "2026-10-29", "enabled": true
   },
   {
+    "id": "agents-instructions-skills-review-2026-10",
+    "target_slug": "agents-md-team-guide",
+    "pillar": "agents",
+    "question": "团队同时使用 Codex、Claude Code 和 Cursor 时，AGENTS.md、CLAUDE.md、Rules 与 Skills 应分别承担什么职责？如何核对加载顺序、冲突和权限边界？",
+    "source_urls": [
+      "https://developers.openai.com/codex/agent-configuration/agents-md",
+      "https://code.claude.com/docs/en/memory",
+      "https://code.claude.com/docs/en/skills",
+      "https://cursor.com/docs/context/rules"
+    ],
+    "source_quotes": {
+      "https://developers.openai.com/codex/agent-configuration/agents-md": [
+        "Codex builds an instruction chain when it starts",
+        "Files closer to your current directory override earlier guidance because they appear later in the combined prompt."
+      ],
+      "https://code.claude.com/docs/en/memory": [
+        "Claude treats CLAUDE.md files as context, not enforced configuration",
+        "All discovered files are concatenated into context rather than overriding each other.",
+        "CLAUDE.md files can import additional files using"
+      ],
+      "https://code.claude.com/docs/en/skills": [
+        "Unlike CLAUDE.md content, a skill’s body loads only when it’s used",
+        "Skills are configured through YAML frontmatter at the top of `SKILL.md`",
+        "Set to `true` to prevent Claude from automatically loading this skill.",
+        "It does not restrict which tools are available: every tool remains callable",
+        "Outside Claude Code, you can use only the fields in the [Agent Skills]"
+      ],
+      "https://cursor.com/docs/context/rules": [
+        "Project rules live in `.cursor/rules` as `.mdc` files",
+        "Cursor supports AGENTS.md in the project root and subdirectories."
+      ]
+    },
+    "required_points": [
+      "纠正指令文件能强制保证一致性、质量与安全，以及被所有工具自动支持的说法；删除未经证明的节省几百小时等收益承诺。",
+      "分别核对 Codex 发现顺序、Claude 上下文拼接与子目录加载、Cursor 规则触发和 AGENTS.md 支持；不要用一种工具的优先级解释其他工具。",
+      "解释 Claude 显式 @ 导入和普通 See AGENTS.md 文字的区别；不把自然语言提示等同于已验证的自动导入，也不说普通提示在所有情况下完全无效。",
+      "区分技能正文与宿主解释的 frontmatter；Claude allowed-tools 是当次调用 turn 的预授权，不是独占工具清单或沙箱，下一条用户消息会清除该授权；不得泛化其他产品。",
+      "新项目按当前 Cursor 文档介绍 .cursor/rules/*.mdc 与 AGENTS.md；页面未提及 .cursorrules 不证明旧格式在所有版本失效。",
+      "给出版本、工作目录、实际加载来源、冲突、工具权限和 CI 的具体检查清单。不得重建抓取损坏的可执行命令，不建议为核验而扩大权限或跳过审批；明确没有运行各客户端的对照实验。"
+    ],
+    "not_before": "2026-10-29", "enabled": true
+  },
+  {
     "id": "scheduled-task-delivery-verification",
     "pillar": "workflows",
     "question": "定时任务的执行成功、产物生成、发布与消息投递分别需要什么证据，失败重试如何避免重复发送？",

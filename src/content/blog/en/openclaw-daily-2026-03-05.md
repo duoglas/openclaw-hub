@@ -101,8 +101,7 @@ lang: "en"
 - 阿里千问人事变化后，模型路线和开放节奏是否有官方更新；
 - AI 电力承诺是否出现可量化的执行指标（价格、排放、容量计划）。
 
-证据/文件路径：
-- 简报取材与候选链接清单：/home/duoglas/.openclaw/workspace-zaochao/data/ai_tech_daily_2026-03-05.txt
+Source note: An inaccessible local file path has been removed. This privacy correction does not reverify the news claims in this archived edition.
 
 阻塞项：
 - 当前环境未提供 web_search/web_f…

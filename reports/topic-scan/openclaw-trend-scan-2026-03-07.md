@@ -152,4 +152,4 @@
 - OpenClaw 仓库：
   - https://github.com/openclaw/openclaw
 - OpenClaw 本地 docs 提交记录（近 7 天）
-  - 通过 `git -C /home/duoglas/openclaw log --since='7 days ago' -- docs` 获取
+  - 本机采集命令已移除；此项不作为公开可复核来源。

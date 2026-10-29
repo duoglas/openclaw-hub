@@ -2,11 +2,13 @@ import copy
 import datetime as dt
 import importlib.util
 import json
+import os
 from pathlib import Path
 import sys
 import tempfile
 import unittest
 from unittest.mock import patch
+from types import SimpleNamespace
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import editorial_pipeline as e
@@ -23,6 +25,8 @@ class PublicResearchTests(unittest.TestCase):
         self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
         self.state=self.root/'state';self.state.mkdir();self.run=self.root/'run';self.run.mkdir()
         self.stamp=e.now().isoformat();e.save(self.root/'editorial/topics.json',[TOPIC])
+        e.save(self.state/'private-output-policy.json',{'version':1,'blocked_literals':['SYNTHETIC_PRIVATE_MARKER']})
+        (self.state/'private-output-policy.json').chmod(0o600)
     def tearDown(self):self.tmp.cleanup()
     def store(self,url=URL,text=TEXT,stamp=None):return r.store_source(e,self.state,url,text,stamp or self.stamp)
     def test_only_approved_public_sources(self):
@@ -114,6 +118,64 @@ class PublicResearchTests(unittest.TestCase):
     def test_guide_backfill_and_misplaced_topic_rejected(self):
         with self.assertRaises(e.Blocked):e.run_pipeline('guide','2026-10-29',True)
         with self.assertRaises(e.Blocked):e.run_pipeline('daily','2026-10-29',False,'harness-safety')
+    def test_focus_quote_retrieves_verified_middle_context(self):
+        quote='This sentence is an exact public evidence anchor.'
+        self.store(text='opening '+('x'*30000)+quote+('y'*30000)+' final limitation')
+        source=r.cached_source(e,self.state,URL)
+        self.assertNotIn(quote,source['excerpt'])
+        focused=r.focus_source(e,self.state,source,[quote])
+        self.assertIn(quote,focused['excerpt']);self.assertEqual(focused['sha256'],source['sha256'])
+        self.assertIn('EXCERPT BOUNDARY',focused['excerpt'])
+    def test_invented_focus_quote_and_altered_archive_fail_closed(self):
+        self.store();source=r.cached_source(e,self.state,URL)
+        with self.assertRaisesRegex(e.Blocked,'focus quote'):r.focus_source(e,self.state,source,['an invented public sentence'])
+        archive=self.state/'research/originals'/('source-'+source['sha256']+'.md');archive.write_text(TEXT+'changed')
+        with self.assertRaisesRegex(e.Blocked,'verified original'):r.focus_source(e,self.state,source,['DeepSeek Harness is a developer preview.'])
+    def test_focus_quote_schema_is_bounded_to_declared_sources(self):
+        for value in ({'https://other.example/doc':['a public source quote']},{URL:['short']},{URL:'not a quote list'}):
+            e.save(self.root/'editorial/topics.json',[TOPIC|{'source_quotes':value}])
+            with self.assertRaises(e.Blocked):r.topics(e,self.root)
+    def test_private_topic_is_blocked_before_research_or_model_input(self):
+        e.save(self.root/'editorial/topics.json',[TOPIC|{'question':TOPIC['question']+' SYNTHETIC_PRIVATE_MARKER'}])
+        with patch.object(r,'fetch_sources') as fetch:
+            with self.assertRaisesRegex(e.Blocked,'private output marker'):r.prepare_guide(e,self.root,self.state,'2026-10-29',self.run)
+        fetch.assert_not_called()
+    def test_search_is_first_party_and_budget_is_balanced(self):
+        groups=[[URL+'/'+str(i)+'-'+str(j) for j in range(5)] for i in range(3)]
+        with patch.object(r,'tvly',side_effect=[{'results':[{'url':u} for u in g]} for g in groups]) as search,patch.object(r,'fetch_sources',return_value=[]) as fetch,patch.object(e,'model_json',return_value=({'items':[]},{})):
+            with self.assertRaises(e.Skip):r.collect_daily(e,self.root,self.state,'2026-10-29',self.run)
+        self.assertEqual(fetch.call_args.args[2],[groups[i][j] for j in range(2) for i in range(3)])
+        for call in search.call_args_list:self.assertIn('--include-domains',call.args[1])
+    def test_no_approved_candidates_is_not_a_transport_failure(self):
+        with patch.object(r,'tvly',return_value={'results':[{'url':'https://unapproved.example/news'}]}):
+            with self.assertRaises(e.Skip):r.collect_daily(e,self.root,self.state,'2026-10-29',self.run)
+        self.assertEqual(e.load(self.run/'discovery.json')['selected_urls'],[])
+    def fake_cli(self):
+        path=self.root/'.local/bin/tvly-hikari';path.parent.mkdir(parents=True);path.touch()
+    def test_real_child_process_finds_cli_without_login_shell_path(self):
+        directory=self.root/'.local/bin';directory.mkdir(parents=True)
+        wrapper=directory/'tvly-hikari';wrapper.write_text('#!/bin/sh\nexec tvly "$@"\n');wrapper.chmod(0o755)
+        cli=directory/'tvly';cli.write_text("#!/bin/sh\nprintf '%s\\n' '{\"results\":[]}'\n");cli.chmod(0o755)
+        with patch.object(e,'HOME',self.root),patch.dict(os.environ,{'PATH':'/usr/bin:/bin'}):
+            result=r.tvly(e,['search','synthetic public query'],self.run,'cli-smoke')
+        self.assertEqual(result,{'results':[]})
+        self.assertEqual(e.load(self.run/'api-attempts.json')[0]['status'],'accepted')
+    def test_api_success_has_a_separate_transport_record(self):
+        self.fake_cli();result=SimpleNamespace(returncode=0,stdout='{"results":[]}',stderr='')
+        with patch.object(e,'HOME',self.root),patch.object(r.subprocess,'run',return_value=result) as cli:
+            r.tvly(e,['search','public question'],self.run,'search')
+        self.assertEqual(e.load(self.run/'api-attempts.json')[0]['status'],'accepted')
+        self.assertEqual(cli.call_args.kwargs['env']['HTTPS_PROXY'],'http://127.0.0.1:8016')
+    def test_api_retry_preserves_failed_and_successful_attempts(self):
+        self.fake_cli();bad=SimpleNamespace(returncode=4,stdout='{"error":"synthetic failure"}',stderr='');good=SimpleNamespace(returncode=0,stdout='{"results":[]}',stderr='')
+        with patch.object(e,'HOME',self.root),patch.object(r.subprocess,'run',side_effect=[bad,good]),patch.object(r.time,'sleep'):
+            r.tvly(e,['search','public question'],self.run,'search')
+        self.assertEqual([x['status'] for x in e.load(self.run/'api-attempts.json')],['failed','accepted'])
+    def test_invalid_api_envelope_does_not_become_network_success(self):
+        self.fake_cli();result=SimpleNamespace(returncode=0,stdout='{"data":[]}',stderr='')
+        with patch.object(e,'HOME',self.root),patch.object(r.subprocess,'run',return_value=result),patch.object(r.time,'sleep'):
+            with self.assertRaises(e.Blocked):r.tvly(e,['search','public question'],self.run,'search')
+        self.assertTrue(all(x['status']=='failed' for x in e.load(self.run/'api-attempts.json')))
     def test_real_registry_is_valid(self):
         self.assertGreaterEqual(len(r.topics(e,Path(__file__).resolve().parents[2])),2)
 

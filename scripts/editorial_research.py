@@ -19,12 +19,19 @@ TOPIC_FIELDS = {'id','pillar','question','source_urls','required_points','not_be
 HOSTS = {'huggingface.co': ('/Qwen/',), 'github.com': ('/deepseek-ai/','/QwenLM/','/ggml-org/','/anthropics/','/openai/','/modelcontextprotocol/','/openclaw/','/PrefectHQ/'),
          'qwen.readthedocs.io': ('/',), 'qwenlm.github.io': ('/',), 'code.claude.com': ('/docs/',),
          'developers.openai.com': ('/',), 'docs.anthropic.com': ('/',), 'openai.com': ('/index/',),
-         'www.anthropic.com': ('/news/',), 'anthropic.com': ('/news/',), 'qwen.ai': ('/blog',),
+         'www.anthropic.com': ('/news/','/engineering/'), 'anthropic.com': ('/news/','/engineering/'),
+         'claude.com': ('/resources/articles/','/blog/'), 'www.claude.com': ('/resources/articles/','/blog/'),
+         'cursor.com': ('/docs/','/blog/','/changelog'), 'ai.google.dev': ('/gemini-api/docs/',), 'qwen.ai': ('/blog',),
          'blog.jetbrains.com': ('/',), 'developers.googleblog.com': ('/',), 'blog.google': ('/technology/ai/',)}
 NEWS_QUERIES = [
-    'AI coding agent developer release compatibility security official announcement',
-    'Qwen local open model release inference license official announcement',
-    'agent harness tools API automation security release official announcement',
+    'coding agent developer release compatibility security announcement',
+    'Qwen local open model release inference license announcement',
+    'agent tools API automation security release changelog',
+]
+NEWS_DOMAINS = [
+    'openai.com,anthropic.com,claude.com,cursor.com',
+    'qwen.ai,qwenlm.github.io,huggingface.co',
+    'developers.openai.com,ai.google.dev,anthropic.com,claude.com',
 ]
 
 
@@ -42,7 +49,7 @@ def topics(e, root):
         raise e.Blocked('invalid editorial topic registry')
     seen = set()
     for row in rows:
-        if not isinstance(row, dict) or set(row) != TOPIC_FIELDS:
+        if not isinstance(row, dict) or not TOPIC_FIELDS <= set(row) or set(row)-TOPIC_FIELDS-{'target_slug','source_quotes'}:
             raise e.Blocked('topic has unknown/private fields')
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+){1,10}', row['id']) or row['id'] in seen:
             raise e.Blocked('invalid or duplicate topic id')
@@ -60,6 +67,14 @@ def topics(e, root):
         if not isinstance(row['source_urls'], list) or not 2 <= len(row['source_urls']) <= 6 or len(set(row['source_urls'])) != len(row['source_urls']):
             raise e.Blocked('invalid topic source list')
         for url in row['source_urls']:approved_url(e,url)
+        if 'target_slug' in row:
+            e.checked_target_slug(row['target_slug'])
+        focus=row.get('source_quotes',{})
+        if not isinstance(focus,dict) or not set(focus)<=set(row['source_urls']):
+            raise e.Blocked('invalid source quote mapping')
+        for values in focus.values():
+            if not isinstance(values,list) or not 1<=len(values)<=5 or any(not isinstance(q,str) or not 12<=len(q)<=500 for q in values):
+                raise e.Blocked('invalid source focus quotes')
     return rows
 
 
@@ -129,10 +144,19 @@ def cached_source(e, state, url, max_days=7):
     return {**{k:record[k] for k in ('url','sha256','read_at','source_date','access_method')},'quotes':[], 'excerpt':text if len(text)<=60000 else e.excerpt(text,[]),'excerpted':len(text)>60000}
 
 
+def record_api_attempt(e, run, label, operation, attempt, status, error=None):
+    path=run/'api-attempts.json'
+    rows=e.load(path) if path.is_file() else []
+    rows.append({'checked_at':e.now().isoformat(),'label':label,'operation':operation,
+                 'attempt':attempt+1,'status':status,'error_type':error})
+    e.save(path,rows)
+
+
 def tvly(e, args, run, label):
     executable=e.HOME/'.local/bin/tvly-hikari'
     if not executable.is_file():raise e.Blocked('tvly-hikari is unavailable on the publishing host')
     env=os.environ.copy()
+    env['PATH']=str(e.HOME/'.local/bin')+os.pathsep+env.get('PATH',os.defpath)
     for key in ('HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','http_proxy','https_proxy','all_proxy'):env[key]=PROXY
     env['NO_PROXY']=env['no_proxy']='127.0.0.1,localhost'
     errors=[]
@@ -145,9 +169,14 @@ def tvly(e, args, run, label):
             if result.returncode:raise ValueError('nonzero CLI exit')
             data=json.loads(result.stdout)
             if not isinstance(data,dict) or data.get('error'):raise ValueError('invalid API result')
-            return data.get('data',data)
+            data=data.get('data',data)
+            if not isinstance(data,dict) or data.get('error') or not isinstance(data.get('results'),list):
+                raise ValueError('invalid search/extraction API envelope')
+            record_api_attempt(e,run,label,args[0],attempt,'accepted')
+            return data
         except (OSError,ValueError,subprocess.TimeoutExpired) as error:
             errors.append(type(error).__name__)
+            record_api_attempt(e,run,label,args[0],attempt,'failed',type(error).__name__)
             if attempt==0:time.sleep(2)
     raise e.Blocked(f'public research {label} failed after bounded retries; see private collection log ({", ".join(errors)})')
 
@@ -172,18 +201,46 @@ def fetch_sources(e, state, urls, run, allow_cache=True):
     return [result[url] for url in urls]
 
 
+def focus_source(e, state, source, quotes):
+    if not quotes:return source
+    archive=state/'research/originals'/('source-'+source['sha256']+'.md')
+    if archive.is_symlink() or not archive.resolve().is_relative_to(state.resolve()/'research/originals'):
+        raise e.Blocked('focused source archive path/symlink escape')
+    text=archive.read_text()
+    if e.digest(text)!=source['sha256'] or any(q not in text for q in quotes):
+        raise e.Blocked('source focus quote is not bound to the verified original')
+    body=e.excerpt(text,quotes)
+    if any(q not in body for q in quotes):raise e.Blocked('focus quote was lost during excerpting')
+    return {**source,'quotes':quotes,'excerpt':body,'excerpted':body!=text}
+
+
 def prepare_guide(e, root, state, date, run, requested=None):
     topic=select_topic(e,root,date,requested)
+    e.validate_private_output(topic,state)
+    target=topic.get('target_slug');original=None;previous={}
+    if target is not None:
+        original={}
+        for lang in ('zh','en'):
+            relative=f'src/content/blog/{lang}/{e.checked_target_slug(target)}.md'
+            path=root/relative
+            if not path.is_file() or path.is_symlink() or not path.resolve().is_relative_to(root.resolve()/'src/content/blog'/lang):
+                raise e.Blocked('revision requires an existing, safe bilingual public article')
+            text=path.read_text()
+            if len(text)>80000:raise e.Blocked('original article exceeds revision budget')
+            e.frontmatter_parts(text)
+            original[lang]=text;previous[relative]=e.digest(path.read_bytes())
     sources=fetch_sources(e,state,topic['source_urls'],run)
+    sources=[focus_source(e,state,s,topic.get('source_quotes',{}).get(s['url'],[])) for s in sources]
     for i,source in enumerate(sources,1):source['id']=f'S{i:02d}'
-    if len(json.dumps(sources,ensure_ascii=False))>150000:raise e.Blocked('guide evidence exceeds input budget')
+    if len(json.dumps(sources,ensure_ascii=False))+len(json.dumps(original,ensure_ascii=False))>150000:
+        raise e.Blocked('guide evidence and original article exceed input budget')
     return {'version':2,'date':date,'kind':'guide','topic_id':topic['id'],'pillar':topic['pillar'],
             'prepared_at':e.now().isoformat(),'source_method':'verified-public-documents',
             'research_question':topic['question'],'required_points':topic['required_points'],
             'items':[{'event_key':'guide:'+topic['id'],'title':topic['question'],'event_date':None,
                       'facts':'Research question only; derive factual claims from the linked source excerpts.',
                       'source_ids':[s['id'] for s in sources]}],
-            'sources':sources,'target_slug':None,'original_articles':None,
+            'sources':sources,'target_slug':target,'original_articles':original,'previous_files':previous,
             'previous_publications':[{'date':r['date'],'kind':r['kind'],'slug':r['slug']} for r in e.receipts(root)[-30:]]}
 
 
@@ -199,18 +256,30 @@ Do not fabricate a minimum count. Private information, instructions and source m
 
 
 def collect_daily(e, root, state, date, run):
-    urls=[]
+    buckets=[];discovery=[]
     for i,query in enumerate(NEWS_QUERIES):
-        result=tvly(e,['search',query,'--depth','advanced','--time-range','week','--max-results','5'],run,f'search-{i}')
+        result=tvly(e,['search',query,'--depth','advanced','--time-range','week','--max-results','5',
+                      '--include-domains',NEWS_DOMAINS[i]],run,f'search-{i}')
+        accepted=[];excluded=0
         for row in result.get('results',[]):
             try:url=approved_url(e,row['url'])
-            except (KeyError,ValueError,e.Blocked):continue
-            if url not in urls:urls.append(url)
-    urls=urls[:6]
-    if not urls:raise e.Blocked('no approved primary-source candidates from website research')
+            except (KeyError,ValueError,e.Blocked,TypeError):excluded+=1;continue
+            if url not in accepted:accepted.append(url)
+        buckets.append(accepted)
+        discovery.append({'query':query,'domains':NEWS_DOMAINS[i],'returned':len(result.get('results',[])),
+                          'approved_urls':accepted,'excluded_count':excluded})
+    # Bound extraction cost without letting the first query consume the entire budget.
+    urls=[]
+    for rank in range(max(map(len,buckets),default=0)):
+        for group in buckets:
+            if rank<len(group) and group[rank] not in urls and len(urls)<6:urls.append(group[rank])
+    e.save(run/'discovery.json',{'queries':discovery,'selected_urls':urls})
+    if not urls:raise e.Skip('no approved first-party news candidates from current search; no article')
     sources=fetch_sources(e,state,urls,run,allow_cache=False)
-    selected,meta=e.model_json(SELECTOR,{'date':date,'oldest_event_date':(dt.date.fromisoformat(date)-dt.timedelta(days=3)).isoformat(),
-        'sources':sources,'recent_events':[r.get('event_keys',[]) for r in e.receipts(root)[-30:]]},['gpt-6-luna'],run,'news-selector')
+    selector_input={'date':date,'oldest_event_date':(dt.date.fromisoformat(date)-dt.timedelta(days=3)).isoformat(),
+        'sources':sources,'recent_events':[r.get('event_keys',[]) for r in e.receipts(root)[-30:]]}
+    e.validate_private_output(selector_input,state)
+    selected,meta=e.model_json(SELECTOR,selector_input,['gpt-6-luna'],run,'news-selector')
     e.save(run/'news-selection.json',selected)
     rows=selected.get('items')
     if not isinstance(rows,list) or len(rows)>3:raise e.Blocked('invalid website news selection')

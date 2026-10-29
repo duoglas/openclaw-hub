@@ -165,7 +165,7 @@ class EditorialTests(unittest.TestCase):
 
     def test_html_and_private_data_blocked(self):
         for text in ['<script>alert(1)</script>','<svg onload="alert(1)">','[secret](file:///etc/passwd)',
-                     'https://made-up.example/','/home/duoglas/.openclaw/.env']:
+                     'https://made-up.example/','/home/example-user/private-config.env']:
             d=draft();d['sections'][0]['en']=text
             with self.subTest(text=text),self.assertRaises(e.Blocked):e.validate_draft(d,packet())
 
@@ -236,6 +236,8 @@ class GitPublishTests(unittest.TestCase):
         self.remote=self.base/'remote.git'
         self.state=self.base/'state'
         self.run=self.state/'runs'/'test-run';self.run.mkdir(parents=True)
+        e.save(self.state/'private-output-policy.json',{'version':1,'blocked_literals':['SYNTHETIC_PRIVATE_MARKER']})
+        (self.state/'private-output-policy.json').chmod(0o600)
         subprocess.run(['git','init','--bare',str(self.remote)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         subprocess.run(['git','clone',str(self.remote),str(self.root)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         self.git('config','user.email','tests@example.invalid')
@@ -301,6 +303,47 @@ class GitPublishTests(unittest.TestCase):
         self.assertEqual(result[0]['commit'],pending['commit'])
         self.assertEqual(self.git('rev-parse','HEAD'),pending['commit'])
         self.assertEqual(e.validate_published(self.root)['articles'],2)
+
+    def revision(self):
+        p=packet();p.update(kind='guide',topic_id='existing-guide-review',target_slug='existing-guide',pillar='agents',
+                           source_method='verified-public-documents',original_articles={},previous_files={})
+        for lang in ('zh','en'):
+            rel=f'src/content/blog/{lang}/existing-guide.md'
+            original='---\ntitle: Original guide\ndescription: Original description\npubDate: 2025-01-02\ntags: [ai, guide]\ncategory: tutorial\nlang: '+lang+'\n---\nOld unsupported statement.\n'
+            e.save(self.root/rel,original);p['original_articles'][lang]=original;p['previous_files'][rel]=e.digest(original)
+        self.git('add','src');self.git('commit','-m','public original pair');self.git('push','origin','main')
+        d=draft();d.update(revision_summary_zh='根据现行官方资料修正原有说法，区分接口稳定性与运行时限制。',
+                          revision_summary_en='Correct the old unsupported statement using current public documentation and bounded runtime limitations.')
+        return p,d
+
+    def test_revision_preserves_urls_dates_tags_and_binds_originals(self):
+        p,d=self.revision()
+        with patch.object(e,'command',self.no_build):
+            result=e.publish(self.root,self.run,p,d,review(),{}, {'input_sha256':e.digest({'packet':p,'draft':d})},False)
+        self.assertEqual(result['status'],'pushed')
+        for lang in ('zh','en'):
+            text=(self.root/f'src/content/blog/{lang}/existing-guide.md').read_text()
+            self.assertIn('pubDate: 2025-01-02',text);self.assertIn('tags: [ai, guide]',text)
+            self.assertNotIn('Old unsupported statement.',text);self.assertIn('updatedDate: "2026-10-26"',text)
+        receipt=e.load(self.root/e.receipt_path(p));self.assertEqual(receipt['previous_files'],p['previous_files'])
+        self.assertEqual(e.validate_published(self.root)['articles'],2);self.assertEqual(self.git('status','--porcelain'),'')
+
+    def test_revision_rejects_post_review_original_change(self):
+        p,d=self.revision();path=self.root/'src/content/blog/en/existing-guide.md';path.write_text(path.read_text()+'Concurrent edit.\n')
+        self.git('add',str(path));self.git('commit','-m','another editor');self.git('push','origin','main')
+        with patch.object(e,'command',self.no_build),self.assertRaisesRegex(e.Blocked,'changed after evidence'):
+            e.publish(self.root,self.run,p,d,review(),{}, {'input_sha256':e.digest({'packet':p,'draft':d})},False)
+        self.assertIn('Concurrent edit.',path.read_text())
+
+    def test_pending_release_rechecks_current_private_policy(self):
+        def fail_push(args,*a,**kw):
+            if args[:2]==['git','push']:raise e.Blocked('synthetic push failure')
+            return self.no_build(args,*a,**kw)
+        with patch.object(e,'command',fail_push),self.assertRaises(e.Blocked):self.publish()
+        e.save(self.state/'private-output-policy.json',{'version':1,'blocked_literals':['Stable APIs']})
+        (self.state/'private-output-policy.json').chmod(0o600)
+        with self.assertRaisesRegex(e.Blocked,'private output marker'):
+            e.recover_pending(self.root,self.state,self.run/'retry.log')
 
     def test_approved_article_tamper_is_rejected(self):
         with patch.object(e,'command',self.no_build):self.publish()
