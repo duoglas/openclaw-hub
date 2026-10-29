@@ -1,0 +1,210 @@
+{
+  "version": 2,
+  "date": "2026-10-29",
+  "kind": "analysis",
+  "slug": "ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29",
+  "created_at": "2026-10-29T09:43:41.714809+08:00",
+  "backfill": false,
+  "base_commit": "0a3ed70fee09ef4193cb624aa9bfcddbf01c6899",
+  "event_keys": [
+    "tanstack-ai-1-stable"
+  ],
+  "packet_sha256": "e0a47034b3d4dd8866c535b596da1e1c32eb5c146e814996827d9c57f2e3aab4",
+  "draft_sha256": "48344cee1aaa43e43a75ce1454a81e7f7fc2837e2372bdb16e128188b7ab7328",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The central release, package-stability, feature and coordinated-upgrade claims are supported by the supplied official excerpts. Project claims about production readiness are attributed, and the analysis distinguishes them from independent validation.",
+      "The article is explicitly framed as analysis of the October 23 announcement, with no conflicting publication date or evidence that it is being presented as a new event.",
+      "Although the release itself was already announced, the draft adds a focused migration and adoption-boundary analysis rather than merely repeating the announcement.",
+      "The recommendations are actionable and bounded; the pre-rollout checklist is clearly labelled as proposed and unexecuted.",
+      "The Chinese and English versions are materially consistent, including the experimental status of the harness and the limitations of the evidence.",
+      "The scope stays within the supplied evidence, flags harness details drawn from the event summary, and does not claim independent performance or recovery results.",
+      "No unsafe or private disclosures were identified."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0fdbd7cf9660daa8016ae29a9e581887d1add063a269ce3d0c",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0fdbd7cf9660daa8016ae29a9e885887d19e5ceef351889b5a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 543,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 543,
+            "output_tokens": 0
+          },
+          "msg_0fdbd7cf9660daa8016ae29a9e887c87d18baaeebbfa686628": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 9500,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 9500,
+            "output_tokens": 0
+          },
+          "msg_0fdbd7cf9660daa8016ae29aa15ffc87d1860510ec978e46db": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2,
+                "output_tokens": 2798
+              }
+            ],
+            "input_tokens": 2,
+            "output_tokens": 2798
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 10341,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 2798,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 13139
+    },
+    "completed_at": "2026-10-29T09:02:00.986051+08:00",
+    "prior_errors": [],
+    "input_sha256": "281dd1c9ec40639367af42cab0d87cb5e0b8c19153950ff845c5677fc14abb56",
+    "note": "Unchanged draft; reviewed against expanded excerpts after removing encoded inline-image payloads from the same verified originals."
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_047ab3478db2cb8d016ae29d854fa087d29407e7b7386b9e56",
+    "input_sha256": "0c49ad7200eddaf2d573d818691b3fff1de5b447619692126d9ae12c3a6b91a2",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_047ab3478db2cb8d016ae29d85685487d282c007e20c9e84d0": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 252,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 252,
+            "output_tokens": 0
+          },
+          "msg_047ab3478db2cb8d016ae29d85687087d292f4cc8c51a4949e": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 12623,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 12623,
+            "output_tokens": 0
+          },
+          "rs_047ab3478db2cb8d016ae29d85ff7087d2ac91691acec7fe00": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 299
+          },
+          "msg_047ab3478db2cb8d016ae29d8b781c87d2bf3b20b3075d7bfe": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 233
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 233
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 13173,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 532,
+      "output_tokens_details": {
+        "reasoning_tokens": 299
+      },
+      "total_tokens": 13705
+    },
+    "completed_at": "2026-10-29T09:12:48.448108+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://tanstack.com/blog/tanstack-ai-1-0",
+      "sha256": "6e54b633a5f0958480d195cb839981e46494043227d56c40ffdb78bed0a96dc4",
+      "source_date": "2026-10-23",
+      "read_at": "2026-10-26T07:03:23.735382+08:00"
+    },
+    {
+      "id": "S02",
+      "url": "https://tanstack.com/ai/latest/docs/blog",
+      "sha256": "f0dde4dd3637697ce3c8f09e638ee8dea6889e8c419e7dc4f6f7f2a22e969d36",
+      "source_date": "2026-10-23",
+      "read_at": "2026-10-26T07:03:24.817826+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "114f2d7f607fe37aa2011bfad21d28cdd843d45f869b774451105961e15e4bf2",
+    "src/content/blog/en/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "e55023213aa41e95240c90910a20249c915e5fd88ebd427381aceda0e48bbe9f"
+  }
+}
