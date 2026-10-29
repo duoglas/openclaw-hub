@@ -1,0 +1,241 @@
+{
+  "version": 2,
+  "date": "2026-10-26",
+  "kind": "daily",
+  "slug": "ai-daily-2026-10-26",
+  "created_at": "2026-10-29T10:00:00.689685+08:00",
+  "backfill": true,
+  "base_commit": "7084d55254b684cc62bad1edc79f57b827106a04",
+  "event_keys": [
+    "nemotron-bolt-e4b-available",
+    "block-dessa-research-preview",
+    "wecom-third-party-plugin-compromise"
+  ],
+  "packet_sha256": "8d2624654487a73e0039d14f262a64eaadb00f02699034d3d1654d8d864bf5f3",
+  "draft_sha256": "85ee54c8f58da4b83ff62344f6e2e961ed665f5b5c582e45d06d0e77c7dfd640",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The edition is explicitly labelled as an October 26 archive and covers October 23–24 events; it avoids republishing the previously covered TanStack item and distinguishes Bolt’s October 23 availability from its October 15 preview.",
+      "Material claims are supported by the cited excerpts and appropriately attributed: vendor claims are identified as such, the WeCom incident is scoped to a third-party service, and the article does not present suggested tests as results.",
+      "Both language versions preserve the material claims, caveats, and proposed checks. The practical recommendations are bounded and the limitations disclose that no models or incident were independently tested."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0c6fa80618c01f4d016ae2a61eeed887d2a087db5bd3b7e247",
+    "input_sha256": "8d2624654487a73e0039d14f262a64eaadb00f02699034d3d1654d8d864bf5f3",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0c6fa80618c01f4d016ae2a61f087487d29d821f9e8b478c15": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 569,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 569,
+            "output_tokens": 0
+          },
+          "msg_0c6fa80618c01f4d016ae2a61f089087d2a25d84a98e2531a5": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 35263,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 35263,
+            "output_tokens": 0
+          },
+          "rs_0c6fa80618c01f4d016ae2a621475c87d2a2e9a14579bc2588": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 28
+          },
+          "msg_0c6fa80618c01f4d016ae2a623d90887d289c86eb4cc90b7d7": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 2350
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 2350
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 36130,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 2378,
+      "output_tokens_details": {
+        "reasoning_tokens": 28
+      },
+      "total_tokens": 38508
+    },
+    "completed_at": "2026-10-29T09:50:59.005663+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_0e6e951796056b7a016ae2a892f46087d1a2eef824e168c325",
+    "input_sha256": "6de03f32f038f80a16a64965f9c585e797276bb2e08b389e6745ae2d09f01c34",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0e6e951796056b7a016ae2a8930e6887d1976fb32c45deec29": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 296,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 296,
+            "output_tokens": 0
+          },
+          "msg_0e6e951796056b7a016ae2a8930e8c87d19d8dacdb177c0836": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 37555,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 37555,
+            "output_tokens": 0
+          },
+          "rs_0e6e951796056b7a016ae2a893a5b887d1bad5785c641de169": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 189
+          },
+          "msg_0e6e951796056b7a016ae2a897244087d1a85ae44388a5b522": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 177
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 177
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 38149,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 366,
+      "output_tokens_details": {
+        "reasoning_tokens": 189
+      },
+      "total_tokens": 38515
+    },
+    "completed_at": "2026-10-29T09:59:54.581313+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S02",
+      "url": "https://m.jiemian.com/article/15235150.html",
+      "sha256": "ae9b79ece5ea40ddd7038d693db4d1c129a3cf3c42053392dbdb3f5c2d1cdd6f",
+      "source_date": "2026-10-24",
+      "read_at": "2026-10-26T07:04:46.713999+08:00"
+    },
+    {
+      "id": "S03",
+      "url": "https://block.xyz/dessa",
+      "sha256": "9d56d81c4db34fe1c0da3e1fd52fbdf987ec8bbe850f89f10e1262b2e3defe6c",
+      "source_date": "2026-10-23",
+      "read_at": "2026-10-26T07:03:21.290174+08:00"
+    },
+    {
+      "id": "S04",
+      "url": "https://block.xyz/news",
+      "sha256": "c849be14f0da37ac14a07136b8f2d5c9f4f4b1dde8df77118e6ed1629cfdc945",
+      "source_date": "2026-10-23",
+      "read_at": "2026-10-26T07:03:22.400478+08:00"
+    },
+    {
+      "id": "S07",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+      "sha256": "21f21dd289b8acc28690cd9f60626dadb475a167d70b459a475cdfdfbf150e3e",
+      "source_date": "2026-10-23",
+      "read_at": "2026-10-26T07:05:44.852441+08:00"
+    },
+    {
+      "id": "S08",
+      "url": "https://research.nvidia.com/labs/nemotron/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/",
+      "sha256": "61fb28ade3df05f3dc5dd4d75c9b7b4aff59a70726b7dad811e574c6f7d21534",
+      "source_date": "2026-10-23",
+      "read_at": "2026-10-26T07:05:45.923008+08:00"
+    },
+    {
+      "id": "S09",
+      "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl",
+      "sha256": "62e0bab37623838ca99d82a4797f72eea06ea4b70854eb5440f48b15805c6a5c",
+      "source_date": "2026-10-15",
+      "read_at": "2026-10-26T07:05:47.680828+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-10-26.md": "ff8223b5317ba258acd6ad24a97809f934531f515584eb349da6714e82062733",
+    "src/content/blog/en/ai-daily-2026-10-26.md": "e2afe43cf12f0fd09fc03831949b663788f6ef3dfe7f3578a105abaa8d44c4ba"
+  }
+}
