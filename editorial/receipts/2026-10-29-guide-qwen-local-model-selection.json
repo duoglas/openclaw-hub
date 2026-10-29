@@ -1,0 +1,235 @@
+{
+  "version": 2,
+  "date": "2026-10-29",
+  "kind": "guide",
+  "slug": "ai-guide-qwen-local-model-selection",
+  "created_at": "2026-10-29T15:11:06.160391+08:00",
+  "backfill": false,
+  "base_commit": "605c46949b6e3e46c78d72ca38b89138af18386c",
+  "event_keys": [
+    "guide:qwen-local-model-selection"
+  ],
+  "packet_sha256": "1aca7252a1d543984140436592b823f7d773f90571700f5fb5421a419202bf81",
+  "draft_sha256": "54a0c9784cd00fe47dfc9bd00a8801dd301b7989d8b1b97ece9e78f072ac707a",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The guide’s key distinctions are supported by the cited materials: the Qwen3.8-27B repository provides Transformers-format weights and lists compatible frameworks; its repository lists Apache 2.0; Qwen Code is described as a coding agent with local-model-provider support; and llama.cpp documents quantization and hardware backends.",
+      "It answers the selection question with actionable provenance, license, context, memory, runtime, and agent checks while avoiding unsupported minimum-memory, speed, hands-on testing, or production-readiness claims. It also distinguishes official documentation from independent results and identifies the retrieval date and evidence limits.",
+      "The Chinese and English versions are materially aligned, and the scope stays focused on this specific model and the retrieved project overviews rather than generalizing license or compatibility claims to all Qwen models or third-party quantizations."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_01e06369895161d7016ae2ede6b44087d1a87343a48286f549",
+    "input_sha256": "1aca7252a1d543984140436592b823f7d773f90571700f5fb5421a419202bf81",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_01e06369895161d7016ae2ede6cd2c87d1b0b06f22c43b2259": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 654,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 654,
+            "output_tokens": 0
+          },
+          "msg_01e06369895161d7016ae2ede6cd4c87d18760322076796f4a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 24725,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 24725,
+            "output_tokens": 0
+          },
+          "msg_01e06369895161d7016ae2ede82c7487d18621721db75c60b0": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2,
+                "output_tokens": 2517
+              }
+            ],
+            "input_tokens": 2,
+            "output_tokens": 2517
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 25677,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 2517,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 28194
+    },
+    "completed_at": "2026-10-29T14:56:22.532431+08:00",
+    "prior_errors": [
+      {
+        "model": "gpt-6-astra",
+        "error": "URLError"
+      }
+    ],
+    "editor_correction": {
+      "previous_draft_sha256": "679d13be9665315c352c59d3096a0fcdb43986daa97604e332c142cd5af8074f",
+      "reason": "Shorten metadata summary to its required limit; format the final checklist as bilingual bullets; call this new article a guide rather than a supplement."
+    }
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_0a7155e779cecd68016ae2f08d935087d183da6d56326dff90",
+    "input_sha256": "a628f0022dd92aed71b35a46c1b66fa2c8acf5689d5b488d0bd13415969add32",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0a7155e779cecd68016ae2f08db0c487d1ade48c4737695503": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 348,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 348,
+            "output_tokens": 0
+          },
+          "msg_0a7155e779cecd68016ae2f08db0e087d1ad36bf52f78c55a1": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 27359,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 27359,
+            "output_tokens": 0
+          },
+          "rs_0a7155e779cecd68016ae2f08f849887d18c5bd134aa6c7399": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 194
+          },
+          "msg_0a7155e779cecd68016ae2f09319b887d192c6fedc2deaa9a6": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 221
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 221
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 28005,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 415,
+      "output_tokens_details": {
+        "reasoning_tokens": 194
+      },
+      "total_tokens": 28420
+    },
+    "completed_at": "2026-10-29T15:07:03.946747+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "sha256": "8d039a43d849b5e348e8c2a35746db6e8968d86e1258aa2ade4dbdaf684ac162",
+      "read_at": "2026-10-29T06:33:51.566632+00:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S01"
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/LICENSE",
+      "sha256": "041647701862987f144a93cd135fc0fb1e3dc99d2452faefa58e88528458306a",
+      "read_at": "2026-10-29T06:46:10.374066+00:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S02"
+    },
+    {
+      "url": "https://github.com/QwenLM/qwen-code",
+      "sha256": "934706e5dd3c4895ceb11ef48d8babf07c80efdf923d8e08c3a7fabbd1fa4d68",
+      "read_at": "2026-10-29T06:33:51.566632+00:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S03"
+    },
+    {
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "sha256": "c62d74e76a3a7b1832b4cd1181cfa714f8a7a416f05ac0f56210747113091547",
+      "read_at": "2026-10-29T06:33:51.566632+00:00",
+      "source_date": null,
+      "access_method": "tvly-hikari",
+      "id": "S04"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-guide-qwen-local-model-selection.md": "5fb42bfa2a302e8b36d583b4070538e46552cd6adc1a400b020926f6aeb77aca",
+    "src/content/blog/en/ai-guide-qwen-local-model-selection.md": "a231711d664c0022c7dc05044226c9423808ac233b5a7f889e41098bf03d0972"
+  },
+  "topic_id": "qwen-local-model-selection",
+  "pillar": "models",
+  "source_method": "verified-public-documents"
+}
