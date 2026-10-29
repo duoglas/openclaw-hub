@@ -32,7 +32,9 @@ ROOT = Path(__file__).resolve().parents[1]
 STATE = HOME / '.openclaw/workspace/kuoo-editorial'
 NEWS = HOME / '.openclaw/workspace/news-daily/editions'
 CHECKS = ('factual_support', 'freshness', 'novelty', 'usefulness', 'translation', 'scope', 'safety')
-GATES = ('check:editorial', 'check:frontmatter-dates', 'check:duplicate-slug-id',
+GATES = ('test:editorial', 'check:editorial', 'check:frontmatter-dates', 'check:duplicate-slug-id',
+         'check:taxonomy', 'check:tag-case', 'check:tag-canonical-aliases',
+         'check:daily-index-growth', 'check:article-index-growth',
          'check:adsense', 'check:site-foundations', 'check:canonical-integrity',
          'check:sitewide-hreflang', 'check:noindex-leak', 'check:rss-feed-integrity',
          'check:latest-daily-surface', 'check:daily-related-posts',
@@ -87,6 +89,8 @@ def command(args, cwd=ROOT, timeout=180, log=None):
 
 
 def safe_url(url):
+    if not isinstance(url, str) or len(url) > 2048 or any(ord(c) < 33 or c in '<>\"\'`\\\\' for c in url):
+        raise Blocked('unsafe characters in source URL')
     p = urllib.parse.urlsplit(url)
     if p.scheme != 'https' or not p.hostname or p.username or p.password or p.port not in (None, 443):
         raise Blocked('non-public/unsafe source URL')
@@ -414,7 +418,7 @@ def validate_draft(draft, packet):
             if not isinstance(text, str) or not 2 <= len(text) <= 16000:
                 raise Blocked('invalid section text')
     text = json.dumps(draft, ensure_ascii=False)
-    if re.search(r'https?://|<\s*/?\s*(script|iframe|img|a|style)\b|javascript:|ca-pub-|sk-[A-Za-z0-9]{12}|/home/duoglas|\.openclaw|8955010243|59173225', text, re.I):
+    if re.search(r'https?://|<\s*/?\s*[A-Za-z]|(?:java|vb)script:|file:|data:(?:text|image|application)/|!?\[[^\]]*\]\s*\(|ca-pub-|sk-[A-Za-z0-9]{12}|/home/duoglas|\.openclaw|8955010243|59173225', text, re.I):
         raise Blocked('raw link, executable HTML or private/credential-like output')
     english = ' '.join(s['en'] for s in sections)
     if len(re.findall(r'[\u4e00-\u9fff]', english)) / max(1, len(english)) > .02:
@@ -478,7 +482,7 @@ def render(draft, packet, lang, backfill=False):
         links = []
         for sid in section['source_ids']:
             source = next(s for s in packet['sources'] if s['id'] == sid)
-            links.append('[' + ('来源 ' if lang=='zh' else 'Source ') + sid + '](' + source['url'] + ')')
+            links.append('[' + ('来源 ' if lang=='zh' else 'Source ') + sid + '](<' + source['url'] + '>)')
         lines += [' · '.join(links), '']
     lines += ['## ' + ('证据与适用范围' if lang=='zh' else 'Evidence and limits'), '', draft['limitations_' + lang], '',
               ('本文使用 AI 辅助起草，并经过独立模型审稿；属于来源分析，未进行独立性能测试。' if lang=='zh' else
@@ -504,6 +508,8 @@ def verify_repo(root, log):
 def publish(root, run, packet, draft, review, writer_meta, reviewer_meta, backfill):
     validate_draft(draft, packet)
     validate_review(review)
+    if reviewer_meta.get('input_sha256') != digest({'packet': packet, 'draft': draft}):
+        raise Blocked('review is not bound to this exact evidence packet and draft')
     log = run / 'publish.log'
     base = verify_repo(root, log)
     slug = article_slug(draft, packet)
@@ -511,7 +517,11 @@ def publish(root, run, packet, draft, review, writer_meta, reviewer_meta, backfi
         raise Skip('edition was published by another run')
     work = run / 'worktree'
     command(['git', 'worktree', 'add', '--detach', str(work), base], root, log=log)
-    (work / 'node_modules').symlink_to(root / 'node_modules', target_is_directory=True)
+    # pnpm 11 correctly refuses a node_modules symlink outside this worktree.
+    # Build an isolated dependency tree from the existing local store instead;
+    # frozen/offline mode prevents upgrades or surprise registry requests.
+    command(['pnpm','install','--offline','--frozen-lockfile','--ignore-scripts'],
+            work, timeout=180, log=log)
     files = {}
     for lang in ('zh', 'en'):
         relative = f'src/content/blog/{lang}/{slug}.md'

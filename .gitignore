@@ -4,7 +4,7 @@ dist/
 
 .env
 .astro/
-# Also ignore the shared dependency symlink used by isolated editorial worktrees.
+# Dependency trees, including symlinked local development installs.
 node_modules
 __pycache__/
 

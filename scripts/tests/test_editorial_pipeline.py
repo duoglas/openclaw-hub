@@ -102,7 +102,8 @@ class EvidenceTests(unittest.TestCase):
 
     def test_source_url_secrets_and_local_hosts(self):
         for url in ['http://example.com/','https://127.0.0.1/','https://user:pass@example.com/',
-                    'https://example.com/?token=secret','https://localhost/']:
+                    'https://example.com/?token=secret','https://localhost/',
+                    'https://example.com/)\n<script>alert(1)</script>']:
             with self.subTest(url=url), self.assertRaises(e.Blocked): e.safe_url(url)
 
     def test_historical_file_alias_and_url_quote(self):
@@ -163,7 +164,8 @@ class EditorialTests(unittest.TestCase):
         with self.assertRaises(e.Blocked): e.validate_draft(d,packet())
 
     def test_html_and_private_data_blocked(self):
-        for text in ['<script>alert(1)</script>','https://made-up.example/','/home/duoglas/.openclaw/.env']:
+        for text in ['<script>alert(1)</script>','<svg onload="alert(1)">','[secret](file:///etc/passwd)',
+                     'https://made-up.example/','/home/duoglas/.openclaw/.env']:
             d=draft();d['sections'][0]['en']=text
             with self.subTest(text=text),self.assertRaises(e.Blocked):e.validate_draft(d,packet())
 
@@ -238,7 +240,7 @@ class GitPublishTests(unittest.TestCase):
 
     def publish(self):
         return e.publish(self.root,self.run,packet(),draft(),review(),{'requested_model':'writer'},
-                         {'requested_model':'reviewer'},True)
+                         {'requested_model':'reviewer','input_sha256':e.digest({'packet':packet(),'draft':draft()})},True)
 
     def test_real_git_publish_isolated_and_idempotent(self):
         with patch.object(e,'command',self.no_build):
@@ -248,6 +250,13 @@ class GitPublishTests(unittest.TestCase):
             self.assertEqual(self.git('rev-parse','HEAD'),self.git('rev-parse','origin/main'))
             self.assertEqual(e.validate_published(self.root)['articles'],2)
             with self.assertRaises(e.Skip):self.publish()
+
+    def test_review_of_a_different_draft_cannot_authorize_publish(self):
+        changed=draft();changed['sections'][0]['en']+=' An added claim after review.'
+        with self.assertRaises(e.Blocked):
+            e.publish(self.root,self.run,packet(),changed,review(),{},
+                      {'input_sha256':e.digest({'packet':packet(),'draft':draft()})},True)
+        self.assertEqual(self.git('log','--oneline').count('\n'),0)
 
     def test_dirty_root_is_never_committed(self):
         (self.root/'someone-elses-draft.md').write_text('not owned')

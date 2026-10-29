@@ -13,7 +13,7 @@ check_lang() {
   local file="dist/${lang}/daily/index.html"
   local latest=""
 
-  latest="$(find "src/content/blog/${lang}" -maxdepth 1 -type f -name 'openclaw-daily-*.md' -printf '%f\n' | sort | tail -1 | sed 's/\.md$//')"
+  latest="$(node scripts/latest-daily-slug.mjs "$lang")"
 
   if [ -z "$latest" ]; then
     echo "[daily-index-growth] no daily source files found for ${lang}"
