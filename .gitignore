@@ -4,7 +4,9 @@ dist/
 
 .env
 .astro/
-node_modules/
+# Also ignore the shared dependency symlink used by isolated editorial worktrees.
+node_modules
+__pycache__/
 
 # Secrets — never commit. Added R5-takeover 2026-04-21.
 .env

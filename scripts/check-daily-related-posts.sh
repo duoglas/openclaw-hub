@@ -10,11 +10,7 @@ fail() {
 }
 
 latest_slug_for_lang() {
-  local lang="$1"
-  find "src/content/blog/${lang}" -maxdepth 1 -type f -name 'openclaw-daily-*.md' \
-    | sed -E 's#^.*/(openclaw-daily-[0-9]{4}-[0-9]{2}-[0-9]{2})\.md$#\1#' \
-    | sort \
-    | tail -1
+  node scripts/latest-daily-slug.mjs "$1"
 }
 
 for lang in en zh; do

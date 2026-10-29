@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { isDailySlug } from '../../../utils/contentSeries';
 
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'en')
   .filter(p => {
     const slug = p.id.replace(/^en\//, '').replace(/\.md$/, '');
-    return !slug.startsWith('openclaw-daily-') && !slug.startsWith('openclaw-weekly-');
+    return !isDailySlug(slug) && !slug.startsWith('openclaw-weekly-');
   })
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 

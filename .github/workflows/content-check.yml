@@ -38,6 +38,12 @@ jobs:
       - name: Site information, ads.txt and homepage image check
         run: pnpm check:site-foundations
 
+      - name: Evidence-driven editorial regression tests
+        run: pnpm test:editorial
+
+      - name: Bilingual editorial receipts and evidence check
+        run: pnpm check:editorial
+
       - name: Weekly review cadence check
         run: pnpm check:weekly-review
 

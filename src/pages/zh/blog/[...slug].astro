@@ -1,18 +1,19 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content';
 import BlogPost from '../../../layouts/BlogPost.astro';
+import { isDailySlug } from '../../../utils/contentSeries';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter(p => p.data.lang === 'zh');
   const dailiesAsc = posts
-    .filter(p => p.id.replace(/^zh\//, '').startsWith('openclaw-daily-'))
+    .filter(p => isDailySlug(p.id))
     .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 
   const toSlug = (id: string) => id.replace(/^zh\//, '').replace(/\.md$/, '');
 
   return posts.map((post) => {
     const slug = toSlug(post.id);
-    const isDaily = slug.startsWith('openclaw-daily-');
+    const isDaily = isDailySlug(slug);
 
     let prevDaily = null;
     let nextDaily = null;

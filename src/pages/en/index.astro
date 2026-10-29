@@ -5,13 +5,15 @@ import HomeCreatorCTA from '../../components/HomeCreatorCTA.astro';
 import LatestDailySpotlight from '../../components/LatestDailySpotlight.astro';
 import HomeHero from '../../components/HomeHero.astro';
 import FeaturedGuides from '../../components/FeaturedGuides.astro';
+import RecentAnalysis from '../../components/RecentAnalysis.astro';
 import { getCollection } from 'astro:content';
+import { isDailySlug } from '../../utils/contentSeries';
 
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'en')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const latestDaily = posts.find(post => post.id.includes('openclaw-daily-'));
+const latestDaily = posts.find(post => isDailySlug(post.id));
 const latestDailySlug = latestDaily?.id.replace(/^en\//, '').replace(/\.md$/, '');
 ---
 <BaseLayout title="OpenClaw Guides, Troubleshooting & AI Agent News" description="Deploy and troubleshoot OpenClaw, fix Telegram and coding-tool issues, and follow AI agent news. Practical guides with source links, dates, and bilingual coverage." lang="en">
@@ -20,6 +22,7 @@ const latestDailySlug = latestDaily?.id.replace(/^en\//, '').replace(/\.md$/, ''
 
   <HomeHero alt="OpenClaw Hub hand-drawn infographic" />
   <FeaturedGuides lang="en" />
+  <RecentAnalysis lang="en" />
   
   <HomeCreatorCTA lang="en" />
   <HomeQuickstartCTA lang="en" />

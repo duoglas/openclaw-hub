@@ -10,11 +10,7 @@ fail() {
 }
 
 latest_slug_for_lang() {
-  local lang="$1"
-  find "src/content/blog/${lang}" -maxdepth 1 -type f -name 'openclaw-daily-*.md' \
-    | sed -E 's#^.*/(openclaw-daily-[0-9]{4}-[0-9]{2}-[0-9]{2})\.md$#\1#' \
-    | sort \
-    | tail -1
+  node scripts/latest-daily-slug.mjs "$1"
 }
 
 check_file_contains() {
@@ -37,7 +33,7 @@ for lang in en zh; do
   check_file_contains "dist/${lang}/daily/rss.xml" "$url" "${lang} daily RSS"
   check_file_contains "dist/sitemap-0.xml" "$url" "sitemap latest daily URL"
 
-  first_rss_daily="$(grep -oE "/${lang}/blog/openclaw-daily-[0-9]{4}-[0-9]{2}-[0-9]{2}/" "dist/${lang}/daily/rss.xml" | head -1 || true)"
+  first_rss_daily="$(grep -oE "/${lang}/blog/(openclaw|ai)-daily-[0-9]{4}-[0-9]{2}-[0-9]{2}/" "dist/${lang}/daily/rss.xml" | head -1 || true)"
   [[ "$first_rss_daily" == "$url" ]] || fail "${lang} RSS first daily item is ${first_rss_daily:-missing}, expected ${url}"
 
   echo "[latest-daily-surface] PASS ${lang}: latest=${slug} surfaces on homepage, daily index, RSS, and sitemap"

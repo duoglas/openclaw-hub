@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check:editorial": "python3 -B scripts/editorial_pipeline.py check",
+    "test:editorial": "python3 -B -m unittest discover -s scripts/tests -p 'test_editorial*.py' -v",
+    "editorial:status": "python3 -B scripts/editorial_pipeline.py status",
     "check:adsense": "node scripts/check-built-adsense.mjs",
     "images:home": "node scripts/build-home-images.mjs",
     "check:site-foundations": "node scripts/check-site-foundations.mjs",

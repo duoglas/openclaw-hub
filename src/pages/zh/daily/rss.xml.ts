@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content';
+import { isDailySlug } from '../../../utils/contentSeries';
 
 const escapeXmlText = (value: string) => value.replace(/[<>&'\"]/g, (char) => ({
   '<': '&lt;',
@@ -14,7 +15,7 @@ export async function GET() {
   const site = 'https://kuoo.uk';
   const posts = (await getCollection('blog'))
     .filter(p => p.data.lang === 'zh')
-    .filter(p => p.id.replace(/^zh\//, '').startsWith('openclaw-daily-'))
+    .filter(p => isDailySlug(p.id))
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
   const items = posts.map((post) => {

@@ -4,6 +4,7 @@ import ArticleFeedback from '../components/ArticleFeedback.astro';
 import Giscus from '../components/Giscus.astro';
 import GrowthEvent from '../components/GrowthEvent.astro';
 import type { CollectionEntry } from 'astro:content';
+import { isDailySlug } from '../utils/contentSeries';
 
 type NavLink = { title: string; href: string };
 type RelatedPost = { title: string; href: string };
@@ -26,7 +27,7 @@ const tagRouteSlug = (tag: string) => tag
 
 const isZh = lang === 'zh';
 const dateLocale = isZh ? 'zh-CN' : 'en-US';
-const isDailyPost = (slug || '').startsWith('openclaw-daily-');
+const isDailyPost = isDailySlug(slug || '');
 const canonicalUrl = Astro.url.href;
 const siteName = 'AI Agent Hub';
 const defaultImage = `${Astro.url.origin}/images/home-hero-cartoon.png`;

@@ -5,13 +5,15 @@ import HomeCreatorCTA from '../../components/HomeCreatorCTA.astro';
 import LatestDailySpotlight from '../../components/LatestDailySpotlight.astro';
 import HomeHero from '../../components/HomeHero.astro';
 import FeaturedGuides from '../../components/FeaturedGuides.astro';
+import RecentAnalysis from '../../components/RecentAnalysis.astro';
 import { getCollection } from 'astro:content';
+import { isDailySlug } from '../../utils/contentSeries';
 
 const posts = (await getCollection('blog'))
   .filter(p => p.data.lang === 'zh')
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const latestDaily = posts.find(post => post.id.includes('openclaw-daily-'));
+const latestDaily = posts.find(post => isDailySlug(post.id));
 const latestDailySlug = latestDaily?.id.replace(/^zh\//, '').replace(/\.md$/, '');
 ---
 <BaseLayout title="OpenClaw 部署排障与 AI 智能体资讯" description="查找 OpenClaw 部署与排障指南，处理 Telegram 冲突和 AI 编程工具问题，阅读附来源与日期的 AI 新闻简报。本站提供中英双语教程与实用工具说明。" lang="zh">
@@ -20,6 +22,7 @@ const latestDailySlug = latestDaily?.id.replace(/^zh\//, '').replace(/\.md$/, ''
 
   <HomeHero alt="OpenClaw Hub 手绘介绍图" />
   <FeaturedGuides lang="zh" />
+  <RecentAnalysis lang="zh" />
   
   <HomeCreatorCTA lang="zh" />
   <HomeQuickstartCTA lang="zh" />

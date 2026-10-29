@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+const { lang = 'zh' } = Astro.props;
+const isZh = lang === 'zh';
+const posts = (await getCollection('blog'))
+  .filter(post => post.data.lang === lang && post.data.editorialVersion === 2 && ['analysis', 'comparison'].includes(post.data.category))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+{posts.length > 0 && (
+  <section class="recent-analysis" aria-label={isZh ? '近期技术分析' : 'Recent technical analysis'}>
+    <h2>{isZh ? '近期技术分析' : 'Recent technical analysis'}</h2>
+    <p class="intro">{isZh ? '按版本与来源讨论适用条件，明确区分文档分析和实测。' : 'Version-aware, source-linked analysis. Documented claims are kept separate from hands-on tests.'}</p>
+    <div class="analysis-grid">
+      {posts.map(post => (
+        <article>
+          <time datetime={post.data.pubDate.toISOString()}>{post.data.pubDate.toLocaleDateString(isZh ? 'zh-CN' : 'en-US')}</time>
+          <h3><a href={`/${lang}/blog/${post.id.replace(/^(en|zh)\//, '').replace(/\.md$/, '')}/`}>{post.data.title}</a></h3>
+          <p>{post.data.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+<style>
+  .recent-analysis { margin: 2rem 0; text-align: left; }
+  .intro, time { opacity: .76; }
+  .analysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 1rem; }
+  article { border: 1px solid rgba(128,128,128,.25); border-radius: 12px; padding: 1.1rem; min-width: 0; }
+  h3 { margin: .5rem 0; line-height: 1.45; }
+  p { line-height: 1.65; }
+  a { color: var(--accent, #6ea8fe); overflow-wrap: anywhere; }
+</style>
