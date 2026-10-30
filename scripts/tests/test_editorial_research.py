@@ -33,6 +33,18 @@ class PublicResearchTests(unittest.TestCase):
         for url in ['https://localhost/a','https://127.0.0.1/a','https://github.com/other/private','https://github.com/deepseek-ai/../other','https://github.com/deepseek-ai/%2e%2e/a',URL+'?token=secret',URL+'#fragment','https://github.com.evil.test/deepseek-ai/a']:
             with self.subTest(url=url),self.assertRaises(e.Blocked):r.approved_url(e,url)
         self.assertEqual(r.approved_url(e,URL),URL)
+    def test_news_rejects_weight_files_and_file_viewers(self):
+        for url in ['https://huggingface.co/Qwen/Qwen-Example/blame/main/model.safetensors',
+                    'https://huggingface.co/Qwen/Qwen-Example/tree/main',
+                    'https://huggingface.co/Qwen/Qwen-Example/resolve/main/model.safetensors.index.json',
+                    'https://github.com/QwenLM/example/blob/main/weights.GGUF']:
+            with self.subTest(url=url), self.assertRaises(e.Blocked):r.news_candidate_url(e,url)
+    def test_news_accepts_model_card_without_asserting_event(self):
+        url='https://huggingface.co/Qwen/Qwen-Example'
+        self.assertEqual(r.news_candidate_url(e,url),url)
+    def test_guides_keep_document_file_sources(self):
+        for url in [URL2,'https://huggingface.co/Qwen/Qwen-Example/blob/main/LICENSE']:
+            self.assertEqual(r.approved_url(e,url),url)
     def test_registry_unknown_private_fields_rejected(self):
         row=copy.deepcopy(TOPIC);row['private_references']=['private-file'];e.save(self.root/'editorial/topics.json',[row])
         with self.assertRaises(e.Blocked):r.topics(e,self.root)

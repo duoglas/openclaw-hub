@@ -7,7 +7,7 @@ fail() { echo "Weekly action-plan integrity check failed: $*" >&2; }
 
 check_report() {
   local file="$1" expected_start="$2" expected_end="$3" prepared_date="$4"
-  local in_plan=0 line action_count due owner due_date
+  local in_plan=0 line action_count=0 due owner due_date
   [ -f "$file" ] || { fail "missing report $file"; return 1; }
 
   while IFS= read -r line || [ -n "$line" ]; do

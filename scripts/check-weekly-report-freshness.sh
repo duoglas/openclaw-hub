@@ -20,10 +20,10 @@ check_report() {
   [[ "${prepared%% *}" > "$expected_start" || "${prepared%% *}" = "$expected_start" ]] || { fail "Prepared At predates observation window"; return 1; }
 
   missing=$(awk -F'|' '/^\| Missing Days \(week\)/{gsub(/^[[:space:]]+|[[:space:]]+$/, "", $3); print $3; exit}' "$file")
-  [ "$missing" = "${expected_elapsed}/${expected_elapsed}" ] || { fail "GSC denominator is '${missing:-missing}', expected ${expected_elapsed}/${expected_elapsed}"; return 1; }
+  [[ "$missing" =~ ^[0-9]+/${expected_elapsed}$ ]] && (( 10#${missing%%/*} <= expected_elapsed )) || { fail "invalid GSC missing-day count '${missing:-missing}' for ${expected_elapsed} elapsed days"; return 1; }
 
   schema=$(awk -F'|' '/^\| Numeric Data Coverage/{gsub(/^[[:space:]]+|[[:space:]]+$/, "", $3); print $3; exit}' "$file")
-  [[ "${schema%% elapsed days*}" =~ ^[0-9]+/${expected_elapsed}$ ]] || { fail "schema denominator is '${schema:-missing}', expected [numeric]/${expected_elapsed} elapsed days"; return 1; }
+  [[ "${schema%% elapsed days*}" =~ ^[0-9]+/${expected_elapsed}$ ]] && (( 10#${schema%%/*} <= expected_elapsed )) || { fail "invalid schema coverage '${schema:-missing}' for ${expected_elapsed} elapsed days"; return 1; }
 
   if [ "$expected_elapsed" -lt 7 ]; then
     tomorrow=$(TZ="$TZ_NAME" date -d "$expected_today +1 day" +%F)
@@ -44,13 +44,22 @@ run_fixture_self_test() {
 | 2026-09-19 | ⚪ | future | N/A | not-observed |
 EOF
   check_report "$fixture" 2026-09-14 2026-09-20 2026-09-18 5
-  sed 's/Prepared At: 2026-09-18/Prepared At: 2026-09-17/' "$fixture" > "$dir/old.md"
-  if check_report "$dir/old.md" 2026-09-14 2026-09-20 2026-09-18 5 >/dev/null 2>&1; then fail "self-test accepted old Prepared At"; return 1; fi
+  local name="$(basename "$fixture")" variant
+  for variant in partial complete old cross-week future-denominator excess-missing excess-schema; do mkdir -p "$dir/$variant"; done
+  sed 's/Missing Days (week) | 5\/5/Missing Days (week) | 1\/5/' "$fixture" > "$dir/partial/$name"
+  check_report "$dir/partial/$name" 2026-09-14 2026-09-20 2026-09-18 5
+  sed 's/Missing Days (week) | 5\/5/Missing Days (week) | 0\/5/' "$fixture" > "$dir/complete/$name"
+  check_report "$dir/complete/$name" 2026-09-14 2026-09-20 2026-09-18 5
+  sed 's/Prepared At: 2026-09-18/Prepared At: 2026-09-17/' "$fixture" > "$dir/old/$name"
+  sed 's/Report Week: 2026-09-14 ~ 2026-09-20/Report Week: 2026-09-15 ~ 2026-09-21/' "$fixture" > "$dir/cross-week/$name"
+  sed 's/Missing Days (week) | 5\/5/Missing Days (week) | 7\/7/' "$fixture" > "$dir/future-denominator/$name"
+  sed 's/Missing Days (week) | 5\/5/Missing Days (week) | 6\/5/' "$fixture" > "$dir/excess-missing/$name"
+  sed 's/Numeric Data Coverage | 5\/5/Numeric Data Coverage | 6\/5/' "$fixture" > "$dir/excess-schema/$name"
+  for variant in old cross-week future-denominator excess-missing excess-schema; do
+    if check_report "$dir/$variant/$name" 2026-09-14 2026-09-20 2026-09-18 5 >/dev/null 2>&1; then fail "self-test accepted $variant"; return 1; fi
+  done
+  cp "$fixture" "$dir/wrong-week.md"
   if check_report "$dir/wrong-week.md" 2026-09-14 2026-09-20 2026-09-18 5 >/dev/null 2>&1; then fail "self-test accepted wrong filename"; return 1; fi
-  sed 's/Report Week: 2026-09-14 ~ 2026-09-20/Report Week: 2026-09-15 ~ 2026-09-21/' "$fixture" > "$dir/cross-week.md"
-  if check_report "$dir/cross-week.md" 2026-09-14 2026-09-20 2026-09-18 5 >/dev/null 2>&1; then fail "self-test accepted cross-week report"; return 1; fi
-  sed 's/Missing Days (week) | 5\/5/Missing Days (week) | 7\/7/' "$fixture" > "$dir/future-denominator.md"
-  if check_report "$dir/future-denominator.md" 2026-09-14 2026-09-20 2026-09-18 5 >/dev/null 2>&1; then fail "self-test accepted future-date denominator"; return 1; fi
   rm -rf "$dir"
 }
 

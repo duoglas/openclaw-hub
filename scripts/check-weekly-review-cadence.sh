@@ -12,7 +12,7 @@ SUNDAY=$(TZ="$TZ" date -d "$MONDAY +6 days" +%F)
 EXPECTED_LINE="- Week: ${MONDAY} to ${SUNDAY}"
 
 if [ ! -f "$FILE" ]; then
-  echo "ERROR: ${FILE} is missing. Run: pnpm weekly:seo"
+  echo "ERROR: ${FILE} is missing. Generate a snapshot with pnpm weekly:seo, then write an evidence-informed editorial review."
   exit 1
 fi
 
@@ -23,5 +23,5 @@ fi
 
 echo "ERROR: ${FILE} is stale for current week."
 echo "Expected line: ${EXPECTED_LINE}"
-echo "Fix: run pnpm weekly:seo and commit updated ${FILE}."
+echo "Fix: generate the evidence snapshot with pnpm weekly:seo, review the actual evidence and decisions, then commit ${FILE}; do not change its date alone."
 exit 1

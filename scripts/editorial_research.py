@@ -43,6 +43,21 @@ def approved_url(e, url):
     return url
 
 
+def news_candidate_url(e, url):
+    """Keep file viewers and model weights out of the bounded news-read budget.
+
+    This is a news-only filter: guides may still cite an approved README, LICENSE
+    or SAFETY.md source. A model-card URL passing this filter is not yet an event.
+    """
+    approved_url(e, url)
+    p = urllib.parse.urlsplit(url)
+    if re.search(r'\.(?:safetensors|gguf|bin|pt|pth|onnx|npz|npy)$', p.path, re.I):
+        raise e.Blocked('model weight files are not news articles')
+    if p.hostname == 'huggingface.co' and len(p.path.strip('/').split('/')) != 2:
+        raise e.Blocked('news candidates require the model card, not repository file viewers')
+    return url
+
+
 def topics(e, root):
     rows = e.load(root / 'editorial/topics.json')
     if not isinstance(rows, list) or not rows or len(rows) > 30:
@@ -262,7 +277,7 @@ def collect_daily(e, root, state, date, run):
                       '--include-domains',NEWS_DOMAINS[i]],run,f'search-{i}')
         accepted=[];excluded=0
         for row in result.get('results',[]):
-            try:url=approved_url(e,row['url'])
+            try:url=news_candidate_url(e,row['url'])
             except (KeyError,ValueError,e.Blocked,TypeError):excluded+=1;continue
             if url not in accepted:accepted.append(url)
         buckets.append(accepted)

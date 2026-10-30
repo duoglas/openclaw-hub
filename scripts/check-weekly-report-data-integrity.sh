@@ -16,7 +16,7 @@ fi
 validate_report() {
   local file="$1"
   local has_placeholder has_backfill has_false_claim has_execute_action
-  has_placeholder=$(grep -Ec '^\|[[:space:]]*-[[:space:]]*\|[[:space:]]*0[[:space:]]*\|' "$file" || true)
+  has_placeholder=$(grep -Ec '^\|[[:space:]]*(-|N/A)[[:space:]]*\|[[:space:]]*(0|N/A)[[:space:]]*\||^N/A — query/page evidence' "$file" || true)
   has_backfill=$(grep -Ec '7-day GSC query backfill|7 天 GSC query 回填' "$file" || true)
   has_false_claim=$(grep -Ec 'Several low-CTR opportunities are still|Low-CTR opportunities are in the detected queue' "$file" || true)
   has_execute_action=$(grep -Ec 'Execute title/meta rewrites for top 3 items' "$file" || true)
@@ -44,6 +44,15 @@ cat > "$tmp_dir/real-data.md" <<'EOF'
 - [ ] P1: Execute title/meta rewrites for top 3 items from Section 6 and publish EN/ZH updates
 EOF
 validate_report "$tmp_dir/placeholder.md"
+sed 's/| - | 0 | 0.00% |/| N\/A | N\/A | N\/A |/' "$tmp_dir/placeholder.md" > "$tmp_dir/unknown.md"
+validate_report "$tmp_dir/unknown.md"
+for variant in placeholder unknown; do
+  cp "$tmp_dir/$variant.md" "$tmp_dir/invalid.md"
+  printf '%s\n' '- Low-CTR opportunities are in the detected queue; execute top rewrites.' >> "$tmp_dir/invalid.md"
+  if validate_report "$tmp_dir/invalid.md" >/dev/null 2>&1; then
+    echo "Weekly report data-integrity self-test accepted fabricated $variant guidance"; exit 1
+  fi
+done
 if validate_report "$tmp_dir/real-data.md"; then
   echo "Weekly report data-integrity synthetic self-test passed"
 else
