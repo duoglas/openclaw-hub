@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-07-11)"
-description: "OpenAI GPT-5.6, Meta Muse Image, NVIDIA Nemotron, Alibaba Qoder, and Qwen hardware signals show AI moving into agents, creative privacy, coding workflows, and physical devices."
+description: "2026-07-11 AI daily: OpenAI GPT-5.6 agent platform, Meta Muse image, NVIDIA Nemotron, Alibaba Qoder, Qwen hardware. Full morning brief."
 pubDate: 2026-07-11
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
