@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { validateSourceProjectionRuleScope } from './scripts/check-source-projection-rule-scope.mjs';
+import { validateSourceProjectionRuleScope } from './check-source-projection-rule-scope.mjs';
 
 // Capture console.warn output
 const warnLines = [];
