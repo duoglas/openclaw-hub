@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-08-15）"
-description: "AI 与科技日报追踪 NVIDIA Cosmos 3 开源物理 AI 世界模型、月之暗面 Kimi K3 长上下文开源模型、黄仁勋登顶 Glassdoor 2026、世界人形机器人运动会扩容与 NVIDIA 开源 Physical AI Agent Skills。"
+description: "AI 与科技日报追踪 NVIDIA Cosmos 3 物理 AI、Kimi K3 开源模型、黄仁勋 Glassdoor 2026 CEO、世界人形机器人运动会与 Physical AI Agent Skills。"
 pubDate: 2026-08-15
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

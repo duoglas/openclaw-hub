@@ -124,7 +124,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['nvidia-agentperf-blackwell-2026'],
     enLabel: 'NVIDIA / AgentPerf / agent infrastructure capacity',
     zhEvidence: '来源条目 5：NVIDIA 强调 Agentic AI 需要新的基础设施指标',
-    requiredTokens: ['NVIDIA', 'AgentPerf', 'GB300 NVL72', 'concurrent agents'],
+    requiredTokens: ['NVIDIA', 'AgentPerf', 'GB300 NVL72', '每兆瓦可运行的智能体数量'],
   },
 ];
 

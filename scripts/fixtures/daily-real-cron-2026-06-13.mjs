@@ -102,7 +102,7 @@ export const expectedSignals = [
     sourceProjectionRuleMatches: ['nvidia-agentperf-blackwell-2026'],
     enLabel: 'NVIDIA / Blackwell / Artificial / compute infrastructure',
     zhEvidence: '来源条目 2：NVIDIA Blackwell 在首个智能体 AI 基础设施基准中领先',
-    requiredTokens: ['NVIDIA', 'AgentPerf', 'GB300 NVL72', '20x'],
+    requiredTokens: ['NVIDIA', 'AgentPerf', 'GB300 NVL72', '20 倍'],
   },
   {
     title: 'Anthropic 投入 1.5 亿美元启动 Claude Corps',

@@ -1,6 +1,6 @@
 ---
 title: "AI & Tech Daily Brief (2026-08-01)"
-description: "OpenAI reframed AI infrastructure around cheaper intelligence and cut GPT-5.6 Luna/Terra API prices, while NVIDIA's Open Secure AI Alliance, China's satellite internet buildout, and token-trading data policy point to cost, safety, space-data, and dataset commercialization shifts."
+description: "OpenAI reframed AI infrastructure around cheaper intelligence and cut GPT-5.6 Luna/Terra API prices, while NVIDIA Open Secure AI Alliance, China satellite internet, token-trading data policy point to cost, safety, space-data, dataset commercialization shifts."
 pubDate: 2026-08-01
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

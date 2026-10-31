@@ -1,6 +1,6 @@
 ---
 title: "AI / 科技日报（2026-08-19）"
-description: "《AI·科技日报》2026-08-19：NVIDIA Cosmos 3 全模态物理 AI、Spectrum-6 千兆级 AI 工厂、Open Secure AI Alliance、Nations AI 主权 AI 与 OpenAI PORTS-Pike 全球事务布局。"
+description: "AI 日报 2026-08-19：NVIDIA Cosmos 3 物理 AI、Spectrum-6 网络交换、Open Secure AI Alliance、Nations AI 主权 AI 与 OpenAI PORTS-Pike。"
 pubDate: 2026-08-19
 tags: ["ai", "tech", "daily", "news"]
 category: "news"

@@ -61,6 +61,7 @@ export const expectedSignals = [
   },
   {
     title: 'NVIDIA Vera Rubin NVL72 / Jetson Thor / COMPUTEX',
+    sourceProjectionRuleMatches: ['nvidia-ai-cloud-ecosystem'],
     enLabel: 'NVIDIA / Vera / Rubin / compute infrastructure',
     zhEvidence: '来源条目 2：NVIDIA Vera Rubin NVL72 / Jetson Thor / COMPUTEX',
     requiredTokens: ['NVIDIA', 'Vera Rubin'],

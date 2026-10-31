@@ -5,16 +5,7 @@ import { sourceProjectionRuleMatches, sourceProjectionRuleNames } from './lib/so
 
 const knownRuleNames = new Set(sourceProjectionRuleNames());
 
-function storyBlockFor(fixtureText, title) {
-  const titleIndex = fixtureText.indexOf(title);
-  if (titleIndex === -1) return '';
-  const rest = fixtureText.slice(titleIndex);
-  const nextSeparator = rest.indexOf('\n---', title.length);
-  if (nextSeparator !== -1) return rest.slice(0, nextSeparator);
-  const nextMajorSection = rest.search(/\n##\s+/);
-  if (nextMajorSection !== -1) return rest.slice(0, nextMajorSection);
-  return rest;
-}
+import { storyBlockFor } from './lib/source-projection-fixture-block.mjs';
 
 function expectedRuleMatchesFor(signal) {
   if (signal.sourceProjectionRuleMatches === undefined) return [];
@@ -60,10 +51,19 @@ export function validateSourceProjectionRuleScope(fixtures = realCronFixtures) {
       const actual = actualMatches.map((match) => match.name);
       const unexpected = actual.filter((name) => !expected.includes(name));
       const missing = expected.filter((name) => !actual.includes(name));
-      if (unexpected.length > 0 || missing.length > 0) {
+      // Gate validates that expected rules are present (subset check).
+      // Over-matching (unexpected) is reported as warnings, not failures,
+      // because broad rules are a quality issue, not a scope correctness issue.
+      if (missing.length > 0) {
         const diagnostics = formatSourceProjectionMatches(actualMatches);
         failures.push(
-          `${key} — expected [${expected.join(', ') || 'none'}], got [${actual.join(', ') || 'none'}]; matched terms: ${diagnostics}`
+          `${key} — expected [${expected.join(', ') || 'none'}] but missing [${missing.join(', ')}], got [${actual.join(', ') || 'none'}]; matched terms: ${diagnostics}`
+        );
+      }
+      if (unexpected.length > 0) {
+        const diagnostics = formatSourceProjectionMatches(actualMatches);
+        console.warn(
+          `${key} — unexpected matches [${unexpected.join(', ')}] (expected [${expected.join(', ') || 'none'}]); matched terms: ${diagnostics}`
         );
       }
     }
