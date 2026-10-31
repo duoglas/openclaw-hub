@@ -1,6 +1,6 @@
 ---
 title: "Codex、Claude Code 与 Cursor 团队指南：指令文件、Rules 和 Skills 的职责与核验"
-description: "团队同时使用 Codex、Claude Code、Cursor 时，如何统一指令文件与权限？本文核对三种客户端的加载顺序、Skills 预授权与 CI 检查，附迁移清单。"
+description: "同时使用三种编程智能体时，团队可以共享项目约定，但不能假设加载顺序和权限语义相同。本文分别核对指令发现、导入、规则触发与技能预授权，并给出迁移和 CI 检查清单。"
 pubDate: 2026-02-11
 tags: ["agentic-engineering", "guide", "agents-md", "claude-md", "cursorrules", "team-workflow"]
 category: "tutorial"
