@@ -3,17 +3,35 @@
     "id": "deepseek-harness-architecture-safety",
     "pillar": "agents",
     "question": "DeepSeek Harness 的插件架构解决什么问题？开发者试用前需要核对哪些运行条件、权限和安全限制？",
-    "source_urls": ["https://github.com/deepseek-ai/deepseek-harness", "https://github.com/deepseek-ai/deepseek-harness/blob/master/SAFETY.md"],
-    "required_points": ["区分 Harness 与 DeepSeek 模型；说明插件架构与自建职责", "核对 developer preview、破坏性变化与安全审计状态，不推断生产就绪", "给出隔离试用、凭据最小化、版本记录和恢复检查清单；明确没有安装实测"],
-    "not_before": "2026-10-29", "enabled": true
+    "source_urls": [
+      "https://github.com/deepseek-ai/deepseek-harness",
+      "https://github.com/deepseek-ai/deepseek-harness/blob/master/SAFETY.md"
+    ],
+    "required_points": [
+      "区分 Harness 与 DeepSeek 模型；说明插件架构与自建职责",
+      "核对 developer preview、破坏性变化与安全审计状态，不推断生产就绪",
+      "给出隔离试用、凭据最小化、版本记录和恢复检查清单；明确没有安装实测"
+    ],
+    "not_before": "2026-10-29",
+    "enabled": true
   },
   {
     "id": "qwen-local-model-selection",
     "pillar": "models",
     "question": "选择 Qwen 本地模型时，如何区分模型权重、Qwen Code 与推理运行工具，并核对具体型号、许可、量化和硬件条件？",
-    "source_urls": ["https://huggingface.co/Qwen/Qwen3.8-27B", "https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/LICENSE", "https://github.com/QwenLM/qwen-code", "https://github.com/ggml-org/llama.cpp"],
-    "required_points": ["引用具体 Qwen3.8-27B 模型卡，区分官方权重与第三方量化，不扩展为整个系列的许可结论", "区分 Qwen Code 编程 Agent 与模型及推理工具；接口兼容不等于行为可靠", "给出内存与上下文的核对方法，不编造最低内存、速度或实测效果；部署步骤以官方现行文档为准"],
-    "not_before": "2026-10-29", "enabled": true
+    "source_urls": [
+      "https://huggingface.co/Qwen/Qwen3.8-27B",
+      "https://huggingface.co/Qwen/Qwen3.8-27B/blob/main/LICENSE",
+      "https://github.com/QwenLM/qwen-code",
+      "https://github.com/ggml-org/llama.cpp"
+    ],
+    "required_points": [
+      "引用具体 Qwen3.8-27B 模型卡，区分官方权重与第三方量化，不扩展为整个系列的许可结论",
+      "区分 Qwen Code 编程 Agent 与模型及推理工具；接口兼容不等于行为可靠",
+      "给出内存与上下文的核对方法，不编造最低内存、速度或实测效果；部署步骤以官方现行文档为准"
+    ],
+    "not_before": "2026-10-29",
+    "enabled": true
   },
   {
     "id": "agents-instructions-skills-review-2026-10",
@@ -56,22 +74,39 @@
       "新项目按当前 Cursor 文档介绍 .cursor/rules/*.mdc 与 AGENTS.md；页面未提及 .cursorrules 不证明旧格式在所有版本失效。",
       "给出版本、工作目录、实际加载来源、冲突、工具权限和 CI 的具体检查清单。不得重建抓取损坏的可执行命令，不建议为核验而扩大权限或跳过审批；明确没有运行各客户端的对照实验。"
     ],
-    "not_before": "2026-10-29", "enabled": true
+    "not_before": "2026-10-29",
+    "enabled": true
   },
   {
     "id": "scheduled-task-delivery-verification",
     "pillar": "workflows",
     "question": "定时任务的执行成功、产物生成、发布与消息投递分别需要什么证据，失败重试如何避免重复发送？",
-    "source_urls": ["https://github.com/openclaw/openclaw", "https://github.com/PrefectHQ/prefect"],
-    "required_points": ["分开定义执行、产物与投递的可观察状态", "依据公开文档设计新的通用故障演示，不使用个人运维日志", "没有完成演示时明确只是检查方案，不声称故障已复现"],
-    "not_before": "2026-11-13", "enabled": false
+    "source_urls": [
+      "https://github.com/openclaw/openclaw",
+      "https://github.com/PrefectHQ/prefect"
+    ],
+    "required_points": [
+      "分开定义执行、产物与投递的可观察状态",
+      "依据公开文档设计新的通用故障演示，不使用个人运维日志",
+      "没有完成演示时明确只是检查方案，不声称故障已复现"
+    ],
+    "not_before": "2026-11-13",
+    "enabled": true
   },
   {
     "id": "responses-tool-streaming-compatibility",
     "pillar": "agents",
     "question": "接入 Responses 与 Chat Completions 工具调用和流式输出时，怎样区分请求格式兼容与完整运行行为兼容？",
-    "source_urls": ["https://developers.openai.com/api/docs/guides/migrate-to-responses", "https://developers.openai.com/api/docs/guides/function-calling"],
-    "required_points": ["核对工具调用事件、调用标识与结果回传", "说明流式完成、错误与恢复需要分别验证", "文档比较不能当作跨服务兼容实测；给出可公开的最小验证方案"],
-    "not_before": "2026-11-20", "enabled": false
+    "source_urls": [
+      "https://developers.openai.com/api/docs/guides/migrate-to-responses",
+      "https://developers.openai.com/api/docs/guides/function-calling"
+    ],
+    "required_points": [
+      "核对工具调用事件、调用标识与结果回传",
+      "说明流式完成、错误与恢复需要分别验证",
+      "文档比较不能当作跨服务兼容实测；给出可公开的最小验证方案"
+    ],
+    "not_before": "2026-11-20",
+    "enabled": false
   }
 ]
