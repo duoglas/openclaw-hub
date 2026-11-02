@@ -58,6 +58,9 @@ def news_candidate_url(e, url):
     # Exclude API documentation pages from news search
     if p.hostname in ('developers.openai.com', 'ai.google.dev') and '/api/' in p.path:
         raise e.Blocked('API documentation is not a news article')
+    # Exclude documentation index/map pages
+    if p.hostname == 'code.claude.com' and '/docs/en/claude_code_docs_map' in p.path:
+        raise e.Blocked('documentation index is not a news article')
     return url
 
 
