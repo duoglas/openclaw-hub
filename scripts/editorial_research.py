@@ -294,7 +294,7 @@ def collect_daily(e, root, state, date, run):
     e.save(run/'discovery.json',{'queries':discovery,'selected_urls':urls})
     if not urls:raise e.Skip('no approved first-party news candidates from current search; no article')
     sources=fetch_sources(e,state,urls,run,allow_cache=False)
-    selector_input={'date':date,'oldest_event_date':(dt.date.fromisoformat(date)-dt.timedelta(days=3)).isoformat(),
+    selector_input={'date':date,'oldest_event_date':(dt.date.fromisoformat(date)-dt.timedelta(days=5)).isoformat(),
         'sources':sources,'recent_events':[r.get('event_keys',[]) for r in e.receipts(root)[-30:]]}
     e.validate_private_output(selector_input,state)
     selected,meta=e.model_json(SELECTOR,selector_input,['gpt-6-luna'],run,'news-selector')
