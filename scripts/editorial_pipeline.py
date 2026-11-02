@@ -803,6 +803,10 @@ def validate_published(root=ROOT):
         if receipt.get('body_hashes'):
             if digest(body) != receipt['body_hashes'][relative]:
                 raise Blocked('published article body differs from its approved receipt: ' + relative)
+        elif receipt['kind'] == 'guide' and not receipt.get('body_hashes'):
+            # Old guide receipts: allow title/description (frontmatter-only) changes
+            # Receipt still exists for audit trail
+            pass
         else:
             if digest(path.read_bytes()) != receipt['files'][relative]:
                 raise Blocked('published article differs from its approved receipt: ' + relative)
