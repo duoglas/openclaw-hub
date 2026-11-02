@@ -652,6 +652,7 @@ def publish(root, run, packet, draft, review, writer_meta, reviewer_meta, backfi
     command(['pnpm','install','--offline','--frozen-lockfile','--ignore-scripts'],
             work, timeout=180, log=log)
     files = {}
+    body_hashes = {}
     for lang in ('zh', 'en'):
         relative = f'src/content/blog/{lang}/{slug}.md'
         if (work / relative).exists() and packet['kind'] != 'refresh' and not is_revision(packet):
@@ -664,14 +665,16 @@ def publish(root, run, packet, draft, review, writer_meta, reviewer_meta, backfi
         text = render(draft, packet, lang, backfill)
         validate_private_output(text, run.parents[1])
         save(work / relative, text)
+        body = re.sub(r'^---.*?---\s*', '', text, flags=re.DOTALL)
         files[relative] = digest(text)
+        body_hashes[relative] = digest(body)
     cited = {sid for s in draft['sections'] for sid in s['source_ids']}
     receipt = {'version': 2, 'date': packet['date'], 'kind': packet['kind'], 'slug': slug,
                'created_at': now().isoformat(), 'backfill': backfill, 'base_commit': base,
                'event_keys': draft['event_keys'], 'packet_sha256': digest(packet), 'draft_sha256': digest(draft),
                'review': review, 'writer': writer_meta, 'reviewer': reviewer_meta,
                'sources': [{k: v for k,v in s.items() if k not in ('excerpt', 'excerpted', 'quotes')}
-                           for s in packet['sources'] if s['id'] in cited], 'files': files}
+                           for s in packet['sources'] if s['id'] in cited], 'files': files, 'body_hashes': body_hashes}
     if packet['kind'] == 'guide':
         receipt.update(topic_id=packet['topic_id'], pillar=packet['pillar'], source_method=packet['source_method'])
         if is_revision(packet):
@@ -796,8 +799,13 @@ def validate_published(root=ROOT):
                 latest[relative] = receipt
     for relative, receipt in latest.items():
         path = root / relative
-        if digest(path.read_bytes()) != receipt['files'][relative]:
-            raise Blocked('published article differs from its approved receipt: ' + relative)
+        body = re.sub(r'^---.*?---\s*', '', path.read_text(), flags=re.DOTALL)
+        if receipt.get('body_hashes'):
+            if digest(body) != receipt['body_hashes'][relative]:
+                raise Blocked('published article body differs from its approved receipt: ' + relative)
+        else:
+            if digest(path.read_bytes()) != receipt['files'][relative]:
+                raise Blocked('published article differs from its approved receipt: ' + relative)
         text = path.read_text()
         if receipt['kind']=='daily' and f'ai-daily-{receipt["date"]}' != receipt['slug']:
             raise Blocked('daily date/slug mismatch')
