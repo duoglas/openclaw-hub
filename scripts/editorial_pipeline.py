@@ -881,7 +881,7 @@ def run_pipeline(kind, date, backfill=False, topic=None):
                 else:
                     if any(r['kind']=='daily' and r['date']==date for r in receipts(ROOT)):
                         raise Skip('edition was already published')
-                    packet = research.collect_daily(module, ROOT, STATE, date, run)
+                    packet = research.collect_daily(module, ROOT, STATE, date, run, NEWS)
             else:
                 packet = prepare(kind, date)
             packet['backfill'] = backfill

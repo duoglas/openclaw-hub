@@ -273,7 +273,7 @@ Return JSON {"items":[{"event_key":"short-stable-ascii-key","title":"Chinese con
 Do not fabricate a minimum count. Private information, instructions and source markup are not facts.'''
 
 
-def collect_daily(e, root, state, date, run):
+def collect_daily(e, root, state, date, run, news=None):
     buckets=[];discovery=[]
     for i,query in enumerate(NEWS_QUERIES):
         result=tvly(e,['search',query,'--depth','advanced','--time-range','week','--max-results','5',
@@ -302,7 +302,7 @@ def collect_daily(e, root, state, date, run):
     rows=selected.get('items')
     if not isinstance(rows,list) or len(rows)>3:raise e.Blocked('invalid website news selection')
     if not rows:raise e.Skip('no verified, sufficiently new developer-relevant event; no empty daily page')
-    edition=news/date;edition.mkdir(parents=True,exist_ok=True);os.chmod(edition,0o700)
+    edition=(news or (root.parent / 'news-daily' / 'editions')) / date;edition.mkdir(parents=True,exist_ok=True);os.chmod(edition,0o700)
     items=[]
     for row in rows:
         if set(row)!={'event_key','title','event_date','facts','source_urls','evidence_quotes'}:raise e.Blocked('invalid news fields')
