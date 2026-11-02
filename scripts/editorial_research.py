@@ -31,7 +31,7 @@ NEWS_QUERIES = [
 NEWS_DOMAINS = [
     'openai.com,anthropic.com,claude.com,cursor.com',
     'qwen.ai,qwenlm.github.io,huggingface.co',
-    'developers.openai.com,ai.google.dev,anthropic.com,claude.com',
+    'ai.google.dev,anthropic.com,claude.com',
 ]
 
 
@@ -55,6 +55,9 @@ def news_candidate_url(e, url):
         raise e.Blocked('model weight files are not news articles')
     if p.hostname == 'huggingface.co' and len(p.path.strip('/').split('/')) != 2:
         raise e.Blocked('news candidates require the model card, not repository file viewers')
+    # Exclude API documentation pages from news search
+    if p.hostname in ('developers.openai.com', 'ai.google.dev') and '/api/' in p.path:
+        raise e.Blocked('API documentation is not a news article')
     return url
 
 
