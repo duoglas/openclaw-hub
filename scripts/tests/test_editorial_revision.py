@@ -42,9 +42,10 @@ class RevisionTests(unittest.TestCase):
             'target_slug':'existing-guide','operation':'revise','pillar':'agents','previous_files':p['previous_files'],
             'created_at':'2026-10-28T09:00:00+08:00','draft_sha256':e.digest('first draft'),
             'review':{'verdict':'pass','checks':{k:True for k in e.CHECKS},'reasons':['documented correction']},
-            'sources':[{'url':URL,'sha256':e.digest(TEXT)}],'files':old}
-        body='second article '+URL;latest=first|{'date':'2026-10-29','topic_id':self.topic['id'],
-            'created_at':'2026-10-29T09:00:00+08:00','previous_files':old,'files':{x:e.digest(body) for x in pair}}
+            'sources':[{'url':URL,'sha256':e.digest(TEXT)}],'files':old,'body_hashes':{x:e.digest('first body') for x in pair}}
+        body='second article '+URL;bodyhash={x:e.digest(body) for x in pair}
+        latest=first|{'date':'2026-10-29','topic_id':self.topic['id'],
+            'created_at':'2026-10-29T09:00:00+08:00','previous_files':old,'files':bodyhash,'body_hashes':bodyhash}
         for receipt in (first,latest):e.save(self.root/e.receipt_path(receipt),receipt)
         for relative in pair:e.save(self.root/relative,body)
         self.assertEqual(e.validate_published(self.root)['receipts'],2)
