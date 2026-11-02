@@ -17,16 +17,16 @@ import urllib.parse
 PROXY = 'http://127.0.0.1:8016'
 TOPIC_FIELDS = {'id','pillar','question','source_urls','required_points','not_before','enabled'}
 HOSTS = {'huggingface.co': ('/Qwen/',), 'github.com': ('/deepseek-ai/','/QwenLM/','/ggml-org/','/anthropics/','/openai/','/modelcontextprotocol/','/openclaw/','/PrefectHQ/'),
-         'qwen.readthedocs.io': ('/',), 'qwenlm.github.io': ('/',), 'code.claude.com': ('/docs/','/blog/'),
+         'qwen.readthedocs.io': ('/',), 'qwenlm.github.io': ('/',), 'code.claude.com': ('/blog/'),
          'developers.openai.com': ('/',), 'docs.anthropic.com': ('/',), 'openai.com': ('/index/','/news/','/blog/'),
          'www.anthropic.com': ('/news/','/engineering/'), 'anthropic.com': ('/news/','/engineering/'),
          'claude.com': ('/resources/articles/','/blog/'), 'www.claude.com': ('/resources/articles/','/blog/'),
-         'cursor.com': ('/docs/','/blog/','/changelog'), 'ai.google.dev': ('/gemini-api/docs/','/blog/'), 'qwen.ai': ('/blog',),
+         'cursor.com': ('/blog/','/changelog'), 'ai.google.dev': ('/blog/'), 'qwen.ai': ('/blog',),
          'blog.jetbrains.com': ('/',), 'developers.googleblog.com': ('/',), 'blog.google': ('/technology/ai/',)}
 NEWS_QUERIES = [
-    'coding agent release announcement blog openai anthropic claude 2026',
-    'Qwen model release blog announcement license 2026',
-    'agent tools API automation security update changelog 2026',
+    'AI coding agent release blog post 2026',
+    'Qwen model new release announcement 2026',
+    'agent tools automation security blog update 2026',
 ]
 NEWS_DOMAINS = [
     'openai.com,anthropic.com,claude.com,cursor.com',
