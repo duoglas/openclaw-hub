@@ -307,7 +307,7 @@ def collect_daily(e, root, state, date, run):
     for row in rows:
         if set(row)!={'event_key','title','event_date','facts','source_urls','evidence_quotes'}:raise e.Blocked('invalid news fields')
         if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+){1,30}',row['event_key']):raise e.Blocked('invalid news event key')
-        if not 0 <= (dt.date.fromisoformat(date)-dt.date.fromisoformat(row['event_date'])).days <= 3:raise e.Blocked('stale/future news event')
+        if not 0 <= (dt.date.fromisoformat(date)-dt.date.fromisoformat(row['event_date'])).days <= 5:raise e.Blocked('stale/future news event')
         if not isinstance(row['source_urls'],list) or not row['source_urls'] or not set(row['source_urls'])<=set(urls):raise e.Blocked('invented news source')
         if not row['evidence_quotes']:raise e.Blocked('news lacks exact evidence quotes')
         item_sources=[]
