@@ -1,12 +1,12 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: 2026-10-26 to 2026-11-01
+- Week: 2026-11-02 to 2026-11-08
 - Owner: site-editor
-- Reviewed at: 2026-10-30 07:53 (Asia/Shanghai)
+- Reviewed at: 2026-11-02 10:05 (Asia/Shanghai)
 - Reviewer: maintenance assistant; not an independent human review
 - Review type: evidence-informed editorial review, distinct from the generated SEO snapshot
-- Observation cutoff: 2026-10-30 morning; the week is not complete
+- Observation cutoff: 2026-11-02 morning; the week is not complete
 
 ## Observe — what the evidence establishes
 
