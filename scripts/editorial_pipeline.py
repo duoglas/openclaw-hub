@@ -137,12 +137,41 @@ def receipts(root=ROOT):
     return [load(p) for p in sorted((root / 'editorial/receipts').glob('*.json'))]
 
 
+def _normalize_item_sources(item):
+    """Normalize sources from OpenClaw cron format to editorial_pipeline format.
+
+    OpenClaw cron task stores:
+      - sources: list of URL strings
+      - evidence_file: string like "extract02.json"
+
+    editorial_pipeline expects:
+      - sources: list of dicts with url, original_file, extraction_file, etc.
+
+    This function patches the item in-place if normalization is needed.
+    """
+    sources = item.get('sources', [])
+    if not sources:
+        return
+    # If first source is a string (not dict), normalize
+    if isinstance(sources[0], str):
+        evidence_file = item.get('evidence_file', '')
+        # Parse evidence_file which may be semicolon-separated
+        evidence_files = [f.strip() for f in evidence_file.split(';') if f.strip()]
+        for i, url in enumerate(sources):
+            sources[i] = {
+                'url': url,
+                'extraction_file': evidence_files[i] if i < len(evidence_files) else evidence_files[0] if evidence_files else '',
+                'raw_file': evidence_files[i] if i < len(evidence_files) else evidence_files[0] if evidence_files else '',
+            }
+
+
 def verified_items(edition, cutoff, max_age):
     report = load(edition / 'report.json')
     if report.get('date') != edition.name or report.get('status') == 'collection_failed':
         raise Blocked(f'{edition.name}: collection failed or report date mismatch')
     items = []
     for item in report.get('items', []):
+        _normalize_item_sources(item)
         try:
             event_date = dt.date.fromisoformat(item['event_date'])
             if not 0 <= (cutoff - event_date).days <= max_age:
