@@ -24,9 +24,9 @@ HOSTS = {'huggingface.co': ('/Qwen/',), 'github.com': ('/deepseek-ai/','/QwenLM/
          'cursor.com': ('/blog/','/changelog'), 'ai.google.dev': ('/blog/',), 'qwen.ai': ('/blog',),
          'blog.jetbrains.com': ('/',), 'developers.googleblog.com': ('/',), 'blog.google': ('/technology/ai/',)}
 NEWS_QUERIES = [
-    'AI coding agent release blog post 2026',
-    'Qwen model new release announcement 2026',
-    'agent tools automation security blog update 2026',
+    'AI coding agent release announcement this week November 2026',
+    'Qwen model update release October November 2026',
+    'AI agent tools automation security news this week',
 ]
 NEWS_DOMAINS = [
     'openai.com,anthropic.com,claude.com,cursor.com',
