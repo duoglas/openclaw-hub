@@ -305,7 +305,7 @@ def collect_daily(e, root, state, date, run, news=None):
     rows=selected.get('items')
     if not isinstance(rows,list) or len(rows)>3:raise e.Blocked('invalid website news selection')
     if not rows:raise e.Skip('no verified, sufficiently new developer-relevant event; no empty daily page')
-    edition=(news or (root.parent / 'news-daily' / 'editions')) / date;edition.mkdir(parents=True,exist_ok=True);os.chmod(edition,0o700)
+    edition=(root.parent / 'kuoo-editorial' / 'state' / 'research' / 'news' / 'editions') / date;edition.mkdir(parents=True,exist_ok=True);os.chmod(edition,0o700)
     items=[]
     for row in rows:
         if set(row)!={'event_key','title','event_date','facts','source_urls','evidence_quotes'}:raise e.Blocked('invalid news fields')
