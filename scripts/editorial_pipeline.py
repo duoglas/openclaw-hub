@@ -225,7 +225,9 @@ def verified_items(edition, cutoff, max_age):
             for quote in item['evidence_quotes']:
                 original = texts.get(quote.get('source', quote.get('url')), '')
                 quoted = quote['quote']
-                if quoted and quoted in original:
+                # Clean zero-width chars before matching
+                clean_quoted = quoted.replace("\u2060", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "")
+                if clean_quoted and clean_quoted in original:
                     continue
                 # One historical report explicitly recorded this normalization.
                 # Never relax numbers, punctuation, wording or arbitrary whitespace.
