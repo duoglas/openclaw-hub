@@ -319,7 +319,9 @@ def collect_daily(e, root, state, date, run, news=None):
             filename='source-'+e.digest(url)+'.md';e.save(edition/filename,text)
             source=next(s for s in sources if s['url']==url)
             quotes=[q['quote'] for q in row['evidence_quotes'] if q.get('url')==url]
-            if not quotes or any(not isinstance(q,str) or len(q)<12 or q not in text for q in quotes):raise e.Blocked('news quote not found in original')
+            # Clean zero-width chars before validation
+    clean_quotes = [q.replace("\u2060", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "") for q in quotes]
+    if not clean_quotes or any(not isinstance(q,str) or len(q)<12 or q not in text for q in clean_quotes):raise e.Blocked('news quote not found in original')
             item_sources.append({k:source[k] for k in ('url','sha256','read_at','source_date')} | {'original_file':filename})
         if any(q.get('url') not in row['source_urls'] for q in row['evidence_quotes']):raise e.Blocked('news quote points outside selected sources')
         items.append({k:row[k] for k in ('event_key','title','event_date','facts','evidence_quotes')} | {'sources':item_sources})
