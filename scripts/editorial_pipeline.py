@@ -111,10 +111,16 @@ def safe_url(url):
     return url
 
 
+def _clean_quotes(quotes):
+    """Remove zero-width characters from quotes before matching."""
+    return [q.replace("\u2060", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "") for q in quotes]
+
+
 def excerpt(text, quotes):
     # Encoded SVG sponsor logos can outweigh the actual article. Remove only
     # inline data-image payloads, AFTER raw-byte hashing and quote verification.
     # Keep the immutable original; never remove ordinary factual paragraphs.
+    clean_quotes = _clean_quotes(quotes)
     clean = re.sub(r'!\[([^\]]*)\]\(data:image/[^\n]*?\)(?=!?\[|\]\(|\s|$)',
                    '[inline image omitted]', text)
     if len(clean) <= 24000:
