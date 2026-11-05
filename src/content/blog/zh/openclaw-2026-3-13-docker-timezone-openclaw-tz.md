@@ -118,9 +118,9 @@ docker run -e OPENCLAW_TZ=Asia/Shanghai ...
 
 | 提供商 | 价格 | 新用户福利 | 适合场景 |
 |---|---|---|---|
-| [Vultr](https://www.vultr.com/?ref=YOUR_ID) | 2.5美元/月起 | 5美元体验金 | 海外部署、按量计费 |
-| [DigitalOcean](https://m.do.co/c/YOUR_ID) | 4美元/月起 | 200美元免费额度 | 稳定可靠、文档齐全 |
-| [腾讯云](https://curl.qcloud.com/YOUR_ID) | 99元/年起 | 新用户1折 | 国内部署、中文支持 |
+| [Vultr](https://www.vultr.com/?ref=7566454) | 2.5美元/月起 | 5美元体验金 | 海外部署、按量计费 |
+| [DigitalOcean](https://m.do.co/c/0090e7c2aec0) | 4美元/月起 | 200美元免费额度 | 稳定可靠、文档齐全 |
+| [腾讯云](https://curl.qcloud.com/1PS2iJEg) | 99元/年起 | 新用户1折 | 国内部署、中文支持 |
 
 **选择建议：**
 - **海外用户** → Vultr 或 DigitalOcean

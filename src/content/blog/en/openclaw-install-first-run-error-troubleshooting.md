@@ -632,9 +632,9 @@ A 2 vCPU / 2GB RAM instance is plenty for OpenClaw. See our [VPS Deployment Guid
 
 | Provider | Price | New User Bonus | Best For |
 |---|---|---|---|
-| [Vultr](https://www.vultr.com/?ref=YOUR_ID) | $2.50/mo | $5.00 credit | Global deployments, pay-as-you-go |
-| [DigitalOcean](https://m.do.co/c/YOUR_ID) | $4/mo | $200 free | Stability, docs, reliability |
-| [Tencent Cloud](https://curl.qcloud.com/YOUR_ID) | ¥99/yr | 90% off first order | China deployment, CN support |
+| [Vultr](https://www.vultr.com/?ref=7566454) | $2.50/mo | $5.00 credit | Global deployments, pay-as-you-go |
+| [DigitalOcean](https://m.do.co/c/0090e7c2aec0) | $4/mo | $200 free | Stability, docs, reliability |
+| [Tencent Cloud](https://curl.qcloud.com/1PS2iJEg) | ¥99/yr | 90% off first order | China deployment, CN support |
 
 **Recommendation:**
 - **Global users** → Vultr or DigitalOcean
