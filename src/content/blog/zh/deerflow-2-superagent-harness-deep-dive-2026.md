@@ -1,11 +1,14 @@
 ---
-title: "DeerFlow 2.0 深度解读：从 Deep Research 到 SuperAgent Harness"
-description: "解析 DeerFlow 2.0 重写后的 Sub-agents、Sandbox、Memory、Skills、部署规格和长任务 Agent 架构。"
+
+title: "Deerflow 2 SuperAgent Harness 深度解析：架构和使用场景"
+description: "Deerflow 2 的 SuperAgent harness 到底做了什么？解析架构、能力边界，以及和 OpenClaw 等框架的对比。"
 pubDate: 2026-06-09
 tags: ["deerflow", "agent-harness", "deep-research", "bytedance", "multi-agent"]
 category: "analysis"
 lang: "zh"
+
 ---
+
 
 DeerFlow 2.0 不是普通的大版本升级，而是一次重新定位。
 

@@ -1,11 +1,14 @@
 ---
-title: "AI & Tech Daily Brief (2026-04-24)"
-description: "2026-04-24 AI daily: GPT-5.5 Codex enterprise rollout at NVIDIA, rising US-China AI IP friction, UN digital governance focus, Adobe CX Enterprise Coworker launch, and Anthropic Claude Design moving AI into visual production workflows."
+
+title: "AI Daily: NVIDIA, Adobe, Anthropic, and Global Regulation Heat Up"
+description: "NVIDIA, Adobe, Anthropic, and regulation all heated up on April 24, 2026. Key updates in one briefing."
 pubDate: 2026-04-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"
+
 ---
+
 
 《AI、科技日报》  
 时间：2026-04-24 早报（北京时间）

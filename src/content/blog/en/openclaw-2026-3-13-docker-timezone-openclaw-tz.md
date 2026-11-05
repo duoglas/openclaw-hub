@@ -1,11 +1,14 @@
 ---
-title: "Fix OpenClaw Docker timezone drift with OPENCLAW_TZ (2026.3.13+)"
-description: "OpenClaw 2026.3.13 added OPENCLAW_TZ so docker-setup can pin gateway/CLI containers to an explicit IANA timezone. Here’s why it matters for cron, logs, and reliability—and how to verify it."
+
+title: "OpenClaw Docker Timezone Fix: Container Clock Won't Sync"
+description: "Fix timezone issues when running OpenClaw in Docker. How to set TZ environment variable and ensure correct local time in logs."
 pubDate: 2026-03-17
 tags: ["openclaw", "2026.3.13", "docker", "timezone", "cron", "deployment"]
 category: "guide"
 lang: "en"
+
 ---
+
 
 Timezone bugs are the worst kind of ops bug: nothing crashes, but everything becomes harder to trust.
 

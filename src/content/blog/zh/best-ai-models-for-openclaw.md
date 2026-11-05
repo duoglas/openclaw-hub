@@ -1,11 +1,14 @@
 ---
-title: "2026 年 OpenClaw 最佳 AI 模型推荐：完整排名与指南"
-description: "OpenClaw 该配哪个 AI 模型？我们从成本、速度和质量三个维度，实测排名 Claude Opus 4.6、GPT-5.3 Codex、Gemini 3、MiniMax M2.1 等主流模型。"
+
+title: "2026 OpenClaw 最佳 AI 模型选择：GPT vs Claude vs Gemini vs 本地模型"
+description: "GPT-6、Claude、Gemini、本地模型怎么选？按任务、成本、速度和推理质量做实用对比，帮你选对模型。"
 pubDate: 2026-02-10
 tags: ["guide", "models", "openclaw"]
 category: "review"
 lang: "zh"
+
 ---
+
 
 ## 为 OpenClaw 选择合适的模型
 

@@ -1,0 +1,167 @@
+{
+  "date": "2026-11-05",
+  "changes": [
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/agentic-engineering-tools-comparison.md",
+      "lang": "en",
+      "title_old": "2026 Agentic Engineering Tool Comparison: Cursor vs Claude Code vs Copilot",
+      "title_new": "Agentic Engineering Tools Comparison 2026: OpenClaw, Cursor, Claude Code",
+      "desc_old": "Real-world comparison: Cursor (IDE) vs Claude Code (CLI) vs GitHub Copilot in 2026. Pricing, feature gaps, and which tool wins for different team sizes.",
+      "desc_new": "Compare the best agentic engineering tools in 2026. OpenClaw, Cursor, Claude Code, and more — which one fits your workflow?",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/agentic-engineering-tools-comparison.md.bak.2026-11-05T13:43:11.997448"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-2026-3-13-docker-timezone-openclaw-tz.md",
+      "lang": "zh",
+      "title_old": "用 OPENCLAW_TZ 解决 OpenClaw Docker 部署的时区偏移（2026.3.13+）",
+      "title_new": "OpenClaw Docker 时区修复：容器时钟不对齐",
+      "desc_old": "OpenClaw 2026.3.13 在 docker-setup.sh 中加入 OPENCLAW_TZ，可显式指定 IANA 时区，解决容器部署下 Cron/日志/提醒时间线对不齐的问题，并给出验证方法。",
+      "desc_new": "Docker 里跑 OpenClaw 时区不对？教你设置 TZ 环境变量，让容器日志显示正确本地时间。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-2026-3-13-docker-timezone-openclaw-tz.md.bak.2026-11-05T13:43:11.998812"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/agents-md-team-guide.md",
+      "lang": "zh",
+      "title_old": "Codex、Claude Code 与 Cursor 团队指南：指令文件、Rules 和 Skills 的职责与核验",
+      "title_new": "Agent .md 团队指南：多 Agent 协作的最佳实践",
+      "desc_old": "团队同时使用 Codex、Claude Code、Cursor 时，如何统一指令文件与权限？本文核对三种客户端的加载顺序、Skills 预授权与 CI 检查，附迁移清单。",
+      "desc_new": "如何在团队中用 .md 文件配置 Agent 规则？覆盖共享规则、权限边界和协作模式，让多个 AI Agent 高效协作。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/agents-md-team-guide.md.bak.2026-11-05T13:43:11.999521"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-telegram-409-conflict-getupdates-fix-2026.md",
+      "lang": "zh",
+      "title_old": "OpenClaw Telegram 报错 409 Conflict（terminated by other getUpdates request）怎么修？2026 一次性排查",
+      "title_new": "OpenClaw Telegram 409 报错 409 Conflict：完整排查和修复指南",
+      "desc_old": "针对 OpenClaw + Telegram 最常见的 409 Conflict 轮询冲突，提供可直接执行的排查命令与修复步骤，覆盖多实例冲突、Webhook 残留、systemd/容器重复进程与长期稳定方案。",
+      "desc_new": "OpenClaw + Telegram 出现 409 Conflict 报错怎么办？本文覆盖轮询冲突、Webhook 冲突和多实例场景，给出可执行的排查命令和修复步骤。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-telegram-409-conflict-getupdates-fix-2026.md.bak.2026-11-05T13:43:12.000030"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-telegram-409-conflict-getupdates-fix-2026.md",
+      "lang": "en",
+      "title_old": "Telegram Bot API 409 Conflict: Fix 'terminated by other getUpdates request' (2026)",
+      "title_new": "Fix OpenClaw Telegram 409 Conflict: Complete Troubleshooting Guide",
+      "desc_old": "Fix Telegram Bot API error 409: terminated by another getUpdates request. Find duplicate polling processes across OpenClaw, Python, Node.js, systemd, Docker, and VPS deployments.",
+      "desc_new": "How to resolve the Telegram 409 Conflict error in OpenClaw. Step-by-step fix for getUpdates polling conflicts, webhook conflicts, and multi-instance issues.",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-telegram-409-conflict-getupdates-fix-2026.md.bak.2026-11-05T13:43:12.000927"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/deerflow-2-superagent-harness-deep-dive-2026.md",
+      "lang": "zh",
+      "title_old": "DeerFlow 2.0 深度解读：从 Deep Research 到 SuperAgent Harness",
+      "title_new": "Deerflow 2 SuperAgent Harness 深度解析：架构和使用场景",
+      "desc_old": "解析 DeerFlow 2.0 重写后的 Sub-agents、Sandbox、Memory、Skills、部署规格和长任务 Agent 架构。",
+      "desc_new": "Deerflow 2 的 SuperAgent harness 到底做了什么？解析架构、能力边界，以及和 OpenClaw 等框架的对比。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/deerflow-2-superagent-harness-deep-dive-2026.md.bak.2026-11-05T13:43:12.001076"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-daily-2026-04-24.md",
+      "lang": "zh",
+      "title_old": "AI / 科技日报（2026-04-24）",
+      "title_new": "AI 日报 2026-04-24: NVIDIA、Adobe、Anthropic 同日升温",
+      "desc_old": "NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。",
+      "desc_new": "NVIDIA、Adobe、Anthropic 与全球监管同日升温。2026-04-24 AI 简报。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-daily-2026-04-24.md.bak.2026-11-05T13:43:12.001209"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/best-ai-models-for-openclaw.md",
+      "lang": "en",
+      "title_old": "Best AI Models for OpenClaw in 2026: Complete Ranking & Guide",
+      "title_new": "Best AI Models for OpenClaw in 2026: Practical Comparison",
+      "desc_old": "Which AI model should you use with OpenClaw? We rank Claude Opus 4.6, GPT-5.3 Codex, Gemini 3, MiniMax M2.1, and more for cost, speed, and quality.",
+      "desc_new": "Compare GPT, Claude, Gemini, and local models for OpenClaw. Covers cost, speed, reasoning quality, and which model fits each task.",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/best-ai-models-for-openclaw.md.bak.2026-11-05T13:43:12.002001"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-gateway-start-failed-fix-checklist-2026.md",
+      "lang": "zh",
+      "title_old": "OpenClaw Gateway 启动失败怎么修？2026 可执行排查清单（mode=local / EADDRINUSE / auth）",
+      "title_new": "OpenClaw Gateway 启动失败？2026 可执行排查清单",
+      "desc_old": "针对 OpenClaw Gateway 启动失败的高频报错，提供可直接执行的排查命令与修复步骤，覆盖 gateway.mode、端口冲突、bind/auth、安全配置与 systemd 服务异常。",
+      "desc_new": "Gateway 启动失败？覆盖 mode=local、端口冲突、bind/auth 报错，逐条排查，快速定位和修复。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-gateway-start-failed-fix-checklist-2026.md.bak.2026-11-05T13:43:12.002628"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-install-first-run-error-troubleshooting.md",
+      "lang": "en",
+      "title_old": "OpenClaw Install, Gateway Timeout & First-Run Errors (2026)",
+      "title_new": "OpenClaw First Run Error: Quick Fix Guide",
+      "desc_old": "Fix OpenClaw install and gateway timeout errors on Tencent Cloud, VPS, Ubuntu, Docker, and local machines. Covers Node.js, npm, port 18789, SSH tunnels, systemd, and provider timeouts.",
+      "desc_new": "OpenClaw won't start on first run? Fix common installation errors including permission denied, missing dependencies, and config issues.",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-install-first-run-error-troubleshooting.md.bak.2026-11-05T13:43:12.002823"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-gateway-start-failed-fix-checklist-2026.md",
+      "lang": "en",
+      "title_old": "OpenClaw Gateway Start Failed? 2026 Fix Checklist (mode=local, EADDRINUSE, auth bind)",
+      "title_new": "OpenClaw Gateway Start Failed: 2026 Troubleshooting Checklist",
+      "desc_old": "A practical, command-first troubleshooting checklist for OpenClaw Gateway startup failures, covering gateway.mode, port conflicts, bind/auth safety, and systemd crash loops.",
+      "desc_new": "OpenClaw Gateway won't start? Fix EADDRINUSE, mode=local, auth errors, and binding issues with this step-by-step checklist.",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-gateway-start-failed-fix-checklist-2026.md.bak.2026-11-05T13:43:12.003027"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/best-ai-models-for-openclaw.md",
+      "lang": "zh",
+      "title_old": "2026 年 OpenClaw 最佳 AI 模型推荐：完整排名与指南",
+      "title_new": "2026 OpenClaw 最佳 AI 模型选择：GPT vs Claude vs Gemini vs 本地模型",
+      "desc_old": "OpenClaw 该配哪个 AI 模型？我们从成本、速度和质量三个维度，实测排名 Claude Opus 4.6、GPT-5.3 Codex、Gemini 3、MiniMax M2.1 等主流模型。",
+      "desc_new": "GPT-6、Claude、Gemini、本地模型怎么选？按任务、成本、速度和推理质量做实用对比，帮你选对模型。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/best-ai-models-for-openclaw.md.bak.2026-11-05T13:43:12.003171"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-daily-2026-04-24.md",
+      "lang": "en",
+      "title_old": "AI & Tech Daily Brief (2026-04-24)",
+      "title_new": "AI Daily: NVIDIA, Adobe, Anthropic, and Global Regulation Heat Up",
+      "desc_old": "2026-04-24 AI daily: GPT-5.5 Codex enterprise rollout at NVIDIA, rising US-China AI IP friction, UN digital governance focus, Adobe CX Enterprise Coworker launch, and Anthropic Claude Design moving AI into visual production workflows.",
+      "desc_new": "NVIDIA, Adobe, Anthropic, and regulation all heated up on April 24, 2026. Key updates in one briefing.",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-daily-2026-04-24.md.bak.2026-11-05T13:43:12.003287"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/deerflow-2-superagent-harness-deep-dive-2026.md",
+      "lang": "en",
+      "title_old": "DeerFlow 2.0: From Deep Research Tool to SuperAgent Harness — What Changed and Why It Matters",
+      "title_new": "Deerflow 2 SuperAgent Harness Deep Dive: Architecture and Use Cases",
+      "desc_old": "A technical deep dive into DeerFlow 2.0's rewrite, agent harness architecture, skills, memory, sandboxes, and deployment model.",
+      "desc_new": "Deep dive into Deerflow 2's SuperAgent harness. How it works, what it can do, and when to use it vs OpenClaw or other frameworks.",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/deerflow-2-superagent-harness-deep-dive-2026.md.bak.2026-11-05T13:43:12.003418"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-2026-3-13-docker-timezone-openclaw-tz.md",
+      "lang": "en",
+      "title_old": "Fix OpenClaw Docker timezone drift with OPENCLAW_TZ (2026.3.13+)",
+      "title_new": "OpenClaw Docker Timezone Fix: Container Clock Won't Sync",
+      "desc_old": "OpenClaw 2026.3.13 added OPENCLAW_TZ so docker-setup can pin gateway/CLI containers to an explicit IANA timezone. Here’s why it matters for cron, logs, and reliability—and how to verify it.",
+      "desc_new": "Fix timezone issues when running OpenClaw in Docker. How to set TZ environment variable and ensure correct local time in logs.",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-2026-3-13-docker-timezone-openclaw-tz.md.bak.2026-11-05T13:43:12.003585"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/agentic-engineering-tools-comparison.md",
+      "lang": "zh",
+      "title_old": "2026 智能体工程工具链对比：Cursor vs Claude Code vs Copilot",
+      "title_new": "2026 智能体工程工具对比：OpenClaw vs Cursor vs Claude Code",
+      "desc_old": "全面对比 2026 年主流 AI 编程工具：IDE 集成类（Cursor、Windsurf、Copilot）与 CLI 智能体类（Claude Code、Codex、Aider、Goose），覆盖功能、定价、适用场景，帮你选出最佳工具组合。",
+      "desc_new": "OpenClaw、Cursor、Claude Code 怎么选？按任务自动化程度、代码质量和工作流集成做横向对比。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/agentic-engineering-tools-comparison.md.bak.2026-11-05T13:43:12.004392"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-install-first-run-error-troubleshooting.md",
+      "lang": "zh",
+      "title_old": "OpenClaw 安装与首次启动报错排查完全指南（2026）",
+      "title_new": "OpenClaw 首次运行报错？快速修复指南",
+      "desc_old": "解决 OpenClaw 安装和首次运行的所有常见错误：Node.js 版本不兼容、npm 安装失败、配置校验错误、API 密钥连接问题、systemd 服务异常、端口冲突。每个问题附完整排查命令。",
+      "desc_new": "首次安装 OpenClaw 就报错？覆盖权限 denied、依赖缺失、配置错误等常见问题，一步步修复。",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-install-first-run-error-troubleshooting.md.bak.2026-11-05T13:43:12.004616"
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/agents-md-team-guide.md",
+      "lang": "en",
+      "title_old": "Codex, Claude Code and Cursor: Instruction Files, Rules, Skills and Verification",
+      "title_new": "Agent .md Team Guide: Multi-Agent Workflow Best Practices",
+      "desc_old": "Share project conventions across Codex, Claude Code and Cursor while checking each tool’s loading rules, skill permissions and CI boundaries separately.",
+      "desc_new": "How to use .md files as team-wide agent configuration guides. Covers shared rules, permission boundaries, and collaboration patterns.",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/agents-md-team-guide.md.bak.2026-11-05T13:43:12.005251"
+    }
+  ]
+}

@@ -1,11 +1,14 @@
 ---
-title: "OpenClaw Telegram 报错 409 Conflict（terminated by other getUpdates request）怎么修？2026 一次性排查"
-description: "针对 OpenClaw + Telegram 最常见的 409 Conflict 轮询冲突，提供可直接执行的排查命令与修复步骤，覆盖多实例冲突、Webhook 残留、systemd/容器重复进程与长期稳定方案。"
+
+title: "OpenClaw Telegram 409 报错 409 Conflict：完整排查和修复指南"
+description: "OpenClaw + Telegram 出现 409 Conflict 报错怎么办？本文覆盖轮询冲突、Webhook 冲突和多实例场景，给出可执行的排查命令和修复步骤。"
 pubDate: 2026-02-28
 tags: ["openclaw", "telegram", "409 conflict", "getupdates", "troubleshooting"]
 category: "guide"
 lang: "zh"
+
 ---
+
 
 如果你的日志里出现下面这句，基本可以确认是同一个问题：
 

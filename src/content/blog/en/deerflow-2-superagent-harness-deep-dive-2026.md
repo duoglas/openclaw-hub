@@ -1,11 +1,14 @@
 ---
-title: "DeerFlow 2.0: From Deep Research Tool to SuperAgent Harness — What Changed and Why It Matters"
-description: "A technical deep dive into DeerFlow 2.0's rewrite, agent harness architecture, skills, memory, sandboxes, and deployment model."
+
+title: "Deerflow 2 SuperAgent Harness Deep Dive: Architecture and Use Cases"
+description: "Deep dive into Deerflow 2's SuperAgent harness. How it works, what it can do, and when to use it vs OpenClaw or other frameworks."
 pubDate: 2026-06-09
 tags: ["deerflow", "agent-harness", "deep-research", "bytedance", "multi-agent"]
 category: "analysis"
 lang: "en"
+
 ---
+
 
 DeerFlow 2.0 is not a normal major-version bump. ByteDance's project has been rebuilt from the ground up, and the new README is explicit about the discontinuity: DeerFlow 2.0 shares no code with v1. The original 1.x line remains available as the Deep Research framework on the `main-1.x` branch, but active development has moved to a different product category: an open-source **super agent harness**.
 

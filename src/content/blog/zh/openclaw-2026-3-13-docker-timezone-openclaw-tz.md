@@ -1,11 +1,14 @@
 ---
-title: "用 OPENCLAW_TZ 解决 OpenClaw Docker 部署的时区偏移（2026.3.13+）"
-description: "OpenClaw 2026.3.13 在 docker-setup.sh 中加入 OPENCLAW_TZ，可显式指定 IANA 时区，解决容器部署下 Cron/日志/提醒时间线对不齐的问题，并给出验证方法。"
+
+title: "OpenClaw Docker 时区修复：容器时钟不对齐"
+description: "Docker 里跑 OpenClaw 时区不对？教你设置 TZ 环境变量，让容器日志显示正确本地时间。"
 pubDate: 2026-03-17
 tags: ["openclaw", "2026.3.13", "docker", "timezone", "cron", "部署"]
 category: "guide"
 lang: "zh"
+
 ---
+
 
 “时区问题”是最难排的那类线上问题：程序没崩，但你对系统的信任开始动摇。
 

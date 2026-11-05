@@ -1,11 +1,14 @@
 ---
-title: "OpenClaw Gateway 启动失败怎么修？2026 可执行排查清单（mode=local / EADDRINUSE / auth）"
-description: "针对 OpenClaw Gateway 启动失败的高频报错，提供可直接执行的排查命令与修复步骤，覆盖 gateway.mode、端口冲突、bind/auth、安全配置与 systemd 服务异常。"
+
+title: "OpenClaw Gateway 启动失败？2026 可执行排查清单"
+description: "Gateway 启动失败？覆盖 mode=local、端口冲突、bind/auth 报错，逐条排查，快速定位和修复。"
 pubDate: 2026-02-26
 tags: ["openclaw", "gateway", "troubleshooting", "deployment", "systemd"]
 category: "guide"
 lang: "zh"
+
 ---
+
 
 如果你看到以下报错之一，这篇就是给你的：
 

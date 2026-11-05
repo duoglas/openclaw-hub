@@ -1,11 +1,14 @@
 ---
-title: "OpenClaw Gateway Start Failed? 2026 Fix Checklist (mode=local, EADDRINUSE, auth bind)"
-description: "A practical, command-first troubleshooting checklist for OpenClaw Gateway startup failures, covering gateway.mode, port conflicts, bind/auth safety, and systemd crash loops."
+
+title: "OpenClaw Gateway Start Failed: 2026 Troubleshooting Checklist"
+description: "OpenClaw Gateway won't start? Fix EADDRINUSE, mode=local, auth errors, and binding issues with this step-by-step checklist."
 pubDate: 2026-02-26
 tags: ["openclaw", "gateway", "troubleshooting", "deployment", "systemd"]
 category: "guide"
 lang: "en"
+
 ---
+
 
 If you're seeing one of these errors, this guide is for you:
 

@@ -1,6 +1,7 @@
 ---
-title: "OpenClaw Install, Gateway Timeout & First-Run Errors (2026)"
-description: "Fix OpenClaw install and gateway timeout errors on Tencent Cloud, VPS, Ubuntu, Docker, and local machines. Covers Node.js, npm, port 18789, SSH tunnels, systemd, and provider timeouts."
+
+title: "OpenClaw First Run Error: Quick Fix Guide"
+description: "OpenClaw won't start on first run? Fix common installation errors including permission denied, missing dependencies, and config issues."
 pubDate: 2026-02-17
 updatedDate: 2026-07-27
 tags: ["openclaw", "install", "gateway timeout", "tencent cloud", "vps", "troubleshooting", "node", "npm", "systemd", "guide"]
@@ -15,7 +16,9 @@ faq:
     answer: "Run openclaw gateway status, then check the listener with ss -ltnp and request http://127.0.0.1:18789 locally. If those work, the Gateway is healthy and the remaining problem is remote access or authentication."
   - question: "Is an AI provider timeout the same as a Gateway timeout?"
     answer: "No. A Gateway timeout affects the local OpenClaw control connection, normally port 18789. A provider timeout occurs when the VPS cannot reach an external model API. Test the Gateway locally first, then test the provider endpoint separately."
+
 ---
+
 
 You followed the install guide, ran the commands, and... something broke. This guide covers every common error from `npm install` through your first successful gateway start — with exact commands to diagnose and fix each one.
 

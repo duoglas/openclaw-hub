@@ -1,6 +1,7 @@
 ---
-title: "Codex、Claude Code 与 Cursor 团队指南：指令文件、Rules 和 Skills 的职责与核验"
-description: "团队同时使用 Codex、Claude Code、Cursor 时，如何统一指令文件与权限？本文核对三种客户端的加载顺序、Skills 预授权与 CI 检查，附迁移清单。"
+
+title: "Agent .md 团队指南：多 Agent 协作的最佳实践"
+description: "如何在团队中用 .md 文件配置 Agent 规则？覆盖共享规则、权限边界和协作模式，让多个 AI Agent 高效协作。"
 pubDate: 2026-02-11
 tags: ["agentic-engineering", "guide", "agents-md", "claude-md", "cursorrules", "team-workflow"]
 category: "tutorial"
@@ -10,7 +11,9 @@ reviewedAt: "2026-10-29"
 editorialVersion: 2
 pillar: "agents"
 faq: []
+
 ---
+
 
 > 本次修订：删除指令文件可保证行为一致、强制质量与安全、所有工具自动支持及节省几百小时的承诺。保留简短明确、版本控制和避免重复维护的建议；按当前文档重写三种客户端的加载机制，补充显式导入与 Skills 权限边界，并将 Cursor 新项目建议改为 AGENTS.md 或 .cursor/rules/*.mdc。此次修订依据文档，没有重新实测客户端。
 

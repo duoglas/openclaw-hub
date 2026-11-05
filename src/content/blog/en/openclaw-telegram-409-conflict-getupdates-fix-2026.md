@@ -1,6 +1,7 @@
 ---
-title: "Telegram Bot API 409 Conflict: Fix 'terminated by other getUpdates request' (2026)"
-description: "Fix Telegram Bot API error 409: terminated by another getUpdates request. Find duplicate polling processes across OpenClaw, Python, Node.js, systemd, Docker, and VPS deployments."
+
+title: "Fix OpenClaw Telegram 409 Conflict: Complete Troubleshooting Guide"
+description: "How to resolve the Telegram 409 Conflict error in OpenClaw. Step-by-step fix for getUpdates polling conflicts, webhook conflicts, and multi-instance issues."
 pubDate: 2026-02-28
 updatedDate: 2026-07-27
 tags: ["telegram bot api", "openclaw", "telegram", "409 conflict", "getupdates", "troubleshooting"]
@@ -17,7 +18,9 @@ faq:
     answer: "Stop every OpenClaw instance using the token, including local, VPS, systemd, Docker, staging, and old test processes. Then start one gateway and confirm the 409 message no longer appears in the logs."
   - question: "Will rotating the Telegram bot token fix a 409 conflict?"
     answer: "It can disconnect an unknown old poller, but it should be a last resort. First locate duplicate runtimes. If you rotate the token, update the one intended deployment and revoke or stop every old configuration."
+
 ---
+
 
 If your Telegram bot logs show this exact error, you have a polling ownership conflict:
 

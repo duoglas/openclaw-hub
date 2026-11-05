@@ -1,11 +1,14 @@
 ---
-title: "OpenClaw 安装与首次启动报错排查完全指南（2026）"
-description: "解决 OpenClaw 安装和首次运行的所有常见错误：Node.js 版本不兼容、npm 安装失败、配置校验错误、API 密钥连接问题、systemd 服务异常、端口冲突。每个问题附完整排查命令。"
+
+title: "OpenClaw 首次运行报错？快速修复指南"
+description: "首次安装 OpenClaw 就报错？覆盖权限 denied、依赖缺失、配置错误等常见问题，一步步修复。"
 pubDate: 2026-02-17
 tags: ["openclaw", "安装", "排查", "node", "npm", "systemd", "教程"]
 category: "guide"
 lang: "zh"
+
 ---
+
 
 照着教程装完了，一运行就报错？这篇指南覆盖从 `npm install` 到 gateway 首次成功启动的**所有常见报错**，每个问题都附带可直接执行的排查命令。
 

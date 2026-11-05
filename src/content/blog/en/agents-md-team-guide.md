@@ -1,6 +1,7 @@
 ---
-title: "Codex, Claude Code and Cursor: Instruction Files, Rules, Skills and Verification"
-description: "Share project conventions across Codex, Claude Code and Cursor while checking each tool’s loading rules, skill permissions and CI boundaries separately."
+
+title: "Agent .md Team Guide: Multi-Agent Workflow Best Practices"
+description: "How to use .md files as team-wide agent configuration guides. Covers shared rules, permission boundaries, and collaboration patterns."
 pubDate: 2026-02-11
 updatedDate: "2026-10-29"
 tags: ["cursor", "cursor ide", "agentic-engineering", "guide", "agents-md", "claude-md", "cursor-rules", "team-workflow"]
@@ -10,7 +11,9 @@ faq: []
 reviewedAt: "2026-10-29"
 editorialVersion: 2
 pillar: "agents"
+
 ---
+
 
 > Revision: Removed guarantees of consistent behavior, enforced quality and safety, universal automatic support, and hundreds of hours saved. Retained concise instructions, version control and avoiding duplicate sources. Rewrote loading behavior for each client, clarified explicit imports and skill permissions, and updated new-project Cursor guidance to AGENTS.md or .cursor/rules/*.mdc. This is a documentation-based revision, not a client retest.
 

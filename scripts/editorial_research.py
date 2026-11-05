@@ -321,7 +321,19 @@ def collect_daily(e, root, state, date, run, news=None):
             quotes=[q['quote'] for q in row['evidence_quotes'] if q.get('url')==url]
             # Clean zero-width chars before validation
             clean_quotes = [q.replace("\u2060", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "") for q in quotes]
-            if not clean_quotes or any(not isinstance(q,str) or len(q)<12 or q not in text for q in clean_quotes):raise e.Blocked('news quote not found in original')
+            if not clean_quotes:
+                raise e.Blocked('news quote not found in original')
+            failed = [q for q in clean_quotes if not isinstance(q,str) or len(q)<12 or q not in text]
+            if failed:
+                print(f"DEBUG editorial_research: failed quotes={failed[:2]}")
+                print(f"DEBUG editorial_research: text len={len(text)}")
+                for q in failed[:2]:
+                    print(f"DEBUG: checking {repr(q[:60])}")
+                    print(f"DEBUG: in text? {q in text}")
+                    idx = text.find(q[:50])
+                    if idx >= 0:
+                        print(f"DEBUG: found at idx {idx}")
+                raise e.Blocked('news quote not found in original')
             item_sources.append({k:source[k] for k in ('url','sha256','read_at','source_date')} | {'original_file':filename})
         if any(q.get('url') not in row['source_urls'] for q in row['evidence_quotes']):raise e.Blocked('news quote points outside selected sources')
         items.append({k:row[k] for k in ('event_key','title','event_date','facts','evidence_quotes')} | {'sources':item_sources})

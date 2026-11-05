@@ -235,6 +235,8 @@ def verified_items(edition, cutoff, max_age):
                     normalize = lambda value: ''.join(c for c in value if unicodedata.category(c) != 'Cf')
                     if normalize(quoted) and normalize(quoted) in normalize(original):
                         continue
+                print(f"DEBUG: quote failed - quoted={repr(clean_quoted[:60])}")
+                print(f"DEBUG: original len={len(original)}, has quoted={clean_quoted in original}")
                 raise Blocked('quote does not occur in verified original')
             items.append({'event_key': item['event_key'], 'title': item['title'],
                           'event_date': item['event_date'], 'facts': item['facts'],

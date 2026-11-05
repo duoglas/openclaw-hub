@@ -1,0 +1,1123 @@
+{
+  "date": "2026-11-05",
+  "generated_at": "2026-11-05T13:37:20.511328+08:00",
+  "health_score": 100,
+  "summary": {
+    "meta_issues": 130,
+    "meta_analyzed": 470,
+    "high_imp_zero_click": 12,
+    "high_imp_low_ctr": 3,
+    "gsc_impressions": 2830,
+    "gsc_clicks": 17,
+    "gsc_ctr": 0.6,
+    "gsc_position": 10.7,
+    "imp_growth_pct": 55.2,
+    "click_growth_pct": 132.6
+  },
+  "issues": [
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-02-28: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-24: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-13: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-12: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-28: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-02: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-02-26: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-02: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-18: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-25: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-03: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-05: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-17: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-18: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-16: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-27: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-20: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-03: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-30: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-07: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-docker-allowedorigins-fix-2026: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-06: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-29: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-12: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-24: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-06: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-20: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-03: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-12: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-13: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-19: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-05: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-03: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-04: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-19: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-vps-deployment-complete-guide: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-10: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-21: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-29: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-30: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-28: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-telegram-409-conflict-getupdates-fix-2026: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-03: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-19: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-21: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-10: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-17: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-22: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-06: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-26: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-11: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-04: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-30: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-23: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-20: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-29: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-04: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-19: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-16: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-27: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-17: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-28: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-21: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-31: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-24: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-23: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-15: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-06: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-02: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-27: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-28: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-05: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-12: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-19: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "agentic-engineering-team-adoption: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-01: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-29: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-01: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-22: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-12: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-22: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-07: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-23: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-28: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-gateway-start-failed-fix-checklist-2026: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-14: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-15: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-15: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-22: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-09: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-15: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-10: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-02: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-14: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-25: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-17: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "telegram-ai-automation-for-business-playbook: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-08: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-27: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-20: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-16: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-04: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-11: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-01: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-05-16: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-05: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-20: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-29: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-08: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-10: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-09: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-06-04: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-13: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-11: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-21: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-13: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-31: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-05: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-07-11: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-21: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-25: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-24: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-14: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-03-14: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-08-12: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-26: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-daily-2026-04-15: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-skill-not-working-allowlist-fix-2026: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "ai-agent-desktop-gateway-trend-2026: meta score 80"
+    },
+    {
+      "severity": "medium",
+      "detail": "openclaw-vs-hermes-vs-deerflow-2026: meta score 80"
+    },
+    {
+      "severity": "high",
+      "detail": "12 个高展示零点击页面"
+    },
+    {
+      "severity": "medium",
+      "detail": "CTR 0.6% - 远低于基准"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "fix-meta-Improve:-title-too-short-(<-30",
+      "title": "批量优化 meta: Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)",
+      "type": "meta_fix",
+      "priority": "P0",
+      "requires_approval": false,
+      "effort": "0.5h",
+      "expected_impact": "预计CTR提升2-5x",
+      "action": "rewrite_meta",
+      "action_params": {
+        "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)",
+        "files": [
+          "openclaw-daily-2026-02-28",
+          "openclaw-daily-2026-04-24",
+          "openclaw-daily-2026-06-13",
+          "openclaw-daily-2026-03-12",
+          "openclaw-daily-2026-05-28",
+          "openclaw-daily-2026-08-02",
+          "openclaw-daily-2026-02-26",
+          "openclaw-daily-2026-06-02",
+          "openclaw-daily-2026-03-18",
+          "openclaw-daily-2026-07-25",
+          "openclaw-daily-2026-07-03",
+          "openclaw-daily-2026-08-05",
+          "openclaw-daily-2026-07-17",
+          "openclaw-daily-2026-07-18",
+          "openclaw-daily-2026-06-16",
+          "openclaw-daily-2026-05-27",
+          "openclaw-daily-2026-05-20",
+          "openclaw-daily-2026-06-03",
+          "openclaw-daily-2026-03-30",
+          "openclaw-daily-2026-08-07"
+        ],
+        "lang": "28"
+      },
+      "details": {
+        "files": [
+          "openclaw-daily-2026-02-28",
+          "openclaw-daily-2026-04-24",
+          "openclaw-daily-2026-06-13",
+          "openclaw-daily-2026-03-12",
+          "openclaw-daily-2026-05-28",
+          "openclaw-daily-2026-08-02",
+          "openclaw-daily-2026-02-26",
+          "openclaw-daily-2026-06-02",
+          "openclaw-daily-2026-03-18",
+          "openclaw-daily-2026-07-25"
+        ],
+        "count": 121,
+        "samples": [
+          {
+            "file": "openclaw-daily-2026-02-28",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-02-28）\"",
+            "description": "\"美国政府采购风波、OpenAI 融资传闻、加拿大安全会谈、Copilot Tasks 与视频模型竞争，构成了 2026-02-28 这期 AI/科技日报的重点。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-04-24",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-04-24）\"",
+            "description": "\"NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-06-13",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-06-13）\"",
+            "description": "\"OpenAI Academy 新增 AI Foundations、Applied AI Foundations、Agents and Workflows 三门课程，面向企业员工训练提示、流程化工作、智能体协作。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fix-meta-Improve:-title-too-long-(>-70-",
+      "title": "批量优化 meta: Improve: title too long (> 70 chars); fix article but 'fix' not in title; description too short (< 120 chars)",
+      "type": "meta_fix",
+      "priority": "P0",
+      "requires_approval": false,
+      "effort": "0.5h",
+      "expected_impact": "预计CTR提升2-5x",
+      "action": "rewrite_meta",
+      "action_params": {
+        "suggestion": "Improve: title too long (> 70 chars); fix article but 'fix' not in title; description too short (< 120 chars)",
+        "files": [
+          "openclaw-docker-allowedorigins-fix-2026",
+          "openclaw-telegram-409-conflict-getupdates-fix-2026",
+          "openclaw-gateway-start-failed-fix-checklist-2026"
+        ],
+        "lang": "2026"
+      },
+      "details": {
+        "files": [
+          "openclaw-docker-allowedorigins-fix-2026",
+          "openclaw-telegram-409-conflict-getupdates-fix-2026",
+          "openclaw-gateway-start-failed-fix-checklist-2026"
+        ],
+        "count": 3,
+        "samples": [
+          {
+            "file": "openclaw-daily-2026-02-28",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-02-28）\"",
+            "description": "\"美国政府采购风波、OpenAI 融资传闻、加拿大安全会谈、Copilot Tasks 与视频模型竞争，构成了 2026-02-28 这期 AI/科技日报的重点。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-04-24",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-04-24）\"",
+            "description": "\"NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-06-13",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-06-13）\"",
+            "description": "\"OpenAI Academy 新增 AI Foundations、Applied AI Foundations、Agents and Workflows 三门课程，面向企业员工训练提示、流程化工作、智能体协作。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fix-meta-Improve:-title-too-short-(<-30",
+      "title": "批量优化 meta: Improve: title too short (< 30 chars); description too short (< 120 chars)",
+      "type": "meta_fix",
+      "priority": "P0",
+      "requires_approval": false,
+      "effort": "0.5h",
+      "expected_impact": "预计CTR提升2-5x",
+      "action": "rewrite_meta",
+      "action_params": {
+        "suggestion": "Improve: title too short (< 30 chars); description too short (< 120 chars)",
+        "files": [
+          "openclaw-vps-deployment-complete-guide"
+        ],
+        "lang": "guide"
+      },
+      "details": {
+        "files": [
+          "openclaw-vps-deployment-complete-guide"
+        ],
+        "count": 1,
+        "samples": [
+          {
+            "file": "openclaw-daily-2026-02-28",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-02-28）\"",
+            "description": "\"美国政府采购风波、OpenAI 融资传闻、加拿大安全会谈、Copilot Tasks 与视频模型竞争，构成了 2026-02-28 这期 AI/科技日报的重点。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-04-24",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-04-24）\"",
+            "description": "\"NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-06-13",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-06-13）\"",
+            "description": "\"OpenAI Academy 新增 AI Foundations、Applied AI Foundations、Agents and Workflows 三门课程，面向企业员工训练提示、流程化工作、智能体协作。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fix-meta-Improve:-title-too-short-(<-30",
+      "title": "批量优化 meta: Improve: title too short (< 30 chars); no numbers (adds credibility); description too short (< 120 chars)",
+      "type": "meta_fix",
+      "priority": "P0",
+      "requires_approval": false,
+      "effort": "0.5h",
+      "expected_impact": "预计CTR提升2-5x",
+      "action": "rewrite_meta",
+      "action_params": {
+        "suggestion": "Improve: title too short (< 30 chars); no numbers (adds credibility); description too short (< 120 chars)",
+        "files": [
+          "agentic-engineering-team-adoption",
+          "telegram-ai-automation-for-business-playbook"
+        ],
+        "lang": "adoption"
+      },
+      "details": {
+        "files": [
+          "agentic-engineering-team-adoption",
+          "telegram-ai-automation-for-business-playbook"
+        ],
+        "count": 2,
+        "samples": [
+          {
+            "file": "openclaw-daily-2026-02-28",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-02-28）\"",
+            "description": "\"美国政府采购风波、OpenAI 融资传闻、加拿大安全会谈、Copilot Tasks 与视频模型竞争，构成了 2026-02-28 这期 AI/科技日报的重点。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-04-24",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-04-24）\"",
+            "description": "\"NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-06-13",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-06-13）\"",
+            "description": "\"OpenAI Academy 新增 AI Foundations、Applied AI Foundations、Agents and Workflows 三门课程，面向企业员工训练提示、流程化工作、智能体协作。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fix-meta-Improve:-title-too-long-(>-70-",
+      "title": "批量优化 meta: Improve: title too long (> 70 chars); description too short (< 120 chars)",
+      "type": "meta_fix",
+      "priority": "P0",
+      "requires_approval": false,
+      "effort": "0.5h",
+      "expected_impact": "预计CTR提升2-5x",
+      "action": "rewrite_meta",
+      "action_params": {
+        "suggestion": "Improve: title too long (> 70 chars); description too short (< 120 chars)",
+        "files": [
+          "openclaw-skill-not-working-allowlist-fix-2026",
+          "openclaw-vs-hermes-vs-deerflow-2026"
+        ],
+        "lang": "2026"
+      },
+      "details": {
+        "files": [
+          "openclaw-skill-not-working-allowlist-fix-2026",
+          "openclaw-vs-hermes-vs-deerflow-2026"
+        ],
+        "count": 2,
+        "samples": [
+          {
+            "file": "openclaw-daily-2026-02-28",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-02-28）\"",
+            "description": "\"美国政府采购风波、OpenAI 融资传闻、加拿大安全会谈、Copilot Tasks 与视频模型竞争，构成了 2026-02-28 这期 AI/科技日报的重点。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-04-24",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-04-24）\"",
+            "description": "\"NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-06-13",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-06-13）\"",
+            "description": "\"OpenAI Academy 新增 AI Foundations、Applied AI Foundations、Agents and Workflows 三门课程，面向企业员工训练提示、流程化工作、智能体协作。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fix-meta-Improve:-title-too-long-(>-70-",
+      "title": "批量优化 meta: Improve: title too long (> 70 chars); no numbers (adds credibility); description too short (< 120 chars)",
+      "type": "meta_fix",
+      "priority": "P0",
+      "requires_approval": false,
+      "effort": "0.5h",
+      "expected_impact": "预计CTR提升2-5x",
+      "action": "rewrite_meta",
+      "action_params": {
+        "suggestion": "Improve: title too long (> 70 chars); no numbers (adds credibility); description too short (< 120 chars)",
+        "files": [
+          "ai-agent-desktop-gateway-trend-2026"
+        ],
+        "lang": "2026"
+      },
+      "details": {
+        "files": [
+          "ai-agent-desktop-gateway-trend-2026"
+        ],
+        "count": 1,
+        "samples": [
+          {
+            "file": "openclaw-daily-2026-02-28",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-02-28）\"",
+            "description": "\"美国政府采购风波、OpenAI 融资传闻、加拿大安全会谈、Copilot Tasks 与视频模型竞争，构成了 2026-02-28 这期 AI/科技日报的重点。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-04-24",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-04-24）\"",
+            "description": "\"NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          },
+          {
+            "file": "openclaw-daily-2026-06-13",
+            "lang": "zh",
+            "title": "\"AI / 科技日报（2026-06-13）\"",
+            "description": "\"OpenAI Academy 新增 AI Foundations、Applied AI Foundations、Agents and Workflows 三门课程，面向企业员工训练提示、流程化工作、智能体协作。\"",
+            "meta_score": 80,
+            "tips": [
+              "title too short (< 30 chars)",
+              "daily post: consider event-driven title",
+              "description too short (< 120 chars)"
+            ],
+            "suggestion": "Improve: title too short (< 30 chars); daily post: consider event-driven title; description too short (< 120 chars)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "daily-titles-to-events",
+      "title": "日报标题改为事件驱动",
+      "type": "content_improvement",
+      "priority": "P1",
+      "requires_approval": true,
+      "effort": "1h",
+      "expected_impact": "日报CTR提升3-10x",
+      "action": "rewrite_daily_titles",
+      "action_params": {
+        "articles": [
+          "openclaw-daily-2026-02-28",
+          "openclaw-daily-2026-04-24",
+          "openclaw-daily-2026-02-22",
+          "openclaw-daily-2026-06-13",
+          "openclaw-daily-2026-03-12",
+          "openclaw-daily-2026-05-28",
+          "openclaw-daily-2026-05-18",
+          "openclaw-daily-2026-08-02",
+          "openclaw-daily-2026-02-26",
+          "openclaw-daily-2026-02-15",
+          "openclaw-daily-2026-06-14",
+          "openclaw-daily-2026-06-02",
+          "openclaw-daily-2026-03-18",
+          "openclaw-daily-2026-07-25",
+          "openclaw-daily-2026-02-16"
+        ],
+        "strategy": "extract key events from content"
+      },
+      "details": {
+        "count": 350,
+        "files": [
+          "openclaw-daily-2026-02-28",
+          "openclaw-daily-2026-04-24",
+          "openclaw-daily-2026-02-22",
+          "openclaw-daily-2026-06-13",
+          "openclaw-daily-2026-03-12"
+        ]
+      }
+    },
+    {
+      "id": "fix-top-ctr-pages",
+      "title": "修复高展示零点击页面标题",
+      "type": "title_rewrite",
+      "priority": "P0",
+      "requires_approval": false,
+      "effort": "0.5h",
+      "expected_impact": "挽回 4200 展示流失",
+      "action": "rewrite_titles",
+      "action_params": {
+        "pages": [
+          {
+            "url": "https://kuoo.uk/en/blog/openclaw-daily-2026-07-11/",
+            "imp": 1105,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/",
+            "imp": 686,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/agents-md-team-guide/",
+            "imp": 527,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/openclaw-gateway-start-failed-fix-checklist-2026/",
+            "imp": 474,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/agentic-engineering-tools-comparison/",
+            "imp": 278,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/openclaw-2026-3-13-docker-timezone-openclaw-tz/",
+            "imp": 269,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/en/",
+            "imp": 208,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/openclaw-install-first-run-error-troubleshooting/",
+            "imp": 178,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/deerflow-2-superagent-harness-deep-dive-2026/",
+            "imp": 129,
+            "click": 0
+          },
+          {
+            "url": "https://kuoo.uk/",
+            "imp": 121,
+            "click": 0
+          }
+        ]
+      },
+      "details": {
+        "high_zero": [
+          {
+            "url": "https://kuoo.uk/en/blog/openclaw-daily-2026-07-11/",
+            "impressions": 1105,
+            "clicks": 0,
+            "ctr": 0.0,
+            "flags": [
+              "high-imp-zero-click"
+            ]
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/",
+            "impressions": 686,
+            "clicks": 0,
+            "ctr": 0.0,
+            "flags": [
+              "high-imp-zero-click"
+            ]
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/agents-md-team-guide/",
+            "impressions": 527,
+            "clicks": 0,
+            "ctr": 0.0,
+            "flags": [
+              "high-imp-zero-click"
+            ]
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/openclaw-gateway-start-failed-fix-checklist-2026/",
+            "impressions": 474,
+            "clicks": 0,
+            "ctr": 0.0,
+            "flags": [
+              "high-imp-zero-click"
+            ]
+          },
+          {
+            "url": "https://kuoo.uk/en/blog/agentic-engineering-tools-comparison/",
+            "impressions": 278,
+            "clicks": 0,
+            "ctr": 0.0,
+            "flags": [
+              "high-imp-zero-click"
+            ]
+          }
+        ],
+        "total_lost_impressions": 4200
+      }
+    }
+  ]
+}

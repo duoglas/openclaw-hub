@@ -1,11 +1,14 @@
 ---
-title: "AI / 科技日报（2026-04-24）"
-description: "NVIDIA、Adobe、Anthropic 与全球监管议题同日升温，AI 进入主流程竞争。"
+
+title: "AI 日报 2026-04-24: NVIDIA、Adobe、Anthropic 同日升温"
+description: "NVIDIA、Adobe、Anthropic 与全球监管同日升温。2026-04-24 AI 简报。"
 pubDate: 2026-04-24
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"
+
 ---
+
 
 《AI、科技日报》  
 时间：2026-04-24 早报（北京时间）

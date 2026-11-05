@@ -1,0 +1,156 @@
+{
+  "date": "2026-11-05",
+  "collected_at": "2026-11-05T13:26:32.997738+08:00",
+  "summary": {
+    "pages_ok": 12,
+    "pages_total": 12,
+    "pages_errors": 0,
+    "avg_response_time_s": 1.36
+  },
+  "pages": [
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 6540,
+      "time": 1.205131,
+      "content_type": "text/html; charset=utf-8",
+      "name": "home",
+      "url": "https://kuoo.uk/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 39043,
+      "time": 1.577352,
+      "content_type": "text/html; charset=utf-8",
+      "name": "zh_home",
+      "url": "https://kuoo.uk/zh/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 38539,
+      "time": 0.896903,
+      "content_type": "text/html; charset=utf-8",
+      "name": "en_home",
+      "url": "https://kuoo.uk/en/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 142288,
+      "time": 2.457824,
+      "content_type": "text/html; charset=utf-8",
+      "name": "zh_daily",
+      "url": "https://kuoo.uk/zh/daily/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 142391,
+      "time": 1.521671,
+      "content_type": "text/html; charset=utf-8",
+      "name": "en_daily",
+      "url": "https://kuoo.uk/en/daily/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 65423,
+      "time": 1.272328,
+      "content_type": "text/html; charset=utf-8",
+      "name": "zh_blog",
+      "url": "https://kuoo.uk/zh/blog/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 65275,
+      "time": 1.102759,
+      "content_type": "text/html; charset=utf-8",
+      "name": "en_blog",
+      "url": "https://kuoo.uk/en/blog/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 11720,
+      "time": 2.838714,
+      "content_type": "text/html; charset=utf-8",
+      "name": "about",
+      "url": "https://kuoo.uk/en/about/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 11420,
+      "time": 1.107873,
+      "content_type": "text/html; charset=utf-8",
+      "name": "about_zh",
+      "url": "https://kuoo.uk/zh/about/"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 59,
+      "time": 0.932994,
+      "content_type": "text/plain; charset=utf-8",
+      "name": "ads_txt",
+      "url": "https://kuoo.uk/ads.txt"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 104,
+      "time": 0.611946,
+      "content_type": "text/plain; charset=utf-8",
+      "name": "robots",
+      "url": "https://kuoo.uk/robots.txt"
+    },
+    {
+      "status": "ok",
+      "code": 200,
+      "size": 196,
+      "time": 0.852292,
+      "content_type": "application/xml",
+      "name": "sitemap",
+      "url": "https://kuoo.uk/sitemap.xml"
+    }
+  ],
+  "sitemap": {
+    "sitemap-0.xml": {
+      "status": 200,
+      "pages": 797,
+      "size": 55658
+    },
+    "sitemap-1.xml": {
+      "status": 200,
+      "pages": 0,
+      "size": 6540
+    }
+  },
+  "articles": {
+    "zh": 235,
+    "en": 235,
+    "total": 470
+  },
+  "gsc": {
+    "file": "gsc-2026-11-04.json",
+    "date": "2026-11-04",
+    "impressions": 2830,
+    "clicks": 17,
+    "ctr": 0.006007067137809187,
+    "position": 10.711660777385159,
+    "top_pages_count": 50,
+    "top_queries_count": 50
+  },
+  "gsc_trend": {
+    "days": 14,
+    "h1_avg_imp": 1471,
+    "h2_avg_imp": 2282,
+    "imp_growth_pct": 55.2,
+    "h1_avg_click": 6,
+    "h2_avg_click": 14,
+    "click_growth_pct": 132.6
+  }
+}
