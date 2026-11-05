@@ -1,5 +1,6 @@
 ---
 
+
 title: "OpenClaw Docker 时区修复：容器时钟不对齐"
 description: "Docker 里跑 OpenClaw 时区不对？教你设置 TZ 环境变量，让容器日志显示正确本地时间。"
 pubDate: 2026-03-17
@@ -7,7 +8,9 @@ tags: ["openclaw", "2026.3.13", "docker", "timezone", "cron", "部署"]
 category: "guide"
 lang: "zh"
 
+
 ---
+
 
 
 “时区问题”是最难排的那类线上问题：程序没崩，但你对系统的信任开始动摇。
@@ -108,7 +111,25 @@ docker run -e OPENCLAW_TZ=Asia/Shanghai ...
 
 ---
 
-### 站内推荐内链（internal）
+#
+
+
+## 推荐部署方案
+
+| 提供商 | 价格 | 新用户福利 | 适合场景 |
+|---|---|---|---|
+| [Vultr](https://www.vultr.com/?ref=YOUR_ID) | 2.5美元/月起 | 5美元体验金 | 海外部署、按量计费 |
+| [DigitalOcean](https://m.do.co/c/YOUR_ID) | 4美元/月起 | 200美元免费额度 | 稳定可靠、文档齐全 |
+| [腾讯云](https://curl.qcloud.com/YOUR_ID) | 99元/年起 | 新用户1折 | 国内部署、中文支持 |
+
+**选择建议：**
+- **海外用户** → Vultr 或 DigitalOcean
+- **国内用户** → 腾讯云或阿里云
+- **预算优先** → Vultr $2.50/月起
+- **稳定性优先** → DigitalOcean 99.9% SLA
+
+---
+## 站内推荐内链（internal）
 
 建议从这些页面链接到本文：
 
