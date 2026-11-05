@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-05",
+  "changes": [
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-2026-3-13-docker-timezone-openclaw-tz.md",
+      "lang": "zh",
+      "position": "after troubleshooting",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-2026-3-13-docker-timezone-openclaw-tz.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-gateway-start-failed-fix-checklist-2026.md",
+      "lang": "en",
+      "position": "before conclusion",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-gateway-start-failed-fix-checklist-2026.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-install-first-run-error-troubleshooting.md",
+      "lang": "en",
+      "position": "before conclusion",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-install-first-run-error-troubleshooting.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-install-first-run-error-troubleshooting.md",
+      "lang": "zh",
+      "position": "before conclusion",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-install-first-run-error-troubleshooting.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-2026-3-13-docker-timezone-openclaw-tz.md",
+      "lang": "en",
+      "position": "after troubleshooting",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-2026-3-13-docker-timezone-openclaw-tz.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-vps-deployment-complete-guide.md",
+      "lang": "en",
+      "position": "after overview",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-vps-deployment-complete-guide.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-telegram-409-conflict-getupdates-fix-2026.md",
+      "lang": "en",
+      "position": "before faq",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/openclaw-telegram-409-conflict-getupdates-fix-2026.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-vps-deployment-complete-guide.md",
+      "lang": "zh",
+      "position": "after overview",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-vps-deployment-complete-guide.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-telegram-409-conflict-getupdates-fix-2026.md",
+      "lang": "zh",
+      "position": "before faq",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-telegram-409-conflict-getupdates-fix-2026.md.bak.vps.20261105155113",
+      "error": null
+    },
+    {
+      "file": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-gateway-start-failed-fix-checklist-2026.md",
+      "lang": "zh",
+      "position": "before conclusion",
+      "backup": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/openclaw-gateway-start-failed-fix-checklist-2026.md.bak.vps.20261105155113",
+      "error": null
+    }
+  ]
+}

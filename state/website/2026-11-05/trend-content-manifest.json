@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-05",
+  "articles": [
+    {
+      "filename": "trend-框架追新-+-安全分析-deepseek-harness-dsh-security--20261105",
+      "lang": "zh",
+      "title": "DeepSeek Harness (DSH) Security Deep Dive: Why Preview Isn't Production-Ready",
+      "path": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/trend-框架追新-+-安全分析-deepseek-harness-dsh-security--20261105.md",
+      "topic": "框架追新 + 安全分析"
+    },
+    {
+      "filename": "trend-框架追新-+-安全分析-deepseek-harness-dsh-安全审计深度解析为-20261105",
+      "lang": "en",
+      "title": "DeepSeek Harness (DSH) 安全审计深度解析：为什么预览版不能上生产",
+      "path": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/trend-框架追新-+-安全分析-deepseek-harness-dsh-安全审计深度解析为-20261105.md",
+      "topic": "框架追新 + 安全分析"
+    },
+    {
+      "filename": "trend-本地模型-+-对比-qwen38-27b-local-deployment-gu-20261105",
+      "lang": "zh",
+      "title": "Qwen3.8-27B Local Deployment Guide: Quantization, Inference & GPT-6 Benchmark",
+      "path": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/trend-本地模型-+-对比-qwen38-27b-local-deployment-gu-20261105.md",
+      "topic": "本地模型 + 对比"
+    },
+    {
+      "filename": "trend-本地模型-+-对比-qwen38-27b-本地部署全指南量化推理与-gpt-6--20261105",
+      "lang": "en",
+      "title": "Qwen3.8-27B 本地部署全指南：量化、推理、与 GPT-6 对比实测",
+      "path": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/trend-本地模型-+-对比-qwen38-27b-本地部署全指南量化推理与-gpt-6--20261105.md",
+      "topic": "本地模型 + 对比"
+    },
+    {
+      "filename": "trend-跨文化对比-international-agent-frameworks-20261105",
+      "lang": "zh",
+      "title": "International Agent Frameworks Compared: OpenClaw vs LangChain vs AutoGen",
+      "path": "/home/duoglas/projects/openclaw-hub/src/content/blog/zh/trend-跨文化对比-international-agent-frameworks-20261105.md",
+      "topic": "跨文化对比"
+    },
+    {
+      "filename": "trend-跨文化对比-国内-agent-框架对比openclaw-vs-langg-20261105",
+      "lang": "en",
+      "title": "国内 Agent 框架对比：OpenClaw vs LangGPT vs AutoDL-Agent",
+      "path": "/home/duoglas/projects/openclaw-hub/src/content/blog/en/trend-跨文化对比-国内-agent-框架对比openclaw-vs-langg-20261105.md",
+      "topic": "跨文化对比"
+    }
+  ]
+}
