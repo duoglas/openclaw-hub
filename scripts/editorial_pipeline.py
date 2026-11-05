@@ -126,7 +126,7 @@ def excerpt(text, quotes):
     if len(clean) <= 24000:
         return clean
     ranges = [(0, 5000), (max(0, len(clean)-2000), len(clean))]
-    for quote in quotes[:5]:
+    for quote in clean_quotes[:5]:
         at = clean.find(quote)
         if at >= 0:
             ranges.append((max(0,at-1800),min(len(clean),at+len(quote)+2800)))
