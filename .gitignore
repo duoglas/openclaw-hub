@@ -18,3 +18,4 @@ data/gsc/
 
 *.bak
 *.bak.*
+state/
