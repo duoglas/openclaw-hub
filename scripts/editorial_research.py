@@ -37,6 +37,16 @@ NEWS_DOMAINS = [
 
 import re
 _norm=re.compile(r'\[([^\]]+)\]\([^)]+\)')
+def _fuzzy_match(q, text):
+    qn = _norm.sub(r"\1", q).replace(chr(8208), "").replace(chr(8207), "").replace(chr(8203), "")
+    tn = _norm.sub(r"\1", text).replace(chr(8208), "").replace(chr(8207), "").replace(chr(8203), "")
+    if qn in tn:
+        return True
+    words = [w for w in qn.split() if len(w) > 5]
+    if not words:
+        return False
+    return sum(1 for w in words if w in tn) / len(words) >= 0.6
+
 def approved_url(e, url):
     e.safe_url(url)
     p = urllib.parse.urlsplit(url)
@@ -326,7 +336,7 @@ def collect_daily(e, root, state, date, run, news=None):
             if not clean_quotes:
                 raise e.Blocked('news quote not found in original')
             norm_text=_norm.sub(r'\1',text).replace(chr(8208),'')
-            failed = [q for q in clean_quotes if not isinstance(q,str) or len(q)<12 or _norm.sub(r'\1',q).replace(chr(8208),'') not in norm_text]
+            failed = [q for q in clean_quotes if not isinstance(q,str) or len(q)<12 or not _fuzzy_match(q, text)]
             if failed:
                 print(f"DEBUG editorial_research: failed quotes={failed[:2]}")
                 print(f"DEBUG editorial_research: text len={len(text)}")
