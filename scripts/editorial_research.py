@@ -35,6 +35,8 @@ NEWS_DOMAINS = [
 ]
 
 
+import re
+_norm=re.compile(r'\[([^\]]+)\]\([^)]+\)')
 def approved_url(e, url):
     e.safe_url(url)
     p = urllib.parse.urlsplit(url)
@@ -323,7 +325,8 @@ def collect_daily(e, root, state, date, run, news=None):
             clean_quotes = [q.replace("\u2060", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "") for q in quotes]
             if not clean_quotes:
                 raise e.Blocked('news quote not found in original')
-            failed = [q for q in clean_quotes if not isinstance(q,str) or len(q)<12 or q not in text]
+            norm_text=_norm.sub(r'\1',text).replace(chr(8208),'')
+            failed = [q for q in clean_quotes if not isinstance(q,str) or len(q)<12 or _norm.sub(r'\1',q).replace(chr(8208),'') not in norm_text]
             if failed:
                 print(f"DEBUG editorial_research: failed quotes={failed[:2]}")
                 print(f"DEBUG editorial_research: text len={len(text)}")
