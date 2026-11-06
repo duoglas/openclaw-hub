@@ -55,8 +55,8 @@ for f in files:
         errors.append(f"{f}: path is not under /en/ or /zh/ ({rel_path})")
         continue
 
-    expected_other = f"{BASE}{quote(other_path, safe="+/")}"
-    expected_xdefault = f"{BASE}{quote(xdefault_path, safe="+/")}"
+    expected_other = f"{BASE}{other_path}"
+    expected_xdefault = f"{BASE}{xdefault_path}"
 
     seen = {}
     duplicates = set()
