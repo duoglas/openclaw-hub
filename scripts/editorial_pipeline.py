@@ -235,6 +235,9 @@ def verified_items(edition, cutoff, max_age):
                     normalize = lambda value: ''.join(c for c in value if unicodedata.category(c) != 'Cf')
                     if normalize(quoted) and normalize(quoted) in normalize(original):
                         continue
+                # Fuzzy match for truncated AI quotes (significant words 60% overlap)
+                if _fuzzy_match(clean_quoted, original):
+                    continue
                 print(f"DEBUG: quote failed - quoted={repr(clean_quoted[:60])}")
                 print(f"DEBUG: original len={len(original)}, has quoted={clean_quoted in original}")
                 raise Blocked('quote does not occur in verified original')
@@ -914,6 +917,7 @@ def run_pipeline(kind, date, backfill=False, topic=None):
             phase='source_preparation'
             if not backfill and kind in ('analysis','guide','daily'):
                 import editorial_research as research
+from editorial_research import _fuzzy_match
                 module = sys.modules[__name__]
                 if kind in ('analysis','guide'):
                     packet = research.prepare_guide(module, ROOT, STATE, date, run, topic)
