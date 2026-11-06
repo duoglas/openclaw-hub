@@ -33,7 +33,7 @@ TZ = ZoneInfo('Asia/Shanghai')
 HOME = Path.home()
 ROOT = Path(__file__).resolve().parents[1]
 STATE = HOME / '.openclaw/workspace/kuoo-editorial'
-NEWS = HOME / '.openclaw/workspace/kuoo-editorial/state/research/news/editions'
+NEWS = Path('/home/duoglas/projects/kuoo-editorial/state/research/news/editions')
 CHECKS = ('factual_support', 'freshness', 'novelty', 'usefulness', 'translation', 'scope', 'safety')
 GATES = ('test:editorial', 'check:editorial', 'check:frontmatter-dates', 'check:duplicate-slug-id',
          'check:taxonomy', 'check:tag-case', 'check:tag-canonical-aliases',
