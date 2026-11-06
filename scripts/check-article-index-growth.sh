@@ -49,8 +49,7 @@ check_lang() {
     return 1
   fi
 
-  if printf %s
-  printf '%s\n' "$card_hrefs" | sed '/^$/d' | grep -Ev '^/'"$lang"'/blog/' >/dev/null; then
+  if printf '%s\n' "$card_hrefs" | sed '/^$/d' | grep -Ev '^/'"$lang"'/blog/' >/dev/null; then
     echo "[article-index-growth] ${lang}: article-index-card href escaped the ${lang}/blog route"
     return 1
   fi
