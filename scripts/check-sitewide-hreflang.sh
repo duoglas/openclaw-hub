@@ -56,7 +56,7 @@ for f in files:
         continue
 
     expected_other = f"{BASE}{other_path}"
-    expected_xdefault = f"{BASE}{xdefault_path}"
+    expected_xdefault = f"{BASE}{quote(xdefault_path, safe="+/")}"
 
     seen = {}
     duplicates = set()
