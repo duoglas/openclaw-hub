@@ -38,7 +38,7 @@ for f in files:
     if rel_path.endswith("index.html"):
         rel_path = rel_path[:-10]
 
-    encoded_self = rel_path
+    encoded_self = quote(rel_path, safe="/+")
     expected_self = f"{BASE}{encoded_self}"
 
     if rel_path.startswith("/en/"):
@@ -55,8 +55,8 @@ for f in files:
         errors.append(f"{f}: path is not under /en/ or /zh/ ({rel_path})")
         continue
 
-    expected_other = f"{BASE}{other_path}"
-    expected_xdefault = f"{BASE}{xdefault_path}"
+    expected_other = f"{BASE}{quote(other_path, safe="+/")}"
+    expected_xdefault = f"{BASE}{quote(xdefault_path, safe="+/")}"
 
     seen = {}
     duplicates = set()
