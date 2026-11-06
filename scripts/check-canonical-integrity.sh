@@ -35,7 +35,7 @@ while IFS= read -r -d '' file; do
   encoded_path="$(python3 - "$raw_path" <<'PY'
 import sys
 from urllib.parse import quote
-print(quote(sys.argv[1], safe='/'))
+print(quote(sys.argv[1], safe='/+'))
 PY
 )"
   expected="${BASE}${encoded_path}"
