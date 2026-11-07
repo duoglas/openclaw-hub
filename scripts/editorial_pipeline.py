@@ -237,8 +237,9 @@ def verified_items(edition, cutoff, max_age):
                     normalize = lambda value: ''.join(c for c in value if unicodedata.category(c) != 'Cf')
                     if normalize(quoted) and normalize(quoted) in normalize(original):
                         continue
-                # Fuzzy match for truncated AI quotes (significant words 60% overlap)
-                if _fuzzy_match(clean_quoted, original):
+                # Fuzzy match only when zero-width chars were NOT present in original quote
+                # (otherwise we would be silently accepting un-declared normalization)
+                if quoted == clean_quoted and clean_quoted and _fuzzy_match(clean_quoted, original):
                     continue
                 print(f"DEBUG: quote failed - quoted={repr(clean_quoted[:60])}")
                 print(f"DEBUG: original len={len(original)}, has quoted={clean_quoted in original}")
