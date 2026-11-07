@@ -27,6 +27,7 @@ import urllib.parse
 import urllib.request
 import unicodedata
 import uuid
+from editorial_research import _fuzzy_match
 from zoneinfo import ZoneInfo
 
 TZ = ZoneInfo('Asia/Shanghai')
