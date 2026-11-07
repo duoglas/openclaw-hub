@@ -38,14 +38,16 @@ NEWS_DOMAINS = [
 import re
 _norm=re.compile(r'\[([^\]]+)\]\([^)]+\)')
 def _fuzzy_match(q, text):
-    qn = _norm.sub(r"\1", q).replace(chr(8208), "").replace(chr(8207), "").replace(chr(8203), "")
-    tn = _norm.sub(r"\1", text).replace(chr(8208), "").replace(chr(8207), "").replace(chr(8203), "")
+    # Only strip markdown links, NOT zero-width chars (caller handles that)
+    qn = _norm.sub(r"\1", q)
+    tn = _norm.sub(r"\1", text)
     if qn in tn:
         return True
     words = [w for w in qn.split() if len(w) > 5]
     if not words:
         return False
     return sum(1 for w in words if w in tn) / len(words) >= 0.6
+
 
 def approved_url(e, url):
     e.safe_url(url)
