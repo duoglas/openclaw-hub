@@ -27,6 +27,7 @@ import urllib.parse
 import urllib.request
 import unicodedata
 import uuid
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from editorial_research import _fuzzy_match
 from zoneinfo import ZoneInfo
 
