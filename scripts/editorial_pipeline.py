@@ -917,7 +917,6 @@ def run_pipeline(kind, date, backfill=False, topic=None):
             phase='source_preparation'
             if not backfill and kind in ('analysis','guide','daily'):
                 import editorial_research as research
-from editorial_research import _fuzzy_match
                 module = sys.modules[__name__]
                 if kind in ('analysis','guide'):
                     packet = research.prepare_guide(module, ROOT, STATE, date, run, topic)
