@@ -12,7 +12,15 @@ function routeToFile(route, distRoot) {
   if (clean === '/blog' || clean.startsWith('/blog/')) return null; // legacy pre-bilingual aliases are outside the current route contract
   if (clean.includes('/blog/tag/')) return null; // tag alternates are not guaranteed to share a bilingual slug
   if (path.posix.extname(clean)) return path.join(distRoot, clean.slice(1));
-  const normalized = clean.endsWith('/') ? clean : `${clean}/`;
+  // Astro may output files with raw UTF-8 filenames but internal links reference
+  // URL-encoded paths. Try URL-decoded first, then raw as fallback.
+  let decoded;
+  try {
+    decoded = decodeURIComponent(clean);
+  } catch {
+    decoded = clean;
+  }
+  const normalized = decoded.endsWith('/') ? decoded : `${decoded}/`;
   return normalized === '/'
     ? path.join(distRoot, 'index.html')
     : path.join(distRoot, normalized.slice(1), 'index.html');
