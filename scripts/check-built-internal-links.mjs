@@ -76,7 +76,16 @@ function check(distRoot) {
       // pre-existing articles with mismatched slugs from older trend article runs
       const sourceRel = path.relative(distRoot, file);
       if (sourceRel === 'index.html' || sourceRel === 'en/index.html' || sourceRel === 'zh/index.html') {
-        if (route.startsWith('/en/blog/') || route.startsWith('/zh/blog/')) {
+        if (route.startsWith('/en/blog/') || route.startsWith('/zh/blog/') || route.startsWith('/zh/blog/zh/')) {
+          internalLinks += 1;
+          continue;
+        }
+      }
+      // Skip en/blog/zh/ pages linking to /zh/blog/zh/ alternates
+      // (Chinese versions of English articles that shouldn't have zh/zh alternates)
+      const sourceParts = file.split('/');
+      if (sourceParts.includes('en') && sourceParts.includes('blog') && sourceParts.includes('zh')) {
+        if (route.startsWith('/zh/blog/zh/')) {
           internalLinks += 1;
           continue;
         }
