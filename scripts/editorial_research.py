@@ -251,7 +251,12 @@ def fetch_sources(e, state, urls, run, allow_cache=True):
     record={'checked_at':e.now().isoformat(),'status':'collected' if missing else 'verified_cache',
             'source_count':len(result),'network_exercised':bool(missing),'run_directory':str(run)}
     e.save(state/'research/latest-collection.json',record)
-    return [result[url] for url in urls]
+    # Only return URLs that have a source (skip any that failed extraction)
+    sources=[result[url] for url in urls if url in result]
+    if len(sources)!=len(urls):
+        missing_urls=[url for url in urls if url not in result]
+        print(f"WARNING: {len(missing_urls)} extraction(s) skipped: {missing_urls[:2]}")
+    return sources
 
 
 def focus_source(e, state, source, quotes):
