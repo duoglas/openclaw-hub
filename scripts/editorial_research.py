@@ -24,14 +24,26 @@ HOSTS = {'huggingface.co': ('/Qwen/',), 'github.com': ('/deepseek-ai/','/QwenLM/
          'cursor.com': ('/blog/','/changelog','/docs/context/'), 'ai.google.dev': ('/blog/',), 'qwen.ai': ('/blog',),
          'blog.jetbrains.com': ('/',), 'developers.googleblog.com': ('/',), 'blog.google': ('/technology/ai/',)}
 NEWS_QUERIES = [
-    'AI coding agent release announcement this week November 2026',
-    'Qwen model update release October November 2026',
-    'AI agent tools automation security news this week',
+    # AI/agent products and platform releases (all vendors)
+    'AI agent coding model tool release launch November 2026',
+    # Industry: funding, acquisitions, earnings, data centers, chips
+    'AI funding acquisition data center chip earnings November 2026',
+    # China/Asia AI policy regulation supply chain investment
+    'AI policy regulation chip export supply chain investment November 2026 China',
+    # Cloud infrastructure and enterprise AI adoption
+    'cloud infrastructure enterprise AI adoption security compliance November 2026',
+    # Software development tools, DevOps, developer platform changes
+    'software development tools DevOps developer platform update November 2026',
 ]
 NEWS_DOMAINS = [
-    'openai.com,anthropic.com,claude.com,cursor.com',
-    'qwen.ai,qwenlm.github.io,huggingface.co',
-    'ai.google.dev,anthropic.com,claude.com',
+    'openai.com,anthropic.com,claude.com,cursor.com,ai.google.dev,mistral.ai,'
+    'perplexity.ai,cohere.com,replicate.com',
+    'techcrunch.com,bloomberg.com,reuters.com,wsj.com,theinformation.com,'
+    'cnbc.com,siliconangle.com,venturebeat.com',
+    'cls.cn,eastmoney.com,36kr.com,jiemian.com,caixin.com,reuters.com,techcrunch.com',
+    'cloudflare.com,netlify.com,vercel.com,aws.amazon.com,google.com,'
+    'digitalocean.com,linode.com,akamai.com,oracle.com',
+    'github.com,gitlab.com,vonage.com,stripe.com,supabase.com',
 ]
 
 
