@@ -208,6 +208,7 @@ def tvly(e, args, run, label):
     executable=e.HOME/'.local/bin/tvly-hikari'
     if not executable.is_file():raise e.Blocked('tvly-hikari is unavailable on the publishing host')
     env=os.environ.copy()
+    env['HOME']=str(e.HOME)
     env['PATH']=str(e.HOME/'.local/bin')+os.pathsep+env.get('PATH',os.defpath)
     for key in ('HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','http_proxy','https_proxy','all_proxy'):env[key]=PROXY
     env['NO_PROXY']=env['no_proxy']='127.0.0.1,localhost'
