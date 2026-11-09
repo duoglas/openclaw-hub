@@ -244,9 +244,10 @@ def fetch_sources(e, state, urls, run, allow_cache=True):
         response=tvly(e,['extract',*missing,'--extract-depth','advanced','--timeout','45'],run,'extract')
         for url in missing:
             matches=[r for r in response.get('results',[]) if r.get('url')==url]
-            if len(matches)!=1:raise e.Blocked('public extraction missing exact requested URL')
-            store_source(e,state,url,matches[0].get('raw_content'),e.now().isoformat())
-            result[url]=cached_source(e,state,url)
+            if len(matches)==1:
+                store_source(e,state,url,matches[0].get('raw_content'),e.now().isoformat())
+                result[url]=cached_source(e,state,url)
+            # If extraction fails for a URL, skip it rather than blocking the entire run.
     record={'checked_at':e.now().isoformat(),'status':'collected' if missing else 'verified_cache',
             'source_count':len(result),'network_exercised':bool(missing),'run_directory':str(run)}
     e.save(state/'research/latest-collection.json',record)
