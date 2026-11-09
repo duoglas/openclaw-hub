@@ -356,10 +356,10 @@ def collect_daily(e, root, state, date, run, news=None):
     sources=fetch_sources(e,state,urls,run,allow_cache=False)
     # Number the URLs and add them as explicit options to force diverse selection
     url_ids=['URL-{0}'.format(i+1) for i,url in enumerate(urls)]
+    url_list='\n'.join('{0}={1}'.format(uid,url) for uid,url in zip(url_ids,urls))
     selector_input={'date':date,'oldest_event_date':(dt.date.fromisoformat(date)-dt.timedelta(days=5)).isoformat(),
         'sources':sources,'recent_events':[r.get('event_keys',[]) for r in e.receipts(root)[-30:]],
-        'available_urls':url_ids,'available_url_list':'
-'.join('{0}={1}'.format(uid,url) for uid,url in zip(url_ids,urls))}
+        'available_urls':url_ids,'available_url_list':url_list}
     e.validate_private_output(selector_input,state)
     selected,meta=e.model_json(SELECTOR,selector_input,['gpt-6-luna'],run,'news-selector')
     e.save(run/'news-selection.json',selected)
