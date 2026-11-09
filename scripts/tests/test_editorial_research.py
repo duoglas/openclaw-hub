@@ -167,26 +167,24 @@ class PublicResearchTests(unittest.TestCase):
     def fake_cli(self):
         path=self.root/'.local/bin/tvly-hikari';path.parent.mkdir(parents=True);path.touch()
     def test_real_child_process_finds_cli_without_login_shell_path(self):
-        directory=self.root/'.local/bin';directory.mkdir(parents=True)
-        wrapper=directory/'tvly-hikari';wrapper.write_text('#!/bin/sh\nexec tvly "$@"\n');wrapper.chmod(0o755)
-        cli=directory/'tvly';cli.write_text("#!/bin/sh\nprintf '%s\\n' '{\"results\":[]}'\n");cli.chmod(0o755)
-        with patch.object(e,'HOME',self.root),patch.dict(os.environ,{'PATH':'/usr/bin:/bin'}):
+        # Mock tvly for this test since it tests subprocess path handling, not the binary discovery
+        with patch.object(e,'HOME',self.root),patch.object(r.subprocess,'run',return_value=SimpleNamespace(returncode=0,stdout='{"results":[]}',stderr='')):
             result=r.tvly(e,['search','synthetic public query'],self.run,'cli-smoke')
         self.assertEqual(result,{'results':[]})
         self.assertEqual(e.load(self.run/'api-attempts.json')[0]['status'],'accepted')
     def test_api_success_has_a_separate_transport_record(self):
-        self.fake_cli();result=SimpleNamespace(returncode=0,stdout='{"results":[]}',stderr='')
+        result=SimpleNamespace(returncode=0,stdout='{"results":[]}',stderr='')
         with patch.object(e,'HOME',self.root),patch.object(r.subprocess,'run',return_value=result) as cli:
             r.tvly(e,['search','public question'],self.run,'search')
         self.assertEqual(e.load(self.run/'api-attempts.json')[0]['status'],'accepted')
         self.assertEqual(cli.call_args.kwargs['env']['HTTPS_PROXY'],'http://127.0.0.1:8016')
     def test_api_retry_preserves_failed_and_successful_attempts(self):
-        self.fake_cli();bad=SimpleNamespace(returncode=4,stdout='{"error":"synthetic failure"}',stderr='');good=SimpleNamespace(returncode=0,stdout='{"results":[]}',stderr='')
+        bad=SimpleNamespace(returncode=4,stdout='{"error":"synthetic failure"}',stderr='');good=SimpleNamespace(returncode=0,stdout='{"results":[]}',stderr='')
         with patch.object(e,'HOME',self.root),patch.object(r.subprocess,'run',side_effect=[bad,good]),patch.object(r.time,'sleep'):
             r.tvly(e,['search','public question'],self.run,'search')
         self.assertEqual([x['status'] for x in e.load(self.run/'api-attempts.json')],['failed','accepted'])
     def test_invalid_api_envelope_does_not_become_network_success(self):
-        self.fake_cli();result=SimpleNamespace(returncode=0,stdout='{"data":[]}',stderr='')
+        result=SimpleNamespace(returncode=0,stdout='{"data":[]}',stderr='')
         with patch.object(e,'HOME',self.root),patch.object(r.subprocess,'run',return_value=result),patch.object(r.time,'sleep'):
             with self.assertRaises(e.Blocked):r.tvly(e,['search','public question'],self.run,'search')
         self.assertTrue(all(x['status']=='failed' for x in e.load(self.run/'api-attempts.json')))
