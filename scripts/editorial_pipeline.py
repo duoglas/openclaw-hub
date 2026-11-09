@@ -227,8 +227,11 @@ def verified_items(edition, cutoff, max_age):
             for quote in item['evidence_quotes']:
                 original = texts.get(quote.get('source', quote.get('url')), '')
                 quoted = quote['quote']
-                # Clean zero-width chars and markdown brackets before matching
-                clean_quoted = quoted.replace("\u2060", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "").replace("[", "").replace("]", "")
+                # Clean zero-width chars, markdown links, and link-style URLs before matching
+                import re as _repl
+                clean_quoted = quoted.replace("\u2060", "").replace("\u200b", "").replace("\u200c", "").replace("\u200d", "")
+                clean_quoted = _repl.sub(r"\([^)]*\)", "", clean_quoted)  # strip (url) patterns
+                clean_quoted = clean_quoted.replace("[", "").replace("]", "")
                 if clean_quoted and clean_quoted in original:
                     continue
                 # One historical report explicitly recorded this normalization.
