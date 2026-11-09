@@ -156,8 +156,10 @@ class PublicResearchTests(unittest.TestCase):
             with self.assertRaisesRegex(e.Blocked,'private output marker'):r.prepare_guide(e,self.root,self.state,'2026-10-29',self.run)
         fetch.assert_not_called()
     def test_search_is_first_party_and_budget_is_balanced(self):
-        groups=[[URL+'/'+str(i)+'-'+str(j) for j in range(5)] for i in range(3)]
-        with patch.object(r,'tvly',side_effect=[{'results':[{'url':u} for u in g]} for g in groups]) as search,patch.object(r,'fetch_sources',return_value=[]) as fetch,patch.object(e,'model_json',return_value=({'items':[]},{})):
+        # 3 groups of 5 URLs, 2 extra empty groups for the remaining queries
+        groups=[[URL+'/'+str(i)+'-'+str(j) for j in range(5)] for i in range(3)]+[[{}] for _ in range(2)]
+        mock_results=[{'results':[{'url':u} for u in g if u]} for g in groups]
+        with patch.object(r,'tvly',side_effect=mock_results) as search,patch.object(r,'fetch_sources',return_value=[]) as fetch,patch.object(e,'model_json',return_value=({'items':[]},{})):
             with self.assertRaises(e.Skip):r.collect_daily(e,self.root,self.state,'2026-10-29',self.run)
         self.assertEqual(fetch.call_args.args[2],[groups[i][j] for j in range(2) for i in range(3)])
         for call in search.call_args_list:self.assertIn('--include-domains',call.args[1])
