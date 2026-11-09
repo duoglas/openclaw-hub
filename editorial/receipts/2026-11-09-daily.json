@@ -1,0 +1,208 @@
+{
+  "version": 2,
+  "date": "2026-11-09",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-09",
+  "created_at": "2026-11-09T16:59:48.327502+08:00",
+  "backfill": true,
+  "base_commit": "bbd0094c5be8533d3389be75cfda6cf2a3167524",
+  "event_keys": [
+    "chip-stocks-ai-regulation-selloff"
+  ],
+  "packet_sha256": "70fd9cdbfe6a4fe07d018e696cb52cf9897b86fd23c62b49a059e062b400b1ca",
+  "draft_sha256": "320b7f2357cf75868f30d5b307c488d23ff7be95421b15d00a88c0cbc1f24bc4",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The dated backfill is explicitly framed around the November 5 report, and its reported price moves, market-value declines, merger announcement, and stated market factors are supported by S01; the article distinguishes the report’s attribution from proven causation.",
+      "The Chinese and English versions convey the same figures, caveats, and limits. Both avoid treating the merger as completed or claiming that new regulations, infrastructure supply changes, or product effects were established.",
+      "This is a focused market event not duplicated in the listed publication history. It offers concrete supplier-market context while clearly stating that the evidence comes from one report and was not independently verified."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0d631a24eeab8f18016af18b39ad9087d1b50d4eb546aee5bb",
+    "input_sha256": "70fd9cdbfe6a4fe07d018e696cb52cf9897b86fd23c62b49a059e062b400b1ca",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0d631a24eeab8f18016af18b39c63887d18a0f029c715f61d2": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_0d631a24eeab8f18016af18b39c65087d1ba9650a81c58afb7": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1093,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1093,
+            "output_tokens": 0
+          },
+          "rs_0d631a24eeab8f18016af18b3bff6c87d18160c016e758b02b": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 27
+          },
+          "msg_0d631a24eeab8f18016af18b3e98ac87d18df0e7996aa6ff9b": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 1235
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 1235
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 2618,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1262,
+      "output_tokens_details": {
+        "reasoning_tokens": 27
+      },
+      "total_tokens": 3880
+    },
+    "completed_at": "2026-11-09T16:59:33.698323+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_00fcf3fbb188aa5e016af18b76a45887d29c4713982b8ff35c",
+    "input_sha256": "a2a0276cd646f49d2c949647bd46a9d93489ab9c1130342d3673ec7ecfc7f1a4",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_00fcf3fbb188aa5e016af18b76be3087d2b223ce123c1d48ca": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_00fcf3fbb188aa5e016af18b76be5087d2bbb8c9036652bd90": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2298,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 2298,
+            "output_tokens": 0
+          },
+          "rs_00fcf3fbb188aa5e016af18b7887a887d2b91aff6fbeb70d26": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 181
+          },
+          "msg_00fcf3fbb188aa5e016af18b7be04887d29d6ea485db064447": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 181
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 181
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 3069,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 362,
+      "output_tokens_details": {
+        "reasoning_tokens": 181
+      },
+      "total_tokens": 3431
+    },
+    "completed_at": "2026-11-09T16:59:43.213522+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-05-2026/card/chip-stocks-hit-by-data-center-ai-regulation-fears-TjThbzZVLKxkZW5tt26b",
+      "sha256": "c464d09def153839f1bb306d7d6882cc3519a1eda8a93a83d076f94a76077ea4",
+      "source_date": null,
+      "read_at": "2026-11-09T16:58:10.045633+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-09.md": "3295b198288d061916533673da562ff8daea4b5aef070bec8eb4ae5e45e657e6",
+    "src/content/blog/en/ai-daily-2026-11-09.md": "cb00521cd3e411e3e9cf6dc4750f28aa056c75276559a7b3f6db03832e0c4d96"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-09.md": "1848e9c2562a23b6443d763e950a50e8b51aac8c3bf13bddd6e531d857af7f75",
+    "src/content/blog/en/ai-daily-2026-11-09.md": "660e0e3f131ea240a8ec76f45ecdf9af24b0e0a97c486013f99e2221cadb2ab5"
+  }
+}
