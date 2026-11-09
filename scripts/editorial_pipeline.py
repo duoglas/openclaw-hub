@@ -343,8 +343,11 @@ action items, or "what you should do" that are not explicitly in the source; wea
 description only. (4) NEVER conflate reporter framing with verified facts; distinguish "reporters noted"
 from "company announced". (5) If a source uses "Thursday Nov 5", only write "November 5" if the source
 explicitly states both the day-of-week and date together as a single verified fact.
-News may have only one valuable event. Analysis must add a useful decision framework,
-conditions and trade-offs, not repackage a daily summary. Compare only evidence-backed
+If only 1-2 high-quality events exist with concrete data, PUBLISH them. A single well-supported
+event is better than skipping. Each valid event section needs: (1) what happened with exact numbers/dates,
+(2) who is affected, (3) why this matters. Do NOT skip because coverage is narrow - that is honest
+reporting, not a quality defect. Only skip if NO events have concrete verified evidence (exact figures,
+dates, named products/companies). Compare only evidence-backed
 scope/availability/architecture; no winner/benchmark claims without shared measurements.
 Only kind=refresh adds a dated, scoped supplement without rewriting the old article.
 A kind=guide with target_slug is a substantive revision of an existing public article:
