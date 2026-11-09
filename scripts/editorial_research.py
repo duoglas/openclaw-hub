@@ -60,10 +60,22 @@ def _fuzzy_match(q, text):
     tn = _norm.sub(r"\1", text)
     if qn in tn:
         return True
+    # Lower threshold for better tolerance of truncated/paraphrased quotes
     words = [w for w in qn.split() if len(w) > 5]
     if not words:
-        return False
-    return sum(1 for w in words if w in tn) / len(words) >= 0.6
+        # For short quotes, try case-insensitive substring
+        return qn.lower() in tn.lower()
+    # Allow partial word match: check if each significant word is a substring of any word in text
+    matches = 0
+    for w in words:
+        # Exact match
+        if w in tn:
+            matches += 1
+        else:
+            # Partial match: w is a substring of some text word, or some text word is a substring of w
+            if any(w in tw or tw in w for tw in tn.split() if len(tw) > 4):
+                matches += 1
+    return matches / len(words) >= 0.5
 
 
 def approved_url(e, url):
