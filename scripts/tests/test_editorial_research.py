@@ -27,6 +27,7 @@ class PublicResearchTests(unittest.TestCase):
         self.stamp=e.now().isoformat();e.save(self.root/'editorial/topics.json',[TOPIC])
         e.save(self.state/'private-output-policy.json',{'version':1,'blocked_literals':['SYNTHETIC_PRIVATE_MARKER']})
         (self.state/'private-output-policy.json').chmod(0o600)
+        self.fake_cli()
     def tearDown(self):self.tmp.cleanup()
     def store(self,url=URL,text=TEXT,stamp=None):return r.store_source(e,self.state,url,text,stamp or self.stamp)
     def test_only_approved_public_sources(self):
