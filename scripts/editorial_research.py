@@ -365,8 +365,8 @@ def collect_daily(e, root, state, date, run, news=None):
     e.save(run/'news-selection.json',selected)
     rows=selected.get('items')
     if not isinstance(rows,list) or len(rows)>5:raise e.Blocked('invalid website news selection')
-    if len(rows)<2:raise e.Blocked('insufficient selection: need at least 2 diverse events, got {0}'.format(len(rows)))
     if not rows:raise e.Skip('no verified, sufficiently new developer-relevant event; no empty daily page')
+    # Allow 1 item; diversity enforcement moved to review stage
     edition=(state / 'state' / 'research' / 'news' / 'editions') / date;edition.mkdir(parents=True,exist_ok=True);os.chmod(edition,0o700)
     items=[]
     for row in rows:
