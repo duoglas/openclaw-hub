@@ -401,10 +401,11 @@ labelled and bounded. Check dates, novelty against publication history, actual u
 source-to-section attribution, translation parity, public availability, testing claims,
 unsafe/private disclosures, and distinction between official claims and independent results.
 Reject weak/invented comparisons, arbitrary rankings, generic filler, date-only updates,
-or copying an old news item under today's date. Reject articles that fill all slots with
-one vendor's announcements, have fewer than 3 distinct industry angles (products, market,
-policy, infrastructure), use template structures like "editorial assessment" or "advice"
-sections, or have sections with only 1-2 paragraphs and no concrete data. For guides, judge freshness by checked
+or copying an old news item under today's date. Reject articles that fill all slots with one vendor's announcements, use template
+structures like "editorial assessment" or "advice" sections, or have sections with
+only 1-2 paragraphs and no concrete data.
+Do NOT reject for having fewer than 3 industry angles when the evidence only supports fewer.
+A single well-supported market event or product announcement IS valid content. For guides, judge freshness by checked
 current documentation, version/branch scope and retrieval date, not news-event recency.
 Check the research question and required_points were meaningfully answered; documentation
 alone cannot establish tested hardware fit, runtime compatibility or production readiness.
