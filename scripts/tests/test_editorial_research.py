@@ -94,9 +94,11 @@ class PublicResearchTests(unittest.TestCase):
         self.assertEqual(packet['kind'],'guide');self.assertIsNone(packet['items'][0]['event_date'])
         status=e.load(self.state/'research/latest-collection.json')
         self.assertFalse(status['network_exercised']);self.assertEqual(status['status'],'verified_cache')
-    def test_extraction_requires_exact_url(self):
+    def test_extraction_skips_unmatched_url(self):
+        # When extracted URL does not match requested URL, fetch_sources skips it (no Blocked)
         with patch.object(r,'tvly',return_value={'results':[{'url':URL2,'raw_content':TEXT}]}):
-            with self.assertRaises(e.Blocked):r.fetch_sources(e,self.state,[URL],self.run)
+            result=r.fetch_sources(e,self.state,[URL],self.run)
+        self.assertEqual(result,[])  # URL not found → empty result
     def test_guide_slug_and_receipt_stable(self):
         packet={'kind':'guide','date':'2026-10-29','topic_id':'harness-safety'}
         self.assertEqual(e.article_slug({},packet),'ai-guide-harness-safety')
