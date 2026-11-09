@@ -958,6 +958,14 @@ def run_pipeline(kind, date, backfill=False, topic=None):
                     packet = research.collect_daily(module, ROOT, STATE, date, run, NEWS)
             else:
                 packet = prepare(kind, date)
+            # Auto-enable backfill if any event dates differ from today
+            if not backfill:
+                event_dates = set()
+                for item in packet.get('items', []):
+                    ed = item.get('event_date')
+                    if ed: event_dates.add(ed)
+                if event_dates and any(d != date for d in event_dates):
+                    backfill = True
             packet['backfill'] = backfill
             save(run / 'packet.json', packet)
             validate_private_output(packet,STATE)
