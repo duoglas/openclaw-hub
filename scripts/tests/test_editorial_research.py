@@ -166,6 +166,9 @@ class PublicResearchTests(unittest.TestCase):
         self.assertEqual(e.load(self.run/'discovery.json')['selected_urls'],[])
     def fake_cli(self):
         path=self.root/'.local/bin/tvly-hikari';path.parent.mkdir(parents=True);path.touch()
+        # Also create pipx venv path that tvly() now checks
+        pipx=self.root/'.local/share/pipx/venvs/tavily-cli/bin'
+        pipx.mkdir(parents=True,exist_ok=True);(pipx/'tvly').touch()
     def test_real_child_process_finds_cli_without_login_shell_path(self):
         # Mock tvly for this test since it tests subprocess path handling, not the binary discovery
         with patch.object(e,'HOME',self.root),patch.object(r.subprocess,'run',return_value=SimpleNamespace(returncode=0,stdout='{"results":[]}',stderr='')):
