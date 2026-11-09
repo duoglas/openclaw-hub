@@ -23,9 +23,9 @@ HOSTS = {'huggingface.co': ('/Qwen/',), 'github.com': ('/deepseek-ai/','/QwenLM/
          'claude.com': ('/resources/articles/','/blog/'), 'www.claude.com': ('/resources/articles/','/blog/'),
          'cursor.com': ('/blog/','/changelog','/docs/context/'), 'ai.google.dev': ('/blog/',), 'qwen.ai': ('/blog',),
          'blog.jetbrains.com': ('/',), 'developers.googleblog.com': ('/',), 'blog.google': ('/technology/ai/'),
-         'cnbc.com': ('/',), 'reuters.com': ('/',), 'wsj.com': ('/',),
-         'techcrunch.com': ('/',), 'siliconangle.com': ('/',), 'venturebeat.com': ('/',),
-         'cls.cn': ('/',), 'eastmoney.com': ('/',), '36kr.com': ('/',),
+         'www.cnbc.com': ('/',), 'cnbc.com': ('/',), 'www.reuters.com': ('/',), 'reuters.com': ('/',), 'www.wsj.com': ('/',), 'wsj.com': ('/',),
+         'www.techcrunch.com': ('/',), 'techcrunch.com': ('/',), 'www.siliconangle.com': ('/',), 'siliconangle.com': ('/',), 'www.venturebeat.com': ('/',), 'venturebeat.com': ('/',),
+         'www.cls.cn': ('/',), 'cls.cn': ('/',), 'eastmoney.com': ('/',), '36kr.com': ('/',),
          'jiemian.com': ('/',), 'caixin.com': ('/',), 'theinformation.com': ('/',),
           'dropbox.com': ('/',), 'conductor.build': ('/',), 'dropbox.gcs-web.com': ('/',),}
 NEWS_QUERIES = [
