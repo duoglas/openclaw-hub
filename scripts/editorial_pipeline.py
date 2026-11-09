@@ -273,7 +273,7 @@ def prepare(kind, date, root=ROOT, news=NEWS):
     unique = {}
     for edition in editions:
         try:
-            candidates = verified_items(edition, day, 3 if kind == 'daily' else 14)
+            candidates = verified_items(edition, day, 5 if kind == 'daily' else 14)
         except (Blocked, OSError, ValueError):
             if kind == 'daily':
                 raise
