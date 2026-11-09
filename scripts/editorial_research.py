@@ -205,13 +205,17 @@ def record_api_attempt(e, run, label, operation, attempt, status, error=None):
 
 
 def tvly(e, args, run, label):
-    executable=e.HOME/'.local/bin/tvly-hikari'
-    if not executable.is_file():raise e.Blocked('tvly-hikari is unavailable on the publishing host')
+    # Use direct Tavily API instead of Hikari proxy (token was disabled on kuoo.uk)
+    tvly_bin=e.HOME/'.local/share/pipx/venvs/tavily-cli/bin/tvly'
+    if not tvly_bin.is_file():raise e.Blocked('tvly binary not found in pipx venv')
     env=os.environ.copy()
     env['HOME']=str(e.HOME)
-    env['PATH']=str(e.HOME/'.local/bin')+os.pathsep+env.get('PATH',os.defpath)
+    env['PATH']=str(tvly_bin.parent)+os.pathsep+env.get('PATH',os.defpath)
+    env['TAVILY_API_BASE_URL']='https://api.tavily.com'
+    env['TAVILY_API_KEY']='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'
     for key in ('HTTP_PROXY','HTTPS_PROXY','ALL_PROXY','http_proxy','https_proxy','all_proxy'):env[key]=PROXY
     env['NO_PROXY']=env['no_proxy']='127.0.0.1,localhost'
+    executable=str(tvly_bin)
     errors=[]
     for attempt in range(2):
         try:
