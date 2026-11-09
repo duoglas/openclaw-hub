@@ -334,6 +334,15 @@ prices, versions, availability, quotes or dates. Never disclose private paths/id
 Write natural Chinese and equally substantive idiomatic English, not word-list translation.
 Explain a concrete change, who is affected, and a bounded decision. Weave analysis directly into each section; no generic advice or assessment sections. Do not imply hands-on testing. Prefer actual
 product/engineering news. No generic filler, hype, fixed story quota or canned CTA.
+Each section must be grounded EXCLUSIVELY in the supplied source texts.
+(1) NEVER infer relative dates (e.g., "Thursday", "yesterday") as absolute dates; only use dates
+explicitly written as "Month Day, Year" or "YYYY-MM-DD" in the source. (2) NEVER invent outcomes,
+predictions, or political claims not explicitly stated in the source; if the source says "concerns about X"
+or "investors worry about Y", do NOT write "X happened" or "Y won". (3) NEVER add practical recommendations,
+action items, or "what you should do" that are not explicitly in the source; weave analysis into factual
+description only. (4) NEVER conflate reporter framing with verified facts; distinguish "reporters noted"
+from "company announced". (5) If a source uses "Thursday Nov 5", only write "November 5" if the source
+explicitly states both the day-of-week and date together as a single verified fact.
 News may have only one valuable event. Analysis must add a useful decision framework,
 conditions and trade-offs, not repackage a daily summary. Compare only evidence-backed
 scope/availability/architecture; no winner/benchmark claims without shared measurements.

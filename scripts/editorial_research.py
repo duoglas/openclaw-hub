@@ -75,12 +75,12 @@ def _fuzzy_match(q, text):
             # Partial match: w is a substring of some text word, or some text word is a substring of w
             if any(w in tw or tw in w for tw in tn.split() if len(tw) > 4):
                 matches += 1
-            elif len(w) > 6:
+            elif len(w) >= 5:
                 # Very lenient: check if significant prefix of w is in any text word
-                # Handles truncated words like "helpin'" matching "helping"
+                # Handles truncated words like "Compu" matching "Computer"
                 for tw in tn.split():
-                    if len(tw) > 4 and len(w) >= 7:
-                        if w[:6] in tw or tw[:6] in w:
+                    if len(tw) > 4 and len(w) >= 5:
+                        if w[:5] in tw or tw[:5] in w:
                             matches += 1
                             break
     return matches / len(words) >= 0.4
