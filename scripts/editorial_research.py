@@ -65,7 +65,7 @@ def _fuzzy_match(q, text):
     if not words:
         # For short quotes, try case-insensitive substring
         return qn.lower() in tn.lower()
-    # Allow partial word match: check if each significant word is a substring of any word in text
+    # Allow partial word match: check if each significant word matches
     matches = 0
     for w in words:
         # Exact match
@@ -75,7 +75,15 @@ def _fuzzy_match(q, text):
             # Partial match: w is a substring of some text word, or some text word is a substring of w
             if any(w in tw or tw in w for tw in tn.split() if len(tw) > 4):
                 matches += 1
-    return matches / len(words) >= 0.5
+            elif len(w) > 6:
+                # Very lenient: check if significant prefix of w is in any text word
+                # Handles truncated words like "helpin'" matching "helping"
+                for tw in tn.split():
+                    if len(tw) > 4 and len(w) >= 7:
+                        if w[:6] in tw or tw[:6] in w:
+                            matches += 1
+                            break
+    return matches / len(words) >= 0.4
 
 
 def approved_url(e, url):
