@@ -385,6 +385,9 @@ concrete data (revenue numbers, user counts, dates, version numbers, pricing, fu
 amounts) from the sources. Cover breadth: at minimum one item each on AI products or
 services, industry/market trends (funding, acquisitions, earnings, infrastructure, chips),
 and regulatory or policy developments. Do not fill all slots with one vendor's announcements.
+If any event date differs from today's date, prepend "（dated [Month Day]）" to the Chinese
+heading and "([Month Day] backfill)" to the English heading. This allows older events to be
+included in today's edition without misleading readers about timing.
 If only 3 qualifying events exist, use 3 but still cover different angles. Each section
 has 3-4 substantive paragraphs: (1) what happened with exact numbers/dates, (2) who
 is affected and what changes, (3) why this matters in the broader industry context with
