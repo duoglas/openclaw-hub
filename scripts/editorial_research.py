@@ -22,11 +22,13 @@ HOSTS = {'huggingface.co': ('/Qwen/',), 'github.com': ('/deepseek-ai/','/QwenLM/
          'www.anthropic.com': ('/news/','/engineering/'), 'anthropic.com': ('/news/','/engineering/'),
          'claude.com': ('/resources/articles/','/blog/'), 'www.claude.com': ('/resources/articles/','/blog/'),
          'cursor.com': ('/blog/','/changelog','/docs/context/'), 'ai.google.dev': ('/blog/',), 'qwen.ai': ('/blog',),
-         'blog.jetbrains.com': ('/',), 'developers.googleblog.com': ('/',), 'blog.google': ('/technology/ai/',)}, 'cnbc.com': ('/',), 'reuters.com': ('/',), 'wsj.com': ('/',),
+         'blog.jetbrains.com': ('/',), 'developers.googleblog.com': ('/',), 'blog.google': ('/technology/ai/'),
+         'cnbc.com': ('/',), 'reuters.com': ('/',), 'wsj.com': ('/',),
          'techcrunch.com': ('/',), 'siliconangle.com': ('/',), 'venturebeat.com': ('/',),
          'cls.cn': ('/',), 'eastmoney.com': ('/',), '36kr.com': ('/',),
          'jiemian.com': ('/',), 'caixin.com': ('/',), 'theinformation.com': ('/',),
-         'dropbox.com': ('/',), 'conductor.build': ('/',), 'dropbox.gcs-web.com': ('/',)NEWS_QUERIES = [
+          'dropbox.com': ('/',), 'conductor.build': ('/',), 'dropbox.gcs-web.com': ('/',),}
+NEWS_QUERIES = [
     # AI/agent products and platform releases (all vendors)
     'AI agent coding model tool release launch November 2026',
     # Industry: funding, acquisitions, earnings, data centers, chips
