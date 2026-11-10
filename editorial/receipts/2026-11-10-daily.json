@@ -1,0 +1,217 @@
+{
+  "version": 2,
+  "date": "2026-11-10",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-10",
+  "created_at": "2026-11-10T10:22:54.478559+08:00",
+  "backfill": true,
+  "base_commit": "2d063d656aff3e6d3b32b457aaeefa7a541916d5",
+  "event_keys": [
+    "merge-openai-ai-workflows",
+    "us-stocks-rebound-nov9",
+    "nyse-avalanche-settlement-network"
+  ],
+  "packet_sha256": "e3c67a8a6dedf098c1fcffd56146a28aa1ee3244b912d1782b231de3cc983990",
+  "draft_sha256": "155862248f05437396f1210ea55c86c9ed15adc92568e4dad4dbbc105a7991aa",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The three sections are supported by the supplied excerpts: the market figures and attributed concerns match CNBC, and Merge’s workflow details and time-saving figure are correctly presented as company-reported results rather than independent findings.",
+      "The November 5 and November 9 events are explicitly labelled as backfills; the article distinguishes the market rally from the prior selloff and does not claim the NYSE platform has launched or that new regulations are in force.",
+      "Chinese and English versions preserve the material claims and limitations, including the absence of independent testing, comparative system results, and an NYSE launch date."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0dcbf9d29384d4a4016af27f9e884487d2b08bd991c0201cb0",
+    "input_sha256": "e3c67a8a6dedf098c1fcffd56146a28aa1ee3244b912d1782b231de3cc983990",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0dcbf9d29384d4a4016af27f9ea27c87d29392cf22d36fd692": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_0dcbf9d29384d4a4016af27f9ea2bc87d2ba6489ac7ec1aedc": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 10215,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 10215,
+            "output_tokens": 0
+          },
+          "rs_0dcbf9d29384d4a4016af27fa0d8e887d2a637eb652663dfb5": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 37
+          },
+          "msg_0dcbf9d29384d4a4016af27fa264dc87d29df54bfea6b61e83": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 2588
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 2588
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 11740,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 2625,
+      "output_tokens_details": {
+        "reasoning_tokens": 37
+      },
+      "total_tokens": 14365
+    },
+    "completed_at": "2026-11-10T10:22:32.817566+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_0ae6ea4fa7f85315016af27fe9f99487d19662dbaefb22affc",
+    "input_sha256": "d4b87f0444304f07cf9724c2cb85f959c3a0661e263ad84ca4c36f24d06ee05e",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0ae6ea4fa7f85315016af27fea134887d194eca4d775e881d1": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_0ae6ea4fa7f85315016af27fea136887d1abec0c118269fe55": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 12749,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 12749,
+            "output_tokens": 0
+          },
+          "rs_0ae6ea4fa7f85315016af27fee0ec087d18358e9cd2af925ed": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 362
+          },
+          "msg_0ae6ea4fa7f85315016af27ff4a7e087d1a813552f6c2dfc5c": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 172
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 172
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 13520,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 534,
+      "output_tokens_details": {
+        "reasoning_tokens": 362
+      },
+      "total_tokens": 14054
+    },
+    "completed_at": "2026-11-10T10:22:47.866849+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://www.cnbc.com/2026/11/08/stock-market-today-live-updates.html",
+      "sha256": "df34327c464d29b9f2a0c2bda112532e23207c2a2482bc746be4861114218161",
+      "source_date": null,
+      "read_at": "2026-11-10T10:20:52.954345+08:00"
+    },
+    {
+      "id": "S02",
+      "url": "https://openai.com/index/merge-builds-with-openai",
+      "sha256": "569454c3d1585c0d4061415acd12ac0f62686c603706b0d5bccdd28d4a624a85",
+      "source_date": null,
+      "read_at": "2026-11-10T10:20:52.948714+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-10.md": "3c47c776b08ffff2eb3712f29b3112126c65a985d6b11ed58c2f7d4c0dcf7dd4",
+    "src/content/blog/en/ai-daily-2026-11-10.md": "025267a84a2bee7bae55bd7bc799dc14ff660dfd8a66e294c03ad01c06c9a909"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-10.md": "0599bd105cb172939dc5a9c498c39e8801f6fd7e1236e71018e3193e32566b40",
+    "src/content/blog/en/ai-daily-2026-11-10.md": "4f0aa89eb57a963c8fd5341a11dccb7f15d65d08c3eaa31bf8db37503c51401b"
+  }
+}
