@@ -5,7 +5,6 @@ pubDate: 2026-07-11
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"
-<meta name="robots" content="noindex, follow">
 ---
 
 《AI、科技日报》  
