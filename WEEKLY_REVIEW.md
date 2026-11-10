@@ -1,7 +1,7 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: 2026-11-02 to 2026-11-08
+- Week: 2026-11-09 to 2026-11-15
 - Owner: site-editor
 - Reviewed at: 2026-11-02 10:05 (Asia/Shanghai)
 - Reviewer: maintenance assistant; not an independent human review
