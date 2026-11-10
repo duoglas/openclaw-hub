@@ -1,7 +1,7 @@
 ---
 
-title: "Agent .md Team Guide: Multi-Agent Workflow Best Practices"
-description: "How to use .md files as team-wide agent configuration guides. Covers shared rules, permission boundaries, and collaboration patterns."
+title: "AI Agent .md Team Guide: Best Practices for Multi-Agent Workflows in 2026"
+description: "Learn how to use .md files as shared configuration guides for AI agents across your team. Covers Cursor rules, Claude Code, shared permissions, and collaboration patterns that actually work."
 pubDate: 2026-02-11
 updatedDate: "2026-10-29"
 tags: ["cursor", "cursor ide", "agentic-engineering", "guide", "agents-md", "claude-md", "cursor-rules", "team-workflow"]

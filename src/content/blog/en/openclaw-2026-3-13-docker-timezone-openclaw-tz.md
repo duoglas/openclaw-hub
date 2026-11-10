@@ -9,6 +9,7 @@ category: "guide"
 lang: "en"
 
 
+<meta name="robots" content="noindex, follow">
 ---
 
 

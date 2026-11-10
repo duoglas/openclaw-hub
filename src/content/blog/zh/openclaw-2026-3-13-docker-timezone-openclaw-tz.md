@@ -9,6 +9,7 @@ category: "guide"
 lang: "zh"
 
 
+<meta name="robots" content="noindex, follow">
 ---
 
 
