@@ -1,0 +1,202 @@
+{
+  "version": 2,
+  "date": "2026-11-11",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-11",
+  "created_at": "2026-11-11T10:22:14.199230+08:00",
+  "backfill": true,
+  "base_commit": "63e9af9c88c14c9c2d5ec47b86f1fa840215f413",
+  "event_keys": [
+    "coderabbit-openai-agentic-dev"
+  ],
+  "packet_sha256": "bfe17f32bc19fab4e9ee2142c224496314e9d4b8471e815eebef4c17c8447141",
+  "draft_sha256": "63abb21c2009848bbeacdcf1c7a56abbabdda6e2ab7fe1664736bd93b4115e64",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The November 9 publication date is supported by the source and the story is explicitly labelled as a backfill; the publication history lists no earlier item on this CodeRabbit event.",
+      "Both language versions accurately attribute the roughly 20x delivery figure, platform adoption figures, and scan/remediation numbers to the company’s account, and note the lack of independent verification and key measurement details.",
+      "The article provides concrete workflow and product information, distinguishes platform-wide usage from Secure adoption, and does not claim independent testing or compare Secure with other tools."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0c3e11a2bf82d94f016af3d119a73087d185d3f97f31298e21",
+    "input_sha256": "bfe17f32bc19fab4e9ee2142c224496314e9d4b8471e815eebef4c17c8447141",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0c3e11a2bf82d94f016af3d119c76887d1a2801423c27ccddb": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_0c3e11a2bf82d94f016af3d119c78487d18566fe62e3535303": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 4921,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 4921,
+            "output_tokens": 0
+          },
+          "msg_0c3e11a2bf82d94f016af3d11baf9087d1ad94d482365300a2": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2,
+                "output_tokens": 1519
+              }
+            ],
+            "input_tokens": 2,
+            "output_tokens": 1519
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 6446,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1519,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 7965
+    },
+    "completed_at": "2026-11-11T10:21:59.140504+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_088134dc678a41cf016af3d14866d087d1a4fcced3f4c0250d",
+    "input_sha256": "c7fb1ecdc9d456d06c790f58d44b841ab8f8bf43968477cd993b620cd1bdc770",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_088134dc678a41cf016af3d14881c487d1933053290e262e41": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_088134dc678a41cf016af3d14881e087d1a30566974e417596": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 6420,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 6420,
+            "output_tokens": 0
+          },
+          "rs_088134dc678a41cf016af3d148e51c87d1bbb4d97c70da6386": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 266
+          },
+          "msg_088134dc678a41cf016af3d14dc95087d1b063ab1d9184bee0": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 162
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 162
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 7191,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 428,
+      "output_tokens_details": {
+        "reasoning_tokens": 266
+      },
+      "total_tokens": 7619
+    },
+    "completed_at": "2026-11-11T10:22:09.207903+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://openai.com/index/coderabbit-codex-daybreak",
+      "sha256": "2a140a3072b3b6bc599e652d9002091d2e1b4bfe1c801e75eba870e03a23a18a",
+      "source_date": null,
+      "read_at": "2026-11-11T10:20:50.343876+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-11.md": "4c6b22601f4f531f63487f3d3a08cae6e765485ffa5953d55061217a7bf4d239",
+    "src/content/blog/en/ai-daily-2026-11-11.md": "9015135415569e6ba531ee94899ca6a1e2654589d8e9c1e17a882054bedd569d"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-11.md": "80aabf9bf8440906bb8e7bcb47d3e0a00cd2924e3e8e51e0a15efe66f5ba1a31",
+    "src/content/blog/en/ai-daily-2026-11-11.md": "bcdd412849da6540af1c849f542b9d4f9977c5bc763b2a6a955c311249580d5a"
+  }
+}
