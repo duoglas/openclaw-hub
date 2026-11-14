@@ -1,0 +1,202 @@
+{
+  "version": 2,
+  "date": "2026-11-14",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-14",
+  "created_at": "2026-11-14T10:22:09.227600+08:00",
+  "backfill": true,
+  "base_commit": "6498b49c792cb06c691b16141112065b9ac1ac6c",
+  "event_keys": [
+    "always-on-agent-architecture-post"
+  ],
+  "packet_sha256": "45d4fa3e4a8ec103dfbdac579c62d7e46b6af4f5afed276e846d574d815894c4",
+  "draft_sha256": "a6f6617ee7d7c071f325181254e83679cb2915a4ec9211d1eb938d736fbb4ff1",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "Both language versions accurately attribute the five architectural primitives and the event, timer, memory, permission, and deferred-approval details to Anthropic’s November 13 article.",
+      "The November 14 edition clearly labels the November 13 item as a backfill; the publication history lists no earlier coverage of this event.",
+      "The article gives developers concrete design distinctions and states that implementation, deployment, recovery, and security were not independently tested; the English and Chinese versions are materially aligned."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0adc4349362e4e5c016af7c59a49e487d28197456dd03e0b1b",
+    "input_sha256": "45d4fa3e4a8ec103dfbdac579c62d7e46b6af4f5afed276e846d574d815894c4",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0adc4349362e4e5c016af7c59a6ee487d2a025cb0fa74a7bca": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_0adc4349362e4e5c016af7c59a6efc87d2ad7f9f39e4b69b80": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 4426,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 4426,
+            "output_tokens": 0
+          },
+          "msg_0adc4349362e4e5c016af7c59c6cd887d2ad245495502dfd4a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2,
+                "output_tokens": 1431
+              }
+            ],
+            "input_tokens": 2,
+            "output_tokens": 1431
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 5951,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1431,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 7382
+    },
+    "completed_at": "2026-11-14T10:21:55.357448+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_0a20e5a39fcc3f5f016af7c5c4865487d2a970d0a6d8057690",
+    "input_sha256": "3f3f7a842c952b569cb30f02a6a10ab088a98e2bf8ccb25bcc4738d7227694f5",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0a20e5a39fcc3f5f016af7c5c4a11887d2925e7076f45707a5": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_0a20e5a39fcc3f5f016af7c5c4a13087d296f1a50b07e9281f": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 5837,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 5837,
+            "output_tokens": 0
+          },
+          "rs_0a20e5a39fcc3f5f016af7c5c512e887d2898f230336ae2bde": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 182
+          },
+          "msg_0a20e5a39fcc3f5f016af7c5c8703c87d29bfa828b205acd1a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 150
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 150
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 6608,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 332,
+      "output_tokens_details": {
+        "reasoning_tokens": 182
+      },
+      "total_tokens": 6940
+    },
+    "completed_at": "2026-11-14T10:22:04.245333+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://claude.com/resources/articles/building-always-on-agents",
+      "sha256": "9c88934b60631d7c7358f5695e5ce5635b2339a2d35124b546ed160f2864779c",
+      "source_date": null,
+      "read_at": "2026-11-14T10:20:50.157756+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-14.md": "06b3d6d79401d0b8cac39a9865b89ed07cf0f41ed42920c200a8b0727f4e73f4",
+    "src/content/blog/en/ai-daily-2026-11-14.md": "f9e71e5f1a9d7a1c815fb627eea5c4867a224d641f9b90a10a664f7b550f7ee8"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-14.md": "de95e425e78d06508348c33769a71dde2a5a8e2d3219d57e3f82c13d52129ec0",
+    "src/content/blog/en/ai-daily-2026-11-14.md": "39923b4811effbc57d085d5bc6a3c74a9e9b92ce31d097eb57971770d17bd468"
+  }
+}
