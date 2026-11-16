@@ -1,0 +1,224 @@
+{
+  "version": 2,
+  "date": "2026-11-16",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-16",
+  "created_at": "2026-11-16T10:21:57.917551+08:00",
+  "backfill": true,
+  "base_commit": "13e3153c8a3aed0fef5e020f10d75334d5805b2b",
+  "event_keys": [
+    "south-korea-nvidia-gpu-supply-confirmation",
+    "nvidia-ai-financing-system-risk"
+  ],
+  "packet_sha256": "aeb5b28fda904d5ee7a845d0272bb0897760af7b2587e3f26889a6e32fa19f52",
+  "draft_sha256": "de4210e07736f1ec4cb1462a52ac2e961ebb95bfe28e6df3c37af8baa7a0e828",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The Korea section accurately attributes the 260,000-GPU plan and joint-project commitment to South Korea’s Science Ministry as reported by TechCrunch, and does not claim the GPUs have been delivered.",
+      "The CNBC section preserves the distinction between reported financial commitments and potential systemic risk, including the limits of the truncated excerpt; it does not present a crisis or realized losses as fact.",
+      "Both sections are explicitly dated backfills for November 14 and 11, respectively, within the November 16 edition window. The English and Chinese versions are materially consistent, and the supplied publication history shows no duplicate event keys."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0958a33c1d56231a016afa688a6cd087d2af5e89b069050014",
+    "input_sha256": "aeb5b28fda904d5ee7a845d0272bb0897760af7b2587e3f26889a6e32fa19f52",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0958a33c1d56231a016afa688a872087d2b5535e9bacd8e4fc": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_0958a33c1d56231a016afa688a873c87d2b586951aab933faf": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 11416,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 11416,
+            "output_tokens": 0
+          },
+          "rs_0958a33c1d56231a016afa688bc5c887d28ae21b832c456441": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 45
+          },
+          "msg_0958a33c1d56231a016afa688ddb8087d29319886eeef53b24": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 1613
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 1613
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 12941,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 1658,
+      "output_tokens_details": {
+        "reasoning_tokens": 45
+      },
+      "total_tokens": 14599
+    },
+    "completed_at": "2026-11-16T10:21:42.088282+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_080b6da217330b97016afa68b7757887d18dd7dac0a91bf13a",
+    "input_sha256": "44d9d583cb770c9deb1cb5a2597b369f626181575b12aa17bfc0100ba03b9002",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_080b6da217330b97016afa68b7916c87d1911e8c213562cfe7": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_080b6da217330b97016afa68b7918887d1b14d3e11c59724bd": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 12987,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 12987,
+            "output_tokens": 0
+          },
+          "rs_080b6da217330b97016afa68b8434887d1b9139c81461417ec": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 286
+          },
+          "msg_080b6da217330b97016afa68bd7ff087d1bd7e926580eb0f2e": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 176
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 176
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 13758,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 462,
+      "output_tokens_details": {
+        "reasoning_tokens": 286
+      },
+      "total_tokens": 14220
+    },
+    "completed_at": "2026-11-16T10:21:52.853098+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://techcrunch.com/2026/11/14/asian-governments-react-to-nvidia-ceo-jensen-huangs-exit",
+      "sha256": "e73d60777627863dcbfd6e1be7f7c36a6689ad7ddb193e34b5bfc82411933315",
+      "source_date": null,
+      "read_at": "2026-11-16T10:20:33.134511+08:00"
+    },
+    {
+      "id": "S02",
+      "url": "https://www.cnbc.com/2026/11/11/nvidia-jensen-huang-ai-financial-system-risk.html",
+      "sha256": "cf67d39704dedbcc3d2df5f9028e41ec22f9e869a9a5daa2bf99f1e1cbce0c6c",
+      "source_date": null,
+      "read_at": "2026-11-16T10:20:33.129876+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-16.md": "bd85dda46c5957be5fc794c8a177b0b063d98aa5e55a6e64e11c42af1e262a3d",
+    "src/content/blog/en/ai-daily-2026-11-16.md": "928dcc36a539797f2ad160a70c290342b34645287fef2f8714588e4c674420d6"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-16.md": "58c03fd2e95fd080c06e47f401401780c8e0b44c65e1c04880f6c1d2be6a184f",
+    "src/content/blog/en/ai-daily-2026-11-16.md": "fec98906e55c4476e423f3db1d6f4ab21dad750bfbb6c3bfb70cf30e17a5dca2"
+  }
+}
