@@ -1,0 +1,216 @@
+{
+  "version": 2,
+  "date": "2026-11-19",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-19",
+  "created_at": "2026-11-19T08:22:08.354310+08:00",
+  "backfill": true,
+  "base_commit": "a5d2f2a99b234d4f9d0be28322d6d64c0d3da69f",
+  "event_keys": [
+    "us-ai-chip-data-center-export-rule"
+  ],
+  "packet_sha256": "ac767751d45a495c0ff7f439632081a0a55299e954f6daae71a20b904145153c",
+  "draft_sha256": "54c4cad36e7b4b0fcaf9d08c2a958ebb0456d91740ccfb0b0949d04850c47a6d",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The article’s main details—including the 12 million TPP threshold, covered countries, indirect access, exceptions, and 90-day window—are supported by S02 and consistently attributed to TechCrunch; it does not claim independent verification or that the rule is already effective.",
+      "The November 16 backfill is explicitly labelled and matches the packet’s event date. It covers a distinct event from the listed November 16 publication, and the article does not present it as new on November 19.",
+      "Both language versions preserve the same scope and limitations, provide concrete information for affected operators and exporters, and avoid claiming product testing, operational compliance results, or a blanket ban on overseas AI services."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_074ed26310a6d8ce016afe40fb6f3887d19a5abe08cbae59ea",
+    "input_sha256": "ac767751d45a495c0ff7f439632081a0a55299e954f6daae71a20b904145153c",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_074ed26310a6d8ce016afe40fb88e887d192fcb7670d10cd6a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_074ed26310a6d8ce016afe40fb890487d1ad1af06e60894477": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2471,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 2471,
+            "output_tokens": 0
+          },
+          "rs_074ed26310a6d8ce016afe40fd47a487d1ab0ef9d824e904b5": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 114
+          },
+          "msg_074ed26310a6d8ce016afe4102038c87d18a45bb0240a2b937": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 1409
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 1409
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 3996,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 1523,
+      "output_tokens_details": {
+        "reasoning_tokens": 114
+      },
+      "total_tokens": 5519
+    },
+    "completed_at": "2026-11-19T08:21:52.136282+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_054009070aaefe5c016afe41215ef087d1ba6e1dde6cc11693",
+    "input_sha256": "aed4b4de6caae2e1f3adc5a1041623c4f99e03dfe795b402ef9b6691685151ff",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_054009070aaefe5c016afe412178c087d1be284d05b32c8d44": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_054009070aaefe5c016afe412178e087d1b0773c8d9a629532": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 3850,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 3850,
+            "output_tokens": 0
+          },
+          "rs_054009070aaefe5c016afe4121d1b087d18e2ea6b399d54382": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 321
+          },
+          "msg_054009070aaefe5c016afe4127b01487d19df465ecfb124722": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 193
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 193
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 4621,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 514,
+      "output_tokens_details": {
+        "reasoning_tokens": 321
+      },
+      "total_tokens": 5135
+    },
+    "completed_at": "2026-11-19T08:22:03.337242+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S02",
+      "url": "https://techcrunch.com/2026/11/16/us-tightens-ai-chip-export-controls-to-deter-chinese-companies-from-accessing-compute-remotely",
+      "sha256": "117de9b030d8cd47004e730ed57235ead9e57a6118bb5a5ab6c2ba748c29e9df",
+      "source_date": null,
+      "read_at": "2026-11-19T08:20:54.263483+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-19.md": "79bff59f71560697cec794cd5f449b4de4a9181e8053a30bc5a8c96165165472",
+    "src/content/blog/en/ai-daily-2026-11-19.md": "02d55c11c349b13bd9fa890dfdcd0570e21b3120bcefab2c749e357e39ae5fea"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-19.md": "dc922fbe21249ab34393e455de6029589b7d5d6bfb46a640bd78bcdb8c6ae059",
+    "src/content/blog/en/ai-daily-2026-11-19.md": "ede2233a88f14f84468069e02ffa934b6f61e85fd5a504586ddcf23aa356aea2"
+  }
+}
