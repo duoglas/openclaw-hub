@@ -1,0 +1,224 @@
+{
+  "version": 2,
+  "date": "2026-11-20",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-20",
+  "created_at": "2026-11-20T08:22:15.542754+08:00",
+  "backfill": true,
+  "base_commit": "21c0441e1fa85fe5ad8265fcac12fb680ec1501d",
+  "event_keys": [
+    "openai-research-acceleration-report",
+    "nvidia-neocloud-financing-terms"
+  ],
+  "packet_sha256": "1bb94602de8c696a728745e5da3a5e380bcad719ebecc02011b43507861229e9",
+  "draft_sha256": "3d7f16aa71b64bb255c56ae717bbbb3289504c5287d2061d90c8fb45cd49157e",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The OpenAI section accurately attributes internal estimates to OpenAI and includes the supported task-level rates and usage figures; its limits are explicitly stated rather than presented as independent benchmark results.",
+      "The Nvidia sections attribute the loan-guarantee details to TechCrunch and distinguish Kress’s stated clarification and selectivity from independently established outcomes. The $105 billion figure, activation conditions, and absence of evidence for realized financing cuts are consistent with the excerpt.",
+      "Both languages cover the same material claims and limitations. The November 18 backfill labels fit the stated event dates, and the sections provide concrete information without claiming agents were tested or guarantees were independently verified."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_0758ef677456d7a9016aff927b96b887d1a09b10765e6e28d4",
+    "input_sha256": "1bb94602de8c696a728745e5da3a5e380bcad719ebecc02011b43507861229e9",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_0758ef677456d7a9016aff927c022487d180e3d1abcb79d8de": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_0758ef677456d7a9016aff927c024087d19fbd885a6909dd50": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 4806,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 4806,
+            "output_tokens": 0
+          },
+          "rs_0758ef677456d7a9016aff927ce29c87d1995ab2a7a6dce079": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 48
+          },
+          "msg_0758ef677456d7a9016aff927eb26c87d186f504940a88d0a5": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 2022
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 2022
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 6331,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 2070,
+      "output_tokens_details": {
+        "reasoning_tokens": 48
+      },
+      "total_tokens": 8401
+    },
+    "completed_at": "2026-11-20T08:21:58.521494+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_09c4e5b24f0f03ee016aff92a7f58487d19368b77b546bfa37",
+    "input_sha256": "e50babec306150e6aff715be9e8b27f84a6246fe84bdbe2d1b3471ba1c269fc7",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_09c4e5b24f0f03ee016aff92a8128887d1af86384512ec6428": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_09c4e5b24f0f03ee016aff92a812a487d1ab87d40112079190": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 6775,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 6775,
+            "output_tokens": 0
+          },
+          "rs_09c4e5b24f0f03ee016aff92a8853c87d1aef85d01a8969d0a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 372
+          },
+          "msg_09c4e5b24f0f03ee016aff92af4dd487d18d4ff866dab92231": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 183
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 183
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 7546,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 555,
+      "output_tokens_details": {
+        "reasoning_tokens": 372
+      },
+      "total_tokens": 8101
+    },
+    "completed_at": "2026-11-20T08:22:10.780074+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
+      "sha256": "fbf220d9248030b7c131f24ca262f99d9b7abaf9ae9523f37e0bb646c893b57f",
+      "source_date": null,
+      "read_at": "2026-11-20T08:20:55.438791+08:00"
+    },
+    {
+      "id": "S02",
+      "url": "https://techcrunch.com/2026/11/18/nvidia-clarifies-when-it-will-and-wont-keep-financing-neoclouds",
+      "sha256": "f4f25d735862b68dd3a916c80ea4e403e401c6e32d2a3cebcf52e875883fb3bc",
+      "source_date": null,
+      "read_at": "2026-11-20T08:20:55.440004+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-20.md": "b7e5897a98a6ac7b5d1fcc3104ac77a2629cadc242f66cdc5be114991b2168b3",
+    "src/content/blog/en/ai-daily-2026-11-20.md": "e162e2a61dc71872af8e5cdf2bb40692f368d22d3057afeb15c638e6e3ebc515"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-20.md": "871527af08e2733cd4dad8ac2e20230a7d443834afe175e84d5dbb531b1a1438",
+    "src/content/blog/en/ai-daily-2026-11-20.md": "36305fa97065b2a49729f64e0c5deb62ee9fe6a1815cc499c561c6b8641cfa41"
+  }
+}
