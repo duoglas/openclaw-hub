@@ -1,0 +1,210 @@
+{
+  "version": 2,
+  "date": "2026-11-21",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-21",
+  "created_at": "2026-11-21T10:21:45.030935+08:00",
+  "backfill": true,
+  "base_commit": "1405c799abcf86001205409fa8fc524e51495a66",
+  "event_keys": [
+    "gpt-62-astra-sol-launch"
+  ],
+  "packet_sha256": "54e3e1c9ec7124b7659505f3049c1c0a8a281911a0808df92bc4694f5adb6e44",
+  "draft_sha256": "59cf8cd9c98c49d97f94f97ce1f3e867ab8e45bc968a2c6359c5b5128a6168cd",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "The central claim is directly supported by S02’s dated update entry: GPT-6.2 Astra and Sol launched in ChatGPT Work, Codex, and the API on November 17, 2026. The copy avoids unsupported claims about model capabilities, pricing, access, or performance.",
+      "The article clearly labels this as November 17 backfill rather than a November 21 announcement, and the supplied publication history shows no prior item for this event. Its single-event scope is appropriate to the evidence.",
+      "Chinese and English versions are materially aligned, identify the same evidence limits, and make no unsupported testing or availability claims."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_070b5d144ca6dbde016b0100158b1487d198521174f817bdf7",
+    "input_sha256": "54e3e1c9ec7124b7659505f3049c1c0a8a281911a0808df92bc4694f5adb6e44",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_070b5d144ca6dbde016b010015a70887d19810fb9168001ecb": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_070b5d144ca6dbde016b010015a72887d1b8ef347f101b5a9c": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 6121,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 6121,
+            "output_tokens": 0
+          },
+          "rs_070b5d144ca6dbde016b0100168ac887d1af90f6aeb17e80a0": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 73
+          },
+          "msg_070b5d144ca6dbde016b010019ba0087d18a9f052270e73e80": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 1012
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 1012
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 7646,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 1085,
+      "output_tokens_details": {
+        "reasoning_tokens": 73
+      },
+      "total_tokens": 8731
+    },
+    "completed_at": "2026-11-21T10:21:34.019258+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_071fcf1bc76ec06e016b010030476887d1bee66d7e29a7da7e",
+    "input_sha256": "96376198fff1001a5a7743535ead396d79a118a97abb9ff1378a9a69354e0ae1",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_071fcf1bc76ec06e016b010030615087d193f3fc7e199023ad": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_071fcf1bc76ec06e016b010030616487d1bb3731782e495e32": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 7103,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 7103,
+            "output_tokens": 0
+          },
+          "msg_071fcf1bc76ec06e016b010030c18887d1a58bf9646e97bb87": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2,
+                "output_tokens": 179
+              }
+            ],
+            "input_tokens": 2,
+            "output_tokens": 179
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 7874,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 179,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 8053
+    },
+    "completed_at": "2026-11-21T10:21:40.128085+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S02",
+      "url": "https://developers.openai.com/codex",
+      "sha256": "6a830d5299d285503e6b138fbbdd483de08f52ca1e4cb17a7b86e6c94f351f4f",
+      "source_date": null,
+      "read_at": "2026-11-21T10:20:52.298758+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-21.md": "eb192628f4f852157a191deba7b44d3168efe943dd53fe2ac2d3740ec5b07e06",
+    "src/content/blog/en/ai-daily-2026-11-21.md": "3da36439207faca2a15c0fa8717e36859581de79358f6d8647a0282d23149140"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-21.md": "89c61d8ce8a3e1524f682aecab720e0ed9761dc7d2b6a67299cc1fc8e10b5363",
+    "src/content/blog/en/ai-daily-2026-11-21.md": "2a554cf536ec2fac44f78b32981bc6f0a578a375fb64f365e448340bd7dc877b"
+  }
+}
