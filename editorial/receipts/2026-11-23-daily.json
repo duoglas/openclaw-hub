@@ -1,0 +1,218 @@
+{
+  "version": 2,
+  "date": "2026-11-23",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-23",
+  "created_at": "2026-11-23T10:22:14.554465+08:00",
+  "backfill": true,
+  "base_commit": "9e28b28584dd7d2ece0abfde7525e7b044494bf2",
+  "event_keys": [
+    "codex-sandbox-security-design",
+    "nvidia-ai-trade-market-selloff-nov18"
+  ],
+  "packet_sha256": "333b397c419495dc94c07ede9679652d7d0238bb01856a0b10d5a97001cc8975",
+  "draft_sha256": "6f3c860f0d07c2cabc5b3b4ba74880f45b7be1645b53c64c745683926b475c26",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "Both sections are explicitly dated November 18 backfills, and their event descriptions match the supplied OpenAI and WSJ excerpts; the article correctly distinguishes OpenAI’s official design account from independently tested results and does not claim testing.",
+      "The Codex section stays within the excerpt’s documented scope, notes that implementation detail is truncated, and avoids unsupported claims about MXC migration, cross-platform equivalence, or general availability. The market section accurately separates reported outcomes, an official’s rate preference, and traders’ expectations, without asserting causation.",
+      "Chinese and English versions are substantively aligned, the article provides concrete source-backed details and practical limits, and the excluded Anthropic item is not repeated. The excerpts support these November 18 events, while the article appropriately limits claims where source material is missing."
+    ]
+  },
+  "writer": {
+    "requested_model": "gpt-6-astra",
+    "response_id": "resp_06777c96845ab676016b03a318a8a087d284452acdf24c1c72",
+    "input_sha256": "333b397c419495dc94c07ede9679652d7d0238bb01856a0b10d5a97001cc8975",
+    "resolved_model": "gpt-6-astra",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_06777c96845ab676016b03a318d22c87d2a7023173ad8d3ddd": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 1227,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 1227,
+            "output_tokens": 0
+          },
+          "msg_06777c96845ab676016b03a318d24887d28818b09516ba53fe": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 8686,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 8686,
+            "output_tokens": 0
+          },
+          "rs_06777c96845ab676016b03a319fc3887d293ae4d23d17fcd3c": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 52
+          },
+          "msg_06777c96845ab676016b03a31c0f3487d28b4df3a251d4c574": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 0,
+                "output_tokens": 1832
+              }
+            ],
+            "input_tokens": 0,
+            "output_tokens": 1832
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 10211,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 1884,
+      "output_tokens_details": {
+        "reasoning_tokens": 52
+      },
+      "total_tokens": 12095
+    },
+    "completed_at": "2026-11-23T10:21:59.068319+08:00",
+    "prior_errors": []
+  },
+  "reviewer": {
+    "requested_model": "gpt-6-luna",
+    "response_id": "resp_06309908c1e8c0c1016b03a349f32487d19ae277dd7172be3d",
+    "input_sha256": "97a517b4936d49943ed8a0fdfa6f9188e88f8419145ddda6da0a2994c29106d5",
+    "resolved_model": "gpt-6-luna",
+    "usage": {
+      "attribution": {
+        "items": {
+          "msg_06309908c1e8c0c1016b03a34a0d3c87d19c09bd22914f9584": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 473,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 473,
+            "output_tokens": 0
+          },
+          "msg_06309908c1e8c0c1016b03a34a0d5487d1af3ddbd3878dda4a": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 10476,
+                "output_tokens": 0
+              }
+            ],
+            "input_tokens": 10476,
+            "output_tokens": 0
+          },
+          "msg_06309908c1e8c0c1016b03a34af0b487d1bd5d5e0cf3410f5e": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "content": [
+              {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0,
+                "input_tokens": 2,
+                "output_tokens": 212
+              }
+            ],
+            "input_tokens": 2,
+            "output_tokens": 212
+          }
+        },
+        "request_fields": {
+          "tools": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0,
+            "input_tokens": 296,
+            "output_tokens": 0
+          }
+        }
+      },
+      "input_tokens": 11247,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cache_write_tokens_details": {
+          "ttl_12h_tokens": 0,
+          "ttl_30m_tokens": 0
+        },
+        "cached_tokens": 0
+      },
+      "output_tokens": 212,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 11459
+    },
+    "completed_at": "2026-11-23T10:22:06.983138+08:00",
+    "prior_errors": []
+  },
+  "sources": [
+    {
+      "id": "S02",
+      "url": "https://openai.com/index/inside-the-codex-sandbox",
+      "sha256": "afeb24b73363b8716ebbdfe2a39b527d55a7827fcab10c6384f12dcde65c01c4",
+      "source_date": null,
+      "read_at": "2026-11-23T10:20:53.789949+08:00"
+    },
+    {
+      "id": "S03",
+      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-18-2026",
+      "sha256": "11d10e5184bfbc0dc628145bb25f751ae3994589f2de2c842251fbb29c3a60a4",
+      "source_date": null,
+      "read_at": "2026-11-23T10:20:53.788588+08:00"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-23.md": "b2aa55a708fed28bc3a20ca68fdc829739a8d8df25083e02a4023283e30921fd",
+    "src/content/blog/en/ai-daily-2026-11-23.md": "a75a608e53c70868a5e44f7924306e01591576ea9c50db1adcaffb7c0a10cbf9"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-23.md": "b09c04b87928304ad0fa7811324e1f11501123f393b84f47079ee98085b64782",
+    "src/content/blog/en/ai-daily-2026-11-23.md": "59b7f6685da232da0afff1b73247e4dd53a8ea896d5e2ddd8345ef929606f185"
+  }
+}
