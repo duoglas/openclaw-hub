@@ -2,6 +2,7 @@
 title: "TanStack AI 1.0 升级边界：核心转稳定，Agent harness 仍需独立评估"
 description: "TanStack AI 于10月23日宣布76个包转为稳定版，同时要求客户端与服务端同步升级；新增 Agent harness 仍属实验。本文拆解现有应用的迁移条件、长期任务的采用边界，以及上线前应验证的项目。"
 pubDate: "2026-10-29"
+noindex: true
 tags: ["ai", "analysis"]
 category: "analysis"
 lang: "zh"

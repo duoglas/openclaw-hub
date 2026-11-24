@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-03）"
 description: "NVIDIA 与 Microsoft 扩展智能体 AI 合作，覆盖 Windows、本地工作站、Fabric GPU 加速、Foundry 模型与 Copilot 安全运行时。"
 pubDate: 2026-06-03
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-06）"
 description: "NVIDIA 宣布面向 AI 云、模型公司、企业和研究机构的新算力合作模式，通过收入分成与信用支持，帮助 AI 云更快采购和部署 NVIDIA 基础设施。"
 pubDate: 2026-07-06
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

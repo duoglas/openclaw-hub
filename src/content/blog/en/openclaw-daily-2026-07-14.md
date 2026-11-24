@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-14)"
 description: "Daily AI and tech brief tracking GPT-5.6, GPT-Live, WAIC governance, China AI product launches, and Nemotron 3 Ultra enterprise agent stack deployment implications."
 pubDate: 2026-07-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

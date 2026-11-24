@@ -2,6 +2,7 @@
 title: "OpenClaw AI & Tech Daily (2026-02-20)"
 description: "Sonnet 4.6 support, 1M context, and infostealer risks in OpenClaw deployments, plus openclaw recommended model 2026 takeaways for upgrades."
 pubDate: 2026-02-20
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

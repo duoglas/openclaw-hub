@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-28)"
 description: "Daily AI and tech brief tracking OpenAI, ChatGPT, Plus, Android, GPT-4.5, GPT-5.5, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-06-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

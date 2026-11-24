@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-18）"
 description: "OpenAI 将个人财务体验接入 ChatGPT，Anthropic 通过 PwC 与盖茨基金会扩大 Claude 落地，AWS 推进 Trainium 高校研究，中国启动 AI 终端智能化分级，SAP 与 NVIDIA 补强企业 Agent 安全运行时。"
 pubDate: 2026-05-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

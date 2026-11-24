@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-01）"
 description: "4月1日 AI 与科技日报：OpenAI 新一代代理能力讨论、Google Gemini 与 AI 搜索推进、中国行业大模型落地、英伟达算力成本压力与全球 AI 监管收紧，并提炼自动化、ROI 与部署风险的实战信号。"
 pubDate: 2026-04-01
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

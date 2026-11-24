@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-16)"
 description: "OpenAI tests ChatGPT personal finance, Anthropic and PwC expand Claude deployment, AWS promotes Trainium for research, China pilots AI ethics review, and NVIDIA backs reinforcement learning infrastructure."
 pubDate: 2026-05-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

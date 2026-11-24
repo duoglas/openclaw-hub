@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-29)"
 description: "Daily AI and tech brief tracking AI/, OpenAI, ChatGPT, Codex, Remote, Plus, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-06-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

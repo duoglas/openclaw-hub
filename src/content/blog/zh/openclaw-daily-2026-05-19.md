@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-19）"
 description: "Anthropic 收购 Stainless 强化 Agent 连接能力，NVIDIA Vera CPU 交付头部实验室，Alexa+ 生成播客上线，中国实体产业 AI 和北斗时空产业继续扩张。"
 pubDate: 2026-05-19
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

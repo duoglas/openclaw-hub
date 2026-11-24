@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-09)"
 description: "2026-08-09 morning brief: Astra cyber capability risk, GPT-5.6 Sol/Luna tiering, Firebird Armenia AI Factory, China 6G NTN, and AI video commercialization."
 pubDate: 2026-08-09
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

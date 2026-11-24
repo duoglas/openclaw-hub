@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-18）"
 description: "日期：2026-04-18（周六）；斯坦福发布《2026 AI Index》：中美模型差距进一步缩小；发生了什么：斯坦福 HAI 年度报告发布，多家媒体解读显示中美顶级模型分差很小；同时美国在算力/数据中心领先，中国在论文、专利、工业机器。"
 pubDate: 2026-04-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

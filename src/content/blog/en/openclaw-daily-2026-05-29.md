@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-29)"
 description: "OpenAI model retirement dates, Claude Opus 4.8, Anthropic financing, NVIDIA sim-to-real robotics, and China AI data-rights court rules shape today’s AI deployment watchlist."
 pubDate: 2026-05-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

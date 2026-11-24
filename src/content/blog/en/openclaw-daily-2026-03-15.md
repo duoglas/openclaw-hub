@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-15)"
 description: "The March 15 AI brief tracks Meta’s AI-cost restructuring pressure, Google’s deeper Gemini rollout, Nvidia’s open-model push, and legal-commercial signals shaping the next phase of enterprise AI adoption."
 pubDate: 2026-03-15
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-15)"
 description: "May 15 AI brief: Anthropic and Gates fund AI for good, Codex reaches ChatGPT mobile, Alexa agents automate shopping, and Baidu focuses on enterprise agents."
 pubDate: 2026-05-15
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-10)"
 description: "April 10 AI brief: OpenAI–Microsoft partnership terms faced new scrutiny, Gemini kept expanding across Search and Workspace, and China’s industrial AI push showed distribution, governance, and deployment matter more than model theater."
 pubDate: 2026-04-10
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

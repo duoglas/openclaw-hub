@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-28）"
 description: "OpenAI 分析 80 多万条美国 ChatGPT 工作相关消息，称 16.8% 的工作消息、43.5% 的职业特定消息涉及“其他职业”的任务；这不是简单的“AI 替代岗位”，而是任务边界在重组。"
 pubDate: 2026-07-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

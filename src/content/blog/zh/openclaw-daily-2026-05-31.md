@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-31）"
 description: "Anthropic 发布 Claude Opus 4.8，并推出 Claude Code 动态工作流、努力程度控制等能力，强化长任务和工具调用场景。"
 pubDate: 2026-05-31
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

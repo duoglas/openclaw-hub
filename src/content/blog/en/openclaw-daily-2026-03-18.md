@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-18)"
 description: "March 18 AI brief: Nvidia GTC 2026 shifts the market toward inference-first infrastructure, robotics deployment, China model usage stays ahead in OpenRouter traffic, and builders need compliance-ready AI workflows instead of generic model chasing."
 pubDate: 2026-03-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

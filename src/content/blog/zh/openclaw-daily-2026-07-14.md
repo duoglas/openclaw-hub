@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-14）"
 description: "截至 2026-07-14 07:30 CST；OpenAI 官方称，GPT‑5.6 系列进入通用可用阶段，包括 Sol、Terra、Luna；Sol 主打编码、科研、网络安全、知识工作和多智能体协作，并引入更高强度的 ultra 工作模式。"
 pubDate: 2026-07-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

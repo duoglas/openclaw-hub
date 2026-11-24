@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-12）"
 description: "NVIDIA 称 Nemotron 3 Ultra 在 LangChain Deep Agents harness 中达到开放模型领先表现，并可用更低推理成本完成企业任务。"
 pubDate: 2026-07-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

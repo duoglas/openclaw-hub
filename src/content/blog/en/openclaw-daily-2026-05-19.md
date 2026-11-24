@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-19)"
 description: "Anthropic buys Stainless, NVIDIA ships Vera CPUs, Alexa+ adds AI podcast generation, China expands industrial AI pilots, and BeiDou tops 629 billion yuan in navigation industry output."
 pubDate: 2026-05-19
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

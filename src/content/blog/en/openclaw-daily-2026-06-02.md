@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-02)"
 description: "June 2 brief: Anthropic's confidential SEC Form S-1, OpenAI models on Amazon Bedrock, NVIDIA AI Cloud expansion, ChatGPT job tools, and an unconfirmed China AI industry-scale report."
 pubDate: 2026-06-02
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

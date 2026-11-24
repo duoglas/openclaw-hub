@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-02-28）"
 description: "美国政府采购风波、OpenAI 融资传闻、加拿大安全会谈、Copilot Tasks 与视频模型竞争，构成了 2026-02-28 这期 AI/科技日报的重点。"
 pubDate: 2026-02-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

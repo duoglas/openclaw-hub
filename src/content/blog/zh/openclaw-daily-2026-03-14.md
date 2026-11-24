@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-14）"
 description: "本期聚焦 NVIDIA GTC 2026 会前预热带来的 AI 基础设施关注升温、阿里云百炼模型平台更新、中国拟规范拟人化互动服务、百度文心 5.0 正式上线，以及 ChatGPT 版本快速更替对企业工作流稳定性的影响。"
 pubDate: 2026-03-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

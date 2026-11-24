@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-04)"
 description: "April 4 AI brief: China pushes inclusive compute programs, Nvidia H100 rental prices keep climbing, Beijing registers 15 new generative AI services, wafer-fab capex rises on AI demand, and generative AI expands cybercrime risk."
 pubDate: 2026-04-04
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

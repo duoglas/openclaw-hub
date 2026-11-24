@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-22）"
 description: "2026-07-22 07:30｜中文简版；AWS 官方称，OpenAI GPT-5.6 Sol、Terra、Luna 已在 Amazon Bedrock 上一般可用，支持企业安全、区域内数据处理、90% 缓存输入折扣，并与 OpenAI 一方价格匹配。"
 pubDate: 2026-07-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

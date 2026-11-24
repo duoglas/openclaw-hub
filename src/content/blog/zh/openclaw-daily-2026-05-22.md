@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-22）"
 description: "2026-05-22 AI 日报：NVIDIA 预热新硬件，OpenAI 升级 Codex，Anthropic 扩展企业 Claude，中国发布 AI 伦理安全指引。"
 pubDate: 2026-05-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

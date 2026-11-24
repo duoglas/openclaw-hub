@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-14）"
 description: "2026-06-14 07:30｜Asia/Shanghai；**发生了什么**：新华网报道，工信部印发《“人工智能+信息通信”创新发展实施意见（2026—2028年）》，提出到2028年形成30个以上高价值典型场景，城域算力1毫秒时延圈覆盖率不低于75%。"
 pubDate: 2026-06-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

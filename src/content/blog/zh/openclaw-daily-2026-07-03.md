@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-03）"
 description: "NVIDIA 宣布面向 AI 云、模型公司、企业和区域 AI 玩家，引入“收入分成 + 信用支持”的算力合作模式，帮助 AI 云采购 NVIDIA 基础设施并对外销售算力服务。"
 pubDate: 2026-07-03
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

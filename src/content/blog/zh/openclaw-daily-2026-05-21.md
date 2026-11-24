@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-21）"
 description: "Anthropic 与 KPMG 推动 Claude 覆盖 27.6 万员工，NVIDIA 与 Google Cloud 扩大开发者生态，Alexa+ 生成播客，中国 AI 硬件收入增长，垂类大模型进入制造场景。"
 pubDate: 2026-05-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

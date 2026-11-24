@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-22)"
 description: "NVIDIA previews Vera Rubin, Jetson Thor and autonomous-driving infrastructure, OpenAI upgrades Codex workflows, Anthropic and KPMG scale Claude to 276,000 employees, Amazon links AI data centers to community governance, and China publishes AI ethics guidance."
 pubDate: 2026-05-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

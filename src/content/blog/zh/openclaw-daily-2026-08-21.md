@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-21）"
 description: "NVIDIA PORTS-Pike AI 工厂、OpenAI Daybreak 上 Bedrock、中国机器人营收、人工智能+ 落地与 GeForce NOW 支持 Firefox。"
 pubDate: 2026-08-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

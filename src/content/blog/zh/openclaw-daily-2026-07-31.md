@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-31）"
 description: "NVIDIA 医疗物理仿真、WAIC 智能体安全、Jetson Orin 边缘 AI、AIGC 电视剧版权来源风险、工信部中小企业 AI 赋能。"
 pubDate: 2026-07-31
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

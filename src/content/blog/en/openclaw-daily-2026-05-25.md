@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-25)"
 description: "Daily AI and tech brief tracking Anthropic Project Glasswing, NVIDIA COMPUTEX updates, OpenAI Codex, Amazon Leo, AI education, infrastructure moves, product shifts, and deployment implications."
 pubDate: 2026-05-25
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

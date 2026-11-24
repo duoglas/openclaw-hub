@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-23）"
 description: "OpenAI 发布 Presence，用于企业部署语音/聊天 Agent，可回答问题、调用企业系统、执行被批准动作，并在人类接管规则下升级处理；重点不再是“模型会不会回答”，而是 Agent 能否在真实客服、销售、IT、理赔等流程里稳定工作。"
 pubDate: 2026-07-23
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

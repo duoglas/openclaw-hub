@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-20）"
 description: "2026-07-20 07:30；2026 世界人工智能大会暨人工智能全球治理高级别会议 7 月 17 日至 20 日在上海举行。官方消息称，会议期间签署《关于成立世界人工智能合作组织的协定》，总部将设在上海。"
 pubDate: 2026-07-20
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

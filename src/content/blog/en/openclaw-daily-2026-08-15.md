@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-15)"
 description: "Daily AI and tech brief tracking NVIDIA Cosmos 3 open physical AI world model, Moonshot Kimi K3 long-context open model, Jensen Huang's Glassdoor 2026 CEO ranking, the World Humanoid Robot Games scale-up, and NVIDIA's open Physical AI Agent Skills."
 pubDate: 2026-08-15
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

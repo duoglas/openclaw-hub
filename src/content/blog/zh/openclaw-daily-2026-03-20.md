@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-20）"
 description: "3月20日 AI 简报：GTC 2026 推高 AI 基建竞争，Gemini 试探桌面入口，中国云厂商释放算力涨价信号。"
 pubDate: 2026-03-20
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

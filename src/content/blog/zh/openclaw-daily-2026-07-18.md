@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-18）"
 description: "AI、科技日报｜2026-07-18；OpenAI 称开始有限预览 GPT‑5.6 Sol / Terra / Luna。Sol 是旗舰模型，主打更强 coding、生物、网络安全与多智能体“ultra mode”。"
 pubDate: 2026-07-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

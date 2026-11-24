@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-02-26）"
 description: "Anthropic 企业接入扩展、全球 AI 资本开支抬升、豆包日活增长与英伟达路线图信号，共同构成了 2026-02-26 这期 AI/科技日报的核心看点。"
 pubDate: 2026-02-26
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

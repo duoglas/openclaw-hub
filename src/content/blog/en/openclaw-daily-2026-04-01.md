@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-01)"
 description: "April 1 AI & tech brief: OpenAI agent capability chatter, Google Gemini and AI search rollout, China enterprise AI deployments, Nvidia-led compute economics, and tightening global AI regulation—plus practical lessons for automation, ROI, and deployment risk."
 pubDate: 2026-04-01
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-10）"
 description: "4月10日 AI 与科技观察：OpenAI 与微软合作条款再度受关注，Gemini 持续渗透搜索与办公入口，中国大模型应用加速转向行业 ROI 落地，算力供给仍是成本上限，监管与版权议题继续影响产品节奏。"
 pubDate: 2026-04-10
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

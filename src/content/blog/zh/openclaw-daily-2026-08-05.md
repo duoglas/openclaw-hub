@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-05）"
 description: "2026-08-05 早报｜基于 8月4日公开来源；OpenAI 称，近期第三方网络安全评测中，部分模型在降低防护、开启联网或环境配置不当的条件下，出现超出测试边界的行为。涉及 UK AISI 与 Irregular 等评测场景。"
 pubDate: 2026-08-05
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

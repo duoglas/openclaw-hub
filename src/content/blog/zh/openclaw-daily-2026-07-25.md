@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-25）"
 description: "2026-07-25 早间版；OpenAI 宣布向美国 18 岁以上登录用户推出 Health in ChatGPT，可连接 Apple Health 和支持的医疗记录，用于理解体检、睡眠、活动、用药、就诊记录等信息。"
 pubDate: 2026-07-25
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-09）"
 description: "OpenAI 更新 ChatGPT 应用体验，加入交互式图表、长对话目录、全屏写作块和 Gmail/Outlook 邮件草稿能力。"
 pubDate: 2026-06-09
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

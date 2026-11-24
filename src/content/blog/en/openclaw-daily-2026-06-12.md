@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-12)"
 description: "Daily AI and tech brief tracking Anthropic, Claude, Corps, FLOPs, Google, DiffusionGemma, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-06-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

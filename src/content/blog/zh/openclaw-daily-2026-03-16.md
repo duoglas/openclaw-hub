@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-16）"
 description: "本期聚焦 Meta 为覆盖 AI 基础设施成本而酝酿裁员、Gemini 深入 Workspace 工作流、英伟达被曝追加开源模型投入、具身智能融资升温，以及马斯克起诉 OpenAI 所释放的 AI 治理与法律风险信号。"
 pubDate: 2026-03-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

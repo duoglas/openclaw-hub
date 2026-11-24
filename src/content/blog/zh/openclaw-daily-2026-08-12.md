@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-12）"
 description: "L1 ✅ OpenAI 内部实践案例：如何构建 AI 原生财务团队，日期 2026年8月10日；现在我已经有充足的素材。总结目前的收获：。"
 pubDate: 2026-08-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

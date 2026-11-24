@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-23)"
 description: "May 23 AI brief: Anthropic reports Project Glasswing findings, NVIDIA previews AI factory hardware, China issues AI ethics guidance, and OpenAI updates Codex."
 pubDate: 2026-05-23
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-16)"
 description: "Daily AI and tech brief tracking NVIDIA Cosmos 3, Kimi K3, MiniMax H3, Glassdoor CEO ranking, humanoid robot games, Physical AI Agent Skills, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-08-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

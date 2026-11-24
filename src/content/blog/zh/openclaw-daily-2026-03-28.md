@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-28）"
 description: "今日聚焦 OpenAI 面向开发者的平台化 Agent 能力、Google 多模态工作流生态、英伟达从 GPU 叙事转向基础设施 ROI、中国大模型从参数竞赛转向合规交付，以及 AI 治理与版权成本持续上升带来的执行优先级。"
 pubDate: 2026-03-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

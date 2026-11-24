@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-15)"
 description: "Daily AI and tech brief tracking AWS Continuum, GPT-5.6 on Bedrock, Nemotron Labs open-model ownership, Blackwell performance per watt, and WAIC preview signals."
 pubDate: 2026-07-15
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

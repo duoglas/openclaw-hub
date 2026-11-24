@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-14）"
 description: "2026-05-14 AI 科技日报：OpenAI Windows Codex 沙箱、Claude 小企业工作流、Amazon Alexa for Shopping、NVIDIA 强化学习基础设施，以及中国人工智能 + 能源行动方案。"
 pubDate: 2026-05-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

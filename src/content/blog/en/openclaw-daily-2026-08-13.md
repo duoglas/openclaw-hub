@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-13)"
 description: "Daily AI and tech brief tracking NVIDIA, Alpamayo, Super, Robotaxi, Hugging, Face, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-08-13
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

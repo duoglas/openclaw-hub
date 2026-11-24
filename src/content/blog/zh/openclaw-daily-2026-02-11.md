@@ -2,6 +2,7 @@
 title: "OpenClaw 日报：模型回退链怎么配最稳（2026-02-11）"
 description: "避免一限流全挂：按供应商交错配置回退链，并给不同任务分层模型。"
 pubDate: 2026-02-11
+noindex: true
 tags: ["openclaw", "daily", "automation"]
 category: "guide"
 lang: "zh"

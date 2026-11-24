@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-16)"
 description: "Daily AI and tech brief tracking Jetson Thor edge robotics modules, NVIDIA Japan healthcare AI, Nemotron Labs open-model ownership, Claude Science, and ChatGPT model picker changes."
 pubDate: 2026-07-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

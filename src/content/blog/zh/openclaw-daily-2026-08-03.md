@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-03）"
 description: "AI、科技日报｜2026-08-03；腾讯官方文章显示，WorkBuddy 推出“把 Office 装进 WorkBuddy：人机双写正式上线”。"
 pubDate: 2026-08-03
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

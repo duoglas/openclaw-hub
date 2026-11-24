@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-28）"
 description: "2026-05-28 早报：AWS Agentic Shopping Assistant、NVIDIA AI 工厂、Anthropic 韩国本地化、中国 5G 基础设施与 AI 支付智能体趋势。"
 pubDate: 2026-05-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-09）"
 description: "OpenAI 7月8日发布 GPT‑Live，支持边听边说，可在用户停顿、打断、背景噪声中继续维持对话；复杂问题可后台委托 GPT‑5.5 处理。"
 pubDate: 2026-07-09
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

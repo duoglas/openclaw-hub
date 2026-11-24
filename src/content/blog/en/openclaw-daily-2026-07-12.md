@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-12)"
 description: "Daily AI and tech brief tracking NVIDIA Nemotron, Hugging Face LeRobot, Vera CPU, China space computing, reusable rockets, and practical deployment implications."
 pubDate: 2026-07-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

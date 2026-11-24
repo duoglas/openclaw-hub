@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-11）"
 description: "3月11日 AI 简报：OpenAI 推 GPT-5.4，Claude 向长期记忆助手演进，算力联盟正变成平台护城河。"
 pubDate: 2026-03-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

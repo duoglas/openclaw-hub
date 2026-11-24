@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-21)"
 description: "Daily AI and tech brief tracking NVIDIA LeRobot, Vera CPU, Claude on Azure GB300, WAIC token-cost optimization, and agent safety evaluation."
 pubDate: 2026-07-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-12）"
 description: "《AI、科技日报》；截至 2026-06-12 07:30（北京时间）。"
 pubDate: 2026-06-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

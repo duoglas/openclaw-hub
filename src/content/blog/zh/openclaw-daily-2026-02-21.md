@@ -2,6 +2,7 @@
 title: "OpenClaw AI / 科技日报（2026-02-21）"
 description: "OpenClaw AI / 科技日报 2026-02-21：当日关键更新、实操建议与次日观察点。"
 pubDate: 2026-02-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

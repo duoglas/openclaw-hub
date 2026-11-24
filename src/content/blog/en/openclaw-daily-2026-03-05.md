@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-05)"
 description: "AI data-center power commitments, Google-Epic settlement shifts, supply-chain scrutiny, and energy governance pressure defined the 2026-03-05 daily brief."
 pubDate: 2026-03-05
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

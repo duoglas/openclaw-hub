@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-25)"
 description: "Daily AI and tech brief tracking Health in ChatGPT, NVIDIA and KAIST agentic AI research, Isaac for Healthcare simulation, WAIC procurement scale, and OpenAI small-business AI enablement."
 pubDate: 2026-07-25
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

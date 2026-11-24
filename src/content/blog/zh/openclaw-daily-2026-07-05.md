@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-05）"
 description: "2026-07-05 早间版；Anthropic 称 Claude Fable 5 已重新向全球用户开放，并公布网络安全分类器、越狱严重性分级框架草案，还开放 HackerOne 提交渠道。"
 pubDate: 2026-07-05
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

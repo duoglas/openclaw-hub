@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-19）"
 description: "2026-07-19 07:30｜聚焦 AI / 科技行业；2026 世界人工智能大会暨人工智能全球治理高级别会议 7 月 17-20 日在上海举行，主题为“智能伙伴 共创未来”。"
 pubDate: 2026-07-19
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

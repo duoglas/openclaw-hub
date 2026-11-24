@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-05)"
 description: "OpenAI updated ChatGPT Memory and Lockdown Mode, NVIDIA pushed physical AI through Cosmos 3 and agent skills, China highlighted high-quality datasets, and Unitree’s IPO progress put embodied AI back in the capital-market spotlight."
 pubDate: 2026-06-05
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

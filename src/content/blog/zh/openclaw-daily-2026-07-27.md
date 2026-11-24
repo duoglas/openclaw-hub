@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-27）"
 description: "2026-07-27 早间版；NVIDIA 与 SK Group 宣布 5000 亿美元以上合作意向，覆盖 AI 工厂、下一代 AI 存储、HBM4 供应与联合开发。"
 pubDate: 2026-07-27
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

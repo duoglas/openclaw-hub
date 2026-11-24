@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-02)"
 description: "Daily AI and tech brief tracking OpenAI, GPT-5.6, Luna, Terra, Sol, API, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-08-02
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

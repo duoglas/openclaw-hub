@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-02)"
 description: "Australian AI child-safety enforcement, AWS outage risk, Wall Street AI repricing, Pony.ai economics, and 224G interconnect testing drove the 2026-03-02 brief."
 pubDate: 2026-03-02
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

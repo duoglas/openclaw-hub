@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-26)"
 description: "Daily AI and tech brief tracking Anthropic, OpenAI Codex, Amazon Alexa Shopping, NVIDIA GTC Taipei, industrial AI deployment, and practical deployment implications."
 pubDate: 2026-05-26
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

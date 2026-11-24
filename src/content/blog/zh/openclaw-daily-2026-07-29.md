@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-29）"
 description: "2026-07-29 07:30；OpenAI 汇总 8 个智能体辅助科学计算项目，主要集中在生命科学；5 个使用 Codex，3 个结合 Codex 与 Claude Code。"
 pubDate: 2026-07-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-03）"
 description: "Claude 登顶美国 App Store、英伟达押注光子学、OpenAI 超大融资与公众对军事 AI 的反应，构成了 2026-03-03 这期 AI/科技日报。"
 pubDate: 2026-03-03
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

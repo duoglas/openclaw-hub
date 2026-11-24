@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-09)"
 description: "Daily AI and tech brief tracking OpenAI, ChatGPT, Library, Gmail/Outlook, NVIDIA, LG, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-06-09
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

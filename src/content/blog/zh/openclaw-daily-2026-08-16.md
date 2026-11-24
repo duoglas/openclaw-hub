@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-16）"
 description: "在 GTC Taipei，NVIDIA 发布 Cosmos 3，称其为开放的物理 AI 世界基础模型，可原生理解与生成文本、图像、视频、环境音与动作，用于机器人、自动驾驶与视觉 AI 的合成数据、仿真与策略训练，并成立 Cosmos 联盟。"
 pubDate: 2026-08-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

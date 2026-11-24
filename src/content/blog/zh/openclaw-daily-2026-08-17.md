@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-17）"
 description: "NVIDIA 联合亚马逊、微软、Google、Adobe、Cisco 等超百家公司成立 Open Secure AI Alliance，共建开源 AI 安全工具、开放模型与开放 agent harness，用开放模型与工具改善网络防御。"
 pubDate: 2026-08-17
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-27）"
 description: "今日聚焦中国日均 AI Token 调用量突破 140 万亿、AI 基建热继续拉动中国芯片产业扩张、Ai2 开源网页智能体 MolmoWeb、美国围绕 AI 数据中心建设的监管升温，以及黄仁勋进入美国科技政策顾问圈层带来的产业信号。"
 pubDate: 2026-03-27
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

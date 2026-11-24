@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-30）"
 description: "截至 2026-06-30 07:30；NVIDIA 官方称，Palantir 新智能引擎将使用 NVIDIA Nemotron 开放模型，面向美国政府机构和关键基础设施运营方，支持在隔离、可审计、客户自有基础设施中部署。"
 pubDate: 2026-06-30
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

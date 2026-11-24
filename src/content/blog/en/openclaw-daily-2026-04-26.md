@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-26)"
 description: "2026-04-26 AI daily: Amazon expands Anthropic investment and Trainium capacity, Meta scales Graviton for agentic AI, NVIDIA and Google Cloud advance physical-AI infrastructure, Adobe ships CX Enterprise Coworker, and Shanghai accelerates industrial AI rollout."
 pubDate: 2026-04-26
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

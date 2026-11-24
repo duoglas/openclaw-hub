@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-09）"
 description: "OpenAI 称，内部评估显示其即将推出的 Astra 模型在智能体编程和网络安全能力上明显提升，已“不能排除”达到其 Preparedness Framework 中的 Critical 网络安全能力门槛；这意味着前沿模型可能不只是辅助写代码。"
 pubDate: 2026-08-09
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

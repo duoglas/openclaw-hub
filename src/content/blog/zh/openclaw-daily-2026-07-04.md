@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-04）"
 description: "2026-07-04 早间版；OpenAI 推出 GeneBench-Pro，用于测试模型在计算生物学中的复杂判断能力，包括处理模糊数据、修正假设、选择分析路径等。"
 pubDate: 2026-07-04
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

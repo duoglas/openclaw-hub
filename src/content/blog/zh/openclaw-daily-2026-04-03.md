@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-03）"
 description: "4 月 3 日 AI / 科技日报：OpenAI 新一轮模型能力更新传闻升温，Gemini 持续深度进入 Workspace/Cloud，中国大模型竞争转向行业 ROI 落地，算力供给与价格战并存，跨区域监管与版权合规压力继续抬升。"
 pubDate: 2026-04-03
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

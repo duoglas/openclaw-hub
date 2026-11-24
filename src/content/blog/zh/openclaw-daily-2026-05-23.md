@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-23）"
 description: "2026-05-23 AI 日报：Anthropic 披露漏洞发现，NVIDIA 推 AI 工厂与机器人，中国发布 AI 伦理指引，OpenAI 更新 Codex。"
 pubDate: 2026-05-23
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

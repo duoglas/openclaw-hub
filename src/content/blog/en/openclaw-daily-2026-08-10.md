@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-10)"
 description: "Daily AI and tech brief tracking Firebird, Open Secure AI Alliance, Bedrock, Claude Fable, China AI video, infrastructure moves, safety signals, and practical deployment implications."
 pubDate: 2026-08-10
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

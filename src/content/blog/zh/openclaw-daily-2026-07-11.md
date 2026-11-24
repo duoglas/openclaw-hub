@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-11）"
 description: "OpenAI 发布 GPT-5.6 系列，Meta Muse Image 回滚 Instagram 账号引用，NVIDIA、阿里云 Qoder 与 Qwen 硬件生态继续推动 AI Agent 和 Physical AI 落地。"
 pubDate: 2026-07-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

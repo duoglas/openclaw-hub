@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-22)"
 description: "Daily AI and tech brief tracking DeepSeek V4-Flash-Vision-Exp multimodal API, GLM-5.3 open-source model SOTA, NVIDIA PORTS-Pike AI factory compute financing, Anthropic Astra RL training pause, and Tencent Q2 capex AI spend."
 pubDate: 2026-08-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

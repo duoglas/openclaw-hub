@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-21）"
 description: "2026-03-21 AI / 科技日报：聚焦英伟达 GTC 2026 带来的 AI 基建升级、Gemini for macOS 测试、Anthropic 企业收入竞争加速，以及中国云厂商 AI 算力涨价信号。"
 pubDate: 2026-03-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

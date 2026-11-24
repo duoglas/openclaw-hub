@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-22）"
 description: "DeepSeek 上线多模态视觉模型 V4-Flash-Vision-Exp 与免费 Files API；智谱 GLM-5.3 API 正式上线、权重待开源；NVIDIA×OpenAI 锁定俄亥俄 8GW 算力园区。"
 pubDate: 2026-08-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

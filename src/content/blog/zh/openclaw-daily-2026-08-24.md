@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-24）"
 description: "Moonshot / Kimi 发布 Kimi K3，定位为 2.8T 参数原生多模态模型，支持 100 万 token 上下文，可通过 Kimi.com、Kimi Work、Kimi Code 与 API 使用。"
 pubDate: 2026-08-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

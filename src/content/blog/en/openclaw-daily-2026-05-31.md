@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-31)"
 description: "Daily AI and tech brief covering Claude Opus 4.8, Anthropic Series H funding, OpenAI Codex Computer Use on Windows, the China-ASEAN AI center, and NVIDIA ICRA robotics research."
 pubDate: 2026-05-31
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

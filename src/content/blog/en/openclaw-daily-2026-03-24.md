@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-24)"
 description: "NVIDIA doubled down on AI infrastructure and physical AI at GTC 2026, Meta expanded licensed news inside Meta AI, policy pressure on Chinese open-source AI intensified, and Gemini moved deeper into marketing workflows."
 pubDate: 2026-03-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

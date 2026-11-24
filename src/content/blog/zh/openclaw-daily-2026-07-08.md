@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-08）"
 description: "NVIDIA 7月7日发文称，AI Agent 不只是跑模型，还要频繁执行工具调用、代码、数据处理、验证等 CPU 侧任务；其 Vera CPU 面向“高单线程性能 + 大规模并发”设计；行业过去更关注 GPU，但 Agent 真正落地后。"
 pubDate: 2026-07-08
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

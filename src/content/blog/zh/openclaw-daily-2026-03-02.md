@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-02）"
 description: "澳洲未成年人 AI 监管、AWS 区域事故、华尔街 AI 重估、小马智行商业化与 224G 互连进展，是 2026-03-02 这期 AI/科技日报的主要内容。"
 pubDate: 2026-03-02
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

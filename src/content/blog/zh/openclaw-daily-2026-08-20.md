@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-20）"
 description: "AI 日报 2026-08-20：NVIDIA × OpenAI 俄亥俄 4.25GW AI 工厂、Waymo Gemini Ojai 无人车、Google 大学生免费 AI 计划、Gemini 登 Chrome 搜索 AI 学习功能。"
 pubDate: 2026-08-20
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

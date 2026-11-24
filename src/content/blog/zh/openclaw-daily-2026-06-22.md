@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-22）"
 description: "2026-06-22 早间版；OpenAI 版本说明显示，ChatGPT 新增更集中的 Scheduled Tasks 管理页；连接应用权限可设置“总是询问 / 修改前询问 / 重要修改前询问”。"
 pubDate: 2026-06-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

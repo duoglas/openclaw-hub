@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-12）"
 description: "OpenAI 第三方工具安全事件、IPO 散户配售信号、Anthropic 自研芯片评估与工信部‘人工智能+’场景发布，勾勒 AI 基础设施竞争与产业落地新拐点。"
 pubDate: 2026-04-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

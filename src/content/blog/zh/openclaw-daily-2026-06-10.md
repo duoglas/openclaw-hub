@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-10）"
 description: "Anthropic 6月9日发布 Claude Fable 5，并面向少数网络防御和关键基础设施机构推出 Mythos 5。"
 pubDate: 2026-06-10
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

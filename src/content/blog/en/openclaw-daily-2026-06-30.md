@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-30)"
 description: "Daily AI and tech brief tracking NVIDIA Palantir secure government AI, Claude on Azure GB300, Claude Tag, ChatGPT finance and dictation controls, and China AI for Science software stack signals."
 pubDate: 2026-06-30
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

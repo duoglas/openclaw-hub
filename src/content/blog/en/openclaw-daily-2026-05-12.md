@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-12)"
 description: "May 12 AI brief: China sets agent rules, Anthropic expands Claude compute with SpaceX, NVIDIA-ServiceNow push enterprise agents, and ChatGPT adds memory visibility."
 pubDate: 2026-05-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

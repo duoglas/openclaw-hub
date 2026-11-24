@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-14）"
 description: "NVIDIA 发布 Alpamayo 2 Super，面向自动驾驶推理，已可商用，并放到 Hugging Face；它能输出轨迹、因果推理链、元动作、自动标注和视觉问答；自动驾驶从“感知模型”进一步走向“可解释推理模型”。"
 pubDate: 2026-08-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

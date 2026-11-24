@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-25）"
 description: "2026-05-25 早间版；Anthropic：AI 找漏洞进入“修复瓶颈”阶段；发生了什么：Anthropic 5月22日发布 Project Glasswing 初步更新，称其与约50个合作伙伴使用 Claude Mythos Pr。"
 pubDate: 2026-05-25
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

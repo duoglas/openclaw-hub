@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-14)"
 description: "NVIDIA opened Alpamayo 2 Super for commercial robotaxi and autonomous-driving reasoning, while Spectrum-6, Halos OS safety, GB 44721, and China AI manufacturing clusters show AI moving into deployable infrastructure."
 pubDate: 2026-08-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

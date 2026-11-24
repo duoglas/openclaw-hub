@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-10)"
 description: "NVIDIA Nemotron 3 Ultra and LangChain Deep Agents, Claude Fable jailbreak severity work, China science self-reliance policy, AI memory pressure, and humanoid robotics landing windows."
 pubDate: 2026-07-10
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

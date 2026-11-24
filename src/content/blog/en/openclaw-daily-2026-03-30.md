@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-30)"
 description: "ZGC Forum's AI startup survival warning, China's shift from parameter race to vertical ROI, Agent-driven cloud competition, AI hardware moving to high-frequency workflows, and policy spillover into education define today's execution priorities."
 pubDate: 2026-03-30
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

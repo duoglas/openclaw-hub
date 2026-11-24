@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-06）"
 description: "4 月 6 日 AI / 科技日报：OpenAI 与微软合作条款再起变数，Gemini 持续深入搜索与办公入口，中国大模型继续向行业落地倾斜，算力供给压力与监管版权约束共同影响企业 AI 部署。"
 pubDate: 2026-04-06
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

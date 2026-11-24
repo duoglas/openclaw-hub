@@ -2,6 +2,7 @@
 title: "OpenClaw AI & Tech Daily (2026-02-24)"
 description: "Bloomberg’s OpenClaw security scrutiny, infostealer theft risks, and token hardening priorities, including openclaw telegram getupdates conflict 409."
 pubDate: 2026-02-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

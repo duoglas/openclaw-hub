@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-12）"
 description: "2026-05-12 AI 日报：中国发布智能体规范，Anthropic 扩 Claude 算力，NVIDIA 与 ServiceNow 推企业 Agent，ChatGPT 更新记忆来源。"
 pubDate: 2026-05-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

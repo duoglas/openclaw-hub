@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-26）"
 description: "OpenAI 版本说明显示，6月24日更新 GPT-5.5 Instant，强调更好理解用户真实目标、多轮上下文、复杂约束和本地/购物类问题；大模型竞争正在从“更强参数”转向“更会帮人做决定”。"
 pubDate: 2026-06-26
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

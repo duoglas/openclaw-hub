@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-06）"
 description: "截至：2026-08-06 07:30（Asia/Shanghai）；Open Secure AI Alliance 相关成员提出 SAFE（Shared AI Findings Exchange）框架，Linux Foundation 已发布 RFC。"
 pubDate: 2026-08-06
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

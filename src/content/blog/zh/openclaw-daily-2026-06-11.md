@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-11）"
 description: "Google DeepMind 发布实验性开放模型 DiffusionGemma。它不是传统逐 token 生成，而是用“扩散式文本生成”一次并行生成文本块。官方称在专用 GPU 上最高可实现约 4 倍更快推理。"
 pubDate: 2026-06-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

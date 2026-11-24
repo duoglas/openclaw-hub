@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-11)"
 description: "Google DeepMind DiffusionGemma, NVIDIA DRIVE Hyperion robotaxi ecosystem, OpenAI ChatGPT model tiers, China humanoid robotics training, and MIIT app popup regulation signals."
 pubDate: 2026-06-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

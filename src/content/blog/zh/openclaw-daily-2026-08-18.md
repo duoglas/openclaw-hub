@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-18）"
 description: "AI 日报：NVIDIA Cosmos 3 开源物理 AI 世界基座模型、Spectrum-6 AI 工厂网络、Open Secure AI Alliance 150+ 开源安全联盟、Nations AI 主权 AI 与 OpenAI PORTS-Pike。"
 pubDate: 2026-08-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

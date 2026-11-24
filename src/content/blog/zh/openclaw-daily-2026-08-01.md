@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-01）"
 description: "OpenAI 7月31日发文称，AI 基础设施的价值不在“大”，而在于让更强智能以更低成本服务更多人。文中披露其模型已触达超过 10 亿活跃用户、超过 200 万家企业；OpenAI 正把叙事从“模型能力竞赛”转向“单位智能成本”和“可规模化商业回报”。"
 pubDate: 2026-08-01
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

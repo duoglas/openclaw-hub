@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-28)"
 description: "2026-04-28 AI daily: Anthropic ships Claude Design as NVIDIA, Adobe, Microsoft, OpenAI, and DeepSeek reshape the enterprise AI stack."
 pubDate: 2026-04-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

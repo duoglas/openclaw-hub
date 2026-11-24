@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-30）"
 description: "今日《AI、科技日报》；NVIDIA 官方披露，NVIDIA、Adobe、Cloudflare、GitHub、Microsoft、Mistral、Hugging Face、IBM、Red Hat、ServiceNow、Snowflake、Uber 等成为 O。"
 pubDate: 2026-07-30
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

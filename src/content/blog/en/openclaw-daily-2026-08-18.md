@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-18)"
 description: "Daily AI and tech brief tracking NVIDIA, Cosmos, Spectrum-6, Open Secure AI Alliance, OpenAI, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-08-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

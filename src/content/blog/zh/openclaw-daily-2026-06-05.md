@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-05）"
 description: "OpenAI 更新 ChatGPT Memory，并向所有登录用户开放 Lockdown Mode，推动个性化记忆与安全隔离同时进入主功能。"
 pubDate: 2026-06-05
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

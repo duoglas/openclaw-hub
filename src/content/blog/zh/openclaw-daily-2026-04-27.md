@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-27）"
 description: "OpenAI 广告试水，Anthropic、NVIDIA、Adobe 与上海治理动作同步推进。"
 pubDate: 2026-04-27
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

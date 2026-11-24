@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-19）"
 description: "今日 AI 与科技关键信号速览，覆盖模型能力、基础设施、产业落地与政策动向。"
 pubDate: 2026-04-19
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

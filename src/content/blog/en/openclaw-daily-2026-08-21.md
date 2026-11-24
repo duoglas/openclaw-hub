@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-21)"
 description: "Daily AI and tech brief tracking NVIDIA PORTS-Pike AI factory capacity, OpenAI Daybreak on Bedrock, China robot revenue, AI Plus deployment, and GeForce NOW Firefox cloud GPU access."
 pubDate: 2026-08-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

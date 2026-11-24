@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-27)"
 description: "Daily AI and tech brief tracking NVIDIA, SK, Group, HBM, HBM4, Telecom, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-07-27
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

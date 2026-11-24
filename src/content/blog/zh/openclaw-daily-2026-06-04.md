@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-04）"
 description: "截至：2026-06-04 07:30；NVIDIA Research 介绍 3 项 CVPR 论文：GraspGen-X 零样本抓取基础模型、LCDrive 自动驾驶高效推理模型、NitroGen 虚拟环境智能体训练模型。"
 pubDate: 2026-06-04
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

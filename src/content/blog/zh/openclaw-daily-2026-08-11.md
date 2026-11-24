@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-11）"
 description: "2026-08-11 07:30｜截至发稿可核验信息；OpenAI 宣布 ChatGPT Business 将新增 Premium 席位，价格为月付 125 美元/人，年付 100 美元/人；相比 Standard 席位，提供 5 倍用量。"
 pubDate: 2026-08-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

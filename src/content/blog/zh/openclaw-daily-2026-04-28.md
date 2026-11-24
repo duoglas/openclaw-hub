@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-28）"
 description: "Claude Design 发布，NVIDIA、Adobe、微软、OpenAI 与 DeepSeek 动向集中出现。"
 pubDate: 2026-04-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

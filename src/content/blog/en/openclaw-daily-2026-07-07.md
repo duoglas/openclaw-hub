@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-07)"
 description: "NVIDIA ICML open-model infrastructure, sovereign AI capacity, secure Bedrock model distribution, Anthropic jailbreak scoring, and Shenzhen consumer robotics deployment signals."
 pubDate: 2026-07-07
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

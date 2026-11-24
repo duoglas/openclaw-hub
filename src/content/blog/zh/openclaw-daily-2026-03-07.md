@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-07）"
 description: "全球 AI 芯片出口审批趋严、OpenAI 开发者平台传闻、Gemini 端侧扩张与中国厂商 MWC 动向，是 2026-03-07 这期 AI/科技日报的重点。"
 pubDate: 2026-03-07
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-27)"
 description: "Anthropic opens its Korea push with KiYoung Choi, Amazon expands Alexa+ to France, NVIDIA positions Vera CPU for agentic AI data centers, Chinese platforms race for AI entry points, and Huawei frames a new chip-industry law."
 pubDate: 2026-05-27
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

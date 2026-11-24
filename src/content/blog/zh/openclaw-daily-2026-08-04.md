@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-04）"
 description: "2026-08-04 早间版；NVIDIA 官方博客称，Open Secure AI Alliance 将围绕开放模型、开放 agent harness、安全工具、漏洞披露与修复协作，建设 AI 时代的网络防御与开放防御技术栈。"
 pubDate: 2026-08-04
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

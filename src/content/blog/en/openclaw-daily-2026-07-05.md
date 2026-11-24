@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-05)"
 description: "Daily AI and tech brief tracking Anthropic, Claude, Fable, HackerOne, AWS, Amazon, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-07-05
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

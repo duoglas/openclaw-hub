@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-21)"
 description: "Daily AI and tech brief tracking OpenAI ChatGPT and Codex workflow automation, Alexa+ Brazil localization, NVIDIA/HPE AI Factory infrastructure, Anthropic Korea, and China AI governance coordination."
 pubDate: 2026-06-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

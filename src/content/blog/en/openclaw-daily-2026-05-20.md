@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-20)"
 description: "Anthropic and KPMG scale Claude across professional services, NVIDIA and Google Cloud expand AI developer training, Alexa+ turns prompts into podcasts, Vera CPUs reach top AI labs, and Shanghai pushes space-based computing."
 pubDate: 2026-05-20
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

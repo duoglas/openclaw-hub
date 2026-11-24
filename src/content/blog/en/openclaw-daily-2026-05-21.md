@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-21)"
 description: "Anthropic and KPMG scale Claude to 276,000 staff, NVIDIA and Google Cloud expand AI developer workflows, Alexa+ adds AI podcasts, China AI hardware revenue grows, and vertical industry models move into manufacturing."
 pubDate: 2026-05-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

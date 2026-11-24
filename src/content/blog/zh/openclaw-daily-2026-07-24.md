@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-24）"
 description: "NVIDIA 官方博客强调，Agentic AI 不再只是一次性训练后上线，而是需要持续后训练：模型要不断学习工具变化、生产环境异常、复杂任务反馈。"
 pubDate: 2026-07-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

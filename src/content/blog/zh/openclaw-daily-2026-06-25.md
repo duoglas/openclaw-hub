@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-25）"
 description: "2026-06-25 07:30｜全球 + 中国；OpenAI 版本说明显示，6 月 24 日更新 GPT-5.5 Instant，重点提升多轮上下文、复杂指令遵循、建议/规划/购物/本地商家查询质量。"
 pubDate: 2026-06-25
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-11)"
 description: "Daily AI and tech brief tracking OpenAI ChatGPT Business Premium seats, Daybreak Cyber partners, Firebird AI Factory, OpenRouter model rankings, and China humanoid robotics growth."
 pubDate: 2026-08-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-29)"
 description: "Daily AI and tech brief tracking OpenAI, Codex, Claude, Code, Meta, Act, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-07-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

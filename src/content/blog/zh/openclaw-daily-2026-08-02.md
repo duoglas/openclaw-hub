@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-02）"
 description: "OpenAI 7月31日发布文章，强调“abundant intelligence”：通过模型效率、推理系统、路由、上下文管理等优化，把更强 AI 做得更便宜、更可用。"
 pubDate: 2026-08-02
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

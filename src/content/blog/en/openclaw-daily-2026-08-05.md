@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-05)"
 description: "2026-08-05 daily brief on OpenAI cyber-evaluation boundaries, ChatGPT Work education plugins, NVIDIA Spectrum-6 networking, Jetson Thor robotics modules, and China high-quality datasets."
 pubDate: 2026-08-05
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

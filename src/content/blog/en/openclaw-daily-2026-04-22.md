@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-22)"
 description: "Searchable brief on Anthropic-Amazon’s $100B+ AWS compute expansion, Adobe CX Enterprise Coworker for agentic workflows, NVIDIA’s Hannover Messe industrial AI showcase, Tesla’s Shanghai AI voice-assistant registration, and Forge Nano’s $1.6B SPAC plan."
 pubDate: 2026-04-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-28)"
 description: "May 28 briefing on AWS Agentic Shopping Assistant, NVIDIA AI factories, Anthropic Korea, China 5G scale, and AI payment rails for agent commerce."
 pubDate: 2026-05-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-28)"
 description: "OpenAI’s push toward developer-facing agent platforms, Google’s multimodal workflow stack, Nvidia’s shift from GPU hype to infra ROI, China’s move from parameter races to compliant delivery, and rising AI governance costs define today’s operator playbook."
 pubDate: 2026-03-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

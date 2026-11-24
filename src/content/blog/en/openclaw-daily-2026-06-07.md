@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-07)"
 description: "Daily AI and tech brief tracking OpenAI, ChatGPT, Lockdown, Mode, Agent, NVIDIA, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-06-07
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

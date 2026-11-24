@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-26）"
 description: "Amazon、Meta、NVIDIA、Adobe 与上海同步加码产业级 AI 基础设施。"
 pubDate: 2026-04-26
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

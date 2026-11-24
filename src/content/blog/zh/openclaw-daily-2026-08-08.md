@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-08）"
 description: "2026-08-08 早间版；OpenAI 称，内部评估显示即将推出的 Astra 在代理式编码和网络安全方面进展明显，暂不能排除其达到 Preparedness Framework 中的 Critical cybersecurity 能力级别。"
 pubDate: 2026-08-08
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

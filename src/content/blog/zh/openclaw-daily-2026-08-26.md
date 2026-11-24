@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-26）"
 description: "OpenAI 称 Jalapeño 在 GPT‑OSS 120B、DeepSeek R1、Kimi K2.5 等模型上，相比对照系统实现更高单位功耗吞吐、更低端到端延迟；大模型竞争从“模型能力”进一步下沉到芯片、软件、网络、数据中心的全栈效率。"
 pubDate: 2026-08-26
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

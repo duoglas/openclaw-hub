@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-07）"
 description: "NVIDIA 称，ICML 2026 中其有 74 篇论文被接收，约 2000 篇论文引用 NVIDIA GPU，145 篇引用 Nemotron；Cosmos、GR00T、BioNeMo 等开放模型也被用于机器人、自动驾驶、生命科学等方向。"
 pubDate: 2026-07-07
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

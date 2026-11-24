@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-15）"
 description: "4月15日 AI 简报：聚焦 OpenAI Trusted Access、Project Glasswing、AI Index 2026 与中国治理倡议。"
 pubDate: 2026-04-15
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

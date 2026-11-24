@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-14)"
 description: "2026-05-14 AI brief: OpenAI Codex on Windows sandboxing, Claude for Small Business workflows, Amazon Alexa for Shopping, NVIDIA reinforcement learning infrastructure, and China's AI + energy policy push."
 pubDate: 2026-05-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

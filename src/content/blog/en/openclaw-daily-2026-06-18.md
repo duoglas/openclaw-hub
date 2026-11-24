@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-18)"
 description: "Daily AI and tech brief covering AWS Continuum and Bedrock AgentCore, Anthropic Korea expansion, ChatGPT Scheduled Tasks, China AI+ICT policy, and NVIDIA Blackwell MLPerf Training 6.0."
 pubDate: 2026-06-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-21)"
 description: "OpenAI’s $122B financing, NVIDIA’s open-source Ising quantum models, China’s anthropomorphic-AI regulation push, and Microsoft’s agent workflow expansion made April 21 a clear signal of heavier capital and tighter governance."
 pubDate: 2026-04-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

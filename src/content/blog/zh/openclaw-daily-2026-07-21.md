@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-21）"
 description: "NVIDIA 宣布与 Hugging Face 合作，把 Isaac GR00T 1.7、Isaac Teleop 接入开源机器人库 LeRobot，并计划后续接入 Cosmos 3；机器人开发正在走向“开源模型 + 数据 + 仿真 + 部署流程”一体化。"
 pubDate: 2026-07-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

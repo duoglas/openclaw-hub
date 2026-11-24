@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-26)"
 description: "Daily AI and tech brief tracking OpenAI, ChatGPT, Apple, Health, Meta, Muse, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-07-26
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-07)"
 description: "OpenAI updates ChatGPT GPT-5.6 Sol and Luna, partners with APA on youth AI safety, NVIDIA advances Cosmos physical AI and NSF regional infrastructure, and China sets GB 44721 autonomous-driving safety requirements."
 pubDate: 2026-08-07
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

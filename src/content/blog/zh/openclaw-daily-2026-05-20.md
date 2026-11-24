@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-20）"
 description: "Anthropic 与 KPMG 推动 Claude 进入专业服务流程，NVIDIA 与 Google Cloud 扩大 AI 开发者生态，Alexa+ 生成播客，Vera CPU 交付头部实验室，上海布局太空算力。"
 pubDate: 2026-05-20
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

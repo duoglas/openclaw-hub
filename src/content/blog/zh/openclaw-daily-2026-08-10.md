@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-10）"
 description: "2026-08-10 07:30｜截至发稿可核验信息；Firebird 在亚美尼亚启用大型 AI 工厂，采用 NVIDIA 加速计算与 Dell AI 基础设施。"
 pubDate: 2026-08-10
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

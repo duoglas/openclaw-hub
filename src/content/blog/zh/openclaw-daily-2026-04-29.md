@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-29）"
 description: "Claude 创意连接器、AWS 接入 OpenAI/Codex、NVIDIA 多模态开源与国内 AI 监管同日推进。"
 pubDate: 2026-04-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

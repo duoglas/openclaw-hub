@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-13）"
 description: "NVIDIA 发布 Alpamayo 2 Super，面向 Robotaxi 和自动驾驶，已在 Hugging Face 可用，并支持商业用途。"
 pubDate: 2026-08-13
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

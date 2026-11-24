@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-28)"
 description: "Daily AI and tech brief tracking OpenAI, ChatGPT, HR, NVIDIA, Open, Secure, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-07-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-13)"
 description: "OpenAI Academy enterprise AI courses, NVIDIA AgentPerf Blackwell results, Anthropic Claude Corps, China AI + ICT policy, and humanoid robotics real-world training signals."
 pubDate: 2026-06-13
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

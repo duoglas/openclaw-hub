@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-24）"
 description: "追踪 Anthropic Project Glasswing 漏洞扫描、NVIDIA COMPUTEX AI 工厂与机器人、Alexa+ 个性化播客、OpenAI Codex Goal mode，以及中国 AI 在教育文旅养老场景落地。"
 pubDate: 2026-05-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

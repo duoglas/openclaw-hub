@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-11)"
 description: "March 11 AI brief: OpenAI pushes GPT-5.4, Claude moves toward longer memory, and fresh OpenAI-AMD-NVIDIA signals show compute alliances becoming a core moat in the AI platform race."
 pubDate: 2026-03-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

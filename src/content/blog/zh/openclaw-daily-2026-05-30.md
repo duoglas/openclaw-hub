@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-30）"
 description: "Claude Opus 4.8、Anthropic H轮融资、中国 AI 计量能力建设、Amazon 可靠智能体和 NVIDIA ICRA 机器人进展速览。"
 pubDate: 2026-05-30
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

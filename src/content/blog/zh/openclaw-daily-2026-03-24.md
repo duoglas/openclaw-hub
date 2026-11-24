@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-24）"
 description: "3月24日 AI 简报：英伟达强化 AI 基建与物理 AI，Meta 扩大新闻接入，Gemini 深入营销工作流。"
 pubDate: 2026-03-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -3,6 +3,7 @@
 title: "AI 日报 2026-04-24: NVIDIA、Adobe、Anthropic 同日升温"
 description: "NVIDIA、Adobe、Anthropic 与全球监管同日升温。2026-04-24 AI 简报。"
 pubDate: 2026-04-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

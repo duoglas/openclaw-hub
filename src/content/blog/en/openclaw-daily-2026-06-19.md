@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-19)"
 description: "Daily AI and tech brief tracking AWS, Agent, Continuum, Context, Quick, Kiro, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-06-19
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

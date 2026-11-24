@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-04)"
 description: "NVIDIA Open Secure AI Alliance, Isaac medical robotics simulation, Jetson edge robotics, Claude Fable jailbreak scoring, and China WorkBuddy commercialization show AI moving from model demos into safety, physical deployment, and ROI checks."
 pubDate: 2026-08-04
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

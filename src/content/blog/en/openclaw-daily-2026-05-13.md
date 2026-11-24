@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-13)"
 description: "NVIDIA and SAP push governed enterprise agents, ChatGPT Free gets richer web images, China defines AI terminal levels and agent governance, while Amazon reframes AI compute around Trainium and Graviton."
 pubDate: 2026-05-13
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-03)"
 description: "Daily AI and tech brief tracking WorkBuddy, Office, GLM, Coding, Plan, MCP/, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-08-03
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

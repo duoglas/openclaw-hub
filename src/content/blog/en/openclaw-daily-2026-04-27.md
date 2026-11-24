@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-27)"
 description: "2026-04-27 AI daily: ChatGPT ads expand in some markets as Anthropic, NVIDIA, Google Cloud, Adobe, and Shanghai push enterprise AI rollout."
 pubDate: 2026-04-27
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

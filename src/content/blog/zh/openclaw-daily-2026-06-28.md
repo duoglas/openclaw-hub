@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-28）"
 description: "2026-06-28 早间版；OpenAI 6 月 26 日更新 ChatGPT 版本说明：。"
 pubDate: 2026-06-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-12）"
 description: "3月12日 AI 简报：政策层面继续推进“人工智能+”，制造业与半导体财报验证真实需求，AMD 以 Ryzen AI 400 和 ROCm 7.2 抢占端侧与边缘工作流，而扩容团队要提前盯住电力与基础设施瓶颈。"
 pubDate: 2026-03-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-13）"
 description: "NVIDIA 与 SAP 推进企业级可信智能体运行时，ChatGPT Free 增强网页图片回答，中国发布 AI 终端分级与智能体规范意见，Amazon 强化 Trainium、Graviton 与自研硅叙事。"
 pubDate: 2026-05-13
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

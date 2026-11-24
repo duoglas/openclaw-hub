@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-18）"
 description: "2026-06-18 早报｜AWS Continuum 与 Bedrock AgentCore、Anthropic 韩国生态、ChatGPT Scheduled Tasks、中国 AI+ICT 实施意见、NVIDIA Blackwell MLPerf Tra。"
 pubDate: 2026-06-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

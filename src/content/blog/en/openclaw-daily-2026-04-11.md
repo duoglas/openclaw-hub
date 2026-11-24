@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-11)"
 description: "April 11 AI brief: ChatGPT pricing and fallback tiers kept shifting, OpenAI said enterprise revenue drives over 40% of sales, and buyers got a stronger signal that model choice, cost control, and workflow stability belong together."
 pubDate: 2026-04-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

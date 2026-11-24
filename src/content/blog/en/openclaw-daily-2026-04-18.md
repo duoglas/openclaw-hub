@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-18)"
 description: "Daily AI & tech brief with searchable signals on model updates, infrastructure shifts, policy moves, and practical deployment implications."
 pubDate: 2026-04-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

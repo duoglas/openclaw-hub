@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-26）"
 description: "2026-05-26 07:30；Anthropic 参与梵蒂冈 AI 伦理讨论；Anthropic 联合创始人 Chris Olah 在梵蒂冈就教宗 Leo XIV 关于 AI 的通谕发表讲话，重点谈到前沿 AI 实验室的商业、地缘、竞。"
 pubDate: 2026-05-26
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

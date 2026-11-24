@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-08）"
 description: "3月8日 AI 简报：美国或扩大 AI 芯片出口审批，OpenAI 开发者入口竞争升温，Gemini 继续向设备侧下沉。"
 pubDate: 2026-03-08
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

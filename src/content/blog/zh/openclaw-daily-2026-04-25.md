@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-25）"
 description: "Meta、NVIDIA、OpenAI 与华为线索交错，企业级 AI 落地继续提速。"
 pubDate: 2026-04-25
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

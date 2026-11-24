@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-08)"
 description: "Daily AI and tech brief tracking NVIDIA Vera CPU, Hangzhou robot training certification, AI memory prices, Greater Bay Area hard-tech commercialization, and AI fiction quality limits."
 pubDate: 2026-07-08
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

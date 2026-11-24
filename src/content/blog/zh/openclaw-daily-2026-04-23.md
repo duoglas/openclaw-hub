@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-23）"
 description: "OpenAI、Google Cloud、NVIDIA 与广东同步推进工作流智能体和产业级 AI 应用。"
 pubDate: 2026-04-23
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

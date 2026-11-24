@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-29）"
 description: "中关村白皮书提示 AI 创业公司正进入 12-24 个月收入验证窗口，中国市场从参数竞赛转向垂直 ROI，Agent 正推动云服务竞争升级，而 AI 硬件胜负将更多取决于真实工作流价值而非演示效果。"
 pubDate: 2026-03-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-15）"
 description: "2026-05-15 AI 日报：Anthropic 与盖茨基金会做 AI 公益，Codex 进 ChatGPT 手机端，Alexa 购物代理与百度 Agent 成焦点。"
 pubDate: 2026-05-15
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

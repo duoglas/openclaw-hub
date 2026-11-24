@@ -3,6 +3,7 @@
 title: "AI Daily: NVIDIA, Adobe, Anthropic, and Global Regulation Heat Up"
 description: "NVIDIA, Adobe, Anthropic, and regulation all heated up on April 24, 2026. Key updates in one briefing."
 pubDate: 2026-04-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

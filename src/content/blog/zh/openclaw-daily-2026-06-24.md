@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-24）"
 description: "Anthropic 6月23日发布 Claude Tag。企业或团队用户可在 Slack 频道里 @Claude，让它读取授权频道、工具、数据和代码库，异步完成任务、跟进线程、沉淀频道上下文；这不是单人聊天助手，而是“团队级 AI 同事”。"
 pubDate: 2026-06-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

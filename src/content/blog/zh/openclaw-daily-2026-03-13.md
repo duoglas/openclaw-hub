@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-13）"
 description: "3月13日 AI 简报：英伟达云投入加码，生成式 AI 进入影视主流程，Agent 自动化融资继续升温。"
 pubDate: 2026-03-13
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

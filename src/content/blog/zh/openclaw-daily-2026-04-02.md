@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-02）"
 description: "今日聚焦 OpenAI GPT-4.1 发布、Gemini 深度集成 Workspace/Cloud、中国行业大模型落地提速、推理成本优化与监管合规压力，帮助团队判断 AI 上线节奏与投入优先级。"
 pubDate: 2026-04-02
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

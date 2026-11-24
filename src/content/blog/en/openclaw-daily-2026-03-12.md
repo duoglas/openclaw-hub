@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-12)"
 description: "March 12 AI brief: China doubles down on AI+ policy, manufacturing and chip earnings confirm real demand, and enterprise buyers keep shifting from hype to ROI, deployment speed, and infrastructure readiness."
 pubDate: 2026-03-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

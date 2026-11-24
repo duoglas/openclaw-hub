@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-07）"
 description: "OpenAI 宣布 Plus/Pro 用户的 GPT‑5.6 Sol 在 ChatGPT 中更新，强调更可靠事实、更聚焦回答；免费用户默认模型将升级为 GPT‑5.6 Luna，并增加 Think 按钮与不限量文本聊天。"
 pubDate: 2026-08-07
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

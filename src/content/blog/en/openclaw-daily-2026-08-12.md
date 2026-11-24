@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-12)"
 description: "Daily AI and tech brief tracking L1, OpenAI, ChatGPT, Daybreak, AWS, Bedrock, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-08-12
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-08)"
 description: "Daily AI and tech brief tracking Astra critical cyber capability evaluation, GPT-5.6 Sol/Luna ChatGPT tiers, NVIDIA Cosmos physical AI, Build in America infrastructure, and China central-enterprise AI deployment."
 pubDate: 2026-08-08
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

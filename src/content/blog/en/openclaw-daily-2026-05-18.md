@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-18)"
 description: "OpenAI brings personal finance into ChatGPT, Anthropic expands Claude through PwC and Gates Foundation programs, AWS pushes Trainium research, China formalizes AI device grading, and SAP adds a secure NVIDIA runtime for enterprise agents."
 pubDate: 2026-05-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

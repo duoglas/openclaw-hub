@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-18）"
 description: "3月18日 AI 简报：英伟达 GTC 2026 把市场重心推向推理型基础设施与机器人落地，中国模型调用量继续领先，而团队要优先建设合规、可控成本的 AI 工作流，而不是盲目追逐模型热点。"
 pubDate: 2026-03-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

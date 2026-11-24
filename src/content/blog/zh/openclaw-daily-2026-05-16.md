@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-16）"
 description: "OpenAI 将个人财务带入 ChatGPT，Anthropic 与 PwC 扩大 Claude 企业部署，AWS 推动 Trainium 研究生态，中国启动 AI 伦理审查先导计划，NVIDIA 加码强化学习基础设施。"
 pubDate: 2026-05-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

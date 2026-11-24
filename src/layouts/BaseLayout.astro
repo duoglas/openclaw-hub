@@ -23,6 +23,7 @@ const {
 } = Astro.props;
 
 const isZh = lang === 'zh';
+const isNoindex = Astro.props.noindex || false;
 const prefix = `/${lang}`;
 const otherLang = isZh ? 'en' : 'zh';
 const currentPath = Astro.url.pathname;
@@ -71,6 +72,7 @@ const showAdSlot = (slot: string) => AD_ENABLED && AD_CLIENT && slot;
   <AdSenseHead />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
+  {isNoindex && <meta name="robots" content="noindex, nofollow" />}
   <meta name="generator" content={Astro.generator} />
   <title>{title} | Kuoo</title>
   <!-- Open Graph -->

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-06)"
 description: "SAFE shared AI incident exchange, NVIDIA Alpamayo autonomous-driving models, AI storage data paths, GLM-5.2, and Seedance 2.0 show AI moving from demos into safety, infrastructure, and product workflows."
 pubDate: 2026-08-06
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

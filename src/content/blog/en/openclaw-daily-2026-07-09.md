@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-09)"
 description: "Daily AI and tech brief tracking GPT-Live full-duplex voice AI, GPT-Live safety controls, SWE-Bench Pro benchmark reliability, NVIDIA Nemotron 3 Ultra agents, and China robot industry revenue."
 pubDate: 2026-07-09
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

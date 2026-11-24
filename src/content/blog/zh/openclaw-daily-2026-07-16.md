@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-16）"
 description: "2026-07-16 07:30｜聚焦 AI / 科技行业；NVIDIA 发布基于 Thor 架构的新 Jetson / IGX T3000、Jetson T2000 模块，面向人形机器人、工业机器人、视觉 AI Agent、自动移动机器人等边缘场景。"
 pubDate: 2026-07-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

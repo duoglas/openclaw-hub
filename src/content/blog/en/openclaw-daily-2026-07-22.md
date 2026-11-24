@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-22)"
 description: "Daily AI and tech brief tracking Google/Meta, OpenAI, GPT-5.6, Amazon, Bedrock, GA, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-07-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

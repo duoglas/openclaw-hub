@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-05-30)"
 description: "Daily AI brief covering Claude Opus 4.8, Anthropic Series H funding, China AI metrology standards, Amazon Nova Act agents, and NVIDIA ICRA robotics."
 pubDate: 2026-05-30
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

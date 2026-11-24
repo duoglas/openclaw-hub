@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-24)"
 description: "Daily AI and tech brief tracking Kimi K3, Google Gemma, WAICO governance, Codex Harness, and Claude Skills/Files API deployment signals."
 pubDate: 2026-08-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

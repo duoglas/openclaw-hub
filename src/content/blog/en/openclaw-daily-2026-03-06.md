@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-06)"
 description: "OpenAI voice-model rumors, Jensen Huang investment comments, Anthropic defense talks, and analog-chip pricing pressure led the 2026-03-06 brief."
 pubDate: 2026-03-06
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

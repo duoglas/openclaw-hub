@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-21）"
 description: "OpenAI 巨额融资、NVIDIA 开源量子模型，中国同步强化 AI 监管与产业落地。"
 pubDate: 2026-04-21
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

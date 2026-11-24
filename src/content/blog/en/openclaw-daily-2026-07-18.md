@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-18)"
 description: "Daily AI and tech brief tracking GPT-5.6 limited preview, Kimi K3 long-context model, NVIDIA post-training infrastructure, WAIC 2026 agenda, and MIIT SME AI enablement."
 pubDate: 2026-07-18
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报(2026-03-30)"
 description: "今日聚焦中关村白皮书提出 AI 创业 12-24 个月生死线、中国从参数竞赛转向垂直 ROI、Agent 驱动云服务竞争、AI 硬件回归高频场景,以及教育等公共政策外溢对落地节奏的影响。"
 pubDate: 2026-03-30
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-16）"
 description: "聚焦 OpenAI 网络安全分级开放与 Agents SDK 沙箱升级、微软 MAI-Image-2-Efficient 降本提速、ASML 上调 2026 指引、中国“AI+教育”行动计划，提炼可执行落地信号。"
 pubDate: 2026-04-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

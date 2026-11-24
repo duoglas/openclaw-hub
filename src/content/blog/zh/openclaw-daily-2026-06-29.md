@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-29）"
 description: "AI、科技日报｜2026-06-29 早报；截至 07:30，今天可确认的新发布不多；本期以过去 72 小时内仍最值得跟踪的 AI/科技动态为主。"
 pubDate: 2026-06-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

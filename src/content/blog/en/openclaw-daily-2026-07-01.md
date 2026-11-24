@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-01)"
 description: "Anthropic released Claude Science beta for Pro, Max, Team, and Enterprise users, with macOS/Linux, research databases, Jupyter/R/HPC/SSH access, GPU compute, and auditable research artifacts."
 pubDate: 2026-07-01
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

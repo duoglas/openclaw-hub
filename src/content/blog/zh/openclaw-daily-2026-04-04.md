@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-04）"
 description: "4 月 4 日 AI / 科技日报：工信部启动普惠算力行动，英伟达 H100 租赁价格继续上涨，北京新增 15 款生成式 AI 服务完成登记，全球晶圆厂设备支出被 AI 拉动上行，生成式 AI 也在放大网络犯罪风险。"
 pubDate: 2026-04-04
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

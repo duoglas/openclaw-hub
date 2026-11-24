@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-20)"
 description: "Daily AI and tech brief tracking NVIDIA/OpenAI PORTS-Pike Ohio AI factory, Waymo Gemini Ojai robotaxi, Google student AI plan, Gemini in Chrome, and Google Search AI learning features."
 pubDate: 2026-08-20
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

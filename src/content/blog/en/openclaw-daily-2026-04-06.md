@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-06)"
 description: "April 6 AI brief: OpenAI–Microsoft partnership renegotiation signals, deeper Gemini integration in Search/Workspace, China’s industry-focused model deployment push, persistent AI compute supply constraints, and tightening regulation/copyright pressure."
 pubDate: 2026-04-06
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

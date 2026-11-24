@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-02）"
 description: "2026-06-02 早间版；Anthropic 6 月 1 日宣布，已向美国 SEC 秘密提交 Form S-1 草案，为潜在 IPO 做准备。发行股数和价格未定。"
 pubDate: 2026-06-02
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-14)"
 description: "Ahead of NVIDIA GTC 2026, the March 14 brief tracked AI infrastructure focus, Alibaba Cloud Bailian updates, China’s anthropomorphic-service rules, and the next phase of platform competition around usable AI products."
 pubDate: 2026-03-14
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

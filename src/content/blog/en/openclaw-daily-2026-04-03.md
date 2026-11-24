@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-03)"
 description: "April 3 AI brief: OpenAI capability-refresh chatter, deeper Gemini integration into Workspace and Cloud, and China’s AI-plus push together showed that product embedding, not benchmark theater, is driving the next adoption wave."
 pubDate: 2026-04-03
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

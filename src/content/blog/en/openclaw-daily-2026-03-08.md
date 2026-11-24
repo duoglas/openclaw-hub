@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-08)"
 description: "March 8 AI brief: possible global U.S. chip-export expansion could reshape GPU supply, while OpenAI GitHub-rival rumors, Gemini device expansion, and MWC momentum signal a wider fight for AI entry points."
 pubDate: 2026-03-08
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

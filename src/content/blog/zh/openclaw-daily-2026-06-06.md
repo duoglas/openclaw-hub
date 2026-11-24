@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-06）"
 description: "OpenAI 优化 ChatGPT 长期记忆，并开放 Lockdown Mode，用更自动的上下文更新和能力隔离降低数据外泄风险。"
 pubDate: 2026-06-06
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

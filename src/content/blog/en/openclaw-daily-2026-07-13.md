@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-13)"
 description: "Daily AI and tech brief tracking NVIDIA Nemotron 3 Ultra, Hugging Face LeRobot, Claude Science, Claude Fable jailbreak severity, and Long March 10B reusable launch infrastructure."
 pubDate: 2026-07-13
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

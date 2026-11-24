@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-29)"
 description: "Anthropic ships Claude creative connectors, AWS expands OpenAI+Codex on Bedrock and launches Amazon Quick desktop agent, NVIDIA releases Nemotron 3 Nano Omni, while China advances PanShi-100 and tighter AI-generated content labeling enforcement."
 pubDate: 2026-04-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

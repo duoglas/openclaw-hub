@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-02-28)"
 description: "Government AI procurement risk, OpenAI fundraising, Canada safety talks, Copilot Tasks, and Chinese video model competition defined the 2026-02-28 brief."
 pubDate: 2026-02-28
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

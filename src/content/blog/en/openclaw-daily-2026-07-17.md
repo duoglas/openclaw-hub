@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-17)"
 description: "Daily AI and tech brief tracking Anthropic Canada research funding, Jetson Thor edge modules, AWS Compute and ML leadership, Together AI funding, and China AI commercialization."
 pubDate: 2026-07-17
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

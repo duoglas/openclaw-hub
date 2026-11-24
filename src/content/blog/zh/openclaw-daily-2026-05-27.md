@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-05-27）"
 description: "Anthropic 任命韩国负责人，Alexa+ 进入法国，NVIDIA Vera CPU 指向 Agentic AI 数据中心，中国平台争夺 AI 入口。"
 pubDate: 2026-05-27
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

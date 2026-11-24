@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-16）"
 description: "2026-06-16 早间版；Meta 发布 Facebook 新 AI 功能，包括 AI Mode 搜索、AI 图片/视频编辑、AI 换装与头像重塑。"
 pubDate: 2026-06-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-08-25）"
 description: "NVIDIA 称 Vera Rubin NVL72 在真实 agentic coding 工作负载上，相比 GB300 NVL72 可实现最高 30 倍每兆瓦吞吐、最高 35 倍 token 成本下降，并把 AI 工厂竞争定义为每瓦性能和每任务成本竞争。"
 pubDate: 2026-08-25
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

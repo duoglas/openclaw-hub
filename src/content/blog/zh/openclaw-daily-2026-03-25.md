@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-03-25）"
 description: "OpenAI 同时推进企业融资合作与非营利治理投入，Anthropic 预览 Claude Code 自动模式，英伟达 GTC 2026 聚焦推理与物理 AI，博通提示台积电产能仍卡住 AI 供应链，美国顾问机构则警告中国开源 AI 优势正在形成自强化竞争力。"
 pubDate: 2026-03-25
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

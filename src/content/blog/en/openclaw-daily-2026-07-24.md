@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-24)"
 description: "Daily AI and tech brief tracking NVIDIA post-training, Google Gemini product surfaces, Claude Science, ChatGPT model tiers, and Meituan LongCat commerce AI signals."
 pubDate: 2026-07-24
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-23)"
 description: "OpenAI Presence moves enterprise agents toward governed production deployment, while model cyber-evaluation, Blackwell power efficiency, Nemotron ownership, and WAIC edge AI signals define today’s deployment agenda."
 pubDate: 2026-07-23
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

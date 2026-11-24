@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-19)"
 description: "Daily AI and tech brief tracking WAIC governance, NVIDIA post-training, Jetson Thor edge AI, Claude Fable safety, ChatGPT model picker, and deployment implications."
 pubDate: 2026-07-19
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-08-19)"
 description: "Daily AI and tech brief tracking NVIDIA Cosmos 3 physical AI, Spectrum-6 AI factory networking, Open Secure AI Alliance, Nations AI sovereign AI, and OpenAI PORTS-Pike global affairs."
 pubDate: 2026-08-19
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

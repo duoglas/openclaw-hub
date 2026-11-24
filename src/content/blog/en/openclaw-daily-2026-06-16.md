@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-06-16)"
 description: "Daily AI and tech brief tracking Meta Facebook AI tools, Amazon Content Partners, China humanoid robotics training, OpenAI Partner Network, and NVIDIA AgentPerf Blackwell infrastructure signals."
 pubDate: 2026-06-16
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

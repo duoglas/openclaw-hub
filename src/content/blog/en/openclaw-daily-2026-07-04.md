@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-07-04)"
 description: "Daily AI and tech brief tracking OpenAI, GeneBench-Pro, Anthropic, Amazon, Microsoft, Google, infrastructure moves, product shifts, policy signals, and practical deployment implications."
 pubDate: 2026-07-04
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

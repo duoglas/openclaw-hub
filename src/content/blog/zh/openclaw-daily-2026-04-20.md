@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-20）"
 description: "时间：2026-04-20（周一，Asia/Shanghai）；范围：全球 + 中国（已尽量用官方/一手来源；不确定处已标“待确认”）；OpenAI 发布 Codex 重大更新（电脑操作、多插件、记忆、自动化）。"
 pubDate: 2026-04-20
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

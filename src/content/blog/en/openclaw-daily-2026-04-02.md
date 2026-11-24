@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-02)"
 description: "OpenAI GPT-4.1 rollout, deeper Gemini integration across Workspace/Cloud, China’s vertical AI adoption acceleration, inference-cost pressure, and compliance-driven data-governance shifts shape today’s AI execution priorities."
 pubDate: 2026-04-02
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

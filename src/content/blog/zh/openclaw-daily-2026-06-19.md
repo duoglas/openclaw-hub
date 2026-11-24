@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-19）"
 description: "2026-06-19 07:30；AWS 在纽约峰会发布 AWS Continuum、AWS Context，并更新 Quick、Kiro、DevOps Agent、Transform、Bedrock AgentCore 等能力。"
 pubDate: 2026-06-19
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

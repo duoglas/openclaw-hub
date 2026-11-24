@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-22）"
 description: "Anthropic 联合 Amazon 扩算力，Adobe、NVIDIA、特斯拉同步推进企业与工业 AI。"
 pubDate: 2026-04-22
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

@@ -2,6 +2,7 @@
 title: "TanStack AI 1.0: upgrade the stable core, evaluate the experimental agent harness separately"
 description: "TanStack AI 1.0 stabilizes 76 packages but leaves its agent harness experimental. Assess coordinated upgrades, adoption boundaries and checks before rollout."
 pubDate: "2026-10-29"
+noindex: true
 tags: ["ai", "analysis"]
 category: "analysis"
 lang: "en"

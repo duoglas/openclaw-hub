@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-07-15）"
 description: "2026-07-15 早报｜AWS 发布企业 Agent 栈，GPT-5.6 进入 Bedrock，NVIDIA 强调开放模型所有权与每瓦性能，WAIC 看点需继续确认。"
 pubDate: 2026-07-15
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

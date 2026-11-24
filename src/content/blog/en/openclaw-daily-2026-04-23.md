@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-04-23)"
 description: "Searchable brief on OpenAI workspace agents and Privacy Filter, Google Cloud Next 2026’s Gemini Enterprise Agent Platform, NVIDIA-Google Cloud infrastructure expansion, and Guangdong’s province-level AI application rollout plan."
 pubDate: 2026-04-23
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

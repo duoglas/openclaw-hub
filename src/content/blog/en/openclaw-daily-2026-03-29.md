@@ -2,6 +2,7 @@
 title: "AI & Tech Daily Brief (2026-03-29)"
 description: "March 29 AI brief: Zhongguancun’s startup white paper says many AI companies have only 12–24 months to prove revenue, while commercialization pressure and capital discipline replace pure model hype as the key survival test."
 pubDate: 2026-03-29
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "en"

@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-06-08）"
 description: "2026-06-08 07:30｜今日早间版；注：本次 `web_search` 两次失败、`web_fetch` 一次失败，已改用官方/权威页面直抓。因发生工具错误，尾部校验按规则写 `validation=fail`。"
 pubDate: 2026-06-08
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"

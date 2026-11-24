@@ -2,6 +2,7 @@
 title: "AI / 科技日报（2026-04-11）"
 description: "OpenAI ChatGPT 产品分层升级、企业营收占比提升、Gemma 4 开源模型、Anthropic Managed Agents 与中国云侧算力涨价信号，共同指向 AI 从模型竞赛转向企业流程与算力效率竞争。"
 pubDate: 2026-04-11
+noindex: true
 tags: ["ai", "tech", "daily", "news"]
 category: "news"
 lang: "zh"
