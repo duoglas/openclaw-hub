@@ -1,51 +1,50 @@
 # WEEKLY_REVIEW.md
 
 ## Week Meta
-- Week: 2026-11-09 to 2026-11-15
+- Week: 2026-11-23 to 2026-11-29
 - Owner: site-editor
-- Reviewed at: 2026-11-02 10:05 (Asia/Shanghai)
-- Reviewer: maintenance assistant; not an independent human review
-- Review type: evidence-informed editorial review, distinct from the generated SEO snapshot
-- Observation cutoff: 2026-11-02 morning; the week is not complete
+- Reviewed at: 2026-11-26 17:47 (Asia/Shanghai)
+- Reviewer: maintenance assistant; this is not independent article approval
+- Review type: evidence-informed maintenance and editorial review
+- Observation cutoff: 2026-11-26 afternoon; the week is incomplete
 
 ## Observe — what the evidence establishes
 
-The public editorial receipt set records **four new bilingual editions and one bilingual revision** this week. Count by receipt creation time, not filename or article publication date; an EN/ZH pair is one edition.
+The repository contains one existing receipt-backed new bilingual edition created this week: [23 November daily](editorial/receipts/2026-11-23-daily.json), created at 2026-11-23T10:22:14+08:00. A receipt records source and review bindings; it does not establish production deployment, readership or uninterrupted scheduling.
 
-| Work | Operation | Evidence |
-|---|---|---|
-| TanStack AI stable-release boundaries | New analysis | [Receipt](editorial/receipts/2026-10-29-analysis.json) |
-| 26 October news briefing | Historical backfill, committed 29 October; not a fresh 29 October edition | [Receipt](editorial/receipts/2026-10-26-daily.json) |
-| DeepSeek Harness architecture and safety | New document-based guide; no runtime isolation test | [Receipt](editorial/receipts/2026-10-29-guide-deepseek-harness-architecture-safety.json) |
-| Qwen local-model selection | New document-based guide; no hardware/performance benchmark | [Receipt](editorial/receipts/2026-10-29-guide-qwen-local-model-selection.json) |
-| Codex, Claude Code and Cursor instruction files | Revised the existing bilingual AGENTS guide; original URL and first publication date retained | [Receipt](editorial/receipts/2026-10-29-guide-agents-instructions-skills-review-2026-10.json) |
+The [24 November backfill commit](https://github.com/duoglas/openclaw-hub/commit/f8ce4aff43f4cff7f062acd1d71111f2026dc118) added five Chinese-only historical editions, for 15, 17, 18, 22 and 24 November. It included neither English counterparts nor website publication receipts. These pages cannot be counted as five reviewed bilingual editions merely because the commit succeeded.
 
-- The receipt-backed latest daily remains **26 October**. At the 30 October morning check, the native website task reached search, extraction and model selection, selected no sufficiently new verified event and skipped publication. Its summary was delivered by the scheduler. This does not validate a new article's drafting, review, publication or sustained schedule reliability.
-- Current enabled guide topics have all been delivered. Two future topics remain disabled in [the public registry](editorial/topics.json); their planned dates are not publication quotas.
-- The AGENTS guide's practical limits remain material: documentation analysis does not establish a three-client runtime comparison. DSH and Qwen guides have the same explicit distinction between documentation and experiments.
-- Search performance, indexing and engagement lack complete, comparable current-week evidence in the public report. Missing values are **N/A**, not zero. Private rolling-window analytics are not copied into this repository or divided into invented weekly figures.
-- Current-version privacy corrections are recorded separately in [the correction receipt](editorial/privacy-corrections/2026-10-29.json). They did not revalidate old news or rewrite Git history; this is not a complete privacy audit.
+The [25 November content commit](https://github.com/duoglas/openclaw-hub/commit/93a5b6984f0858afd76fec9e66be0530ded829c4) added three bilingual guide/comparison pairs with `date` instead of the collection's required `pubDate`. [Main Content Check 45585540435](https://github.com/duoglas/openclaw-hub/actions/runs/45585540435) failed during Astro content sync and skipped subsequent content checks. This was part of a sustained failing CI history, not an isolated network error.
 
-## Orient — what follows, and what does not
+The [repair PR](https://github.com/duoglas/openclaw-hub/pull/2) preserves the six articles' 2026-11-25 publication date. Its [first cloud run](https://github.com/duoglas/openclaw-hub/actions/runs/45784776077) passed the build, AdSense, site foundations and 115 editorial regression tests, then correctly failed because the five backfills lack publication receipts. Build recovery alone is not full Content Check recovery.
 
-1. **The main constraint is evidence-qualified publication, not article count.** A successful collection/selection run that produces no qualifying event should skip. A transport failure must remain a failure. Neither justifies an empty page or a recycled event presented as new.
-2. **The editorial queue needs source or experiment work before further activation.** Existing DSH, Qwen and AGENTS topics should be updated at their current URLs when substantive new evidence exists, not republished under their original planned dates.
-3. **The previous weekly template mixed missing data and diagnosis.** Zero-filled KPIs, filename-based output counts and a low-CTR-to-bounce inference were not defensible. The replacement snapshot uses public receipts and explicit archive-bound daily evidence, preserves unknowns and does not overwrite this review.
-4. **CI freshness and schedule health are different controls.** This review addresses the current week's evidence and decisions. The existing Monday Discord review remains read-only; it does not automatically commit a repository review. A durable reviewed-update workflow is still needed. Changing the date alone is not an acceptable substitute.
+The same investigation verified that adding `noindex: true` to the existing TanStack analysis pair had broken its approved full-file hashes. Removing exactly that line reproduces both previous hashes. The [metadata correction](editorial/receipts/2026-10-29-analysis.json) retains those hashes and records that the body, article dates and factual review were unchanged.
 
-## Decide — next priorities, maximum three
+Historical public source archives for the five backfills have been recovered and checked. An independent reviewer approved all five complete bilingual corrections on 26 November after requiring three fixes: the Qwen3.8-Max comparison baseline, the AURA project-article date, and the WALL technical-article date. The latter two remain distinct from unverified first weight availability. Current correction receipts bind the approved source packets, drafts and both article files; their actual creation and review times do not claim historical approval. Original edition dates remain unchanged, the correction date is explicit, and all five receipts use `operation: revise`. These are corrections of existing editions, not fresh 26 November news.
 
-1. Verify native website runs through their actual outcomes. Retain failed attempts and legitimate skips; require a real qualifying event, exact source support and independent review before claiming a fresh daily was published.
-2. Repair and validate consistent analytics collection in private operations records. Use matched observation windows and enough observations before attributing changes to the redesign; obtain approval before publishing any new metric export.
-3. Prepare public sources or a new publishable experiment for the next disabled topic. Prefer a useful update or comparison over adding another generic guide, and keep private notes and historical conversations out of public evidence.
+No validated public single-day GSC exports exist for the current week under `reports/seo/verified-daily/`. Search clicks, impressions, CTR, position, indexing and engagement remain **N/A**, not zero. Private analytics are not imported into this review.
 
-## Act — completed work and remaining checks
+## Orient — implications and limits
 
-- Completed and receipt-backed: the four new editions and one revision above, with independent article-review records; technical runtime and AGENTS changes are in `6b6caed35b87f1dfb293e69731b4cf85eff51993` and `b7f63dce02223f3c2257e9dfe8e5d0ff7bf000e6`.
-- Observed, not repaired by this change: the previously failing publishing-host CPA connection passed this morning, followed by a real native selection run. No network configuration, model, gateway restart or Telegram task change was needed for that observation.
-- This patch: correct the weekly snapshot's evidence model, distinguish it from the editorial review, test genuine zero versus missing data, and keep weight-file/repository-viewer URLs out of the news reading budget without removing guide document sources.
-- Pending at review time: full checks and deployment for this patch; a later qualifying news article through the entire native publishing path; continued scheduled observations; a repository-update mechanism for future weekly reviews. A successful current build alone does not close those items.
+1. Content generation and Git publication bypassed existing data and editorial contracts. A successful push did not establish that required metadata, bilingual evidence or review bindings were present.
+2. The current gates are exposing real defects. Missing receipts must be repaired with verified sources and actual independent review of the complete correction, not historical timestamps or approvals invented after the fact.
+3. The original general-news backfills need a narrower AI/Agent scope. The proposed revisions retain every article URL and historical publication date while focusing each edition on three supported topics; they do not exclude pages from validation.
+4. Local and cloud checks have different environments. macOS shell/tool limitations are recorded separately from content defects. Only a complete successful cloud Content Check can establish branch CI recovery.
+5. Missing same-window analytics cannot establish growth, a redesign effect or return on investment. No title rewrite or traffic claim is justified by the current metric gap.
+
+## Decide — next priorities
+
+1. Retain the approved source and file bindings, the first-round rejections and their corrected versions. For future editions, check comparison baselines and distinguish article, event, archive and first-availability dates before publication.
+2. Finish the existing Content Check without deleting checks, masking errors or changing publication dates. Keep PR #2 unmerged until the full branch run succeeds; main and production remain separate verification steps.
+3. Before the next publication, run the existing build, date and editorial gates on the exact candidate. Obtain authorized, comparable analytics evidence before making search-performance claims.
+
+## Act — completed and outstanding
+
+- Completed at cutoff: reproduced the main failure; repaired the six publication-field names; proved and recorded the TanStack metadata-only correction; verified three HTTPS source destinations; corrected specific summaries and registered tag aliases; recovered public source archives; corrected the complete bilingual drafts after independent review; created actual current correction receipts. The local build produces 904 pages from 524 articles, up from 519 articles through five English counterparts, with no article deletion.
+- Pending at cutoff: validation of the generated weekly snapshot, full cloud Content Check and human merge review. Local engineering checks alone do not establish that main or production has recovered.
+- No production deployment, main-branch push, unrelated PR takeover or change to news-delivery automations is part of this repair.
+- The generated SEO snapshot remains distinct from this editorial review. It must retain missing observations as unknown and count corrections as revisions, rather than converting them into new editions.
 
 ## Postmortem
 
-Stop treating generated templates, zero placeholders, filename dates or task success as evidence of growth or fresh publication. Retain the smaller evidence-backed inventory, exact revision history and explicit unknowns. The next useful work is better source readiness and repeatable verification, not more output to satisfy a calendar.
+Preserve the distinction between an article's historical date, a correction date, an actual review, a successful build and a deployed result. The recovery should make the existing evidence checks pass through real corrections; it must not make those distinctions disappear.

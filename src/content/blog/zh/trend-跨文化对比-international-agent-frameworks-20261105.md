@@ -2,7 +2,7 @@
 title: "International Agent Frameworks Compared: OpenClaw vs LangChain vs AutoGen"
 description: "深度解析 International Agent Frameworks Compared: OpenClaw vs LangChain vs AutoGen，涵盖技术架构、部署实践和与主流工具的对比分析。"
 pubDate: 2026-11-05
-tags: ["ai", "agent", "tutorial", "vps", "comparison"]
+tags: ["ai", "agent", "guide", "vps", "comparison"]
 ---
 
 # International Agent Frameworks Compared: OpenClaw vs LangChain vs AutoGen

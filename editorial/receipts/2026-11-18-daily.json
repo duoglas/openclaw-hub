@@ -1,0 +1,104 @@
+{
+  "version": 2,
+  "date": "2026-11-18",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-18",
+  "created_at": "2026-11-26T17:34:42.494526+08:00",
+  "operation": "revise",
+  "backfill": true,
+  "base_commit": "93a5b6984f0858afd76fec9e66be0530ded829c4",
+  "event_keys": [
+    "sensenova-loop-9b-release-20261117",
+    "hkimr-agent-ai-finance-survey-20261117",
+    "mai-licensed-weights-announcement-20261117"
+  ],
+  "packet_sha256": "ade2cf0a8bbc60b19cb6455b46d1a894397584df784292707dd0725aa38ba3db",
+  "draft_sha256": "ef2926a53d6f3a9d32284308f2187088ab12f51ef6eae41725ea970b30feeba6",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "Loop-9B 发布/Preview 日期、512K 上限、4 位权重和部署显存均能在完整模型卡逐项定位。",
+      "金融调查严格区分 90% 已用或计划、13% Agent 已用、56% 计划，并标注 1—7 月调查与 11 月报告日期。",
+      "MAI 完整原文没有确切日期，稿件按 11/18 归档描述，并保留 coming soon、企业接洽、数据训练须明示同意和客户特定评测边界。"
+    ]
+  },
+  "writer": {
+    "identity": "Codex maintenance writer",
+    "resolved_model": "unknown",
+    "input_sha256": "ade2cf0a8bbc60b19cb6455b46d1a894397584df784292707dd0725aa38ba3db",
+    "method": "source-based repair of the historical Chinese edition and preparation of its English counterpart"
+  },
+  "reviewer": {
+    "identity": "Codex independent content-review worker",
+    "agent": "codex",
+    "resolved_model": "unknown",
+    "model_evidence": "The session identifies the agent as Codex; no verifiable concrete serving-model identifier was exposed to this reviewer. No model name was inferred from source articles, tool availability or the coordinator.",
+    "method": "independent present-time review of the complete frozen bilingual files and archived originals",
+    "completed_at": "2026-11-26T17:14:10.488211+08:00",
+    "independent_of_originating_writer": true,
+    "input_sha256": "e86f6655109e66fea0231621fd442804caaba24105eb6603210e1f950280eac8",
+    "manifest_sha256": "9f6ee4c3c597e2cf92efd1e4d27393c5a62e5964a7ea0d4a515cb490807296fc",
+    "result_file_sha256": "b9845366bfb977c01bdd5029fa4c366a9fce9a365a7a8bd6d5e50ad52cc3fc72",
+    "files": {
+      "src/content/blog/zh/ai-daily-2026-11-18.md": "c55f827b54fe5a638612e1a4a654a465392ccb0fbff47bf8dc40f4e18beecf52",
+      "src/content/blog/en/ai-daily-2026-11-18.md": "978e3504bb9c93a4798600b691473aa4951afdd9f56e7f50dd98cd85ba823111"
+    }
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://huggingface.co/sensenova/SenseNova-Loop-9B",
+      "archived_url": "https://huggingface.co/sensenova/SenseNova-Loop-9B",
+      "sha256": "ed452ed47f009e49807a68d600a3b26a78b9a402bc0d33742057e0a084c3e792",
+      "read_at": "2026-11-18T07:05:15.283345+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S02",
+      "url": "https://www.hkma.gov.hk/gb_chi/news-and-media/press-releases/2026/11/20261117-3",
+      "archived_url": "https://www.hkma.gov.hk/gb_chi/news-and-media/press-releases/2026/11/20261117-3",
+      "sha256": "3c1e7f3ed41f1b8c61d86665c40565dbda90f42361f827ccc99fcb15ea4e63e1",
+      "read_at": "2026-11-18T07:04:59.530743+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S03",
+      "url": "https://microsoft.ai/news/introducing-mai-licensed-weights",
+      "archived_url": "https://microsoft.ai/news/introducing-mai-licensed-weights",
+      "sha256": "7d214c2cdeb8c8f2daeb5ff3772836c55c30bb6c40e2c932fa63b3a64b7dbe66",
+      "read_at": "2026-11-18T07:11:07.053322+08:00",
+      "source_date": null
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-18.md": "c55f827b54fe5a638612e1a4a654a465392ccb0fbff47bf8dc40f4e18beecf52",
+    "src/content/blog/en/ai-daily-2026-11-18.md": "978e3504bb9c93a4798600b691473aa4951afdd9f56e7f50dd98cd85ba823111"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-18.md": "ce6d634c04167a32602ddbc3bf1da94381a9f425ce710505fcadbd57120b736b",
+    "src/content/blog/en/ai-daily-2026-11-18.md": "f9a12a81f551e7da90c45aa488e8c6d4d1541303de665a64072da3e3410a20bd"
+  },
+  "previous_files": {
+    "src/content/blog/zh/ai-daily-2026-11-18.md": "4eedc0c4fb6ddeb0734fa5b4190b5182e1a7a4257643c1cdcdf5d4d8cde4ac77"
+  },
+  "remediation": {
+    "review_type": "present-time correction; no historical approval claimed",
+    "original_commit": "f8ce4aff43f4cff7f062acd1d71111f2026dc118",
+    "original_english": "absent",
+    "summary": "Retain the historical edition URL and publication date, focus on three supported AI/Agent topics, add a complete English version, and bind both languages to genuine independent review.",
+    "source_archive_sha256": "47475faac2778aeab11b470cefac1feb68432c429e269662248c8ff0344be05a",
+    "source_supplement_sha256": "e07231c862b4db442c107ab0852586051feb40812e5201b142788fa7c90e9110",
+    "source_evidence_limit": "Hashes verify correspondence to the recovered archives; recorded read_at values are not independently signed historical capture timestamps.",
+    "review_limit": "Novelty was checked against the supplied 17 publication-history entries and all five correction editions, not an independently crawled full-site archive.",
+    "deployment": "not verified; prepared on a repair branch for pull-request review"
+  }
+}

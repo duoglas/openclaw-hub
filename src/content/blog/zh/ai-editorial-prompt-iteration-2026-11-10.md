@@ -3,7 +3,7 @@ title: "AI 日报编辑管线的提示词迭代：从模板化失败到数据驱
 description: "记录 AI 日报编辑管线中 WRITER 和 REVIEWER 提示词的 6 次迭代过程。从模板化输出、日期幻觉到数据驱动的交叉验证，分享如何让 AI 生成高质量、可验证的新闻内容。"
 pubDate: 2026-11-10
 updatedDate: 2026-11-10
-tags: ["prompt-engineering", "ai-agents", "editorial-pipeline", "quality-control", "automated-content"]
+tags: ["prompt-engineering", "ai-agent", "editorial-pipeline", "quality-control", "automated-content"]
 category: "tutorial"
 lang: "zh"
 ---

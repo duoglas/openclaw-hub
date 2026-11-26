@@ -1,0 +1,149 @@
+{
+  "version": 2,
+  "date": "2026-11-17",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-17",
+  "created_at": "2026-11-26T17:47:04.271753+08:00",
+  "operation": "revise",
+  "backfill": true,
+  "base_commit": "93a5b6984f0858afd76fec9e66be0530ded829c4",
+  "event_keys": [
+    "qwen4-max-general-release-20261116",
+    "baidu-q3-2026-results",
+    "huggingface-openrouter-routing-migration-20261116"
+  ],
+  "packet_sha256": "fbb59481c7f2a3c20cbd7ee9e7e717e96c3ebbce9765ebd8a51ef03d1a3f52ad",
+  "draft_sha256": "0f9af055376f65a31b8b5b0acb2a908ac2fc3720d8365306db4899350d89a447",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "Qwen3.8-Max已同时加入中英文第18行及draft第一节，packet新增原文比较基准引句；保留内部Work360、High与不可外推节省范围，首轮NOV17-COMPARATOR关闭。",
+      "完整复审本期packet/draft/zh/en与全部相关原文后，七项均通过，未发现新增阻断项。"
+    ]
+  },
+  "writer": {
+    "identity": "Codex maintenance writer",
+    "resolved_model": "unknown",
+    "input_sha256": "fbb59481c7f2a3c20cbd7ee9e7e717e96c3ebbce9765ebd8a51ef03d1a3f52ad",
+    "method": "source-based repair of the historical Chinese edition and preparation of its English counterpart"
+  },
+  "reviewer": {
+    "identity": "Codex independent content-review worker, round 2",
+    "agent": "codex",
+    "resolved_model": "unknown",
+    "model_evidence": "The runtime instructions identify the agent as Codex; no independently verifiable concrete serving-model identifier is exposed. No model name is inferred from article text, available tools or the coordinator.",
+    "method": "independent present-time review of the complete frozen bilingual files and archived originals",
+    "completed_at": "2026-11-26T17:42:45.368933+08:00",
+    "independent_of_originating_writer": true,
+    "input_sha256": "135ff45fe53189d623771d05c4babb7976a1426843b10b237cc1b05e80e8a2c4",
+    "manifest_sha256": "ba48cf4ce48e53869c354739ded21713ddd88e0e5aba075a39941093d9d80557",
+    "result_file_sha256": "2827af35d072ebe463f66da0a9453a668fd386606a373350dfd9cea1acde6c89",
+    "files": {
+      "src/content/blog/zh/ai-daily-2026-11-17.md": "018f08334a372512f66c605c9c4088e86a7ccbac9532118ddf6c55e3d9b54ff5",
+      "src/content/blog/en/ai-daily-2026-11-17.md": "0060b83133eb14602334d7f738a5a22ae8250711316ca49ad86726f47b381059"
+    }
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen4-max?_p_lc=1",
+      "archived_url": "https://www.alibabacloud.com/en/press-room/alibaba-unveils-qwen4-max?_p_lc=1",
+      "sha256": "e3cca5e9fff91ce3762919d37ce477e525fd715f39f349db80b061e7bee9c43b",
+      "read_at": "2026-11-17T07:05:01.003085+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S02",
+      "url": "https://help.aliyun.com/zh/model-studio/qwen4-max-preview",
+      "archived_url": "https://help.aliyun.com/zh/model-studio/qwen4-max-preview",
+      "sha256": "bc90867a1493664a310cd6a6ec7d4c64709bf618b590301cbe7f395bbe7eaed2",
+      "read_at": "2026-11-17T07:05:01.003085+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S03",
+      "url": "https://ir.baidu.com/news-releases/news-release-details/baidu-announces-third-quarter-2026-results",
+      "archived_url": "https://ir.baidu.com/news-releases/news-release-details/baidu-announces-third-quarter-2026-results",
+      "sha256": "c6bc71f7e65860500d4b0d15aef31b31c5e62fa5d9d3c2c09f76f181e953c65f",
+      "read_at": "2026-11-17T07:08:55.323604+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S04",
+      "url": "https://huggingface.co/blog/openrouter",
+      "archived_url": "https://huggingface.co/blog/openrouter",
+      "sha256": "2b2ad00c0a0e5c159da7cf34bc390ce028373c1bb217116be04f6009eef1ca33",
+      "read_at": "2026-11-17T07:08:12.521252+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S05",
+      "url": "https://openrouter.ai/blog/announcements/hugging-face-inference-providers",
+      "archived_url": "https://openrouter.ai/blog/announcements/hugging-face-inference-providers",
+      "sha256": "96e2b240c61f10077c4303ea3766d0d41660b453704973c2604c30702a2e0359",
+      "read_at": "2026-11-17T07:03:28.088370+08:00",
+      "source_date": null
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-17.md": "018f08334a372512f66c605c9c4088e86a7ccbac9532118ddf6c55e3d9b54ff5",
+    "src/content/blog/en/ai-daily-2026-11-17.md": "0060b83133eb14602334d7f738a5a22ae8250711316ca49ad86726f47b381059"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-17.md": "886dd6ff5c9b209b74f97bc11a78e39c5a00dd7e6fd29dd5da66e618a76ce3af",
+    "src/content/blog/en/ai-daily-2026-11-17.md": "3ffa05af6324326ace949224cc10266f5bcc166875b579a02d1a1bf887c7cadc"
+  },
+  "previous_files": {
+    "src/content/blog/zh/ai-daily-2026-11-17.md": "977dea6bb6ac652437c3f9cd8b789eeb4885ec771a79c96c7b1fcea4e2d90b90"
+  },
+  "remediation": {
+    "review_type": "present-time correction; no historical approval claimed",
+    "original_commit": "f8ce4aff43f4cff7f062acd1d71111f2026dc118",
+    "original_english": "absent",
+    "summary": "Retain the historical edition URL and publication date, focus on three supported AI/Agent topics, add a complete English version, and bind both languages to genuine independent review.",
+    "source_archive_sha256": "47475faac2778aeab11b470cefac1feb68432c429e269662248c8ff0344be05a",
+    "source_supplement_sha256": "e07231c862b4db442c107ab0852586051feb40812e5201b142788fa7c90e9110",
+    "source_evidence_limit": "Hashes verify correspondence to the recovered archives; recorded read_at values are not independently signed historical capture timestamps.",
+    "review_limit": "Novelty was checked against the supplied 17 publication-history entries and all five correction editions, not an independently crawled full-site archive.",
+    "deployment": "not verified; prepared on a repair branch for pull-request review"
+  },
+  "review_history": [
+    {
+      "sha256": "9a6d9c2f2caee6a9135b3e2b68011366ce94f12374ec2f9d803e4f813c103796",
+      "verdict": "reject",
+      "reviewed_at": "2026-11-26T17:14:10.487651+08:00",
+      "manifest_sha256": "9f6ee4c3c597e2cf92efd1e4d27393c5a62e5964a7ea0d4a515cb490807296fc",
+      "input_bindings": {
+        "packet_sha256": "36722e04b32bec9e8322ac11f2e8bb662a416272b488a77e854166b48f66bf7d",
+        "draft_sha256": "8365169a45c93940fd32a6664e9e4826a762854527da88ae4ff060152c3e5544",
+        "packet_file_sha256": "fcd3cef18903c4c3b6132fb5b185cb8cbb444468e14d25742aa3e04d5e735bdb",
+        "draft_file_sha256": "c276731f0ccfd3c798f78697bfc687a741da4a59e76d26b8db8bce54138c5de3",
+        "files": {
+          "src/content/blog/zh/ai-daily-2026-11-17.md": "71cb4ebbc61d8163183cfa58d0c3b881aae66a0ff9a91fdbedd3eceba3eb636b",
+          "src/content/blog/en/ai-daily-2026-11-17.md": "1610bc99d548188927f98137fcbee402d13fea967b1fb5ea3d709c578cd88b2c"
+        }
+      },
+      "preserved_without_modification": true,
+      "relationship": "Original reject remains valid for original bytes; this new pass applies only to the separately frozen round2 version."
+    }
+  ],
+  "resolved_findings": [
+    {
+      "prior_finding_id": "NOV17-COMPARATOR",
+      "prior_failed_checks": [
+        "factual_support"
+      ],
+      "status": "resolved_in_exact_round2_version",
+      "resolution": "Qwen3.8-Max已同时加入中英文第18行及draft第一节，packet新增原文比较基准引句；保留内部Work360、High与不可外推节省范围，首轮NOV17-COMPARATOR关闭。"
+    }
+  ]
+}

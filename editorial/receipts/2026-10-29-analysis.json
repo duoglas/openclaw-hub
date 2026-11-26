@@ -204,14 +204,25 @@
     }
   ],
   "files": {
-    "src/content/blog/zh/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "d52ee197665d950292b43528a6e9083f738973282a7bdbb783019121dab4358d",
-    "src/content/blog/en/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "e55023213aa41e95240c90910a20249c915e5fd88ebd427381aceda0e48bbe9f"
+    "src/content/blog/zh/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "ad27e193cad66d0e4c1292918d1c48352e607f7910a77bff6d3cf4e723d9a893",
+    "src/content/blog/en/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "4e99b0ec4adeed05df4ca9533068cc3e0d083a9584b9ae88f83820d309456f47"
   },
   "render_correction": {
     "at": "2026-10-29T10:15:11.026025+08:00",
     "reason": "CommonMark CJK bold-label spacing; non-whitespace content unchanged",
     "previous_files": {
       "src/content/blog/zh/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "114f2d7f607fe37aa2011bfad21d28cdd843d45f869b774451105961e15e4bf2",
+      "src/content/blog/en/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "e55023213aa41e95240c90910a20249c915e5fd88ebd427381aceda0e48bbe9f"
+    }
+  },
+  "metadata_correction": {
+    "at": "2026-11-26T08:22:24.904719+00:00",
+    "reason": "Bind the noindex: true frontmatter added by c0cae0c6431191be85816f251f4436d67fb21f0b; removing that exact line reproduces each previously approved full-file SHA-256.",
+    "facts_revalidated": false,
+    "article_dates_changed": false,
+    "body_changed": false,
+    "previous_files": {
+      "src/content/blog/zh/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "d52ee197665d950292b43528a6e9083f738973282a7bdbb783019121dab4358d",
       "src/content/blog/en/ai-analysis-tanstack-ai-1-stable-upgrade-boundaries-2026-10-29.md": "e55023213aa41e95240c90910a20249c915e5fd88ebd427381aceda0e48bbe9f"
     }
   }

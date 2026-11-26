@@ -2,7 +2,7 @@
 title: 'Best AI Coding Tools 2026: Cursor vs Claude Code vs GitHub Copilot vs OpenClaw Compared'
 description: 'We tested Cursor, Claude Code, GitHub Copilot, and OpenClaw side-by-side across real engineering tasks. See which AI coding assistant wins for different workflows, team sizes, and budget levels.'
 tags: [ai, coding, comparison, cursor, claude-code, github-copilot, openclaw]
-date: 2026-11-25
+pubDate: 2026-11-25
 category: comparison
 lang: en
 ---

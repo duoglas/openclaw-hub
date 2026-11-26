@@ -2,7 +2,7 @@
 title: 'Enterprise AI Automation: A Practical Guide for Small Businesses 2026'
 description: 'How small and medium businesses can implement AI automation: from tool selection to measuring outcomes. Includes step-by-step guide and common pitfalls to avoid.'
 tags: [ai, enterprise, automation, small-business, practical-guide]
-date: 2026-11-25
+pubDate: 2026-11-25
 category: guide
 lang: en
 ---
