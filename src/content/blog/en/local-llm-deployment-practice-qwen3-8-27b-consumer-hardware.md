@@ -2,7 +2,7 @@
 title: 'Local LLM Deployment in Practice: Qwen3.8-27B on Consumer Hardware'
 description: 'Documenting the complete process of deploying Qwen3.8-27B on consumer-grade hardware. From llama.cpp quantization to llama-swap gateway, including real performance data and fallback mechanism design.'
 tags: [llm, local, qwen, deployment, llama.cpp, consumer-hardware]
-date: 2026-11-25
+pubDate: 2026-11-25
 category: guide
 lang: en
 ---
