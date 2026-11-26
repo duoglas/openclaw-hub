@@ -1,7 +1,7 @@
 ---
 title: '2026 年最佳 AI 编码助手对比：Cursor vs Claude Code vs GitHub Copilot vs OpenClaw'
 description: '我们实测了 Cursor、Claude Code、GitHub Copilot 和 OpenClaw 在真实工程任务中的表现。看看哪个 AI 编码助手最适合你的工作流、团队规模和预算。'
-tags: [ai, 编程，对比，cursor, claude-code, github-copilot, openclaw]
+tags: [ai, 编程, 对比, cursor, claude-code, github-copilot, openclaw]
 pubDate: 2026-11-25
 category: comparison
 lang: zh

@@ -57,10 +57,10 @@ for f in files:
 
     # zh pages have URL-encoded alternates; en pages have raw UTF-8 zh alternates
     if rel_path.startswith("/zh/"):
-        expected_other = f"{BASE}{quote(other_path, safe="+/")}"
+        expected_other = f"{BASE}{quote(other_path, safe='+/')}"
     else:
         expected_other = f"{BASE}{other_path}"
-    expected_xdefault = f"{BASE}{quote(xdefault_path, safe="+/")}"
+    expected_xdefault = f"{BASE}{quote(xdefault_path, safe='+/')}"
 
     seen = {}
     duplicates = set()

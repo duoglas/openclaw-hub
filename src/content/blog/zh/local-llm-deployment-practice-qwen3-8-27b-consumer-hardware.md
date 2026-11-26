@@ -1,7 +1,7 @@
 ---
 title: '本地 LLM 部署实战：Qwen3.8-27B 在消费级硬件上的性能优化'
 description: '记录在消费级硬件上部署 Qwen3.8-27B 大模型的完整过程。从 llama.cpp 量化到 llama-swap 网关，包含实测性能数据、采样对比和回退机制设计。'
-tags: [llm, 本地，qwen, 部署，llama.cpp, 消费级硬件]
+tags: [llm, 本地, qwen, 部署, llama.cpp, 消费级硬件]
 pubDate: 2026-11-25
 category: guide
 lang: zh
