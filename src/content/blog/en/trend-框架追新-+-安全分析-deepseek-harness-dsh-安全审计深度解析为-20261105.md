@@ -2,7 +2,7 @@
 title: "DeepSeek Harness (DSH) 安全审计深度解析：为什么预览版不能上生产"
 description: "Deep dive into DeepSeek Harness (DSH) 安全审计深度解析：为什么预览版不能上生产 covering architecture, deployment practices and comparison with mainstream tools."
 pubDate: 2026-11-05
-tags: ["ai", "agent", "tutorial", "vps", "comparison"]
+tags: ["ai", "agent", "guide", "vps", "comparison"]
 ---
 
 # DeepSeek Harness (DSH) 安全审计深度解析：为什么预览版不能上生产

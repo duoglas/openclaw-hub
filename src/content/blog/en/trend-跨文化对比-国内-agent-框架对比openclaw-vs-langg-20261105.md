@@ -2,7 +2,7 @@
 title: "国内 Agent 框架对比：OpenClaw vs LangGPT vs AutoDL-Agent"
 description: "Deep dive into 国内 Agent 框架对比：OpenClaw vs LangGPT vs AutoDL-Agent covering architecture, deployment practices and comparison with mainstream tools."
 pubDate: 2026-11-05
-tags: ["ai", "agent", "tutorial", "vps", "comparison"]
+tags: ["ai", "agent", "guide", "vps", "comparison"]
 ---
 
 # 国内 Agent 框架对比：OpenClaw vs LangGPT vs AutoDL-Agent

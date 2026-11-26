@@ -3,7 +3,7 @@ title: "Independent Review Mechanism for AI Agents: Cross-Validation in Practice
 description: "Documenting the design and practice of independent review mechanisms in AI content production. From dual-model cross-validation, rejection strategies to quality control, learn how to make AI generate high-quality, verifiable content."
 pubDate: 2026-11-10
 updatedDate: 2026-11-10
-tags: ["ai-agents", "review", "cross-validation", "quality-control", "prompt-engineering"]
+tags: ["ai-agent", "review", "cross-validation", "quality-control", "prompt-engineering"]
 category: "tutorial"
 lang: "en"
 ---

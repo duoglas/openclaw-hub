@@ -2,7 +2,7 @@
 title: "DeepSeek Harness (DSH) Security Deep Dive: Why Preview Isn't Production-Ready"
 description: "深度解析 DeepSeek Harness (DSH) Security Deep Dive: Why Preview Isn't Production-Ready，涵盖技术架构、部署实践和与主流工具的对比分析。"
 pubDate: 2026-11-05
-tags: ["ai", "agent", "tutorial", "vps", "comparison"]
+tags: ["ai", "agent", "guide", "vps", "comparison"]
 ---
 
 # DeepSeek Harness (DSH) Security Deep Dive: Why Preview Isn't Production-Ready

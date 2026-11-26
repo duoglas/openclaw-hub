@@ -3,7 +3,7 @@ title: "Prompt Engineering for AI News Editorials: 6 Iterations from Template to
 description: "Documenting 6 iterations of WRITER and REVIEWER prompts in an AI daily news pipeline. From template outputs and date hallucinations to data-driven cross-validation, learn how to make AI generate high-quality, verifiable news content."
 pubDate: 2026-11-10
 updatedDate: 2026-11-10
-tags: ["prompt-engineering", "ai-agents", "editorial-pipeline", "quality-control", "automated-content"]
+tags: ["prompt-engineering", "ai-agent", "editorial-pipeline", "quality-control", "automated-content"]
 category: "tutorial"
 lang: "en"
 ---

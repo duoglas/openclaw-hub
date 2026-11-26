@@ -3,7 +3,7 @@ title: "AI Agent 独立审稿机制：交叉验证的实战经验"
 description: "记录 AI 内容生产中独立审稿机制的设计与实践。从双模型交叉验证、拒绝策略到质量控制，分享如何让 AI 生成高质量、可验证的内容。"
 pubDate: 2026-11-10
 updatedDate: 2026-11-10
-tags: ["ai-agents", "review", "cross-validation", "quality-control", "prompt-engineering"]
+tags: ["ai-agent", "review", "cross-validation", "quality-control", "prompt-engineering"]
 category: "tutorial"
 lang: "zh"
 ---

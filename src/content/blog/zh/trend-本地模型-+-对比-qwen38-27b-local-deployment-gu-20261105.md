@@ -2,7 +2,7 @@
 title: "Qwen3.8-27B Local Deployment Guide: Quantization, Inference & GPT-6 Benchmark"
 description: "深度解析 Qwen3.8-27B Local Deployment Guide: Quantization, Inference & GPT-6 Benchmark，涵盖技术架构、部署实践和与主流工具的对比分析。"
 pubDate: 2026-11-05
-tags: ["ai", "agent", "tutorial", "vps", "comparison"]
+tags: ["ai", "agent", "guide", "vps", "comparison"]
 ---
 
 # Qwen3.8-27B Local Deployment Guide: Quantization, Inference & GPT-6 Benchmark
