@@ -1,0 +1,151 @@
+{
+  "version": 2,
+  "date": "2026-11-22",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-22",
+  "created_at": "2026-11-26T17:47:04.281095+08:00",
+  "operation": "revise",
+  "backfill": true,
+  "base_commit": "93a5b6984f0858afd76fec9e66be0530ded829c4",
+  "event_keys": [
+    "cn-open-model-downloads-20261121",
+    "kyutai-aura-weights-release",
+    "medchembench-research-detail"
+  ],
+  "packet_sha256": "4599fa360584cfd40733bc141266eb7e77d1d1f7caad6a9858b49a0d2e911a70",
+  "draft_sha256": "9bba5c9e2313c21b55842b81a6928a60e48d1e15d702223b26e9bd3d035a2579",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "中英文第26行承认项目文章11/20，未知范围缩为权重首次开放；packet同步更正S03.source_date/date_note并保持event_date=null，首轮NOV22-AURA-DATE关闭。",
+      "完整复审本期packet/draft/zh/en与全部相关原文后，七项均通过，未发现新增阻断项。"
+    ]
+  },
+  "writer": {
+    "identity": "Codex maintenance writer",
+    "resolved_model": "unknown",
+    "input_sha256": "4599fa360584cfd40733bc141266eb7e77d1d1f7caad6a9858b49a0d2e911a70",
+    "method": "source-based repair of the historical Chinese edition and preparation of its English counterpart"
+  },
+  "reviewer": {
+    "identity": "Codex independent content-review worker, round 2",
+    "agent": "codex",
+    "resolved_model": "unknown",
+    "model_evidence": "The runtime instructions identify the agent as Codex; no independently verifiable concrete serving-model identifier is exposed. No model name is inferred from article text, available tools or the coordinator.",
+    "method": "independent present-time review of the complete frozen bilingual files and archived originals",
+    "completed_at": "2026-11-26T17:42:45.370241+08:00",
+    "independent_of_originating_writer": true,
+    "input_sha256": "2c6bb32b68dd9ba0bea56bc412fc66b8d294c6b501513ea67f567dbbf61b8243",
+    "manifest_sha256": "ba48cf4ce48e53869c354739ded21713ddd88e0e5aba075a39941093d9d80557",
+    "result_file_sha256": "6f506005f3c356a7f5c1609385588f0cc8658d4eda69a48f148a5049d9fcd1eb",
+    "files": {
+      "src/content/blog/zh/ai-daily-2026-11-22.md": "415edc0bf0348eb9589aa90fd866ac68ce3949beb8b9047872ae2fe9f3ebce41",
+      "src/content/blog/en/ai-daily-2026-11-22.md": "e12b72fc5d682ae69c5a9a0c9eb3dc448dcbcdb237f5df1f8a5cc6199129ce81"
+    }
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://finance.people.com.cn/n1/2026/1121/c1004-40837972.html",
+      "archived_url": "http://finance.people.com.cn/n1/2026/1121/c1004-40837972.html",
+      "sha256": "e4d4651ab5b79f7a2718e0b4718d613b193a108b3bd5da39925a3368812ccf5d",
+      "read_at": "2026-11-22T07:04:49.718605+08:00",
+      "source_date": "2026-11-21"
+    },
+    {
+      "id": "S02",
+      "url": "https://huggingface.co/kyutai/AURA-1.3B",
+      "archived_url": "https://huggingface.co/kyutai/AURA-1.3B",
+      "sha256": "c5cfdf649ae15b52a57eda02ba799cf8d718924b64319cc02a8e1086724f6c62",
+      "read_at": "2026-11-22T07:06:19.985059+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S03",
+      "url": "https://kyutai.org/aura",
+      "archived_url": "https://kyutai.org/aura",
+      "sha256": "4f09426d563315abb695740713e4c7ebfaab232a462ea4b263e7ec7de98f71f1",
+      "read_at": "2026-11-22T07:06:19.985059+08:00",
+      "source_date": "2026-11-20",
+      "date_note": "Explicit project-article date in the archived original; not evidence of the first availability of each checkpoint."
+    },
+    {
+      "id": "S04",
+      "url": "https://openai.com/index/introducing-medchembench",
+      "archived_url": "https://openai.com/index/introducing-medchembench",
+      "sha256": "0102d65cd72a4484c8bef47296c7627b372ce30d412ff555c8e84176fd69d344",
+      "read_at": "2026-11-22T07:09:58.611687+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S05",
+      "url": "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind",
+      "archived_url": "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind",
+      "sha256": "f998a3bca5d0d72646880c8fb287d509009c3634872c7a63ab4599e8dc214c68",
+      "read_at": "2026-11-22T07:09:58.611687+08:00",
+      "source_date": "2026-06-03"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-22.md": "415edc0bf0348eb9589aa90fd866ac68ce3949beb8b9047872ae2fe9f3ebce41",
+    "src/content/blog/en/ai-daily-2026-11-22.md": "e12b72fc5d682ae69c5a9a0c9eb3dc448dcbcdb237f5df1f8a5cc6199129ce81"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-22.md": "d9fa0af17431d722a2fce5050dece0a0c165a351e972add133148c72408fd790",
+    "src/content/blog/en/ai-daily-2026-11-22.md": "4cbb7293fbb6f8177427971ee214f6538b041e32ec1941daac9500433792c7f1"
+  },
+  "previous_files": {
+    "src/content/blog/zh/ai-daily-2026-11-22.md": "5a3c4870cea5857892ff7b4d0e6a36bd7d926d40b7feb48c1412c1340b230071"
+  },
+  "remediation": {
+    "review_type": "present-time correction; no historical approval claimed",
+    "original_commit": "f8ce4aff43f4cff7f062acd1d71111f2026dc118",
+    "original_english": "absent",
+    "summary": "Retain the historical edition URL and publication date, focus on three supported AI/Agent topics, add a complete English version, and bind both languages to genuine independent review.",
+    "source_archive_sha256": "47475faac2778aeab11b470cefac1feb68432c429e269662248c8ff0344be05a",
+    "source_supplement_sha256": "e07231c862b4db442c107ab0852586051feb40812e5201b142788fa7c90e9110",
+    "source_evidence_limit": "Hashes verify correspondence to the recovered archives; recorded read_at values are not independently signed historical capture timestamps.",
+    "review_limit": "Novelty was checked against the supplied 17 publication-history entries and all five correction editions, not an independently crawled full-site archive.",
+    "deployment": "not verified; prepared on a repair branch for pull-request review"
+  },
+  "review_history": [
+    {
+      "sha256": "e325d406ee3e57a185d4dc6816998027ee4a1dc37df5b064c4d80421bddd675d",
+      "verdict": "reject",
+      "reviewed_at": "2026-11-26T17:14:10.488731+08:00",
+      "manifest_sha256": "9f6ee4c3c597e2cf92efd1e4d27393c5a62e5964a7ea0d4a515cb490807296fc",
+      "input_bindings": {
+        "packet_sha256": "13a2939d30a955049ae978c71e8566647d3ee3d918b6a620fe793541fa5a6c67",
+        "draft_sha256": "8c68aa3091371bd48c75b4c353741a5516bf736834e323de23a625de8c6bbc0f",
+        "packet_file_sha256": "35d78cc31aeb98a347d8f75fd6f2f05a4269f1fae3eba28d0629d9de28cf7f5e",
+        "draft_file_sha256": "2966f8719ba3fe63fd9be592cb8b080425142e037d6648ac4b6aa1c89cc8752c",
+        "files": {
+          "src/content/blog/zh/ai-daily-2026-11-22.md": "f995bc8f4efc8612b2bff03f49d856eadeadba10e48bbe94a5107a6b29c50d25",
+          "src/content/blog/en/ai-daily-2026-11-22.md": "098bcff14ad37a3852fe7f1b3e1d4524485063df40a5043f5f98a3d83ccbe779"
+        }
+      },
+      "preserved_without_modification": true,
+      "relationship": "Original reject remains valid for original bytes; this new pass applies only to the separately frozen round2 version."
+    }
+  ],
+  "resolved_findings": [
+    {
+      "prior_finding_id": "NOV22-AURA-DATE",
+      "prior_failed_checks": [
+        "factual_support",
+        "freshness"
+      ],
+      "status": "resolved_in_exact_round2_version",
+      "resolution": "中英文第26行承认项目文章11/20，未知范围缩为权重首次开放；packet同步更正S03.source_date/date_note并保持event_date=null，首轮NOV22-AURA-DATE关闭。"
+    }
+  ]
+}

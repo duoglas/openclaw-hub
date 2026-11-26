@@ -1,0 +1,175 @@
+{
+  "version": 2,
+  "date": "2026-11-24",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-24",
+  "created_at": "2026-11-26T17:47:04.290422+08:00",
+  "operation": "revise",
+  "backfill": true,
+  "base_commit": "93a5b6984f0858afd76fec9e66be0530ded829c4",
+  "event_keys": [
+    "glm54-launch-20261123",
+    "walloss10-launch-20261123",
+    "ai-provider-prompt-leaks-router-response-20261123"
+  ],
+  "packet_sha256": "e2e0e8301870b9936eb2047a51dd313742530be418182d981f74ae826d69e94c",
+  "draft_sha256": "71deab79255a0df2a622476732ca43480cdacdc2e4fdf5d32590988ccbdaefd7",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "中英文第26行承认技术文章11/23及11/24归档，未知范围仅为WALL-OSS/Lite权重首次开放；packet同步更正来源日期并声明旧事件键不作证据，首轮NOV24-WALL-DATE关闭。",
+      "完整复审本期packet/draft/zh/en与全部相关原文后，七项均通过，未发现新增阻断项。"
+    ]
+  },
+  "writer": {
+    "identity": "Codex maintenance writer",
+    "resolved_model": "unknown",
+    "input_sha256": "e2e0e8301870b9936eb2047a51dd313742530be418182d981f74ae826d69e94c",
+    "method": "source-based repair of the historical Chinese edition and preparation of its English counterpart"
+  },
+  "reviewer": {
+    "identity": "Codex independent content-review worker, round 2",
+    "agent": "codex",
+    "resolved_model": "unknown",
+    "model_evidence": "The runtime instructions identify the agent as Codex; no independently verifiable concrete serving-model identifier is exposed. No model name is inferred from article text, available tools or the coordinator.",
+    "method": "independent present-time review of the complete frozen bilingual files and archived originals",
+    "completed_at": "2026-11-26T17:42:45.371419+08:00",
+    "independent_of_originating_writer": true,
+    "input_sha256": "3e230bccc7a477d58b7b29ec87e2b055c8ecb4f76ae7da340dc41deaa7c13e7d",
+    "manifest_sha256": "ba48cf4ce48e53869c354739ded21713ddd88e0e5aba075a39941093d9d80557",
+    "result_file_sha256": "63f130fef017a9b399a5cff2bc9f56eae86123c14d6fd6e9f12deb4e0af4bb48",
+    "files": {
+      "src/content/blog/zh/ai-daily-2026-11-24.md": "89214a3eadc0866e9d4e49a416602012e70e93a3a6c381afcf0b6612af18ce4b",
+      "src/content/blog/en/ai-daily-2026-11-24.md": "144494d8af42eb7a769bb99aa5d8bea7131c5ef33fa39975155702710769a957"
+    }
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://z.ai/blog/glm-5.4",
+      "archived_url": "https://z.ai/blog/glm-5.4",
+      "sha256": "ebd92834bb1a56b24d51f73d70b4b1ed68db9cd76fdd54bb64b1f47491132d17",
+      "read_at": "2026-11-24T07:08:44.345580+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S02",
+      "url": "https://finance.sina.com.cn/stock/t/2026-11-23/doc-iniztsaa0575633.shtml",
+      "archived_url": "https://finance.sina.com.cn/stock/t/2026-11-23/doc-iniztsaa0575633.shtml",
+      "sha256": "5c38664c50ed4ecd03468ef8d9c83da40e55e5487467b356e894d872abaa41ef",
+      "read_at": "2026-11-24T07:08:15.593648+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S03",
+      "url": "https://x2robot.com/blogs/wall-oss-1-en/",
+      "archived_url": "https://x2robot.com/blogs/wall-oss-1-en/",
+      "sha256": "468cc0b2638addb9e43b0932b80ebbee6ed6ab51738aff4d3260573f76c2434a",
+      "read_at": "2026-11-24T07:07:09.182915+08:00",
+      "source_date": "2026-11-23",
+      "date_note": "Explicit technical-article date in the Citation section; not proof of first WALL-OSS or Lite weight availability."
+    },
+    {
+      "id": "S04",
+      "url": "https://huggingface.co/x-square-robot/wall-oss-1.0-lite-robodojo",
+      "archived_url": "https://huggingface.co/x-square-robot/wall-oss-1.0-lite-robodojo",
+      "sha256": "091e20968e9224c794947bad8dac1d940eca9e37aa614db97bca84dacdc78923",
+      "read_at": "2026-11-24T07:07:09.182915+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S05",
+      "url": "https://github.com/X-Square-Robot/xr-harness",
+      "archived_url": "https://github.com/X-Square-Robot/xr-harness",
+      "sha256": "d1d8f4dd05b81ccc5762a33f9ee83da20f659a73f2845b2e3bed72ef9a2a4f1e",
+      "read_at": "2026-11-24T07:07:09.182915+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S06",
+      "url": "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+      "archived_url": "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+      "sha256": "1de58de57b65e2c26f9ad6fe7957b4d85070fc3a3e8adc52a95fdf79b49d05b9",
+      "read_at": "2026-11-24T07:14:23.459001+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S07",
+      "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers",
+      "archived_url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers",
+      "sha256": "e6067eff6fa6bde7586d37ee32d9083544f46a6ffcad42a0e2797776346e670d",
+      "read_at": "2026-11-24T07:14:23.459001+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S08",
+      "url": "https://dataconomy.com/2026/11/23/dragos-finds-breaches-at-three-ai-inference-providers",
+      "archived_url": "https://dataconomy.com/2026/11/23/dragos-finds-breaches-at-three-ai-inference-providers",
+      "sha256": "1c5da40465107a0a06355fbf401dabdb11b50a7af8522d9c2809ce299d599a88",
+      "read_at": "2026-11-24T07:12:36.026802+08:00",
+      "source_date": null
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-24.md": "89214a3eadc0866e9d4e49a416602012e70e93a3a6c381afcf0b6612af18ce4b",
+    "src/content/blog/en/ai-daily-2026-11-24.md": "144494d8af42eb7a769bb99aa5d8bea7131c5ef33fa39975155702710769a957"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-24.md": "66272d9794bbfa6e395a945cb55b1a22a91062d1b91073746ba7b09849e76412",
+    "src/content/blog/en/ai-daily-2026-11-24.md": "cd5e0e29f8d3240da5095b3e3cc398c5df074de778dac574393a9373388f0653"
+  },
+  "previous_files": {
+    "src/content/blog/zh/ai-daily-2026-11-24.md": "e07fdfa744ad354c9e57a1481571fe916ffaa058fa03cd1a74df96f91d47a3d5"
+  },
+  "remediation": {
+    "review_type": "present-time correction; no historical approval claimed",
+    "original_commit": "f8ce4aff43f4cff7f062acd1d71111f2026dc118",
+    "original_english": "absent",
+    "summary": "Retain the historical edition URL and publication date, focus on three supported AI/Agent topics, add a complete English version, and bind both languages to genuine independent review.",
+    "source_archive_sha256": "47475faac2778aeab11b470cefac1feb68432c429e269662248c8ff0344be05a",
+    "source_supplement_sha256": "e07231c862b4db442c107ab0852586051feb40812e5201b142788fa7c90e9110",
+    "source_evidence_limit": "Hashes verify correspondence to the recovered archives; recorded read_at values are not independently signed historical capture timestamps.",
+    "review_limit": "Novelty was checked against the supplied 17 publication-history entries and all five correction editions, not an independently crawled full-site archive.",
+    "deployment": "not verified; prepared on a repair branch for pull-request review"
+  },
+  "review_history": [
+    {
+      "sha256": "0994954803728dd8fd7b8d975e0da29e84f760735d028a0e1c27369dd59730fe",
+      "verdict": "reject",
+      "reviewed_at": "2026-11-26T17:14:10.489464+08:00",
+      "manifest_sha256": "9f6ee4c3c597e2cf92efd1e4d27393c5a62e5964a7ea0d4a515cb490807296fc",
+      "input_bindings": {
+        "packet_sha256": "cac54538433d9a83d12fe6c5ffeaf900418948b4b4efe0242a1c0b74ce71b6b2",
+        "draft_sha256": "26d6e1ebda8f0c4b29cb1e832dcbfe7d6d1800f9d91ba98d9568a432573b5af3",
+        "packet_file_sha256": "e5224d0d8b0e0a37884f1cfd0635072d2a3c519593a31ab91b18ef6306fe787b",
+        "draft_file_sha256": "744c1a61a9fce1072ae52ae873883580d6ef64fc08c102387f70d178a2e7e1c2",
+        "files": {
+          "src/content/blog/zh/ai-daily-2026-11-24.md": "210d13145877add5f25c5be9642202052aab4c18f178e50433061a6d9b3d6296",
+          "src/content/blog/en/ai-daily-2026-11-24.md": "87cd7639c10e263acf56e9579fc469ab744fc76b4b3d445b5dc18b4f7962394a"
+        }
+      },
+      "preserved_without_modification": true,
+      "relationship": "Original reject remains valid for original bytes; this new pass applies only to the separately frozen round2 version."
+    }
+  ],
+  "resolved_findings": [
+    {
+      "prior_finding_id": "NOV24-WALL-DATE",
+      "prior_failed_checks": [
+        "factual_support",
+        "freshness"
+      ],
+      "status": "resolved_in_exact_round2_version",
+      "resolution": "中英文第26行承认技术文章11/23及11/24归档，未知范围仅为WALL-OSS/Lite权重首次开放；packet同步更正来源日期并声明旧事件键不作证据，首轮NOV24-WALL-DATE关闭。"
+    }
+  ]
+}

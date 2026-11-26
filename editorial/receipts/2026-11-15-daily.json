@@ -1,0 +1,128 @@
+{
+  "version": 2,
+  "date": "2026-11-15",
+  "kind": "daily",
+  "slug": "ai-daily-2026-11-15",
+  "created_at": "2026-11-26T17:34:42.483634+08:00",
+  "operation": "revise",
+  "backfill": true,
+  "base_commit": "93a5b6984f0858afd76fec9e66be0530ded829c4",
+  "event_keys": [
+    "baidu-application-models-20261112",
+    "chatgpt-wallet-20261113",
+    "microsoft-outage-recovery-20261113"
+  ],
+  "packet_sha256": "e2b065c3a36bf2dde0446eed7eccf142207e4e565fd961d44f6ef32788c09bf6",
+  "draft_sha256": "61847805bd2a026c65eb0c6db60e7b458f7bb1d7f58590df2b8c614a2bafd0f8",
+  "review": {
+    "verdict": "pass",
+    "checks": {
+      "factual_support": true,
+      "freshness": true,
+      "novelty": true,
+      "usefulness": true,
+      "translation": true,
+      "scope": true,
+      "safety": true
+    },
+    "reasons": [
+      "三条事项分别有百度产品页及央广网报道、OpenAI 官方流程、AP 与每经报道支持，开放范围和故障归因均有归属。",
+      "11 月 12—14 日事件/报道与 11 月 15 日归档、11 月 26 日修订明确分离，2025 年结账功能只作历史背景。",
+      "完整中英文在金额、时长、地区、年龄、逐笔授权及企业恢复未完成等关键信息上一致。"
+    ]
+  },
+  "writer": {
+    "identity": "Codex maintenance writer",
+    "resolved_model": "unknown",
+    "input_sha256": "e2b065c3a36bf2dde0446eed7eccf142207e4e565fd961d44f6ef32788c09bf6",
+    "method": "source-based repair of the historical Chinese edition and preparation of its English counterpart"
+  },
+  "reviewer": {
+    "identity": "Codex independent content-review worker",
+    "agent": "codex",
+    "resolved_model": "unknown",
+    "model_evidence": "The session identifies the agent as Codex; no verifiable concrete serving-model identifier was exposed to this reviewer. No model name was inferred from source articles, tool availability or the coordinator.",
+    "method": "independent present-time review of the complete frozen bilingual files and archived originals",
+    "completed_at": "2026-11-26T17:14:10.486763+08:00",
+    "independent_of_originating_writer": true,
+    "input_sha256": "f711481952414010406dd0c110550bb614924c3bfdfac2dd99bba85f22fe4e1f",
+    "manifest_sha256": "9f6ee4c3c597e2cf92efd1e4d27393c5a62e5964a7ea0d4a515cb490807296fc",
+    "result_file_sha256": "038484e43166500b32f25174f422e676466cd597e824a2dc28c7984aa2da99c3",
+    "files": {
+      "src/content/blog/zh/ai-daily-2026-11-15.md": "0269674265945779f6a236a319ad0ba51d586359f21d88ece62228af6e5c955d",
+      "src/content/blog/en/ai-daily-2026-11-15.md": "2ee38234698558bd8201edb26923e4573ec970e6521abb2d403ebf8e3bc56141"
+    }
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "url": "https://cloud.baidu.com/product/qianfan_home/model_3.html",
+      "archived_url": "https://cloud.baidu.com/product/qianfan_home/model_3.html",
+      "sha256": "ac3c2847b752b471a990aa582a7d2b20fa621d6325dd4238cfefac741f589320",
+      "read_at": "2026-11-15T07:08:24.834227+08:00",
+      "source_date": null
+    },
+    {
+      "id": "S02",
+      "url": "https://www.sohu.com/a/1100718979_362042",
+      "archived_url": "https://www.sohu.com/a/1100718979_362042",
+      "sha256": "591734c80f264c8be6cdd8f22065ded97e6d9f2486ed79866bacaf42d3d6b4f2",
+      "read_at": "2026-11-15T07:08:24.834227+08:00",
+      "source_date": "2026-11-12"
+    },
+    {
+      "id": "S03",
+      "url": "https://openai.com/index/introducing-chatgpt-wallet",
+      "archived_url": "https://openai.com/index/introducing-chatgpt-wallet",
+      "sha256": "bd04724beea1d8152e54d5fe10fbc54602c5bda2477f5c7df8c08c61917300e7",
+      "read_at": "2026-11-15T07:03:49.559100+08:00",
+      "source_date": "2026-11-13"
+    },
+    {
+      "id": "S04",
+      "url": "https://openai.com/index/buy-it-in-chatgpt/",
+      "archived_url": "https://openai.com/index/buy-it-in-chatgpt/",
+      "sha256": "f27f8d4462a02182b2f35fb9cbae51d7e8d27b18121be33f0b43173d7761aa9d",
+      "read_at": "2026-11-15T07:08:24.834227+08:00",
+      "source_date": "2025-09-29"
+    },
+    {
+      "id": "S05",
+      "url": "https://www.edweek.org/technology/microsoft-outage-shows-risks-of-relying-on-a-single-tech-provider-for-essential-services/2026/11",
+      "archived_url": "https://www.edweek.org/technology/microsoft-outage-shows-risks-of-relying-on-a-single-tech-provider-for-essential-services/2026/11",
+      "sha256": "80536b851aabb5801a811b41c109d4d5026ef770363fde0472c2278d085554d1",
+      "read_at": "2026-11-15T07:05:27.354499+08:00",
+      "source_date": "2026-11-13"
+    },
+    {
+      "id": "S06",
+      "url": "https://www.mrjjxw.com/articles/2026-11-14/4647855.html",
+      "archived_url": "https://www.mrjjxw.com/articles/2026-11-14/4647855.html",
+      "sha256": "69bb59f454667d05d5699201d8cb123bcb33f0baec77ee4346d29e4b4039a4aa",
+      "read_at": "2026-11-15T07:05:27.354499+08:00",
+      "source_date": "2026-11-14"
+    }
+  ],
+  "files": {
+    "src/content/blog/zh/ai-daily-2026-11-15.md": "0269674265945779f6a236a319ad0ba51d586359f21d88ece62228af6e5c955d",
+    "src/content/blog/en/ai-daily-2026-11-15.md": "2ee38234698558bd8201edb26923e4573ec970e6521abb2d403ebf8e3bc56141"
+  },
+  "body_hashes": {
+    "src/content/blog/zh/ai-daily-2026-11-15.md": "a0b0fe795ae62b9721831d57c51ee5e682a02ef317dbc105a80b9ea947078c6f",
+    "src/content/blog/en/ai-daily-2026-11-15.md": "92ab35376d30a493977211f78294e77c6d2a22760bfb4c4c1b1666532ca8b283"
+  },
+  "previous_files": {
+    "src/content/blog/zh/ai-daily-2026-11-15.md": "65f316b69bc8ef08c7f4b9dede4ba613467f32aad0543724669d0bf566a46960"
+  },
+  "remediation": {
+    "review_type": "present-time correction; no historical approval claimed",
+    "original_commit": "f8ce4aff43f4cff7f062acd1d71111f2026dc118",
+    "original_english": "absent",
+    "summary": "Retain the historical edition URL and publication date, focus on three supported AI/Agent topics, add a complete English version, and bind both languages to genuine independent review.",
+    "source_archive_sha256": "47475faac2778aeab11b470cefac1feb68432c429e269662248c8ff0344be05a",
+    "source_supplement_sha256": "e07231c862b4db442c107ab0852586051feb40812e5201b142788fa7c90e9110",
+    "source_evidence_limit": "Hashes verify correspondence to the recovered archives; recorded read_at values are not independently signed historical capture timestamps.",
+    "review_limit": "Novelty was checked against the supplied 17 publication-history entries and all five correction editions, not an independently crawled full-site archive.",
+    "deployment": "not verified; prepared on a repair branch for pull-request review"
+  }
+}
